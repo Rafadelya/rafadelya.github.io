@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Проекты | R&A Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2b8e2e5e2a.js" crossorigin="anonymous"></script>
+  <style>
+    .floating-quote { position: absolute; right: 1rem; top: 1rem; background: rgba(255,255,255,0.8); border-radius: 0.5rem; padding: 0.5rem 1rem; font-style: italic; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.07); display: none; }
+    .project-card:hover .floating-quote { display: block; animation: fadeIn 0.7s; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .dark-mode { background: #18181b; color: #f3f4f6; }
+    .dark-mode .project-card { background: #232336; color: #f3f4f6; }
+    .dark-mode .floating-quote { background: rgba(30,30,40,0.9); color: #fff; }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-300">
+  <!-- Hero Section -->
+  <section class="relative py-20 px-4 sm:px-8 bg-gradient-to-br from-purple-900 via-indigo-800 to-pink-700 text-white overflow-hidden">
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-6" style="font-family:'Press Start 2P',monospace;">Проекты R&A Studio</h1>
+      <p class="text-lg md:text-2xl mb-8 font-mono">Истории, эксперименты, рост. Мы не просто делаем задачи — мы ищем смыслы.</p>
+      <div class="flex flex-nowrap gap-4 overflow-x-auto py-2 justify-center animate-pulse">
+        <span class="bg-white bg-opacity-10 rounded px-4 py-2 text-lg font-bold mr-2">🎧 АдиГид</span>
+        <span class="bg-white bg-opacity-10 rounded px-4 py-2 text-lg font-bold mr-2">🧪 Анализ для агентства</span>
+        <span class="bg-white bg-opacity-10 rounded px-4 py-2 text-lg font-bold mr-2">🌐 CyberConnect</span>
+        <span class="bg-white bg-opacity-10 rounded px-4 py-2 text-lg font-bold">📱 R&A App</span>
+      </div>
+    </div>
+    <button id="themeToggle" class="absolute top-6 right-6 bg-white bg-opacity-20 hover:bg-opacity-40 text-white px-3 py-1 rounded transition">🌗</button>
+  </section>
+
+  <!-- Навигация/Фильтр -->
+  <nav class="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 mt-8 mb-12">
+    <button class="filter-btn px-4 py-2 rounded bg-indigo-100 text-indigo-800 font-bold hover:bg-indigo-200 transition" data-filter="all">Все проекты</button>
+    <button class="filter-btn px-4 py-2 rounded bg-pink-100 text-pink-800 font-bold hover:bg-pink-200 transition" data-filter="product">Продукты R&A</button>
+    <button class="filter-btn px-4 py-2 rounded bg-green-100 text-green-800 font-bold hover:bg-green-200 transition" data-filter="client">Клиентские кейсы</button>
+    <button class="filter-btn px-4 py-2 rounded bg-yellow-100 text-yellow-800 font-bold hover:bg-yellow-200 transition" data-filter="research">Исследования</button>
+  </nav>
+
+  <!-- Проекты -->
+  <section class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4" id="projectsList">
+    <!-- Project 1 -->
+    <div class="project-card relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-purple-600" data-type="product">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">🎧</span>
+        <h2 class="text-xl font-bold">АдиГид</h2>
+        <span class="ml-auto text-sm text-gray-400">2023</span>
+      </div>
+      <p class="mb-2 text-gray-700">Мобильное приложение с аудиогидами.</p>
+      <ul class="flex flex-wrap gap-2 text-sm mb-3">
+        <li class="bg-purple-100 text-purple-800 rounded px-2 py-1">🛠 Идея</li>
+        <li class="bg-purple-100 text-purple-800 rounded px-2 py-1">✍️ Тексты</li>
+        <li class="bg-purple-100 text-purple-800 rounded px-2 py-1">🎨 Дизайн</li>
+        <li class="bg-purple-100 text-purple-800 rounded px-2 py-1">💻 Разработка</li>
+        <li class="bg-purple-100 text-purple-800 rounded px-2 py-1">📈 Маркетинг</li>
+      </ul>
+      <img src="assets/mockup-adigid.png" alt="Мокап АдиГид" class="rounded-lg mb-3 border border-gray-200">
+      <div class="text-xs text-gray-500 mb-2">Flutter, Python, Figma</div>
+      <div class="mb-2 text-sm"><b>Что особенно:</b> собирали факты, озвучивали через нейросети, валидировали на туристах ВДНХ.</div>
+      <button class="expand-btn mt-2 px-3 py-1 bg-purple-600 text-white rounded hover:bg-purple-700 transition">Подробнее</button>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Идея</span>—<span>Дизайн</span>—<span>Разработка</span>—<span>Запуск</span>
+      </div>
+      <blockquote class="floating-quote">«Здесь мы поняли, как важно…»</blockquote>
+    </div>
+    <!-- Project 2 -->
+    <div class="project-card relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-green-600" data-type="client">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">🧪</span>
+        <h2 class="text-xl font-bold">Анализ для агентства</h2>
+        <span class="ml-auto text-sm text-gray-400">2022</span>
+      </div>
+      <p class="mb-2 text-gray-700">Комплексный ресёрч с настоящим «полевым» тестом конкурентов.</p>
+      <ul class="flex flex-wrap gap-2 text-sm mb-3">
+        <li class="bg-green-100 text-green-800 rounded px-2 py-1">Опросы</li>
+        <li class="bg-green-100 text-green-800 rounded px-2 py-1">Тестовые заказы</li>
+        <li class="bg-green-100 text-green-800 rounded px-2 py-1">Чек-листы</li>
+        <li class="bg-green-100 text-green-800 rounded px-2 py-1">Ребрендинг</li>
+      </ul>
+      <img src="assets/mockup-agency.png" alt="Мокап агентства" class="rounded-lg mb-3 border border-gray-200">
+      <div class="text-xs text-gray-500 mb-2">Google Forms, PowerPoint</div>
+      <div class="mb-2 text-sm"><b>Что особенно:</b> сами заказывали услуги у конкурентов, чтобы понять слабые места.</div>
+      <button class="expand-btn mt-2 px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 transition">Подробнее</button>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Исследование</span>—<span>Тесты</span>—<span>Ребрендинг</span>
+      </div>
+      <blockquote class="floating-quote">«Мы увидели рынок изнутри»</blockquote>
+    </div>
+    <!-- Project 3 -->
+    <div class="project-card relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-blue-600" data-type="product">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">🌐</span>
+        <h2 class="text-xl font-bold">CyberConnect</h2>
+        <span class="ml-auto text-sm text-gray-400">2024</span>
+      </div>
+      <p class="mb-2 text-gray-700">Интернет-агрегатор на Raspberry Pi с интерфейсом и юнит-экономикой.</p>
+      <ul class="flex flex-wrap gap-2 text-sm mb-3">
+        <li class="bg-blue-100 text-blue-800 rounded px-2 py-1">Hardware</li>
+        <li class="bg-blue-100 text-blue-800 rounded px-2 py-1">OpenMPTCProuter</li>
+        <li class="bg-blue-100 text-blue-800 rounded px-2 py-1">VPN</li>
+        <li class="bg-blue-100 text-blue-800 rounded px-2 py-1">MVP</li>
+      </ul>
+      <img src="assets/mockup-cyberconnect.png" alt="Мокап CyberConnect" class="rounded-lg mb-3 border border-gray-200">
+      <div class="text-xs text-gray-500 mb-2">Raspberry Pi, Linux, Vue.js</div>
+      <div class="mb-2 text-sm"><b>Что особенно:</b> умещается в коробку, работает без проводов и увеличивает скорость до 4х.</div>
+      <button class="expand-btn mt-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Подробнее</button>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Прототип</span>—<span>Тесты</span>—<span>Запуск</span>
+      </div>
+      <blockquote class="floating-quote">«Всё в одной коробке»</blockquote>
+    </div>
+    <!-- Project 4 (исследование) -->
+    <div class="project-card relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-yellow-600" data-type="research">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📊</span>
+        <h2 class="text-xl font-bold">Исследование UX</h2>
+        <span class="ml-auto text-sm text-gray-400">2023</span>
+      </div>
+      <p class="mb-2 text-gray-700">Публикация о влиянии микровзаимодействий на вовлечённость пользователей.</p>
+      <ul class="flex flex-wrap gap-2 text-sm mb-3">
+        <li class="bg-yellow-100 text-yellow-800 rounded px-2 py-1">Аналитика</li>
+        <li class="bg-yellow-100 text-yellow-800 rounded px-2 py-1">Публикация</li>
+      </ul>
+      <img src="assets/mockup-ux.png" alt="Мокап исследования" class="rounded-lg mb-3 border border-gray-200">
+      <div class="text-xs text-gray-500 mb-2">Figma, Google Scholar</div>
+      <div class="mb-2 text-sm"><b>Что особенно:</b> 2 научные публикации, реальные данные.</div>
+      <button class="expand-btn mt-2 px-3 py-1 bg-yellow-600 text-white rounded hover:bg-yellow-700 transition">Подробнее</button>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Анализ</span>—<span>Публикация</span>
+      </div>
+      <blockquote class="floating-quote">«Детали решают всё»</blockquote>
+    </div>
+  </section>
+
+  <!-- Инсайты и цифры -->
+  <section class="max-w-4xl mx-auto mt-20 mb-12 grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">💻</span>
+      <span class="font-bold text-xl">4</span>
+      <span class="text-xs text-gray-500">собственных продукта</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">🧑‍💼</span>
+      <span class="font-bold text-xl">3</span>
+      <span class="text-xs text-gray-500">клиентских кейса</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">📈</span>
+      <span class="font-bold text-xl">1</span>
+      <span class="text-xs text-gray-500">MVP вырос в бизнес</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">🧠</span>
+      <span class="font-bold text-xl">2</span>
+      <span class="text-xs text-gray-500">научные публикации</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">🕓</span>
+      <span class="font-bold text-xl">500+</span>
+      <span class="text-xs text-gray-500">часов анализа</span>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="max-w-2xl mx-auto text-center py-16">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Есть идея?</h2>
+    <p class="mb-6 text-lg">Напишите нам — посмотрим, что можно сделать вместе!</p>
+    <a href="index.html">
+      <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+    </a>
+  </section>
+
+  <footer class="text-center py-6 border-t mt-12 text-gray-400 text-sm">
+    © 2025 R&A Studio. Все права защищены.
+  </footer>
+
+  <!-- JS for filter, theme, and expand -->
+  <script>
+    // Фильтрация карточек
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        document.querySelectorAll('.project-card').forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-type') === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('ring', 'ring-2', 'ring-indigo-500'));
+        this.classList.add('ring', 'ring-2', 'ring-indigo-500');
+      });
+    });
+    // Expand details (заглушка)
+    document.querySelectorAll('.expand-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        alert('Здесь будет подробная страница проекта!');
+      });
+    });
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
+</body>
+</html>

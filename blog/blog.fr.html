@@ -1,0 +1,67 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | R&A Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="blog-pixel.css">
+  <link rel="icon" type="image/png" href="../assets/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800">
+  <header class="glass-header">
+    <div class="logo-block" style="display: flex; align-items: center;">
+      <a href="../index.fr.html">
+        <img src="../assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+      </a>
+    </div>
+    <nav class="flex gap-4">
+      <a href="../index.fr.html" class="nav-link">Accueil</a>
+      <a href="../about.fr.html" class="nav-link">À propos</a>
+      <a href="../projects.fr.html" class="nav-link">Projets</a>
+      <a href="blog.fr.html" class="nav-link active">Blog</a>
+      <a href="../contact.fr.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="flex gap-2">
+      <a href="blog.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="blog.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="blog.fr.html" class="lang-flag active" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="blog.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+  </header>
+
+  <main class="relative bg-white overflow-hidden">
+    <!-- Typewriter Hero Section -->
+    <section class="relative pt-32 pb-20 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[300px] mb-8">
+      <div class="pixel-dots-bg"></div>
+      <h1 class="typewriter-pixel text-5xl md:text-6xl font-bold mb-6" style="color:#2d014d; font-family:'Press Start 2P',monospace;">BLOG</h1>
+      <p class="blog-pixel-desc text-lg md:text-xl text-center max-w-2xl mb-4" style="font-family:'Press Start 2P',monospace; color:#6b7280;">Idées, aperçus et histoires du monde de la créativité numérique</p>
+    </section>
+    <!-- Blog Section -->
+    <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-10" style="font-family:'Press Start 2P',monospace; color:#2d014d;">Derniers Articles</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+        <!-- Blog Card 1 -->
+        <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
+          <span class="text-xs mb-2 blog-pixel-meta">2025-07-12</span>
+          <h3 class="text-xl mb-2 blog-pixel-title">Quand le contrôle est devenu stratégie : un cas difficile d'un magasin d'électronique</h3>
+          <p class="mb-4 blog-pixel-text">Comment nous avons supprimé le ballast, tout recalculé et lancé la croissance : audit réel, optimisation et nouvelles sources de profit pour l'entreprise. Pratique, chiffres, solutions.</p>
+          <a href="fr/posts/finance-consulting.fr.html" class="blog-pixel-btn">Lire</a>
+        </div>
+        
+        <!-- Blog Card 2 -->
+        <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
+          <span class="text-xs mb-2 blog-pixel-meta">2025-07-10</span>
+          <h3 class="text-xl mb-2 blog-pixel-title">Comment nous avons aidé une agence d'intérim à reconstruire sa marque et à comprendre ses clients</h3>
+          <p class="mb-4 blog-pixel-text">Analyse terrain pour une agence d'intérim : enquêtes clients, tests concurrents, cartographie du parcours client et relance de marque. Comment construire un marketing basé sur des données, pas des suppositions.</p>
+          <a href="fr/posts/agency-analysis.fr.html" class="blog-pixel-btn">Lire</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 border-t mt-12">
+    <p class="text-sm">© 2025 R&A Studio. Tous droits réservés.</p>
+  </footer>
+</body> 

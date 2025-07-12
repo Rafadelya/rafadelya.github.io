@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>DebtMate | Проект R&A Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2b8e2e5e2a.js" crossorigin="anonymous"></script>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="glass-header flex flex-row items-center justify-between gap-8">
+    <div class="logo-block">
+      <a href="../index.ru.html">
+        <img src="../assets/Logo design R.A. Stu.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+      </a>
+    </div>
+    <nav class="flex gap-4">
+      <a href="../index.ru.html" class="nav-link">Главная</a>
+      <a href="../about.ru.html" class="nav-link">О нас</a>
+      <a href="../projects.ru.html" class="nav-link">Проекты</a>
+      <a href="../blog/blog.ru.html" class="nav-link">Блог</a>
+      <a href="../contact.ru.html" class="nav-link">На связи</a>
+    </nav>
+    <div class="flex gap-2">
+      <a href="../index.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="../index.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="../index.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="../index.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+  </header>
+  <main class="max-w-3xl mx-auto px-4 py-14 space-y-12 flex-1 flex flex-col">
+    <!-- Hero -->
+    <section class="bg-white rounded-3xl shadow-2xl p-10 text-center mb-4">
+      <h1 class="text-4xl font-extrabold text-green-600 flex items-center justify-center gap-2 mb-2">
+        <span class="text-3xl">💸</span> DebtMate
+      </h1>
+      <p class="text-lg text-gray-800 mb-2">Простой и надёжный менеджер долгов — всё честно, быстро и без лишних вопросов.<br>Веди учёт долгов между друзьями и знакомыми офлайн, без регистрации и лишних сложностей.</p>
+    </section>
+    <!-- Почему DebtMate? -->
+    <section class="bg-gray-50 rounded-2xl shadow-lg p-8">
+      <h2 class="text-xl font-bold text-green-700 mb-4">Почему DebtMate?</h2>
+      <ul class="space-y-3 text-base">
+        <li class="flex items-center gap-3"><span class="text-2xl">🔄</span> Учитывает, кто кому и сколько должен</li>
+        <li class="flex items-center gap-3"><span class="text-2xl">🤝</span> Поддержка групповых долгов и общих расходов</li>
+        <li class="flex items-center gap-3"><span class="text-2xl">🔐</span> Локальное хранение данных — безопасность и приватность</li>
+        <li class="flex items-center gap-3"><span class="text-2xl">📱</span> Кроссплатформенность: iOS, Android, Windows, macOS, Linux</li>
+        <li class="flex items-center gap-3"><span class="text-2xl">💬</span> Удобные напоминания без навязчивости</li>
+        <li class="flex items-center gap-3"><span class="text-2xl">📊</span> История всех долгов и выплат всегда под рукой</li>
+      </ul>
+    </section>
+    <!-- Как это работает -->
+    <section class="bg-white rounded-2xl shadow-lg p-8">
+      <h2 class="text-xl font-bold text-green-700 mb-4">Как это работает</h2>
+      <ul class="list-disc pl-6 text-gray-800 space-y-1">
+        <li>Добавляешь друзей и долги, создаёшь группы — например, для совместных поездок или жилья.</li>
+        <li>DebtMate считает общий баланс и показывает, кто кому и сколько должен вернуть.</li>
+        <li>Всё хранится на устройстве — никаких аккаунтов, никаких облаков.</li>
+      </ul>
+    </section>
+    <!-- Для кого -->
+    <section class="bg-white rounded-2xl shadow-lg p-8">
+      <h2 class="text-xl font-bold text-green-700 mb-4">Для кого</h2>
+      <ul class="debtmate-for-list">
+        <li style="--i:1"><span class="for-avatar for-avatar1"></span>Друзьям, которые часто делят расходы</li>
+        <li style="--i:2"><span class="for-avatar for-avatar2"></span>Коллегам по работе</li>
+        <li style="--i:3"><span class="for-avatar for-avatar3"></span>Соседям по квартире</li>
+        <li style="--i:4"><span class="for-avatar for-avatar4"></span>Семьям и компаниям путешественников</li>
+        <li style="--i:5"><span class="for-avatar for-avatar5"></span>Всем, кто устал считать долги вручную</li>
+      </ul>
+    </section>
+    <style>
+      .debtmate-for-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        padding-left: 0;
+      }
+      .debtmate-for-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.9em;
+        font-size: 1.08em;
+        color: #374151;
+        list-style: none;
+        position: relative;
+        cursor: default;
+        border-radius: 0.7em;
+        transition: background 0.18s;
+      }
+      .debtmate-for-list li:hover {
+        background: #f0fdf4;
+      }
+      .for-avatar {
+        display: inline-block;
+        width: 1.7em;
+        height: 1.7em;
+        border-radius: 50%;
+        margin-right: 0.1em;
+        box-shadow: 0 2px 8px #0001;
+        background: #a7f3d0;
+        transition: transform 0.22s cubic-bezier(.4,1.6,.6,1), box-shadow 0.18s;
+        transform: scale(0.85);
+        will-change: transform;
+      }
+      /* Главный прыжок */
+      .debtmate-for-list li:hover .for-avatar {
+        animation: avatar-bounce-main 0.45s cubic-bezier(.4,1.6,.6,1);
+        z-index: 2;
+      }
+      /* Сосед справа */
+      .debtmate-for-list li:hover + li .for-avatar {
+        animation: avatar-bounce-side 0.45s 0.07s cubic-bezier(.4,1.6,.6,1);
+        z-index: 1;
+      }
+      /* Сосед слева */
+      .debtmate-for-list li:has(+ li:hover) .for-avatar {
+        animation: avatar-bounce-side 0.45s 0.07s cubic-bezier(.4,1.6,.6,1);
+        z-index: 1;
+      }
+      @keyframes avatar-bounce-main {
+        0% { transform: scale(0.85) translateY(0); }
+        30% { transform: scale(1.13) translateY(-13px); }
+        60% { transform: scale(0.98) translateY(2px); }
+        100% { transform: scale(0.85) translateY(0); }
+      }
+      @keyframes avatar-bounce-side {
+        0% { transform: scale(0.85) translateY(0); }
+        30% { transform: scale(1.04) translateY(-7px); }
+        60% { transform: scale(0.92) translateY(1.5px); }
+        100% { transform: scale(0.85) translateY(0); }
+      }
+      .for-avatar1 { background: linear-gradient(135deg, #34d399 60%, #a7f3d0 100%); }
+      .for-avatar2 { background: linear-gradient(135deg, #60a5fa 60%, #dbeafe 100%); }
+      .for-avatar3 { background: linear-gradient(135deg, #fbbf24 60%, #fef3c7 100%); }
+      .for-avatar4 { background: linear-gradient(135deg, #a78bfa 60%, #ede9fe 100%); }
+      .for-avatar5 { background: linear-gradient(135deg, #2dd4bf 60%, #ccfbf1 100%); }
+    </style>
+    <script>
+      // Волна для секции 'Для кого'
+      document.addEventListener('DOMContentLoaded', function() {
+        const list = document.querySelector('.debtmate-for-list');
+        if (!list) return;
+        const items = Array.from(list.querySelectorAll('li'));
+        items.forEach((li, idx) => {
+          li.addEventListener('mouseenter', () => {
+            // волна вправо
+            for (let i = idx; i < items.length; ++i) {
+              setTimeout(() => items[i].classList.add('wave'), (i-idx)*60);
+            }
+            // волна влево
+            for (let i = idx-1, d=1; i >= 0; --i,++d) {
+              setTimeout(() => items[i].classList.add('wave'), d*60);
+            }
+          });
+          li.addEventListener('mouseleave', () => {
+            items.forEach((el) => el.classList.remove('wave'));
+          });
+        });
+      });
+    </script>
+    <!-- CTA -->
+    <section class="flex justify-center mt-8">
+      <div class="w-full max-w-xl bg-white rounded-2xl shadow-2xl px-8 py-8 flex flex-col items-center gap-4">
+        <h2 class="text-2xl font-extrabold text-green-700 mb-1 text-center">🚀 Запишись на бета-тест</h2>
+        <p class="text-gray-700 mb-2 text-center">Стань одним из первых пользователей и помоги сделать приложение лучше.</p>
+        <a href="https://t.me/rafael_not_a_candy" target="_blank" rel="noopener noreferrer"
+           class="btn-primary neon-glow text-base px-6 py-3 shadow-lg hover:scale-105 transition-transform mt-2">
+          Хочу попробовать DebtMate
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer-fixed text-center py-6 border-t w-full bg-white/90 flex-none px-0">
+    <p class="text-sm">© 2025 DebtMate<br>Честность и удобство — просто и надёжно.</p>
+  </footer>
+</body>
+</html> 

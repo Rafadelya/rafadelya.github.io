@@ -1,0 +1,83 @@
+/* blog-pixel.css — пиксельный стиль для блога */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body, .bg-white {
+  background: #fff !important;
+}
+
+.pixel-dots-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #e5e7eb 1.5px, transparent 1.5px), radial-gradient(circle, #e5e7eb 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+  opacity: 0.7;
+}
+
+.typewriter-pixel {
+  font-family: 'Press Start 2P', monospace;
+  color: #2d014d;
+  overflow: hidden;
+  border-right: 0.15em solid #2d014d;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.04em;
+  animation: typing 2.5s steps(4, end), blink-caret 0.7s step-end infinite alternate;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 4ch }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #2d014d; }
+}
+
+.blog-pixel-desc, .blog-pixel-title, .blog-pixel-meta, .blog-pixel-text, .blog-pixel-btn {
+  font-family: 'Press Start 2P', monospace !important;
+  letter-spacing: 0.01em;
+}
+
+.blog-pixel-title {
+  color: #2d014d;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.blog-pixel-meta {
+  color: #a78bfa;
+  font-size: 0.8em;
+}
+.blog-pixel-text {
+  color: #232136;
+  font-size: 0.95em;
+}
+.blog-pixel-card {
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5em;
+  box-shadow: none;
+  font-family: 'Press Start 2P', monospace;
+  margin-bottom: 0.5em;
+}
+.blog-pixel-btn {
+  display: inline-block;
+  background: #2d014d;
+  color: #fff;
+  border: 2px solid #a78bfa;
+  border-radius: 0.2em;
+  padding: 0.4em 1.2em;
+  font-size: 0.9em;
+  text-decoration: none;
+  font-family: 'Press Start 2P', monospace;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: none;
+}
+.blog-pixel-btn:hover {
+  background: #a78bfa;
+  color: #2d014d;
+} 

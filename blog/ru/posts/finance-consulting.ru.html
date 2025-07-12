@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sample Post | Блог R&A Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../blog-pixel.css">
+  <link rel="stylesheet" href="post-style.css">
+  <link rel="icon" type="image/png" href="../../assets/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome для иконок -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="text-gray-800">
+  <header class="glass-header flex items-center justify-between">
+    <div class="header-left flex items-center gap-4">
+      <div class="logo-block" style="display: flex; align-items: center;">
+        <a href="../../index.ru.html">
+          <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+        </a>
+      </div>
+      <a href="../../blog.ru.html" class="nav-link back-btn flex items-center" style="font-weight:600;"><i class="fas fa-arrow-left mr-1"></i>Назад</a>
+    </div>
+    <div class="header-langs">
+      <a href="../../en/posts/finance-consulting.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="../../de/posts/finance-consulting.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="../../fr/posts/finance-consulting.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="finance-consulting.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+    <div class="header-switchers">
+      <div class="font-switcher flex items-center gap-1">
+        <button class="font-btn font-pixel active" onclick="setFont('pixel')" title="Пиксельный"><i class="fas fa-th"></i></button>
+        <button class="font-btn font-ibm" onclick="setFont('ibm')" title="IBM Plex Mono"><i class="fas fa-font"></i></button>
+      </div>
+      <div class="theme-switcher flex items-center gap-1">
+        <button class="theme-btn theme-light active" onclick="setTheme('light')" title="Светлая тема"><i class="fas fa-sun"></i></button>
+        <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Тёмная тема"><i class="fas fa-moon"></i></button>
+      </div>
+    </div>
+  </header>
+  <style>
+    .glass-header { flex-direction: row; align-items: center; justify-content: space-between; gap: 1.2em; padding: 1.2rem clamp(1.2rem, 5vw, 3rem); }
+    .header-left { display: flex; align-items: center; gap: 1.2em; }
+    .header-langs, .header-switchers { display: flex; align-items: center; gap: 0.7em; margin-bottom: 0; }
+    @media (max-width: 700px) {
+      .glass-header { flex-direction: column !important; align-items: stretch !important; gap: 0.2em; padding: 0.5em 0.2em !important; }
+      .header-left, .header-right { width: 100%; gap: 0.5em; }
+      .header-left { justify-content: center !important; margin-bottom: 0.2em; }
+      .header-langs, .header-switchers { display: flex; justify-content: center; gap: 0.5em; margin-bottom: 0.2em; }
+      .header-switchers { margin-bottom: 0; }
+      .glass-logo-img { width: 40px !important; height: 40px !important; }
+      .nav-link.back-btn { font-size: 0.8em !important; padding: 0.2em 0.5em !important; }
+      .font-btn, .theme-btn { font-size: 0.9em !important; padding: 2px 4px !important; }
+      .lang-flag { width: 32px !important; height: 32px !important; font-size: 1.1em !important; }
+    }
+    @media (max-width: 500px) {
+      .glass-header { gap: 0.1em !important; padding: 0.2em 0.1em !important; }
+      .header-left, .header-langs, .header-switchers { gap: 0.2em !important; }
+      .glass-logo-img { width: 28px !important; height: 28px !important; }
+      .nav-link.back-btn { font-size: 0.7em !important; padding: 0.1em 0.3em !important; }
+      .font-btn, .theme-btn { font-size: 0.7em !important; padding: 1px 2px !important; }
+      .lang-flag { width: 22px !important; height: 22px !important; font-size: 0.9em !important; }
+    }
+  </style>
+
+  <main class="relative bg-white overflow-hidden">
+    <!-- Post Header -->
+    <section class="relative pt-32 pb-20 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[300px] mb-8">
+      <div class="pixel-dots-bg"></div>
+      <div class="post-header-content text-center max-w-4xl mx-auto relative z-10">
+        <div class="post-meta mb-4">
+          <span class="blog-pixel-meta">2025-07-12</span>
+          <span class="blog-pixel-meta mx-2">•</span>
+          <span class="blog-pixel-meta">10 мин чтения</span>
+          <span class="blog-pixel-meta mx-2">•</span>
+          <span class="blog-pixel-meta">Бизнес / Финансы</span>
+        </div>
+        <h1 class="post-title text-4xl md:text-5xl font-bold mb-6" style="color:#2d014d; font-family:'Press Start 2P',monospace; line-height: 1.2;">
+Когда контроль стал стратегией: жёсткий кейс магазина электроники
+        </h1>
+        <p class="post-subtitle text-lg md:text-xl text-center max-w-2xl mx-auto" style="font-family:'Press Start 2P',monospace; color:#6b7280; font-size: 0.9em;">
+Как мы убрали балласт, пересчитали всё и запустили рост
+        </p>
+      </div>
+    </section>
+
+    <!-- Post Content -->
+    <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
+      <div class="max-w-4xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb mb-8">
+          <a href="../../index.ru.html" class="breadcrumb-link">Главная</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../blog.ru.html" class="breadcrumb-link">Блог</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Финансовое консультирование</span>
+        </nav>
+
+        <!-- Article Content -->
+        <article class="post-content">
+          <div class="post-intro mb-12">
+            <p class="post-text">
+📊 Финансовое консультирование без воды: как мы перестроили экономику магазина электроники
+</p>
+<p class="post-text">
+Что делать, когда бизнес зарабатывает, но не растёт? Когда расходов всё больше, а прибыль — нестабильна? Мы зашли внутрь процессов и провели полный аудит: от учёта каждого устройства до ежедневной финансовой дисциплины.
+</p>
+<p class="post-text">
+🔍 Уже скоро расскажем:<br>
+— как мы анализировали каждую товарную позицию не как «SKU», а как элемент экономики<br>
+— как выявляли мёртвые зоны в структуре расходов и убрали то, что не приносит ценности<br>
+— почему аренда автомобиля может быть выгоднее каршеринга (да-да, посчитали всё)<br>
+— как выстроили контроль запасов, кредиторки, дебиторки и ввели реальные KPI для команды<br>
+— какие бизнес-модели откинули и какую в итоге собрали<br>
+— как проходили ежедневные вечерние разборы с владельцем, где мы буквально пересобирали бизнес по шагам<br>
+— и какие новые источники дохода нашли — там, где раньше никто не искал
+</p>
+<p class="post-text">
+📈 Использовали:<br>
+Google Sheets, SWOT-анализ, расчёт юнит-экономики, система мотивации, кастомные чек-листы, контрольные точки воронки продаж, бизнес-моделирование.
+</p>
+<p class="post-text">
+Это не будет «общий взгляд» — это будет подробный и практичный разбор с цифрами, решениями и результатами.
+</p>
+          </div>
+          <!-- conclusion -->
+          <div class="post-section mb-12">
+            <h2 class="post-heading">📅 Скоро опубликуем</h2>
+            <p class="post-text">
+Если вы — предприниматель, аналитик или просто неравнодушны к цифрам — этот материал будет полезен.
+            </p>
+          </div>
+          <!-- Tags -->
+          <div class="post-tags mt-12">
+            <span class="tag">#финансовыйанализ</span>
+            <span class="tag">#экономикабизнеса</span>
+            <span class="tag">#аудит</span>
+            <span class="tag">#бизнесмодель</span>
+            <span class="tag">#оптимизациярасходов</span>
+            <span class="tag">#стратегияразвития</span>
+            <span class="tag">#консалтинг</span>
+            <span class="tag">#экономическоепланирование</span>
+            <span class="tag">#юнитэкономика</span>
+            <span class="tag">#SWOTанализ</span>
+          </div>
+        </article>
+        <!-- Navigation -->
+        <div class="post-navigation mt-16">
+          <div class="nav-links flex justify-between items-center">
+            <a href="agency-analysis.ru.html" class="nav-prev">
+              <span class="nav-arrow">←</span>
+              <span class="nav-text">Предыдущий пост</span>
+            </a>
+            <a href="../../blog.ru.html" class="nav-back">
+              <span class="nav-text">К списку постов</span>
+            </a>
+            <span class="nav-next text-gray-400 cursor-default">
+              <span class="nav-text">Следующий пост</span>
+              <span class="nav-arrow">→</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 border-t mt-12">
+    <p class="text-sm">© 2025 R&A Studio. Все права защищены.</p>
+  </footer>
+
+  <!-- JavaScript for Media Controls -->
+  <script src="post-interactive.js"></script>
+  <script>
+    function setFont(type) {
+      const postContent = document.querySelector('.post-content');
+      if (!postContent) return;
+      if (type === 'pixel') {
+        postContent.style.fontFamily = "'Press Start 2P', monospace";
+        document.querySelector('.font-pixel').classList.add('active');
+        document.querySelector('.font-ibm').classList.remove('active');
+      } else {
+        postContent.style.fontFamily = "'IBM Plex Mono', monospace";
+        document.querySelector('.font-ibm').classList.add('active');
+        document.querySelector('.font-pixel').classList.remove('active');
+      }
+    }
+    function setTheme(theme) {
+      const body = document.body;
+      if (theme === 'dark') {
+        body.classList.add('dark-theme');
+        body.classList.remove('light-theme');
+        document.querySelector('.theme-dark').classList.add('active');
+        document.querySelector('.theme-light').classList.remove('active');
+      } else {
+        body.classList.add('light-theme');
+        body.classList.remove('dark-theme');
+        document.querySelector('.theme-light').classList.add('active');
+        document.querySelector('.theme-dark').classList.remove('active');
+      }
+    }
+  </script>
+  <style>
+    .font-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }
+    .font-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; }
+    .font-btn:focus { outline: 2px solid #2d014d; }
+    .theme-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }
+    .theme-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; }
+    .theme-btn:focus { outline: 2px solid #2d014d; }
+    body.light-theme { background: #fff; color: #2d014d; }
+    body.dark-theme {
+      background: #181824;
+      color: #e6e6f0;
+    }
+    body.dark-theme main,
+    body.dark-theme .post-section,
+    body.dark-theme .media-container,
+    body.dark-theme .image-container,
+    body.dark-theme .carousel-container,
+    body.dark-theme .interactive-demo,
+    body.dark-theme .demo-header,
+    body.dark-theme .demo-preview,
+    body.dark-theme .demo-code,
+    body.dark-theme .footer,
+    body.dark-theme .glass-header,
+    body.dark-theme .breadcrumb,
+    body.dark-theme .post-tags,
+    body.dark-theme .post-navigation,
+    body.dark-theme .audio-player,
+    body.dark-theme .video-player,
+    body.dark-theme .carousel-controls,
+    body.dark-theme .image-caption,
+    body.dark-theme .carousel-caption,
+    body.dark-theme .tag,
+    body.dark-theme .nav-links,
+    body.dark-theme .nav-prev,
+    body.dark-theme .nav-next,
+    body.dark-theme .nav-back,
+    body.dark-theme .post-highlight,
+    body.dark-theme .list-item,
+    body.dark-theme .demo-btn,
+    body.dark-theme .audio-btn,
+    body.dark-theme .control-btn,
+    body.dark-theme .play-button,
+    body.dark-theme .dot,
+    body.dark-theme .progress-bar,
+    body.dark-theme .pixel-box {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .post-title {
+      color: #f7b801 !important;
+      text-shadow: 2px 2px 8px #39396a;
+    }
+    body.dark-theme .post-subtitle {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .post-heading {
+      color: #f7b801 !important;
+      border-bottom: 2px solid #39396a !important;
+    }
+    body.dark-theme .post-text,
+    body.dark-theme .list-text,
+    body.dark-theme .image-caption p,
+    body.dark-theme .carousel-caption p {
+      color: #e6e6f0 !important;
+    }
+    body.dark-theme .tag {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .tag:hover {
+      background: #f7b801 !important;
+      color: #23233a !important;
+      box-shadow: 2px 2px 0px #39396a;
+    }
+    body.dark-theme .nav-link, body.dark-theme .lang-flag, body.dark-theme .font-btn, body.dark-theme .theme-btn {
+      color: #f7b801 !important;
+    }
+    body.dark-theme .nav-link.back-btn {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .carousel-btn, body.dark-theme .control-btn, body.dark-theme .audio-btn, body.dark-theme .demo-btn, body.dark-theme .play-button {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .carousel-btn:hover, body.dark-theme .control-btn:hover, body.dark-theme .audio-btn:hover, body.dark-theme .demo-btn:hover, body.dark-theme .play-button:hover {
+      background: #f7b801 !important;
+      color: #23233a !important;
+    }
+    body.dark-theme .dot {
+      background: #39396a !important;
+    }
+    body.dark-theme .dot.active, body.dark-theme .dot:hover {
+      background: #f7b801 !important;
+    }
+    body.dark-theme .progress-bar {
+      background: #39396a !important;
+    }
+    body.dark-theme .progress-fill {
+      background: linear-gradient(90deg, #f7b801, #a3aed6) !important;
+    }
+    body.dark-theme .pixel-box {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .post-highlight {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .list-item {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme footer {
+      background: #f7b801 !important;
+      color: #2d014d !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+    body.dark-theme nav.breadcrumb,
+    body.dark-theme .breadcrumb {
+      background: none !important;
+      box-shadow: none !important;
+    }
+    body.dark-theme .breadcrumb {
+      color: #e6e6f0 !important;
+    }
+    body.dark-theme .breadcrumb-link {
+      color: #a3aed6 !important;
+      text-decoration: underline !important;
+    }
+    body.dark-theme .breadcrumb-link:hover {
+      color: #f7b801 !important;
+    }
+    body.dark-theme .breadcrumb-separator {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .breadcrumb-current {
+      color: #f7b801 !important;
+      font-weight: bold !important;
+    }
+  </style>
+</body>
+</html> 

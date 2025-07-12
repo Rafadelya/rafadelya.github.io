@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>ToDooliCo | Проект R&A Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2b8e2e5e2a.js" crossorigin="anonymous"></script>
+  <style>
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8em;
+      font-size: 1.15rem;
+      margin-bottom: 0.5em;
+      transition: color 0.3s;
+    }
+    .checklist-checkbox {
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 0.4em;
+      border: 2px solid #7C3AED;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      position: relative;
+    }
+    .checklist-checkbox.checked {
+      background: #7C3AED;
+      border-color: #7C3AED;
+    }
+    .checklist-checkbox.checked::after {
+      content: '\2714';
+      color: #fff;
+      font-size: 1.1em;
+      position: absolute;
+      left: 0.18em;
+      top: 0.05em;
+    }
+    .checklist-text {
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .checklist-checkbox.checked + .checklist-text {
+      opacity: 1;
+      font-weight: 600;
+      color: #7C3AED;
+    }
+    .kanban-board {
+      display: flex;
+      gap: 1.5em;
+      margin: 2.5em 0 2em 0;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .kanban-col {
+      background: #f3f4f6;
+      border-radius: 1.2em;
+      box-shadow: 0 2px 12px #a78bfa22;
+      min-width: 220px;
+      max-width: 260px;
+      padding: 1.2em 1em 1.5em 1em;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .kanban-title {
+      font-weight: 700;
+      color: #7C3AED;
+      margin-bottom: 0.7em;
+      font-size: 1.1em;
+      letter-spacing: 0.01em;
+    }
+    .kanban-card {
+      background: #fff;
+      border-radius: 0.7em;
+      box-shadow: 0 1px 6px #a78bfa22;
+      padding: 0.7em 1em;
+      font-size: 1em;
+      color: #333;
+      font-weight: 500;
+      transition: box-shadow 0.2s;
+      cursor: grab;
+      user-select: none;
+    }
+    .kanban-card:hover {
+      box-shadow: 0 4px 16px #a78bfa33;
+    }
+    .principle-list {
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+      padding-left: 0.5em;
+    }
+    .principle-list li {
+      margin-bottom: 0.5em;
+      font-size: 1.08em;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+    .principle-list .icon {
+      color: #7C3AED;
+      font-size: 1.2em;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.checklist-checkbox').forEach(function(box) {
+        box.addEventListener('click', function() {
+          box.classList.toggle('checked');
+        });
+      });
+    });
+  </script>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="glass-header flex flex-row items-center justify-between gap-8">
+    <div class="logo-block">
+      <a href="../index.ru.html">
+        <img src="../assets/Logo design R.A. Stu.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+      </a>
+    </div>
+    <nav class="flex gap-4">
+      <a href="../index.ru.html" class="nav-link">Главная</a>
+      <a href="../about.ru.html" class="nav-link">О нас</a>
+      <a href="../projects.ru.html" class="nav-link">Проекты</a>
+      <a href="../blog/blog.ru.html" class="nav-link">Блог</a>
+      <a href="../contact.ru.html" class="nav-link">На связи</a>
+    </nav>
+    <div class="flex gap-2">
+      <a href="../index.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="../index.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="../index.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="../index.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+  </header>
+  <main class="max-w-3xl mx-auto px-4 py-14 space-y-12 flex-1 flex flex-col">
+    <!-- Заголовок и описание -->
+    <div class="bg-white rounded-3xl shadow-2xl p-10 text-center mb-4">
+      <h1 class="text-4xl font-extrabold text-purple-700 flex items-center justify-center gap-3 mb-2">
+        <img src="../assets/AppIcon~todoolico.png" alt="ToDooliCo" style="width:2.5em;height:2.5em;border-radius:0.7em;box-shadow:0 2px 8px #f9a8d433;object-fit:cover;" loading="lazy">
+        ToDooliCo
+      </h1>
+      <p class="text-lg text-gray-800 mb-2">Минималистичный органайзер, в котором всё по-настоящему твоё.<br>Задачи, пароли, списки — офлайн, без регистрации и облаков.</p>
+    </div>
+    <!-- Чеклист -->
+    <section class="bg-gray-50 rounded-2xl shadow-lg p-8">
+      <h2 class="text-xl font-bold text-purple-700 mb-4">Что умеет ToDooliCo?</h2>
+      <div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <span class="checklist-text">Трекер задач с простым списком</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <span class="checklist-text">Канбан-доска для визуального планирования</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <span class="checklist-text">Менеджер паролей с шифрованием</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <span class="checklist-text">Интерфейс без отвлекающих элементов</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <span class="checklist-text">Все данные хранятся локально (Hive), полностью офлайн</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <span class="checklist-text">Поддержка iOS, Android, macOS, Windows, Linux</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <span class="checklist-text">Тёмная и светлая темы</span>
+        </div>
+      </div>
+    </section>
+    <!-- Канбан-доска -->
+    <section>
+      <div class="kanban-header-wrap flex justify-center mb-2">
+        <h2 class="text-xl font-extrabold text-white px-6 py-2 rounded-xl shadow-lg bg-gradient-to-r from-purple-500 via-purple-400 to-yellow-400 border border-purple-300/40" style="letter-spacing:0.01em;">Пример канбан-доски в приложении</h2>
+      </div>
+      <div class="kanban-board-unified bg-gray-50 rounded-2xl shadow-lg p-6 flex flex-row gap-6 justify-between items-start overflow-x-auto relative">
+        <div class="kanban-col flex-1 min-w-[220px]" style="border-top: 4px solid #a78bfa;">
+          <div class="kanban-title text-center" style="color:#a78bfa;">Backlog</div>
+          <div class="kanban-card kanban-task" data-stage="0"><label class="flex items-center gap-2"><input type="checkbox" class="kanban-checkbox"> <span>📝 Добавить задачу</span></label></div>
+          <div class="kanban-card kanban-task" data-stage="0"><label class="flex items-center gap-2"><input type="checkbox" class="kanban-checkbox"> <span>🔑 Сохранить новый пароль</span></label></div>
+          <div class="kanban-card kanban-task" data-stage="0"><label class="flex items-center gap-2"><input type="checkbox" class="kanban-checkbox"> <span>📋 Создать список покупок</span></label></div>
+        </div>
+        <div class="kanban-col flex-1 min-w-[220px]" style="border-top: 4px solid #fbbf24;">
+          <div class="kanban-title text-center" style="color:#fbbf24;">В работе</div>
+        </div>
+        <div class="kanban-col flex-1 min-w-[220px]" style="border-top: 4px solid #34d399;">
+          <div class="kanban-title text-center" style="color:#34d399;">Готово</div>
+        </div>
+      </div>
+      <div class="kanban-arrows flex justify-center items-center gap-4 mt-2 mb-1">
+        <button type="button" class="kanban-arrow kanban-arrow-left" aria-label="Прокрутить влево">
+          <span class="arrow-icon">&#8592;</span>
+        </button>
+        <span class="kanban-arrows-hint text-gray-400 text-xs">Листай</span>
+        <button type="button" class="kanban-arrow kanban-arrow-right" aria-label="Прокрутить вправо">
+          <span class="arrow-icon">&#8594;</span>
+        </button>
+      </div>
+    </section>
+    <script>
+      // Канбан: перемещение задач по этапам при клике на чекбокс
+      document.addEventListener('DOMContentLoaded', function() {
+        const stages = [
+          document.querySelectorAll('.kanban-col')[0],
+          document.querySelectorAll('.kanban-col')[1],
+          document.querySelectorAll('.kanban-col')[2],
+        ];
+        function moveTask(card, fromStage) {
+          let next = fromStage + 1;
+          if (next < stages.length) {
+            card.querySelector('.kanban-checkbox').checked = false;
+            card.setAttribute('data-stage', next);
+            stages[next].appendChild(card);
+          }
+        }
+        document.querySelectorAll('.kanban-checkbox').forEach(function(box) {
+          box.addEventListener('change', function(e) {
+            if (box.checked) {
+              const card = box.closest('.kanban-task');
+              const stage = parseInt(card.getAttribute('data-stage'));
+              moveTask(card, stage);
+            }
+          });
+        });
+      });
+    </script>
+    <style>
+      .kanban-board-unified {
+        display: flex;
+        gap: 2.5em;
+        padding: 2em 1em;
+        margin: 2em 0 2em 0;
+        background: #f9fafb;
+        border-radius: 1.5em;
+        box-shadow: 0 2px 16px #a78bfa22;
+      }
+      .kanban-col {
+        background: #f3f4f6;
+        border-radius: 1.2em;
+        box-shadow: 0 2px 12px #a78bfa22;
+        min-width: 220px;
+        max-width: 260px;
+        padding: 1.2em 1em 1.5em 1em;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        min-height: 220px;
+      }
+      .kanban-title {
+        font-weight: 700;
+        margin-bottom: 0.7em;
+        font-size: 1.1em;
+        letter-spacing: 0.01em;
+      }
+      .kanban-card {
+        background: #fff;
+        border-radius: 0.7em;
+        box-shadow: 0 1px 6px #a78bfa22;
+        padding: 0.7em 1em;
+        font-size: 1em;
+        color: #333;
+        font-weight: 500;
+        transition: box-shadow 0.2s, background 0.2s;
+        cursor: pointer;
+        user-select: none;
+        border-left: 4px solid #e0e7ff;
+        display: flex;
+        align-items: center;
+      }
+      .kanban-card label {
+        width: 100%;
+        cursor: pointer;
+      }
+      .kanban-checkbox {
+        accent-color: #a78bfa;
+        width: 1.1em;
+        height: 1.1em;
+        border-radius: 0.3em;
+        margin-right: 0.5em;
+      }
+      .kanban-col:nth-child(2) .kanban-card { border-left-color: #fbbf24; }
+      .kanban-col:nth-child(3) .kanban-card { border-left-color: #34d399; }
+      .kanban-header-wrap h2 {
+        font-size: 1.25rem;
+        font-weight: 900;
+        box-shadow: 0 2px 12px #a78bfa33, 0 1.5px 8px #fbbf2433;
+        border-radius: 1.1em;
+        background: linear-gradient(90deg, #a78bfa 0%, #fbbf24 100%);
+        color: #fff;
+        text-shadow: 0 2px 8px #a78bfa55;
+      }
+      .kanban-arrows {
+        width: 100%;
+        user-select: none;
+        pointer-events: auto;
+      }
+      .kanban-arrow {
+        background: #fff;
+        border: 2px solid #a78bfa;
+        color: #7C3AED;
+        border-radius: 50%;
+        width: 2.3em;
+        height: 2.3em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5em;
+        box-shadow: 0 2px 8px #a78bfa22;
+        transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+        opacity: 1;
+      }
+      .kanban-arrow:disabled {
+        opacity: 0.3;
+        cursor: default;
+        background: #f3f4f6;
+        color: #bbb;
+        border-color: #e5e7eb;
+        box-shadow: none;
+      }
+      .arrow-icon {
+        pointer-events: none;
+        font-weight: bold;
+      }
+      .kanban-arrows-hint {
+        margin: 0 0.5em;
+        letter-spacing: 0.03em;
+      }
+      @media (max-width: 700px) {
+        .kanban-arrow { width: 2em; height: 2em; font-size: 1.2em; }
+      }
+    </style>
+    <script>
+      // Стрелки для горизонтального скролла канбан-доски
+      document.addEventListener('DOMContentLoaded', function() {
+        const kanbanBoard = document.querySelector('.kanban-board-unified');
+        const leftBtn = document.querySelector('.kanban-arrow-left');
+        const rightBtn = document.querySelector('.kanban-arrow-right');
+        function updateArrows() {
+          if (!kanbanBoard) return;
+          leftBtn.disabled = kanbanBoard.scrollLeft <= 5;
+          rightBtn.disabled = kanbanBoard.scrollLeft + kanbanBoard.clientWidth >= kanbanBoard.scrollWidth - 5;
+        }
+        if (kanbanBoard && leftBtn && rightBtn) {
+          leftBtn.addEventListener('click', function() {
+            kanbanBoard.scrollBy({ left: -220, behavior: 'smooth' });
+          });
+          rightBtn.addEventListener('click', function() {
+            kanbanBoard.scrollBy({ left: 220, behavior: 'smooth' });
+          });
+          kanbanBoard.addEventListener('scroll', updateArrows);
+          window.addEventListener('resize', updateArrows);
+          setTimeout(updateArrows, 200);
+        }
+      });
+    </script>
+    <!-- Менеджер паролей -->
+    <section class="bg-white rounded-2xl shadow-lg p-8 password-manager-anim">
+      <h2 class="text-xl font-bold text-purple-700 mb-2 flex items-center gap-2 justify-center">
+        <span class="text-2xl">🔐</span>
+        <span>Менеджер паролей</span>
+        <span id="monkey-emoji" class="transition-all duration-200 cursor-pointer select-none ml-2" style="font-size:2em;">🙈</span>
+      </h2>
+      <p class="text-gray-800 mb-4">ToDooliCo предлагает простой и безопасный способ хранить ваши пароли и важные данные прямо внутри приложения. Все данные надёжно шифруются локально с помощью современных алгоритмов, что гарантирует защиту вашей конфиденциальности.</p>
+      <ul class="list-disc pl-6 text-gray-800 space-y-1 mb-2">
+        <li>Пароли и заметки хранятся только на вашем устройстве — никаких облаков и синхронизаций через интернет.</li>
+        <li>Быстрый доступ к сохранённым данным в удобном интерфейсе.</li>
+        <li>Простое создание, редактирование и удаление записей.</li>
+        <li>Защита паролей с помощью мастер-пароля или биометрии (если поддерживается устройством).</li>
+        <li>Полная автономность — менеджер работает офлайн, без необходимости подключения к сети.</li>
+      </ul>
+      <p class="text-gray-700 mt-2">С ToDooliCo ваши пароли всегда под контролем, а безопасность — на первом месте.</p>
+    </section>
+    <!-- Для кого -->
+    <section class="bg-white rounded-2xl shadow-lg p-8">
+      <h2 class="text-xl font-bold text-purple-700 mb-4">Для кого</h2>
+      <ul class="list-disc pl-6 text-gray-800 space-y-1">
+        <li>Тем, кто ценит простоту, но не хочет жертвовать функциональностью</li>
+        <li>Разработчикам, дизайнерам и айтишникам</li>
+        <li>Тем, кто работает офлайн или тревожится о приватности</li>
+        <li>Пользователям, которым надоело усложнение простых задач</li>
+        <li>Всем, кто хочет «органайзер без шума»</li>
+      </ul>
+    </section>
+    <!-- Принципы -->
+    <section class="bg-gray-50 rounded-2xl shadow-lg p-8">
+      <h2 class="text-xl font-bold text-purple-700 mb-4">🧠 Принципы ToDooliCo</h2>
+      <ul class="principle-list">
+        <li><span class="icon">🧘</span> Минимализм как философия</li>
+        <li><span class="icon">🔒</span> Приватность без компромиссов</li>
+        <li><span class="icon">⚡</span> Удобство без обучения</li>
+      </ul>
+    </section>
+    <!-- CTA -->
+    <section class="flex justify-center mt-8">
+      <div class="w-full max-w-xl bg-white rounded-2xl shadow-2xl px-8 py-8 flex flex-col items-center gap-4">
+        <h2 class="text-2xl font-extrabold text-purple-700 mb-1 text-center">🚀 Запишись на бета-тест</h2>
+        <p class="text-gray-700 mb-2 text-center">Поддержка всех платформ. Сообщим, когда твоя версия будет готова.</p>
+        <a href="https://t.me/rafael_not_a_candy" target="_blank" rel="noopener noreferrer"
+           class="btn-primary neon-glow text-base px-6 py-3 shadow-lg hover:scale-105 transition-transform mt-2">
+          Хочу ранний доступ
+        </a>
+      </div>
+    </section>
+    </main>
+    <footer class="footer-fixed text-center py-6 border-t w-full bg-white/90 flex-none px-0">
+      <p class="text-sm">© 2025 ToDooliCo<br>Органайзер без шума. Только ты и твои дела.</p>
+    </footer>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var monkey = document.getElementById('monkey-emoji');
+      if (monkey) {
+        // создаём надпись один раз
+        let warn = document.createElement('div');
+        warn.innerHTML = '<span>не дай им украсть твои пароли</span> <span class="monkey-hint">👆</span>';
+        warn.className = 'monkey-warning';
+        warn.onclick = function() { alert('Будь осторожен с паролями!'); };
+        monkey.parentNode.appendChild(warn);
+
+        // начальное состояние: обезьянка с открытыми глазами, надпись видна
+        monkey.textContent = '🙉';
+        warn.classList.add('show');
+        warn.classList.remove('hidden');
+
+        let isOpen = true;
+        monkey.addEventListener('click', function() {
+          if (isOpen) {
+            monkey.textContent = '🙈';
+            warn.classList.remove('show');
+            setTimeout(() => {
+              warn.classList.add('hidden');
+            }, 300);
+          } else {
+            monkey.textContent = '🙉';
+            warn.classList.remove('hidden');
+            setTimeout(() => {
+              warn.classList.add('show');
+            }, 10);
+          }
+          isOpen = !isOpen;
+        });
+
+        // Автоматически открывать глаза раз в 15 секунд, если они закрыты
+        setInterval(function() {
+          if (!isOpen) {
+            monkey.textContent = '🙉';
+            warn.classList.remove('hidden');
+            setTimeout(() => {
+              warn.classList.add('show');
+            }, 10);
+            isOpen = true;
+          }
+        }, 15000);
+      }
+    });
+  </script>
+  <style>
+    #monkey-emoji {
+      display: inline-block;
+      transition: filter 0.18s, opacity 0.18s;
+      position: relative;
+    }
+    .monkey-warning {
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+      margin-top: 0.3em;
+      font-size: 1.18em;
+      color: #fff;
+      background: linear-gradient(90deg, #a78bfa 0%, #fbbf24 40%, #34d399 100%);
+      border-radius: 1.2em;
+      padding: 0.45em 1.5em 0.45em 1.1em;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      box-shadow: 0 4px 24px #a78bfa44, 0 1.5px 8px #fbbf2433;
+      opacity: 0;
+      pointer-events: auto;
+      cursor: pointer;
+      transition: opacity 0.45s cubic-bezier(.4,2,.6,1), transform 0.45s cubic-bezier(.4,2,.6,1);
+      transform: translate(-50%, 18px) scale(0.96);
+      position: absolute;
+      left: 50%;
+      top: 2.3em;
+      z-index: 2;
+      max-width: 90vw;
+      min-width: 180px;
+      box-sizing: border-box;
+      user-select: none;
+      border: 2.5px solid #fff6;
+      filter: drop-shadow(0 2px 8px #a78bfa33);
+      text-align: center;
+      white-space: normal;
+      word-break: break-word;
+    }
+    .monkey-warning .monkey-hint {
+      font-size: 1.25em;
+      animation: monkey-hint-bounce 1.2s infinite cubic-bezier(.6,1.5,.6,1);
+      filter: drop-shadow(0 0 2px #fff8);
+    }
+    @keyframes monkey-hint-bounce {
+      0%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-7px) scale(1.15); }
+      60% { transform: translateY(0); }
+    }
+    .monkey-warning.show {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1.06);
+    }
+    .monkey-warning.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</body>
+</html> 

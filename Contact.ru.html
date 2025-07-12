@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты – R&A Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="js/i18n.js"></script>
+  <script defer src="js/main.js"></script>
+  <style>
+    /* Базовые стили для кружочков */
+    .social-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Вариант 1: Неоновое свечение */
+    .social-circle.neon {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(167, 139, 250, 0.3);
+      box-shadow: 
+        0 0 20px rgba(167, 139, 250, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .social-circle.neon:hover {
+      border-color: rgba(167, 139, 250, 0.8);
+      box-shadow: 
+        0 0 30px rgba(167, 139, 250, 0.6),
+        0 0 60px rgba(167, 139, 250, 0.3),
+        inset 0 0 30px rgba(255, 255, 255, 0.2);
+      transform: scale(1.15) translateY(-5px);
+    }
+
+    /* Вариант 2: Градиентный фон */
+    .social-circle.gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+    }
+
+    .social-circle.gradient:hover {
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      box-shadow: 0 12px 40px rgba(102, 126, 234, 0.5);
+      transform: scale(1.1) rotate(10deg);
+    }
+
+    /* Вариант 3: Пульсирующий эффект */
+    .social-circle.pulse {
+      animation: pulse-glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse-glow {
+      0% {
+        box-shadow: 0 4px 20px rgba(124, 58, 237, 0.15);
+        transform: scale(1);
+      }
+      100% {
+        box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4);
+        transform: scale(1.05);
+      }
+    }
+
+    .social-circle.pulse:hover {
+      animation: none;
+      transform: scale(1.2);
+      box-shadow: 0 12px 40px rgba(124, 58, 237, 0.6);
+    }
+
+    /* Вариант 4: 3D эффект */
+    .social-circle.three-d {
+      background: linear-gradient(145deg, #ffffff, #e6e6e6);
+      box-shadow: 
+        5px 5px 10px rgba(0, 0, 0, 0.1),
+        -5px -5px 10px rgba(255, 255, 255, 0.8);
+      border: none;
+    }
+
+    .social-circle.three-d:hover {
+      background: linear-gradient(145deg, #e6e6e6, #ffffff);
+      box-shadow: 
+        2px 2px 5px rgba(0, 0, 0, 0.1),
+        -2px -2px 5px rgba(255, 255, 255, 0.8);
+      transform: scale(1.1) translateY(-3px);
+    }
+
+    /* Вариант 5: Морфинг границы */
+    .social-circle.morph {
+      border: 2px solid transparent;
+      background: linear-gradient(white, white) padding-box,
+                  linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c) border-box;
+      animation: border-rotate 3s linear infinite;
+    }
+
+    @keyframes border-rotate {
+      0% { background: linear-gradient(white, white) padding-box,
+                    linear-gradient(0deg, #667eea, #764ba2, #f093fb, #f5576c) border-box; }
+      100% { background: linear-gradient(white, white) padding-box,
+                    linear-gradient(360deg, #667eea, #764ba2, #f093fb, #f5576c) border-box; }
+    }
+
+    .social-circle.morph:hover {
+      animation-duration: 1s;
+      transform: scale(1.15);
+    }
+
+    /* Вариант 6: Голографический эффект */
+    .social-circle.holographic {
+      background: linear-gradient(45deg, 
+        rgba(255, 255, 255, 0.9) 0%, 
+        rgba(167, 139, 250, 0.1) 25%, 
+        rgba(255, 255, 255, 0.9) 50%, 
+        rgba(124, 58, 237, 0.1) 75%, 
+        rgba(255, 255, 255, 0.9) 100%);
+      background-size: 200% 200%;
+      animation: holographic-shift 3s ease-in-out infinite;
+    }
+
+    @keyframes holographic-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .social-circle.holographic:hover {
+      animation-duration: 0.5s;
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    /* Вариант 7: Частицы */
+    .social-circle.particles {
+      position: relative;
+    }
+
+    .social-circle.particles::before,
+    .social-circle.particles::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(167, 139, 250, 0.8);
+      animation: particle-float 2s ease-in-out infinite;
+    }
+
+    .social-circle.particles::before {
+      top: 10px;
+      left: 10px;
+      animation-delay: 0s;
+    }
+
+    .social-circle.particles::after {
+      bottom: 10px;
+      right: 10px;
+      animation-delay: 1s;
+    }
+
+    @keyframes particle-float {
+      0%, 100% { transform: translateY(0px) scale(1); opacity: 0.8; }
+      50% { transform: translateY(-10px) scale(1.2); opacity: 1; }
+    }
+
+    .social-circle.particles:hover::before,
+    .social-circle.particles:hover::after {
+      animation-duration: 0.5s;
+    }
+
+    /* Вариант 8: Минималистичный с тонкими линиями */
+    .social-circle.minimal {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: none;
+      position: relative;
+    }
+
+    .social-circle.minimal::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border: 1px solid rgba(167, 139, 250, 0.5);
+      border-radius: 50%;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .social-circle.minimal:hover {
+      border-color: rgba(167, 139, 250, 0.8);
+      transform: scale(1.1);
+    }
+
+    .social-circle.minimal:hover::before {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    /* Классический эффект сверкания */
+    .social-circle::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: rotate(45deg);
+      transition: all 0.6s ease;
+      opacity: 0;
+    }
+
+    .social-circle:hover::before {
+      opacity: 1;
+      transform: rotate(45deg) translateX(100%);
+    }
+
+    .social-circle:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 30px rgba(124, 58, 237, 0.3), 0 0 20px rgba(255, 255, 255, 0.5);
+      border-color: rgba(124, 58, 237, 0.5);
+    }
+
+    .social-circle img {
+      width: 50px;
+      height: 50px;
+      transition: all 0.3s ease;
+      z-index: 2;
+      position: relative;
+      object-fit: contain;
+    }
+
+    .social-circle:hover img {
+      transform: scale(1.2);
+    }
+
+    /* Специальные стили для логотипа Дзен */
+    .social-circle img[alt="Дзен"] {
+      width: 120px !important;
+      height: 120px !important;
+      object-fit: contain;
+      padding: 2px;
+      transform: scale(2.2);
+    }
+
+    .social-circle:hover img[alt="Дзен"] {
+      transform: scale(1.15);
+    }
+
+    /* Специальные стили для других логотипов */
+    .social-circle img[alt="T—Ж"] {
+      width: 46px;
+      height: 46px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .social-circle img[alt="DTF"] {
+      width: 50px !important;
+      height: 50px !important;
+      object-fit: contain;
+      background: transparent !important;
+      border-radius: 12px !important;
+      transform: none;
+    }
+
+    .social-circle img[alt="VC.ru"] {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .social-circle img[alt="VK"] {
+      width: 120px !important;
+      height: 120px !important;
+      object-fit: contain;
+      background: transparent !important;
+    }
+
+    .social-circle img[alt="Telegram"] {
+      width: 75px;
+      height: 75px;
+      object-fit: contain;
+    }
+
+    .social-circle img[alt="YouTube"] {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    .social-circle img[alt="Max"] {
+      width: 49px;
+      height: 49px;
+      object-fit: contain;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .social-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      transform: translateX(-100px);
+      animation: slideInFromLeft 0.6s ease forwards;
+    }
+
+    .social-item:nth-child(1) { animation-delay: 0.1s; }
+    .social-item:nth-child(2) { animation-delay: 0.2s; }
+    .social-item:nth-child(3) { animation-delay: 0.3s; }
+    .social-item:nth-child(4) { animation-delay: 0.4s; }
+    .social-item:nth-child(5) { animation-delay: 0.5s; }
+    .social-item:nth-child(6) { animation-delay: 0.6s; }
+    .social-item:nth-child(7) { animation-delay: 0.7s; }
+    .social-item:nth-child(8) { animation-delay: 0.8s; }
+    .social-item:nth-child(9) { animation-delay: 0.9s; }
+    .social-item:nth-child(10) { animation-delay: 1.0s; }
+
+    @keyframes slideInFromLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .social-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #374151;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    .contact-info {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(10px);
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      width: 40px;
+      text-align: center;
+    }
+
+    .contact-text {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .contact-link {
+      color: #a78bfa;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-link:hover {
+      color: #c4b5fd;
+      text-decoration: underline;
+    }
+
+    .page-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
+    }
+
+    .page-subtitle {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 1rem;
+      }
+      
+      .social-circle {
+        width: 85px;
+        height: 85px;
+      }
+      
+      .social-circle img {
+        width: 45px;
+        height: 45px;
+      }
+
+      .social-circle img[alt="Яндекс Дзен"] {
+        width: 55px;
+        height: 55px;
+      }
+
+      .social-circle img[alt="T—Ж"] {
+        width: 46px;
+        height: 46px;
+      }
+
+      .social-circle img[alt="DTF"] {
+        width: 50px;
+        height: 50px;
+        background: transparent;
+        border-radius: 6px;
+      }
+
+      .social-circle img[alt="VC.ru"] {
+        width: 48px;
+        height: 48px;
+        border-radius: 6px;
+      }
+
+      .social-circle img[alt="VK"] {
+        width: 52px;
+        height: 52px;
+        border-radius: 6px;
+        background: transparent;
+      }
+
+      .social-circle img[alt="Telegram"] {
+        width: 55px;
+        height: 55px;
+      }
+
+      .social-circle img[alt="YouTube"] {
+        width: 62px;
+        height: 62px;
+      }
+
+      .social-circle img[alt="Max"] {
+        width: 49px;
+        height: 49px;
+      }
+      
+      .page-title {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="glass-header">
+    <div class="logo-block" style="display: flex; align-items: center;">
+      <a href="index.ru.html">
+        <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+      </a>
+      <button class="mobile-lang-flag" id="mobileLangFlag" style="display:none;">🇷🇺</button>
+      <button class="mobile-burger" id="mobileBurger" style="display:none;">☰</button>
+    </div>
+    <nav class="flex gap-4">
+      <a href="index.ru.html" class="nav-link" data-i18n="nav.home">Главная</a>
+      <a href="about.ru.html" class="nav-link" data-i18n="nav.about">О нас</a>
+      <a href="projects.ru.html" class="nav-link" data-i18n="nav.projects">Проекты</a>
+      <a href="blog/blog.ru.html" class="nav-link">Блог</a>
+      <a href="contact.ru.html" class="nav-link" data-i18n="nav.contact">На связи</a>
+    </nav>
+    <div class="flex gap-2">
+      <a href="Contact.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="Contact.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="Contact.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="Contact.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+  </header>
+
+  <main class="text-center p-10">
+    <h1 class="page-title">На связи</h1>
+    <p class="page-subtitle">Мы делимся своими проектами, мыслями и опытом — там, где тебе удобно: читай, слушай, смотри.</p>
+    
+    <div class="social-grid">
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://tjournal.ru', '_blank')">
+          <img src="assets/ru/logo/tjlogo.jpg" alt="T—Ж">
+        </div>
+        <div class="social-name">T—Ж</div>
+      </div>
+      
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://zen.yandex.ru', '_blank')">
+          <img src="assets/ru/logo/dzenlogo.png" alt="Дзен">
+        </div>
+        <div class="social-name">Дзен</div>
+      </div>
+      
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://habr.com', '_blank')">
+          <img src="assets/ru/logo/habrlogo.png" alt="Хабр">
+        </div>
+        <div class="social-name">Хабр</div>
+      </div>
+      
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://dtf.ru', '_blank')">
+          <img src="assets/ru/logo/DTFlogo.png" alt="DTF">
+        </div>
+        <div class="social-name">DTF</div>
+      </div>
+      
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://vc.ru', '_blank')">
+          <img src="assets/ru/logo/vc.ru" alt="VC.ru">
+        </div>
+        <div class="social-name">VC.ru</div>
+      </div>
+      
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://vk.com', '_blank')">
+          <img src="assets/ru/logo/Изображение PNG.png" alt="VK">
+        </div>
+        <div class="social-name">VK</div>
+      </div>
+      
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://t.me/R_A_studio', '_blank')">
+          <img src="assets/ru/logo/tglogo.webp" alt="Telegram">
+        </div>
+        <div class="social-name">Telegram</div>
+      </div>
+      
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://rutube.ru', '_blank')">
+          <img src="assets/ru/logo/rutubelogo.png" alt="RuTube">
+        </div>
+        <div class="social-name">RuTube</div>
+      </div>
+      
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://youtube.com', '_blank')">
+          <img src="assets/ru/logo/youtubelogo.png" alt="YouTube">
+        </div>
+        <div class="social-name">YouTube</div>
+      </div>
+      
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://max.com', '_blank')">
+          <img src="assets/ru/logo/Max Logo 2025.png" alt="Max">
+        </div>
+        <div class="social-name">Max</div>
+      </div>
+    </div>
+
+    <div class="contact-info">
+      <h2 class="text-2xl font-bold text-white mb-4">Связаться с нами можно тут, тут и тут</h2>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-text">
+          Email: <a href="mailto:adelya_i_rafael@mail.ru" class="contact-link">adelya_i_rafael@mail.ru</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">💬</div>
+        <div class="contact-text">
+          Telegram: <a href="https://t.me/Rafael_not_a_candy" class="contact-link" target="_blank">@Rafael_not_a_candy</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🌐</div>
+        <div class="contact-text">
+          Сайт: <a href="https://rastudio.com" class="contact-link" target="_blank">rastudio.com</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-6 border-t">
+    <p class="text-sm" data-i18n="footer.copy">© 2025 R&A Studio. Все права защищены.</p>
+  </footer>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.ru.html" data-i18n="nav.home">Главная</a>
+    <a href="about.ru.html" data-i18n="nav.about">О нас</a>
+    <a href="projects.ru.html" data-i18n="nav.projects">Проекты</a>
+    <a href="blog/blog.ru.html" class="nav-link">Блог</a>
+    <a href="contact.ru.html" data-i18n="nav.contact">На связи</a>
+    <a href="Contact.en.html" class="mobile-lang-flag">🇬🇧</a>
+    <a href="Contact.de.html" class="mobile-lang-flag">🇩🇪</a>
+    <a href="Contact.fr.html" class="mobile-lang-flag">🇫🇷</a>
+    <a href="Contact.ru.html" class="mobile-lang-flag active">🇷🇺</a>
+  </div>
+</body>
+</html>

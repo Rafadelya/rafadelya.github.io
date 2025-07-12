@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>ToDooliCo | Проект R&A Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2b8e2e5e2a.js" crossorigin="anonymous"></script>
+  <style>
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8em;
+      font-size: 1.15rem;
+      margin-bottom: 0.5em;
+      transition: color 0.3s;
+    }
+    .checklist-checkbox {
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 0.4em;
+      border: 2px solid #7C3AED;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      position: relative;
+    }
+    .checklist-checkbox.checked {
+      background: #7C3AED;
+      border-color: #7C3AED;
+    }
+    .checklist-checkbox.checked::after {
+      content: '\2714';
+      color: #fff;
+      font-size: 1.1em;
+      position: absolute;
+      left: 0.18em;
+      top: 0.05em;
+    }
+    .checklist-text {
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .checklist-checkbox.checked + .checklist-text {
+      opacity: 1;
+      font-weight: 600;
+      color: #7C3AED;
+    }
+    .kanban-board {
+      display: flex;
+      gap: 1.5em;
+      margin: 2.5em 0 2em 0;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .kanban-col {
+      background: #f3f4f6;
+      border-radius: 1.2em;
+      box-shadow: 0 2px 12px #a78bfa22;
+      min-width: 220px;
+      max-width: 260px;
+      padding: 1.2em 1em 1.5em 1em;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+    }
+    .kanban-title {
+      font-weight: 700;
+      color: #7C3AED;
+      margin-bottom: 0.7em;
+      font-size: 1.1em;
+      letter-spacing: 0.01em;
+    }
+    .kanban-card {
+      background: #fff;
+      border-radius: 0.7em;
+      box-shadow: 0 1px 6px #a78bfa22;
+      padding: 0.7em 1em;
+      font-size: 1em;
+      color: #333;
+      font-weight: 500;
+      transition: box-shadow 0.2s;
+      cursor: grab;
+      user-select: none;
+    }
+    .kanban-card:hover {
+      box-shadow: 0 4px 16px #a78bfa33;
+    }
+    .principle-list {
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+      padding-left: 0.5em;
+    }
+    .principle-list li {
+      margin-bottom: 0.5em;
+      font-size: 1.08em;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+    .principle-list .icon {
+      color: #7C3AED;
+      font-size: 1.2em;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.checklist-checkbox').forEach(function(box) {
+        box.addEventListener('click', function() {
+          box.classList.toggle('checked');
+        });
+      });
+    });
+  </script>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="glass-header flex flex-row items-center justify-between gap-8">
+    <div class="logo-block">
+      <a href="../index.ru.html">
+        <img src="../assets/Logo design R.A. Stu.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+      </a>
+    </div>
+    <nav class="flex gap-4">
+      <a href="../index.ru.html" class="nav-link">Главная</a>
+      <a href="../about.ru.html" class="nav-link">О нас</a>
+      <a href="../projects.ru.html" class="nav-link">Проекты</a>
+      <a href="../blog/blog.ru.html" class="nav-link">Блог</a>
+      <a href="../contact.ru.html" class="nav-link">На связи</a>
+    </nav>
+    <div class="flex gap-2">
+      <a href="../index.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="../index.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="../index.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="../index.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+  </header>
+  <main class="max-w-3xl mx-auto px-4 py-14 space-y-12 flex-1 flex flex-col">
+    <!-- Titre et description -->
+    <div class="bg-white rounded-3xl shadow-2xl p-10 text-center mb-4">
+      <h1 class="text-4xl font-extrabold text-purple-700 flex items-center justify-center gap-3 mb-2">
+        <img src="../assets/AppIcon~todoolico.png" alt="ToDooliCo" style="width:2.5em;height:2.5em;border-radius:0.7em;box-shadow:0 2px 8px #f9a8d433;object-fit:cover;" loading="lazy">
+        ToDooliCo
+      </h1>
+      <p class="text-lg text-gray-800 mb-2">Un organiseur minimaliste, où tout vous appartient vraiment.<br>Tâches, mots de passe, listes — hors ligne, sans inscription ni cloud.</p>
+    </div>
+    <!-- Checklist -->
+    <section class="bg-gray-50 rounded-2xl shadow-lg p-8">
+      <h2 class="text-xl font-bold text-purple-700 mb-4">Que peut faire ToDooliCo&nbsp;?</h2>
+      <div>
+        <div class="checklist-item"><div class="checklist-checkbox"></div><span class="checklist-text">Gestionnaire de tâches simple en liste</span></div>
+        <div class="checklist-item"><div class="checklist-checkbox"></div><span class="checklist-text">Tableau Kanban pour planifier visuellement</span></div>
+        <div class="checklist-item"><div class="checklist-checkbox"></div><span class="checklist-text">Gestionnaire de mots de passe intégré avec chiffrement</span></div>
+        <div class="checklist-item"><div class="checklist-checkbox"></div><span class="checklist-text">Interface épurée, sans distractions</span></div>
+        <div class="checklist-item"><div class="checklist-checkbox"></div><span class="checklist-text">Données stockées localement (Hive), totalement hors ligne</span></div>
+        <div class="checklist-item"><div class="checklist-checkbox"></div><span class="checklist-text">Compatible iOS, Android, macOS, Windows et Linux</span></div>
+        <div class="checklist-item"><div class="checklist-checkbox"></div><span class="checklist-text">Mode clair et mode sombre</span></div>
+      </div>
+    </section>
+    <!-- Exemple de Kanban -->
+    <section>
+      <div class="kanban-header-wrap flex justify-center mb-2">
+        <h2 class="text-xl font-extrabold text-white px-6 py-2 rounded-xl shadow-lg bg-gradient-to-r from-purple-500 via-purple-400 to-yellow-400 border border-purple-300/40" style="letter-spacing:0.01em;">Exemple de tableau Kanban dans l'application</h2>
+      </div>
+      <div class="kanban-board-unified bg-gray-50 rounded-2xl shadow-lg p-6 flex flex-row gap-6 justify-between items-start overflow-x-auto relative">
+        <div class="kanban-col flex-1 min-w-[220px]" style="border-top: 4px solid #a78bfa;">
+          <div class="kanban-title text-center" style="color:#a78bfa;">À faire</div>
+          <div class="kanban-card kanban-task" data-stage="0"><label class="flex items-center gap-2"><input type="checkbox" class="kanban-checkbox"> <span>📝 Ajouter une tâche</span></label></div>
+          <div class="kanban-card kanban-task" data-stage="0"><label class="flex items-center gap-2"><input type="checkbox" class="kanban-checkbox"> <span>🔑 Enregistrer un mot de passe</span></label></div>
+          <div class="kanban-card kanban-task" data-stage="0"><label class="flex items-center gap-2"><input type="checkbox" class="kanban-checkbox"> <span>📋 Créer une liste de courses</span></label></div>
+        </div>
+        <div class="kanban-col flex-1 min-w-[220px]" style="border-top: 4px solid #fbbf24;">
+          <div class="kanban-title text-center" style="color:#fbbf24;">En cours</div>
+        </div>
+        <div class="kanban-col flex-1 min-w-[220px]" style="border-top: 4px solid #34d399;">
+          <div class="kanban-title text-center" style="color:#34d399;">Terminé</div>
+        </div>
+      </div>
+      <div class="kanban-arrows flex justify-center items-center gap-4 mt-2 mb-1">
+        <button type="button" class="kanban-arrow kanban-arrow-left" aria-label="Faire défiler à gauche">
+          <span class="arrow-icon">&#8592;</span>
+        </button>
+        <span class="kanban-arrows-hint text-gray-400 text-xs">Faites défiler</span>
+        <button type="button" class="kanban-arrow kanban-arrow-right" aria-label="Faire défiler à droite">
+          <span class="arrow-icon">&#8594;</span>
+        </button>
+      </div>
+    </section>
+    <!-- Gestionnaire de mots de passe -->
+    <section class="bg-white rounded-2xl shadow-lg p-8 password-manager-anim">
+      <h2 class="text-xl font-bold text-purple-700 mb-2 flex items-center gap-2 justify-center">
+        <span class="text-2xl">🔐</span>
+        <span>Gestionnaire de mots de passe</span>
+        <span id="monkey-emoji" class="transition-all duration-200 cursor-pointer select-none ml-2" style="font-size:2em;">🙈</span>
+      </h2>
+      <p class="text-gray-800 mb-4">ToDooliCo vous propose une solution simple et sécurisée pour stocker vos mots de passe et données sensibles directement dans l’application. Toutes les informations sont chiffrées localement avec des algorithmes modernes, garantissant la confidentialité de vos données.</p>
+      <ul class="list-disc pl-6 text-gray-800 space-y-1 mb-2">
+        <li>Aucune synchronisation ni stockage cloud – tout reste sur votre appareil</li>
+        <li>Accès rapide grâce à une interface claire et intuitive</li>
+        <li>Création, modification et suppression faciles</li>
+        <li>Protection par mot de passe maître ou biométrie (si prise en charge)</li>
+        <li>Fonctionne entièrement hors ligne, sans connexion internet</li>
+      </ul>
+      <p class="text-gray-700 mt-2">Avec ToDooliCo, vos mots de passe sont entre de bonnes mains — les vôtres.</p>
+    </section>
+    <!-- Pour qui ? -->
+    <section class="bg-white rounded-2xl shadow-lg p-8">
+      <h2 class="text-xl font-bold text-purple-700 mb-4">Pour qui&nbsp;?</h2>
+      <ul class="list-disc pl-6 text-gray-800 space-y-1">
+        <li>Ceux qui recherchent la simplicité sans sacrifier la puissance</li>
+        <li>Développeurs, designers, professionnels du numérique</li>
+        <li>Utilisateurs hors ligne ou soucieux de leur vie privée</li>
+        <li>Ceux qui en ont assez des applications trop complexes pour de simples tâches</li>
+        <li>Toute personne qui veut un « organiseur silencieux »</li>
+      </ul>
+    </section>
+    <!-- Principes -->
+    <section class="bg-gray-50 rounded-2xl shadow-lg p-8">
+      <h2 class="text-xl font-bold text-purple-700 mb-4">🧠 Les principes de ToDooliCo</h2>
+      <ul class="principle-list">
+        <li><span class="icon">🧘</span> Minimalisme comme philosophie</li>
+        <li><span class="icon">🔒</span> Confidentialité sans compromis</li>
+        <li><span class="icon">⚡</span> Simplicité sans apprentissage</li>
+      </ul>
+    </section>
+    <!-- CTA -->
+    <section class="flex justify-center mt-8">
+      <div class="w-full max-w-xl bg-white rounded-2xl shadow-2xl px-8 py-8 flex flex-col items-center gap-4">
+        <h2 class="text-2xl font-extrabold text-purple-700 mb-1 text-center">🚀 Rejoignez la bêta</h2>
+        <p class="text-gray-700 mb-2 text-center">Disponible sur toutes les plateformes. On vous prévient dès que votre version est prête.</p>
+        <a href="https://t.me/rafael_not_a_candy" target="_blank" rel="noopener noreferrer"
+           class="btn-primary neon-glow text-base px-6 py-3 shadow-lg hover:scale-105 transition-transform mt-2">
+          Je veux un accès anticipé
+        </a>
+      </div>
+    </section>
+    </main>
+    <footer class="footer-fixed text-center py-6 border-t w-full bg-white/90 flex-none px-0">
+      <p class="text-sm">© 2025 ToDooliCo<br>L’organiseur sans bruit. Juste vous et vos tâches.</p>
+    </footer>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var monkey = document.getElementById('monkey-emoji');
+      if (monkey) {
+        // создаём надпись один раз
+        let warn = document.createElement('div');
+        warn.innerHTML = '<span>ne donne pas tes mots de passe à ces méchants</span> <span class="monkey-hint">👆</span>';
+        warn.className = 'monkey-warning';
+        warn.onclick = function() { alert('Sois prudent avec tes mots de passe!'); };
+        monkey.parentNode.appendChild(warn);
+
+        // initial state: monkey with open eyes, hint visible
+        monkey.textContent = '🙉';
+        warn.classList.add('show');
+        warn.classList.remove('hidden');
+
+        let isOpen = true;
+        monkey.addEventListener('click', function() {
+          if (isOpen) {
+            monkey.textContent = '🙈';
+            warn.classList.remove('show');
+            setTimeout(() => {
+              warn.classList.add('hidden');
+            }, 300);
+          } else {
+            monkey.textContent = '🙉';
+            warn.classList.remove('hidden');
+            setTimeout(() => {
+              warn.classList.add('show');
+            }, 10);
+          }
+          isOpen = !isOpen;
+        });
+
+        // Automatically open eyes every 15 seconds if they are closed
+        setInterval(function() {
+          if (!isOpen) {
+            monkey.textContent = '🙉';
+            warn.classList.remove('hidden');
+            setTimeout(() => {
+              warn.classList.add('show');
+            }, 10);
+            isOpen = true;
+          }
+        }, 15000);
+      }
+    });
+  </script>
+  <style>
+    #monkey-emoji {
+      display: inline-block;
+      transition: filter 0.18s, opacity 0.18s;
+      position: relative;
+    }
+    .monkey-warning {
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+      margin-top: 0.3em;
+      font-size: 1.18em;
+      color: #fff;
+      background: linear-gradient(90deg, #a78bfa 0%, #fbbf24 40%, #34d399 100%);
+      border-radius: 1.2em;
+      padding: 0.45em 1.5em 0.45em 1.1em;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      box-shadow: 0 4px 24px #a78bfa44, 0 1.5px 8px #fbbf2433;
+      opacity: 0;
+      pointer-events: auto;
+      cursor: pointer;
+      transition: opacity 0.45s cubic-bezier(.4,2,.6,1), transform 0.45s cubic-bezier(.4,2,.6,1);
+      transform: translate(-50%, 18px) scale(0.96);
+      position: absolute;
+      left: 50%;
+      top: 2.3em;
+      z-index: 2;
+      max-width: 90vw;
+      min-width: 180px;
+      box-sizing: border-box;
+      user-select: none;
+      border: 2.5px solid #fff6;
+      filter: drop-shadow(0 2px 8px #a78bfa33);
+      text-align: center;
+      white-space: normal;
+      word-break: break-word;
+    }
+    .monkey-warning .monkey-hint {
+      font-size: 1.25em;
+      animation: monkey-hint-bounce 1.2s infinite cubic-bezier(.6,1.5,.6,1);
+      filter: drop-shadow(0 0 2px #fff8);
+    }
+    @keyframes monkey-hint-bounce {
+      0%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-7px) scale(1.15); }
+      60% { transform: translateY(0); }
+    }
+    .monkey-warning.show {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1.06);
+    }
+    .monkey-warning.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</body>
+</html> 

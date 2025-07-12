@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>AdiGuide | Проект R&A Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2b8e2e5e2a.js" crossorigin="anonymous"></script>
+  <style>
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-in-up {
+      opacity: 0;
+      animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+    [style*="animation-delay"] {
+      animation-delay: inherit;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="glass-header flex flex-row items-center justify-between gap-8">
+    <div class="logo-block">
+      <a href="../index.ru.html">
+        <img src="../assets/Logo design R.A. Stu.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+      </a>
+    </div>
+    <nav class="flex gap-2">
+      <a href="../index.ru.html" class="nav-link">Главная</a>
+      <a href="../about.ru.html" class="nav-link">О нас</a>
+      <a href="../projects.ru.html" class="nav-link">Проекты</a>
+      <a href="../blog/blog.ru.html" class="nav-link">Блог</a>
+      <a href="../contact.ru.html" class="nav-link">На связи</a>
+    </nav>
+    <div class="flex gap-2">
+      <a href="../index.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="../index.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="../index.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="../index.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+  </header>
+  <main class="max-w-4xl mx-auto px-4 py-16 space-y-14 flex-1">
+    <!-- Верх: Белый -->
+    <div class="bg-white rounded-3xl shadow-2xl p-12 text-center animate-fade-in-up flex flex-col gap-6">
+      <h1 class="text-5xl font-extrabold text-blue-900 flex items-center justify-center gap-2 mb-2 animate-fade-in-up" style="animation-delay:0.1s;">
+        <span class="text-4xl">📱</span> AdiGuide
+      </h1>
+      <div class="border-t border-gray-200 w-2/3 mx-auto"></div>
+      <p class="text-xl text-gray-800 animate-fade-in-up" style="animation-delay:0.2s;">Мобильное приложение для самостоятельных прогулок и путешествий по городам России.<br>Слушай интересные аудиорассказы, гуляй в своём темпе и открывай новое рядом с собой.</p>
+    </div>
+    <!-- Преимущества: Синий -->
+    <div class="bg-blue-900 rounded-3xl shadow-2xl p-12 animate-fade-in-up flex flex-col gap-6" style="animation-delay:0.3s;">
+      <h2 class="text-2xl font-bold text-white mb-2 animate-fade-in-up" style="animation-delay:0.4s;">Почему Adiguide?</h2>
+      <div class="border-t border-blue-700 w-2/3 mx-auto"></div>
+      <ul class="space-y-3 text-blue-100 text-lg animate-fade-in-up" style="animation-delay:0.5s;">
+        <li class="py-1 border-b border-blue-800 last:border-b-0">🎧 Аудиоформат: не нужно читать, просто слушай</li>
+        <li class="py-1 border-b border-blue-800 last:border-b-0">🗺️ Удобные маршруты и подборки</li>
+        <li class="py-1 border-b border-blue-800 last:border-b-0">📍 Работает без интернета</li>
+        <li class="py-1">🇷🇺 Сделано для внутреннего туризма в России</li>
+      </ul>
+    </div>
+    <!-- Как это работает: Белый -->
+    <div class="bg-white rounded-3xl shadow-2xl p-12 animate-fade-in-up flex flex-col gap-6" style="animation-delay:0.6s;">
+      <h2 class="text-2xl font-bold text-blue-900 mb-2 animate-fade-in-up" style="animation-delay:0.7s;">Как это работает</h2>
+      <div class="border-t border-gray-200 w-2/3 mx-auto"></div>
+      <div class="flex flex-col gap-2 mt-2">
+        <p class="text-lg text-gray-800 animate-fade-in-up border-b border-gray-100 pb-2" style="animation-delay:0.8s;">Открой приложение, выбери город и маршрут — и начни прогулку.</p>
+        <p class="text-lg text-gray-800 animate-fade-in-up border-b border-gray-100 pb-2" style="animation-delay:0.9s;">Приложение автоматически воспроизводит аудиогид по мере продвижения по маршруту.</p>
+        <p class="text-lg text-gray-800 animate-fade-in-up" style="animation-delay:1s;">Можно слушать как подкаст — в наушниках или через динамик.</p>
+      </div>
+    </div>
+    <!-- Кому подойдёт: Красный -->
+    <div class="bg-red-600 rounded-3xl shadow-2xl p-12 animate-fade-in-up flex flex-col gap-6" style="animation-delay:1.1s;">
+      <h2 class="text-2xl font-bold text-white mb-2 animate-fade-in-up" style="animation-delay:1.2s;">Кому подойдёт</h2>
+      <div class="border-t border-red-400 w-2/3 mx-auto"></div>
+      <ul class="space-y-2 text-red-100 text-lg animate-fade-in-up mt-2" style="animation-delay:1.3s;">
+        <li class="py-1 border-b border-red-400 last:border-b-0">Путешественникам по России</li>
+        <li class="py-1 border-b border-red-400 last:border-b-0">Жителям городов, которые хотят узнать больше о своём городе</li>
+        <li class="py-1 border-b border-red-400 last:border-b-0">Родителям с детьми</li>
+        <li class="py-1 border-b border-red-400 last:border-b-0">Школьникам и студентам</li>
+        <li class="py-1">Тем, кто устал от скучных экскурсий</li>
+      </ul>
+    </div>
+    <!-- Кнопка -->
+    <div class="flex flex-col items-center my-12 animate-fade-in-up" style="animation-delay:1.4s;">
+      <a href="https://t.me/rafael_not_a_candy" target="_blank" rel="noopener noreferrer"
+         class="btn-primary neon-glow text-base px-6 py-3 shadow-lg hover:scale-105 transition-transform animate-fade-in-up"
+         style="animation-delay:1.5s;">
+        Записаться на бета тест
+      </a>
+    </div>
+  </main>
+  <footer class="text-center py-6 border-t w-full">
+    <p class="text-sm">© 2025 R&A Studio. Все права защищены.</p>
+  </footer>
+</body>
+</html> 

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Проекты | R&A Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2b8e2e5e2a.js" crossorigin="anonymous"></script>
+  <style>
+    .dark-mode { background: #18181b; color: #f3f4f6; }
+    .dark-mode .project-card { background: #232336; color: #f3f4f6; }
+    .dark-mode .floating-quote { background: rgba(30,30,40,0.9); color: #fff; }
+    .transition { transition: all 0.3s ease; }
+    /* Анимация появления карточек */
+    .fade-in-up { opacity: 0; transform: translateY(40px) scale(0.98); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
+    .fade-in-up.visible { opacity: 1; transform: translateY(0) scale(1); }
+    /* Мини-якорная навигация */
+    .anchor-nav { display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem; margin-bottom: 0.5rem; font-size: 0.95em; }
+    .anchor-link { color: #7c3aed; text-decoration: none; position: relative; padding-bottom: 2px; }
+    .anchor-link.active, .anchor-link:hover { color: #2d014d; }
+    .anchor-link.active::after, .anchor-link:hover::after { content: ''; display: block; height: 2px; background: #7c3aed; width: 100%; position: absolute; left: 0; bottom: 0; border-radius: 1px; }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-300">
+  <!-- Удалён блок header .glass-header -->
+  <!-- Hero Section -->
+  <section class="max-w-2xl mx-auto mt-12 mb-12 bg-white rounded-3xl shadow-lg px-8 py-14 text-center">
+    <h1 class="text-5xl font-extrabold text-gray-900 mb-6" style="font-family:'Montserrat', 'Inter', sans-serif;">
+      Projets de R&A Studio
+    </h1>
+    <p class="text-xl text-gray-600 font-medium">
+      Nous développons nos propres produits, conseillons les entreprises et publions des travaux de recherche. Ci-dessous — les projets dont nous sommes particulièrement fiers.
+    </p>
+  </section>
+
+  <!-- Навигация/Фильтр -->
+  <nav class="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 mt-4 mb-12">
+    <button class="filter-btn px-4 py-2 rounded bg-indigo-100 text-indigo-800 font-bold transition hover:bg-indigo-200" data-filter="all">Tous les projets</button>
+    <button class="filter-btn px-4 py-2 rounded bg-pink-100 text-pink-800 font-bold transition hover:bg-pink-200" data-filter="product">Produits R&A</button>
+    <button class="filter-btn px-4 py-2 rounded bg-green-100 text-green-800 font-bold transition hover:bg-green-200" data-filter="client">Cas clients</button>
+    <button class="filter-btn px-4 py-2 rounded bg-yellow-100 text-yellow-800 font-bold transition hover:bg-yellow-200" data-filter="research">Recherches</button>
+  </nav>
+
+  <!-- Проекты -->
+  <section class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4" id="projectsList">
+    <!-- Adiguide -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-purple-600" data-type="product" id="adiguide">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📱</span>
+        <h2 class="text-xl font-bold">Adiguide</h2>
+        <span class="ml-auto text-sm text-gray-400">2023–&gt;</span>
+      </div>
+      <p class="mb-2 text-gray-700">Application mobile avec audioguides. Permet d’écouter des itinéraires et des faits sur les monuments directement pendant la promenade.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Scénarios et textes des visites</li>
+        <li>Voix-off via réseaux neuronaux</li>
+        <li>UX/UI design, développement Flutter</li>
+        <li>Validation auprès des touristes sur la Place Rouge</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Technologies : Figma, Dart, TTS, Python, Firebase, GitHub, OpenStreetMap</div>
+      <a href="projects/adiguide.fr.html" class="expand-btn mt-2 px-3 py-1 bg-purple-600 text-white rounded hover:bg-purple-700 transition">En savoir plus</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Prototype</span>—<span>Tests</span>—<span>Lancement</span>
+      </div>
+    </div>
+    <!-- ToDooliCo -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-pink-600" data-type="product" id="todoolico">
+      <div class="flex items-center gap-3 mb-2">
+        <img src="assets/AppIcon~todoolico.png" alt="ToDooliCo" style="width:2.2em;height:2.2em;border-radius:0.6em;box-shadow:0 2px 8px #f9a8d433;margin-right:0.1em;object-fit:cover;" loading="lazy">
+        <h2 class="text-xl font-bold">ToDooliCo</h2>
+        <span class="ml-auto text-sm text-gray-400">2025–&gt;</span>
+      </div>
+      <p class="mb-2 text-gray-700">Un tracker de tâches minimaliste avec un module Kanban pratique et un gestionnaire de mots de passe intégré avec chiffrement sécurisé. Créé pour ceux qui veulent planifier simplement, en toute sécurité et efficacement — sans inscription ni interfaces complexes.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Hypothèse produit et tests</li>
+        <li>Prototypage et UX/UI design</li>
+        <li>Implémentation frontend en Flutter & Dart</li>
+        <li>Tests utilisateurs et améliorations</li>
+        <li>Intégration d’un gestionnaire de mots de passe avec chiffrement AES-256</li>
+        <li>Tableau Kanban pour une gestion facile des tâches</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Technologies : Flutter, Dart, SQLite, Hive, GitHub, encrypt (AES-256), Kanban</div>
+      <a href="projects/todoolico.fr.html" class="expand-btn mt-2 px-3 py-1 bg-pink-600 text-white rounded hover:bg-pink-700 transition">En savoir plus</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Prototype</span>—<span>Tests</span>—<span>Lancement</span>
+      </div>
+    </div>
+    <!-- DebtMate -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-blue-400" data-type="product" id="debtmate">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">💸</span>
+        <h2 class="text-xl font-bold">DebtMate</h2>
+        <span class="ml-auto text-sm text-gray-400">2025–&gt;</span>
+      </div>
+      <p class="mb-2 text-gray-700">Application-assistante pour la gestion des prêts et crédits personnels. Aide à suivre l’argent prêté aux amis, ce qu’on vous doit, ainsi que vos propres emprunts et engagements. Pratique pour ne pas perdre de vue des accords financiers importants.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Développement de l’idée et de la logique de l’assistant</li>
+        <li>Conception UI/UX</li>
+        <li>Création du MVP sur Android</li>
+        <li>Tests internes et utilisateurs</li>
+        <li>Rappels et calcul automatique des dettes</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Technologies : Flutter, Dart, Hive, GitHub</div>
+      <a href="projects/debtmate.fr.html" class="expand-btn mt-2 px-3 py-1 bg-blue-400 text-white rounded hover:bg-blue-500 transition">En savoir plus</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Prototype</span>—<span>Tests</span>—<span>Lancement</span>
+      </div>
+    </div>
+    <!-- Analyse pour une agence d’intérim -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-green-600" data-type="client" id="agency-analysis">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">🧪</span>
+        <h2 class="text-xl font-bold">Analyse pour une agence d’intérim</h2>
+        <span class="ml-auto text-sm text-gray-400">2023</span>
+      </div>
+      <p class="mb-2 text-gray-700">Étude marketing complète pour une agence d’intérim.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Enquêtes auprès des clients et des employés</li>
+        <li>Tests des concurrents « sur le terrain »</li>
+        <li>Diagnostic de la marque</li>
+        <li>Check-lists et recommandations de positionnement</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Outils & Technologies : Google Sheets, Google Forms, PowerPoint, scripts d’appels, « client mystère » concurrentiel, Customer Journey Map, Checklist Design, audit de marque, rebranding</div>
+      <a href="blog/fr/posts/agency-analysis.fr.html" class="expand-btn mt-2 px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 transition">En savoir plus</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Analyse</span>—<span>Mise en œuvre</span>—<span>Résultat</span>
+      </div>
+    </div>
+    <!-- Conseil financier pour un magasin d’électronique -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-yellow-500" data-type="client" id="finance-consulting">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📊</span>
+        <h2 class="text-xl font-bold">Conseil financier pour un magasin d’électronique</h2>
+        <span class="ml-auto text-sm text-gray-400">2024–&gt;</span>
+      </div>
+      <p class="mb-2 text-gray-700">Analyse approfondie des processus et des finances du magasin pour améliorer son efficacité et sa rentabilité. Modèle économique revu, coûts optimisés, services inefficaces supprimés, et nouvelles sources de revenus développées.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Comptabilisation et analyse détaillée de chaque appareil</li>
+        <li>Optimisation des dettes et dépenses</li>
+        <li>Mise en place de mesures pour réduire les coûts, notamment en remplaçant l’autopartage par la location de voiture</li>
+        <li>Accompagnement et soutien expert permanent</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Outils & Technologies : stand-ups quotidiens, gestion des créances et dettes, suivi des ventes et des stocks, KPIs & système de motivation, analyse SWOT, modélisation business, Google Sheets</div>
+      <a href="blog/fr/posts/finance-consulting.fr.html" class="expand-btn mt-2 px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition">En savoir plus</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Analyse</span>—<span>Mise en œuvre</span>—<span>Résultat</span>
+      </div>
+    </div>
+    <!-- Comportement des consommateurs à l’ère numérique -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-indigo-600" data-type="research" id="publication1">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📚</span>
+        <h2 class="text-xl font-bold">Comportement des consommateurs à l’ère numérique</h2>
+        <span class="ml-auto text-sm text-gray-400">2022</span>
+      </div>
+      <p class="mb-2 text-gray-700">Article scientifique sur la transformation du comportement des consommateurs dans l’économie numérique.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Analyse</li>
+        <li>Publication</li>
+      </ul>
+      <div style="padding-top: 1rem;">
+        <a href="https://usptu-bulletin.ru/index.php/bul/article/view/11710" class="expand-btn px-4 py-2 bg-indigo-600 text-white rounded text-base font-bold hover:bg-indigo-700 transition" target="_blank">En savoir plus</a>
+      </div>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Analyse</span>—<span>Publication</span>
+      </div>
+    </div>
+    <!-- Agrégation mobile de trafic sur des solutions open source -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-indigo-700" data-type="research" id="publication2">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📚</span>
+        <h2 class="text-xl font-bold">Agrégation mobile de trafic sur des solutions open source</h2>
+        <span class="ml-auto text-sm text-gray-400">2025</span>
+      </div>
+      <p class="mb-2 text-gray-700">Article sur le développement d’un service d’agrégation de trafic mobile basé sur des technologies ouvertes.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Analyse</li>
+        <li>Publication</li>
+      </ul>
+      <div style="padding-top: 1rem;">
+        <a href="https://usptu-bulletin.ru/index.php/bul/article/view/13035" class="expand-btn px-4 py-2 bg-indigo-700 text-white rounded text-base font-bold hover:bg-indigo-800 transition" target="_blank">En savoir plus</a>
+      </div>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Analyse</span>—<span>Publication</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Инсайты и цифры -->
+  <section class="max-w-4xl mx-auto mt-20 mb-12 grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">💻</span>
+      <span class="font-bold text-xl">3</span>
+      <span class="text-xs text-gray-500">собственных продукта</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">🧑‍💼</span>
+      <span class="font-bold text-xl">2</span>
+      <span class="text-xs text-gray-500">клиентских кейса</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">📈</span>
+      <span class="font-bold text-xl">1</span>
+      <span class="text-xs text-gray-500">MVP вырос в бизнес</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">✏️</span>
+      <span class="font-bold text-xl">2</span>
+      <span class="text-xs text-gray-500">научные публикации</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">🕓</span>
+      <span class="font-bold text-xl">1000+</span>
+      <span class="text-xs text-gray-500">часов анализа</span>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="max-w-2xl mx-auto py-16 px-6 bg-gradient-to-b from-purple-900 via-fuchsia-800 to-purple-600 rounded-3xl shadow-2xl mt-16 mb-16 flex flex-col items-center" style="font-family: 'Montserrat', 'Inter', sans-serif;">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center mb-4 text-white">Идея есть — не хватает команды?</h2>
+    <p class="text-base md:text-lg text-center text-fuchsia-100 mb-6">Мы рядом. Обсудим, спроектируем, запустим.<br>Напишите — начнём путь к результату.</p>
+    <a href="contact.ru.html" class="btn-primary neon-glow text-base px-6 py-3 shadow-lg hover:scale-105 transition-transform">Связаться</a>
+  </section>
+
+  <footer class="text-center py-6 border-t mt-12 text-gray-400 text-sm">
+    © 2025 R&A Studio. Все права защищены.
+  </footer>
+
+  <!-- JS for filter, theme, and expand -->
+  <script>
+    // Фильтрация карточек
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        document.querySelectorAll('.project-card').forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-type') === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('ring', 'ring-2', 'ring-indigo-500'));
+        this.classList.add('ring', 'ring-2', 'ring-indigo-500');
+      });
+    });
+    // Анимация появления карточек при скролле
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+      observer.observe(el);
+    });
+    // Мини-якорная навигация active
+    const anchors = document.querySelectorAll('.anchor-link');
+    const sections = [
+      document.getElementById('products'),
+      document.getElementById('clients'),
+      document.getElementById('research')
+    ];
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const scrollY = window.scrollY + 120;
+      sections.forEach((section, idx) => {
+        if (section && section.offsetTop <= scrollY) {
+          current = anchors[idx];
+        }
+      });
+      anchors.forEach(a => a.classList.remove('active'));
+      if (current) current.classList.add('active');
+    });
+  </script>
+</body>
+</html> 

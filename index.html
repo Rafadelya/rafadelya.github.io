@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>R&A Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/favicon.ico">
+  <script defer src="js/i18n.js"></script>
+  <script defer src="js/main.js"></script>
+  <style>
+    @font-face {
+      font-family: 'Howdybun';
+      src: url('fonts/howdybun.otf') format('opentype'),
+           url('fonts/howdybun.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800">
+  <header class="glass-header">
+    <div class="logo-block" style="display: flex; align-items: center;">
+      <a href="index.html">
+        <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+      </a>
+    </div>
+    <nav class="flex gap-4">
+      <a href="index.ru.html" class="nav-link" data-i18n="nav.home">Главная</a>
+      <a href="about.html" class="nav-link" data-i18n="nav.about">О студии</a>
+      <a href="projects.html" class="nav-link" data-i18n="nav.projects">Проекты</a>
+      <a href="blog/blog.ru.html" class="nav-link">Блог</a>
+      <a href="contact.html" class="nav-link" data-i18n="nav.contact">Контакты</a>
+    </nav>
+    <div class="flex gap-2">
+      <button class="lang-flag lang-en" aria-label="English"><span class="flag-icon">🇬🇧</span></button>
+      <button class="lang-flag lang-de" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></button>
+      <button class="lang-flag lang-fr" aria-label="Français"><span class="flag-icon">🇫🇷</span></button>
+      <button class="lang-flag lang-ru" aria-label="Русский"><span class="flag-icon">🇷🇺</span></button>
+    </div>
+  </header>
+
+  <main class="relative bg-hero overflow-hidden">
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-40 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[600px] mb-12">
+      <h1 class="glitch text-7xl md:text-8xl text-transparent bg-clip-text animate-petrol-gradient mb-6 howdybun-3d" data-text="R&A Studio" style="background-image: linear-gradient(270deg, #e0e0e0, #b2f0ff, #a78bfa, #f472b6, #7fffd4, #e0e0e0); background-size: 300% 300%; font-family: 'Howdybun', sans-serif;">R&A Studio</h1>
+      <p class="neon-slogan text-2xl md:text-3xl font-semibold mb-8"><span class="wave">Пара, которая строит смыслы ✨</span></p>
+      <!-- Анимированное созвездие Водолей с анимацией соединения звёзд -->
+      <div class="flex justify-center items-center mt-8">
+        <svg width="320" height="120" viewBox="0 0 320 120" fill="none">
+          <g class="constellation-aquarius" stroke="#fffbe9" stroke-width="2" stroke-linecap="round">
+            <!-- Верхняя волна -->
+            <circle class="star" cx="40" cy="40" r="3" fill="#fffbe9">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="star" cx="80" cy="50" r="3" fill="#fffbe9">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="star" cx="120" cy="40" r="3" fill="#fffbe9">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.4s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="star" cx="160" cy="50" r="3" fill="#fffbe9">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.1s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="star" cx="200" cy="40" r="3" fill="#fffbe9">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.3s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="star" cx="240" cy="50" r="3" fill="#fffbe9">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            <!-- Анимированная линия соединения (верхняя волна) -->
+            <polyline points="40,40 80,50 120,40 160,50 200,40 240,50" fill="none" stroke="#fffbe9" stroke-width="2">
+              <animate attributeName="stroke-dasharray" values="0,400;40,360;80,320;120,280;160,240;200,200;240,160;280,120;320,80;360,40;400,0" keyTimes="0;0.1;0.2;0.3;0.4;0.5;0.6;0.7;0.8;0.9;1" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="stroke-dashoffset" values="400;0" dur="2.5s" repeatCount="indefinite"/>
+            </polyline>
+            <!-- Нижняя волна -->
+            <circle class="star" cx="60" cy="75" r="3" fill="#fffbe9">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="star" cx="100" cy="85" r="3" fill="#fffbe9">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.4s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="star" cx="140" cy="75" r="3" fill="#fffbe9">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.1s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="star" cx="180" cy="85" r="3" fill="#fffbe9">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.3s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="star" cx="220" cy="75" r="3" fill="#fffbe9">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle class="star" cx="260" cy="85" r="3" fill="#fffbe9">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2.2s" repeatCount="indefinite"/>
+            </circle>
+            <!-- Анимированная линия соединения (нижняя волна) -->
+            <polyline points="60,75 100,85 140,75 180,85 220,75 260,85" fill="none" stroke="#fffbe9" stroke-width="2">
+              <animate attributeName="stroke-dasharray" values="0,400;40,360;80,320;120,280;160,240;200,200;240,160;280,120;320,80;360,40;400,0" keyTimes="0;0.1;0.2;0.3;0.4;0.5;0.6;0.7;0.8;0.9;1" dur="2.5s" repeatCount="indefinite"/>
+              <animate attributeName="stroke-dashoffset" values="400;0" dur="2.5s" repeatCount="indefinite"/>
+            </polyline>
+          </g>
+        </svg>
+      </div>
+    </section>
+    <!-- Преимущества -->
+    <section class="py-20 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
+      <!-- Animated Gradient Background -->
+      <!-- Удалён градиентный SVG фон advantages section -->
+      <h2 class="text-4xl md:text-5xl font-extrabold text-center text-white mb-14 drop-shadow-[0_2px_32px_#f472b6] tracking-tight animate-fade-in" data-i18n="advantages.title">Почему выбирают нас?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-6xl mx-auto">
+        <div class="card-modern flex flex-col items-center p-10 animate-card-pop group neon-glow">
+          <div class="icon-circle mb-4 animate-lightning-jump group-hover:animate-spin-fast"><span class="text-4xl">💡</span></div>
+          <h3 class="font-semibold text-2xl mb-2 text-fuchsia-200 group-hover:text-yellow-300 transition-colors" data-i18n="advantages.card1.title">Креативный подход</h3>
+          <p class="text-fuchsia-100 group-hover:text-yellow-100 transition-colors" data-i18n="advantages.card1.text">Не просто «красиво», а так, чтобы работало: находим нестандартные решения, которые приносят результат.</p>
+        </div>
+        <div class="card-modern flex flex-col items-center p-10 animate-card-pop group neon-glow" style="animation-delay:0.2s;">
+          <div class="icon-circle mb-4 animate-lightning-flash group-hover:animate-spin-fast"><span class="text-4xl">⚡</span></div>
+          <h3 class="font-semibold text-2xl mb-2 text-yellow-200 group-hover:text-fuchsia-200 transition-colors" data-i18n="advantages.card2.title">Технологии</h3>
+          <p class="text-yellow-100 group-hover:text-fuchsia-100 transition-colors" data-i18n="advantages.card2.text">Используем современные инструменты, автоматизацию и лучшие практики — быстро, качественно, надёжно.</p>
+        </div>
+        <div class="card-modern flex flex-col items-center p-10 animate-card-pop group neon-glow" style="animation-delay:0.4s;">
+          <div class="icon-circle mb-4 animate-handshake group-hover:animate-spin-fast"><span class="text-4xl">🤝</span></div>
+          <h3 class="font-semibold text-2xl mb-2 text-cyan-200 group-hover:text-pink-200 transition-colors" data-i18n="advantages.card3.title">Поддержка</h3>
+          <p class="text-cyan-100 group-hover:text-pink-100 transition-colors" data-i18n="advantages.card3.text">Всегда на связи: сопровождаем проекты на всех этапах, помогаем масштабировать и адаптироваться.</p>
+        </div>
+      </div>
+    </section>
+    <!-- Секция Как мы работаем + CTA -->
+    <section class="relative py-24 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[600px] bg-gradient-to-b from-purple-900 via-fuchsia-800 to-purple-600 rounded-3xl shadow-2xl animate-fade-in-up mb-16" style="font-family: 'Montserrat', 'Inter', sans-serif;">
+      <div class="max-w-3xl w-full flex flex-col items-center gap-8">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-6 animate-glow" style="color: #fff;" data-i18n="work.title">
+          Создаём цифровое, в которое хочется <span id="dynamic-word" class="animate-glow glow fade-word" style="color:#fffb00; transition: opacity 0.6s;" data-i18n-animated="work.animated">верить</span> — и которое приносит результат
+        </h2>
+        <p class="text-xl md:text-2xl text-center text-fuchsia-100 mb-8 section-subtitle" style="animation-delay:0.2s;" data-i18n="work.sub1">
+          В каждом проекте соединяем технологии, эстетику и заботу о человеке.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
+          <div class="flex flex-col items-center bg-white/10 rounded-2xl shadow-lg p-8 animate-fade-in-up">
+            <h3 class="text-xl font-bold text-fuchsia-200 mb-2">Инновации и дизайн</h3>
+            <ul class="list-disc list-inside text-fuchsia-100 mb-2 text-md md:text-lg">
+              <li>Инновации без страха</li>
+              <li>Дизайн с душой</li>
+            </ul>
+          </div>
+          <div class="flex flex-col items-center bg-white/10 rounded-2xl shadow-lg p-8 animate-fade-in-up" style="animation-delay:0.2s">
+            <h3 class="text-xl font-bold text-fuchsia-200 mb-2">Партнёрство и рост</h3>
+            <ul class="list-disc list-inside text-fuchsia-100 mb-2 text-md md:text-lg">
+              <li>Честное партнёрство</li>
+              <li>Рост и развитие</li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-lg md:text-xl text-center text-fuchsia-100 mt-8 max-w-2xl animate-fade-in-up" style="animation-delay:0.4s;" data-i18n="work.sub2">
+          Строим цифровую среду, где удобно, красиво, понятно — и выгодно.
+        </p>
+        <div class="w-full flex flex-col items-center gap-4 bg-gradient-to-r from-fuchsia-200/20 to-purple-100/10 rounded-2xl shadow-2xl p-8 mt-8 animate-fade-in-up-pulse">
+          <p class="text-2xl md:text-3xl text-fuchsia-100 font-extrabold mb-2 glow">Добро пожаловать в наш мир идей, решений и деталей.</p>
+          <a href="Contact.html" class="btn-primary neon-glow text-lg px-8 py-4 shadow-lg hover:scale-105 transition-transform">Связаться</a>
+        </div>
+      </div>
+    </section>
+    <!-- Секция Что мы делаем -->
+    <section class="projects-meaning-section relative py-24 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[500px] bg-white mb-16">
+      <div class="container max-w-4xl mx-auto">
+        <h2 class="section-title text-4xl md:text-5xl font-extrabold text-center mb-6 animate-fade-in-up" data-i18n="projects.title">
+          Что мы делаем?
+        </h2>
+        <p class="section-subtitle text-xl md:text-2xl text-center mb-12 animate-fade-in-up" style="animation-delay:0.2s;">
+          От мобильных приложений, визуальных концептов и стартапов до бизнес-моделей и исследовательских решений.
+        </p>
+        <div class="projects-cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 w-full max-w-5xl mx-auto">
+          <div class="card card-shape flex flex-col items-center p-8 animate-card-pop">
+            <span class="card-icon w-16 h-16 mb-4" style="display:flex;align-items:center;justify-content:center;">
+              <!-- SVG: Сайт (монитор с вкладкой) -->
+              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="14" width="40" height="28" rx="4" fill="#e0e7ff" stroke="#6366f1" stroke-width="3"/>
+                <rect x="8" y="14" width="40" height="6" rx="2" fill="#a5b4fc"/>
+                <rect x="24" y="44" width="8" height="4" rx="2" fill="#6366f1"/>
+                <circle cx="14" cy="17" r="1.2" fill="#6366f1"/>
+                <circle cx="20" cy="17" r="1.2" fill="#6366f1"/>
+                <circle cx="26" cy="17" r="1.2" fill="#6366f1"/>
+              </svg>
+            </span>
+            <h3 class="font-bold text-lg mb-2 text-indigo-700" data-i18n="projects.card1.title">Сайты</h3>
+            <p class="text-indigo-900 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2" data-i18n="projects.card1.text">Современные сайты и онлайн-сервисы — быстрые, адаптивные, с понятным UX.</p>
+          </div>
+          <div class="card card-shape flex flex-col items-center p-8 animate-card-pop">
+            <span class="card-icon w-16 h-16 mb-4" style="display:flex;align-items:center;justify-content:center;">
+              <!-- SVG: Modern Mobile Phone -->
+              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="14" y="6" width="28" height="44" rx="6" fill="#fff" stroke="#fbbf24" stroke-width="3"/>
+                <rect x="18" y="10" width="20" height="32" rx="3" fill="#fef3c7"/>
+                <circle cx="28" cy="44" r="2" fill="#fbbf24"/>
+              </svg>
+            </span>
+            <h3 class="font-bold text-lg mb-2 text-yellow-700" data-i18n="projects.card2.title">Мобильные приложения</h3>
+            <p class="text-yellow-900 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2" data-i18n="projects.card2.text">Решения для iOS и Android — от MVP до полноценных платформ, с аналитикой и поддержкой.</p>
+          </div>
+          <div class="card card-shape flex flex-col items-center p-8 animate-card-pop">
+            <span class="card-icon w-16 h-16 mb-4" style="display:flex;align-items:center;justify-content:center;">
+              <!-- SVG: Палитра -->
+              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="36" r="10" fill="#fbcfe8"/>
+                <circle cx="36" cy="28" r="7" fill="#a78bfa"/>
+                <circle cx="28" cy="20" r="4.5" fill="#fbbf24"/>
+                <circle cx="32" cy="40" r="3" fill="#f472b6"/>
+                <circle cx="24" cy="28" r="2.5" fill="#f9a8d4"/>
+              </svg>
+            </span>
+            <h3 class="font-bold text-lg mb-2 text-pink-700" data-i18n="projects.card3.title">Визуальные концепты</h3>
+            <p class="text-pink-900 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2" data-i18n="projects.card3.text">Дизайн, иллюстрации, брендинг — чтобы ваши идеи выглядели и чувствовались правильно.</p>
+          </div>
+          <div class="card card-meaning flex flex-col items-center p-8 animate-card-pop">
+            <span class="card-icon w-16 h-16 mb-4" style="display:flex;align-items:center;justify-content:center;">
+              <!-- SVG: Briefcase -->
+              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="14" y="20" width="28" height="18" rx="4" fill="#e0f2fe" stroke="#06b6d4" stroke-width="3"/>
+                <rect x="22" y="14" width="12" height="6" rx="2" fill="#bae6fd" stroke="#06b6d4" stroke-width="2"/>
+                <path d="M20 34L26 28L30 32L36 26" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="36" cy="26" r="1.5" fill="#06b6d4"/>
+              </svg>
+            </span>
+            <h3 class="font-bold text-lg mb-2 text-cyan-700" data-i18n="projects.card4.title">Бизнес-модели</h3>
+            <p class="text-cyan-900 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2" data-i18n="projects.card4.text">Строим и пересобираем модели под рынок, проверяем гипотезы, считаем юнит-экономику и ROI, прогнозируем рост.</p>
+          </div>
+          <div class="card card-meaning flex flex-col items-center p-8 animate-card-pop">
+            <span class="card-icon w-16 h-16 mb-4" style="display:flex;align-items:center;justify-content:center;">
+              <!-- SVG: Лупа -->
+              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="26" cy="26" r="10" fill="#dbeafe" stroke="#6366f1" stroke-width="2"/>
+                <rect x="34" y="34" width="10" height="4" rx="2" transform="rotate(45 34 34)" fill="#6366f1"/>
+                <polyline points="20,28 24,24 28,28 32,22" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="32" cy="22" r="1.5" fill="#06b6d4"/>
+              </svg>
+            </span>
+            <h3 class="font-bold text-lg mb-2 text-blue-700" data-i18n="projects.card5.title">Исследовательские решения</h3>
+            <p class="text-blue-900 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2" data-i18n="projects.card5.text">Анализируем рынок, конкурентов и аудиторию, собираем данные и превращаем их в полезные инсайты.</p>
+          </div>
+          <div class="card card-meaning flex flex-col items-center p-8 animate-card-pop">
+            <span class="card-icon w-16 h-16 mb-4" style="display:flex;align-items:center;justify-content:center;">
+              <!-- SVG: Лампочка -->
+              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="28" cy="28" rx="10" ry="12" fill="#fffbe9" stroke="#fbbf24" stroke-width="2"/>
+                <ellipse cx="28" cy="36" rx="6" ry="3" fill="#fde68a"/>
+                <rect x="24" y="38" width="8" height="8" rx="2" fill="#fbbf24"/>
+                <path d="M18 32C14 30 10 28 10 24C10 20 16 22 20 26" stroke="#a7f3d0" stroke-width="2" fill="none"/>
+                <path d="M38 32C42 30 46 28 46 24C46 20 40 22 36 26" stroke="#a7f3d0" stroke-width="2" fill="none"/>
+              </svg>
+            </span>
+            <h3 class="font-bold text-lg mb-2 text-cyan-700" data-i18n="projects.card6.title">Стартапы</h3>
+            <p class="text-cyan-900 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-2" data-i18n="projects.card6.text">От идеи до MVP и запуска: помогаем валидировать, тестировать и вывести продукт на рынок.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 border-t mt-12">
+    <p class="text-sm" data-i18n="footer.copy">© 2025 R&A Studio. Все права защищены.</p>
+  </footer>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.ru.html" data-i18n="nav.home">Главная</a>
+    <a href="about.html" data-i18n="nav.about">О студии</a>
+    <a href="projects.html" data-i18n="nav.projects">Проекты</a>
+    <a href="blog/blog.ru.html" class="nav-link">Блог</a>
+    <a href="contact.html" data-i18n="nav.contact">Контакты</a>
+    <button class="mobile-lang-flag" id="mobileLangFlagMenu">🇷🇺</button>
+  </div>
+</body>
+</html>

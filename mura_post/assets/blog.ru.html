@@ -1,0 +1,76 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Блог | R&A Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="blog-pixel.css">
+  <link rel="icon" type="image/png" href="../assets/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800">
+  <header class="glass-header">
+    <div class="logo-block" style="display: flex; align-items: center;">
+      <a href="../index.ru.html">
+        <img src="../assets/Logo design R.A. Stu.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+      </a>
+    </div>
+    <nav class="flex gap-4">
+      <a href="../index.ru.html" class="nav-link">Главная</a>
+      <a href="../about.html" class="nav-link">О нас</a>
+      <a href="../projects.html" class="nav-link">Проекты</a>
+      <a href="../../blog/blog.ru.html" class="nav-link active">Блог</a>
+      <a href="../contact.ru.html" class="nav-link">На связи</a>
+    </nav>
+    <div class="flex gap-2">
+      <a href="blog.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="blog.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="blog.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="../../blog/blog.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+  </header>
+
+  <main class="relative bg-white overflow-hidden">
+    <!-- Typewriter Hero Section -->
+    <section class="relative pt-32 pb-20 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[300px] mb-8">
+      <div class="pixel-dots-bg"></div>
+      <h1 class="typewriter-pixel text-5xl md:text-6xl font-bold mb-6" style="color:#2d014d; font-family:'Press Start 2P',monospace;">БЛОГ</h1>
+      <p class="blog-pixel-desc text-lg md:text-xl text-center max-w-2xl mb-4" style="font-family:'Press Start 2P',monospace; color:#6b7280;">Идеи, инсайты и истории из мира цифрового творчества</p>
+    </section>
+    <!-- Blog Section -->
+    <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-10" style="font-family:'Press Start 2P',monospace; color:#2d014d;">Свежие публикации</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+        <!-- Blog Card 1 -->
+        <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
+          <span class="text-xs mb-2 blog-pixel-meta">2025-01-15</span>
+          <h3 class="text-xl mb-2 blog-pixel-title">МУЛЬТИМЕДИА В СОВРЕМЕННОМ БЛОГЕ</h3>
+          <p class="mb-4 blog-pixel-text">Аудио, видео и фото в пиксельном стиле - как интегрировать мультимедиа контент, сохраняя уникальную эстетику...</p>
+          <a href="ru/posts/sample-post.html" class="blog-pixel-btn">Читать</a>
+        </div>
+        
+        <!-- Blog Card 2 -->
+        <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
+          <span class="text-xs mb-2 blog-pixel-meta">2025-01-10</span>
+          <h3 class="text-xl mb-2 blog-pixel-title">ПИКСЕЛЬНЫЙ ДИЗАЙН В СОВРЕМЕННОМ ВЕБЕ</h3>
+          <p class="mb-4 blog-pixel-text">Как ретро-эстетика находит место в цифровом мире и создает уникальный пользовательский опыт...</p>
+          <a href="ru/posts/pixel-design-post.html" class="blog-pixel-btn">Читать</a>
+        </div>
+
+        <!-- Blog Card 3 -->
+        <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
+          <span class="text-xs mb-2 blog-pixel-meta">2025-01-05</span>
+          <h3 class="text-xl mb-2 blog-pixel-title">ТРЕНДЫ КРЕАТИВНОГО КОДИНГА</h3>
+          <p class="mb-4 blog-pixel-text">Исследование последних трендов в креативном кодинге и интерактивных веб-опытах...</p>
+          <a href="ru/posts/creative-coding-post.html" class="blog-pixel-btn">Читать</a>
+        </div>
+        <!-- Можно добавить больше карточек по аналогии -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 border-t mt-12">
+    <p class="text-sm">© 2025 R&A Studio. Все права защищены.</p>
+  </footer>
+</body> 

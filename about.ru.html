@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О нас – R&A Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="js/i18n.js"></script>
+  <script defer src="js/main.js"></script>
+  <style>
+    .hero-gradient {
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%);
+    }
+    .card-gradient-1 {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+    }
+    .card-gradient-2 {
+      background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);
+    }
+    .card-gradient-3 {
+      background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+    }
+    .text-shadow {
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .hover-scale {
+      transition: transform 0.5s ease-out;
+    }
+    .hover-scale:hover {
+      transform: scale(1.005);
+    }
+    
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+    }
+    
+    .star {
+      position: absolute;
+      color: #e2e8f0;
+      animation: twinkle 4s infinite;
+    }
+    
+    .animate-fade-in {
+      animation: fade-in 1s ease-out;
+    }
+    
+    .animate-slide-up {
+      animation: slide-up 1s ease-out 0.5s both;
+    }
+    
+    .icon-lg {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .icon-xl {
+      width: 48px;
+      height: 48px;
+    }
+    
+    .glow-effect {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .glow-effect:hover {
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    @keyframes slide-in-left {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes slide-in-right {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .slide-in-left {
+      animation: slide-in-left 0.8s ease-out;
+    }
+    
+    .slide-in-right {
+      animation: slide-in-right 0.8s ease-out;
+    }
+    
+    /* Новые анимации для раздела "Как мы работаем" */
+    @keyframes pulse-glow {
+      0%, 100% { 
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        transform: scale(1);
+      }
+      50% { 
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        transform: scale(1.02);
+      }
+    }
+    
+    @keyframes rotate-icon {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes bounce-in {
+      0% { 
+        opacity: 0; 
+        transform: translateY(50px) scale(0.8);
+      }
+      50% { 
+        opacity: 1; 
+        transform: translateY(-10px) scale(1.05);
+      }
+      100% { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    
+    /* Новые креативные анимации для "Нашего подхода" */
+    @keyframes elegant-fade-in {
+      0% { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.95);
+      }
+      100% { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    @keyframes smooth-slide-up {
+      0% { 
+        opacity: 0; 
+        transform: translateY(40px);
+      }
+      100% { 
+        opacity: 1; 
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes gentle-scale-in {
+      0% { 
+        opacity: 0; 
+        transform: scale(0.9);
+      }
+      100% { 
+        opacity: 1; 
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes soft-glow {
+      0%, 100% { 
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      }
+      50% { 
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+      }
+    }
+    
+    @keyframes gentle-bounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .elegant-fade-in {
+      animation: elegant-fade-in 1.2s ease-out;
+    }
+    
+    .smooth-slide-up {
+      animation: smooth-slide-up 1s ease-out;
+    }
+    
+    .gentle-scale-in {
+      animation: gentle-scale-in 0.8s ease-out;
+    }
+    
+    .soft-glow {
+      animation: soft-glow 3s ease-in-out infinite;
+    }
+    
+    .gentle-bounce {
+      animation: gentle-bounce 2s ease-in-out infinite;
+    }
+    
+    .approach-card {
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .approach-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+      transition: left 0.8s ease;
+    }
+    
+    .approach-card:hover::before {
+      left: 100%;
+    }
+    
+    .approach-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    }
+    
+    .step-number {
+      transition: all 0.4s ease;
+    }
+    
+    .approach-card:hover .step-number {
+      transform: scale(1.08);
+    }
+    
+    .wave-in {
+      animation: wave-in 1s ease-out;
+    }
+    
+    .slide-from-center {
+      animation: slide-from-center 0.8s ease-out;
+    }
+    
+    .float-up {
+      animation: float-up 1.2s ease-out;
+    }
+    
+    .glow-pulse {
+      animation: glow-pulse 2s ease-in-out infinite;
+    }
+    
+    .number-bounce {
+      animation: number-bounce 0.6s ease-in-out;
+    }
+
+    @keyframes pulse-heart {
+      0% { transform: scale(1); }
+      8% { transform: scale(1.04); }
+      16% { transform: scale(1); }
+      24% { transform: scale(1.03); }
+      32% { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+    .pulse-heart {
+      animation: pulse-heart 2.8s cubic-bezier(0.4,0,0.6,1) infinite;
+    }
+
+    /* Яркие современные градиенты для иконок */
+    .icon-gradient-blue { background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%); }
+    .icon-gradient-pink { background: linear-gradient(135deg, #f472b6 0%, #a78bfa 100%); }
+    .icon-gradient-green { background: linear-gradient(135deg, #34d399 0%, #6ee7b7 100%); }
+    .icon-gradient-yellow { background: linear-gradient(135deg, #fde68a 0%, #fbbf24 100%); }
+    .icon-gradient-lime { background: linear-gradient(135deg, #bef264 0%, #4ade80 100%); }
+
+    /* Светлые карточки */
+    .card-modern, .card-shape, .card-meaning, .bg-white.bg-opacity-5, .rounded-3xl.p-8, .rounded-xl.p-4, .rounded-xl.p-6 {
+      background: rgba(255,255,255,0.10) !important;
+      color: #e0e0e0 !important; /* серебристый */
+    }
+    .card-modern:hover, .card-shape:hover, .card-meaning:hover {
+      color: #fef08a !important; /* text-yellow-100 */
+    }
+
+    /* Больше воздуха между секциями */
+    section, .mb-16, .mb-12 {
+      margin-bottom: 3.5rem !important;
+      filter: drop-shadow(0 0 32px #f472b6);
+    }
+    .bg-hero {
+      background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    }
+    .currency-anim {
+      display: inline-block;
+      position: relative;
+      width: 1.5em;
+      height: 1.2em;
+      vertical-align: middle;
+      margin-right: 0.5em;
+    }
+    .currency {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      font-size: 1.2em;
+      color: #111;
+      font-weight: bold;
+      animation: currency-fade-jump 2.6s infinite;
+    }
+    .currency:nth-child(1) { animation-delay: 0s; }
+    .currency:nth-child(2) { animation-delay: 0.65s; }
+    .currency:nth-child(3) { animation-delay: 1.3s; }
+    .currency:nth-child(4) { animation-delay: 1.95s; }
+    @keyframes currency-fade-jump {
+      0% { opacity: 0; transform: translateY(0) scale(1); }
+      10% { opacity: 1; transform: translateY(-10%) scale(1.15); }
+      25% { opacity: 1; transform: translateY(-20%) scale(1.2); }
+      35% { opacity: 0; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(0) scale(1); }
+    }
+    /* Анимация подпрыгивания для emoji рукопожатия */
+    @keyframes handshake-bounce {
+      0% { transform: rotate(0deg) scale(1); }
+      8% { transform: rotate(-18deg) scale(1.08); }
+      16% { transform: rotate(16deg) scale(1.08); }
+      24% { transform: rotate(-14deg) scale(1.08); }
+      32% { transform: rotate(12deg) scale(1.08); }
+      40% { transform: rotate(-10deg) scale(1.08); }
+      48% { transform: rotate(8deg) scale(1.08); }
+      56% { transform: rotate(-6deg) scale(1.08); }
+      64% { transform: rotate(4deg) scale(1.08); }
+      72% { transform: rotate(-2deg) scale(1.08); }
+      80% { transform: rotate(0deg) scale(1); }
+      100% { transform: rotate(0deg) scale(1); }
+    }
+    .handshake-bounce {
+      display: inline-block;
+      animation: handshake-bounce 2.2s cubic-bezier(0.4,0,0.6,1) infinite;
+      will-change: transform;
+    }
+    /* Анимация волны для иконки маркетингового анализа */
+    @keyframes wave-analytics {
+      0% { transform: translateY(0); }
+      20% { transform: translateY(-8%); }
+      40% { transform: translateY(0); }
+      60% { transform: translateY(8%); }
+      80% { transform: translateY(0); }
+      100% { transform: translateY(0); }
+    }
+    .wave-analytics {
+      animation: wave-analytics 2.8s ease-in-out infinite;
+      display: inline-block;
+    }
+    /* Анимированный бар-чарт для маркетингового анализа */
+    .bar-chart-anim {
+      display: flex;
+      align-items: flex-end;
+      height: 1.6em;
+      width: 2em;
+      margin-right: 0.7em;
+    }
+    .bar {
+      width: 0.28em;
+      margin: 0 0.11em;
+      background: #111;
+      border-radius: 0.12em;
+      animation: bar-grow-seq 2.2s infinite;
+      animation-timing-function: cubic-bezier(0.4,0,0.6,1);
+    }
+    .bar1 { animation-delay: 0s; }
+    .bar2 { animation-delay: 0.18s; }
+    .bar3 { animation-delay: 0.36s; }
+    .bar4 { animation-delay: 0.54s; }
+    @keyframes bar-grow-seq {
+      0% { height: 28%; }
+      18% { height: 28%; }
+      28% { height: 85%; }
+      46% { height: 85%; }
+      56% { height: 28%; }
+      100% { height: 28%; }
+    }
+    /* Адаптивное уменьшение шрифта в шапке на мобильных */
+    .glass-header {
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+    .glass-header nav {
+      white-space: nowrap;
+      overflow-x: auto;
+      flex-wrap: nowrap !important;
+    }
+    /*
+    .glass-header .logo-block img {
+      max-width: 2.5rem;
+      height: auto;
+    }
+    @media (max-width: 480px) {
+      .glass-header {
+        font-size: 0.78rem;
+        padding-left: 0.1rem;
+        padding-right: 0.1rem;
+      }
+      .glass-header .logo-block img {
+        max-width: 1.7rem;
+      }
+      .glass-header nav {
+        gap: 0.18rem;
+      }
+      .glass-header .nav-link {
+        font-size: 0.82rem;
+        padding: 0.13rem 0.18rem;
+      }
+    }
+    */
+    @media (max-width: 340px) {
+      .glass-header {
+        font-size: 0.65rem;
+      }
+      .glass-header .nav-link {
+        font-size: 0.7rem;
+        padding: 0.09rem 0.12rem;
+      }
+    }
+
+    /* Оверлей "Поверните телефон" для портретной ориентации */
+    @media (orientation: portrait) and (max-width: 900px) {
+      #rotateOverlay {
+        display: flex;
+      }
+    }
+    #rotateOverlay {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(20,20,30,0.92);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      font-size: 1.3rem;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      text-align: center;
+      pointer-events: all;
+    }
+    #rotateOverlay .rotate-icon {
+      font-size: 3.2rem;
+      margin-bottom: 1.2rem;
+      animation: rotate-phone 2.2s infinite;
+    }
+    @keyframes rotate-phone {
+      0% { transform: rotate(0deg); }
+      20% { transform: rotate(-20deg); }
+      40% { transform: rotate(90deg); }
+      60% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
+    /* Retrowave overlay for portrait orientation */
+    #retrowaveOverlay {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(180deg, #1a0033 0%, #ff0080 100%);
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      text-align: center;
+      pointer-events: all;
+      transition: opacity 0.5s;
+    }
+    @media (orientation: portrait) and (max-width: 900px) {
+      #retrowaveOverlay {
+        display: flex;
+      }
+    }
+    #retrowaveOverlay .retro-sun {
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle at 50% 60%, #ffe066 60%, #ff0080 100%);
+      border-radius: 50%;
+      margin: 0 auto 2.5rem auto;
+      box-shadow: 0 0 80px 20px #ff0080aa, 0 0 0 8px #fff2;
+      position: relative;
+      z-index: 2;
+    }
+    #retrowaveOverlay .retro-grid {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      width: 100%;
+      height: 40vh;
+      z-index: 1;
+      background: none;
+      pointer-events: none;
+    }
+    #retrowaveOverlay .retro-stars {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    #retrowaveOverlay .retro-stars span {
+      position: absolute;
+      color: #fffbe9;
+      opacity: 0.7;
+      font-size: 1.1rem;
+      animation: retro-twinkle 3.5s infinite;
+    }
+    #retrowaveOverlay .retro-stars span:nth-child(1) { left: 10%; top: 12%; animation-delay: 0s; }
+    #retrowaveOverlay .retro-stars span:nth-child(2) { left: 80%; top: 18%; animation-delay: 1s; }
+    #retrowaveOverlay .retro-stars span:nth-child(3) { left: 30%; top: 30%; animation-delay: 2s; }
+    #retrowaveOverlay .retro-stars span:nth-child(4) { left: 60%; top: 22%; animation-delay: 1.5s; }
+    #retrowaveOverlay .retro-stars span:nth-child(5) { left: 50%; top: 8%; animation-delay: 2.5s; }
+    @keyframes retro-twinkle {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 0.2; }
+    }
+    #retrowaveOverlay .retro-text {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-shadow: 0 0 16px #ff0080, 0 0 2px #fff, 0 2px 32px #ffe066;
+      margin-bottom: 1.2rem;
+      z-index: 3;
+    }
+    #retrowaveOverlay .retro-sub {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #ffe066;
+      text-shadow: 0 0 8px #ff0080, 0 0 2px #fff;
+      z-index: 3;
+    }
+    /* Анимированная сетка */
+    #retrowaveOverlay .retro-grid svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .retro-phone-anim {
+      margin: 0 auto 1.2rem auto;
+      width: 60px;
+      height: 100px;
+      position: relative;
+      z-index: 3;
+      animation: phone-rotate-anim 2.8s infinite cubic-bezier(0.4,0,0.6,1);
+      transform-origin: 50% 90%;
+    }
+    @keyframes phone-rotate-anim {
+      0% { transform: rotate(0deg); }
+      10% { transform: rotate(-10deg); }
+      20% { transform: rotate(-90deg); }
+      60% { transform: rotate(-90deg); }
+      70% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
+    .retro-hint {
+      font-size: 1.1rem;
+      color: #ffe066;
+      text-shadow: 0 0 8px #ff0080, 0 0 2px #fff;
+      margin-top: 0.5rem;
+      z-index: 3;
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-gray-100">
+  <header class="glass-header">
+    <div class="logo-block" style="display: flex; align-items: center;">
+      <a href="index.ru.html">
+        <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+      </a>
+    </div>
+    <nav class="flex gap-4">
+      <a href="index.ru.html" class="nav-link" data-i18n="nav.home">Главная</a>
+      <a href="about.ru.html" class="nav-link" data-i18n="nav.about">О нас</a>
+      <a href="projects.ru.html" class="nav-link" data-i18n="nav.projects">Проекты</a>
+      <a href="blog/blog.ru.html" class="nav-link" data-i18n="nav.blog">Блог</a>
+      <a href="contact.ru.html" class="nav-link" data-i18n="nav.contact">На связи</a>
+    </nav>
+    <div class="flex gap-2">
+      <a href="about.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="about.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="about.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="about.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+  </header>
+
+  <!-- Оверлей "Поверните телефон" для портретной ориентации -->
+  <div id="rotateOverlay">
+    <span class="rotate-icon">📱</span>
+    <div>Поверните телефон горизонтально<br>для лучшего просмотра сайта</div>
+  </div>
+
+  <!-- Retrowave overlay for portrait orientation -->
+  <div id="retrowaveOverlay">
+    <div class="retro-stars">
+      <span>✦</span><span>•</span><span>✦</span><span>•</span><span>✦</span>
+    </div>
+    <div class="retro-sun"></div>
+    <div class="retro-text">Поверните телефон горизонтально</div>
+    <div class="retro-phone-anim" aria-hidden="true">
+      <svg viewBox="0 0 60 100" width="60" height="100" style="display:block;margin:0 auto;">
+        <g>
+          <rect x="10" y="10" width="40" height="80" rx="10" fill="#222" stroke="#fff" stroke-width="3"/>
+          <rect x="18" y="18" width="24" height="64" rx="4" fill="#ff0080" fill-opacity="0.18"/>
+          <circle cx="30" cy="85" r="3" fill="#ffe066"/>
+        </g>
+      </svg>
+    </div>
+    <div class="retro-hint">Поверните устройство для просмотра сайта</div>
+    <div class="retro-grid">
+      <svg viewBox="0 0 100 40" preserveAspectRatio="none">
+        <g stroke="#fff" stroke-width="0.3" opacity="0.5">
+          <line x1="0" y1="39" x2="100" y2="39" />
+          <line x1="0" y1="32" x2="100" y2="32" />
+          <line x1="0" y1="25" x2="100" y2="25" />
+          <line x1="0" y1="18" x2="100" y2="18" />
+          <line x1="0" y1="11" x2="100" y2="11" />
+          <line x1="0" y1="4" x2="100" y2="4" />
+          <line x1="10" y1="0" x2="30" y2="39" />
+          <line x1="20" y1="0" x2="40" y2="39" />
+          <line x1="30" y1="0" x2="50" y2="39" />
+          <line x1="40" y1="0" x2="60" y2="39" />
+          <line x1="50" y1="0" x2="70" y2="39" />
+          <line x1="60" y1="0" x2="80" y2="39" />
+          <line x1="70" y1="0" x2="90" y2="39" />
+          <line x1="80" y1="0" x2="100" y2="39" />
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Глобальные звёздочки на фоне -->
+  <div class="global-stars absolute inset-0 pointer-events-none" style="z-index:0;">
+    <span class="star" style="top: 10%; left: 8%; font-size: 1.2rem;">✦</span>
+    <span class="star" style="top: 18%; right: 12%; font-size: 0.9rem;">•</span>
+    <span class="star" style="top: 30%; left: 22%; font-size: 1.1rem;">✦</span>
+    <span class="star" style="top: 45%; right: 18%; font-size: 1.3rem;">•</span>
+    <span class="star" style="top: 60%; left: 15%; font-size: 0.8rem;">✦</span>
+    <span class="star" style="top: 75%; right: 10%; font-size: 1.2rem;">•</span>
+    <span class="star" style="top: 85%; left: 30%; font-size: 1.1rem;">✦</span>
+    <span class="star" style="top: 90%; right: 20%; font-size: 1.0rem;">•</span>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="bg-hero text-white py-20 relative overflow-hidden">
+    <!-- Мерцающие звёздочки -->
+    <div class="absolute inset-0">
+      <span class="star" style="top: 15%; left: 10%; font-size: 1.2rem;">✦</span>
+      <span class="star" style="top: 25%; right: 15%; font-size: 0.8rem;">•</span>
+      <span class="star" style="top: 40%; left: 20%; font-size: 1rem;">✦</span>
+      <span class="star" style="top: 60%; right: 25%; font-size: 1.1rem;">•</span>
+      <span class="star" style="top: 75%; left: 15%; font-size: 0.8rem;">✦</span>
+      <span class="star" style="top: 85%; right: 10%; font-size: 1.2rem;">•</span>
+    </div>
+    
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <!-- Анимированное фото -->
+      <div class="relative mb-12">
+        <div class="relative mx-auto w-64 h-80 transform hover:scale-105 transition-all duration-700 pulse-heart">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20">
+            <img src="assets/Image 960x1280.jpg" alt="Рафаэль и Аделя" 
+                 class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Основной заголовок -->
+      <div class="mb-8">
+        <h1 class="text-6xl md:text-7xl font-bold mb-4 text-shadow animate-fade-in">
+          <span class="bg-gradient-to-r from-gray-200 to-white bg-clip-text text-transparent">
+            Рафаэль
+          </span>
+          <span class="text-white mx-4">и</span>
+          <span class="bg-gradient-to-r from-gray-300 to-gray-200 bg-clip-text text-transparent">
+            Аделя
+          </span>
+        </h1>
+        
+        <div class="text-2xl md:text-3xl font-light opacity-90 mb-6">
+          <span class="inline-block animate-slide-up">Вместе уже больше пяти лет</span>
+        </div>
+      </div>
+      
+      <!-- Описание -->
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl p-8 border border-white border-opacity-10 glow-effect">
+          <p class="text-xl md:text-2xl leading-relaxed font-light">
+            Создавая продукты, которые объединяют
+          </p>
+          
+          <!-- Иконки компетенций -->
+          <div class="flex justify-center items-center space-x-8 mt-6 mb-4">
+            <div class="flex flex-col items-center group">
+              <div class="bg-gradient-to-br from-gray-600 to-gray-800 rounded-full p-3 mb-2 group-hover:from-gray-500 group-hover:to-gray-700 transition-all duration-300 shadow-lg">
+                <svg class="icon-lg text-white" viewBox="0 0 24 24">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
+                </svg>
+              </div>
+              <span class="text-sm font-medium">Бизнес-логику</span>
+            </div>
+            <div class="flex flex-col items-center group">
+              <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-full p-3 mb-2 group-hover:from-blue-500 group-hover:to-blue-700 transition-all duration-300 shadow-lg">
+                <svg class="icon-lg text-white" viewBox="0 0 24 24">
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                </svg>
+              </div>
+              <span class="text-sm font-medium">Аналитику</span>
+            </div>
+            <div class="flex flex-col items-center group">
+              <div class="bg-gradient-to-br from-green-600 to-green-800 rounded-full p-3 mb-2 group-hover:from-green-500 group-hover:to-green-700 transition-all duration-300 shadow-lg">
+                <svg class="icon-lg text-white" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </div>
+              <span class="text-sm font-medium">Дизайн</span>
+            </div>
+            <div class="flex flex-col items-center group">
+              <div class="bg-gradient-to-br from-purple-600 to-purple-800 rounded-full p-3 mb-2 group-hover:from-purple-500 group-hover:to-purple-700 transition-all duration-300 shadow-lg">
+                <svg class="icon-lg text-white" viewBox="0 0 24 24">
+                  <path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.5 2.54l2.6 1.53c.56-1.24.9-2.62.9-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/>
+                </svg>
+              </div>
+              <span class="text-sm font-medium">Технологии</span>
+            </div>
+          </div>
+          
+          <div class="mt-6 pt-6 border-t border-white border-opacity-10">
+            <p class="text-lg opacity-80">
+              R&A Studio — где каждая идея превращается в работающий продукт
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="py-16">
+    <div class="container mx-auto px-6">
+      <!-- Первый блок: О нас -->
+      <div class="mb-16">
+        <div class="card-gradient-1 rounded-3xl p-8 md:p-12 text-white shadow-2xl hover-scale relative overflow-hidden slide-in-left glow-effect bg-white bg-opacity-5 backdrop-blur-sm mb-16">
+          <div class="relative z-10">
+            <div class="flex items-center mb-8">
+              <div class="bg-white bg-opacity-10 rounded-full p-4 mr-6 backdrop-blur-sm">
+                <svg class="icon-xl text-white" viewBox="0 0 24 24">
+                  <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                </svg>
+              </div>
+              <div>
+                <h2 class="text-4xl font-bold">О нас <span class="ml-2">👨‍💻👩‍💻</span></h2>
+                <p class="text-lg opacity-90">Рафаэль и Аделя</p>
+              </div>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+              <div class="lg:col-span-2">
+                <div class="bg-white bg-opacity-5 rounded-2xl p-6 backdrop-blur-sm mb-6 glow-effect">
+                  <p class="text-lg mb-4 leading-relaxed">
+                    Мы — Рафаэль и Аделя. Вместе уже больше пяти лет, и всё это время мы учились, пробовали, запускали, исправляли и доводили до результата — как в жизни, так и в проектах.
+                  </p>
+                  <p class="text-lg leading-relaxed">
+                    Наша R&A Studio — это команда из двух человек. Мы вместе проходим весь путь: от первой идеи до финальной сборки и запуска.
+                  </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div class="bg-white bg-opacity-5 rounded-xl p-4 backdrop-blur-sm glow-effect">
+                    <div class="flex items-center mb-2">
+                      <svg class="icon-lg text-white mr-3" viewBox="0 0 24 24">
+                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                      </svg>
+                      <h4 class="font-bold">Образование</h4>
+                    </div>
+                    <p class="text-sm opacity-90">Высшее образование в области экономики со специализацией в предпринимательстве и инновациях</p>
+                  </div>
+                  <div class="bg-white bg-opacity-5 rounded-xl p-4 backdrop-blur-sm glow-effect">
+                    <div class="flex items-center mb-2">
+                      <svg class="icon-lg text-white mr-3" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                      </svg>
+                      <h4 class="font-bold">AI & Big Data</h4>
+                    </div>
+                    <p class="text-sm opacity-90">Профессиональная переподготовка по направлению «искусственный интеллект и большие данные»</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <h3 class="text-2xl font-bold mb-4 flex items-center">
+                  <svg class="icon-lg text-white mr-2" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  Наши продукты
+                </h3>
+                <div class="space-y-3">
+                  <div class="bg-white bg-opacity-5 rounded-xl p-4 backdrop-blur-sm border border-white border-opacity-10 hover:bg-opacity-10 transition-all duration-300 glow-effect">
+                    <div class="flex items-center justify-between mb-2">
+                      <h4 class="font-bold text-lg">АдиГид</h4>
+                      <span class="text-sm bg-white bg-opacity-10 px-2 py-1 rounded-full">Мобильное</span>
+                    </div>
+                    <p class="text-sm opacity-90">Приложение с аудиогидами</p>
+                  </div>
+                  <div class="bg-white bg-opacity-5 rounded-xl p-4 backdrop-blur-sm border border-white border-opacity-10 hover:bg-opacity-10 transition-all duration-300 glow-effect">
+                    <div class="flex items-center justify-between mb-2">
+                      <h4 class="font-bold text-lg">CyberConnect</h4>
+                      <span class="text-sm bg-white bg-opacity-10 px-2 py-1 rounded-full">Устройство</span>
+                    </div>
+                    <p class="text-sm opacity-90">Для объединения интернет-каналов</p>
+                  </div>
+                  <div class="bg-white bg-opacity-5 rounded-xl p-4 backdrop-blur-sm border border-white border-opacity-10 hover:bg-opacity-10 transition-all duration-300 glow-effect">
+                    <div class="flex items-center justify-between mb-2">
+                      <h4 class="font-bold text-lg">DebtMate</h4>
+                      <span class="text-sm bg-white bg-opacity-10 px-2 py-1 rounded-full">Сервис</span>
+                    </div>
+                    <p class="text-sm opacity-90">Для учёта долгов и обязательств</p>
+                  </div>
+                  <div class="bg-white bg-opacity-5 rounded-xl p-4 backdrop-blur-sm border border-white border-opacity-10 hover:bg-opacity-10 transition-all duration-300 glow-effect">
+                    <div class="flex items-center justify-between mb-2">
+                      <h4 class="font-bold text-lg">ToDooliCo</h4>
+                      <span class="text-sm bg-white bg-opacity-10 px-2 py-1 rounded-full">Трекер</span>
+                    </div>
+                    <p class="text-sm opacity-90">Для простого планирования</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-8 grid md:grid-cols-2 gap-6">
+              <div class="bg-white bg-opacity-5 rounded-xl p-6 backdrop-blur-sm glow-effect">
+                <div class="flex items-center mb-3">
+                  <span class="bar-chart-anim">
+                    <span class="bar bar1"></span>
+                    <span class="bar bar2"></span>
+                    <span class="bar bar3"></span>
+                    <span class="bar bar4"></span>
+                  </span>
+                  <h4 class="font-bold text-lg">Маркетинговый анализ</h4>
+                </div>
+                <p class="text-sm opacity-90">Полный цикл анализа для агентства по найму временного персонала: опросы сотрудников и клиентов, тестирование конкурентов, помощь в редизайне логотипа и смене названия, чек-листы и рекомендации</p>
+              </div>
+              <div class="bg-white bg-opacity-5 rounded-xl p-6 backdrop-blur-sm glow-effect">
+                <div class="flex items-center mb-3">
+                  <h4 class="font-bold text-lg flex items-center gap-2">
+                    <span class="currency-anim mr-2">
+                      <span class="currency">₽</span>
+                      <span class="currency">€</span>
+                      <span class="currency">£</span>
+                      <span class="currency">₸</span>
+                    </span>
+                    Финансовое консультирование
+                  </h4>
+                </div>
+                <p class="text-sm opacity-90">Ведение финансовой модели и экономики для магазина электроники с продолжением консультаций</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Второй блок: Как мы работаем -->
+      <div class="mb-16">
+        <div class="card-gradient-2 rounded-3xl p-8 md:p-12 text-white shadow-2xl hover-scale relative overflow-hidden slide-in-right glow-effect bg-white bg-opacity-5 backdrop-blur-sm mb-16">
+          <div class="flex items-center mb-8">
+            <div class="bg-white bg-opacity-10 rounded-full p-4 mr-6 backdrop-blur-sm soft-glow">
+              <svg class="icon-xl text-white" viewBox="0 0 24 24">
+                <path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.5 2.54l2.6 1.53c.56-1.24.9-2.62.9-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/>
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-4xl font-bold">Мы работаем вместе с вами</h2>
+              <p class="text-xl opacity-90 mt-2">Не просто делаем — развиваем</p>
+            </div>
+          </div>
+          <div class="bg-white bg-opacity-10 rounded-2xl p-8 mb-8 backdrop-blur-sm glow-effect pulse-glow">
+            <p class="text-lg md:text-xl leading-relaxed mb-6">
+              Мы не просто реализуем интерфейсы. Мы вникаем в суть, задаём вопросы, обсуждаем и вместе с вами улучшаем продукт. Для нас важно не просто сделать задачу, а помочь бизнесу расти.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h4 class="text-xl font-bold mb-4 flex items-center">
+                  <svg class="icon-lg text-white mr-3" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  Что мы делаем
+                </h4>
+                <ul class="space-y-3">
+                  <li class="flex items-center"><span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center mr-3 text-sm">✓</span>Дизайн в Figma</li>
+                  <li class="flex items-center"><span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center mr-3 text-sm">✓</span>Пишем код</li>
+                  <li class="flex items-center"><span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center mr-3 text-sm">✓</span>Готовим тексты</li>
+                  <li class="flex items-center"><span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center mr-3 text-sm">✓</span>Строим архитектуру</li>
+                  <li class="flex items-center"><span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center mr-3 text-sm">✓</span>Ищем подрядчиков</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold mb-4 flex items-center">
+                  <span class="text-2xl mr-3 handshake-bounce">🤝</span>
+                  Наш подход
+                </h4>
+                <ol class="space-y-3 list-decimal list-inside">
+                  <li>
+                    <span class="font-semibold">Понимаем задачу в контексте</span><br>
+                    <span class="text-sm">Много спрашиваем, чтобы понять ваш взгляд и цели.</span>
+                  </li>
+                  <li>
+                    <span class="font-semibold">Фокусируемся на важном</span><br>
+                    <span class="text-sm">Выделяем ключевое, отсекаем лишнее.</span>
+                  </li>
+                  <li>
+                    <span class="font-semibold">Анализируем идею</span><br>
+                    <span class="text-sm">Оцениваем потенциал, предвидим узкие места.</span>
+                  </li>
+                  <li>
+                    <span class="font-semibold">Делаем вместе</span><br>
+                    <span class="text-sm">Проходим путь от чернового прототипа до готового решения.</span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 p-8 bg-white bg-opacity-5 rounded-2xl glow-effect elegant-fade-in" style="animation-delay: 1s;">
+            <div class="text-center">
+              <h3 class="text-2xl font-bold mb-4">Что в итоге</h3>
+              <p class="text-lg leading-relaxed">
+                Мы создаём не просто работающий продукт, а инструмент роста. Каждый проект — это совместная работа, в которой мы вкладываемся так же, как и вы.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Третий блок: Что нам важно -->
+      <div class="mb-16">
+        <div class="card-gradient-3 rounded-3xl p-8 md:p-12 text-white shadow-2xl hover-scale relative overflow-hidden slide-in-left glow-effect bg-white bg-opacity-5 backdrop-blur-sm mb-16">
+          <div class="flex items-center mb-8">
+            <div class="bg-white bg-opacity-10 rounded-full p-4 mr-6 backdrop-blur-sm">
+              <svg class="icon-xl text-white" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <h2 class="text-4xl font-bold">Что нам важно</h2>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <div class="space-y-6">
+                <div class="bg-white bg-opacity-5 rounded-xl p-6 glow-effect">
+                  <h3 class="text-xl font-bold mb-2">Смысл в проекте</h3>
+                  <p class="text-lg">Чтобы в проекте был смысл</p>
+                </div>
+                <div class="bg-white bg-opacity-5 rounded-xl p-6 glow-effect">
+                  <h3 class="text-xl font-bold mb-2">Живой диалог</h3>
+                  <p class="text-lg">Чтобы был диалог, а не сухое ТЗ</p>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <div class="space-y-6">
+                <div class="bg-white bg-opacity-5 rounded-xl p-6 glow-effect">
+                  <h3 class="text-xl font-bold mb-2">Продуманные решения</h3>
+                  <p class="text-lg">Чтобы решения были продуманы, а не просто «как у всех»</p>
+                </div>
+                <div class="bg-white bg-opacity-5 rounded-xl p-6 glow-effect">
+                  <h3 class="text-xl font-bold mb-2">Совместное участие</h3>
+                  <p class="text-lg">Чтобы вы включались в процесс так же, как и мы</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8 p-6 bg-white bg-opacity-5 rounded-xl glow-effect">
+            <p class="text-lg leading-relaxed">
+              R&A Studio — это про совместное мышление, уважение к деталям и честную работу на результат. Нам важен не только продукт, но и путь, по которому он развивается вместе с вами.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-6 bg-slate-800 text-gray-400 border-t border-slate-700 mt-12">
+    <p class="text-sm" data-i18n="footer.copy">© 2025 R&A Studio. Все права защищены.</p>
+  </footer>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.ru.html" data-i18n="nav.home">Главная</a>
+    <a href="about.ru.html" data-i18n="nav.about">О нас</a>
+    <a href="projects.ru.html" data-i18n="nav.projects">Проекты</a>
+    <a href="blog/blog.ru.html" data-i18n="nav.blog">Блог</a>
+    <a href="contact.ru.html" data-i18n="nav.contact">На связи</a>
+  </div>
+</body>
+</html> 

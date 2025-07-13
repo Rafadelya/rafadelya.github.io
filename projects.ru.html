@@ -3,14 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Проекты | R&A Studio</title>
+  <title>R&A Studio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="assets/favicon.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/2b8e2e5e2a.js" crossorigin="anonymous"></script>
+  <script defer src="js/i18n.js"></script>
+  <script defer src="js/main.js"></script>
   <style>
+    @font-face {
+      font-family: 'Howdybun';
+      src: url('fonts/howdybun.otf') format('opentype'),
+           url('fonts/howdybun.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    /* Retrowave overlay for portrait orientation */
+    #retrowaveOverlay {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(180deg, #1a0033 0%, #ff0080 100%);
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      text-align: center;
+      pointer-events: all;
+      transition: opacity 0.5s;
+    }
+    @media (orientation: portrait) and (max-width: 900px) {
+      #retrowaveOverlay {
+        display: flex;
+      }
+    }
+    #retrowaveOverlay .retro-sun {
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle at 50% 60%, #ffe066 60%, #ff0080 100%);
+      border-radius: 50%;
+      margin: 0 auto 2.5rem auto;
+      box-shadow: 0 0 80px 20px #ff0080aa, 0 0 0 8px #fff2;
+      position: relative;
+      z-index: 2;
+    }
+    #retrowaveOverlay .retro-grid {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      width: 100%;
+      height: 40vh;
+      z-index: 1;
+      background: none;
+      pointer-events: none;
+    }
+    #retrowaveOverlay .retro-stars {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    #retrowaveOverlay .retro-stars span {
+      position: absolute;
+      color: #fffbe9;
+      opacity: 0.7;
+      font-size: 1.1rem;
+      animation: retro-twinkle 3.5s infinite;
+    }
+    #retrowaveOverlay .retro-stars span:nth-child(1) { left: 10%; top: 12%; animation-delay: 0s; }
+    #retrowaveOverlay .retro-stars span:nth-child(2) { left: 80%; top: 18%; animation-delay: 1s; }
+    #retrowaveOverlay .retro-stars span:nth-child(3) { left: 30%; top: 30%; animation-delay: 2s; }
+    #retrowaveOverlay .retro-stars span:nth-child(4) { left: 60%; top: 22%; animation-delay: 1.5s; }
+    #retrowaveOverlay .retro-stars span:nth-child(5) { left: 50%; top: 8%; animation-delay: 2.5s; }
+    @keyframes retro-twinkle {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 0.2; }
+    }
+    .retro-phone-emoji {
+      display: inline-block;
+      animation: phone-rotate-anim 2.8s infinite cubic-bezier(0.4,0,0.6,1);
+      transform-origin: 50% 90%;
+      will-change: transform;
+      font-size: 3.2rem;
+      margin-bottom: 1.2rem;
+    }
+    @keyframes phone-rotate-anim {
+      0% { transform: rotate(0deg); }
+      10% { transform: rotate(-10deg); }
+      20% { transform: rotate(-90deg); }
+      60% { transform: rotate(-90deg); }
+      70% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
+    
     .dark-mode { background: #18181b; color: #f3f4f6; }
     .dark-mode .project-card { background: #232336; color: #f3f4f6; }
     .dark-mode .floating-quote { background: rgba(30,30,40,0.9); color: #fff; }
@@ -20,15 +109,94 @@
     .fade-in-up.visible { opacity: 1; transform: translateY(0) scale(1); }
     /* Мини-якорная навигация */
     .anchor-nav { display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem; margin-bottom: 0.5rem; font-size: 0.95em; }
-    .anchor-link { color: #7c3aed; text-decoration: none; position: relative; padding-bottom: 2px; }
-    .anchor-link.active, .anchor-link:hover { color: #2d014d; }
-    .anchor-link.active::after, .anchor-link:hover::after { content: ''; display: block; height: 2px; background: #7c3aed; width: 100%; position: absolute; left: 0; bottom: 0; border-radius: 1px; }
+    .anchor-link { color: #7c3aed; text-decoration: none; position: relative; padding-bottom: 2px; transition: color 0.3s; }
+    .anchor-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: #7c3aed; transition: width 0.3s; }
+    .anchor-link:hover::after, .anchor-link.active::after { width: 100%; }
+    .anchor-link.active { color: #5b21b6; font-weight: 600; }
+    
+    /* ПРИНУДИТЕЛЬНО УСТАНАВЛИВАЕМ РАЗМЕРЫ ШАПКИ */
+    body .glass-header .nav-link {
+      font-size: 1rem !important;
+      font-weight: 500 !important;
+      padding: 0.5rem 1rem !important;
+    }
+    body .glass-header .lang-flag {
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+      font-size: 1.5rem !important;
+    }
+    body .glass-header .flag-icon {
+      font-size: 1.5rem !important;
+    }
+    body .glass-header .glass-logo-img {
+      width: 64px !important;
+      height: 64px !important;
+    }
+    /* Мобильные стили */
+    @media (max-width: 900px) {
+      body .glass-header .nav-link {
+        font-size: 1rem !important;
+        padding: 0.5rem 1rem !important;
+      }
+      body .glass-header .lang-flag {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        font-size: 1.5rem !important;
+      }
+      body .glass-header .flag-icon {
+        font-size: 1.5rem !important;
+      }
+      body .glass-header .glass-logo-img {
+        width: 64px !important;
+        height: 64px !important;
+      }
+    }
+    @media (max-width: 600px) {
+      body .glass-header .nav-link {
+        font-size: 1rem !important;
+        padding: 0.5rem 1rem !important;
+      }
+      body .glass-header .lang-flag {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        font-size: 1.5rem !important;
+      }
+      body .glass-header .flag-icon {
+        font-size: 1.5rem !important;
+      }
+      body .glass-header .glass-logo-img {
+        width: 64px !important;
+        height: 64px !important;
+      }
+    }
   </style>
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
 </head>
-<body class="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-300">
-  <!-- Удалён блок header .glass-header -->
+<body class="bg-white text-gray-800">
+  <header class="glass-header">
+    <div class="logo-block" style="display: flex; align-items: center;">
+      <a href="index.ru.html">
+        <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img" style="width: 64px !important; height: 64px !important;">
+      </a>
+    </div>
+    <nav class="flex gap-4">
+      <a href="index.ru.html" class="nav-link" style="font-size: 1rem !important; font-weight: 500 !important; padding: 0.5rem 1rem !important;">Главная</a>
+      <a href="about.ru.html" class="nav-link" style="font-size: 1rem !important; font-weight: 500 !important; padding: 0.5rem 1rem !important;">О нас</a>
+      <a href="projects.ru.html" class="nav-link" style="font-size: 1rem !important; font-weight: 500 !important; padding: 0.5rem 1rem !important;">Проекты</a>
+      <a href="blog/blog.ru.html" class="nav-link" style="font-size: 1rem !important; font-weight: 500 !important; padding: 0.5rem 1rem !important;">Блог</a>
+      <a href="contact.ru.html" class="nav-link" style="font-size: 1rem !important; font-weight: 500 !important; padding: 0.5rem 1rem !important;">На связи</a>
+    </nav>
+    <div class="flex gap-2">
+      <a href="index.en.html" class="lang-flag" aria-label="English" style="width: 2.5rem !important; height: 2.5rem !important; font-size: 1.5rem !important;"><span class="flag-icon" style="font-size: 1.5rem !important;">🇬🇧</span></a>
+      <a href="index.de.html" class="lang-flag" aria-label="Deutsch" style="width: 2.5rem !important; height: 2.5rem !important; font-size: 1.5rem !important;"><span class="flag-icon" style="font-size: 1.5rem !important;">🇩🇪</span></a>
+      <a href="index.fr.html" class="lang-flag" aria-label="Français" style="width: 2.5rem !important; height: 2.5rem !important; font-size: 1.5rem !important;"><span class="flag-icon" style="font-size: 1.5rem !important;">🇫🇷</span></a>
+      <a href="index.ru.html" class="lang-flag active" aria-label="Русский" style="width: 2.5rem !important; height: 2.5rem !important; font-size: 1.5rem !important;"><span class="flag-icon" style="font-size: 1.5rem !important;">🇷🇺</span></a>
+    </div>
+  </header>
+
   <!-- Hero Section -->
-  <section class="max-w-2xl mx-auto mt-12 mb-12 bg-white rounded-3xl shadow-lg px-8 py-14 text-center">
+  <section class="max-w-2xl mx-auto mt-24 mb-12 bg-white rounded-3xl shadow-lg px-8 py-14 text-center">
     <h1 class="text-5xl font-extrabold text-gray-900 mb-6" style="font-family:'Montserrat', 'Inter', sans-serif;">
       Проекты R&A Studio
     </h1>
@@ -163,8 +331,9 @@
         <li>Аналитика</li>
         <li>Публикация</li>
       </ul>
-      <div style="padding-top: 1rem;">
+      <div style="padding-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
         <a href="https://usptu-bulletin.ru/index.php/bul/article/view/11710" class="expand-btn px-4 py-2 bg-indigo-600 text-white rounded text-base font-bold hover:bg-indigo-700 transition" target="_blank">Подробнее</a>
+        <a href="assets/ПОТРЕБИТЕЛЬСКОЕ ПОВЕДЕНИЕ В УСЛОВИЯХ ЦИФРОВИЗАЦИИ В ЭКОНОМИКЕ.pdf" class="expand-btn px-4 py-2 bg-green-600 text-white rounded text-base font-bold hover:bg-green-700 transition" download="ПОТРЕБИТЕЛЬСКОЕ ПОВЕДЕНИЕ В УСЛОВИЯХ ЦИФРОВИЗАЦИИ В ЭКОНОМИКЕ.pdf">📥 Скачать PDF</a>
       </div>
       <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
         <span>Анализ</span>—<span>Публикация</span>
@@ -182,8 +351,9 @@
         <li>Аналитика</li>
         <li>Публикация</li>
       </ul>
-      <div style="padding-top: 1rem;">
+      <div style="padding-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
         <a href="https://usptu-bulletin.ru/index.php/bul/article/view/13035" class="expand-btn px-4 py-2 bg-indigo-700 text-white rounded text-base font-bold hover:bg-indigo-800 transition" target="_blank">Подробнее</a>
+        <a href="assets/РАЗРАБОТКА СЕРВИСА МОБИЛЬНОЙ АГРЕГАЦИИ ТРАФИКА НА ОСНОВЕ ОТКРЫТЫХ РЕШЕНИЙ.pdf" class="expand-btn px-4 py-2 bg-green-600 text-white rounded text-base font-bold hover:bg-green-700 transition" download="РАЗРАБОТКА СЕРВИСА МОБИЛЬНОЙ АГРЕГАЦИИ ТРАФИКА НА ОСНОВЕ ОТКРЫТЫХ РЕШЕНИЙ.pdf">📥 Скачать PDF</a>
       </div>
       <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
         <span>Анализ</span>—<span>Публикация</span>

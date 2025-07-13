@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ToDooliCo | Проект R&A Studio</title>
+  <title>ToDooliCo | R&A Studio Project</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
@@ -120,63 +120,85 @@
 <body class="min-h-screen flex flex-col">
   <header class="glass-header flex flex-row items-center justify-between gap-8">
     <div class="logo-block">
-      <a href="../index.ru.html">
+      <a href="../index.en.html">
         <img src="../assets/Logo design R.A. Stu.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
       </a>
     </div>
     <nav class="flex gap-4">
-      <a href="../index.ru.html" class="nav-link">Главная</a>
-      <a href="../about.ru.html" class="nav-link">О нас</a>
-      <a href="../projects.ru.html" class="nav-link">Проекты</a>
-      <a href="../blog/blog.ru.html" class="nav-link">Блог</a>
-      <a href="../contact.ru.html" class="nav-link">На связи</a>
+      <a href="../index.en.html" class="nav-link">Home</a>
+      <a href="../about.en.html" class="nav-link">About</a>
+      <a href="../projects.en.html" class="nav-link">Projects</a>
+      <a href="../blog/blog.en.html" class="nav-link">Blog</a>
+      <a href="../contact.en.html" class="nav-link">Contact</a>
     </nav>
     <div class="flex gap-2">
-      <a href="../index.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="../index.en.html" class="lang-flag active" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
       <a href="../index.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
       <a href="../index.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
-      <a href="../index.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+      <a href="../index.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
     </div>
   </header>
   <main class="max-w-3xl mx-auto px-4 py-14 space-y-12 flex-1 flex flex-col">
-    <!-- Title and Description -->
+    <!-- Title and description -->
     <div class="bg-white rounded-3xl shadow-2xl p-10 text-center mb-4">
       <h1 class="text-4xl font-extrabold text-purple-700 flex items-center justify-center gap-3 mb-2">
         <img src="../assets/AppIcon~todoolico.png" alt="ToDooliCo" style="width:2.5em;height:2.5em;border-radius:0.7em;box-shadow:0 2px 8px #f9a8d433;object-fit:cover;" loading="lazy">
         ToDooliCo
       </h1>
-      <p class="text-lg text-gray-800 mb-2">A minimalist organizer where everything truly belongs to you.<br>Tasks, passwords, and lists — offline, no registration, no cloud.</p>
+      <p class="text-lg text-gray-800 mb-2">A minimalist organizer where everything truly belongs to you.<br>Tasks, passwords, and lists — all offline, no sign-up, no cloud.</p>
     </div>
     <!-- Checklist -->
     <section class="bg-gray-50 rounded-2xl shadow-lg p-8">
       <h2 class="text-xl font-bold text-purple-700 mb-4">What can ToDooliCo do?</h2>
       <div>
-        <div class="checklist-item"><div class="checklist-checkbox"></div><span class="checklist-text">Simple task tracker with clean lists</span></div>
-        <div class="checklist-item"><div class="checklist-checkbox"></div><span class="checklist-text">Kanban board for visual planning</span></div>
-        <div class="checklist-item"><div class="checklist-checkbox"></div><span class="checklist-text">Built-in password manager with encryption</span></div>
-        <div class="checklist-item"><div class="checklist-checkbox"></div><span class="checklist-text">Distraction-free interface</span></div>
-        <div class="checklist-item"><div class="checklist-checkbox"></div><span class="checklist-text">All data stored locally (Hive), fully offline</span></div>
-        <div class="checklist-item"><div class="checklist-checkbox"></div><span class="checklist-text">Available on iOS, Android, macOS, Windows, and Linux</span></div>
-        <div class="checklist-item"><div class="checklist-checkbox"></div><span class="checklist-text">Light and dark mode support</span></div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <span class="checklist-text">Simple task tracker with a clean list view</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <span class="checklist-text">Kanban board for visual planning</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <span class="checklist-text">Encrypted password manager</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <span class="checklist-text">Distraction-free interface</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <span class="checklist-text">All data stored locally (Hive) — 100% offline</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <span class="checklist-text">iOS, Android, macOS, Windows, and Linux support</span>
+        </div>
+        <div class="checklist-item">
+          <div class="checklist-checkbox"></div>
+          <span class="checklist-text">Dark and light mode options</span>
+        </div>
       </div>
     </section>
-    <!-- Kanban Board Example -->
+    <!-- Kanban board -->
     <section>
       <div class="kanban-header-wrap flex justify-center mb-2">
-        <h2 class="text-xl font-extrabold text-white px-6 py-2 rounded-xl shadow-lg bg-gradient-to-r from-purple-500 via-purple-400 to-yellow-400 border border-purple-300/40" style="letter-spacing:0.01em;">Kanban board example in the app</h2>
+        <h2 class="text-xl font-extrabold text-white px-6 py-2 rounded-xl shadow-lg bg-gradient-to-r from-purple-500 via-purple-400 to-yellow-400 border border-purple-300/40" style="letter-spacing:0.01em;">Example Kanban board in the app</h2>
       </div>
       <div class="kanban-board-unified bg-gray-50 rounded-2xl shadow-lg p-6 flex flex-row gap-6 justify-between items-start overflow-x-auto relative">
         <div class="kanban-col flex-1 min-w-[220px]" style="border-top: 4px solid #a78bfa;">
           <div class="kanban-title text-center" style="color:#a78bfa;">Backlog</div>
-          <div class="kanban-card kanban-task" data-stage="0"><label class="flex items-center gap-2"><input type="checkbox" class="kanban-checkbox"> <span>📝 Add task</span></label></div>
-          <div class="kanban-card kanban-task" data-stage="0"><label class="flex items-center gap-2"><input type="checkbox" class="kanban-checkbox"> <span>🔑 Save new password</span></label></div>
-          <div class="kanban-card kanban-task" data-stage="0"><label class="flex items-center gap-2"><input type="checkbox" class="kanban-checkbox"> <span>📋 Create shopping list</span></label></div>
+          <div class="kanban-card kanban-task" data-stage="0"><label class="flex items-center gap-2"><input type="checkbox" class="kanban-checkbox"> <span>📝 Add a new task</span></label></div>
+          <div class="kanban-card kanban-task" data-stage="0"><label class="flex items-center gap-2"><input type="checkbox" class="kanban-checkbox"> <span>🔑 Save a new password</span></label></div>
+          <div class="kanban-card kanban-task" data-stage="0"><label class="flex items-center gap-2"><input type="checkbox" class="kanban-checkbox"> <span>📋 Create a shopping list</span></label></div>
         </div>
         <div class="kanban-col flex-1 min-w-[220px]" style="border-top: 4px solid #fbbf24;">
-          <div class="kanban-title text-center" style="color:#fbbf24;">In progress</div>
+          <div class="kanban-title text-center" style="color:#fbbf24;">In Progress</div>
         </div>
         <div class="kanban-col flex-1 min-w-[220px]" style="border-top: 4px solid #34d399;">
           <div class="kanban-title text-center" style="color:#34d399;">Done</div>
+          <div class="kanban-card kanban-task" data-stage="2"><label class="flex items-center gap-2"><input type="checkbox" class="kanban-checkbox" checked> <span>✅ Password manager</span></label></div>
         </div>
       </div>
       <div class="kanban-arrows flex justify-center items-center gap-4 mt-2 mb-1">
@@ -190,7 +212,7 @@
       </div>
     </section>
     <script>
-      // Канбан: перемещение задач по этапам при клике на чекбокс
+      // Kanban: move tasks between stages when clicking checkbox
       document.addEventListener('DOMContentLoaded', function() {
         const stages = [
           document.querySelectorAll('.kanban-col')[0],
@@ -323,7 +345,7 @@
       }
     </style>
     <script>
-      // Стрелки для горизонтального скролла канбан-доски
+      // Arrows for horizontal kanban board scroll
       document.addEventListener('DOMContentLoaded', function() {
         const kanbanBoard = document.querySelector('.kanban-board-unified');
         const leftBtn = document.querySelector('.kanban-arrow-left');
@@ -353,41 +375,41 @@
         <span>Password Manager</span>
         <span id="monkey-emoji" class="transition-all duration-200 cursor-pointer select-none ml-2" style="font-size:2em;">🙈</span>
       </h2>
-      <p class="text-gray-800 mb-4">ToDooliCo offers a simple and secure way to store your passwords and sensitive data directly within the app. All entries are encrypted locally using modern algorithms, ensuring your privacy stays protected.</p>
+      <p class="text-gray-800 mb-4">ToDooliCo offers a simple and secure way to store your passwords and sensitive data — all within the app. Everything is safely encrypted locally using modern algorithms, ensuring your privacy stays protected.</p>
       <ul class="list-disc pl-6 text-gray-800 space-y-1 mb-2">
-        <li>Passwords and notes are stored only on your device — no clouds, no sync</li>
-        <li>Fast access through a clean, intuitive interface</li>
-        <li>Easy creation, editing, and deletion of records</li>
-        <li>Master password or biometric protection (if supported by your device)</li>
-        <li>Fully offline – no internet connection required</li>
+        <li>Your passwords and notes are stored only on your device — no clouds, no internet syncing.</li>
+        <li>Quick access to saved data in a user-friendly interface.</li>
+        <li>Easy to create, edit, and delete entries.</li>
+        <li>Protect your passwords with a master password or biometrics (if supported by your device).</li>
+        <li>Fully offline — no need for a network connection.</li>
       </ul>
-      <p class="text-gray-700 mt-2">With ToDooliCo, your passwords stay in your hands, and security stays top priority.</p>
+      <p class="text-gray-700 mt-2">With ToDooliCo, your passwords stay under your control — and security is always the priority.</p>
     </section>
-    <!-- Who is it for? -->
+    <!-- Who it's for -->
     <section class="bg-white rounded-2xl shadow-lg p-8">
-      <h2 class="text-xl font-bold text-purple-700 mb-4">Who is it for?</h2>
+      <h2 class="text-xl font-bold text-purple-700 mb-4">Who it's for</h2>
       <ul class="list-disc pl-6 text-gray-800 space-y-1">
         <li>Those who value simplicity without sacrificing functionality</li>
         <li>Developers, designers, and tech professionals</li>
-        <li>People who work offline or care about privacy</li>
-        <li>Users tired of complex apps for simple tasks</li>
-        <li>Anyone looking for a “quiet” organizer</li>
+        <li>People who work offline or care deeply about privacy</li>
+        <li>Users tired of overcomplicated task tools</li>
+        <li>Anyone who wants a "quiet organizer"</li>
       </ul>
     </section>
     <!-- Principles -->
     <section class="bg-gray-50 rounded-2xl shadow-lg p-8">
-      <h2 class="text-xl font-bold text-purple-700 mb-4">🧠 ToDooliCo Principles</h2>
+      <h2 class="text-xl font-bold text-purple-700 mb-4">🌿 ToDooliCo Principles</h2>
       <ul class="principle-list">
-        <li><span class="icon">🧘</span> Minimalism as a mindset</li>
+        <li><span class="icon">🧘</span> Minimalism as a philosophy</li>
         <li><span class="icon">🔒</span> Privacy without compromise</li>
-        <li><span class="icon">⚡</span> Ease without learning curve</li>
+        <li><span class="icon">⚡</span> Usability without a learning curve</li>
       </ul>
     </section>
     <!-- CTA -->
     <section class="flex justify-center mt-8">
       <div class="w-full max-w-xl bg-white rounded-2xl shadow-2xl px-8 py-8 flex flex-col items-center gap-4">
-        <h2 class="text-2xl font-extrabold text-purple-700 mb-1 text-center">🚀 Join the Beta</h2>
-        <p class="text-gray-700 mb-2 text-center">All platforms supported. We’ll notify you when your version is ready.</p>
+        <h2 class="text-2xl font-extrabold text-purple-700 mb-1 text-center">🚀 Join the beta test</h2>
+        <p class="text-gray-700 mb-2 text-center">Available on all platforms. We'll notify you when your version is ready.</p>
         <a href="https://t.me/rafael_not_a_candy" target="_blank" rel="noopener noreferrer"
            class="btn-primary neon-glow text-base px-6 py-3 shadow-lg hover:scale-105 transition-transform mt-2">
           I want early access
@@ -396,21 +418,21 @@
     </section>
     </main>
     <footer class="footer-fixed text-center py-6 border-t w-full bg-white/90 flex-none px-0">
-      <p class="text-sm">© 2025 ToDooliCo<br>The quiet organizer. Just you and your tasks.</p>
+      <p class="text-sm">© 2025 ToDooliCo<br>A quiet organizer. Just you and your tasks.</p>
     </footer>
   </main>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var monkey = document.getElementById('monkey-emoji');
       if (monkey) {
-        // создаём надпись один раз
+        // create warning text once
         let warn = document.createElement('div');
-        warn.innerHTML = '<span>не дай им украсть твои пароли</span> <span class="monkey-hint">👆</span>';
+        warn.innerHTML = '<span>don\'t let them steal your passwords</span> <span class="monkey-hint">👆</span>';
         warn.className = 'monkey-warning';
-        warn.onclick = function() { alert('Будь осторожен с паролями!'); };
+        warn.onclick = function() { alert('Be careful with passwords!'); };
         monkey.parentNode.appendChild(warn);
 
-        // начальное состояние: обезьянка с открытыми глазами, надпись видна
+        // initial state: monkey with open eyes, warning visible
         monkey.textContent = '🙉';
         warn.classList.add('show');
         warn.classList.remove('hidden');
@@ -433,7 +455,7 @@
           isOpen = !isOpen;
         });
 
-        // Автоматически открывать глаза раз в 15 секунд, если они закрыты
+        // Automatically open eyes every 15 seconds if closed
         setInterval(function() {
           if (!isOpen) {
             monkey.textContent = '🙉';

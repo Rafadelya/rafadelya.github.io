@@ -1109,24 +1109,7 @@ a, button, .btn-primary, .card-modern {
 .mobile-menu a:hover {
   color: #f472b6;
 }
-.mobile-menu .mobile-lang-flag {
-  font-size: 2.2rem;
-  background: none;
-  border: none;
-  margin-top: 2rem;
-  color: #333;
-  box-shadow: none;
-  border-radius: 50%;
-  width: 3.2rem;
-  height: 3.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
-.mobile-menu .mobile-lang-flag:hover {
-  background: #ede9fe;
-}
+
 @media (max-width: 600px) {
   .mobile-menu {
     font-size: 1.2rem;
@@ -1189,13 +1172,6 @@ a, button, .btn-primary, .card-modern {
     linear-gradient(135deg, #a78bfa 0%, #6d28d9 100%);
   background-size: 40px 40px, 40px 40px, cover;
   background-position: 0 0, 0 0, 0 0;
-}
-
-.lang-flag.active, .mobile-lang-flag.active {
-  border: 2px solid #a78bfa;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #a78bfa;
-  background: #fffbe9;
 }
 
 /* Уменьшаем размер текста в карточках */

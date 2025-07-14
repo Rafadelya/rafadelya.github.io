@@ -452,11 +452,7 @@
       const header = document.querySelector('.glass-header');
       const nav = header.querySelector('nav');
       if (!header || !nav) return;
-      const isMobile = window.innerWidth < 700;
-      if (
-        (isMobile && nav.scrollWidth > nav.clientWidth - 8) ||
-        (!isMobile && nav.scrollWidth > nav.clientWidth + 32)
-      ) {
+      if (nav.scrollWidth > nav.clientWidth - 8) {
         header.classList.add('compact-nav');
       } else {
         header.classList.remove('compact-nav');

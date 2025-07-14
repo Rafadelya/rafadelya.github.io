@@ -79,6 +79,63 @@
         height: 64px !important;
       }
     }
+    body .glass-header .glass-logo-img {
+      width: 48px;
+      height: 48px;
+      transition: width 0.2s, height 0.2s;
+    }
+    body .glass-header .lang-flag {
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.1rem;
+      transition: width 0.2s, height 0.2s, font-size 0.2s;
+    }
+    body .glass-header .flag-icon {
+      font-size: 1.1rem;
+      transition: font-size 0.2s;
+    }
+    body .glass-header .nav-link {
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.4rem 0.7rem;
+      transition: font-size 0.2s, padding 0.2s;
+    }
+    @media (max-width: 900px) {
+      body .glass-header .glass-logo-img {
+        width: 40px;
+        height: 40px;
+      }
+      body .glass-header .lang-flag {
+        width: 1.6rem;
+        height: 1.6rem;
+        font-size: 0.95rem;
+      }
+      body .glass-header .flag-icon {
+        font-size: 0.95rem;
+      }
+      body .glass-header .nav-link {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.5rem;
+      }
+    }
+    @media (max-width: 600px) {
+      body .glass-header .glass-logo-img {
+        width: 32px;
+        height: 32px;
+      }
+      body .glass-header .lang-flag {
+        width: 1.2rem;
+        height: 1.2rem;
+        font-size: 0.8rem;
+      }
+      body .glass-header .flag-icon {
+        font-size: 0.8rem;
+      }
+      body .glass-header .nav-link {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.3rem;
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-300">

@@ -79,6 +79,39 @@
         height: 64px !important;
       }
     }
+    /* Оверлей "Rotate your device" for portrait orientation */
+    @media (orientation: portrait) and (max-width: 900px) {
+      #rotateOverlay {
+        display: flex;
+      }
+    }
+    #rotateOverlay {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(20,20,30,0.92);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      font-size: 1.3rem;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      text-align: center;
+      pointer-events: all;
+    }
+    #rotateOverlay .rotate-icon {
+      font-size: 3.2rem;
+      margin-bottom: 1.2rem;
+      animation: rotate-phone 2.2s infinite;
+    }
+    @keyframes rotate-phone {
+      0% { transform: rotate(0deg); }
+      20% { transform: rotate(-20deg); }
+      40% { transform: rotate(90deg); }
+      60% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
   </style>
 </head>
 <body class="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-300">
@@ -102,6 +135,11 @@
       <a href="projects.ru.html" class="lang-flag" aria-label="Русский" style="width: 2.5rem !important; height: 2.5rem !important; font-size: 1.5rem !important;"><span class="flag-icon" style="font-size: 1.5rem !important;">🇷🇺</span></a>
     </div>
   </header>
+
+  <div id="rotateOverlay">
+    <span class="rotate-icon">📱</span>
+    <div>Rotate your device horizontally<br>for the best site experience</div>
+  </div>
 
   <!-- Hero Section -->
   <section class="max-w-2xl mx-auto mt-24 mb-12 bg-white rounded-3xl shadow-lg px-8 py-14 text-center">

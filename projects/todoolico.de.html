@@ -504,5 +504,43 @@
       pointer-events: none;
     }
   </style>
+  <style>
+    @media (orientation: portrait) and (max-width: 900px) {
+      #rotateOverlay {
+        display: flex;
+      }
+    }
+    #rotateOverlay {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(20,20,30,0.92);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      font-size: 1.3rem;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      text-align: center;
+      pointer-events: all;
+    }
+    #rotateOverlay .rotate-icon {
+      font-size: 3.2rem;
+      margin-bottom: 1.2rem;
+      animation: rotate-phone 2.2s infinite;
+    }
+    @keyframes rotate-phone {
+      0% { transform: rotate(0deg); }
+      20% { transform: rotate(-20deg); }
+      40% { transform: rotate(90deg); }
+      60% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
+  <div id="rotateOverlay">
+    <span class="rotate-icon">📱</span>
+    <div>Drehen Sie Ihr Gerät horizontal</div>
+  </div>
 </body>
 </html> 

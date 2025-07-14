@@ -1205,3 +1205,10 @@ a, button, .btn-primary, .card-modern {
 .card-modern p, .card-shape p, .card-meaning p {
   font-size: 0.95rem;
 }
+
+@media (max-width: 400px) {
+  .hero-section {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}

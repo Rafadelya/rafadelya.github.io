@@ -1,627 +1,416 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Контакты – R&A Studio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projekte | R&A Studio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script defer src="js/i18n.js"></script>
-  <script defer src="js/main.js"></script>
+  <link rel="icon" type="image/png" href="assets/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2b8e2e5e2a.js" crossorigin="anonymous"></script>
   <style>
-    /* Базовые стили для кружочков */
-    .social-circle {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.95);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.15);
-      border: 2px solid rgba(255, 255, 255, 0.8);
-      position: relative;
-      overflow: hidden;
+    .dark-mode { background: #18181b; color: #f3f4f6; }
+    .dark-mode .project-card { background: #232336; color: #f3f4f6; }
+    .dark-mode .floating-quote { background: rgba(30,30,40,0.9); color: #fff; }
+    .transition { transition: all 0.3s ease; }
+    /* Анимация появления карточек */
+    .fade-in-up { opacity: 0; transform: translateY(40px) scale(0.98); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
+    .fade-in-up.visible { opacity: 1; transform: translateY(0) scale(1); }
+    /* Мини-якорная навигация */
+    .anchor-nav { display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem; margin-bottom: 0.5rem; font-size: 0.95em; }
+    .anchor-link { color: #7c3aed; text-decoration: none; position: relative; padding-bottom: 2px; }
+    .anchor-link.active, .anchor-link:hover { color: #2d014d; }
+    .anchor-link.active::after, .anchor-link:hover::after { content: ''; display: block; height: 2px; background: #7c3aed; width: 100%; position: absolute; left: 0; bottom: 0; border-radius: 1px; }
+    
+    /* ПРИНУДИТЕЛЬНО УСТАНАВЛИВАЕМ РАЗМЕРЫ ШАПКИ */
+    body .glass-header .nav-link {
+      font-size: 1rem !important;
+      font-weight: 500 !important;
+      padding: 0.5rem 1rem !important;
     }
-
-    /* Вариант 1: Неоновое свечение */
-    .social-circle.neon {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(167, 139, 250, 0.3);
-      box-shadow: 
-        0 0 20px rgba(167, 139, 250, 0.3),
-        inset 0 0 20px rgba(255, 255, 255, 0.1);
+    body .glass-header .lang-flag {
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+      font-size: 1.5rem !important;
     }
-
-    .social-circle.neon:hover {
-      border-color: rgba(167, 139, 250, 0.8);
-      box-shadow: 
-        0 0 30px rgba(167, 139, 250, 0.6),
-        0 0 60px rgba(167, 139, 250, 0.3),
-        inset 0 0 30px rgba(255, 255, 255, 0.2);
-      transform: scale(1.15) translateY(-5px);
+    body .glass-header .flag-icon {
+      font-size: 1.5rem !important;
     }
-
-    /* Вариант 2: Градиентный фон */
-    .social-circle.gradient {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border: none;
-      box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+    body .glass-header .glass-logo-img {
+      width: 64px !important;
+      height: 64px !important;
     }
-
-    .social-circle.gradient:hover {
-      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-      box-shadow: 0 12px 40px rgba(102, 126, 234, 0.5);
-      transform: scale(1.1) rotate(10deg);
-    }
-
-    /* Вариант 3: Пульсирующий эффект */
-    .social-circle.pulse {
-      animation: pulse-glow 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulse-glow {
-      0% {
-        box-shadow: 0 4px 20px rgba(124, 58, 237, 0.15);
-        transform: scale(1);
+    /* Мобильные стили */
+    @media (max-width: 900px) {
+      body .glass-header .nav-link {
+        font-size: 1rem !important;
+        padding: 0.5rem 1rem !important;
       }
-      100% {
-        box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4);
-        transform: scale(1.05);
+      body .glass-header .lang-flag {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        font-size: 1.5rem !important;
+      }
+      body .glass-header .flag-icon {
+        font-size: 1.5rem !important;
+      }
+      body .glass-header .glass-logo-img {
+        width: 64px !important;
+        height: 64px !important;
       }
     }
-
-    .social-circle.pulse:hover {
-      animation: none;
-      transform: scale(1.2);
-      box-shadow: 0 12px 40px rgba(124, 58, 237, 0.6);
+    @media (max-width: 600px) {
+      body .glass-header .nav-link {
+        font-size: 1rem !important;
+        padding: 0.5rem 1rem !important;
+      }
+      body .glass-header .lang-flag {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        font-size: 1.5rem !important;
+      }
+      body .glass-header .flag-icon {
+        font-size: 1.5rem !important;
+      }
+      body .glass-header .glass-logo-img {
+        width: 64px !important;
+        height: 64px !important;
+      }
     }
-
-    /* Вариант 4: 3D эффект */
-    .social-circle.three-d {
-      background: linear-gradient(145deg, #ffffff, #e6e6e6);
-      box-shadow: 
-        5px 5px 10px rgba(0, 0, 0, 0.1),
-        -5px -5px 10px rgba(255, 255, 255, 0.8);
-      border: none;
-    }
-
-    .social-circle.three-d:hover {
-      background: linear-gradient(145deg, #e6e6e6, #ffffff);
-      box-shadow: 
-        2px 2px 5px rgba(0, 0, 0, 0.1),
-        -2px -2px 5px rgba(255, 255, 255, 0.8);
-      transform: scale(1.1) translateY(-3px);
-    }
-
-    /* Вариант 5: Морфинг границы */
-    .social-circle.morph {
-      border: 2px solid transparent;
-      background: linear-gradient(white, white) padding-box,
-                  linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c) border-box;
-      animation: border-rotate 3s linear infinite;
-    }
-
-    @keyframes border-rotate {
-      0% { background: linear-gradient(white, white) padding-box,
-                    linear-gradient(0deg, #667eea, #764ba2, #f093fb, #f5576c) border-box; }
-      100% { background: linear-gradient(white, white) padding-box,
-                    linear-gradient(360deg, #667eea, #764ba2, #f093fb, #f5576c) border-box; }
-    }
-
-    .social-circle.morph:hover {
-      animation-duration: 1s;
-      transform: scale(1.15);
-    }
-
-    /* Вариант 6: Голографический эффект */
-    .social-circle.holographic {
-      background: linear-gradient(45deg, 
-        rgba(255, 255, 255, 0.9) 0%, 
-        rgba(167, 139, 250, 0.1) 25%, 
-        rgba(255, 255, 255, 0.9) 50%, 
-        rgba(124, 58, 237, 0.1) 75%, 
-        rgba(255, 255, 255, 0.9) 100%);
-      background-size: 200% 200%;
-      animation: holographic-shift 3s ease-in-out infinite;
-    }
-
-    @keyframes holographic-shift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    .social-circle.holographic:hover {
-      animation-duration: 0.5s;
-      transform: scale(1.1) rotate(5deg);
-    }
-
-    /* Вариант 7: Частицы */
-    .social-circle.particles {
-      position: relative;
-    }
-
-    .social-circle.particles::before,
-    .social-circle.particles::after {
-      content: '';
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: rgba(167, 139, 250, 0.8);
-      animation: particle-float 2s ease-in-out infinite;
-    }
-
-    .social-circle.particles::before {
-      top: 10px;
-      left: 10px;
-      animation-delay: 0s;
-    }
-
-    .social-circle.particles::after {
-      bottom: 10px;
-      right: 10px;
-      animation-delay: 1s;
-    }
-
-    @keyframes particle-float {
-      0%, 100% { transform: translateY(0px) scale(1); opacity: 0.8; }
-      50% { transform: translateY(-10px) scale(1.2); opacity: 1; }
-    }
-
-    .social-circle.particles:hover::before,
-    .social-circle.particles:hover::after {
-      animation-duration: 0.5s;
-    }
-
-    /* Вариант 8: Минималистичный с тонкими линиями */
-    .social-circle.minimal {
-      background: transparent;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      box-shadow: none;
-      position: relative;
-    }
-
-    .social-circle.minimal::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      border: 1px solid rgba(167, 139, 250, 0.5);
-      border-radius: 50%;
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
-
-    .social-circle.minimal:hover {
-      border-color: rgba(167, 139, 250, 0.8);
-      transform: scale(1.1);
-    }
-
-    .social-circle.minimal:hover::before {
-      opacity: 1;
-      transform: scale(1.2);
-    }
-
-    /* Классический эффект сверкания */
-    .social-circle::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transform: rotate(45deg);
-      transition: all 0.6s ease;
-      opacity: 0;
-    }
-
-    .social-circle:hover::before {
-      opacity: 1;
-      transform: rotate(45deg) translateX(100%);
-    }
-
-    .social-circle:hover {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 8px 30px rgba(124, 58, 237, 0.3), 0 0 20px rgba(255, 255, 255, 0.5);
-      border-color: rgba(124, 58, 237, 0.5);
-    }
-
-    .social-circle img {
-      width: 50px;
-      height: 50px;
-      transition: all 0.3s ease;
-      z-index: 2;
-      position: relative;
-      object-fit: contain;
-    }
-
-    .social-circle:hover img {
-      transform: scale(1.2);
-    }
-
-    /* Специальные стили для логотипа Дзен */
-    .social-circle img[alt="Дзен"] {
-      width: 120px !important;
-      height: 120px !important;
-      object-fit: contain;
-      padding: 2px;
-      transform: scale(2.2);
-    }
-
-    .social-circle:hover img[alt="Дзен"] {
-      transform: scale(1.15);
-    }
-
-    /* Специальные стили для других логотипов */
-    .social-circle img[alt="T—Ж"] {
-      width: 46px;
-      height: 46px;
-      object-fit: cover;
-      border-radius: 4px;
-    }
-
-    .social-circle img[alt="DTF"] {
-      width: 50px !important;
-      height: 50px !important;
-      object-fit: contain;
-      background: transparent !important;
-      border-radius: 12px !important;
-      transform: none;
-    }
-
-    .social-circle img[alt="VC.ru"] {
+    body .glass-header .glass-logo-img {
       width: 48px;
       height: 48px;
-      object-fit: contain;
-      border-radius: 6px;
+      transition: width 0.2s, height 0.2s;
     }
-
-    .social-circle img[alt="VK"] {
-      width: 120px !important;
-      height: 120px !important;
-      object-fit: contain;
-      background: transparent !important;
+    body .glass-header .lang-flag {
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.1rem;
+      transition: width 0.2s, height 0.2s, font-size 0.2s;
     }
-
-    .social-circle img[alt="Telegram"] {
-      width: 75px;
-      height: 75px;
-      object-fit: contain;
+    body .glass-header .flag-icon {
+      font-size: 1.1rem;
+      transition: font-size 0.2s;
     }
-
-    .social-circle img[alt="YouTube"] {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-    }
-
-    .social-circle img[alt="Max"] {
-      width: 49px;
-      height: 49px;
-      object-fit: contain;
-    }
-
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 2rem;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    .social-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      opacity: 0;
-      transform: translateX(-100px);
-      animation: slideInFromLeft 0.6s ease forwards;
-    }
-
-    .social-item:nth-child(1) { animation-delay: 0.1s; }
-    .social-item:nth-child(2) { animation-delay: 0.2s; }
-    .social-item:nth-child(3) { animation-delay: 0.3s; }
-    .social-item:nth-child(4) { animation-delay: 0.4s; }
-    .social-item:nth-child(5) { animation-delay: 0.5s; }
-    .social-item:nth-child(6) { animation-delay: 0.6s; }
-    .social-item:nth-child(7) { animation-delay: 0.7s; }
-    .social-item:nth-child(8) { animation-delay: 0.8s; }
-    .social-item:nth-child(9) { animation-delay: 0.9s; }
-    .social-item:nth-child(10) { animation-delay: 1.0s; }
-
-    @keyframes slideInFromLeft {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .social-name {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #374151;
-      text-align: center;
-      margin-top: 0.5rem;
-    }
-
-    .contact-info {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 1rem;
-      padding: 2rem;
-      margin: 2rem auto;
-      max-width: 600px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      padding: 0.75rem;
-      border-radius: 0.5rem;
-      background: rgba(255, 255, 255, 0.05);
-      transition: all 0.3s ease;
-    }
-
-    .contact-item:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateX(10px);
-    }
-
-    .contact-icon {
-      font-size: 1.5rem;
-      width: 40px;
-      text-align: center;
-    }
-
-    .contact-text {
-      color: #fff;
+    body .glass-header .nav-link {
+      font-size: 0.95rem;
       font-weight: 500;
+      padding: 0.4rem 0.7rem;
+      transition: font-size 0.2s, padding 0.2s;
     }
-
-    .contact-link {
-      color: #a78bfa;
-      text-decoration: none;
-      transition: color 0.3s ease;
+    @media (max-width: 900px) {
+      body .glass-header .glass-logo-img {
+        width: 40px;
+        height: 40px;
+      }
+      body .glass-header .lang-flag {
+        width: 1.6rem;
+        height: 1.6rem;
+        font-size: 0.95rem;
+      }
+      body .glass-header .flag-icon {
+        font-size: 0.95rem;
+      }
+      body .glass-header .nav-link {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.5rem;
+      }
     }
-
-    .contact-link:hover {
-      color: #c4b5fd;
-      text-decoration: underline;
-    }
-
-    .page-title {
-      font-size: 3rem;
-      font-weight: 700;
-      color: #fff;
-      text-align: center;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
-    }
-
-    .page-subtitle {
-      font-size: 1.25rem;
-      color: rgba(255, 255, 255, 0.8);
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    @media (max-width: 768px) {
-      .social-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        padding: 1rem;
+    @media (max-width: 600px) {
+      body .glass-header .glass-logo-img {
+        width: 32px;
+        height: 32px;
       }
-      
-      .social-circle {
-        width: 85px;
-        height: 85px;
+      body .glass-header .lang-flag {
+        width: 1.2rem;
+        height: 1.2rem;
+        font-size: 0.8rem;
       }
-      
-      .social-circle img {
-        width: 45px;
-        height: 45px;
+      body .glass-header .flag-icon {
+        font-size: 0.8rem;
       }
-
-      .social-circle img[alt="Яндекс Дзен"] {
-        width: 55px;
-        height: 55px;
-      }
-
-      .social-circle img[alt="T—Ж"] {
-        width: 46px;
-        height: 46px;
-      }
-
-      .social-circle img[alt="DTF"] {
-        width: 50px;
-        height: 50px;
-        background: transparent;
-        border-radius: 6px;
-      }
-
-      .social-circle img[alt="VC.ru"] {
-        width: 48px;
-        height: 48px;
-        border-radius: 6px;
-      }
-
-      .social-circle img[alt="VK"] {
-        width: 52px;
-        height: 52px;
-        border-radius: 6px;
-        background: transparent;
-      }
-
-      .social-circle img[alt="Telegram"] {
-        width: 55px;
-        height: 55px;
-      }
-
-      .social-circle img[alt="YouTube"] {
-        width: 62px;
-        height: 62px;
-      }
-
-      .social-circle img[alt="Max"] {
-        width: 49px;
-        height: 49px;
-      }
-      
-      .page-title {
-        font-size: 2.5rem;
+      body .glass-header .nav-link {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.3rem;
       }
     }
   </style>
 </head>
-<body>
+<body class="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-300">
   <header class="glass-header">
     <div class="logo-block" style="display: flex; align-items: center;">
       <a href="index.de.html">
-        <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+        <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img" style="width: 64px !important; height: 64px !important;">
       </a>
-      <button class="mobile-lang-flag" id="mobileLangFlag" style="display:none;">🇷🇺</button>
-      <button class="mobile-burger" id="mobileBurger" style="display:none;">☰</button>
     </div>
     <nav class="flex gap-4">
-      <a href="index.de.html" class="nav-link">Startseite</a>
-      <a href="about.de.html" class="nav-link">Über uns</a>
-      <a href="projects.de.html" class="nav-link">Projekte</a>
-      <a href="blog/blog.de.html" class="nav-link">Blog</a>
-      <a href="Contact.de.html" class="nav-link active">Kontakt</a>
+      <a href="index.de.html" class="nav-link" style="font-size: 1rem !important; font-weight: 500 !important; padding: 0.5rem 1rem !important;">Startseite</a>
+      <a href="about.de.html" class="nav-link" style="font-size: 1rem !important; font-weight: 500 !important; padding: 0.5rem 1rem !important;">Über uns</a>
+      <a href="projects.de.html" class="nav-link" style="font-size: 1rem !important; font-weight: 500 !important; padding: 0.5rem 1rem !important;">Projekte</a>
+      <a href="blog/blog.de.html" class="nav-link" style="font-size: 1rem !important; font-weight: 500 !important; padding: 0.5rem 1rem !important;">Blog</a>
+      <a href="contact.de.html" class="nav-link" style="font-size: 1rem !important; font-weight: 500 !important; padding: 0.5rem 1rem !important;">Kontakt</a>
     </nav>
     <div class="flex gap-2">
-      <a href="Contact.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-      <a href="Contact.de.html" class="lang-flag active" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-      <a href="Contact.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
-      <a href="Contact.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+      <a href="projects.en.html" class="lang-flag" aria-label="English" style="width: 2.5rem !important; height: 2.5rem !important; font-size: 1.5rem !important;"><span class="flag-icon" style="font-size: 1.5rem !important;">🇬🇧</span></a>
+      <a href="projects.de.html" class="lang-flag active" aria-label="Deutsch" style="width: 2.5rem !important; height: 2.5rem !important; font-size: 1.5rem !important;"><span class="flag-icon" style="font-size: 1.5rem !important;">🇩🇪</span></a>
+      <a href="projects.fr.html" class="lang-flag" aria-label="Français" style="width: 2.5rem !important; height: 2.5rem !important; font-size: 1.5rem !important;"><span class="flag-icon" style="font-size: 1.5rem !important;">🇫🇷</span></a>
+      <a href="projects.ru.html" class="lang-flag" aria-label="Русский" style="width: 2.5rem !important; height: 2.5rem !important; font-size: 1.5rem !important;"><span class="flag-icon" style="font-size: 1.5rem !important;">🇷🇺</span></a>
     </div>
   </header>
 
-  <main class="text-center p-10">
-    <h1 class="page-title">In Kontakt bleiben</h1>
-    <p class="page-subtitle">Wir teilen unsere Projekte, Gedanken und Erfahrungen — dort, wo es für dich am angenehmsten ist: lesen, hören, schauen.</p>
-    
-    <div class="social-grid">
-      <div class="social-item">
-        <div class="social-circle holographic" onclick="window.open('https://tjournal.ru', '_blank')">
-          <img src="assets/ru/logo/tjlogo.jpg" alt="T—Ж">
-        </div>
-        <div class="social-name">T—Journal</div>
+  <!-- Hero Section -->
+  <section class="hero-section w-full max-w-2xl mx-auto mt-12 mb-12 bg-white rounded-3xl shadow-lg px-6 sm:px-8 md:px-10 py-14 text-center">
+    <h1 class="text-5xl font-extrabold text-gray-900 mb-6" style="font-family:'Montserrat', 'Inter', sans-serif;">
+      Projekte von R&A Studio
+    </h1>
+    <p class="text-xl text-gray-600 font-medium">
+      Wir entwickeln eigene Produkte, beraten Unternehmen und veröffentlichen Forschungsergebnisse. Unten finden Sie Projekte, auf die wir besonders stolz sind.
+    </p>
+  </section>
+
+  <!-- Навигация/Фильтр -->
+  <nav class="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 mt-4 mb-12">
+    <button class="filter-btn px-4 py-2 rounded bg-indigo-100 text-indigo-800 font-bold transition hover:bg-indigo-200" data-filter="all">Alle Projekte</button>
+    <button class="filter-btn px-4 py-2 rounded bg-pink-100 text-pink-800 font-bold transition hover:bg-pink-200" data-filter="product">R&A-Produkte</button>
+    <button class="filter-btn px-4 py-2 rounded bg-green-100 text-green-800 font-bold transition hover:bg-green-200" data-filter="client">Kundenprojekte</button>
+    <button class="filter-btn px-4 py-2 rounded bg-yellow-100 text-yellow-800 font-bold transition hover:bg-yellow-200" data-filter="research">Forschungen</button>
+  </nav>
+
+  <!-- Проекты -->
+  <section class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4" id="projectsList">
+    <!-- Adiguide -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-purple-600" data-type="product" id="adiguide">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📱</span>
+        <h2 class="text-xl font-bold">Adiguide</h2>
+        <span class="ml-auto text-sm text-gray-400">2023–&gt;</span>
       </div>
-      
-      <div class="social-item">
-        <div class="social-circle holographic" onclick="window.open('https://zen.yandex.ru', '_blank')">
-          <img src="assets/ru/logo/dzenlogo.png" alt="Dzen">
-        </div>
-        <div class="social-name">Dzen</div>
-      </div>
-      
-      <div class="social-item">
-        <div class="social-circle holographic" onclick="window.open('https://habr.com', '_blank')">
-          <img src="assets/ru/logo/habrlogo.png" alt="Habr">
-        </div>
-        <div class="social-name">Habr</div>
-      </div>
-      
-      <div class="social-item">
-        <div class="social-circle holographic" onclick="window.open('https://dtf.ru', '_blank')">
-          <img src="assets/ru/logo/DTFlogo.png" alt="DTF">
-        </div>
-        <div class="social-name">DTF</div>
-      </div>
-      
-      <div class="social-item">
-        <div class="social-circle holographic" onclick="window.open('https://vc.ru', '_blank')">
-          <img src="assets/ru/logo/vc.ru" alt="VC.ru">
-        </div>
-        <div class="social-name">VC.ru</div>
-      </div>
-      
-      <div class="social-item">
-        <div class="social-circle holographic" onclick="window.open('https://vk.com', '_blank')">
-          <img src="assets/ru/logo/Изображение PNG.png" alt="VK">
-        </div>
-        <div class="social-name">VK</div>
-      </div>
-      
-      <div class="social-item">
-        <div class="social-circle holographic" onclick="window.open('https://t.me', '_blank')">
-          <img src="assets/ru/logo/tglogo.webp" alt="Telegram">
-        </div>
-        <div class="social-name">Telegram</div>
-      </div>
-      
-      <div class="social-item">
-        <div class="social-circle holographic" onclick="window.open('https://rutube.ru', '_blank')">
-          <img src="assets/ru/logo/rutubelogo.png" alt="RuTube">
-        </div>
-        <div class="social-name">RuTube</div>
-      </div>
-      
-      <div class="social-item">
-        <div class="social-circle holographic" onclick="window.open('https://youtube.com', '_blank')">
-          <img src="assets/ru/logo/youtubelogo.png" alt="YouTube">
-        </div>
-        <div class="social-name">YouTube</div>
-      </div>
-      
-      <div class="social-item">
-        <div class="social-circle holographic" onclick="window.open('https://max.com', '_blank')">
-          <img src="assets/ru/logo/Max Logo 2025.png" alt="Max">
-        </div>
-        <div class="social-name">Max</div>
+      <p class="mb-2 text-gray-700">Eine mobile App mit Audioguides. Ermöglicht es, Routen und Fakten zu Sehenswürdigkeiten direkt beim Spazierengehen zu hören.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Skripte und Texte für Touren</li>
+        <li>Vertonung mithilfe von KI</li>
+        <li>UX/UI-Design, Flutter-Entwicklung</li>
+        <li>Validierung mit Touristen am Roten Platz</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Technologien: Figma, Dart, TTS, Python, Firebase, GitHub, openStreetMap</div>
+      <a href="projects/adiguide.de.html" class="expand-btn mt-2 px-3 py-1 bg-purple-600 text-white rounded hover:bg-purple-700 transition">Mehr erfahren</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Prototyp</span>—<span>Tests</span>—<span>Launch</span>
       </div>
     </div>
-
-    <div class="contact-info">
-      <h2 class="text-2xl font-bold text-white mb-4">Du kannst uns hier, hier und hier erreichen:</h2>
-      <div class="contact-item">
-        <div class="contact-icon">✉️</div>
-        <div class="contact-text">
-          E-Mail: <a href="mailto:adelya_i_rafael@mail.ru" class="contact-link">adelya_i_rafael@mail.ru</a>
-        </div>
+    <!-- ToDooliCo -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-pink-600" data-type="product" id="todoolico">
+      <div class="flex items-center gap-3 mb-2">
+        <img src="assets/AppIcon~todoolico.png" alt="ToDooliCo" style="width:2.2em;height:2.2em;border-radius:0.6em;box-shadow:0 2px 8px #f9a8d433;margin-right:0.1em;object-fit:cover;" loading="lazy">
+        <h2 class="text-xl font-bold">ToDooliCo</h2>
+        <span class="ml-auto text-sm text-gray-400">2025–&gt;</span>
       </div>
-      <div class="contact-item">
-        <div class="contact-icon">💬</div>
-        <div class="contact-text">
-          Telegram: <a href="https://t.me/Rafael_not_a_candy" class="contact-link" target="_blank">@Rafael_not_a_candy</a>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">🌐</div>
-        <div class="contact-text">
-          Website: <a href="https://rastudio.com" class="contact-link" target="_blank">rastudio.com</a>
-        </div>
+      <p class="mb-2 text-gray-700">Ein minimalistischer Aufgaben-Tracker mit integriertem Kanban-Modul und sicherem Passwortmanager. Entwickelt für alle, die einfach, sicher und effizient planen möchten – ohne Registrierung oder komplizierte Oberflächen.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Produktidee und Hypothesen-Tests</li>
+        <li>Prototyping und UX/UI-Design</li>
+        <li>Frontend mit Flutter und Dart umgesetzt</li>
+        <li>Usability-Tests und Optimierung</li>
+        <li>Integration eines Passwortmanagers mit AES-256-Verschlüsselung</li>
+        <li>Kanban-Board für übersichtliches Aufgabenmanagement</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Technologien: Flutter, Dart, SQLite, Hive, GitHub, encrypt (AES-256), Kanban</div>
+      <a href="projects/todoolico.de.html" class="expand-btn mt-2 px-3 py-1 bg-pink-600 text-white rounded hover:bg-pink-700 transition">Mehr erfahren</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Prototyp</span>—<span>Tests</span>—<span>Launch</span>
       </div>
     </div>
-  </main>
+    <!-- DebtMate -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-blue-400" data-type="product" id="debtmate">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">💸</span>
+        <h2 class="text-xl font-bold">DebtMate</h2>
+        <span class="ml-auto text-sm text-gray-400">2025–&gt;</span>
+      </div>
+      <p class="mb-2 text-gray-700">Ein Assistent zur Verwaltung von privaten Krediten und Schulden. Hilft, den Überblick zu behalten, wem man Geld geliehen hat, wer einem etwas schuldet und wie es um eigene Kreditverpflichtungen steht. Ideal, um keine wichtigen finanziellen Absprachen zu verlieren.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Entwicklung von Idee und Assistentenlogik</li>
+        <li>UI/UX-Design</li>
+        <li>MVP-Erstellung für Android</li>
+        <li>Interne und externe Tests</li>
+        <li>Erinnerungen und automatische Schuldenberechnung</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Technologien: Flutter, Dart, Hive, GitHub</div>
+      <a href="projects/debtmate.de.html" class="expand-btn mt-2 px-3 py-1 bg-blue-400 text-white rounded hover:bg-blue-500 transition">Mehr erfahren</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Prototyp</span>—<span>Tests</span>—<span>Launch</span>
+      </div>
+    </div>
+    <!-- Analyse für eine Personalvermittlungsagentur -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-green-600" data-type="client" id="agency-analysis">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">🧪</span>
+        <h2 class="text-xl font-bold">Marktanalyse für Personalvermittlungsagentur</h2>
+        <span class="ml-auto text-sm text-gray-400">2023</span>
+      </div>
+      <p class="mb-2 text-gray-700">Umfassende Marketinganalyse für eine Agentur zur Personalvermittlung.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Befragung von Kunden und Mitarbeitenden</li>
+        <li>Konkurrenzanalyse im Feld</li>
+        <li>Markenanalyse</li>
+        <li>Checklisten und Positionierungsempfehlungen</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Tools & Technologien: Google Sheets, Google Forms, PowerPoint, Anrufskripte, Mystery Shopping, Customer Journey Map, Checklist Design, Brand Audit, Rebranding</div>
+      <a href="blog/de/posts/agency-analysis.de.html" class="expand-btn mt-2 px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 transition">Mehr erfahren</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Analyse</span>—<span>Umsetzung</span>—<span>Ergebnis</span>
+      </div>
+    </div>
+    <!-- Finanzberatung für ein Elektronikgeschäft -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-yellow-500" data-type="client" id="finance-consulting">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📊</span>
+        <h2 class="text-xl font-bold">Finanzberatung für Elektronikgeschäft</h2>
+        <span class="ml-auto text-sm text-gray-400">2024–&gt;</span>
+      </div>
+      <p class="mb-2 text-gray-700">Tiefgreifende Analyse von Geschäftsprozessen und Finanzen zur Steigerung von Effizienz und Rentabilität. Überarbeitung des Geschäftsmodells, Kostensenkung, Reduktion ineffizienter Abteilungen und Entwicklung neuer Einnahmequellen.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Detaillierte Analyse aller Geräte</li>
+        <li>Optimierung von Krediten und Ausgaben</li>
+        <li>Maßnahmen zur Kostensenkung, z. B. Wechsel von Carsharing zu Mietwagen</li>
+        <li>Laufende Expertenbegleitung und -beratung</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Tools & Technologien: Tägliche Stand-ups, Management von Verbindlichkeiten, Kontrolle von Verkauf und Lager, KPI- und Anreizsysteme, SWOT-Analyse, Geschäftsmodellierung, Google Sheets</div>
+      <a href="blog/de/posts/finance-consulting.de.html" class="expand-btn mt-2 px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition">Mehr erfahren</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Analyse</span>—<span>Umsetzung</span>—<span>Ergebnis</span>
+      </div>
+    </div>
+    <!-- Konsumentenverhalten im Zeitalter der Digitalisierung -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-indigo-600" data-type="research" id="publication1">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📚</span>
+        <h2 class="text-xl font-bold">Konsumentenverhalten im Zeitalter der Digitalisierung</h2>
+        <span class="ml-auto text-sm text-gray-400">2022</span>
+      </div>
+      <p class="mb-2 text-gray-700">Wissenschaftlicher Artikel zur Veränderung des Konsumentenverhaltens in der digitalen Wirtschaft.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Analyse</li>
+        <li>Veröffentlichung</li>
+      </ul>
+      <div style="padding-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="https://usptu-bulletin.ru/index.php/bul/article/view/11710" class="expand-btn px-4 py-2 bg-indigo-600 text-white rounded text-base font-bold hover:bg-indigo-700 transition" target="_blank">Mehr erfahren</a>
+        <a href="assets/ПОТРЕБИТЕЛЬСКОЕ ПОВЕДЕНИЕ В УСЛОВИЯХ ЦИФРОВИЗАЦИИ В ЭКОНОМИКЕ.pdf" class="expand-btn px-4 py-2 bg-green-600 text-white rounded text-base font-bold hover:bg-green-700 transition" download="ПОТРЕБИТЕЛЬСКОЕ ПОВЕДЕНИЕ В УСЛОВИЯХ ЦИФРОВИЗАЦИИ В ЭКОНОМИКЕ.pdf">📥 PDF herunterladen</a>
+      </div>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Analyse</span>—<span>Veröffentlichung</span>
+      </div>
+    </div>
+    <!-- Mobile Traffic-Aggregation auf Basis offener Technologien -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-indigo-700" data-type="research" id="publication2">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📚</span>
+        <h2 class="text-xl font-bold">Mobile Traffic-Aggregation auf Basis offener Technologien</h2>
+        <span class="ml-auto text-sm text-gray-400">2025</span>
+      </div>
+      <p class="mb-2 text-gray-700">Fachartikel über die Entwicklung eines Services zur mobilen Traffic-Aggregation mit Open-Source-Technologien.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Analyse</li>
+        <li>Veröffentlichung</li>
+      </ul>
+      <div style="padding-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="https://usptu-bulletin.ru/index.php/bul/article/view/13035" class="expand-btn px-4 py-2 bg-indigo-700 text-white rounded text-base font-bold hover:bg-indigo-800 transition" target="_blank">Mehr erfahren</a>
+        <a href="assets/РАЗРАБОТКА СЕРВИСА МОБИЛЬНОЙ АГРЕГАЦИИ ТРАФИКА НА ОСНОВЕ ОТКРЫТЫХ РЕШЕНИЙ.pdf" class="expand-btn px-4 py-2 bg-green-600 text-white rounded text-base font-bold hover:bg-green-700 transition" download="РАЗРАБОТКА СЕРВИСА МОБИЛЬНОЙ АГРЕГАЦИИ ТРАФИКА НА ОСНОВЕ ОТКРЫТЫХ РЕШЕНИЙ.pdf">📥 PDF herunterladen</a>
+      </div>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Analyse</span>—<span>Veröffentlichung</span>
+      </div>
+    </div>
+  </section>
 
-  <footer class="text-center py-6 border-t">
-    <p class="text-sm" data-i18n="footer.copy">© 2025 R&A Studio. Alle Rechte vorbehalten.</p>
+  <!-- Инсайты und Zahlen -->
+  <section class="max-w-4xl mx-auto mt-20 mb-12 grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">💻</span>
+      <span class="font-bold text-xl">3</span>
+      <span class="text-xs text-gray-500">Eigenentwickelte Produkte</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">🧑‍💼</span>
+      <span class="font-bold text-xl">2</span>
+      <span class="text-xs text-gray-500">Kundenprojekte</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">📈</span>
+      <span class="font-bold text-xl">1</span>
+      <span class="text-xs text-gray-500">MVP wurde zu einem Unternehmen</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">✏️</span>
+      <span class="font-bold text-xl">2</span>
+      <span class="text-xs text-gray-500">Wissenschaftliche Publikationen</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">🕓</span>
+      <span class="font-bold text-xl">1000+</span>
+      <span class="text-xs text-gray-500">Stunden Analysearbeit</span>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="max-w-2xl mx-auto py-16 px-6 bg-gradient-to-b from-purple-900 via-fuchsia-800 to-purple-600 rounded-3xl shadow-2xl mt-16 mb-16 flex flex-col items-center" style="font-family: 'Montserrat', 'Inter', sans-serif;">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center mb-4 text-white">Sie haben eine Idee – aber keine passende Crew?</h2>
+    <p class="text-base md:text-lg text-center text-fuchsia-100 mb-6">Wir sind bereit. Gemeinsam denken, entwerfen und starten.<br>Schreiben Sie uns – und wir machen den ersten Schritt zum Ergebnis.</p>
+    <a href="contact.de.html" class="btn-primary neon-glow text-base px-6 py-3 shadow-lg hover:scale-105 transition-transform">Kontakt aufnehmen</a>
+  </section>
+
+  <footer class="text-center py-6 border-t mt-12 text-gray-400 text-sm">
+    © 2025 R&A Studio. Alle Rechte vorbehalten.
   </footer>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.de.html" data-i18n="nav.home">Startseite</a>
-    <a href="about.de.html" data-i18n="nav.about">Über uns</a>
-    <a href="projects.de.html" data-i18n="nav.projects">Projekte</a>
-    <a href="blog/blog.de.html" class="nav-link">Blog</a>
-    <a href="Contact.de.html" data-i18n="nav.contact">Kontakt</a>
-    <a href="Contact.en.html" class="mobile-lang-flag">🇬🇧</a>
-    <a href="Contact.de.html" class="mobile-lang-flag active">🇩🇪</a>
-    <a href="Contact.fr.html" class="mobile-lang-flag">🇫🇷</a>
-    <a href="Contact.ru.html" class="mobile-lang-flag">🇷🇺</a>
-  </div>
+  <!-- JS for filter, theme, and expand -->
+  <script>
+    // Фильтрация карточек
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        document.querySelectorAll('.project-card').forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-type') === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('ring', 'ring-2', 'ring-indigo-500'));
+        this.classList.add('ring', 'ring-2', 'ring-indigo-500');
+      });
+    });
+    // Анимация появления карточек при скролле
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+      observer.observe(el);
+    });
+    // Мини-якорная навигация active
+    const anchors = document.querySelectorAll('.anchor-link');
+    const sections = [
+      document.getElementById('products'),
+      document.getElementById('clients'),
+      document.getElementById('research')
+    ];
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const scrollY = window.scrollY + 120;
+      sections.forEach((section, idx) => {
+        if (section && section.offsetTop <= scrollY) {
+          current = anchors[idx];
+        }
+      });
+      anchors.forEach(a => a.classList.remove('active'));
+      if (current) current.classList.add('active');
+    });
+  </script>
 </body>
-</html>
+</html> 

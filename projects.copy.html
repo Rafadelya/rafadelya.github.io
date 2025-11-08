@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>R&A Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/favicon.ico">
+  <script defer src="js/i18n.js"></script>
+  <script defer src="js/main.js"></script>
+  <style>
+    @font-face {
+      font-family: 'Howdybun';
+      src: url('fonts/howdybun.otf') format('opentype'),
+           url('fonts/howdybun.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    /* Retrowave overlay for portrait orientation */
+    #retrowaveOverlay {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(180deg, #1a0033 0%, #ff0080 100%);
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      text-align: center;
+      pointer-events: all;
+      transition: opacity 0.5s;
+    }
+    @media (orientation: portrait) and (max-width: 900px) {
+      #retrowaveOverlay {
+        display: flex;
+      }
+    }
+    #retrowaveOverlay .retro-sun {
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle at 50% 60%, #ffe066 60%, #ff0080 100%);
+      border-radius: 50%;
+      margin: 0 auto 2.5rem auto;
+      box-shadow: 0 0 80px 20px #ff0080aa, 0 0 0 8px #fff2;
+      position: relative;
+      z-index: 2;
+    }
+    #retrowaveOverlay .retro-grid {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      width: 100%;
+      height: 40vh;
+      z-index: 1;
+      background: none;
+      pointer-events: none;
+    }
+    #retrowaveOverlay .retro-stars {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    #retrowaveOverlay .retro-stars span {
+      position: absolute;
+      color: #fffbe9;
+      opacity: 0.7;
+      font-size: 1.1rem;
+      animation: retro-twinkle 3.5s infinite;
+    }
+    #retrowaveOverlay .retro-stars span:nth-child(1) { left: 10%; top: 12%; animation-delay: 0s; }
+    #retrowaveOverlay .retro-stars span:nth-child(2) { left: 80%; top: 18%; animation-delay: 1s; }
+    #retrowaveOverlay .retro-stars span:nth-child(3) { left: 30%; top: 30%; animation-delay: 2s; }
+    #retrowaveOverlay .retro-stars span:nth-child(4) { left: 60%; top: 22%; animation-delay: 1.5s; }
+    #retrowaveOverlay .retro-stars span:nth-child(5) { left: 50%; top: 8%; animation-delay: 2.5s; }
+    @keyframes retro-twinkle {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 0.2; }
+    }
+    .retro-phone-emoji {
+      display: inline-block;
+      animation: phone-rotate-anim 2.8s infinite cubic-bezier(0.4,0,0.6,1);
+      transform-origin: 50% 90%;
+      will-change: transform;
+      font-size: 3.2rem;
+      margin-bottom: 1.2rem;
+    }
+    @keyframes phone-rotate-anim {
+      0% { transform: rotate(0deg); }
+      10% { transform: rotate(-10deg); }
+      20% { transform: rotate(-90deg); }
+      60% { transform: rotate(-90deg); }
+      70% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800">
+  <header class="glass-header">
+    <div class="logo-block" style="display: flex; align-items: center;">
+      <a href="index.ru.html">
+        <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+      </a>
+    </div>
+    <nav class="flex gap-4">
+      <a href="index.ru.html" class="nav-link">Главная</a>
+      <a href="about.ru.html" class="nav-link">О нас</a>
+      <a href="projects.ru.html" class="nav-link">Проекты</a>
+      <a href="blog/blog.ru.html" class="nav-link">Блог</a>
+      <a href="contact.ru.html" class="nav-link">На связи</a>
+    </nav>
+    <div class="flex gap-2">
+      <a href="index.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="index.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="index.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="index.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="max-w-2xl mx-auto mt-24 mb-12 bg-white rounded-3xl shadow-lg px-8 py-14 text-center">
+    <h1 class="text-5xl font-extrabold text-gray-900 mb-6" style="font-family:'Montserrat', 'Inter', sans-serif;">
+      Проекты R&A Studio
+    </h1>
+    <p class="text-xl text-gray-600 font-medium">
+      Мы разрабатываем собственные продукты, консультируем бизнес и публикуем исследовательские материалы. Ниже — проекты, которыми мы особенно гордимся.
+    </p>
+  </section>
+
+  <!-- Навигация/Фильтр -->
+  <nav class="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 mt-4 mb-12">
+    <button class="filter-btn px-4 py-2 rounded bg-indigo-100 text-indigo-800 font-bold transition hover:bg-indigo-200" data-filter="all">Все проекты</button>
+    <button class="filter-btn px-4 py-2 rounded bg-pink-100 text-pink-800 font-bold transition hover:bg-pink-200" data-filter="product">Продукты R&A</button>
+    <button class="filter-btn px-4 py-2 rounded bg-green-100 text-green-800 font-bold transition hover:bg-green-200" data-filter="client">Клиентские кейсы</button>
+    <button class="filter-btn px-4 py-2 rounded bg-yellow-100 text-yellow-800 font-bold transition hover:bg-yellow-200" data-filter="research">Исследования</button>
+  </nav>
+
+  <!-- Проекты -->
+  <section class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4" id="projectsList">
+    <!-- Adiguide -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-purple-600" data-type="product" id="adiguide">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📱</span>
+        <h2 class="text-xl font-bold">Adiguide</h2>
+        <span class="ml-auto text-sm text-gray-400">2023–&gt;</span>
+      </div>
+      <p class="mb-2 text-gray-700">Мобильное приложение с аудиогидами. Позволяет слушать маршруты и факты о достопримечательностях прямо во время прогулки.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Сценарии и тексты экскурсий</li>
+        <li>Озвучка через нейросети</li>
+        <li>UX/UI-дизайн, Flutter-разработка</li>
+        <li>Валидация на туристах Красной Площади</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Технологии: Figma, Dart, TTS, Python, Firebase, GitHub, openStreetMap</div>
+      <a href="projects/adiguide.ru.html" class="expand-btn mt-2 px-3 py-1 bg-purple-600 text-white rounded hover:bg-purple-700 transition">Подробнее</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Прототип</span>—<span>Тесты</span>—<span>Запуск</span>
+      </div>
+    </div>
+    <!-- ToDooliCo -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-pink-600" data-type="product" id="todoolico">
+      <div class="flex items-center gap-3 mb-2">
+        <img src="assets/AppIcon~todoolico.png" alt="ToDooliCo" style="width:2.2em;height:2.2em;border-radius:0.6em;box-shadow:0 2px 8px #f9a8d433;margin-right:0.1em;object-fit:cover;" loading="lazy">
+        <h2 class="text-xl font-bold">ToDooliCo</h2>
+        <span class="ml-auto text-sm text-gray-400">2025–&gt;</span>
+      </div>
+      <p class="mb-2 text-gray-700">Минималистичный трекер задач с удобным канбан-модулем и встроенным менеджером паролей с надёжным шифрованием. Создан для тех, кто хочет планировать дела просто, безопасно и эффективно — без регистрации и сложных интерфейсов.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Продуктовая гипотеза и тестирование</li>
+        <li>Прототипирование и UX/UI-дизайн</li>
+        <li>Реализация фронтенда на Flutter и Dart</li>
+        <li>Пользовательское тестирование и доработка</li>
+        <li>Интеграция менеджера паролей с AES-256 шифрованием</li>
+        <li>Канбан-доска для удобного управления задачами</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Технологии: Flutter, Dart, SQLite, Hive, GitHub, encrypt (AES-256), канбан</div>
+      <a href="projects/todoolico.ru.html" class="expand-btn mt-2 px-3 py-1 bg-pink-600 text-white rounded hover:bg-pink-700 transition">Подробнее</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Прототип</span>—<span>Тесты</span>—<span>Запуск</span>
+      </div>
+    </div>
+    <!-- DebtMate -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-blue-400" data-type="product" id="debtmate">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">💸</span>
+        <h2 class="text-xl font-bold">DebtMate</h2>
+        <span class="ml-auto text-sm text-gray-400">2025–&gt;</span>
+      </div>
+      <p class="mb-2 text-gray-700">Приложение-ассистент для управления личными займами и кредитами. Помогает контролировать, кому из друзей вы одолжили деньги, сколько должны вам вернуть, а также следить за собственными кредитами и обязательствами. Удобно, чтобы не потерять важные финансовые договорённости.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Разработка идеи и логики персонального ассистента</li>
+        <li>Проектирование UI/UX</li>
+        <li>Создание MVP на Android</li>
+        <li>Внутреннее и пользовательское тестирование</li>
+        <li>Напоминания и автоматический расчёт задолженностей</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Технологии: Flutter, Dart, Hive, GitHub</div>
+      <a href="projects/debtmate.ru.html" class="expand-btn mt-2 px-3 py-1 bg-blue-400 text-white rounded hover:bg-blue-500 transition">Подробнее</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Прототип</span>—<span>Тесты</span>—<span>Запуск</span>
+      </div>
+    </div>
+    <!-- Анализ для агентства -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-green-600" data-type="client" id="agency-analysis">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">🧪</span>
+        <h2 class="text-xl font-bold">Анализ для агентства по найму персонала</h2>
+        <span class="ml-auto text-sm text-gray-400">2023</span>
+      </div>
+      <p class="mb-2 text-gray-700">Комплексное маркетинговое исследование для агентства по найму персонала.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Опрос клиентов и сотрудников</li>
+        <li>Тестирование конкурентов «в поле»</li>
+        <li>Диагностика бренда</li>
+        <li>Чек-листы и рекомендации по позиционированию</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Инструменты и технологии: Google Таблицы, Google Forms, PowerPoint, скрипты обзвонов, конкурентный “тайный покупатель”, Customer Journey Map, Checklist Design, Brand Audit, ребрендинг</div>
+      <a href="blog/ru/posts/agency-analysis.ru.html" class="expand-btn mt-2 px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 transition">Подробнее</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Анализ</span>—<span>Реализация</span>—<span>Результат</span>
+      </div>
+    </div>
+    <!-- Финансовое консультирование -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-yellow-500" data-type="client" id="finance-consulting">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📊</span>
+        <h2 class="text-xl font-bold">Финансовое консультирование для магазина электроники</h2>
+        <span class="ml-auto text-sm text-gray-400">2024–&gt;</span>
+      </div>
+      <p class="mb-2 text-gray-700">Проведён глубокий анализ бизнес-процессов и финансов магазина с целью повышения эффективности и прибыльности. Пересмотрена бизнес-модель, оптимизированы расходы, исключены неэффективные отделы и разработаны новые источники дохода.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Подробный учёт и анализ каждого устройства</li>
+        <li>Оптимизация кредитных обязательств и затрат</li>
+        <li>Внедрение мер по снижению расходов, включая замену каршеринга на аренду автомобиля</li>
+        <li>Обеспечение постоянного экспертного сопровождения и поддержки</li>
+      </ul>
+
+      <div class="text-xs text-gray-500 mb-2">Инструменты и технологии: ежедневные стендапы, управление кредиторской и дебиторской задолженностью, контроль продаж и запасов, KPI и система мотивации, SWOT-анализ, бизнес-моделирование, Google Sheets</div>
+      <a href="blog/ru/posts/finance-consulting.ru.html" class="expand-btn mt-2 px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition">Подробнее</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Анализ</span>—<span>Реализация</span>—<span>Результат</span>
+      </div>
+    </div>
+    <!-- Научная публикация 1 -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-indigo-600" data-type="research" id="publication1">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📚</span>
+        <h2 class="text-xl font-bold">Потребительское поведение в условиях цифровизации</h2>
+        <span class="ml-auto text-sm text-gray-400">2022</span>
+      </div>
+      <p class="mb-2 text-gray-700">Научная статья о трансформации поведения потребителей в цифровой экономике.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Аналитика</li>
+        <li>Публикация</li>
+      </ul>
+      <div style="padding-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="https://usptu-bulletin.ru/index.php/bul/article/view/11710" class="expand-btn px-4 py-2 bg-indigo-600 text-white rounded text-base font-bold hover:bg-indigo-700 transition" target="_blank">Подробнее</a>
+        <a href="assets/ПОТРЕБИТЕЛЬСКОЕ ПОВЕДЕНИЕ В УСЛОВИЯХ ЦИФРОВИЗАЦИИ В ЭКОНОМИКЕ.pdf" class="expand-btn px-4 py-2 bg-green-600 text-white rounded text-base font-bold hover:bg-green-700 transition" download="ПОТРЕБИТЕЛЬСКОЕ ПОВЕДЕНИЕ В УСЛОВИЯХ ЦИФРОВИЗАЦИИ В ЭКОНОМИКЕ.pdf">📥 Скачать PDF</a>
+      </div>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Анализ</span>—<span>Публикация</span>
+      </div>
+    </div>
+    <!-- Научная публикация 2 -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-indigo-700" data-type="research" id="publication2">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📚</span>
+        <h2 class="text-xl font-bold">Мобильная агрегация трафика на открытых решениях</h2>
+        <span class="ml-auto text-sm text-gray-400">2025</span>
+      </div>
+      <p class="mb-2 text-gray-700">Статья о разработке сервиса мобильной агрегации трафика на базе открытых технологий.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Аналитика</li>
+        <li>Публикация</li>
+      </ul>
+      <div style="padding-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="https://usptu-bulletin.ru/index.php/bul/article/view/13035" class="expand-btn px-4 py-2 bg-indigo-700 text-white rounded text-base font-bold hover:bg-indigo-800 transition" target="_blank">Подробнее</a>
+        <a href="assets/РАЗРАБОТКА СЕРВИСА МОБИЛЬНОЙ АГРЕГАЦИИ ТРАФИКА НА ОСНОВЕ ОТКРЫТЫХ РЕШЕНИЙ.pdf" class="expand-btn px-4 py-2 bg-green-600 text-white rounded text-base font-bold hover:bg-green-700 transition" download="РАЗРАБОТКА СЕРВИСА МОБИЛЬНОЙ АГРЕГАЦИИ ТРАФИКА НА ОСНОВЕ ОТКРЫТЫХ РЕШЕНИЙ.pdf">📥 Скачать PDF</a>
+      </div>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Анализ</span>—<span>Публикация</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Инсайты и цифры -->
+  <section class="max-w-4xl mx-auto mt-20 mb-12 grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">💻</span>
+      <span class="font-bold text-xl">3</span>
+      <span class="text-xs text-gray-500">собственных продукта</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">🧑‍💼</span>
+      <span class="font-bold text-xl">2</span>
+      <span class="text-xs text-gray-500">клиентских кейса</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">📈</span>
+      <span class="font-bold text-xl">1</span>
+      <span class="text-xs text-gray-500">MVP вырос в бизнес</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">✏️</span>
+      <span class="font-bold text-xl">2</span>
+      <span class="text-xs text-gray-500">научные публикации</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">🕓</span>
+      <span class="font-bold text-xl">1000+</span>
+      <span class="text-xs text-gray-500">часов анализа</span>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="max-w-2xl mx-auto py-16 px-6 bg-gradient-to-b from-purple-900 via-fuchsia-800 to-purple-600 rounded-3xl shadow-2xl mt-16 mb-16 flex flex-col items-center" style="font-family: 'Montserrat', 'Inter', sans-serif;">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center mb-4 text-white">Идея есть — не хватает команды?</h2>
+    <p class="text-base md:text-lg text-center text-fuchsia-100 mb-6">Мы рядом. Обсудим, спроектируем, запустим.<br>Напишите — начнём путь к результату.</p>
+    <a href="contact.ru.html" class="btn-primary neon-glow text-base px-6 py-3 shadow-lg hover:scale-105 transition-transform">Связаться</a>
+  </section>
+
+  <footer class="text-center py-6 border-t mt-12 text-gray-400 text-sm">
+    © 2025 R&A Studio. Все права защищены.
+  </footer>
+
+  <!-- JS for filter, theme, and expand -->
+  <script>
+    // Фильтрация карточек
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        document.querySelectorAll('.project-card').forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-type') === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('ring', 'ring-2', 'ring-indigo-500'));
+        this.classList.add('ring', 'ring-2', 'ring-indigo-500');
+      });
+    });
+    // Анимация появления карточек при скролле
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+      observer.observe(el);
+    });
+    // Мини-якорная навигация active
+    const anchors = document.querySelectorAll('.anchor-link');
+    const sections = [
+      document.getElementById('products'),
+      document.getElementById('clients'),
+      document.getElementById('research')
+    ];
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const scrollY = window.scrollY + 120;
+      sections.forEach((section, idx) => {
+        if (section && section.offsetTop <= scrollY) {
+          current = anchors[idx];
+        }
+      });
+      anchors.forEach(a => a.classList.remove('active'));
+      if (current) current.classList.add('active');
+    });
+  </script>
+</body>
+
+  <footer class="text-center py-6 border-t mt-12">
+    <p class="text-sm" data-i18n="footer.copy">© 2025 R&A Studio. Все права защищены.</p>
+  </footer>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.ru.html">Главная</a>
+    <a href="about.ru.html">О нас</a>
+    <a href="projects.ru.html">Проекты</a>
+    <a href="blog/blog.ru.html" class="mobile-nav-link">Блог</a>
+    <a href="contact.ru.html">На связи</a>
+    <a href="index.en.html" class="mobile-lang-flag">🇬🇧</a>
+    <a href="index.de.html" class="mobile-lang-flag">🇩🇪</a>
+    <a href="index.fr.html" class="mobile-lang-flag">🇫🇷</a>
+    <a href="index.ru.html" class="mobile-lang-flag active">🇷🇺</a>
+  </div>
+  <!-- Retrowave overlay for portrait orientation -->
+  <div id="retrowaveOverlay">
+    <div class="retro-stars">
+      <span>✦</span><span>•</span><span>✦</span><span>•</span><span>✦</span>
+    </div>
+    <div class="retro-sun"></div>
+    <div class="retro-text">Поверните телефон горизонтально</div>
+    <span class="retro-phone-emoji" aria-hidden="true">📱</span>
+    <div class="retro-grid">
+      <svg viewBox="0 0 100 40" preserveAspectRatio="none">
+        <g stroke="#fff" stroke-width="0.3" opacity="0.5">
+          <line x1="0" y1="39" x2="100" y2="39" />
+          <line x1="0" y1="32" x2="100" y2="32" />
+          <line x1="0" y1="25" x2="100" y2="25" />
+          <line x1="0" y1="18" x2="100" y2="18" />
+          <line x1="0" y1="11" x2="100" y2="11" />
+          <line x1="0" y1="4" x2="100" y2="4" />
+          <line x1="10" y1="0" x2="30" y2="39" />
+          <line x1="20" y1="0" x2="40" y2="39" />
+          <line x1="30" y1="0" x2="50" y2="39" />
+          <line x1="40" y1="0" x2="60" y2="39" />
+          <line x1="50" y1="0" x2="70" y2="39" />
+          <line x1="60" y1="0" x2="80" y2="39" />
+          <line x1="70" y1="0" x2="90" y2="39" />
+          <line x1="80" y1="0" x2="100" y2="39" />
+        </g>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

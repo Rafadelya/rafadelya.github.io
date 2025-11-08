@@ -417,6 +417,27 @@
       margin-bottom: 3rem;
     }
 
+    .nav-emoji {
+      display: none;
+      font-size: 1.05em;
+      margin-right: 0.08em;
+      vertical-align: middle;
+    }
+    .glass-header.compact-nav .nav-emoji {
+      display: inline;
+      font-size: 0.92em;
+    }
+    .glass-header.compact-nav .nav-text {
+      display: none;
+    }
+    .glass-header.compact-nav nav {
+      gap: 0.5rem !important;
+    }
+    @media (max-width: 600px) {
+      .nav-emoji { display: inline; }
+      .nav-text { display: none; }
+    }
+
     @media (max-width: 768px) {
       .social-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -489,23 +510,38 @@
   <header class="glass-header">
     <div class="logo-block" style="display: flex; align-items: center;">
       <a href="index.fr.html">
-        <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+        <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img" style="width: 64px !important; height: 64px !important;">
       </a>
       <button class="mobile-lang-flag" id="mobileLangFlag" style="display:none;">🇫🇷</button>
       <button class="mobile-burger" id="mobileBurger" style="display:none;">☰</button>
     </div>
-    <nav class="flex gap-4">
-      <a href="index.fr.html" class="nav-link">Accueil</a>
-      <a href="about.fr.html" class="nav-link">À propos</a>
-      <a href="projects.fr.html" class="nav-link">Projets</a>
-      <a href="blog/blog.fr.html" class="nav-link">Blog</a>
-      <a href="Contact.fr.html" class="nav-link active">Contact</a>
+    <nav class="flex gap-2">
+      <a href="index.fr.html" class="nav-link">
+        <span class="nav-emoji">🏠</span>
+        <span class="nav-text">Accueil</span>
+      </a>
+      <a href="about.fr.html" class="nav-link">
+        <span class="nav-emoji">⭐️</span>
+        <span class="nav-text">À propos</span>
+      </a>
+      <a href="projects.fr.html" class="nav-link">
+        <span class="nav-emoji">🗂️</span>
+        <span class="nav-text">Projets</span>
+      </a>
+      <a href="blog/blog.fr.html" class="nav-link">
+        <span class="nav-emoji">📝</span>
+        <span class="nav-text">Blogue</span>
+      </a>
+      <a href="contact.fr.html" class="nav-link active">
+        <span class="nav-emoji">✉️</span>
+        <span class="nav-text">Contact</span>
+      </a>
     </nav>
     <div class="flex gap-2">
-      <a href="Contact.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-      <a href="Contact.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-      <a href="Contact.fr.html" class="lang-flag active" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
-      <a href="Contact.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+      <a href="contact.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="contact.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="contact.fr.html" class="lang-flag active" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="contact.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
     </div>
   </header>
 
@@ -617,11 +653,30 @@
     <a href="about.fr.html" data-i18n="nav.about">À propos</a>
     <a href="projects.fr.html" data-i18n="nav.projects">Projets</a>
     <a href="blog/blog.fr.html" class="nav-link">Blog</a>
-    <a href="Contact.fr.html" data-i18n="nav.contact">Contact</a>
-    <a href="Contact.en.html" class="mobile-lang-flag">🇬🇧</a>
-    <a href="Contact.de.html" class="mobile-lang-flag">🇩🇪</a>
-    <a href="Contact.fr.html" class="mobile-lang-flag active">🇫🇷</a>
-    <a href="Contact.ru.html" class="mobile-lang-flag">🇷🇺</a>
+    <a href="contact.fr.html" data-i18n="nav.contact">Contact</a>
+    <a href="contact.en.html" class="mobile-lang-flag">🇬🇧</a>
+    <a href="contact.de.html" class="mobile-lang-flag">🇩🇪</a>
+    <a href="contact.fr.html" class="mobile-lang-flag active">🇫🇷</a>
+    <a href="contact.ru.html" class="mobile-lang-flag">🇷🇺</a>
   </div>
+  <script>
+    // Автоматическое переключение на emoji-стиль при переполнении навигации
+    function checkNavOverflow() {
+      const header = document.querySelector('.glass-header');
+      const nav = header.querySelector('nav');
+      if (!header || !nav) return;
+      const isMobile = window.innerWidth < 700;
+      if (
+        (isMobile && nav.scrollWidth > nav.clientWidth - 8) ||
+        (!isMobile && nav.scrollWidth > nav.clientWidth + 32)
+      ) {
+        header.classList.add('compact-nav');
+      } else {
+        header.classList.remove('compact-nav');
+      }
+    }
+    window.addEventListener('resize', checkNavOverflow);
+    window.addEventListener('DOMContentLoaded', checkNavOverflow);
+  </script>
 </body>
 </html>

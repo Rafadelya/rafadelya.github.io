@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дизайн-долг и его финансовая модель | Блог R&A Studio</title>
+  <meta name="description" content="Как системность интерфейса влияет на конверсию, удержание и финансовый результат продукта." />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../../../styles.css">
+  <link rel="stylesheet" href="../../../blog-pixel.css">
+  <link rel="stylesheet" href="../post-style.css">
+  <link rel="icon" type="image/png" href="../../../../assets/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="text-gray-800">
+  <header class="glass-header flex items-center justify-between">
+    <div class="header-left flex items-center gap-4">
+      <div class="logo-block" style="display: flex; align-items: center;">
+        <a href="../../../../index.ru.html">
+          <img src="../assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+        </a>
+      </div>
+    </div>
+    <div class="header-langs">
+      <a href="../../../en/posts/design/design-debt.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="../../../de/posts/design/design-debt.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="../../../fr/posts/design/design-debt.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="design-debt.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+    <div class="header-switchers">
+      <div class="font-switcher desktop-font flex items-center gap-1">
+        <button class="font-btn font-pixel active" onclick="setFont('pixel')" title="Пиксельный"><i class="fas fa-th"></i></button>
+        <button class="font-btn font-ibm" onclick="setFont('ibm')" title="IBM Plex Mono"><i class="fas fa-font"></i></button>
+      </div>
+      <div class="theme-switcher flex items-center gap-1">
+        <button class="theme-btn theme-light active" onclick="setTheme('light')" title="Светлая тема"><i class="fas fa-sun"></i></button>
+        <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Тёмная тема"><i class="fas fa-moon"></i></button>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenuDrawer">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+    </div>
+  </header>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span class="mobile-menu-title">Меню</span>
+      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть меню">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Язык</div>
+      <div class="mobile-menu-row">
+        <a href="../../../en/posts/design/design-debt.en.html" class="mobile-menu-chip" aria-label="English">EN</a>
+        <a href="../../../de/posts/design/design-debt.de.html" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
+        <a href="../../../fr/posts/design/design-debt.fr.html" class="mobile-menu-chip" aria-label="Français">FR</a>
+        <a href="design-debt.ru.html" class="mobile-menu-chip active" aria-label="Русский">RU</a>
+      </div>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Шрифт</div>
+      <div class="mobile-menu-row">
+        <button class="mobile-menu-chip mobile-menu-font font-btn font-pixel active" onclick="setFont('pixel')" type="button">Pixel</button>
+        <button class="mobile-menu-chip mobile-menu-font font-btn font-ibm" onclick="setFont('ibm')" type="button">IBM</button>
+      </div>
+    </div>
+    <div class="mobile-menu-section mobile-menu-links">
+      <a href="../../../../index.ru.html" class="mobile-menu-link">Главная</a>
+      <a href="../../../blog.ru.html" class="mobile-menu-link">Блог</a>
+    </div>
+  </aside>
+  <style>
+    .glass-header { flex-direction: row; align-items: center; justify-content: space-between; gap: 1.2em; padding: 1.2rem clamp(1.2rem, 5vw, 3rem); }
+    .header-left { display: flex; align-items: center; gap: 1.2em; }
+    .header-langs, .header-switchers { display: flex; align-items: center; gap: 0.7em; margin-bottom: 0; }
+    .mobile-menu-btn {
+      display: none;
+      width: 2.2em;
+      height: 2.2em;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.45em;
+      background: #fff;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.18em;
+      padding: 0;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .mobile-menu-btn:hover {
+      border-color: #a78bfa;
+      box-shadow: 0 0 0 2px #ede9fe;
+    }
+    .menu-bar {
+      display: block;
+      width: 1.1em;
+      height: 2px;
+      border-radius: 2px;
+      background: #2d014d;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(1) {
+      transform: translateY(0.32em) rotate(45deg);
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(2) {
+      opacity: 0;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(3) {
+      transform: translateY(-0.32em) rotate(-45deg);
+    }
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 16, 35, 0.42);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 60;
+    }
+    .mobile-menu-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(84vw, 320px);
+      height: 100vh;
+      background: #fff;
+      border-left: 2px solid #e5e7eb;
+      box-shadow: -10px 0 40px rgba(34, 22, 63, 0.16);
+      transform: translateX(104%);
+      transition: transform 0.28s ease;
+      z-index: 70;
+      padding: 0.9em 0.8em 1.1em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85em;
+      overflow-y: auto;
+    }
+    .mobile-menu-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0.55em;
+      border-bottom: 1px solid #ebe7f6;
+    }
+    .mobile-menu-title {
+      font-family: 'Press Start 2P', monospace;
+      color: #2d014d;
+      font-size: 0.58em;
+    }
+    .mobile-menu-close {
+      width: 2em;
+      height: 2em;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.4em;
+      background: #fff;
+      color: #2d014d;
+      cursor: pointer;
+    }
+    .mobile-menu-section {
+      padding: 0.2em 0;
+    }
+    .mobile-menu-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.5em;
+      color: #6b7280;
+      margin-bottom: 0.55em;
+      letter-spacing: 0.02em;
+    }
+    .mobile-menu-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45em;
+    }
+    .mobile-menu-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      background: #fff;
+      color: #4b5563;
+      text-decoration: none;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.56em;
+      line-height: 1;
+      padding: 0.45em 0.62em;
+      min-height: 2.1em;
+      opacity: 1;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .mobile-menu-chip.active {
+      border-color: #a78bfa;
+      background: #f5f3ff;
+      color: #2d014d;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .mobile-menu-font.font-btn {
+      font-size: 0.56em;
+      padding: 0.45em 0.62em;
+      color: #4b5563;
+      text-decoration: none;
+      opacity: 1;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      background: #fff;
+    }
+    .mobile-menu-font.font-btn.active {
+      border-color: #a78bfa;
+      background: #f5f3ff;
+      color: #2d014d;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .mobile-menu-links {
+      display: grid;
+      gap: 0.5em;
+      padding-top: 0.45em;
+      border-top: 1px dashed #e5e7eb;
+    }
+    .mobile-menu-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.56em;
+      color: #2d014d;
+      background: #fafafa;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.35em;
+      padding: 0.7em 0.75em;
+    }
+    .read-emphasis {
+      display: inline;
+      padding: 0.06em 0.28em;
+      border-radius: 0.2em;
+      background: linear-gradient(90deg, #ede9fe 0%, #ddd6fe 100%);
+      color: #2d014d;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+    .read-figure {
+      display: inline-block;
+      padding: 0.15em 0.45em;
+      border: 1px solid #c4b5fd;
+      border-radius: 999px;
+      background: #f5f3ff;
+      color: #4c1d95;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+    body.mobile-menu-open .mobile-menu-overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    body.mobile-menu-open .mobile-menu-drawer {
+      transform: translateX(0);
+    }
+    @media (max-width: 700px) {
+      .glass-header { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; gap: 0.6em !important; padding: 0.85em 0.95em !important; }
+      .header-left { min-width: 0; gap: 0.55em !important; }
+      .header-langs { display: none !important; }
+      .desktop-font { display: none !important; }
+      .header-switchers { gap: 0.42em !important; }
+      .theme-switcher { display: flex !important; }
+      .mobile-menu-btn { display: inline-flex; }
+      .glass-logo-img { width: 46px !important; height: 46px !important; }
+      .theme-btn { font-size: 0.9em !important; padding: 2px 5px !important; }
+    }
+    @media (max-width: 500px) {
+      .glass-header { gap: 0.38em !important; padding: 0.75em 0.8em !important; }
+      .header-left, .header-switchers { gap: 0.38em !important; }
+      .glass-logo-img { width: 40px !important; height: 40px !important; }
+      .theme-btn { font-size: 0.76em !important; padding: 1px 3px !important; }
+      .mobile-menu-drawer { width: min(90vw, 320px); }
+      .mobile-menu-chip,
+      .mobile-menu-font.font-btn,
+      .mobile-menu-link { font-size: 0.54em !important; }
+    }
+  </style>
+
+  <main class="relative bg-white overflow-hidden">
+    <section class="relative pt-32 pb-20 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[300px] mb-8">
+      <div class="pixel-dots-bg"></div>
+      <div class="post-header-content text-center max-w-4xl mx-auto relative z-10">
+        <div class="post-meta mb-4">
+          <span class="blog-pixel-meta">2026-03-03</span>
+          <span class="blog-pixel-meta mx-2">•</span>
+          <span class="blog-pixel-meta">12 мин чтения</span>
+          <span class="blog-pixel-meta mx-2">•</span>
+          <span class="blog-pixel-meta">Дизайн / Продукт</span>
+        </div>
+        <h1 class="post-title text-4xl md:text-5xl font-bold mb-6" style="color:#2d014d; font-family:'Press Start 2P',monospace; line-height: 1.2;">
+Дизайн-долг и его финансовая модель
+        </h1>
+        <p class="post-subtitle text-lg md:text-xl text-center max-w-2xl mx-auto" style="font-family:'Press Start 2P',monospace; color:#6b7280; font-size: 0.9em;">
+Почему системность интерфейса влияет на доверие, скорость команды и экономику продукта.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
+      <div class="max-w-4xl mx-auto">
+        <nav class="breadcrumb mb-8">
+          <a href="../../../../index.ru.html" class="breadcrumb-link">Главная</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../blog.ru.html" class="breadcrumb-link">Блог</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Дизайн</span>
+        </nav>
+
+        <article class="post-content">
+          <p class="post-text">
+Нужно держать руку на пульсе вашего дизайна интерфейса. И это не формула для стратегической сессии, а <span class="read-emphasis">управленческая дисциплина</span> — практика, без которой продукт начинает <span class="read-emphasis">терять доверие</span> быстрее, чем успевает наращивать функциональность.
+          </p>
+          <p class="post-text">
+Каким бы сложным ни было решение и насколько бы глубокой ни была архитектура, <span class="read-emphasis">пользователь сначала видит экран</span>. Даже в B2B. Даже там, где решения принимаются через KPI и бюджеты. Первая оценка происходит на уровне интерфейса.
+          </p>
+          <p class="post-text">
+Визуальный слой — это <span class="read-emphasis">точка входа в доверие</span>. Аккуратная типографика, выстроенная иерархия, согласованные компоненты — это не про «красиво». Это сигнал о структурности. Логику ещё не изучили, но порядок уже почувствовали. Если на экране системность, продукту легче поверить.
+          </p>
+          <p class="post-text">
+Когда сетка «плывёт», компоненты конфликтуют, состояния неочевидны, возникает ощущение потери контроля. Функциональность может быть сильной, но доверие начинает разрушаться. А <span class="read-emphasis">доверие — нематериальный актив продукта</span>.
+          </p>
+          <p class="post-text">
+Интерфейс почти всегда отражает устройство команды. Визуальный хаос редко существует изолированно: размытые зоны ответственности, отсутствие принципов, ситуативные решения. Несистемный UI — не эстетическая проблема, а симптом организационной нестабильности.
+          </p>
+          <p class="post-text">
+Системный интерфейс, напротив, говорит о наличии рамки. О стандартах и предсказуемости. Компоненты — это библиотека, изменения вносятся по правилам. Это разговор уже не про пиксели, а про операционную дисциплину.
+          </p>
+
+          <h2 class="post-heading">Интерфейс как управленческий индикатор</h2>
+          <p class="post-text">
+Если на экране порядок, это <span class="read-emphasis">отражение управляемости внутри</span>. Если на экране хаос — это почти всегда следствие отсутствия рамки.
+          </p>
+          <p class="post-text">
+Интерфейс показывает, есть ли в продукте принципы или только решения по ситуации. Есть ли ответственность за целостность или только за задачи. Поэтому системность интерфейса — это индикатор зрелости команды.
+          </p>
+
+          <h2 class="post-heading">Дизайн-система как язык команды</h2>
+          <p class="post-text">
+Если интерфейс — это связка между системой и пользователем, то дизайн-система — это связка между командами. Это протокол: набор правил и ограничений, снимающих десятки мелких решений ежедневно.
+          </p>
+          <p class="post-text">
+Какая кнопка primary? Какие отступы допустимы? Как выглядят состояния ошибки? Что является нормой, а что нарушением стандарта?
+          </p>
+          <p class="post-text">
+Без общего языка каждое решение обсуждается заново. Каждый экран становится отдельным кейсом. Продакт формулирует в одном контексте, дизайнер интерпретирует в другом, разработчик реализует в третьем, маркетинг описывает в четвёртом.
+          </p>
+          <p class="post-text">
+Растёт транзакционная стоимость взаимодействия. Замедляются ревью. Согласования усложняются. <span class="read-emphasis">Скорость масштабирования падает</span>.
+          </p>
+          <div class="media-container debt-media">
+            <div class="image-container">
+              <img src="DesignDebt.png" alt="Дизайн-система как общий язык команды" class="post-image">
+              <div class="image-caption">
+                <p>Единый визуальный язык снижает вариативность и ускоряет взаимодействие между командами.</p>
+              </div>
+            </div>
+          </div>
+          <p class="post-text">
+Дизайн-система снижает вариативность там, где она не создаёт ценности. Базовые решения автоматизируются, внимание высвобождается для логики и сценариев. Когда команда растёт с пяти до пятидесяти человек, отсутствие формализованного визуального языка превращается из неудобства в фактор потери скорости.
+          </p>
+
+          <h2 class="post-heading">Экономика дизайна: что это даёт в цифрах</h2>
+          <p class="post-text">
+Допустим, B2B-продукт получает 10 000 визитов в месяц. Конверсия в регистрацию — 5%. Из регистрации в оплату — 20%. Средний чек — 100 000 ₽ в год.
+          </p>
+          <div class="post-list">
+            <div class="list-item">
+              <span class="list-marker">■</span>
+              <span class="list-text"><span class="read-figure">10 000 × 5% = 500 регистраций</span></span>
+            </div>
+            <div class="list-item">
+              <span class="list-marker">■</span>
+              <span class="list-text"><span class="read-figure">500 × 20% = 100 клиентов</span></span>
+            </div>
+            <div class="list-item">
+              <span class="list-marker">■</span>
+              <span class="list-text"><span class="read-figure">100 × 100 000 ₽ = 10 000 000 ₽ годовой выручки</span></span>
+            </div>
+          </div>
+          <p class="post-text">
+Команда не добавляет новую функцию, а систематизирует интерфейс. Конверсия растёт до 6%.
+          </p>
+          <div class="post-list">
+            <div class="list-item">
+              <span class="list-marker">■</span>
+              <span class="list-text"><span class="read-figure">10 000 × 6% = 600 регистраций</span></span>
+            </div>
+            <div class="list-item">
+              <span class="list-marker">■</span>
+              <span class="list-text"><span class="read-figure">600 × 20% = 120 клиентов</span></span>
+            </div>
+            <div class="list-item">
+              <span class="list-marker">■</span>
+              <span class="list-text"><span class="read-figure">120 × 100 000 ₽ = 12 000 000 ₽</span></span>
+            </div>
+          </div>
+          <p class="post-text">
+<span class="read-emphasis">Плюс 2 000 000 ₽ в год без роста трафика.</span>
+          </p>
+          <p class="post-text">
+Теперь удержание. 1 000 активных клиентов. Отток — 15%. После упрощения интерфейса — 12%.
+          </p>
+          <p class="post-text">
+<span class="read-figure">3% × 1 000 × 100 000 ₽ = 3 000 000 ₽ сохранённой выручки.</span>
+          </p>
+          <p class="post-text">
+Поддержка. 5% клиентов создают тикеты ежемесячно: <span class="read-figure">50 обращений × 1 500 ₽ × 12 = 900 000 ₽ в год</span>. Снижение на 40% — <span class="read-emphasis">экономия около 360 000 ₽</span>.
+          </p>
+          <div class="post-highlight">
+            <p class="highlight-text">
+Совокупный эффект — около 5 000 000 ₽ в год без роста маркетинговых расходов.
+            </p>
+          </div>
+          <p class="post-text">
+При этом дизайн не равен ценности. Тренды устаревают, визуальные приёмы становятся фоном. Если ключевая потребность не закрыта, полировка интерфейса не спасёт. Дизайн не создаёт ценность из ничего — он усиливает уже существующую. И так же способен её разрушать.
+          </p>
+
+          <h2 class="post-heading">Как накапливается дизайн-долг</h2>
+          <p class="post-text">
+О техническом долге говорят часто. О дизайн-долге — реже. Механика та же. Каждое «потом поправим», каждый временный компонент, каждый несогласованный паттерн — это обязательство.
+          </p>
+          <p class="post-text">
+Сначала это почти незаметно: разные стили кнопок, дублированные элементы, нестабильные состояния. Потом это начинает замедлять развитие. Новые функции сложнее встроить, потому что нет единого языка. Любое изменение вызывает цепную реакцию. Редизайн превращается в дорогой проект.
+          </p>
+          <p class="post-text">
+Скорость падает, предсказуемость снижается, воронка начинает «течь».
+          </p>
+
+          <h2 class="post-heading">Цена дизайн-долга</h2>
+          <p class="post-text">
+Достаточно падения конверсии с 5% до 4% — и это <span class="read-figure">минус 2 000 000 ₽ в год</span>. Рост оттока на 2 п.п. — ещё <span class="read-figure">минус 2 000 000 ₽</span>.
+          </p>
+          <p class="post-text">
+За несколько лет визуальная несистемность материализуется в прямые финансовые потери.
+          </p>
+
+          <h2 class="post-heading">Когнитивная механика интерфейса</h2>
+          <p class="post-text">
+В основе всего — когнитивная механика.
+          </p>
+          <p class="post-text">
+Чёткая иерархия — не вопрос вкуса, а вопрос того, как устроено принятие решений. Чем больше альтернатив, тем дольше выбор и выше вероятность отказа. Способ представления информации влияет на решение не меньше, чем сама информация. Рабочая память ограничена.
+          </p>
+          <p class="post-text">
+*Картинка*
+          </p>
+          <p class="post-text">
+<span class="read-emphasis">Пользователь не ленив. Он ограничен.</span>
+          </p>
+          <p class="post-text">
+Каждый лишний элемент интерфейса, каждый неочевидный переход расходуют когнитивный ресурс. Когда ресурс исчерпан, включается защитная реакция — отказ.
+          </p>
+          <p class="post-text">
+Дизайн управляет распределением внимания. Он определяет, что будет замечено первым, где пользователь задержится и где почувствует перегруз. Чёткая визуальная иерархия снижает энтропию и экономит когнитивную энергию. А экономия когнитивной энергии напрямую связана с доверием: когда интерфейс понятен, ресурс можно направить на задачу.
+          </p>
+          <p class="post-text">
+В этом контексте дизайн — не украшение и не маркетинговый слой. Это коэффициент устойчивости системы. Он либо усиливает экономику продукта, либо постепенно её размывает.
+          </p>
+          <p class="post-text">Пользователь видит экран.<br>Команда работает через систему.<br>Инвестор смотрит на цифры.</p>
+          <p class="post-text">
+И все три уровня связаны степенью системности интерфейса.
+          </p>
+
+          <h2 class="post-heading">Чеклист управления дизайном</h2>
+          <div class="checklist-interactive" id="designDebtChecklist">
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-01"><label for="dd-check-01"><strong>Область: Роль дизайна</strong><br>Понятно ли, за что дизайн отвечает в продукте?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-02"><label for="dd-check-02"><strong>Область: Метрики</strong><br>Измеряется ли влияние интерфейса на конверсию, удержание или поддержку?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-03"><label for="dd-check-03"><strong>Область: Процесс</strong><br>Есть ли понятный путь от задачи до релиза (без хаоса и «переделок в конце»)?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-04"><label for="dd-check-04"><strong>Область: Ревью</strong><br>Обсуждаются ли решения по принципам, а не по вкусу?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-05"><label for="dd-check-05"><strong>Область: Дизайн-система</strong><br>Есть ли единая библиотека компонентов?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-06"><label for="dd-check-06"><strong>Область: Консистентность</strong><br>Новые экраны собираются из существующих паттернов, а не из «новых идей» каждый раз?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-07"><label for="dd-check-07"><strong>Область: Язык команды</strong><br>Продакт, дизайнер и разработчик одинаково понимают термины типа primary, state, flow?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-08"><label for="dd-check-08"><strong>Область: Долг</strong><br>Есть ли список проблем интерфейса, который регулярно закрывается?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-09"><label for="dd-check-09"><strong>Область: Масштабирование</strong><br>Может ли новый дизайнер быстро включиться в работу без хаоса?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-10"><label for="dd-check-10"><strong>Область: Ответственность</strong><br>Понятно ли, кто финально отвечает за системность?</label></div>
+          </div>
+
+          <div class="post-tags mt-12">
+            <span class="tag">#дизайн</span>
+            <span class="tag">#дизайндолг</span>
+            <span class="tag">#дизайнсистема</span>
+            <span class="tag">#продукт</span>
+            <span class="tag">#конверсия</span>
+            <span class="tag">#удержание</span>
+            <span class="tag">#экономикапродукта</span>
+          </div>
+        </article>
+
+        <div class="post-navigation mt-16">
+          <div class="nav-links flex justify-between items-center">
+            <a href="../finance-consulting.ru.html" class="nav-prev">
+              <span class="nav-arrow">←</span>
+              <span class="nav-text">Предыдущий пост</span>
+            </a>
+            <a href="../../../blog.ru.html" class="nav-back">
+              <span class="nav-text">К списку постов</span>
+            </a>
+            <span class="nav-next text-gray-400 cursor-default">
+              <span class="nav-text">Следующий пост</span>
+              <span class="nav-arrow">→</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 border-t mt-12">
+    <p class="text-sm">© 2026 R&A Studio. Все права защищены.</p>
+  </footer>
+
+  <script src="../post-interactive.js"></script>
+  <script>
+    const CHECKLIST_COOKIE_NAME = 'design_debt_checklist_v1';
+
+    function setFont(type) {
+      const postContent = document.querySelector('.post-content');
+      if (!postContent) return;
+      if (type === 'pixel') {
+        postContent.style.fontFamily = "'Press Start 2P', monospace";
+      } else {
+        postContent.style.fontFamily = "'IBM Plex Mono', monospace";
+      }
+      document.querySelectorAll('.font-pixel').forEach((btn) => {
+        btn.classList.toggle('active', type === 'pixel');
+      });
+      document.querySelectorAll('.font-ibm').forEach((btn) => {
+        btn.classList.toggle('active', type === 'ibm');
+      });
+    }
+    function setTheme(theme) {
+      const body = document.body;
+      if (theme === 'dark') {
+        body.classList.add('dark-theme');
+        body.classList.remove('light-theme');
+      } else {
+        body.classList.add('light-theme');
+        body.classList.remove('dark-theme');
+      }
+      document.querySelectorAll('.theme-dark').forEach((btn) => {
+        btn.classList.toggle('active', theme === 'dark');
+      });
+      document.querySelectorAll('.theme-light').forEach((btn) => {
+        btn.classList.toggle('active', theme === 'light');
+      });
+    }
+
+    function setMobileMenuState(isOpen) {
+      const body = document.body;
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuDrawer) return;
+
+      body.classList.toggle('mobile-menu-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuDrawer.setAttribute('aria-hidden', String(!isOpen));
+    }
+
+    function toggleMobileMenu(forceState) {
+      const shouldOpen = typeof forceState === 'boolean'
+        ? forceState
+        : !document.body.classList.contains('mobile-menu-open');
+      setMobileMenuState(shouldOpen);
+    }
+
+    function initMobileMenu() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuClose = document.getElementById('mobileMenuClose');
+      const menuOverlay = document.getElementById('mobileMenuOverlay');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuOverlay || !menuDrawer) return;
+
+      menuBtn.addEventListener('click', () => toggleMobileMenu());
+      menuOverlay.addEventListener('click', () => toggleMobileMenu(false));
+      if (menuClose) {
+        menuClose.addEventListener('click', () => toggleMobileMenu(false));
+      }
+
+      menuDrawer.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => toggleMobileMenu(false));
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          toggleMobileMenu(false);
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 700) {
+          toggleMobileMenu(false);
+        }
+      });
+    }
+
+    function setCookie(name, value, days) {
+      const expires = new Date(Date.now() + days * 864e5).toUTCString();
+      document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Lax';
+    }
+
+    function getCookie(name) {
+      const value = '; ' + document.cookie;
+      const parts = value.split('; ' + name + '=');
+      if (parts.length === 2) {
+        return decodeURIComponent(parts.pop().split(';').shift());
+      }
+      return '';
+    }
+
+    function updateChecklistRowState(checkbox) {
+      const row = checkbox.closest('.check-item');
+      if (!row) return;
+      if (checkbox.checked) {
+        row.classList.add('is-checked');
+      } else {
+        row.classList.remove('is-checked');
+      }
+    }
+
+    function saveChecklistState() {
+      const checkedIds = Array.from(document.querySelectorAll('#designDebtChecklist .check-item-input:checked'))
+        .map((el) => el.id);
+      setCookie(CHECKLIST_COOKIE_NAME, JSON.stringify(checkedIds), 365);
+    }
+
+    function loadChecklistState() {
+      const raw = getCookie(CHECKLIST_COOKIE_NAME);
+      if (!raw) return;
+
+      try {
+        const checkedIds = JSON.parse(raw);
+        if (!Array.isArray(checkedIds)) return;
+        checkedIds.forEach((id) => {
+          const box = document.getElementById(id);
+          if (box) box.checked = true;
+        });
+      } catch (err) {
+        return;
+      }
+    }
+
+    function initDesignDebtChecklist() {
+      const checklist = document.getElementById('designDebtChecklist');
+      if (!checklist) return;
+
+      loadChecklistState();
+      const boxes = checklist.querySelectorAll('.check-item-input');
+      boxes.forEach((box) => {
+        updateChecklistRowState(box);
+        box.addEventListener('change', () => {
+          updateChecklistRowState(box);
+          saveChecklistState();
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initDesignDebtChecklist();
+      initMobileMenu();
+    });
+  </script>
+  <style>
+    .font-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }
+    .font-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; }
+    .font-btn:focus { outline: 2px solid #2d014d; }
+    .theme-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }
+    .theme-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; }
+    .theme-btn:focus { outline: 2px solid #2d014d; }
+    .checklist-interactive {
+      margin: 1.5em 0 0.5em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65em;
+    }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8em;
+      padding: 0.75em 0.85em;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.35em;
+      background: #fff;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .check-item-input {
+      width: 1em;
+      height: 1em;
+      margin-top: 0.23em;
+      flex-shrink: 0;
+      accent-color: #7c3aed;
+      cursor: pointer;
+    }
+    .check-item label {
+      font-size: 0.82em;
+      line-height: 1.55;
+      color: #374151;
+      cursor: pointer;
+      font-family: 'Press Start 2P', monospace;
+    }
+    .check-item.is-checked {
+      background: #faf5ff;
+      border-color: #c4b5fd;
+    }
+    .check-item.is-checked label {
+      color: #6b7280;
+      text-decoration: line-through;
+    }
+    .debt-media {
+      margin-top: 1.6em;
+    }
+    body.light-theme { background: #fff; color: #2d014d; }
+    body.dark-theme {
+      background: #181824;
+      color: #e6e6f0;
+    }
+    body.dark-theme main,
+    body.dark-theme .post-section,
+    body.dark-theme .media-container,
+    body.dark-theme .image-container,
+    body.dark-theme .carousel-container,
+    body.dark-theme .interactive-demo,
+    body.dark-theme .demo-header,
+    body.dark-theme .demo-preview,
+    body.dark-theme .demo-code,
+    body.dark-theme .footer,
+    body.dark-theme .glass-header,
+    body.dark-theme .breadcrumb,
+    body.dark-theme .post-tags,
+    body.dark-theme .post-navigation,
+    body.dark-theme .audio-player,
+    body.dark-theme .video-player,
+    body.dark-theme .carousel-controls,
+    body.dark-theme .image-caption,
+    body.dark-theme .carousel-caption,
+    body.dark-theme .tag,
+    body.dark-theme .nav-links,
+    body.dark-theme .nav-prev,
+    body.dark-theme .nav-next,
+    body.dark-theme .nav-back,
+    body.dark-theme .post-highlight,
+    body.dark-theme .list-item,
+    body.dark-theme .check-item,
+    body.dark-theme .demo-btn,
+    body.dark-theme .audio-btn,
+    body.dark-theme .control-btn,
+    body.dark-theme .play-button,
+    body.dark-theme .dot,
+    body.dark-theme .progress-bar,
+    body.dark-theme .pixel-box {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .post-title {
+      color: #f7b801 !important;
+      text-shadow: 2px 2px 8px #39396a;
+    }
+    body.dark-theme .post-subtitle {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .post-heading {
+      color: #f7b801 !important;
+      border-bottom: 2px solid #39396a !important;
+    }
+    body.dark-theme .post-text,
+    body.dark-theme .list-text,
+    body.dark-theme .image-caption p,
+    body.dark-theme .carousel-caption p {
+      color: #e6e6f0 !important;
+    }
+    body.dark-theme .tag {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .tag:hover {
+      background: #f7b801 !important;
+      color: #23233a !important;
+      box-shadow: 2px 2px 0px #39396a;
+    }
+    body.dark-theme .nav-link, body.dark-theme .lang-flag, body.dark-theme .font-btn, body.dark-theme .theme-btn {
+      color: #f7b801 !important;
+    }
+    body.dark-theme .carousel-btn, body.dark-theme .control-btn, body.dark-theme .audio-btn, body.dark-theme .demo-btn, body.dark-theme .play-button {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .carousel-btn:hover, body.dark-theme .control-btn:hover, body.dark-theme .audio-btn:hover, body.dark-theme .demo-btn:hover, body.dark-theme .play-button:hover {
+      background: #f7b801 !important;
+      color: #23233a !important;
+    }
+    body.dark-theme .dot {
+      background: #39396a !important;
+    }
+    body.dark-theme .dot.active, body.dark-theme .dot:hover {
+      background: #f7b801 !important;
+    }
+    body.dark-theme .progress-bar {
+      background: #39396a !important;
+    }
+    body.dark-theme .progress-fill {
+      background: linear-gradient(90deg, #f7b801, #a3aed6) !important;
+    }
+    body.dark-theme .pixel-box {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .post-highlight {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .list-item {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .check-item label {
+      color: #e6e6f0 !important;
+    }
+    body.dark-theme .check-item.is-checked {
+      background: #39396a !important;
+      border-color: #a3aed6 !important;
+    }
+    body.dark-theme .mobile-menu-overlay {
+      background: rgba(8, 10, 20, 0.62) !important;
+    }
+    body.dark-theme .mobile-menu-drawer {
+      background: #23233a !important;
+      border-color: #39396a !important;
+      box-shadow: -10px 0 38px rgba(6, 6, 14, 0.6) !important;
+    }
+    body.dark-theme .mobile-menu-head {
+      border-color: #39396a !important;
+    }
+    body.dark-theme .mobile-menu-title,
+    body.dark-theme .mobile-menu-label {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .mobile-menu-close,
+    body.dark-theme .mobile-menu-btn {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .mobile-menu-btn .menu-bar {
+      background: #f7b801 !important;
+    }
+    body.dark-theme .mobile-menu-chip,
+    body.dark-theme .mobile-menu-font.font-btn,
+    body.dark-theme .mobile-menu-link {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .mobile-menu-chip.active,
+    body.dark-theme .mobile-menu-font.font-btn.active {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+      text-decoration: none !important;
+    }
+    body.dark-theme .mobile-menu-links {
+      border-color: #39396a !important;
+    }
+    body.dark-theme nav.breadcrumb,
+    body.dark-theme .breadcrumb {
+      background: none !important;
+      box-shadow: none !important;
+    }
+    body.dark-theme .breadcrumb {
+      color: #e6e6f0 !important;
+    }
+    body.dark-theme .breadcrumb-link {
+      color: #a3aed6 !important;
+      text-decoration: underline !important;
+    }
+    body.dark-theme .breadcrumb-link:hover {
+      color: #f7b801 !important;
+    }
+    body.dark-theme .breadcrumb-separator {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .breadcrumb-current {
+      color: #f7b801 !important;
+      font-weight: bold !important;
+    }
+    body.dark-theme footer {
+      background: #f7b801 !important;
+      color: #2d014d !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+  </style>
+</body>
+</html>

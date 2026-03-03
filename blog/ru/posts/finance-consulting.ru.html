@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sample Post | Блог R&A Studio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../../styles.css">
-  <link rel="stylesheet" href="../blog-pixel.css">
+  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="stylesheet" href="../../blog-pixel.css">
   <link rel="stylesheet" href="post-style.css">
-  <link rel="icon" type="image/png" href="../../assets/favicon.ico">
+  <link rel="icon" type="image/jpeg" href="assets/logo-ra-studio.jpeg">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -19,11 +19,10 @@
   <header class="glass-header flex items-center justify-between">
     <div class="header-left flex items-center gap-4">
       <div class="logo-block" style="display: flex; align-items: center;">
-        <a href="../../index.ru.html">
+        <a href="../../../index.ru.html">
           <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
         </a>
       </div>
-      <a href="../../blog.ru.html" class="nav-link back-btn flex items-center" style="font-weight:600;"><i class="fas fa-arrow-left mr-1"></i>Назад</a>
     </div>
     <div class="header-langs">
       <a href="../../en/posts/finance-consulting.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
@@ -32,7 +31,7 @@
       <a href="finance-consulting.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
     </div>
     <div class="header-switchers">
-      <div class="font-switcher flex items-center gap-1">
+      <div class="font-switcher desktop-font flex items-center gap-1">
         <button class="font-btn font-pixel active" onclick="setFont('pixel')" title="Пиксельный"><i class="fas fa-th"></i></button>
         <button class="font-btn font-ibm" onclick="setFont('ibm')" title="IBM Plex Mono"><i class="fas fa-font"></i></button>
       </div>
@@ -40,30 +39,235 @@
         <button class="theme-btn theme-light active" onclick="setTheme('light')" title="Светлая тема"><i class="fas fa-sun"></i></button>
         <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Тёмная тема"><i class="fas fa-moon"></i></button>
       </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenuDrawer">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
     </div>
   </header>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span class="mobile-menu-title">Меню</span>
+      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть меню">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Язык</div>
+      <div class="mobile-menu-row">
+        <a href="../../en/posts/finance-consulting.en.html" class="mobile-menu-chip" aria-label="English">EN</a>
+        <a href="../../de/posts/finance-consulting.de.html" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
+        <a href="../../fr/posts/finance-consulting.fr.html" class="mobile-menu-chip" aria-label="Français">FR</a>
+        <a href="finance-consulting.ru.html" class="mobile-menu-chip active" aria-label="Русский">RU</a>
+      </div>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Шрифт</div>
+      <div class="mobile-menu-row">
+        <button class="mobile-menu-chip mobile-menu-font font-btn font-pixel active" onclick="setFont('pixel')" type="button">Pixel</button>
+        <button class="mobile-menu-chip mobile-menu-font font-btn font-ibm" onclick="setFont('ibm')" type="button">IBM</button>
+      </div>
+    </div>
+    <div class="mobile-menu-section mobile-menu-links">
+      <a href="../../../index.ru.html" class="mobile-menu-link">Главная</a>
+      <a href="../../blog.ru.html" class="mobile-menu-link">Блог</a>
+    </div>
+  </aside>
   <style>
     .glass-header { flex-direction: row; align-items: center; justify-content: space-between; gap: 1.2em; padding: 1.2rem clamp(1.2rem, 5vw, 3rem); }
     .header-left { display: flex; align-items: center; gap: 1.2em; }
     .header-langs, .header-switchers { display: flex; align-items: center; gap: 0.7em; margin-bottom: 0; }
+    .mobile-menu-btn {
+      display: none;
+      width: 2.2em;
+      height: 2.2em;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.45em;
+      background: #fff;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.18em;
+      padding: 0;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .mobile-menu-btn:hover {
+      border-color: #a78bfa;
+      box-shadow: 0 0 0 2px #ede9fe;
+    }
+    .menu-bar {
+      display: block;
+      width: 1.1em;
+      height: 2px;
+      border-radius: 2px;
+      background: #2d014d;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(1) {
+      transform: translateY(0.32em) rotate(45deg);
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(2) {
+      opacity: 0;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(3) {
+      transform: translateY(-0.32em) rotate(-45deg);
+    }
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 16, 35, 0.42);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 60;
+    }
+    .mobile-menu-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(84vw, 320px);
+      height: 100vh;
+      background: #fff;
+      border-left: 2px solid #e5e7eb;
+      box-shadow: -10px 0 40px rgba(34, 22, 63, 0.16);
+      transform: translateX(104%);
+      transition: transform 0.28s ease;
+      z-index: 70;
+      padding: 0.9em 0.8em 1.1em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85em;
+      overflow-y: auto;
+    }
+    .mobile-menu-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0.55em;
+      border-bottom: 1px solid #ebe7f6;
+    }
+    .mobile-menu-title {
+      font-family: 'Press Start 2P', monospace;
+      color: #2d014d;
+      font-size: 0.58em;
+    }
+    .mobile-menu-close {
+      width: 2em;
+      height: 2em;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.4em;
+      background: #fff;
+      color: #2d014d;
+      cursor: pointer;
+    }
+    .mobile-menu-section {
+      padding: 0.2em 0;
+    }
+    .mobile-menu-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.5em;
+      color: #6b7280;
+      margin-bottom: 0.55em;
+      letter-spacing: 0.02em;
+    }
+    .mobile-menu-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45em;
+    }
+    .mobile-menu-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      background: #fff;
+      color: #4b5563;
+      text-decoration: none;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.56em;
+      line-height: 1;
+      padding: 0.45em 0.62em;
+      min-height: 2.1em;
+      opacity: 1;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .mobile-menu-chip.active {
+      border-color: #a78bfa;
+      background: #f5f3ff;
+      color: #2d014d;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .mobile-menu-font.font-btn {
+      font-size: 0.56em;
+      padding: 0.45em 0.62em;
+      color: #4b5563;
+      text-decoration: none;
+      opacity: 1;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      background: #fff;
+    }
+    .mobile-menu-font.font-btn.active {
+      border-color: #a78bfa;
+      background: #f5f3ff;
+      color: #2d014d;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .mobile-menu-links {
+      display: grid;
+      gap: 0.5em;
+      padding-top: 0.45em;
+      border-top: 1px dashed #e5e7eb;
+    }
+    .mobile-menu-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.56em;
+      color: #2d014d;
+      background: #fafafa;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.35em;
+      padding: 0.7em 0.75em;
+    }
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+    body.mobile-menu-open .mobile-menu-overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    body.mobile-menu-open .mobile-menu-drawer {
+      transform: translateX(0);
+    }
     @media (max-width: 700px) {
-      .glass-header { flex-direction: column !important; align-items: stretch !important; gap: 0.2em; padding: 0.5em 0.2em !important; }
-      .header-left, .header-right { width: 100%; gap: 0.5em; }
-      .header-left { justify-content: center !important; margin-bottom: 0.2em; }
-      .header-langs, .header-switchers { display: flex; justify-content: center; gap: 0.5em; margin-bottom: 0.2em; }
-      .header-switchers { margin-bottom: 0; }
-      .glass-logo-img { width: 40px !important; height: 40px !important; }
-      .nav-link.back-btn { font-size: 0.8em !important; padding: 0.2em 0.5em !important; }
-      .font-btn, .theme-btn { font-size: 0.9em !important; padding: 2px 4px !important; }
-      .lang-flag { width: 32px !important; height: 32px !important; font-size: 1.1em !important; }
+      .glass-header { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; gap: 0.6em !important; padding: 0.85em 0.95em !important; }
+      .header-left { min-width: 0; gap: 0.55em !important; }
+      .header-langs { display: none !important; }
+      .desktop-font { display: none !important; }
+      .header-switchers { gap: 0.42em !important; }
+      .theme-switcher { display: flex !important; }
+      .mobile-menu-btn { display: inline-flex; }
+      .glass-logo-img { width: 46px !important; height: 46px !important; }
+      .theme-btn { font-size: 0.9em !important; padding: 2px 5px !important; }
     }
     @media (max-width: 500px) {
-      .glass-header { gap: 0.1em !important; padding: 0.2em 0.1em !important; }
-      .header-left, .header-langs, .header-switchers { gap: 0.2em !important; }
-      .glass-logo-img { width: 28px !important; height: 28px !important; }
-      .nav-link.back-btn { font-size: 0.7em !important; padding: 0.1em 0.3em !important; }
-      .font-btn, .theme-btn { font-size: 0.7em !important; padding: 1px 2px !important; }
-      .lang-flag { width: 22px !important; height: 22px !important; font-size: 0.9em !important; }
+      .glass-header { gap: 0.38em !important; padding: 0.75em 0.8em !important; }
+      .header-left, .header-switchers { gap: 0.38em !important; }
+      .glass-logo-img { width: 40px !important; height: 40px !important; }
+      .theme-btn { font-size: 0.76em !important; padding: 1px 3px !important; }
+      .mobile-menu-drawer { width: min(90vw, 320px); }
+      .mobile-menu-chip,
+      .mobile-menu-font.font-btn,
+      .mobile-menu-link { font-size: 0.54em !important; }
     }
   </style>
 
@@ -93,9 +297,9 @@
       <div class="max-w-4xl mx-auto">
         <!-- Breadcrumb -->
         <nav class="breadcrumb mb-8">
-          <a href="../../index.ru.html" class="breadcrumb-link">Главная</a>
+          <a href="../../../index.ru.html" class="breadcrumb-link">Главная</a>
           <span class="breadcrumb-separator">/</span>
-          <a href="../blog.ru.html" class="breadcrumb-link">Блог</a>
+          <a href="../../blog.ru.html" class="breadcrumb-link">Блог</a>
           <span class="breadcrumb-separator">/</span>
           <span class="breadcrumb-current">Финансовое консультирование</span>
         </nav>
@@ -169,7 +373,7 @@ Google Sheets, SWOT-анализ, расчёт юнит-экономики, си
   </main>
 
   <footer class="text-center py-6 border-t mt-12">
-    <p class="text-sm">© 2025 R&A Studio. Все права защищены.</p>
+    <p class="text-sm">© 2026 R&A Studio. Все права защищены.</p>
   </footer>
 
   <!-- JavaScript for Media Controls -->
@@ -180,28 +384,82 @@ Google Sheets, SWOT-анализ, расчёт юнит-экономики, си
       if (!postContent) return;
       if (type === 'pixel') {
         postContent.style.fontFamily = "'Press Start 2P', monospace";
-        document.querySelector('.font-pixel').classList.add('active');
-        document.querySelector('.font-ibm').classList.remove('active');
       } else {
         postContent.style.fontFamily = "'IBM Plex Mono', monospace";
-        document.querySelector('.font-ibm').classList.add('active');
-        document.querySelector('.font-pixel').classList.remove('active');
       }
+      document.querySelectorAll('.font-pixel').forEach((btn) => {
+        btn.classList.toggle('active', type === 'pixel');
+      });
+      document.querySelectorAll('.font-ibm').forEach((btn) => {
+        btn.classList.toggle('active', type === 'ibm');
+      });
     }
     function setTheme(theme) {
       const body = document.body;
       if (theme === 'dark') {
         body.classList.add('dark-theme');
         body.classList.remove('light-theme');
-        document.querySelector('.theme-dark').classList.add('active');
-        document.querySelector('.theme-light').classList.remove('active');
       } else {
         body.classList.add('light-theme');
         body.classList.remove('dark-theme');
-        document.querySelector('.theme-light').classList.add('active');
-        document.querySelector('.theme-dark').classList.remove('active');
       }
+      document.querySelectorAll('.theme-dark').forEach((btn) => {
+        btn.classList.toggle('active', theme === 'dark');
+      });
+      document.querySelectorAll('.theme-light').forEach((btn) => {
+        btn.classList.toggle('active', theme === 'light');
+      });
     }
+
+    function setMobileMenuState(isOpen) {
+      const body = document.body;
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuDrawer) return;
+
+      body.classList.toggle('mobile-menu-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuDrawer.setAttribute('aria-hidden', String(!isOpen));
+    }
+
+    function toggleMobileMenu(forceState) {
+      const shouldOpen = typeof forceState === 'boolean'
+        ? forceState
+        : !document.body.classList.contains('mobile-menu-open');
+      setMobileMenuState(shouldOpen);
+    }
+
+    function initMobileMenu() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuClose = document.getElementById('mobileMenuClose');
+      const menuOverlay = document.getElementById('mobileMenuOverlay');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuOverlay || !menuDrawer) return;
+
+      menuBtn.addEventListener('click', () => toggleMobileMenu());
+      menuOverlay.addEventListener('click', () => toggleMobileMenu(false));
+      if (menuClose) {
+        menuClose.addEventListener('click', () => toggleMobileMenu(false));
+      }
+
+      menuDrawer.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => toggleMobileMenu(false));
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          toggleMobileMenu(false);
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 700) {
+          toggleMobileMenu(false);
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
   </script>
   <style>
     .font-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }
@@ -282,9 +540,6 @@ Google Sheets, SWOT-анализ, расчёт юнит-экономики, си
     body.dark-theme .nav-link, body.dark-theme .lang-flag, body.dark-theme .font-btn, body.dark-theme .theme-btn {
       color: #f7b801 !important;
     }
-    body.dark-theme .nav-link.back-btn {
-      color: #a3aed6 !important;
-    }
     body.dark-theme .carousel-btn, body.dark-theme .control-btn, body.dark-theme .audio-btn, body.dark-theme .demo-btn, body.dark-theme .play-button {
       background: #39396a !important;
       color: #f7b801 !important;
@@ -319,6 +574,47 @@ Google Sheets, SWOT-анализ, расчёт юнит-экономики, си
     body.dark-theme .list-item {
       background: #23233a !important;
       color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .mobile-menu-overlay {
+      background: rgba(8, 10, 20, 0.62) !important;
+    }
+    body.dark-theme .mobile-menu-drawer {
+      background: #23233a !important;
+      border-color: #39396a !important;
+      box-shadow: -10px 0 38px rgba(6, 6, 14, 0.6) !important;
+    }
+    body.dark-theme .mobile-menu-head {
+      border-color: #39396a !important;
+    }
+    body.dark-theme .mobile-menu-title,
+    body.dark-theme .mobile-menu-label {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .mobile-menu-close,
+    body.dark-theme .mobile-menu-btn {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .mobile-menu-btn .menu-bar {
+      background: #f7b801 !important;
+    }
+    body.dark-theme .mobile-menu-chip,
+    body.dark-theme .mobile-menu-font.font-btn,
+    body.dark-theme .mobile-menu-link {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .mobile-menu-chip.active,
+    body.dark-theme .mobile-menu-font.font-btn.active {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+      text-decoration: none !important;
+    }
+    body.dark-theme .mobile-menu-links {
       border-color: #39396a !important;
     }
     body.dark-theme footer {

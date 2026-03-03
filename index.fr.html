@@ -38,7 +38,7 @@
     }
     @media (orientation: portrait) and (max-width: 900px) {
       #retrowaveOverlay {
-        display: flex;
+        display: none;
       }
     }
     #retrowaveOverlay .retro-sun {
@@ -99,37 +99,390 @@
       70% { transform: rotate(0deg); }
       100% { transform: rotate(0deg); }
     }
+  
+
+    .glass-header {
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 1.1em !important;
+      padding: 1.15rem clamp(1.2rem, 5vw, 3rem) !important;
+    }
+    .header-left,
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75em;
+    }
+    .glass-header .glass-logo-img {
+      margin-bottom: 0 !important;
+    }
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.45em;
+      min-width: 0;
+    }
+    .header-langs {
+      display: flex;
+      align-items: center;
+      gap: 0.55em;
+    }
+    .mobile-menu-btn {
+      display: none;
+      width: 2.72em;
+      height: 2.72em;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 0.88em;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(234, 222, 255, 0.45));
+      backdrop-filter: blur(16px) saturate(1.2);
+      -webkit-backdrop-filter: blur(16px) saturate(1.2);
+      box-shadow: 0 12px 28px rgba(56, 28, 116, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.22em;
+      padding: 0;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .mobile-menu-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(168, 85, 247, 0.56);
+      box-shadow: 0 14px 34px rgba(69, 32, 140, 0.34), 0 0 0 3px rgba(224, 196, 255, 0.42);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(226, 204, 255, 0.58));
+    }
+    .mobile-menu-btn:active {
+      transform: translateY(1px) scale(0.98);
+    }
+    .mobile-menu-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(240, 218, 255, 0.9), 0 12px 28px rgba(56, 28, 116, 0.28);
+    }
+    body.mobile-menu-open .mobile-menu-btn {
+      border-color: rgba(109, 40, 217, 0.55);
+      background: linear-gradient(145deg, rgba(248, 241, 255, 0.92), rgba(227, 209, 255, 0.82));
+      box-shadow: 0 12px 30px rgba(76, 29, 149, 0.32), 0 0 0 3px rgba(224, 196, 255, 0.42);
+    }
+    .menu-bar {
+      display: block;
+      width: 1.22em;
+      height: 2.4px;
+      border-radius: 999px;
+      background: #3f1b7a;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.28);
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(1) {
+      transform: translateY(0.37em) rotate(45deg);
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(2) {
+      opacity: 0;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(3) {
+      transform: translateY(-0.37em) rotate(-45deg);
+    }
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 9, 28, 0.5);
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 60;
+    }
+    .mobile-menu-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(88vw, 356px);
+      height: 100vh;
+      background: linear-gradient(180deg, rgba(249, 244, 255, 0.98), rgba(239, 231, 255, 0.95));
+      border-left: 1px solid rgba(139, 92, 246, 0.34);
+      border-radius: 1.3rem 0 0 1.3rem;
+      box-shadow: -24px 0 46px rgba(35, 16, 71, 0.26);
+      transform: translateX(104%);
+      transition: transform 0.28s ease;
+      z-index: 70;
+      padding: 1.05em 0.95em 1.2em;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      overflow-y: auto;
+    }
+    .mobile-menu-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.15em 0 0.7em;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    }
+    .mobile-menu-title {
+      font-family: 'Montserrat', sans-serif;
+      color: #3b1a6f;
+      font-size: 0.78em;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .mobile-menu-close {
+      width: 2.2em;
+      height: 2.2em;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 0.65em;
+      background: rgba(255, 255, 255, 0.85);
+      color: #3b1a6f;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    }
+    .mobile-menu-close:hover {
+      border-color: rgba(109, 40, 217, 0.5);
+      background: rgba(255, 255, 255, 0.95);
+      transform: scale(1.03);
+    }
+    .mobile-menu-section {
+      padding: 0.15em 0;
+    }
+    .mobile-menu-links {
+      display: grid;
+      gap: 0.58em;
+      padding-top: 0.35em;
+    }
+    .mobile-menu-link {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8em;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #2f1a55;
+      background: linear-gradient(180deg, #fff, #f8f4ff);
+      border: 1px solid rgba(139, 92, 246, 0.24);
+      border-radius: 0.78em;
+      padding: 0.78em 0.95em;
+      box-shadow: 0 4px 14px rgba(100, 55, 176, 0.08);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .mobile-menu-link:hover {
+      transform: translateX(2px);
+      border-color: rgba(109, 40, 217, 0.46);
+      box-shadow: 0 8px 18px rgba(100, 55, 176, 0.14);
+      background: linear-gradient(180deg, #fff, #f3eaff);
+    }
+    .mobile-menu-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.66em;
+      font-weight: 700;
+      color: #6b5b95;
+      margin-bottom: 0.52em;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+    .mobile-menu-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+    }
+    .mobile-menu-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(139, 92, 246, 0.22);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      color: #513870;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7em;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0.5em 0.76em;
+      min-height: 2.25em;
+      box-shadow: 0 2px 8px rgba(95, 57, 164, 0.08);
+      transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    .mobile-menu-chip:hover {
+      border-color: rgba(109, 40, 217, 0.4);
+      background: rgba(255, 255, 255, 0.94);
+    }
+    .mobile-menu-chip.active {
+      border-color: rgba(109, 40, 217, 0.55);
+      background: linear-gradient(180deg, #f1e8ff, #e9ddff);
+      color: #2f175e;
+      font-weight: 700;
+      box-shadow: 0 8px 16px rgba(109, 40, 217, 0.18);
+    }
+    .hero-main-title {
+      line-height: 0.94;
+      letter-spacing: 0.02em;
+      text-align: center;
+      text-wrap: balance;
+    }
+    .hero-slogan {
+      text-align: center;
+      line-height: 1.28;
+      max-width: min(92vw, 22ch);
+      margin-left: auto;
+      margin-right: auto;
+      text-wrap: balance;
+    }
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+    body.mobile-menu-open .mobile-menu-overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    body.mobile-menu-open .mobile-menu-drawer {
+      transform: translateX(0);
+    }
+    @media (max-width: 900px) {
+      .glass-header {
+        gap: 0.7em !important;
+        padding: 0.95em 1.05em !important;
+      }
+      .header-nav,
+      .header-langs {
+        display: none !important;
+      }
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+      .glass-logo-img {
+        width: 52px !important;
+        height: 52px !important;
+      }
+      .hero-landing {
+        min-height: 520px !important;
+        padding-top: 6.5rem !important;
+        padding-bottom: 4.2rem !important;
+      }
+      .hero-main-title {
+        font-size: clamp(2.9rem, 16.5vw, 4.2rem) !important;
+        margin-bottom: 0.55rem !important;
+      }
+      .hero-main-title.glitch,
+      .hero-main-title.glitch::before,
+      .hero-main-title.glitch::after {
+        animation: none !important;
+        transform: none !important;
+      }
+      .hero-main-title.glitch::before {
+        left: 1px;
+        opacity: 0.35;
+      }
+      .hero-main-title.glitch::after {
+        left: -1px;
+        top: 1px;
+        opacity: 0.28;
+      }
+      .hero-slogan {
+        font-size: clamp(1.15rem, 6.2vw, 1.8rem) !important;
+        margin-bottom: 1.2rem !important;
+        max-width: min(92vw, 18ch);
+      }
+    }
+    @media (max-width: 500px) {
+      .glass-header {
+        gap: 0.45em !important;
+        padding: 0.82em 0.92em !important;
+      }
+      .header-left,
+      .header-right {
+        gap: 0.45em;
+      }
+      .glass-logo-img {
+        width: 46px !important;
+        height: 46px !important;
+      }
+      .mobile-menu-drawer {
+        width: min(92vw, 340px);
+      }
+      .hero-landing {
+        min-height: 480px !important;
+        padding-top: 6rem !important;
+        padding-bottom: 3.6rem !important;
+      }
+      .hero-main-title {
+        font-size: clamp(2.45rem, 16.2vw, 3.35rem) !important;
+        margin-bottom: 0.45rem !important;
+      }
+      .hero-slogan {
+        max-width: 16ch;
+        font-size: clamp(1.05rem, 5.8vw, 1.45rem) !important;
+        line-height: 1.24;
+      }
+    }
   </style>
   <!-- Google Fonts: Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body class="bg-white text-gray-800">
-  <header class="glass-header">
-    <div class="logo-block" style="display: flex; align-items: center;">
-      <a href="index.fr.html">
-        <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
-      </a>
+  <header class="glass-header flex items-center justify-between">
+    <div class="header-left flex items-center gap-4">
+      <div class="logo-block" style="display: flex; align-items: center;">
+        <a href="index.fr.html">
+          <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+        </a>
+      </div>
     </div>
-    <nav class="flex gap-4">
+    <nav class="header-nav flex gap-4">
       <a href="index.fr.html" class="nav-link">Accueil</a>
       <a href="about.fr.html" class="nav-link">À propos</a>
       <a href="projects.fr.html" class="nav-link">Projets</a>
       <a href="blog/blog.fr.html" class="nav-link">Blogue</a>
       <a href="contact.fr.html" class="nav-link">Contact</a>
     </nav>
-    <div class="flex gap-2">
-      <a href="index.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-      <a href="index.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-      <a href="index.fr.html" class="lang-flag active" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
-      <a href="index.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    <div class="header-right flex items-center">
+      <div class="header-langs flex items-center gap-2">
+        <a href="index.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+        <a href="index.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+        <a href="index.fr.html" class="lang-flag active" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+        <a href="index.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenuDrawer">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
     </div>
   </header>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span class="mobile-menu-title">Menu</span>
+      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Fermer le menu">
+        &#10005;
+      </button>
+    </div>
+    <div class="mobile-menu-section mobile-menu-links">
+      <a href="index.fr.html" class="mobile-menu-link">Accueil</a>
+      <a href="about.fr.html" class="mobile-menu-link">À propos</a>
+      <a href="projects.fr.html" class="mobile-menu-link">Projets</a>
+      <a href="blog/blog.fr.html" class="mobile-menu-link">Blogue</a>
+      <a href="contact.fr.html" class="mobile-menu-link">Contact</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Langue</div>
+      <div class="mobile-menu-row">
+        <a href="index.en.html" class="mobile-menu-chip" aria-label="English">EN</a>
+        <a href="index.de.html" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
+        <a href="index.fr.html" class="mobile-menu-chip active" aria-label="Français">FR</a>
+        <a href="index.ru.html" class="mobile-menu-chip" aria-label="Русский">RU</a>
+      </div>
+    </div>
+  </aside>
 
   <main class="relative bg-hero overflow-hidden">
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-40 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[600px] mb-12">
-      <h1 class="glitch text-7xl md:text-8xl text-transparent bg-clip-text animate-petrol-gradient mb-6 howdybun-3d" data-text="R&A Studio" style="background-image: linear-gradient(270deg, #e0e0e0, #b2f0ff, #a78bfa, #f472b6, #7fffd4, #e0e0e0); background-size: 300% 300%; font-family: 'Montserrat', sans-serif; font-weight: 900;">R&A Studio</h1>
-      <p class="neon-slogan text-2xl md:text-3xl font-semibold mb-8"><span class="wave">Un couple qui crée du sens ✨</span></p>
+    <section class="hero-landing relative pt-32 pb-40 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[600px] mb-12">
+      <h1 class="hero-main-title glitch text-7xl md:text-8xl text-transparent bg-clip-text animate-petrol-gradient mb-6 howdybun-3d" data-text="R&A Studio" style="background-image: linear-gradient(270deg, #e0e0e0, #b2f0ff, #a78bfa, #f472b6, #7fffd4, #e0e0e0); background-size: 300% 300%; font-family: 'Montserrat', sans-serif; font-weight: 900;">R&A Studio</h1>
+      <p class="hero-slogan neon-slogan text-2xl md:text-3xl font-semibold mb-8"><span class="wave">Un couple qui crée du sens ✨</span></p>
       <!-- Анимированное созвездие Водолей с анимацией соединения звёзд -->
       <div class="flex justify-center items-center mt-8">
         <svg width="320" height="120" viewBox="0 0 320 120" fill="none">
@@ -340,20 +693,51 @@
   </main>
 
   <footer class="text-center py-6 border-t mt-12">
-    <p class="text-sm">© 2025 R&A Studio. Tous droits réservés.</p>
+    <p class="text-sm">© 2026 R&A Studio. Tous droits réservés.</p>
   </footer>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.fr.html">Accueil</a>
-    <a href="about.fr.html">À propos</a>
-    <a href="projects.fr.html">Projets</a>
-    <a href="blog/blog.fr.html">Blogue</a>
-    <a href="contact.fr.html">Contact</a>
-    <a href="index.en.html" class="mobile-lang-flag">🇬🇧</a>
-    <a href="index.de.html" class="mobile-lang-flag">🇩🇪</a>
-    <a href="index.fr.html" class="mobile-lang-flag active">🇫🇷</a>
-    <a href="index.ru.html" class="mobile-lang-flag">🇷🇺</a>
-  </div>
+  
+  <script>
+    function setMobileMenuState(isOpen) {
+      const body = document.body;
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuDrawer) return;
+      body.classList.toggle('mobile-menu-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuDrawer.setAttribute('aria-hidden', String(!isOpen));
+    }
+
+    function toggleMobileMenu(forceState) {
+      const shouldOpen = typeof forceState === 'boolean'
+        ? forceState
+        : !document.body.classList.contains('mobile-menu-open');
+      setMobileMenuState(shouldOpen);
+    }
+
+    function initMobileMenu() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuOverlay = document.getElementById('mobileMenuOverlay');
+      const menuClose = document.getElementById('mobileMenuClose');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuOverlay || !menuClose || !menuDrawer) return;
+
+      menuBtn.addEventListener('click', () => toggleMobileMenu());
+      menuOverlay.addEventListener('click', () => toggleMobileMenu(false));
+      menuClose.addEventListener('click', () => toggleMobileMenu(false));
+      menuDrawer.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => toggleMobileMenu(false));
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') toggleMobileMenu(false);
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) toggleMobileMenu(false);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  </script>
   <!-- Retrowave overlay for portrait orientation -->
   <div id="retrowaveOverlay">
     <div class="retro-stars">

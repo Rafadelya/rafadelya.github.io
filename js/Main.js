@@ -39,7 +39,8 @@ window.addEventListener('scroll', () => {
 
 // === Glitch Animation for Title (random shift) ===
 const glitchTitle = document.querySelector('.glitch');
-if (glitchTitle) {
+const prefersReducedMotionForGlitch = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (glitchTitle && window.innerWidth > 900 && !prefersReducedMotionForGlitch) {
   setInterval(() => {
     glitchTitle.style.transform = `translate(${Math.random()*4-2}px, ${Math.random()*2-1}px) skew(${Math.random()*2-1}deg)`;
   }, 120);
@@ -51,16 +52,22 @@ if (glitchTitle) {
 // Neon Slogan: Star Dust Animation
 window.addEventListener('DOMContentLoaded', () => {
   const slogan = document.querySelector('.neon-slogan .wave');
-  if (slogan) {
-    const text = slogan.textContent;
-    slogan.innerHTML = '';
-    for (let i = 0; i < text.length; i++) {
-      const span = document.createElement('span');
-      span.textContent = text[i] === ' ' ? '\u00A0' : text[i];
-      span.className = 'dust';
-      span.style.animationDelay = (0.03 * i + 0.2) + 's';
-      slogan.appendChild(span);
-    }
+  if (!slogan) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.innerWidth <= 900;
+  if (isMobile || prefersReducedMotion) {
+    return;
+  }
+
+  const text = slogan.textContent;
+  slogan.innerHTML = '';
+  for (let i = 0; i < text.length; i++) {
+    const span = document.createElement('span');
+    span.textContent = text[i];
+    span.className = 'dust';
+    span.style.animationDelay = (0.03 * i + 0.2) + 's';
+    slogan.appendChild(span);
   }
 });
 

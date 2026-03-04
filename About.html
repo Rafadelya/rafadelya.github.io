@@ -6,31 +6,281 @@
   <title>About – R&A Studio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Unified Mobile Header */
+    .glass-header {
+      width: min(96%, 1360px);
+      margin: 1.1em auto 1.4em;
+      border-radius: 2.8em;
+      padding: 1.05em 1.3em;
+      gap: 0.95em;
+    }
+    .header-left,
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75em;
+    }
+    .glass-header .glass-logo-img {
+      margin-bottom: 0 !important;
+    }
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.45em;
+      min-width: 0;
+    }
+    .header-langs {
+      display: flex;
+      align-items: center;
+      gap: 0.55em;
+    }
+    .mobile-menu-btn {
+      display: none;
+      width: 2.72em;
+      height: 2.72em;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 0.88em;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(234, 222, 255, 0.45));
+      backdrop-filter: blur(16px) saturate(1.2);
+      -webkit-backdrop-filter: blur(16px) saturate(1.2);
+      box-shadow: 0 12px 28px rgba(56, 28, 116, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.22em;
+      padding: 0;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .mobile-menu-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(168, 85, 247, 0.56);
+      box-shadow: 0 14px 34px rgba(69, 32, 140, 0.34), 0 0 0 3px rgba(224, 196, 255, 0.42);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(226, 204, 255, 0.58));
+    }
+    .mobile-menu-btn:active {
+      transform: translateY(1px) scale(0.98);
+    }
+    .menu-bar {
+      display: block;
+      width: 1.22em;
+      height: 2.4px;
+      border-radius: 999px;
+      background: #3f1b7a;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.28);
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(1) {
+      transform: translateY(0.37em) rotate(45deg);
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(2) {
+      opacity: 0;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(3) {
+      transform: translateY(-0.37em) rotate(-45deg);
+    }
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 9, 28, 0.5);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 60;
+    }
+    .mobile-menu-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(88vw, 356px);
+      height: 100vh;
+      background: linear-gradient(180deg, rgba(249, 244, 255, 0.98), rgba(239, 231, 255, 0.95));
+      border-left: 1px solid rgba(139, 92, 246, 0.34);
+      border-radius: 1.3rem 0 0 1.3rem;
+      box-shadow: -24px 0 46px rgba(35, 16, 71, 0.26);
+      transform: translateX(104%);
+      transition: transform 0.28s ease;
+      z-index: 70;
+      padding: 1.05em 0.95em 1.2em;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      overflow-y: auto;
+    }
+    .mobile-menu-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.15em 0 0.7em;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    }
+    .mobile-menu-title {
+      font-family: 'Montserrat', sans-serif;
+      color: #3b1a6f;
+      font-size: 0.78em;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .mobile-menu-close {
+      width: 2.2em;
+      height: 2.2em;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 0.65em;
+      background: rgba(255, 255, 255, 0.85);
+      color: #3b1a6f;
+      cursor: pointer;
+    }
+    .mobile-menu-links {
+      display: grid;
+      gap: 0.58em;
+      padding-top: 0.35em;
+    }
+    .mobile-menu-link {
+      display: flex;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8em;
+      font-weight: 700;
+      color: #2f1a55;
+      background: linear-gradient(180deg, #fff, #f8f4ff);
+      border: 1px solid rgba(139, 92, 246, 0.24);
+      border-radius: 0.78em;
+      padding: 0.78em 0.95em;
+    }
+    .mobile-menu-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.66em;
+      font-weight: 700;
+      color: #6b5b95;
+      margin-bottom: 0.52em;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+    .mobile-menu-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+    }
+    .mobile-menu-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(139, 92, 246, 0.22);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      color: #513870;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7em;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0.5em 0.76em;
+      min-height: 2.25em;
+    }
+    .mobile-menu-chip.active {
+      border-color: rgba(109, 40, 217, 0.55);
+      background: linear-gradient(180deg, #f1e8ff, #e9ddff);
+      color: #2f175e;
+    }
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+    body.mobile-menu-open .mobile-menu-overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    body.mobile-menu-open .mobile-menu-drawer {
+      transform: translateX(0);
+    }
+    @media (max-width: 900px) {
+      .header-nav,
+      .header-langs {
+        display: none !important;
+      }
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+      .glass-header {
+        gap: 0.7em !important;
+        padding: 0.95em 1.05em !important;
+      }
+      .glass-logo-img {
+        width: 52px !important;
+        height: 52px !important;
+      }
+    }
+    @media (max-width: 500px) {
+      .glass-header {
+        gap: 0.45em !important;
+        padding: 0.82em 0.92em !important;
+      }
+      .glass-logo-img {
+        width: 46px !important;
+        height: 46px !important;
+      }
+      .mobile-menu-drawer {
+        width: min(92vw, 340px);
+      }
+    }
+  </style>
   <script defer src="js/i18n.js"></script>
   <script defer src="js/main.js"></script>
 </head>
 <body>
-  <header class="glass-header">
-    <div class="logo-block" style="display: flex; align-items: center;">
-      <a href="index.html">
-        <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
-      </a>
-      <button class="mobile-lang-flag" id="mobileLangFlag" style="display:none;">🇷🇺</button>
-      <button class="mobile-burger" id="mobileBurger" style="display:none;">☰</button>
+  <header class="glass-header flex items-center justify-between">
+    <div class="header-left flex items-center gap-4">
+      <div class="logo-block" style="display: flex; align-items: center;">
+        <a href="index.en.html">
+          <img src="assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+        </a>
+      </div>
     </div>
-    <nav class="flex gap-4">
-      <a href="index.ru.html" class="nav-link" data-i18n="nav.home">Home</a>
-      <a href="about.html" class="nav-link" data-i18n="nav.about">About</a>
-      <a href="projects.html" class="nav-link" data-i18n="nav.projects">Projects</a>
-      <a href="contact.ru.html" class="nav-link" data-i18n="nav.contact">Contact</a>
+    <nav class="header-nav flex gap-4">
+      <a href="index.en.html" class="nav-link" data-i18n="nav.home">Home</a>
+      <a href="about.en.html" class="nav-link active" data-i18n="nav.about">About</a>
+      <a href="projects.en.html" class="nav-link" data-i18n="nav.projects">Projects</a>
+      <a href="blog/blog.en.html" class="nav-link">Blog</a>
+      <a href="contact.en.html" class="nav-link" data-i18n="nav.contact">Contact</a>
     </nav>
-    <div class="flex gap-2">
-      <button class="lang-flag lang-en" aria-label="English"><span class="flag-icon">🇬🇧</span></button>
-      <button class="lang-flag lang-de" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></button>
-      <button class="lang-flag lang-fr" aria-label="Français"><span class="flag-icon">🇫🇷</span></button>
-      <button class="lang-flag lang-ru" aria-label="Русский"><span class="flag-icon">🇷🇺</span></button>
+    <div class="header-right flex items-center">
+      <div class="header-langs flex items-center gap-2">
+        <a href="about.en.html" class="lang-flag active" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+        <a href="about.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+        <a href="about.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+        <a href="about.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenuDrawer">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
     </div>
   </header>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span class="mobile-menu-title">Menu</span>
+      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&#10005;</button>
+    </div>
+    <div class="mobile-menu-links">
+      <a href="index.en.html" class="mobile-menu-link">Home</a>
+      <a href="about.en.html" class="mobile-menu-link active">About</a>
+      <a href="projects.en.html" class="mobile-menu-link">Projects</a>
+      <a href="blog/blog.en.html" class="mobile-menu-link">Blog</a>
+      <a href="contact.en.html" class="mobile-menu-link">Contact</a>
+    </div>
+    <div>
+      <div class="mobile-menu-label">Language</div>
+      <div class="mobile-menu-row">
+        <a href="about.en.html" class="mobile-menu-chip active" aria-label="English">EN</a>
+        <a href="about.de.html" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
+        <a href="about.fr.html" class="mobile-menu-chip" aria-label="Français">FR</a>
+        <a href="about.ru.html" class="mobile-menu-chip" aria-label="Русский">RU</a>
+      </div>
+    </div>
+  </aside>
 
   <main class="text-center p-10">
     <section class="mb-12">
@@ -69,12 +319,30 @@
     <p class="text-sm" data-i18n="footer.copy">© 2026 R&A Studio. All rights reserved.</p>
   </footer>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.ru.html" data-i18n="nav.home">Home</a>
-    <a href="about.html" data-i18n="nav.about">About</a>
-    <a href="projects.ru.html" data-i18n="nav.projects">Projects</a>
-    <a href="contact.ru.html" data-i18n="nav.contact">Contact</a>
-    <button class="mobile-lang-flag" id="mobileLangFlagMenu">🇷🇺</button>
-  </div>
+  <script>
+    function setMobileMenuState(isOpen) {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuDrawer) return;
+      document.body.classList.toggle('mobile-menu-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      menuDrawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    }
+
+    function initMobileMenu() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuOverlay = document.getElementById('mobileMenuOverlay');
+      const menuClose = document.getElementById('mobileMenuClose');
+      if (!menuBtn || !menuOverlay || !menuClose) return;
+      menuBtn.addEventListener('click', () => setMobileMenuState(!document.body.classList.contains('mobile-menu-open')));
+      menuOverlay.addEventListener('click', () => setMobileMenuState(false));
+      menuClose.addEventListener('click', () => setMobileMenuState(false));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setMobileMenuState(false);
+      });
+    }
+
+    initMobileMenu();
+  </script>
 </body>
 </html>

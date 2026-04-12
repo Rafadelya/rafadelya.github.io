@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Warum wir Katzen in unserer mobilen Audioguide-App platziert haben | Blog von R&A Studio</title>
+  <meta name="description" content="Warum wir Katzen in unserer mobilen Audioguide-App platziert haben und wie Identität im Interface Nutzerbindung und Verhalten beeinflusst." />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../../../../styles.css">
+  <link rel="stylesheet" href="../../../../blog-pixel.css">
+  <link rel="stylesheet" href="../../../blog.css">
+  <link rel="icon" type="image/png" href="../../../../../assets/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="text-gray-800">
+  <header class="glass-header flex items-center justify-between">
+    <div class="header-left flex items-center gap-4">
+      <div class="logo-block" style="display: flex; align-items: center;">
+        <a href="../../../../../index.de.html">
+          <img src="../../assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+        </a>
+      </div>
+    </div>
+    <div class="header-langs">
+      <a href="../../../en/posts/design/cats_avatar.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="cats_avatar.de.html" class="lang-flag active" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="../../../fr/posts/design/cats_avatar.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="../../../ru/posts/design/2-post/cats_avatar.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+    <div class="header-switchers">
+      <div class="font-switcher desktop-font flex items-center gap-1">
+        <button class="font-btn font-pixel active" onclick="setFont('pixel')" title="Pixel"><i class="fas fa-th"></i></button>
+        <button class="font-btn font-manrope" onclick="setFont('manrope')" title="Manrope"><i class="fas fa-font"></i></button>
+      </div>
+      <div class="theme-switcher flex items-center gap-1">
+        <button class="theme-btn theme-light active" onclick="setTheme('light')" title="Helles Thema"><i class="fas fa-sun"></i></button>
+        <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Dunkles Thema"><i class="fas fa-moon"></i></button>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenuDrawer">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+    </div>
+  </header>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span class="mobile-menu-title">Меню</span>
+      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть меню">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Sprache</div>
+      <div class="mobile-menu-row">
+        <a href="../../../en/posts/design/cats_avatar.en.html" class="mobile-menu-chip" aria-label="English">EN</a>
+        <a href="cats_avatar.de.html" class="mobile-menu-chip active" aria-label="Deutsch">DE</a>
+        <a href="../../../fr/posts/design/cats_avatar.fr.html" class="mobile-menu-chip" aria-label="Français">FR</a>
+        <a href="../../../ru/posts/design/2-post/cats_avatar.ru.html" class="mobile-menu-chip" aria-label="Русский">RU</a>
+      </div>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Schrift</div>
+      <div class="mobile-menu-row">
+        <button class="mobile-menu-chip mobile-menu-font font-btn font-pixel active" onclick="setFont('pixel')" type="button">Pixel</button>
+        <button class="mobile-menu-chip mobile-menu-font font-btn font-manrope" onclick="setFont('manrope')" type="button">Manrope</button>
+      </div>
+    </div>
+    <div class="mobile-menu-section mobile-menu-links">
+      <a href="../../../../../index.de.html" class="mobile-menu-link">Startseite</a>
+      <a href="../../../../blog.de.html" class="mobile-menu-link">Blog</a>
+    </div>
+  </aside>
+  <style>
+    .glass-header { flex-direction: row; align-items: center; justify-content: space-between; gap: 1.2em; padding: 1.2rem clamp(1.2rem, 5vw, 3rem); }
+    .header-left { display: flex; align-items: center; gap: 1.2em; }
+    .header-langs, .header-switchers { display: flex; align-items: center; gap: 0.7em; margin-bottom: 0; }
+    .mobile-menu-btn {
+      display: none;
+      width: 2.2em;
+      height: 2.2em;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.45em;
+      background: #fff;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.18em;
+      padding: 0;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .mobile-menu-btn:hover {
+      border-color: #a78bfa;
+      box-shadow: 0 0 0 2px #ede9fe;
+    }
+    .menu-bar {
+      display: block;
+      width: 1.1em;
+      height: 2px;
+      border-radius: 2px;
+      background: #2d014d;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(1) {
+      transform: translateY(0.32em) rotate(45deg);
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(2) {
+      opacity: 0;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(3) {
+      transform: translateY(-0.32em) rotate(-45deg);
+    }
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 16, 35, 0.42);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 60;
+    }
+    .mobile-menu-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(84vw, 320px);
+      height: 100vh;
+      background: #fff;
+      border-left: 2px solid #e5e7eb;
+      box-shadow: -10px 0 40px rgba(34, 22, 63, 0.16);
+      transform: translateX(104%);
+      transition: transform 0.28s ease;
+      z-index: 70;
+      padding: 0.9em 0.8em 1.1em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85em;
+      overflow-y: auto;
+    }
+    .mobile-menu-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0.55em;
+      border-bottom: 1px solid #ebe7f6;
+    }
+    .mobile-menu-title {
+      font-family: 'Press Start 2P', monospace;
+      color: #2d014d;
+      font-size: 0.58em;
+    }
+    .mobile-menu-close {
+      width: 2em;
+      height: 2em;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.4em;
+      background: #fff;
+      color: #2d014d;
+      cursor: pointer;
+    }
+    .mobile-menu-section {
+      padding: 0.2em 0;
+    }
+    .mobile-menu-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.5em;
+      color: #6b7280;
+      margin-bottom: 0.55em;
+      letter-spacing: 0.02em;
+    }
+    .mobile-menu-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45em;
+    }
+    .mobile-menu-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      background: #fff;
+      color: #4b5563;
+      text-decoration: none;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.56em;
+      line-height: 1;
+      padding: 0.45em 0.62em;
+      min-height: 2.1em;
+      opacity: 1;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .mobile-menu-chip.active {
+      border-color: #a78bfa;
+      background: #f5f3ff;
+      color: #2d014d;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .mobile-menu-font.font-btn {
+      font-size: 0.56em;
+      padding: 0.45em 0.62em;
+      color: #4b5563;
+      text-decoration: none;
+      opacity: 1;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      background: #fff;
+    }
+    .mobile-menu-font.font-btn.active {
+      border-color: #a78bfa;
+      background: #f5f3ff;
+      color: #2d014d;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .mobile-menu-links {
+      display: grid;
+      gap: 0.5em;
+      padding-top: 0.45em;
+      border-top: 1px dashed #e5e7eb;
+    }
+    .mobile-menu-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.56em;
+      color: #2d014d;
+      background: #fafafa;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.35em;
+      padding: 0.7em 0.75em;
+    }
+    .read-emphasis {
+      display: inline;
+      padding: 0.06em 0.28em;
+      border-radius: 0.2em;
+      background: linear-gradient(90deg, #ede9fe 0%, #ddd6fe 100%);
+      color: #2d014d;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+    .read-figure {
+      display: inline-block;
+      padding: 0.15em 0.45em;
+      border: 1px solid #c4b5fd;
+      border-radius: 999px;
+      background: #f5f3ff;
+      color: #4c1d95;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+    body.mobile-menu-open .mobile-menu-overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    body.mobile-menu-open .mobile-menu-drawer {
+      transform: translateX(0);
+    }
+    @media (max-width: 700px) {
+      .glass-header { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; gap: 0.6em !important; padding: 0.85em 0.95em !important; }
+      .header-left { min-width: 0; gap: 0.55em !important; }
+      .header-langs { display: none !important; }
+      .desktop-font { display: none !important; }
+      .header-switchers { gap: 0.42em !important; }
+      .theme-switcher { display: flex !important; }
+      .mobile-menu-btn { display: inline-flex; }
+      .glass-logo-img { width: 46px !important; height: 46px !important; }
+      .theme-btn { font-size: 0.9em !important; padding: 2px 5px !important; }
+    }
+    @media (max-width: 500px) {
+      .glass-header { gap: 0.38em !important; padding: 0.75em 0.8em !important; }
+      .header-left, .header-switchers { gap: 0.38em !important; }
+      .glass-logo-img { width: 40px !important; height: 40px !important; }
+      .theme-btn { font-size: 0.76em !important; padding: 1px 3px !important; }
+      .mobile-menu-drawer { width: min(90vw, 320px); }
+      .mobile-menu-chip,
+      .mobile-menu-font.font-btn,
+      .mobile-menu-link { font-size: 0.54em !important; }
+    }
+  </style>
+
+  <main class="relative bg-white overflow-hidden">
+    <section class="relative pt-32 pb-20 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[300px] mb-8">
+      <div class="pixel-dots-bg"></div>
+      <div class="post-header-content text-center max-w-4xl mx-auto relative z-10">
+        <div class="post-meta mb-4">
+        <span class="blog-pixel-meta">2026-04-11</span>
+        <span class="blog-pixel-meta mx-2">•</span>
+        <span class="blog-pixel-meta">9 Min. Lesezeit</span>
+        <span class="blog-pixel-meta mx-2">•</span>
+        <span class="blog-pixel-meta">Design / Produkt</span>
+        </div>
+        <h1 class="post-title text-4xl md:text-5xl font-bold mb-6" style="color:#2d014d; font-family:'Press Start 2P',monospace; line-height: 1.2;">
+          Warum wir Katzen in unserer mobilen Audioguide-App platziert haben
+        </h1>
+        <p class="post-subtitle text-lg md:text-xl text-center max-w-2xl mx-auto" style="font-family:'Press Start 2P',monospace; color:#6b7280; font-size: 0.9em;">
+          und wie Identität im Interface die Nutzerbindung und das Verhalten beeinflusst.
+        </p>
+        <p class="post-subtitle text-lg md:text-xl text-center max-w-2xl mx-auto" style="font-family:'Press Start 2P',monospace; color:#4b5563; font-size: 0.78em; margin-top: 0.9em;">
+          Gewidmet an Chelsea, Roger und Monty 💜
+        </p>
+      </div>
+    </section>
+
+    <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
+      <div class="max-w-4xl mx-auto">
+        <nav class="breadcrumb mb-8">
+          <a href="../../../../../index.de.html" class="breadcrumb-link">Startseite</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../blog.de.html" class="breadcrumb-link">Blog</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Design</span>
+        </nav>
+
+        <article class="post-content">
+          <h2 class="post-heading">Kontext und Aufgabe</h2>
+          <p class="post-text">Beginnen wir mit der Aufgabe.</p>
+          <p class="post-text">Wir haben eine Roadmap für AdiGuide — eine mobile App mit der Funktion eines touristischen Audioguides. (Falls es interessant ist: https://rafadelya.github.io/roadmaps2026/index.html)</p>
+          <p class="post-text">Im Q4 planen wir, uns nicht auf Features zu konzentrieren, sondern auf etwas anderes:</p>
+          <p class="post-text">Medialität und Community.</p>
+          <p class="post-text">Wir möchten eine Community von Reisenden rund um AdiGuid aufbauen:<br>— Geschichten von Nutzern<br>— Empfehlungen<br>— „Orte der Kraft“<br>— monatliche Routen</p>
+          <p class="post-text">Identität in einer Community entsteht durch Selbstbestimmung.<br>In digitalen Produkten ist ihre erste Form meist der Avatar.</p>
+          <p class="post-text">Aber es gibt einen Haken: Nicht jeder möchte ein eigenes Foto verwenden.<br>Und das ist völlig normal — besonders in einem Travel-Produkt, in dem sich nicht jeder zeigen möchte.</p>
+          <p class="post-text">Deshalb haben wir uns entschieden:<br>einen eigenen Satz von Avataren innerhalb der App zu entwickeln.</p>
+          <p class="post-text">Ähnliche Lösungen kennt ihr bereits aus Messengern und sozialen Netzwerken —<br>aber wir wollten einen Schritt weiter gehen.</p>
+          <p class="post-text">Zu entscheiden, was genau diese Avatare sein sollen, war gar nicht so einfach.</p>
+          <p class="post-text">Wir haben uns an drei Kriterien orientiert:</p>
+          <p class="post-text">— Die Motive sollten universell sein und zu möglichst vielen Menschen passen;<br>— sie sollten verständlich und visuell angenehm sein;<br>— alle Avatare sollten sich wie Teil einer gemeinsamen Idee anfühlen.</p>
+
+          <h2 class="post-heading">Avatar und Verhalten</h2>
+          <p class="post-text">In der Psychologie der digitalen Identität gibt es das Konzept des Proteus-Effekts. Vereinfacht gesagt: Menschen verhalten sich entsprechend dem, wie ihr Avatar aussieht. Das ist keine Metapher, sondern ein beobachtbares Verhaltensmuster — das äußere Erscheinungsbild beeinflusst das Handeln.</p>
+          <p class="post-text">Wählt man einen selbstbewussteren Avatar, tritt man auch sicherer auf.<br>Wählt man eine „sportlichere“ Version von sich, trifft man häufiger aktive Entscheidungen.<br>Wählt man etwas Neutrales oder Diffuses, wird auch das Verhalten weniger ausgeprägt.</p>
+          <p class="post-text">Wenn Nutzer jedoch die volle visuelle Freiheit haben, versuchen sie fast nie, sich „wie sie sind“ abzubilden. Sie erstellen keine Kopie der Realität, sondern eine Version von sich, die sie sein möchten.</p>
+          <p class="post-text">Ein Avatar ist also kein Spiegel.<br>Er ist eine Projektion von Intention.</p>
+
+          <h2 class="post-heading">Warum keine „Menschen“</h2>
+          <p class="post-text">Und genau hier beginnt das Problem mit „menschlichen“ Avataren.</p>
+          <p class="post-text">Die erste Idee waren natürlich klassische Reisefiguren: Menschen mit Rucksäcken, in Jacken, mit verschiedenen Varianten von Aussehen. Klingt logisch und für ein Travel-Produkt sogar ziemlich naheliegend.</p>
+          <p class="post-text">Aber als wir das auf reale Nutzer (und einfach auf Bekannte) projiziert haben, wurden schnell mehrere Probleme sichtbar.</p>
+          <p class="post-text">Erstens erfordern solche Figuren zwangsläufig viele Details:<br>Hautfarbe, Gesichtszüge, Kleidungsstil, Alter und vieles mehr…</p>
+          <p class="post-text">Und sobald man diese Parameter einführt, landet man automatisch in einer Vergleichslogik — und gleichzeitig steigen die Produktionskosten.</p>
+          <p class="post-text">Deshalb haben wir die Idee mit „Menschen“ ziemlich schnell verworfen.<br>Und ehrlich gesagt hatten wir Glück, dass wir das verstanden haben, bevor wir angefangen haben, etwas zu designen.</p>
+
+          <h2 class="post-heading">Wie wir zu den Katzen gekommen sind</h2>
+          <p class="post-text">Wie wir zu den Katzen gekommen sind… oder eher: sie zu uns.</p>
+          <p class="post-text">Irgendwann ist uns ein Post im Feed aufgefallen — irgendwas zum Thema Kochen, mit einer Katze in einer Schürze. Den ursprünglichen Post haben wir später nicht mehr gefunden, aber das Bild ist hängen geblieben.</p>
+          <p class="post-text">Es wirkte nicht wie eine fertige Lösung. Eher wie eine seltsame, noch nicht ganz greifbare Idee.</p>
+          <p class="post-text">Aber sie ist nicht verschwunden.</p>
+          <p class="post-text">Wir sind in Gesprächen immer wieder darauf zurückgekommen, haben sie zur Seite gelegt und wieder hervorgeholt.<br>Irgendwann haben wir sogar versucht, sie rational zu verwerfen — es war nicht wirklich klar, wie das mit einem Travel-Produkt zusammenpasst.</p>
+          <p class="post-text">Und trotzdem hatte man das Gefühl, dass da eine Logik dahintersteckt.<br>Sie war nur noch nicht formuliert.</p>
+          <p class="post-text">Die Idee war einfach da — als wäre die Antwort schon irgendwo vorhanden, aber man konnte sie noch nicht klar aussprechen.</p>
+
+          <h2 class="post-heading">Hypothesen-Check</h2>
+          <p class="post-text">Irgendwann haben wir beschlossen, die Idee einfach auf Plausibilität zu prüfen.</p>
+          <p class="post-text">Kurz gesagt, die Logik sah so aus.</p>
+          <p class="post-text">Erstens: Katzen stehen für Bewegung.<br>Selbst Hauskatzen sind nicht auf „ihren Hof“ beschränkt und legen problemlos größere Distanzen zurück. Nicht nach Karte, sondern entlang ihrer eigenen Wege.</p>
+          <p class="post-text">Zweitens: Katzen gibt es fast überall.<br>Praktisch auf allen Kontinenten außer :contentReference[oaicite:0]{index=0} — aber dorthin zieht es, ehrlich gesagt, auch Menschen eher selten.</p>
+          <p class="post-text">Und drittens — das einfachste Argument:<br>Katzen mag man.</p>
+          <p class="post-text">Es ist ein universell verständliches Bild, das keine Erklärung braucht und keine Ablehnung auslöst.</p>
+          <p class="post-text">Irgendwann wurde klar: Das reicht bereits.</p>
+
+
+          <h2 class="post-heading">Das erste Set</h2>
+          <p class="post-text">Okay, <s>wir ziehen die Katze nicht länger am Schwanz</s> <br>wir halten euch nicht länger auf die Folter.</p>
+          <p class="post-text">Hier ist unser erstes Set an Katzen. Lernt sie kennen — von links nach rechts:</p>
+          <div class="media-container cats-media">
+            <div class="cat-gallery-shell">
+              <div class="cat-stage" id="catStage" aria-label="Katzengalerie">
+                <button class="cat-nav-btn cat-prev" type="button" id="catPrevBtn" aria-label="Vorherige Katze">◀</button>
+                <figure class="cat-focus-card">
+                  <img src="Cats/flower_cat.png" alt="Katzen-Avatar 1" class="post-image" id="catFocusImage">
+                </figure>
+                <button class="cat-nav-btn cat-next" type="button" id="catNextBtn" aria-label="Nächste Katze">▶</button>
+              </div>
+              <div class="cat-gallery-meta">
+                <span class="cat-counter" id="catCounter">1 / 16</span>
+              </div>
+              <div class="cat-thumbs" id="catThumbs">
+                <button class="cat-thumb active" type="button" data-index="0" aria-label="Katze 1"><img src="Cats/flower_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="1" aria-label="Katze 2"><img src="Cats/Devil_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="2" aria-label="Katze 3"><img src="Cats/reader_worm_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="3" aria-label="Katze 4"><img src="Cats/music_happiness_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="4" aria-label="Katze 5"><img src="Cats/balaklava_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="5" aria-label="Katze 6"><img src="Cats/Angel_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="6" aria-label="Katze 7"><img src="Cats/developer_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="7" aria-label="Katze 8"><img src="Cats/purple_glass_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="8" aria-label="Katze 9"><img src="Cats/england_lady_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="9" aria-label="Katze 10"><img src="Cats/photograph_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="10" aria-label="Katze 11"><img src="Cats/gamer_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="11" aria-label="Katze 12"><img src="Cats/cute_scarfed_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="12" aria-label="Katze 13"><img src="Cats/cowboy_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="13" aria-label="Katze 14"><img src="Cats/bubble_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="14" aria-label="Katze 15"><img src="Cats/basketball_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="15" aria-label="Katze 16"><img src="Cats/purple_cat.png" alt=""></button>
+              </div>
+            </div>
+          </div>
+          <h2 class="post-heading">Fazit</h2>
+          <p class="post-text">
+Wenn unter ihnen „der eine“ dabei ist — dann war es das wert.
+
+Das war das Team von AdiGuide. Bis bald — wir hören uns!
+          </p>
+
+
+          <div class="post-tags mt-12">
+            <span class="tag">#design</span>
+            <span class="tag">#avatare</span>
+            <span class="tag">#produkt</span>
+            <span class="tag">#conversion</span>
+            <span class="tag">#retention</span>
+            <span class="tag">#adiguide</span>
+          </div>
+        </article>
+
+        <div class="post-navigation mt-16">
+          <div class="nav-links flex justify-between items-center">
+            <a href="../design-debt.de.html" class="nav-prev">
+              <span class="nav-arrow">←</span>
+              <span class="nav-text">Vorheriger Beitrag</span>
+            </a>
+            <a href="../../../../blog.de.html" class="nav-back">
+              <span class="nav-text">Zur Übersicht</span>
+            </a>
+            <span class="nav-next text-gray-400 cursor-default">
+              <span class="nav-text">Nächster Beitrag</span>
+              <span class="nav-arrow">→</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 border-t mt-12">
+    <p class="text-sm">© 2026 R&A Studio. Alle Rechte vorbehalten.</p>
+  </footer>
+
+  <script src="../../../blog.js"></script>
+  <style>
+    .font-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }
+    .font-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; }
+    .font-btn:focus { outline: 2px solid #2d014d; }
+    .theme-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }
+    .theme-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; }
+    .theme-btn:focus { outline: 2px solid #2d014d; }
+    .cats-media {
+      margin-top: 1.6em;
+    }
+    .cat-gallery-note {
+      margin-bottom: 0.75em;
+      color: #4b5563;
+      font-size: 0.72em;
+    }
+    .cat-gallery-shell {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .cat-stage {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0.65em;
+      align-items: center;
+      margin-bottom: 0.55em;
+    }
+    .cat-nav-btn {
+      width: 2.2em;
+      height: 2.2em;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      background: #fff;
+      color: #2d014d;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.62em;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.2s ease;
+    }
+    .cat-nav-btn:hover {
+      transform: translateY(-1px);
+      border-color: #a78bfa;
+    }
+    .cat-focus-card {
+      margin: 0;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.7em;
+      background: linear-gradient(145deg, #ffffff, #f7f7fb);
+      padding: 0.35em;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(45, 1, 77, 0.12);
+      aspect-ratio: 1 / 1;
+      width: min(100%, 620px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: pan-y;
+      user-select: none;
+    }
+    .cat-focus-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform-origin: center center;
+      border-radius: 0.52em;
+      background: #f3f4f6;
+    }
+    .cat-gallery-meta {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.6em;
+    }
+    .cat-counter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 6.6em;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      padding: 0.28em 0.7em;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.56em;
+      color: #4b5563;
+      background: #fff;
+    }
+    .cat-thumbs {
+      display: flex;
+      gap: 0.45em;
+      overflow-x: auto;
+      padding-bottom: 0.25em;
+      scrollbar-width: thin;
+      justify-content: center;
+    }
+    .cat-thumb {
+      border: 1px solid #d1d5db;
+      border-radius: 0.45em;
+      padding: 2px;
+      background: #fff;
+      width: 54px;
+      height: 54px;
+      flex: 0 0 auto;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.2s ease;
+    }
+    .cat-thumb:hover {
+      transform: translateY(-1px);
+      border-color: #a78bfa;
+    }
+    .cat-thumb.active {
+      border-color: #7c3aed;
+      box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.18);
+    }
+    .cat-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #f3f4f6;
+      border-radius: 0.3em;
+    }
+    .roadmap-profile-demo {
+      margin-top: 1.2em;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.7em;
+      background: linear-gradient(165deg, #ffffff, #f9f7ff);
+      padding: 0.9em;
+    }
+    .profile-demo-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8em;
+      margin-bottom: 0.75em;
+    }
+    .profile-demo-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.56em;
+      color: #4b5563;
+    }
+    .profile-demo-btn {
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      background: #fff;
+      color: #2d014d;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.52em;
+      padding: 0.52em 0.78em;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.2s ease;
+    }
+    .profile-demo-btn:hover {
+      transform: translateY(-1px);
+      border-color: #a78bfa;
+    }
+    .profile-demo-card {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 0.8em;
+      align-items: stretch;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.6em;
+      background: #fff;
+      padding: 0.7em;
+    }
+    .profile-demo-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 0.55em;
+      object-fit: cover;
+      border: 1px solid #e5e7eb;
+      background: #f3f4f6;
+    }
+    .profile-demo-content {
+      display: grid;
+      gap: 0.34em;
+      min-width: 0;
+    }
+    .profile-demo-name {
+      margin: 0;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.58em;
+      color: #2d014d;
+      line-height: 1.35;
+    }
+    .profile-demo-tagline {
+      margin: 0;
+      font-size: 0.72em;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+    .profile-demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      font-size: 0.7em;
+      color: #6b7280;
+    }
+    .profile-demo-row strong {
+      color: #2d014d;
+      font-weight: 700;
+    }
+    .profile-demo-route {
+      margin: 0.2em 0 0;
+      font-size: 0.7em;
+      color: #374151;
+      line-height: 1.5;
+    }
+    @media (max-width: 700px) {
+      .cat-nav-btn {
+        width: 2em;
+        height: 2em;
+      }
+      .cat-thumbs {
+        justify-content: flex-start;
+      }
+      .profile-demo-card {
+        grid-template-columns: 78px 1fr;
+      }
+      .profile-demo-avatar {
+        width: 78px;
+        height: 78px;
+      }
+    }
+    .reaction-panel {
+      margin-top: 0.9em;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 0.55em;
+    }
+    .reaction-btn {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.45em;
+      background: #fff;
+      padding: 0.45em 0.4em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.38em;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.68em;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.2s ease;
+    }
+    .reaction-btn:hover {
+      border-color: #a78bfa;
+      transform: translateY(-1px);
+    }
+    .reaction-emoji {
+      font-size: 1.15em;
+      line-height: 1;
+    }
+    .reaction-count {
+      color: #374151;
+      font-size: 0.88em;
+    }
+    body.light-theme { background: #fff; color: #2d014d; }
+    body.dark-theme {
+      background: #181824;
+      color: #e6e6f0;
+    }
+    body.dark-theme main,
+    body.dark-theme .post-section,
+    body.dark-theme .media-container,
+    body.dark-theme .image-container,
+    body.dark-theme .carousel-container,
+    body.dark-theme .interactive-demo,
+    body.dark-theme .demo-header,
+    body.dark-theme .demo-preview,
+    body.dark-theme .demo-code,
+    body.dark-theme .footer,
+    body.dark-theme .glass-header,
+    body.dark-theme .breadcrumb,
+    body.dark-theme .post-tags,
+    body.dark-theme .post-navigation,
+    body.dark-theme .audio-player,
+    body.dark-theme .video-player,
+    body.dark-theme .carousel-controls,
+    body.dark-theme .image-caption,
+    body.dark-theme .carousel-caption,
+    body.dark-theme .tag,
+    body.dark-theme .nav-links,
+    body.dark-theme .nav-prev,
+    body.dark-theme .nav-next,
+    body.dark-theme .nav-back,
+    body.dark-theme .post-highlight,
+    body.dark-theme .list-item,
+    body.dark-theme .demo-btn,
+    body.dark-theme .audio-btn,
+    body.dark-theme .control-btn,
+    body.dark-theme .play-button,
+    body.dark-theme .dot,
+    body.dark-theme .progress-bar,
+    body.dark-theme .pixel-box {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .post-title {
+      color: #f7b801 !important;
+      text-shadow: 2px 2px 8px #39396a;
+    }
+    body.dark-theme .post-subtitle {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .post-heading {
+      color: #f7b801 !important;
+      border-bottom: 2px solid #39396a !important;
+    }
+    body.dark-theme .post-text,
+    body.dark-theme .list-text,
+    body.dark-theme .image-caption p,
+    body.dark-theme .carousel-caption p {
+      color: #e6e6f0 !important;
+    }
+    body.dark-theme .tag {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .tag:hover {
+      background: #f7b801 !important;
+      color: #23233a !important;
+      box-shadow: 2px 2px 0px #39396a;
+    }
+    body.dark-theme .nav-link, body.dark-theme .lang-flag, body.dark-theme .font-btn, body.dark-theme .theme-btn {
+      color: #f7b801 !important;
+    }
+    body.dark-theme .carousel-btn, body.dark-theme .control-btn, body.dark-theme .audio-btn, body.dark-theme .demo-btn, body.dark-theme .play-button {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .carousel-btn:hover, body.dark-theme .control-btn:hover, body.dark-theme .audio-btn:hover, body.dark-theme .demo-btn:hover, body.dark-theme .play-button:hover {
+      background: #f7b801 !important;
+      color: #23233a !important;
+    }
+    body.dark-theme .dot {
+      background: #39396a !important;
+    }
+    body.dark-theme .dot.active, body.dark-theme .dot:hover {
+      background: #f7b801 !important;
+    }
+    body.dark-theme .progress-bar {
+      background: #39396a !important;
+    }
+    body.dark-theme .progress-fill {
+      background: linear-gradient(90deg, #f7b801, #a3aed6) !important;
+    }
+    body.dark-theme .pixel-box {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .post-highlight {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .list-item {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .cat-focus-card {
+      background: linear-gradient(145deg, #23233a, #2d2d4a) !important;
+      border-color: #39396a !important;
+      box-shadow: none !important;
+    }
+    body.dark-theme .cat-focus-card img {
+      background: #1a1a2a !important;
+    }
+    body.dark-theme .cat-counter,
+    body.dark-theme .cat-thumb,
+    body.dark-theme .cat-nav-btn,
+    body.dark-theme .profile-demo-btn,
+    body.dark-theme .profile-demo-card,
+    body.dark-theme .profile-demo-avatar,
+    body.dark-theme .cat-gallery-note,
+    body.dark-theme .reaction-count {
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+      background: #23233a !important;
+    }
+    body.dark-theme .roadmap-profile-demo {
+      background: linear-gradient(165deg, #23233a, #2a2a46) !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .profile-demo-label,
+    body.dark-theme .profile-demo-tagline,
+    body.dark-theme .profile-demo-route {
+      color: #e6e6f0 !important;
+    }
+    body.dark-theme .profile-demo-name,
+    body.dark-theme .profile-demo-row strong {
+      color: #f7b801 !important;
+    }
+    body.dark-theme .cat-thumb.active {
+      border-color: #f7b801 !important;
+      box-shadow: 0 0 0 2px rgba(247, 184, 1, 0.2) !important;
+    }
+    body.dark-theme .reaction-btn {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .reaction-btn:hover {
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .mobile-menu-overlay {
+      background: rgba(8, 10, 20, 0.62) !important;
+    }
+    body.dark-theme .mobile-menu-drawer {
+      background: #23233a !important;
+      border-color: #39396a !important;
+      box-shadow: -10px 0 38px rgba(6, 6, 14, 0.6) !important;
+    }
+    body.dark-theme .mobile-menu-head {
+      border-color: #39396a !important;
+    }
+    body.dark-theme .mobile-menu-title,
+    body.dark-theme .mobile-menu-label {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .mobile-menu-close,
+    body.dark-theme .mobile-menu-btn {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .mobile-menu-btn .menu-bar {
+      background: #f7b801 !important;
+    }
+    body.dark-theme .mobile-menu-chip,
+    body.dark-theme .mobile-menu-font.font-btn,
+    body.dark-theme .mobile-menu-link {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .mobile-menu-chip.active,
+    body.dark-theme .mobile-menu-font.font-btn.active {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+      text-decoration: none !important;
+    }
+    body.dark-theme .mobile-menu-links {
+      border-color: #39396a !important;
+    }
+    body.dark-theme nav.breadcrumb,
+    body.dark-theme .breadcrumb {
+      background: none !important;
+      box-shadow: none !important;
+    }
+    body.dark-theme .breadcrumb {
+      color: #e6e6f0 !important;
+    }
+    body.dark-theme .breadcrumb-link {
+      color: #a3aed6 !important;
+      text-decoration: underline !important;
+    }
+    body.dark-theme .breadcrumb-link:hover {
+      color: #f7b801 !important;
+    }
+    body.dark-theme .breadcrumb-separator {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .breadcrumb-current {
+      color: #f7b801 !important;
+      font-weight: bold !important;
+    }
+    body.dark-theme footer {
+      background: #f7b801 !important;
+      color: #2d014d !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+  </style>
+</body>
+</html>

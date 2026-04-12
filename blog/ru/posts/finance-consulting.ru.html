@@ -7,11 +7,11 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../../../styles.css">
   <link rel="stylesheet" href="../../blog-pixel.css">
-  <link rel="stylesheet" href="post-style.css">
+  <link rel="stylesheet" href="../../blog.css">
   <link rel="icon" type="image/jpeg" href="assets/logo-ra-studio.jpeg">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
   <!-- Font Awesome для иконок -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -33,7 +33,7 @@
     <div class="header-switchers">
       <div class="font-switcher desktop-font flex items-center gap-1">
         <button class="font-btn font-pixel active" onclick="setFont('pixel')" title="Пиксельный"><i class="fas fa-th"></i></button>
-        <button class="font-btn font-ibm" onclick="setFont('ibm')" title="IBM Plex Mono"><i class="fas fa-font"></i></button>
+        <button class="font-btn font-manrope" onclick="setFont('manrope')" title="Manrope"><i class="fas fa-font"></i></button>
       </div>
       <div class="theme-switcher flex items-center gap-1">
         <button class="theme-btn theme-light active" onclick="setTheme('light')" title="Светлая тема"><i class="fas fa-sun"></i></button>
@@ -67,7 +67,7 @@
       <div class="mobile-menu-label">Шрифт</div>
       <div class="mobile-menu-row">
         <button class="mobile-menu-chip mobile-menu-font font-btn font-pixel active" onclick="setFont('pixel')" type="button">Pixel</button>
-        <button class="mobile-menu-chip mobile-menu-font font-btn font-ibm" onclick="setFont('ibm')" type="button">IBM</button>
+        <button class="mobile-menu-chip mobile-menu-font font-btn font-manrope" onclick="setFont('manrope')" type="button">Manrope</button>
       </div>
     </div>
     <div class="mobile-menu-section mobile-menu-links">
@@ -377,7 +377,7 @@ Google Sheets, SWOT-анализ, расчёт юнит-экономики, си
   </footer>
 
   <!-- JavaScript for Media Controls -->
-  <script src="post-interactive.js"></script>
+  <script src="../../blog.js"></script>
   <script>
     function setFont(type) {
       const postContent = document.querySelector('.post-content');
@@ -385,13 +385,13 @@ Google Sheets, SWOT-анализ, расчёт юнит-экономики, си
       if (type === 'pixel') {
         postContent.style.fontFamily = "'Press Start 2P', monospace";
       } else {
-        postContent.style.fontFamily = "'IBM Plex Mono', monospace";
+        postContent.style.fontFamily = "'Manrope', sans-serif";
       }
       document.querySelectorAll('.font-pixel').forEach((btn) => {
         btn.classList.toggle('active', type === 'pixel');
       });
-      document.querySelectorAll('.font-ibm').forEach((btn) => {
-        btn.classList.toggle('active', type === 'ibm');
+      document.querySelectorAll('.font-manrope').forEach((btn) => {
+        btn.classList.toggle('active', type === 'manrope');
       });
     }
     function setTheme(theme) {

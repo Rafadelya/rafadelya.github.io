@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sample Post | Blog R&A Studio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="post-style.css">
+  <link rel="stylesheet" href="../../blog.css">
   <link rel="icon" type="image/png" href="../../assets/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="text-gray-800">
@@ -31,7 +31,7 @@
     <div class="header-switchers">
       <div class="font-switcher flex items-center gap-1">
         <button class="font-btn font-pixel active" onclick="setFont('pixel')" title="Pixel"><i class="fas fa-th"></i></button>
-        <button class="font-btn font-ibm" onclick="setFont('ibm')" title="IBM Plex Mono"><i class="fas fa-font"></i></button>
+        <button class="font-btn font-manrope" onclick="setFont('manrope')" title="Manrope"><i class="fas fa-font"></i></button>
       </div>
       <div class="theme-switcher flex items-center gap-1">
         <button class="theme-btn theme-light active" onclick="setTheme('light')" title="Thème clair"><i class="fas fa-sun"></i></button>
@@ -150,7 +150,7 @@ Restez à l’écoute — ce cas pourrait bien changer votre vision du marché.
   <footer class="text-center py-6 border-t mt-12">
     <p class="text-sm">© 2026 R&A Studio. Tous droits réservés.</p>
   </footer>
-  <script src="posts/post-interactive.js"></script>
+  <script src="../../blog.js"></script>
   <script>
     function setFont(type) {
       const postContent = document.querySelector('.post-content');
@@ -158,10 +158,10 @@ Restez à l’écoute — ce cas pourrait bien changer votre vision du marché.
       if (type === 'pixel') {
         postContent.style.fontFamily = "'Press Start 2P', monospace";
         document.querySelector('.font-pixel').classList.add('active');
-        document.querySelector('.font-ibm').classList.remove('active');
+        document.querySelector('.font-manrope').classList.remove('active');
       } else {
-        postContent.style.fontFamily = "'IBM Plex Mono', monospace";
-        document.querySelector('.font-ibm').classList.add('active');
+        postContent.style.fontFamily = "'Manrope', sans-serif";
+        document.querySelector('.font-manrope').classList.add('active');
         document.querySelector('.font-pixel').classList.remove('active');
       }
     }

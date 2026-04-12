@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pourquoi nous avons intégré des chats dans notre application d’audioguide mobile | Blog R&A Studio</title>
+  <meta name="description" content="Pourquoi nous avons introduit des chats dans l’application d’audioguide mobile AdiGuide et comment l’identité dans l’interface influence la rétention et le comportement des utilisateurs." />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../../../../styles.css">
+  <link rel="stylesheet" href="../../../../blog-pixel.css">
+  <link rel="stylesheet" href="../../../blog.css">
+  <link rel="icon" type="image/png" href="../../../../../assets/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="text-gray-800">
+  <header class="glass-header flex items-center justify-between">
+    <div class="header-left flex items-center gap-4">
+      <div class="logo-block" style="display: flex; align-items: center;">
+        <a href="../../../../../index.fr.html">
+          <img src="../../assets/logo-ra-studio.jpeg" alt="R&A Studio Logo" class="glass-logo-img">
+        </a>
+      </div>
+    </div>
+    <div class="header-langs">
+      <a href="../../../en/posts/design/cats_avatar.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="../../../de/posts/design/cats_avatar.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="cats_avatar.fr.html" class="lang-flag active" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="../../../ru/posts/design/2-post/cats_avatar.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+    <div class="header-switchers">
+      <div class="font-switcher desktop-font flex items-center gap-1">
+        <button class="font-btn font-pixel active" onclick="setFont('pixel')" title="Pixel"><i class="fas fa-th"></i></button>
+        <button class="font-btn font-manrope" onclick="setFont('manrope')" title="Manrope"><i class="fas fa-font"></i></button>
+      </div>
+      <div class="theme-switcher flex items-center gap-1">
+        <button class="theme-btn theme-light active" onclick="setTheme('light')" title="Thème clair"><i class="fas fa-sun"></i></button>
+        <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Thème sombre"><i class="fas fa-moon"></i></button>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenuDrawer">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+    </div>
+  </header>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span class="mobile-menu-title">Menu</span>
+      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Fermer le menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Langue</div>
+      <div class="mobile-menu-row">
+        <a href="../../../en/posts/design/cats_avatar.en.html" class="mobile-menu-chip" aria-label="English">EN</a>
+        <a href="../../../de/posts/design/cats_avatar.de.html" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
+        <a href="cats_avatar.fr.html" class="mobile-menu-chip active" aria-label="Français">FR</a>
+        <a href="../../../ru/posts/design/2-post/cats_avatar.ru.html" class="mobile-menu-chip" aria-label="Русский">RU</a>
+      </div>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Police</div>
+      <div class="mobile-menu-row">
+        <button class="mobile-menu-chip mobile-menu-font font-btn font-pixel active" onclick="setFont('pixel')" type="button">Pixel</button>
+        <button class="mobile-menu-chip mobile-menu-font font-btn font-manrope" onclick="setFont('manrope')" type="button">Manrope</button>
+      </div>
+    </div>
+    <div class="mobile-menu-section mobile-menu-links">
+      <a href="../../../../../index.fr.html" class="mobile-menu-link">Accueil</a>
+      <a href="../../../../blog.fr.html" class="mobile-menu-link">Blog</a>
+    </div>
+  </aside>
+  <style>
+    .glass-header { flex-direction: row; align-items: center; justify-content: space-between; gap: 1.2em; padding: 1.2rem clamp(1.2rem, 5vw, 3rem); }
+    .header-left { display: flex; align-items: center; gap: 1.2em; }
+    .header-langs, .header-switchers { display: flex; align-items: center; gap: 0.7em; margin-bottom: 0; }
+    .mobile-menu-btn {
+      display: none;
+      width: 2.2em;
+      height: 2.2em;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.45em;
+      background: #fff;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.18em;
+      padding: 0;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .mobile-menu-btn:hover {
+      border-color: #a78bfa;
+      box-shadow: 0 0 0 2px #ede9fe;
+    }
+    .menu-bar {
+      display: block;
+      width: 1.1em;
+      height: 2px;
+      border-radius: 2px;
+      background: #2d014d;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(1) {
+      transform: translateY(0.32em) rotate(45deg);
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(2) {
+      opacity: 0;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(3) {
+      transform: translateY(-0.32em) rotate(-45deg);
+    }
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 16, 35, 0.42);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 60;
+    }
+    .mobile-menu-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(84vw, 320px);
+      height: 100vh;
+      background: #fff;
+      border-left: 2px solid #e5e7eb;
+      box-shadow: -10px 0 40px rgba(34, 22, 63, 0.16);
+      transform: translateX(104%);
+      transition: transform 0.28s ease;
+      z-index: 70;
+      padding: 0.9em 0.8em 1.1em;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85em;
+      overflow-y: auto;
+    }
+    .mobile-menu-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0.55em;
+      border-bottom: 1px solid #ebe7f6;
+    }
+    .mobile-menu-title {
+      font-family: 'Press Start 2P', monospace;
+      color: #2d014d;
+      font-size: 0.58em;
+    }
+    .mobile-menu-close {
+      width: 2em;
+      height: 2em;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.4em;
+      background: #fff;
+      color: #2d014d;
+      cursor: pointer;
+    }
+    .mobile-menu-section {
+      padding: 0.2em 0;
+    }
+    .mobile-menu-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.5em;
+      color: #6b7280;
+      margin-bottom: 0.55em;
+      letter-spacing: 0.02em;
+    }
+    .mobile-menu-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45em;
+    }
+    .mobile-menu-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      background: #fff;
+      color: #4b5563;
+      text-decoration: none;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.56em;
+      line-height: 1;
+      padding: 0.45em 0.62em;
+      min-height: 2.1em;
+      opacity: 1;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .mobile-menu-chip.active {
+      border-color: #a78bfa;
+      background: #f5f3ff;
+      color: #2d014d;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .mobile-menu-font.font-btn {
+      font-size: 0.56em;
+      padding: 0.45em 0.62em;
+      color: #4b5563;
+      text-decoration: none;
+      opacity: 1;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      background: #fff;
+    }
+    .mobile-menu-font.font-btn.active {
+      border-color: #a78bfa;
+      background: #f5f3ff;
+      color: #2d014d;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .mobile-menu-links {
+      display: grid;
+      gap: 0.5em;
+      padding-top: 0.45em;
+      border-top: 1px dashed #e5e7eb;
+    }
+    .mobile-menu-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.56em;
+      color: #2d014d;
+      background: #fafafa;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.35em;
+      padding: 0.7em 0.75em;
+    }
+    .read-emphasis {
+      display: inline;
+      padding: 0.06em 0.28em;
+      border-radius: 0.2em;
+      background: linear-gradient(90deg, #ede9fe 0%, #ddd6fe 100%);
+      color: #2d014d;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+    .read-figure {
+      display: inline-block;
+      padding: 0.15em 0.45em;
+      border: 1px solid #c4b5fd;
+      border-radius: 999px;
+      background: #f5f3ff;
+      color: #4c1d95;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+    body.mobile-menu-open .mobile-menu-overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    body.mobile-menu-open .mobile-menu-drawer {
+      transform: translateX(0);
+    }
+    @media (max-width: 700px) {
+      .glass-header { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; gap: 0.6em !important; padding: 0.85em 0.95em !important; }
+      .header-left { min-width: 0; gap: 0.55em !important; }
+      .header-langs { display: none !important; }
+      .desktop-font { display: none !important; }
+      .header-switchers { gap: 0.42em !important; }
+      .theme-switcher { display: flex !important; }
+      .mobile-menu-btn { display: inline-flex; }
+      .glass-logo-img { width: 46px !important; height: 46px !important; }
+      .theme-btn { font-size: 0.9em !important; padding: 2px 5px !important; }
+    }
+    @media (max-width: 500px) {
+      .glass-header { gap: 0.38em !important; padding: 0.75em 0.8em !important; }
+      .header-left, .header-switchers { gap: 0.38em !important; }
+      .glass-logo-img { width: 40px !important; height: 40px !important; }
+      .theme-btn { font-size: 0.76em !important; padding: 1px 3px !important; }
+      .mobile-menu-drawer { width: min(90vw, 320px); }
+      .mobile-menu-chip,
+      .mobile-menu-font.font-btn,
+      .mobile-menu-link { font-size: 0.54em !important; }
+    }
+  </style>
+  <main class="relative bg-white overflow-hidden">
+      <section class="relative pt-32 pb-20 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[300px] mb-8">
+        <div class="pixel-dots-bg"></div>
+        <div class="post-header-content text-center max-w-4xl mx-auto relative z-10">
+          <div class="post-meta mb-4">
+            <span class="blog-pixel-meta">2026-04-11</span>
+            <span class="blog-pixel-meta mx-2">•</span>
+            <span class="blog-pixel-meta">9 min de lecture</span>
+            <span class="blog-pixel-meta mx-2">•</span>
+            <span class="blog-pixel-meta">Design / Produit</span>
+          </div>
+          <h1 class="post-title text-4xl md:text-5xl font-bold mb-6" style="color:#2d014d; font-family:'Press Start 2P',monospace; line-height: 1.2;">
+  Pourquoi nous avons intégré des chats dans notre application d’audioguide mobile
+          </h1>
+          <p class="post-subtitle text-lg md:text-xl text-center max-w-2xl mx-auto" style="font-family:'Press Start 2P',monospace; color:#6b7280; font-size: 0.9em;">
+  et comment l’identité dans l’interface influence la rétention et le comportement des utilisateurs.
+          </p>
+          <p class="post-subtitle text-lg md:text-xl text-center max-w-2xl mx-auto" style="font-family:'Press Start 2P',monospace; color:#4b5563; font-size: 0.78em; margin-top: 0.9em;">
+  Dédié à Chelsea, Roger et Monty 💜
+          </p>
+        </div>
+      </section>
+
+      <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
+        <div class="max-w-4xl mx-auto">
+          <nav class="breadcrumb mb-8">
+            <a href="../../../../../index.fr.html" class="breadcrumb-link">Accueil</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../../../../blog.fr.html" class="breadcrumb-link">Blog</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">Design</span>
+          </nav>
+
+          <article class="post-content">
+            <h2 class="post-heading">Contexte et objectif</h2>
+            <p class="post-text">Commençons par le problème.</p>
+            <p class="post-text">Nous avons une roadmap pour AdiGuide — une application mobile avec une fonctionnalité d’audioguide touristique. (Si vous êtes curieux : https://rafadelya.github.io/roadmaps2026/index.html)</p>
+            <p class="post-text">Au Q4, nous avons décidé de ne pas nous concentrer sur les fonctionnalités, mais sur autre chose :</p>
+            <p class="post-text">la présence média et la communauté.</p>
+            <p class="post-text">Nous voulons créer une communauté de voyageurs autour d’AdiGuide :<br>— histoires d’utilisateurs<br>— recommandations<br>— « lieux de pouvoir »<br>— parcours mensuels</p>
+            <p class="post-text">L’identité dans une communauté commence par le positionnement de soi.<br>Dans les produits numériques, sa première forme est souvent l’avatar.</p>
+            <p class="post-text">Mais il y a un point important : tout le monde ne veut pas utiliser sa vraie photo.<br>Et c’est normal — surtout dans un produit de voyage, où les utilisateurs ne souhaitent pas toujours être exposés.</p>
+            <p class="post-text">Nous avons donc pris une décision :<br>créer notre propre set d’avatars directement dans l’application.</p>
+            <p class="post-text">Vous avez déjà vu ce type de solution dans les messageries et les réseaux sociaux —<br>mais nous avons voulu aller un peu plus loin.</p>
+            <p class="post-text">Choisir ce que seraient exactement ces avatars s’est avéré plus complexe que prévu.</p>
+            <p class="post-text">Nous nous sommes appuyés sur trois principes :</p>
+            <p class="post-text">— les personnages doivent être universels et parler au plus grand nombre ;<br>— ils doivent être simples et visuellement agréables ;<br>— tous les avatars doivent appartenir à une même logique visuelle.</p>
+
+            <h2 class="post-heading">Avatar et comportement</h2>
+            <p class="post-text">En psychologie de l’identité numérique, il existe un concept appelé effet Proteus. En simplifiant, les utilisateurs adaptent leur comportement à l’apparence de leur avatar. Ce n’est pas une métaphore — c’est un phénomène observé.</p>
+            <p class="post-text">Choisir un avatar plus confiant — conduit à une communication plus affirmée.<br>Choisir une version plus « sportive » — pousse à des décisions plus actives.<br>Choisir quelque chose de neutre — rend le comportement moins marqué.</p>
+            <p class="post-text">En parallèle, lorsqu’on donne un choix visuel complet, les utilisateurs ne cherchent presque jamais à se reproduire tels quels. Ils ne copient pas la réalité — ils construisent une version d’eux-mêmes qu’ils aimeraient être.</p>
+            <p class="post-text">Un avatar n’est donc pas un reflet.<br>C’est une projection d’intention.</p>
+
+            <h2 class="post-heading">Pourquoi pas des humains</h2>
+            <p class="post-text">Et c’est ici que commencent les problèmes avec les avatars humains.</p>
+            <p class="post-text">Notre première idée était évidente : des personnages voyageurs classiques — sacs à dos, vestes, variations d’apparence. Logique pour un produit de voyage.</p>
+            <p class="post-text">Mais dès que nous avons confronté cette idée à de vrais utilisateurs, plusieurs problèmes sont apparus.</p>
+            <p class="post-text">D’abord, ces avatars nécessitent beaucoup de détails :<br>couleur de peau, traits du visage, style vestimentaire, âge, etc.</p>
+            <p class="post-text">Et dès que ces paramètres apparaissent — on entre dans la comparaison… et dans une explosion des coûts de production.</p>
+            <p class="post-text">Nous avons donc rapidement abandonné cette piste.<br>Et heureusement, avant même de commencer le design.</p>
+
+            <h2 class="post-heading">Comment nous en sommes arrivés aux chats</h2>
+            <p class="post-text">Comment en sommes-nous arrivés aux chats… ou plutôt, comment ils sont arrivés à nous.</p>
+            <p class="post-text">Un jour, nous avons vu un post avec un chat en tablier. Impossible de retrouver la source, mais l’image est restée.</p>
+            <p class="post-text">Ce n’était pas une solution évidente. Plutôt une idée étrange, incomplète.</p>
+            <p class="post-text">Mais elle ne disparaissait pas.</p>
+            <p class="post-text">Nous y revenions régulièrement, l’abandonnions, puis la reprenions.<br>Nous avons même essayé de la rejeter rationnellement — le lien avec le travel n’était pas évident.</p>
+            <p class="post-text">Et pourtant, quelque chose faisait sens.<br>Sans que nous puissions encore le formuler clairement.</p>
+            <p class="post-text">Comme si la réponse existait déjà — mais pas encore les mots.</p>
+
+            <h2 class="post-heading">Validation de l’hypothèse</h2>
+            <p class="post-text">À un moment, nous avons décidé de simplement tester l’idée.</p>
+            <p class="post-text">La logique était la suivante.</p>
+            <p class="post-text">D’abord, les chats incarnent le mouvement.<br>Même domestiques, ils parcourent de grandes distances — selon leurs propres trajectoires.</p>
+            <p class="post-text">Ensuite, les chats sont partout.<br>Sur presque tous les continents, sauf l’Antarctique — mais les humains n’y vont pas beaucoup non plus.</p>
+            <p class="post-text">Et enfin, l’argument le plus simple.<br>Les chats plaisent.</p>
+            <p class="post-text">C’est un symbole universel, immédiat, sans friction.</p>
+            <p class="post-text">À ce moment-là, nous avons compris que c’était suffisant.</p>
+
+            <h2 class="post-heading">Premier set</h2>
+            <p class="post-text">Bon, <s>on ne va pas tirer le chat par la queue</s><br>on ne va pas vous faire attendre plus longtemps.</p>
+            <p class="post-text">Voici notre premier set de chats. Faites connaissance :</p>
+          <div class="media-container cats-media">
+            <div class="cat-gallery-shell">
+              <div class="cat-stage" id="catStage" aria-label="Galerie de chats">
+                <button class="cat-nav-btn cat-prev" type="button" id="catPrevBtn" aria-label="Chat précédent">◀</button>
+                <figure class="cat-focus-card">
+                  <img src="Cats/flower_cat.png" alt="Avatar chat 1" class="post-image" id="catFocusImage">
+                </figure>
+                <button class="cat-nav-btn cat-next" type="button" id="catNextBtn" aria-label="Chat suivant">▶</button>
+              </div>
+              <div class="cat-gallery-meta">
+                <span class="cat-counter" id="catCounter">1 / 16</span>
+              </div>
+              <div class="cat-thumbs" id="catThumbs">
+                <button class="cat-thumb active" type="button" data-index="0" aria-label="Chat 1"><img src="Cats/flower_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="1" aria-label="Chat 2"><img src="Cats/Devil_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="2" aria-label="Chat 3"><img src="Cats/reader_worm_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="3" aria-label="Chat 4"><img src="Cats/music_happiness_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="4" aria-label="Chat 5"><img src="Cats/balaklava_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="5" aria-label="Chat 6"><img src="Cats/Angel_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="6" aria-label="Chat 7"><img src="Cats/developer_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="7" aria-label="Chat 8"><img src="Cats/purple_glass_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="8" aria-label="Chat 9"><img src="Cats/england_lady_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="9" aria-label="Chat 10"><img src="Cats/photograph_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="10" aria-label="Chat 11"><img src="Cats/gamer_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="11" aria-label="Chat 12"><img src="Cats/cute_scarfed_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="12" aria-label="Chat 13"><img src="Cats/cowboy_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="13" aria-label="Chat 14"><img src="Cats/bubble_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="14" aria-label="Chat 15"><img src="Cats/basketball_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="15" aria-label="Chat 16"><img src="Cats/purple_cat.png" alt=""></button>
+              </div>
+            </div>
+          </div>
+
+
+          <h2 class="post-heading">Conclusion</h2>
+          <p class="post-text">
+Si vous trouvez celui qui vous correspond — alors tout cela en valait la peine.
+
+C’était l’équipe AdiGuide. À très bientôt… à l’écoute.
+          </p>
+
+
+          <div class="post-tags mt-12">
+            <span class="tag">#design</span>
+            <span class="tag">#avatars</span>
+            <span class="tag">#produit</span>
+            <span class="tag">#conversion</span>
+            <span class="tag">#rétention</span>
+            <span class="tag">#adiguide</span>
+          </div>
+        </article>
+
+        <div class="post-navigation mt-16">
+          <div class="nav-links flex justify-between items-center">
+            <a href="../design-debt.fr.html" class="nav-prev">
+              <span class="nav-arrow">←</span>
+              <span class="nav-text">Article précédent</span>
+            </a>
+            <a href="../../../../blog.fr.html" class="nav-back">
+              <span class="nav-text">Retour au blog</span>
+            </a>
+            <span class="nav-next text-gray-400 cursor-default">
+              <span class="nav-text">Article suivant</span>
+              <span class="nav-arrow">→</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 border-t mt-12">
+    <p class="text-sm">© 2026 R&A Studio. Tous droits réservés.</p>
+  </footer>
+  
+  <script src="../../../blog.js"></script>
+  <script>
+    const REACTIONS_KEY = 'avatar_post_reactions_v1';
+    const REACTION_COOLDOWN_MS = 20 * 60 * 1000;
+    const CAT_AUTO_MS = 10000;
+    const PROFILE_AUTO_MS = 9000;
+    const REACTION_SET = ['😺', '😹', '😻', '🙀', '😿', '😾'];
+    const CAT_SLIDES = [
+      { src: 'Cats/flower_cat.png', alt: 'Кот-аватар 1' },
+      { src: 'Cats/Devil_cat.png', alt: 'Кот-аватар 2' },
+      { src: 'Cats/reader_worm_cat.png', alt: 'Кот-аватар 3' },
+      { src: 'Cats/music_happiness_cat.png', alt: 'Кот-аватар 4' },
+      { src: 'Cats/balaklava_cat.png', alt: 'Кот-аватар 5' },
+      { src: 'Cats/Angel_cat.png', alt: 'Кот-аватар 6' },
+      { src: 'Cats/developer_cat.png', alt: 'Кот-аватар 7' },
+      { src: 'Cats/purple_glass_cat.png', alt: 'Кот-аватар 8' },
+      { src: 'Cats/england_lady_cat.png', alt: 'Кот-аватар 9' },
+      { src: 'Cats/photograph_cat.png', alt: 'Кот-аватар 10' },
+      { src: 'Cats/gamer_cat.png', alt: 'Кот-аватар 11' },
+      { src: 'Cats/cute_scarfed_cat.png', alt: 'Кот-аватар 12' },
+      { src: 'Cats/cowboy_cat.png', alt: 'Кот-аватар 13' },
+      { src: 'Cats/bubble_cat.png', alt: 'Кот-аватар 14' },
+      { src: 'Cats/basketball_cat.png', alt: 'Кот-аватар 15' },
+      { src: 'Cats/purple_cat.png', alt: 'Кот-аватар 16' }
+    ];
+
+
+    function setFont(type) {
+      const postContent = document.querySelector('.post-content');
+      if (!postContent) return;
+      if (type === 'pixel') {
+        postContent.style.fontFamily = "'Press Start 2P', monospace";
+      } else {
+        postContent.style.fontFamily = "'Manrope', sans-serif";
+      }
+      document.querySelectorAll('.font-pixel').forEach((btn) => {
+        btn.classList.toggle('active', type === 'pixel');
+      });
+      document.querySelectorAll('.font-manrope').forEach((btn) => {
+        btn.classList.toggle('active', type === 'manrope');
+      });
+    }
+    function setTheme(theme) {
+      const body = document.body;
+      if (theme === 'dark') {
+        body.classList.add('dark-theme');
+        body.classList.remove('light-theme');
+      } else {
+        body.classList.add('light-theme');
+        body.classList.remove('dark-theme');
+      }
+      document.querySelectorAll('.theme-dark').forEach((btn) => {
+        btn.classList.toggle('active', theme === 'dark');
+      });
+      document.querySelectorAll('.theme-light').forEach((btn) => {
+        btn.classList.toggle('active', theme === 'light');
+      });
+    }
+
+    function setMobileMenuState(isOpen) {
+      const body = document.body;
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuDrawer) return;
+
+      body.classList.toggle('mobile-menu-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuDrawer.setAttribute('aria-hidden', String(!isOpen));
+    }
+
+    function toggleMobileMenu(forceState) {
+      const shouldOpen = typeof forceState === 'boolean'
+        ? forceState
+        : !document.body.classList.contains('mobile-menu-open');
+      setMobileMenuState(shouldOpen);
+    }
+
+    function initMobileMenu() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuClose = document.getElementById('mobileMenuClose');
+      const menuOverlay = document.getElementById('mobileMenuOverlay');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuOverlay || !menuDrawer) return;
+
+      menuBtn.addEventListener('click', () => toggleMobileMenu());
+      menuOverlay.addEventListener('click', () => toggleMobileMenu(false));
+      if (menuClose) {
+        menuClose.addEventListener('click', () => toggleMobileMenu(false));
+      }
+
+      menuDrawer.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => toggleMobileMenu(false));
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          toggleMobileMenu(false);
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 700) {
+          toggleMobileMenu(false);
+        }
+      });
+    }
+
+    function initCatGallery() {
+      const stage = document.getElementById('catStage');
+      const focusImage = document.getElementById('catFocusImage');
+      const counter = document.getElementById('catCounter');
+      const prevBtn = document.getElementById('catPrevBtn');
+      const nextBtn = document.getElementById('catNextBtn');
+      const thumbsWrap = document.getElementById('catThumbs');
+      if (!stage || !focusImage || !counter || !prevBtn || !nextBtn || !thumbsWrap) return;
+
+      const thumbs = Array.from(thumbsWrap.querySelectorAll('.cat-thumb'));
+      let current = 0;
+      let autoTimer = null;
+      let startX = 0;
+      let startY = 0;
+      let swipeActive = false;
+
+      const render = () => {
+        const slide = CAT_SLIDES[current];
+        focusImage.src = slide.src;
+        focusImage.alt = slide.alt;
+        focusImage.style.objectPosition = slide.position || 'center center';
+        focusImage.style.transform = slide.zoom ? 'scale(' + String(slide.zoom) + ')' : 'scale(1)';
+        counter.textContent = String(current + 1) + ' / ' + String(CAT_SLIDES.length);
+        thumbs.forEach((btn, idx) => {
+          btn.classList.toggle('active', idx === current);
+        });
+      };
+
+      const restartAuto = () => {
+        if (autoTimer) clearInterval(autoTimer);
+        autoTimer = setInterval(() => {
+          goTo(current + 1, false);
+        }, CAT_AUTO_MS);
+      };
+
+      const goTo = (index, byUser = true) => {
+        const total = CAT_SLIDES.length;
+        current = (index + total) % total;
+        render();
+        if (byUser) restartAuto();
+      };
+
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+
+      thumbs.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const idx = Number(btn.getAttribute('data-index'));
+          if (Number.isNaN(idx)) return;
+          goTo(idx);
+        });
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') goTo(current - 1);
+        if (event.key === 'ArrowRight') goTo(current + 1);
+      });
+
+      stage.addEventListener('touchstart', (event) => {
+        if (!event.touches || event.touches.length !== 1) return;
+        startX = event.touches[0].clientX;
+        startY = event.touches[0].clientY;
+        swipeActive = true;
+      }, { passive: true });
+
+      stage.addEventListener('touchend', (event) => {
+        if (!swipeActive || !event.changedTouches || !event.changedTouches.length) return;
+        const dx = event.changedTouches[0].clientX - startX;
+        const dy = event.changedTouches[0].clientY - startY;
+        swipeActive = false;
+        if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy)) return;
+        if (dx > 0) {
+          goTo(current - 1);
+        } else {
+          goTo(current + 1);
+        }
+      }, { passive: true });
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          if (autoTimer) clearInterval(autoTimer);
+          return;
+        }
+        restartAuto();
+      });
+
+      render();
+      restartAuto();
+    }
+
+    function initRoadmapProfile() {
+      const avatar = document.getElementById('profileAvatar');
+      const name = document.getElementById('profileName');
+      const tagline = document.getElementById('profileTagline');
+      const city = document.getElementById('profileCity');
+      const format = document.getElementById('profileFormat');
+      const interest = document.getElementById('profileInterest');
+      const route = document.getElementById('profileRoute');
+      const nextBtn = document.getElementById('profileNextBtn');
+      if (!avatar || !name || !tagline || !city || !format || !interest || !route || !nextBtn) return;
+
+      let idx = 0;
+      let timer = null;
+
+      const render = () => {
+        const profile = ROADMAP_PROFILES[idx];
+        avatar.src = profile.photo;
+        name.textContent = profile.name;
+        tagline.textContent = profile.tagline;
+        city.textContent = profile.city;
+        format.textContent = profile.format;
+        interest.textContent = profile.interest;
+        route.textContent = profile.route;
+      };
+
+      const restart = () => {
+        if (timer) clearInterval(timer);
+        timer = setInterval(() => {
+          idx = (idx + 1) % ROADMAP_PROFILES.length;
+          render();
+        }, PROFILE_AUTO_MS);
+      };
+
+      nextBtn.addEventListener('click', () => {
+        idx = (idx + 1) % ROADMAP_PROFILES.length;
+        render();
+        restart();
+      });
+
+      render();
+      restart();
+    }
+
+    function getReactionState() {
+      const empty = REACTION_SET.reduce((acc, emoji) => {
+        acc[emoji] = 0;
+        return acc;
+      }, {});
+
+      try {
+        const raw = localStorage.getItem(REACTIONS_KEY);
+        if (!raw) return empty;
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object') return empty;
+        REACTION_SET.forEach((emoji) => {
+          if (typeof parsed[emoji] !== 'number') parsed[emoji] = 0;
+        });
+        return parsed;
+      } catch (error) {
+        return empty;
+      }
+    }
+
+    function saveReactionState(state) {
+      localStorage.setItem(REACTIONS_KEY, JSON.stringify(state));
+    }
+
+    function renderReactionState(state) {
+      REACTION_SET.forEach((emoji) => {
+        const node = document.querySelector('[data-count-for="' + emoji + '"]');
+        if (node) node.textContent = String(state[emoji] || 0);
+      });
+    }
+
+    function initReactions() {
+      const panel = document.getElementById('reactionPanel');
+      if (!panel) return;
+
+      const state = getReactionState();
+      renderReactionState(state);
+
+      panel.querySelectorAll('.reaction-btn').forEach((button) => {
+        button.addEventListener('click', () => {
+          const now = Date.now();
+          const diff = now - lastReactionAt;
+          if (diff < REACTION_COOLDOWN_MS) {
+            return;
+          }
+
+          const emoji = button.getAttribute('data-emoji');
+          if (!emoji || !(emoji in state)) return;
+          state[emoji] += 1;
+          saveReactionState(state);
+          renderReactionState(state);
+          lastReactionAt = now;
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initCatGallery();
+      initRoadmapProfile();
+      initReactions();
+      initMobileMenu();
+    });
+  </script>
+  <style>
+    .font-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }
+    .font-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; }
+    .font-btn:focus { outline: 2px solid #2d014d; }
+    .theme-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }
+    .theme-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; }
+    .theme-btn:focus { outline: 2px solid #2d014d; }
+    .cats-media {
+      margin-top: 1.6em;
+    }
+    .cat-gallery-note {
+      margin-bottom: 0.75em;
+      color: #4b5563;
+      font-size: 0.72em;
+    }
+    .cat-gallery-shell {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .cat-stage {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0.65em;
+      align-items: center;
+      margin-bottom: 0.55em;
+    }
+    .cat-nav-btn {
+      width: 2.2em;
+      height: 2.2em;
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      background: #fff;
+      color: #2d014d;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.62em;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.2s ease;
+    }
+    .cat-nav-btn:hover {
+      transform: translateY(-1px);
+      border-color: #a78bfa;
+    }
+    .cat-focus-card {
+      margin: 0;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.7em;
+      background: linear-gradient(145deg, #ffffff, #f7f7fb);
+      padding: 0.35em;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(45, 1, 77, 0.12);
+      aspect-ratio: 1 / 1;
+      width: min(100%, 620px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: pan-y;
+      user-select: none;
+    }
+    .cat-focus-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform-origin: center center;
+      border-radius: 0.52em;
+      background: #f3f4f6;
+    }
+    .cat-gallery-meta {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.6em;
+    }
+    .cat-counter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 6.6em;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      padding: 0.28em 0.7em;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.56em;
+      color: #4b5563;
+      background: #fff;
+    }
+    .cat-thumbs {
+      display: flex;
+      gap: 0.45em;
+      overflow-x: auto;
+      padding-bottom: 0.25em;
+      scrollbar-width: thin;
+      justify-content: center;
+    }
+    .cat-thumb {
+      border: 1px solid #d1d5db;
+      border-radius: 0.45em;
+      padding: 2px;
+      background: #fff;
+      width: 54px;
+      height: 54px;
+      flex: 0 0 auto;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.2s ease;
+    }
+    .cat-thumb:hover {
+      transform: translateY(-1px);
+      border-color: #a78bfa;
+    }
+    .cat-thumb.active {
+      border-color: #7c3aed;
+      box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.18);
+    }
+    .cat-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #f3f4f6;
+      border-radius: 0.3em;
+    }
+    .roadmap-profile-demo {
+      margin-top: 1.2em;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.7em;
+      background: linear-gradient(165deg, #ffffff, #f9f7ff);
+      padding: 0.9em;
+    }
+    .profile-demo-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8em;
+      margin-bottom: 0.75em;
+    }
+    .profile-demo-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.56em;
+      color: #4b5563;
+    }
+    .profile-demo-btn {
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      background: #fff;
+      color: #2d014d;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.52em;
+      padding: 0.52em 0.78em;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.2s ease;
+    }
+    .profile-demo-btn:hover {
+      transform: translateY(-1px);
+      border-color: #a78bfa;
+    }
+    .profile-demo-card {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 0.8em;
+      align-items: stretch;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.6em;
+      background: #fff;
+      padding: 0.7em;
+    }
+    .profile-demo-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 0.55em;
+      object-fit: cover;
+      border: 1px solid #e5e7eb;
+      background: #f3f4f6;
+    }
+    .profile-demo-content {
+      display: grid;
+      gap: 0.34em;
+      min-width: 0;
+    }
+    .profile-demo-name {
+      margin: 0;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.58em;
+      color: #2d014d;
+      line-height: 1.35;
+    }
+    .profile-demo-tagline {
+      margin: 0;
+      font-size: 0.72em;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+    .profile-demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      font-size: 0.7em;
+      color: #6b7280;
+    }
+    .profile-demo-row strong {
+      color: #2d014d;
+      font-weight: 700;
+    }
+    .profile-demo-route {
+      margin: 0.2em 0 0;
+      font-size: 0.7em;
+      color: #374151;
+      line-height: 1.5;
+    }
+    @media (max-width: 700px) {
+      .cat-nav-btn {
+        width: 2em;
+        height: 2em;
+      }
+      .cat-thumbs {
+        justify-content: flex-start;
+      }
+      .profile-demo-card {
+        grid-template-columns: 78px 1fr;
+      }
+      .profile-demo-avatar {
+        width: 78px;
+        height: 78px;
+      }
+    }
+    .reaction-panel {
+      margin-top: 0.9em;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 0.55em;
+    }
+    .reaction-btn {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.45em;
+      background: #fff;
+      padding: 0.45em 0.4em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.38em;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.68em;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.2s ease;
+    }
+    .reaction-btn:hover {
+      border-color: #a78bfa;
+      transform: translateY(-1px);
+    }
+    .reaction-emoji {
+      font-size: 1.15em;
+      line-height: 1;
+    }
+    .reaction-count {
+      color: #374151;
+      font-size: 0.88em;
+    }
+    body.light-theme { background: #fff; color: #2d014d; }
+    body.dark-theme {
+      background: #181824;
+      color: #e6e6f0;
+    }
+    body.dark-theme main,
+    body.dark-theme .post-section,
+    body.dark-theme .media-container,
+    body.dark-theme .image-container,
+    body.dark-theme .carousel-container,
+    body.dark-theme .interactive-demo,
+    body.dark-theme .demo-header,
+    body.dark-theme .demo-preview,
+    body.dark-theme .demo-code,
+    body.dark-theme .footer,
+    body.dark-theme .glass-header,
+    body.dark-theme .breadcrumb,
+    body.dark-theme .post-tags,
+    body.dark-theme .post-navigation,
+    body.dark-theme .audio-player,
+    body.dark-theme .video-player,
+    body.dark-theme .carousel-controls,
+    body.dark-theme .image-caption,
+    body.dark-theme .carousel-caption,
+    body.dark-theme .tag,
+    body.dark-theme .nav-links,
+    body.dark-theme .nav-prev,
+    body.dark-theme .nav-next,
+    body.dark-theme .nav-back,
+    body.dark-theme .post-highlight,
+    body.dark-theme .list-item,
+    body.dark-theme .demo-btn,
+    body.dark-theme .audio-btn,
+    body.dark-theme .control-btn,
+    body.dark-theme .play-button,
+    body.dark-theme .dot,
+    body.dark-theme .progress-bar,
+    body.dark-theme .pixel-box {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .post-title {
+      color: #f7b801 !important;
+      text-shadow: 2px 2px 8px #39396a;
+    }
+    body.dark-theme .post-subtitle {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .post-heading {
+      color: #f7b801 !important;
+      border-bottom: 2px solid #39396a !important;
+    }
+    body.dark-theme .post-text,
+    body.dark-theme .list-text,
+    body.dark-theme .image-caption p,
+    body.dark-theme .carousel-caption p {
+      color: #e6e6f0 !important;
+    }
+    body.dark-theme .tag {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .tag:hover {
+      background: #f7b801 !important;
+      color: #23233a !important;
+      box-shadow: 2px 2px 0px #39396a;
+    }
+    body.dark-theme .nav-link, body.dark-theme .lang-flag, body.dark-theme .font-btn, body.dark-theme .theme-btn {
+      color: #f7b801 !important;
+    }
+    body.dark-theme .carousel-btn, body.dark-theme .control-btn, body.dark-theme .audio-btn, body.dark-theme .demo-btn, body.dark-theme .play-button {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .carousel-btn:hover, body.dark-theme .control-btn:hover, body.dark-theme .audio-btn:hover, body.dark-theme .demo-btn:hover, body.dark-theme .play-button:hover {
+      background: #f7b801 !important;
+      color: #23233a !important;
+    }
+    body.dark-theme .dot {
+      background: #39396a !important;
+    }
+    body.dark-theme .dot.active, body.dark-theme .dot:hover {
+      background: #f7b801 !important;
+    }
+    body.dark-theme .progress-bar {
+      background: #39396a !important;
+    }
+    body.dark-theme .progress-fill {
+      background: linear-gradient(90deg, #f7b801, #a3aed6) !important;
+    }
+    body.dark-theme .pixel-box {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .post-highlight {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .list-item {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .cat-focus-card {
+      background: linear-gradient(145deg, #23233a, #2d2d4a) !important;
+      border-color: #39396a !important;
+      box-shadow: none !important;
+    }
+    body.dark-theme .cat-focus-card img {
+      background: #1a1a2a !important;
+    }
+    body.dark-theme .cat-counter,
+    body.dark-theme .cat-thumb,
+    body.dark-theme .cat-nav-btn,
+    body.dark-theme .profile-demo-btn,
+    body.dark-theme .profile-demo-card,
+    body.dark-theme .profile-demo-avatar,
+    body.dark-theme .cat-gallery-note,
+    body.dark-theme .reaction-count {
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+      background: #23233a !important;
+    }
+    body.dark-theme .roadmap-profile-demo {
+      background: linear-gradient(165deg, #23233a, #2a2a46) !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .profile-demo-label,
+    body.dark-theme .profile-demo-tagline,
+    body.dark-theme .profile-demo-route {
+      color: #e6e6f0 !important;
+    }
+    body.dark-theme .profile-demo-name,
+    body.dark-theme .profile-demo-row strong {
+      color: #f7b801 !important;
+    }
+    body.dark-theme .cat-thumb.active {
+      border-color: #f7b801 !important;
+      box-shadow: 0 0 0 2px rgba(247, 184, 1, 0.2) !important;
+    }
+    body.dark-theme .reaction-btn {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .reaction-btn:hover {
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .mobile-menu-overlay {
+      background: rgba(8, 10, 20, 0.62) !important;
+    }
+    body.dark-theme .mobile-menu-drawer {
+      background: #23233a !important;
+      border-color: #39396a !important;
+      box-shadow: -10px 0 38px rgba(6, 6, 14, 0.6) !important;
+    }
+    body.dark-theme .mobile-menu-head {
+      border-color: #39396a !important;
+    }
+    body.dark-theme .mobile-menu-title,
+    body.dark-theme .mobile-menu-label {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .mobile-menu-close,
+    body.dark-theme .mobile-menu-btn {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .mobile-menu-btn .menu-bar {
+      background: #f7b801 !important;
+    }
+    body.dark-theme .mobile-menu-chip,
+    body.dark-theme .mobile-menu-font.font-btn,
+    body.dark-theme .mobile-menu-link {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .mobile-menu-chip.active,
+    body.dark-theme .mobile-menu-font.font-btn.active {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+      text-decoration: none !important;
+    }
+    body.dark-theme .mobile-menu-links {
+      border-color: #39396a !important;
+    }
+    body.dark-theme nav.breadcrumb,
+    body.dark-theme .breadcrumb {
+      background: none !important;
+      box-shadow: none !important;
+    }
+    body.dark-theme .breadcrumb {
+      color: #e6e6f0 !important;
+    }
+    body.dark-theme .breadcrumb-link {
+      color: #a3aed6 !important;
+      text-decoration: underline !important;
+    }
+    body.dark-theme .breadcrumb-link:hover {
+      color: #f7b801 !important;
+    }
+    body.dark-theme .breadcrumb-separator {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .breadcrumb-current {
+      color: #f7b801 !important;
+      font-weight: bold !important;
+    }
+    body.dark-theme footer {
+      background: #f7b801 !important;
+      color: #2d014d !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+  </style>
+</body>
+</html>

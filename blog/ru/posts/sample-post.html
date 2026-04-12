@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../../styles.css">
   <link rel="stylesheet" href="../blog-pixel.css">
-  <link rel="stylesheet" href="post-style.css">
+  <link rel="stylesheet" href="../../blog.css">
   <link rel="icon" type="image/png" href="../../assets/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@
     <div class="header-switchers">
       <div class="font-switcher flex items-center gap-1">
         <button class="font-btn font-pixel active" onclick="setFont('pixel')" title="Пиксельный"><i class="fas fa-th"></i></button>
-        <button class="font-btn font-ibm" onclick="setFont('ibm')" title="IBM Plex Mono"><i class="fas fa-font"></i></button>
+        <button class="font-btn font-manrope" onclick="setFont('manrope')" title="Manrope"><i class="fas fa-font"></i></button>
       </div>
       <div class="theme-switcher flex items-center gap-1">
         <button class="theme-btn theme-light active" onclick="setTheme('light')" title="Светлая тема"><i class="fas fa-sun"></i></button>
@@ -189,10 +189,10 @@
       if (type === 'pixel') {
         postContent.style.fontFamily = "'Press Start 2P', monospace";
         document.querySelector('.font-pixel').classList.add('active');
-        document.querySelector('.font-ibm').classList.remove('active');
+        document.querySelector('.font-manrope').classList.remove('active');
       } else {
-        postContent.style.fontFamily = "'IBM Plex Mono', monospace";
-        document.querySelector('.font-ibm').classList.add('active');
+        postContent.style.fontFamily = "'Manrope', sans-serif";
+        document.querySelector('.font-manrope').classList.add('active');
         document.querySelector('.font-pixel').classList.remove('active');
       }
     }
@@ -466,6 +466,6 @@
   </footer>
 
   <!-- JavaScript for Media Controls -->
-  <script src="post-interactive.js"></script>
+  <script src="../../blog.js"></script>
 </body>
 </html> 

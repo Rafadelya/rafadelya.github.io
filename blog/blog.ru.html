@@ -5,16 +5,69 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="blog-pixel.css">
+  <link rel="stylesheet" href="shared/design-debt.css">
   <link rel="icon" type="image/png" href="../assets/Cyrillic_logo_arfa.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    @media (max-width: 900px) {
+      .glass-header {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 0.6em !important;
+        padding: 0.85em 0.95em !important;
+      }
+      .glass-header nav,
+      .header-langs {
+        display: none !important;
+      }
+      .header-left {
+        min-width: 0;
+        gap: 0.55em !important;
+      }
+      .header-switchers {
+        gap: 0.42em !important;
+      }
+      .mobile-menu-btn {
+        display: inline-flex !important;
+      }
+      .glass-logo-img {
+        width: 46px !important;
+        height: 46px !important;
+      }
+    }
+    @media (max-width: 500px) {
+      .glass-header {
+        gap: 0.38em !important;
+        padding: 0.75em 0.8em !important;
+      }
+      .header-left,
+      .header-switchers {
+        gap: 0.38em !important;
+      }
+      .glass-logo-img {
+        width: 40px !important;
+        height: 40px !important;
+      }
+      .mobile-menu-drawer {
+        width: min(90vw, 320px);
+      }
+      .mobile-menu-chip,
+      .mobile-menu-link {
+        font-size: 0.54em !important;
+      }
+    }
+  </style>
 </head>
 <body class="bg-white text-gray-800">
-  <header class="glass-header">
-    <div class="logo-block" style="display: flex; align-items: center;">
-      <a href="../index.ru.html">
-        <img src="../assets/Cyrillic_logo_arfa.png" alt="Логотип Арфа" class="glass-logo-img">
-      </a>
+  <header class="glass-header flex items-center justify-between">
+    <div class="header-left flex items-center gap-4">
+      <div class="logo-block" style="display: flex; align-items: center;">
+        <a href="../index.ru.html">
+          <img src="../assets/Cyrillic_logo_arfa.png" alt="Логотип Арфа" class="glass-logo-img">
+        </a>
+      </div>
     </div>
     <nav class="flex gap-4">
       <a href="../index.ru.html" class="nav-link">Главная</a>
@@ -23,13 +76,43 @@
       <a href="blog.ru.html" class="nav-link active">Блог</a>
       <a href="../contact.ru.html" class="nav-link">На связи</a>
     </nav>
-    <div class="flex gap-2">
-      <a href="blog.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-      <a href="blog.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-      <a href="blog.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
-      <a href="blog.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    <div class="header-switchers">
+      <div class="header-langs flex gap-2">
+        <a href="blog.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+        <a href="blog.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+        <a href="blog.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+        <a href="blog.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenuDrawer">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
     </div>
   </header>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span class="mobile-menu-title">Меню</span>
+      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть меню">×</button>
+    </div>
+    <div class="mobile-menu-section mobile-menu-links">
+      <a href="../index.ru.html" class="mobile-menu-link">Главная</a>
+      <a href="../about.ru.html" class="mobile-menu-link">О нас</a>
+      <a href="../projects.ru.html" class="mobile-menu-link">Проекты</a>
+      <a href="blog.ru.html" class="mobile-menu-link active">Блог</a>
+      <a href="../contact.ru.html" class="mobile-menu-link">На связи</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Язык</div>
+      <div class="mobile-menu-row">
+        <a href="blog.en.html" class="mobile-menu-chip" aria-label="English">EN</a>
+        <a href="blog.de.html" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
+        <a href="blog.fr.html" class="mobile-menu-chip" aria-label="Français">FR</a>
+        <a href="blog.ru.html" class="mobile-menu-chip active" aria-label="Русский">RU</a>
+      </div>
+    </div>
+  </aside>
 
   <main class="relative bg-white overflow-hidden">
     <!-- Typewriter Hero Section -->
@@ -42,28 +125,35 @@
     <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
       <h2 class="text-2xl md:text-3xl font-bold text-center mb-10" style="font-family:'Press Start 2P',monospace; color:#2d014d;">Свежие публикации</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
-        <!-- Blog Card 1: Cats Avatars -->
+        <!-- Blog Card 1: Naming / Rebrand -->
+        <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
+          <span class="text-xs mb-2 blog-pixel-meta">2026-04-22</span>
+          <h3 class="text-xl mb-2 blog-pixel-title">Почему мы стали Арфа</h3>
+          <p class="mb-4 blog-pixel-text">Почему короткое локальное имя снижает трение, как язык влияет на восприятие и что стоит за нашим новым названием.</p>
+          <a href="ru/posts/marketing/1/" class="blog-pixel-btn">Читать</a>
+        </div>
+        <!-- Blog Card 2: Cats Avatars -->
         <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
           <span class="text-xs mb-2 blog-pixel-meta">2026-04-11</span>
           <h3 class="text-xl mb-2 blog-pixel-title">Почему мы поселили котов в мобильном аудиогиде</h3>
           <p class="mb-4 blog-pixel-text">Эффект Протея, поведение пользователя и роль аватаров в развитии АдиГид как социальной сети про путешествия.</p>
           <a href="ru/posts/design/2-post/cats_avatar.ru.html" class="blog-pixel-btn">Читать</a>
         </div>
-        <!-- Blog Card 2: Design Debt -->
+        <!-- Blog Card 3: Design Debt -->
         <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
           <span class="text-xs mb-2 blog-pixel-meta">2026-03-03</span>
           <h3 class="text-xl mb-2 blog-pixel-title">Дизайн-долг и его финансовая модель</h3>
           <p class="mb-4 blog-pixel-text">Как системность интерфейса влияет на доверие пользователей, скорость команды и выручку продукта в измеримых цифрах.</p>
           <a href="ru/posts/design/design-debt.ru.html" class="blog-pixel-btn">Читать</a>
         </div>
-        <!-- Blog Card 3 -->
+        <!-- Blog Card 4 -->
         <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
           <span class="text-xs mb-2 blog-pixel-meta">2025-07-12</span>
           <h3 class="text-xl mb-2 blog-pixel-title">Когда контроль стал стратегией: жёсткий кейс магазина электроники</h3>
           <p class="mb-4 blog-pixel-text">Как мы убрали балласт, пересчитали всё и запустили рост: реальный аудит, оптимизация и новые источники прибыли для бизнеса. Практика, цифры, решения.</p>
           <a href="ru/posts/finance-consulting.ru.html" class="blog-pixel-btn">Читать</a>
         </div>
-        <!-- Blog Card 4: Agency Analysis -->
+        <!-- Blog Card 5: Agency Analysis -->
         <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
           <span class="text-xs mb-2 blog-pixel-meta">2025-07-10</span>
           <h3 class="text-xl mb-2 blog-pixel-title">Как мы помогли агентству по найму пересобрать бренд и понять своих клиентов</h3>
@@ -78,4 +168,5 @@
   <footer class="text-center py-6 border-t mt-12">
     <p class="text-sm">© 2026 Арфа. Все права защищены.</p>
   </footer>
+  <script src="shared/design-debt.js"></script>
 </body> 

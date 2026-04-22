@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Почему мы стали Арфа | Блог Арфа</title>
+  <meta name="description" content="Почему короткое локальное имя снижает трение, как язык влияет на восприятие и почему мы выбрали Арфа." />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../../../../styles.css">
+  <link rel="stylesheet" href="../../../../blog-pixel.css">
+  <link rel="stylesheet" href="../../../../blog.css">
+  <link rel="icon" type="image/png" href="../../../../../assets/Cyrillic_logo_arfa.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="text-gray-800">
+  <header class="glass-header flex items-center justify-between">
+    <div class="header-left flex items-center gap-4">
+      <div class="logo-block" style="display: flex; align-items: center;">
+        <a href="../../../../../index.ru.html">
+          <img src="../../../../../assets/Cyrillic_logo_arfa.png" alt="Логотип Арфа" class="glass-logo-img">
+        </a>
+      </div>
+    </div>
+    <div class="header-langs">
+      <a href="../../../../blog.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="../../../../blog.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="../../../../blog.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="index.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+    <div class="header-switchers">
+      <div class="font-switcher desktop-font flex items-center gap-1">
+        <button class="font-btn font-pixel active" onclick="setFont('pixel')" title="Пиксельный"><i class="fas fa-th"></i></button>
+        <button class="font-btn font-manrope" onclick="setFont('manrope')" title="Manrope"><i class="fas fa-font"></i></button>
+      </div>
+      <div class="theme-switcher flex items-center gap-1">
+        <button class="theme-btn theme-light active" onclick="setTheme('light')" title="Светлая тема"><i class="fas fa-sun"></i></button>
+        <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Тёмная тема"><i class="fas fa-moon"></i></button>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenuDrawer">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+    </div>
+  </header>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span class="mobile-menu-title">Меню</span>
+      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть меню">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Язык</div>
+      <div class="mobile-menu-row">
+        <a href="../../../../blog.en.html" class="mobile-menu-chip" aria-label="English">EN</a>
+        <a href="../../../../blog.de.html" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
+        <a href="../../../../blog.fr.html" class="mobile-menu-chip" aria-label="Français">FR</a>
+        <a href="index.html" class="mobile-menu-chip active" aria-label="Русский">RU</a>
+      </div>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Шрифт</div>
+      <div class="mobile-menu-row">
+        <button class="mobile-menu-chip mobile-menu-font font-btn font-pixel active" onclick="setFont('pixel')" type="button">Pixel</button>
+        <button class="mobile-menu-chip mobile-menu-font font-btn font-manrope" onclick="setFont('manrope')" type="button">Manrope</button>
+      </div>
+    </div>
+    <div class="mobile-menu-section mobile-menu-links">
+      <a href="../../../../../index.ru.html" class="mobile-menu-link">Главная</a>
+      <a href="../../../../blog.ru.html" class="mobile-menu-link">Блог</a>
+    </div>
+  </aside>
+
+  <main class="relative bg-white overflow-hidden">
+    <section class="relative pt-32 pb-20 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[300px] mb-8">
+      <div class="pixel-dots-bg"></div>
+      <div class="post-header-content text-center max-w-4xl mx-auto relative z-10">
+        <div class="post-meta mb-4">
+          <span class="blog-pixel-meta">2026-04-22</span>
+          <span class="blog-pixel-meta mx-2">•</span>
+          <span class="blog-pixel-meta">7 мин чтения</span>
+          <span class="blog-pixel-meta mx-2">•</span>
+          <span class="blog-pixel-meta">Маркетинг / Нейминг</span>
+        </div>
+        <h1 class="post-title text-4xl md:text-5xl font-bold mb-6" style="color:#2d014d; font-family:'Press Start 2P',monospace; line-height: 1.2;">
+          Почему мы стали Арфа
+        </h1>
+        <p class="post-subtitle text-lg md:text-xl text-center max-w-2xl mx-auto" style="font-family:'Press Start 2P',monospace; color:#6b7280; font-size: 0.9em;">
+          Нейминг перестал быть упражнением в креативности ради креативности.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
+      <div class="max-w-4xl mx-auto">
+        <nav class="breadcrumb mb-8">
+          <a href="../../../../../index.ru.html" class="breadcrumb-link">Главная</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../../blog.ru.html" class="breadcrumb-link">Блог</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Маркетинг</span>
+        </nav>
+
+        <article class="post-content">
+            <h2 class="post-heading">Про нейминг</h2>
+            <p class="post-text">Нейминг перестал быть упражнением в креативности ради креативности (в творческом смысле). Он стал инструментом снижения трения между клиентами, партнёрами и участниками команды.</p>
+            <p class="post-text">Если раньше название должно было “впечатлить”, поразить, уничтожить восприятие “до” восприятием “после”, то сейчас его задача — не мешать.</p>
+            <p class="post-text">Это сдвиг, который виден почти во всех категориях: от стартапов до банков и медиа.</p>
+            <p class="post-text">Казалось бы, простые слова наверняка упрощают задачу, но нет. Задача на самом деле весьма нетривиальная, даже больше — она стала архисложной.</p>
+
+            <h2 class="post-heading">Краткость как базовое требование</h2>
+            <p class="post-text">Современные названия сокращаются до предела. Одно слово, часто 1–2 слога.</p>
+            <p class="post-text">Причина не в моде, а в среде:</p>
+            <div class="post-list">
+              <div class="list-item">
+                <span class="list-marker">■</span>
+                <span class="list-text">пользователь видит название в списке чатов, вкладок, уведомлений;</span>
+              </div>
+              <div class="list-item">
+                <span class="list-marker">■</span>
+                <span class="list-text">у него есть доли секунды на распознавание.</span>
+              </div>
+            </div>
+            <p class="post-text">В этих условиях выигрывают не “оригинальные”, а мгновенно читаемые.</p>
+
+          <div class="post-highlight">
+            <p class="highlight-text">Хорошее название сегодня — это не то, которое объясняет, а то, которое не требует объяснений.</p>
+          </div>
+
+            <h2 class="post-heading">Когда дорожку протаптывают люди</h2>
+            <p class="post-text">Один из самых очевидных приёмов мы называем “протоптать дорожку жителями района”. Как это работает: многие из вас видели, что изначально в ЖК дорожки прямые — застройщик делает базовый контур. Потом он ставит табличку “по газонам не ходить”. Но люди всё равно ходят там, где им удобно. Это и есть оптимальные пути.</p>
+            <p class="post-text">Если повезёт с управляющей компанией, эти дорожки закрепляют: заасфальтируют, кладут брусчатку или оформляют иначе.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+              <figure class="image-container">
+                <img src="do.png" alt="До" class="post-image">
+                <div class="image-caption">
+                  <p>До</p>
+                </div>
+              </figure>
+              <figure class="image-container">
+                <img src="posle.png" alt="После" class="post-image">
+                <div class="image-caption">
+                  <p>После</p>
+                </div>
+              </figure>
+            </div>
+
+            <p class="post-text">Так же и в нейминге: пользователи со временем сами сокращают неоптимальные названия.</p>
+            <p class="post-text">Например, длинные или сложные бренды в разговоре почти всегда упрощаются — остаётся короткая, удобная форма, которой реально пользуются.</p>
+            <p class="post-text">Приятный бонус в том, что это можно обернуть в коммуникацию: зафиксировать это сокращение как официальное и сказать “мы вас услышали”. Во многих случаях это работает как усиление бренда.</p>
+            <p class="post-text">Но не всегда. Иногда это сигнал, что исходное название было выбрано неудачно и пользователи просто “исправили” его за вас. А ещё бывает, что некоторые клиенты не узнают вовремя о смене названия.</p>
+
+            <h2 class="post-heading">Локальность и язык</h2>
+            <p class="post-text">Есть достаточно исследований, показывающих, что язык и алфавит напрямую влияют на восприятие. Даже визуальные элементы работают на уровне ассоциаций: например, иероглифы или стилизация под них рядом с лапшичной могут усиливать ощущение аутентичности.</p>
+            <p class="post-text">В России кириллица перестала быть компромиссом и всё чаще становится осознанным выбором. Локальный язык проще, быстрее и надёжнее в повседневном использовании.</p>
+            <div class="post-list">
+              <div class="list-item">
+                <span class="list-marker">■</span>
+                <span class="list-text">Локальные названия быстрее считываются;</span>
+              </div>
+              <div class="list-item">
+                <span class="list-marker">■</span>
+                <span class="list-text">иногда вызывают больше доверия у старшего поколения;</span>
+              </div>
+              <div class="list-item">
+                <span class="list-marker">■</span>
+                <span class="list-text">не требуют “перевода” в голове.</span>
+              </div>
+            </div>
+            <p class="post-text">Это особенно важно в продуктах с регулярной точкой контакта: медиа, сервисы, приложения.</p>
+            <p class="post-text">Хороший пример — наш опыт с названием “CyberKids”. В некоторых случаях мы даже добавляли вариант прочтения на русском — “СайберКидз”, чтобы снизить трение. Несмотря на это, по телефону мы слышали десятки интерпретаций: “КуберКидс”, “КиберКидс”, “СиберКидс” и даже “Сувениры”.</p>
+            <p class="post-text">Это наглядно показывает, насколько сильно язык влияет на восприятие и насколько непредсказуемо ведёт себя пользователь, когда сталкивается с непривычной формой.</p>
+
+            <h2 class="post-heading">Смысловая честность</h2>
+            <p class="post-text">Рынок устал от “красивых, но пустых” слов. По крайней мере, его значительная часть.</p>
+            <p class="post-text">Название не должно вызывать внутреннего сопротивления.</p>
+            <div class="post-highlight">
+              <p class="highlight-text">Хорошее название сегодня — это не то, которое “объясняет”, а то, которое не требует объяснений.</p>
+            </div>
+            <p class="post-text">Например, наш предыдущий вариант “Студио” не до конца отражал, чем именно мы занимаемся. В широком смысле студия — это небольшая команда (иногда даже 1–2 человека), которая создаёт что-то авторское.</p>
+            <p class="post-text">Но в реальности это слово используется слишком широко. Его берут и парикмахерские, и ногтевые салоны, и детейлинг-центры, и многие другие. Мы ничего не имеем против, но из-за этого оно теряет конкретность.</p>
+            <p class="post-text">Для пользователя это превращается в размытое обозначение без чёткого смысла. Нам хотелось этого избежать.</p>
+
+            <h2 class="post-heading">Характер вместо описания</h2>
+            <p class="post-text">Названия всё чаще уходят от описательной логики (“что мы делаем”) к ощущенческой (“как это чувствуется”). Происходит сдвиг от функции к тону, от объяснения к образу. Это даёт бренду гибкость: он перестаёт быть жёстко привязан к текущему продукту и может расширяться без смены имени.</p>
+
+            <h2 class="post-heading">Простота как стратегия, а не упрощение</h2>
+            <p class="post-text">На первый взгляд может показаться, что нейминг упростился. На практике всё наоборот — задача стала сложнее.</p>
+            <p class="post-text">Простое название сложнее придумать, сложнее принять и сложнее защитить внутри команды. Оно не прячет за собой смыслы и не создаёт иллюзию “глубины за счёт сложности”. Такое название остаётся открытым и требует уверенности в продукте и действиях.</p>
+            <p class="post-text">Есть и практический фактор: короткие слова чаще всего уже заняты. Это дополнительно усложняет задачу и требует либо точного попадания, либо готовности работать с ограничениями.</p>
+
+            <h2 class="post-heading">К чему мы в итоге пришли</h2>
+            <p class="post-text">С сегодняшнего дня мы — Арфа.</p>
+            <p class="post-text">Это короткое слово, которое читается сразу. Для нас это был главный критерий.</p>
+            <div class="post-list">
+              <div class="list-item">
+                <span class="list-marker">■</span>
+                <span class="list-text">Это инструмент, а не результат. Мы делаем продукты, исследования и тексты, а не просто вывеску.</span>
+              </div>
+              <div class="list-item">
+                <span class="list-marker">■</span>
+                <span class="list-text">Это сочетание наших имён. Неочевидное, но достаточно точное, чтобы название было нашим.</span>
+              </div>
+              <div class="list-item">
+                <span class="list-marker">■</span>
+                <span class="list-text">Это про чистоту. Без лишних слоёв и попыток казаться сложнее, чем есть.</span>
+              </div>
+            </div>
+            <p class="post-text">Мы не искали идеальное слово. Мы искали то, с которым не возникает внутреннего сопротивления — ни у нас, ни у людей, которые с нами работают.</p>
+            <p class="post-text">В какой-то момент стало понятно, что дальше усложнять не нужно.</p>
+            <p class="post-text">Под этим названием мы продолжаем делать наши продукты, проводить маркетинговые исследования и развивать всё остальное.</p>
+            <p class="post-text">Наш сайт: arfa.pro</p>
+            <p class="post-text">Заходите к нам в гости, всегда рады!</p>
+
+          <div class="post-tags mt-12">
+            <span class="tag">#нейминг</span>
+            <span class="tag">#маркетинг</span>
+            <span class="tag">#ребрендинг</span>
+            <span class="tag">#бренд</span>
+            <span class="tag">#Арфа</span>
+          </div>
+        </article>
+
+        <div class="post-navigation mt-16">
+          <div class="nav-links flex justify-between items-center">
+            <a href="../../design/2-post/cats_avatar.ru.html" class="nav-prev">
+              <span class="nav-arrow">←</span>
+              <span class="nav-text">Предыдущий пост</span>
+            </a>
+            <a href="../../../../blog.ru.html" class="nav-back">
+              <span class="nav-text">К списку постов</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 border-t mt-12">
+    <p class="text-sm">© 2026 Арфа. Все права защищены.</p>
+  </footer>
+  <script src="../../../../blog.js"></script>
+</body>
+</html>

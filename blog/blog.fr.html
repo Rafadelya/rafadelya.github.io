@@ -5,16 +5,69 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="blog-pixel.css">
+  <link rel="stylesheet" href="shared/design-debt.css">
   <link rel="icon" type="image/png" href="../assets/latin_logo_arfa.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    @media (max-width: 900px) {
+      .glass-header {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 0.6em !important;
+        padding: 0.85em 0.95em !important;
+      }
+      .glass-header nav,
+      .header-langs {
+        display: none !important;
+      }
+      .header-left {
+        min-width: 0;
+        gap: 0.55em !important;
+      }
+      .header-switchers {
+        gap: 0.42em !important;
+      }
+      .mobile-menu-btn {
+        display: inline-flex !important;
+      }
+      .glass-logo-img {
+        width: 46px !important;
+        height: 46px !important;
+      }
+    }
+    @media (max-width: 500px) {
+      .glass-header {
+        gap: 0.38em !important;
+        padding: 0.75em 0.8em !important;
+      }
+      .header-left,
+      .header-switchers {
+        gap: 0.38em !important;
+      }
+      .glass-logo-img {
+        width: 40px !important;
+        height: 40px !important;
+      }
+      .mobile-menu-drawer {
+        width: min(90vw, 320px);
+      }
+      .mobile-menu-chip,
+      .mobile-menu-link {
+        font-size: 0.54em !important;
+      }
+    }
+  </style>
 </head>
 <body class="bg-white text-gray-800">
-  <header class="glass-header">
-    <div class="logo-block" style="display: flex; align-items: center;">
-      <a href="../index.fr.html">
-        <img src="../assets/latin_logo_arfa.png" alt="Arfa Logo" class="glass-logo-img">
-      </a>
+  <header class="glass-header flex items-center justify-between">
+    <div class="header-left flex items-center gap-4">
+      <div class="logo-block" style="display: flex; align-items: center;">
+        <a href="../index.fr.html">
+          <img src="../assets/latin_logo_arfa.png" alt="Arfa Logo" class="glass-logo-img">
+        </a>
+      </div>
     </div>
     <nav class="flex gap-4">
       <a href="../index.fr.html" class="nav-link">Accueil</a>
@@ -23,13 +76,43 @@
       <a href="blog.fr.html" class="nav-link active">Blogue</a>
       <a href="../contact.fr.html" class="nav-link">Contact</a>
     </nav>
-    <div class="flex gap-2">
-      <a href="blog.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-      <a href="blog.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-      <a href="blog.fr.html" class="lang-flag active" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
-      <a href="blog.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    <div class="header-switchers">
+      <div class="header-langs flex gap-2">
+        <a href="blog.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+        <a href="blog.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+        <a href="blog.fr.html" class="lang-flag active" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+        <a href="blog.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenuDrawer">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
     </div>
   </header>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span class="mobile-menu-title">Menu</span>
+      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Fermer le menu">×</button>
+    </div>
+    <div class="mobile-menu-section mobile-menu-links">
+      <a href="../index.fr.html" class="mobile-menu-link">Accueil</a>
+      <a href="../about.fr.html" class="mobile-menu-link">À propos</a>
+      <a href="../projects.fr.html" class="mobile-menu-link">Projets</a>
+      <a href="blog.fr.html" class="mobile-menu-link active">Blogue</a>
+      <a href="../contact.fr.html" class="mobile-menu-link">Contact</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Langue</div>
+      <div class="mobile-menu-row">
+        <a href="blog.en.html" class="mobile-menu-chip" aria-label="English">EN</a>
+        <a href="blog.de.html" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
+        <a href="blog.fr.html" class="mobile-menu-chip active" aria-label="Français">FR</a>
+        <a href="blog.ru.html" class="mobile-menu-chip" aria-label="Русский">RU</a>
+      </div>
+    </div>
+  </aside>
 
   <main class="relative bg-white overflow-hidden">
     <!-- Typewriter Hero Section -->
@@ -80,4 +163,5 @@
   <footer class="text-center py-6 border-t mt-12">
     <p class="text-sm">© 2026 Arfa. Tous droits réservés.</p>
   </footer>
+  <script src="shared/design-debt.js"></script>
 </body> 

@@ -1,6 +1,6 @@
-# R&A Studio — Personal website and portfolio
+# Arfa — Personal website and portfolio
 
-This is the official website of R&A Studio, our two—person team. We create digital products, help businesses grow, and tell stories through design, code, and research.
+This is the official website of Arfa, our two—person team. We create digital products, help businesses grow, and tell stories through design, code, and research.
 
 The website is available in 4 languages: 🇬🇧 English, 🇩🇪 Deutsch, 🇷🇺 Russian, 🇫🇷 Français.  
 Here you will find our portfolio, information about us and a blog with useful materials.
@@ -16,7 +16,7 @@ The code and content are intended **for personal use only** and ** are not subje
 
 - It is not an open-source project
 - Not intended for cloning or commercial use
-- All rights to the text, design and code belong to R&A Studio © 2025
+- All rights to the text, design and code belong to Arfa © 2025
 
 ## 📬 Contacts
 
@@ -25,4 +25,4 @@ The code and content are intended **for personal use only** and ** are not subje
 - Channel: [@R_A_studio](https://t.me/R_A_studio )
 
 ---
-© 2025 R&A Studio — collaboration, honest approach and attention to detail.
+© 2025 Arfa — collaboration, honest approach and attention to detail.

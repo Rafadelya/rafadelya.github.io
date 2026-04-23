@@ -37,12 +37,13 @@ body {
 .glass-logo-img {
   width: 64px;
   height: 64px;
+  display: block;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 4px 24px 0 #b6c6e0cc, 0 2px 8px #fff8;
   background: #fff;
   border: 2px solid #eaeaea;
-  margin-bottom: 0.2em;
+  margin-bottom: 0;
   transition: box-shadow 0.3s, transform 0.2s;
 }
 
@@ -927,4 +928,4 @@ footer {
   .carousel-btn {
     align-self: center;
   }
-} 
+}

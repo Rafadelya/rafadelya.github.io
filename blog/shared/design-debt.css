@@ -304,6 +304,9 @@ body.dark-theme .pixel-box {
   color: #e6e6f0 !important;
   border-color: #39396a !important;
 }
+body.dark-theme main {
+  box-shadow: 0 8px 48px 0 rgba(6, 6, 14, 0.7), 0 2px 8px rgba(0, 0, 0, 0.45) !important;
+}
 body.dark-theme .post-title {
   color: #f7b801 !important;
   text-shadow: 2px 2px 8px #39396a;

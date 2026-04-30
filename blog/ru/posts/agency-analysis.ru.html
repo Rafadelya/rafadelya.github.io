@@ -193,6 +193,19 @@
         document.querySelector('.theme-dark').classList.remove('active');
       }
     }
+    try {
+      setTheme(localStorage.getItem('arfa_blog_theme_v1') || 'light');
+    } catch (error) {
+      setTheme('light');
+    }
+    document.querySelectorAll('.theme-btn').forEach((button) => {
+      button.addEventListener('click', () => {
+        const theme = button.classList.contains('theme-dark') ? 'dark' : 'light';
+        try {
+          localStorage.setItem('arfa_blog_theme_v1', theme);
+        } catch (error) {}
+      });
+    });
   </script>
   <style>
     .font-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: 'ru' }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }} | Блог Арфа</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/blog/blog-pixel.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/blog/blog.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/blog/shared/design-debt.css' | relative_url }}">
+  <link rel="icon" type="image/png" href="{{ '/assets/Cyrillic_logo_arfa.png' | relative_url }}">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="text-gray-800">
+  <header class="glass-header flex items-center justify-between">
+    <div class="header-left flex items-center gap-4">
+      <div class="logo-block" style="display: flex; align-items: center;">
+        <a href="{{ '/index.ru.html' | relative_url }}">
+          <img src="{{ '/assets/Cyrillic_logo_arfa.png' | relative_url }}" alt="Логотип Арфа" class="glass-logo-img">
+        </a>
+      </div>
+    </div>
+    <div class="header-langs">
+      <a href="{{ '/blog/blog.en.html' | relative_url }}" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="{{ '/blog/blog.de.html' | relative_url }}" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="{{ '/blog/blog.fr.html' | relative_url }}" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="{{ '/blog/blog.ru.html' | relative_url }}" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+    <div class="header-switchers">
+      <div class="font-switcher flex items-center gap-1">
+        <button class="font-btn font-pixel active" onclick="setFont('pixel')" title="Пиксельный"><i class="fas fa-th"></i></button>
+        <button class="font-btn font-manrope" onclick="setFont('manrope')" title="Manrope"><i class="fas fa-font"></i></button>
+      </div>
+      <div class="theme-switcher flex items-center gap-1">
+        <button class="theme-btn theme-light active" onclick="setTheme('light')" title="Светлая тема"><i class="fas fa-sun"></i></button>
+        <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Тёмная тема"><i class="fas fa-moon"></i></button>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenuDrawer" onclick="toggleMobileMenu()">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="toggleMobileMenu(false)"></div>
+  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span class="mobile-menu-title">Меню</span>
+      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть меню" onclick="toggleMobileMenu(false)">×</button>
+    </div>
+    <div class="mobile-menu-section mobile-menu-links">
+      <a href="{{ '/index.ru.html' | relative_url }}" class="mobile-menu-link">Главная</a>
+      <a href="{{ '/about.ru.html' | relative_url }}" class="mobile-menu-link">О нас</a>
+      <a href="{{ '/projects.ru.html' | relative_url }}" class="mobile-menu-link">Проекты</a>
+      <a href="{{ '/blog/blog.ru.html' | relative_url }}" class="mobile-menu-link active">Блог</a>
+      <a href="{{ '/contact.ru.html' | relative_url }}" class="mobile-menu-link">На связи</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Язык</div>
+      <div class="mobile-menu-row">
+        <a href="{{ '/blog/blog.en.html' | relative_url }}" class="mobile-menu-chip" aria-label="English">EN</a>
+        <a href="{{ '/blog/blog.de.html' | relative_url }}" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
+        <a href="{{ '/blog/blog.fr.html' | relative_url }}" class="mobile-menu-chip" aria-label="Français">FR</a>
+        <a href="{{ '/blog/blog.ru.html' | relative_url }}" class="mobile-menu-chip active" aria-label="Русский">RU</a>
+      </div>
+    </div>
+  </aside>
+
+  <style>
+    .glass-header { flex-direction: row; align-items: center; justify-content: space-between; gap: 1.2em; padding: 1.2rem clamp(1.2rem, 5vw, 3rem); position: relative; z-index: 220; }
+    .header-left { display: flex; align-items: center; gap: 1.2em; }
+    .header-langs, .header-switchers { display: flex; align-items: center; gap: 0.7em; margin-bottom: 0; }
+    @media (max-width: 900px) {
+      .glass-header { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; gap: 0.6em !important; padding: 0.85em 0.95em !important; }
+      .header-left, .header-right { width: auto; gap: 0.55em; }
+      .header-left { justify-content: flex-start !important; margin-bottom: 0; }
+      .header-langs, .header-switchers { display: flex; justify-content: flex-end; gap: 0.42em; margin-bottom: 0; }
+      .glass-logo-img { width: 46px !important; height: 46px !important; }
+      .nav-link.back-btn { font-size: 0.8em !important; padding: 0.2em 0.5em !important; }
+      .font-btn, .theme-btn { font-size: 0.9em !important; padding: 2px 4px !important; }
+      .lang-flag { width: 32px !important; height: 32px !important; font-size: 1.1em !important; }
+    }
+    @media (max-width: 500px) {
+      .glass-header { gap: 0.38em !important; padding: 0.75em 0.8em !important; }
+      .header-left, .header-langs, .header-switchers { gap: 0.38em !important; }
+      .glass-logo-img { width: 40px !important; height: 40px !important; }
+      .nav-link.back-btn { font-size: 0.7em !important; padding: 0.1em 0.3em !important; }
+      .font-btn, .theme-btn { font-size: 0.7em !important; padding: 1px 2px !important; }
+      .lang-flag { width: 22px !important; height: 22px !important; font-size: 0.9em !important; }
+    }
+    .font-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }
+    .font-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; }
+    .font-btn:focus { outline: 2px solid #2d014d; }
+    .theme-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }
+    .theme-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; }
+    .theme-btn:focus { outline: 2px solid #2d014d; }
+    body.light-theme { background: #fff; color: #2d014d; }
+    body.dark-theme { background: #181824; color: #e6e6f0; }
+    body.dark-theme main,
+    body.dark-theme .post-section,
+    body.dark-theme .breadcrumb,
+    body.dark-theme .post-tags,
+    body.dark-theme .post-navigation,
+    body.dark-theme .tag,
+    body.dark-theme .nav-links,
+    body.dark-theme .nav-prev,
+    body.dark-theme .nav-next,
+    body.dark-theme .nav-back,
+    body.dark-theme .post-highlight,
+    body.dark-theme .list-item,
+    body.dark-theme .glass-header,
+    body.dark-theme .mobile-menu-drawer {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .post-title { color: #f7b801 !important; text-shadow: 2px 2px 8px #39396a; }
+    body.dark-theme .post-subtitle { color: #a3aed6 !important; }
+    body.dark-theme .post-heading { color: #f7b801 !important; border-bottom: 2px solid #39396a !important; }
+    body.dark-theme .post-text,
+    body.dark-theme .list-text,
+    body.dark-theme .image-caption p,
+    body.dark-theme .carousel-caption p { color: #e6e6f0 !important; }
+    body.dark-theme .breadcrumb,
+    body.dark-theme .post-content {
+      background: #23233a !important;
+    }
+    body.dark-theme .post-header-content {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+    body.dark-theme main,
+    body.dark-theme footer,
+    body.dark-theme .glass-header,
+    body.dark-theme .breadcrumb,
+    body.dark-theme .post-content,
+    body.dark-theme .post-tags,
+    body.dark-theme .post-navigation {
+      border-color: #39396a !important;
+      outline-color: #39396a !important;
+    }
+    body.dark-theme main {
+      box-shadow: 0 8px 48px 0 rgba(6, 6, 14, 0.7), 0 2px 8px rgba(0, 0, 0, 0.45) !important;
+    }
+    .post-content > h1,
+    .post-content > h2,
+    .post-content > h3,
+    .post-content > h4,
+    .post-content > h5,
+    .post-content > h6 {
+      font-family: 'Press Start 2P', monospace;
+      color: #2d014d;
+      border-bottom: 2px solid #e5e7eb;
+      margin: 2em 0 1em;
+      padding-bottom: 0.45em;
+      line-height: 1.45;
+    }
+    .post-content > p {
+      font-size: 0.9em;
+      color: #374151;
+      margin-bottom: 1.5em;
+      letter-spacing: 0.01em;
+    }
+    .post-content ul,
+    .post-content ol {
+      margin: 1.5em 0;
+      padding-left: 0;
+      list-style: none;
+    }
+    .post-content ul li,
+    .post-content ol li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75em;
+      margin-bottom: 0.9em;
+      padding: 0.6em 0.7em;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.3em;
+      font-size: 0.85em;
+      color: #374151;
+      line-height: 1.6;
+    }
+    .post-content ul li::before {
+      content: '■';
+      color: #a78bfa;
+      font-weight: bold;
+      line-height: 1.3;
+      flex-shrink: 0;
+    }
+    .post-content ol {
+      counter-reset: post-ol;
+    }
+    .post-content ol li {
+      counter-increment: post-ol;
+    }
+    .post-content ol li::before {
+      content: counter(post-ol) ".";
+      color: #a78bfa;
+      font-weight: bold;
+      line-height: 1.3;
+      min-width: 1.8em;
+      flex-shrink: 0;
+    }
+    .post-content blockquote {
+      background: #2d014d;
+      border: 2px solid #a78bfa;
+      border-radius: 0.3em;
+      padding: 1.4em;
+      margin: 2em 0;
+      color: #fff;
+      position: relative;
+      font-style: italic;
+    }
+    .post-content blockquote::before {
+      content: '"';
+      position: absolute;
+      top: -0.5em;
+      left: 0.8em;
+      font-size: 3em;
+      color: #a78bfa;
+      font-family: serif;
+    }
+    .post-content .image-container {
+      border: 2px solid #e5e7eb;
+      border-radius: 0.5em;
+      overflow: hidden;
+      background: #fff;
+    }
+    .post-content .post-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .post-content .post-image-fixed {
+      width: 100%;
+      height: clamp(220px, 46vw, 480px);
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .post-content .image-caption {
+      padding: 1em;
+      background: #f9fafb;
+      border-top: 1px solid #e5e7eb;
+    }
+    .post-content .image-caption p {
+      margin: 0;
+      font-size: 0.8em;
+      text-align: center;
+      font-family: 'Press Start 2P', monospace;
+      color: #6b7280;
+    }
+    body.dark-theme .post-content > h1,
+    body.dark-theme .post-content > h2,
+    body.dark-theme .post-content > h3,
+    body.dark-theme .post-content > h4,
+    body.dark-theme .post-content > h5,
+    body.dark-theme .post-content > h6 {
+      color: #f7b801 !important;
+      border-bottom-color: #39396a !important;
+    }
+    body.dark-theme .post-content > p,
+    body.dark-theme .post-content ul li,
+    body.dark-theme .post-content ol li {
+      color: #e6e6f0 !important;
+    }
+    body.dark-theme .post-content ul li,
+    body.dark-theme .post-content ol li {
+      background: #2b2b45 !important;
+      border-color: #4a4a76 !important;
+      box-shadow: inset 0 0 0 1px rgba(74, 74, 118, 0.22);
+    }
+    body.dark-theme .post-content ul li::before,
+    body.dark-theme .post-content ol li::before {
+      color: #f7b801 !important;
+    }
+    body.dark-theme .post-content blockquote {
+      background: #23233a !important;
+      border-color: #f7b801 !important;
+    }
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+    body.mobile-menu-open .mobile-menu-overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    body.mobile-menu-open .mobile-menu-drawer {
+      transform: translateX(0);
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(1) {
+      transform: translateY(0.32em) rotate(45deg);
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(2) {
+      opacity: 0;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(3) {
+      transform: translateY(-0.32em) rotate(-45deg);
+    }
+    @media (max-width: 900px) {
+      .mobile-menu-btn { display: inline-flex; }
+      .header-langs { display: none !important; }
+    }
+    .mobile-menu-btn {
+      position: relative;
+      z-index: 230;
+      pointer-events: auto;
+      touch-action: manipulation;
+    }
+    body.mobile-menu-open .glass-header {
+      z-index: 100 !important;
+    }
+  </style>
+
+  <main class="relative overflow-hidden">
+    <section class="relative pt-32 pb-20 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[300px] mb-8">
+      <div class="pixel-dots-bg"></div>
+      <div class="post-header-content text-center max-w-4xl mx-auto relative z-10">
+        <div class="post-meta mb-4">
+          <span class="blog-pixel-meta">{{ page.date | date: "%Y-%m-%d" }}</span>
+          <span class="blog-pixel-meta mx-2">•</span>
+          {% if page.reading_time %}
+          <span class="blog-pixel-meta">{{ page.reading_time }}</span>
+          {% else %}
+          {% assign words = content | strip_html | number_of_words %}
+          {% assign reading_minutes = words | divided_by: 180 %}
+          {% if reading_minutes < 1 %}{% assign reading_minutes = 1 %}{% endif %}
+          <span class="blog-pixel-meta">{{ reading_minutes }} мин чтения</span>
+          {% endif %}
+          {% if page.category %}
+          <span class="blog-pixel-meta mx-2">•</span>
+          <span class="blog-pixel-meta">{{ page.category }}</span>
+          {% endif %}
+        </div>
+        <h1 class="post-title text-4xl md:text-5xl font-bold mb-6" style="color:#2d014d; font-family:'Press Start 2P',monospace; line-height: 1.2;">
+          {{ page.title }}
+        </h1>
+        {% if page.subtitle %}
+        <p class="post-subtitle text-lg md:text-xl text-center max-w-2xl mx-auto" style="font-family:'Press Start 2P',monospace; color:#6b7280; font-size: 0.9em;">
+          {{ page.subtitle }}
+        </p>
+        {% endif %}
+      </div>
+    </section>
+
+    <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
+      <div class="max-w-4xl mx-auto">
+        <nav class="breadcrumb mb-8">
+          <a href="{{ '/index.ru.html' | relative_url }}" class="breadcrumb-link">Главная</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="{{ '/blog/blog.ru.html' | relative_url }}" class="breadcrumb-link">Блог</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">{{ page.category | default: page.title }}</span>
+        </nav>
+
+        <article class="post-content">
+          {{ content }}
+        </article>
+        {% if page.tags and page.tags.size > 0 %}
+        <div class="post-tags mt-12">
+          {% for tag in page.tags %}
+          <span class="tag">#{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+        <div class="post-navigation mt-16">
+          <div class="nav-links">
+            {% if page.prev_post_url %}
+            <a href="{{ page.prev_post_url | relative_url }}" class="nav-prev">
+              <span class="nav-arrow">←</span>
+              <span class="nav-text">Предыдущий пост</span>
+            </a>
+            {% else %}
+            <span class="nav-prev text-gray-400 cursor-default">
+              <span class="nav-arrow">←</span>
+              <span class="nav-text">Предыдущий пост</span>
+            </span>
+            {% endif %}
+            {% if page.next_post_url %}
+            <a href="{{ page.next_post_url | relative_url }}" class="nav-next">
+              <span class="nav-text">Следующий пост</span>
+              <span class="nav-arrow">→</span>
+            </a>
+            {% else %}
+            <span class="nav-next text-gray-400 cursor-default">
+              <span class="nav-text">Следующий пост</span>
+              <span class="nav-arrow">→</span>
+            </span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 border-t mt-12">
+    <p class="text-sm">© 2026 Арфа. Все права защищены.</p>
+  </footer>
+
+  <script src="{{ '/blog/blog.js' | relative_url }}"></script>
+  <script>
+    function setFont(type) {
+      const postContent = document.querySelector('.post-content');
+      if (!postContent) return;
+      if (type === 'pixel') {
+        postContent.style.fontFamily = "'Press Start 2P', monospace";
+        document.querySelector('.font-pixel').classList.add('active');
+        document.querySelector('.font-manrope').classList.remove('active');
+      } else {
+        postContent.style.fontFamily = "'Manrope', sans-serif";
+        document.querySelector('.font-manrope').classList.add('active');
+        document.querySelector('.font-pixel').classList.remove('active');
+      }
+    }
+    function setTheme(theme) {
+      const body = document.body;
+      if (theme === 'dark') {
+        body.classList.add('dark-theme');
+        body.classList.remove('light-theme');
+        document.querySelector('.theme-dark').classList.add('active');
+        document.querySelector('.theme-light').classList.remove('active');
+      } else {
+        body.classList.add('light-theme');
+        body.classList.remove('dark-theme');
+        document.querySelector('.theme-light').classList.add('active');
+        document.querySelector('.theme-dark').classList.remove('active');
+      }
+    }
+    function setMobileMenuState(isOpen) {
+      const body = document.body;
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuDrawer) return;
+      body.classList.toggle('mobile-menu-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuDrawer.setAttribute('aria-hidden', String(!isOpen));
+    }
+    function toggleMobileMenu(forceState) {
+      const shouldOpen = typeof forceState === 'boolean'
+        ? forceState
+        : !document.body.classList.contains('mobile-menu-open');
+      setMobileMenuState(shouldOpen);
+    }
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+    mobileMenuBtn?.addEventListener('click', () => toggleMobileMenu());
+    mobileMenuClose?.addEventListener('click', () => toggleMobileMenu(false));
+    mobileMenuOverlay?.addEventListener('click', () => toggleMobileMenu(false));
+    mobileMenuDrawer?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => toggleMobileMenu(false));
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') toggleMobileMenu(false);
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) toggleMobileMenu(false);
+    });
+  </script>
+</body>
+</html>

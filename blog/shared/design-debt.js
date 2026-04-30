@@ -1,4 +1,5 @@
 const CHECKLIST_COOKIE_NAME = 'design_debt_checklist_v1';
+const THEME_STORAGE_KEY = 'arfa_blog_theme_v1';
 
 function setFont(type) {
   const postContent = document.querySelector('.post-content');
@@ -30,6 +31,21 @@ function setTheme(theme) {
   document.querySelectorAll('.theme-light').forEach((btn) => {
     btn.classList.toggle('active', theme === 'light');
   });
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch (error) {
+    // Ignore storage failures in private mode or restricted contexts.
+  }
+}
+
+function initTheme() {
+  let theme = 'light';
+  try {
+    theme = localStorage.getItem(THEME_STORAGE_KEY) || 'light';
+  } catch (error) {
+    theme = 'light';
+  }
+  setTheme(theme);
 }
 
 function setMobileMenuState(isOpen) {
@@ -81,6 +97,10 @@ function initMobileMenu() {
     }
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+});
 
 function setCookie(name, value, days) {
   const expires = new Date(Date.now() + days * 864e5).toUTCString();

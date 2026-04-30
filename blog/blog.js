@@ -359,12 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
     
-    // Автоматическое переключение карусели
-    setInterval(() => {
-        if (totalSlides > 0) {
-            nextSlide();
-        }
-    }, 5000);
+    // Автоперелистывание отключено: только ручное управление.
 });
 
 // ===== КЛАВИАТУРНЫЕ СОКРАЩЕНИЯ =====

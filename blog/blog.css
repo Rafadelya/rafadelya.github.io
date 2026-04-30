@@ -733,30 +733,88 @@ footer {
 /* ===== КАРУСЕЛЬ ===== */
 .carousel-container {
   border: 2px solid #e5e7eb;
-  border-radius: 0.5em;
+  border-radius: 0.9em;
   overflow: hidden;
-  background: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f7ff 100%);
+  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1);
 }
 
 .carousel-wrapper {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  min-height: 240px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(167, 139, 250, 0.2) 0%, rgba(167, 139, 250, 0) 45%),
+    radial-gradient(circle at 80% 80%, rgba(45, 1, 77, 0.12) 0%, rgba(45, 1, 77, 0) 50%),
+    #fcfbff;
 }
 
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  align-items: center;
+  height: 100%;
 }
 
 .carousel-slide {
   min-width: 100%;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0.8em;
 }
 
 .carousel-image {
   width: 100%;
   height: auto;
+  max-height: min(70vh, 640px);
   display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(45, 1, 77, 0.18));
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.carousel-slide:hover .carousel-image {
+  transform: translateY(-2px) scale(1.01);
+  filter: drop-shadow(0 14px 26px rgba(45, 1, 77, 0.24));
+}
+
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    min-height: 220px;
+  }
+  .carousel-slide {
+    padding: 0.5em;
+  }
+  .carousel-image {
+    width: auto;
+    max-width: 100%;
+    max-height: 52vh;
+    margin: 0 auto;
+  }
+  .carousel-controls {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    gap: 0.6em;
+    padding: 0.75em;
+  }
+  .carousel-btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+  }
+  .carousel-dots {
+    justify-content: center;
+    min-width: 0;
+  }
 }
 
 .carousel-controls {
@@ -769,7 +827,7 @@ footer {
 }
 
 .carousel-btn {
-  background: #a78bfa;
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
   border: 2px solid #2d014d;
   border-radius: 0.3em;
   padding: 0.5em 0.8em;
@@ -777,12 +835,13 @@ footer {
   cursor: pointer;
   transition: all 0.2s;
   font-size: 0.8em;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
 }
 
 .carousel-btn:hover {
-  background: #2d014d;
-  transform: scale(1.05);
-  box-shadow: 2px 2px 0px #a78bfa;
+  background: linear-gradient(135deg, #2d014d 0%, #5b21b6 100%);
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 8px 18px rgba(45, 1, 77, 0.45);
 }
 
 .carousel-dots {
@@ -797,11 +856,14 @@ footer {
   background: #d1d5db;
   cursor: pointer;
   transition: all 0.2s;
+  border: 1px solid transparent;
 }
 
 .dot.active {
-  background: #a78bfa;
-  transform: scale(1.2);
+  background: #8b5cf6;
+  border-color: #2d014d;
+  transform: scale(1.25);
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.28);
 }
 
 .dot:hover {
@@ -921,14 +983,7 @@ footer {
     justify-content: center;
   }
   
-  .carousel-controls {
-    flex-direction: column;
-    gap: 1em;
-  }
-  
-  .carousel-btn {
-    align-self: center;
-  }
+  .carousel-controls { gap: 0.6em; }
 } 
 /* ===== Shared Design Debt Layer ===== */
 .glass-header { flex-direction: row; align-items: center; justify-content: space-between; gap: 1.2em; padding: 1.2rem clamp(1.2rem, 5vw, 3rem); }
@@ -1269,6 +1324,9 @@ body.dark-theme .pixel-box {
   color: #e6e6f0 !important;
   border-color: #39396a !important;
 }
+body.dark-theme main {
+  box-shadow: 0 8px 48px 0 rgba(6, 6, 14, 0.7), 0 2px 8px rgba(0, 0, 0, 0.45) !important;
+}
 body.dark-theme .post-title {
   color: #f7b801 !important;
   text-shadow: 2px 2px 8px #39396a;
@@ -1313,6 +1371,26 @@ body.dark-theme .dot {
 }
 body.dark-theme .dot.active, body.dark-theme .dot:hover {
   background: #f7b801 !important;
+}
+body.dark-theme .carousel-container {
+  background: #23233a !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28) !important;
+}
+body.dark-theme .carousel-wrapper {
+  background: #1e1e32 !important;
+}
+body.dark-theme .carousel-image {
+  filter: none !important;
+}
+body.dark-theme .carousel-slide:hover .carousel-image {
+  transform: none !important;
+  filter: none !important;
+}
+body.dark-theme .carousel-btn {
+  box-shadow: none !important;
+}
+body.dark-theme .dot.active {
+  box-shadow: 0 0 0 2px rgba(247, 184, 1, 0.22) !important;
 }
 body.dark-theme .progress-bar {
   background: #39396a !important;

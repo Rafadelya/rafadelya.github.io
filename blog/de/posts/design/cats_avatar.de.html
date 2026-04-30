@@ -76,10 +76,12 @@
     </div>
   </aside>
   <style>
-    .glass-header { flex-direction: row; align-items: center; justify-content: space-between; gap: 1.2em; padding: 1.2rem clamp(1.2rem, 5vw, 3rem); }
+    .glass-header { position: relative; z-index: 80; flex-direction: row; align-items: center; justify-content: space-between; gap: 1.2em; padding: 1.2rem clamp(1.2rem, 5vw, 3rem); }
     .header-left { display: flex; align-items: center; gap: 1.2em; }
     .header-langs, .header-switchers { display: flex; align-items: center; gap: 0.7em; margin-bottom: 0; }
     .mobile-menu-btn {
+      position: relative;
+      z-index: 81;
       display: none;
       width: 2.2em;
       height: 2.2em;
@@ -92,6 +94,7 @@
       gap: 0.18em;
       padding: 0;
       cursor: pointer;
+      touch-action: manipulation;
       transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
     }
     .mobile-menu-btn:hover {
@@ -267,7 +270,7 @@
     body.mobile-menu-open .mobile-menu-drawer {
       transform: translateX(0);
     }
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
       .glass-header { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; gap: 0.6em !important; padding: 0.85em 0.95em !important; }
       .header-left { min-width: 0; gap: 0.55em !important; }
       .header-langs { display: none !important; }
@@ -657,7 +660,7 @@ Das war das Team von AdiGuide. Bis bald — wir hören uns!
       color: #374151;
       line-height: 1.5;
     }
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
       .cat-nav-btn {
         width: 2em;
         height: 2em;

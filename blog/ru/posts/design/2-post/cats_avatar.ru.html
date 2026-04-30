@@ -76,10 +76,12 @@
     </div>
   </aside>
   <style>
-    .glass-header { flex-direction: row; align-items: center; justify-content: space-between; gap: 1.2em; padding: 1.2rem clamp(1.2rem, 5vw, 3rem); }
+    .glass-header { position: relative; z-index: 80; flex-direction: row; align-items: center; justify-content: space-between; gap: 1.2em; padding: 1.2rem clamp(1.2rem, 5vw, 3rem); }
     .header-left { display: flex; align-items: center; gap: 1.2em; }
     .header-langs, .header-switchers { display: flex; align-items: center; gap: 0.7em; margin-bottom: 0; }
     .mobile-menu-btn {
+      position: relative;
+      z-index: 81;
       display: none;
       width: 2.2em;
       height: 2.2em;
@@ -92,6 +94,7 @@
       gap: 0.18em;
       padding: 0;
       cursor: pointer;
+      touch-action: manipulation;
       transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
     }
     .mobile-menu-btn:hover {
@@ -122,7 +125,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.25s ease;
-      z-index: 60;
+      z-index: 120;
     }
     .mobile-menu-drawer {
       position: fixed;
@@ -135,7 +138,7 @@
       box-shadow: -10px 0 40px rgba(34, 22, 63, 0.16);
       transform: translateX(104%);
       transition: transform 0.28s ease;
-      z-index: 70;
+      z-index: 130;
       padding: 0.9em 0.8em 1.1em;
       display: flex;
       flex-direction: column;
@@ -267,7 +270,7 @@
     body.mobile-menu-open .mobile-menu-drawer {
       transform: translateX(0);
     }
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
       .glass-header { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; gap: 0.6em !important; padding: 0.85em 0.95em !important; }
       .header-left { min-width: 0; gap: 0.55em !important; }
       .header-langs { display: none !important; }
@@ -535,6 +538,8 @@
       const menuOverlay = document.getElementById('mobileMenuOverlay');
       const menuDrawer = document.getElementById('mobileMenuDrawer');
       if (!menuBtn || !menuOverlay || !menuDrawer) return;
+      if (menuBtn.dataset.mobileMenuBound === 'true') return;
+      menuBtn.dataset.mobileMenuBound = 'true';
 
       menuBtn.addEventListener('click', () => toggleMobileMenu());
       menuOverlay.addEventListener('click', () => toggleMobileMenu(false));
@@ -553,7 +558,7 @@
       });
 
       window.addEventListener('resize', () => {
-        if (window.innerWidth > 700) {
+        if (window.innerWidth > 900) {
           toggleMobileMenu(false);
         }
       });
@@ -748,12 +753,14 @@
       });
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    function bootPage() {
       initCatGallery();
       initRoadmapProfile();
       initReactions();
       initMobileMenu();
-    });
+    }
+
+    bootPage();
   </script>
   <style>
     .font-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }
@@ -961,7 +968,7 @@
       color: #374151;
       line-height: 1.5;
     }
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
       .cat-nav-btn {
         width: 2em;
         height: 2em;

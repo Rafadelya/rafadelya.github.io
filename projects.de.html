@@ -395,7 +395,7 @@
       .mobile-menu-btn {
         display: inline-flex;
       }
-      .glass-logo-img {
+      body .glass-header .glass-logo-img {
         width: 52px !important;
         height: 52px !important;
       }
@@ -409,7 +409,7 @@
       .header-right {
         gap: 0.45em;
       }
-      .glass-logo-img {
+      body .glass-header .glass-logo-img {
         width: 46px !important;
         height: 46px !important;
       }
@@ -731,11 +731,7 @@
       const header = document.querySelector('.glass-header');
       const nav = header.querySelector('nav');
       if (!header || !nav) return;
-      const isMobile = window.innerWidth < 700;
-      if (
-        (isMobile && nav.scrollWidth > nav.clientWidth - 8) ||
-        (!isMobile && nav.scrollWidth > nav.clientWidth + 32)
-      ) {
+      if (nav.scrollWidth > nav.clientWidth - 8) {
         header.classList.add('compact-nav');
       } else {
         header.classList.remove('compact-nav');
@@ -788,4 +784,4 @@
     document.addEventListener('DOMContentLoaded', initMobileMenu);
   </script>
 </body>
-</html> 
+</html>

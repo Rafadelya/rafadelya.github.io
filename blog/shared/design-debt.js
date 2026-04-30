@@ -56,6 +56,8 @@ function initMobileMenu() {
   const menuOverlay = document.getElementById('mobileMenuOverlay');
   const menuDrawer = document.getElementById('mobileMenuDrawer');
   if (!menuBtn || !menuOverlay || !menuDrawer) return;
+  if (menuBtn.dataset.mobileMenuBound === 'true') return;
+  menuBtn.dataset.mobileMenuBound = 'true';
 
   menuBtn.addEventListener('click', () => toggleMobileMenu());
   menuOverlay.addEventListener('click', () => toggleMobileMenu(false));
@@ -74,7 +76,7 @@ function initMobileMenu() {
   });
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 700) {
+    if (window.innerWidth > 900) {
       toggleMobileMenu(false);
     }
   });
@@ -141,7 +143,9 @@ function initDesignDebtChecklist() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function bootDesignDebtPage() {
   initDesignDebtChecklist();
   initMobileMenu();
-});
+}
+
+bootDesignDebtPage();

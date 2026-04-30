@@ -6,8 +6,8 @@
   <title>Warum wir Katzen in unserer mobilen Audioguide-App platziert haben | Blog von Arfa</title>
   <meta name="description" content="Warum wir Katzen in unserer mobilen Audioguide-App platziert haben und wie Identität im Interface Nutzerbindung und Verhalten beeinflusst." />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../../../../../styles.css">
-  <link rel="stylesheet" href="../../../../blog-pixel.css">
+  <link rel="stylesheet" href="../../../../styles.css">
+  <link rel="stylesheet" href="../../../../blog/blog-pixel.css">
   <link rel="stylesheet" href="../../../blog.css">
   <link rel="icon" type="image/png" href="../../../../assets/latin_logo_arfa.png">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
   <header class="glass-header flex items-center justify-between">
     <div class="header-left flex items-center gap-4">
       <div class="logo-block" style="display: flex; align-items: center;">
-        <a href="../../../../../index.de.html">
+        <a href="../../../../index.de.html">
           <img src="../../../../assets/latin_logo_arfa.png" alt="Arfa Logo" class="glass-logo-img">
         </a>
       </div>
@@ -71,7 +71,7 @@
       </div>
     </div>
     <div class="mobile-menu-section mobile-menu-links">
-      <a href="../../../../../index.de.html" class="mobile-menu-link">Startseite</a>
+      <a href="../../../../index.de.html" class="mobile-menu-link">Startseite</a>
       <a href="../../../../blog.de.html" class="mobile-menu-link">Blog</a>
     </div>
   </aside>
@@ -125,7 +125,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.25s ease;
-      z-index: 60;
+      z-index: 120;
     }
     .mobile-menu-drawer {
       position: fixed;
@@ -138,7 +138,7 @@
       box-shadow: -10px 0 40px rgba(34, 22, 63, 0.16);
       transform: translateX(104%);
       transition: transform 0.28s ease;
-      z-index: 70;
+      z-index: 130;
       padding: 0.9em 0.8em 1.1em;
       display: flex;
       flex-direction: column;
@@ -270,6 +270,10 @@
     body.mobile-menu-open .mobile-menu-drawer {
       transform: translateX(0);
     }
+    body.mobile-menu-open .mobile-menu-btn {
+      opacity: 0;
+      pointer-events: none;
+    }
     @media (max-width: 900px) {
       .glass-header { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; gap: 0.6em !important; padding: 0.85em 0.95em !important; }
       .header-left { min-width: 0; gap: 0.55em !important; }
@@ -319,7 +323,7 @@
     <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
       <div class="max-w-4xl mx-auto">
         <nav class="breadcrumb mb-8">
-          <a href="../../../../../index.de.html" class="breadcrumb-link">Startseite</a>
+          <a href="../../../../index.de.html" class="breadcrumb-link">Startseite</a>
           <span class="breadcrumb-separator">/</span>
           <a href="../../../../blog.de.html" class="breadcrumb-link">Blog</a>
           <span class="breadcrumb-separator">/</span>
@@ -385,7 +389,7 @@
               <div class="cat-stage" id="catStage" aria-label="Katzengalerie">
                 <button class="cat-nav-btn cat-prev" type="button" id="catPrevBtn" aria-label="Vorherige Katze">◀</button>
                 <figure class="cat-focus-card">
-                  <img src="Cats/flower_cat.png" alt="Katzen-Avatar 1" class="post-image" id="catFocusImage">
+                  <img src="../../../ru/posts/design/2-post/Cats/flower_cat.png" alt="Katzen-Avatar 1" class="post-image" id="catFocusImage">
                 </figure>
                 <button class="cat-nav-btn cat-next" type="button" id="catNextBtn" aria-label="Nächste Katze">▶</button>
               </div>
@@ -393,22 +397,22 @@
                 <span class="cat-counter" id="catCounter">1 / 16</span>
               </div>
               <div class="cat-thumbs" id="catThumbs">
-                <button class="cat-thumb active" type="button" data-index="0" aria-label="Katze 1"><img src="Cats/flower_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="1" aria-label="Katze 2"><img src="Cats/Devil_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="2" aria-label="Katze 3"><img src="Cats/reader_worm_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="3" aria-label="Katze 4"><img src="Cats/music_happiness_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="4" aria-label="Katze 5"><img src="Cats/balaklava_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="5" aria-label="Katze 6"><img src="Cats/Angel_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="6" aria-label="Katze 7"><img src="Cats/developer_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="7" aria-label="Katze 8"><img src="Cats/purple_glass_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="8" aria-label="Katze 9"><img src="Cats/england_lady_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="9" aria-label="Katze 10"><img src="Cats/photograph_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="10" aria-label="Katze 11"><img src="Cats/gamer_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="11" aria-label="Katze 12"><img src="Cats/cute_scarfed_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="12" aria-label="Katze 13"><img src="Cats/cowboy_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="13" aria-label="Katze 14"><img src="Cats/bubble_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="14" aria-label="Katze 15"><img src="Cats/basketball_cat.png" alt=""></button>
-                <button class="cat-thumb" type="button" data-index="15" aria-label="Katze 16"><img src="Cats/purple_cat.png" alt=""></button>
+                <button class="cat-thumb active" type="button" data-index="0" aria-label="Katze 1"><img src="../../../ru/posts/design/2-post/Cats/flower_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="1" aria-label="Katze 2"><img src="../../../ru/posts/design/2-post/Cats/Devil_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="2" aria-label="Katze 3"><img src="../../../ru/posts/design/2-post/Cats/reader_worm_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="3" aria-label="Katze 4"><img src="../../../ru/posts/design/2-post/Cats/music_happiness_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="4" aria-label="Katze 5"><img src="../../../ru/posts/design/2-post/Cats/balaklava_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="5" aria-label="Katze 6"><img src="../../../ru/posts/design/2-post/Cats/Angel_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="6" aria-label="Katze 7"><img src="../../../ru/posts/design/2-post/Cats/developer_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="7" aria-label="Katze 8"><img src="../../../ru/posts/design/2-post/Cats/purple_glass_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="8" aria-label="Katze 9"><img src="../../../ru/posts/design/2-post/Cats/england_lady_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="9" aria-label="Katze 10"><img src="../../../ru/posts/design/2-post/Cats/photograph_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="10" aria-label="Katze 11"><img src="../../../ru/posts/design/2-post/Cats/gamer_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="11" aria-label="Katze 12"><img src="../../../ru/posts/design/2-post/Cats/cute_scarfed_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="12" aria-label="Katze 13"><img src="../../../ru/posts/design/2-post/Cats/cowboy_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="13" aria-label="Katze 14"><img src="../../../ru/posts/design/2-post/Cats/bubble_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="14" aria-label="Katze 15"><img src="../../../ru/posts/design/2-post/Cats/basketball_cat.png" alt=""></button>
+                <button class="cat-thumb" type="button" data-index="15" aria-label="Katze 16"><img src="../../../ru/posts/design/2-post/Cats/purple_cat.png" alt=""></button>
               </div>
             </div>
           </div>

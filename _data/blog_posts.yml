@@ -1,0 +1,75 @@
+ru:
+  - date: 2026-04-22
+    title: "Теперь мы – Арфа"
+    excerpt: "Почему короткое локальное имя снижает трение, как язык влияет на восприятие и что стоит за нашим новым названием."
+    url: /blog/ru/posts/marketing/name_changing/index.html
+  - date: 2026-04-11
+    title: "Почему мы поселили котов в мобильном аудиогиде"
+    excerpt: "Эффект Протея, поведение пользователя и роль аватаров в развитии АдиГид как социальной сети про путешествия."
+    url: /blog/ru/posts/design/2-post/cats_avatar.ru.html
+  - date: 2026-03-03
+    title: "Дизайн-долг и его финансовая модель"
+    excerpt: "Как системность интерфейса влияет на доверие пользователей, скорость команды и выручку продукта в измеримых цифрах."
+    url: /blog/ru/posts/design/design-debt.ru.html
+  - date: 2025-07-12
+    title: "Когда контроль стал стратегией: жёсткий кейс магазина электроники"
+    excerpt: "Как мы убрали балласт, пересчитали всё и запустили рост: реальный аудит, оптимизация и новые источники прибыли для бизнеса."
+    url: /blog/ru/posts/finance-consulting.ru.html
+  - date: 2025-07-10
+    title: "Как мы помогли агентству по найму пересобрать бренд и понять своих клиентов"
+    excerpt: "Полевой анализ для агентства по найму: опрос клиентов, тест конкурентов, карта пути клиента и перезапуск бренда."
+    url: /blog/ru/posts/agency-analysis.ru.html
+
+en:
+  - date: 2025-07-10
+    title: "How we helped a recruitment agency rebuild its brand and understand its clients"
+    excerpt: "Field research for a recruitment agency: customer interviews, competitor testing, customer journey mapping, and a brand relaunch."
+    url: /blog/en/posts/agency-analysis.en.html
+  - date: 2025-07-12
+    title: "When control became strategy: a hard retail case study"
+    excerpt: "How we removed dead weight, recalculated everything, and launched growth with a real audit, optimization, and new profit streams."
+    url: /blog/en/posts/finance-consulting.en.html
+  - date: 2026-03-03
+    title: "Design debt and its financial model"
+    excerpt: "How interface consistency affects user trust, team speed, and product revenue in measurable numbers."
+    url: /blog/en/posts/design/design-debt.en.html
+  - date: 2026-04-11
+    title: "Why we put cats into a mobile audio guide"
+    excerpt: "The Proteus effect, user behavior, and the role of avatars in the growth of AdiGuide as a travel social product."
+    url: /blog/en/posts/design/cats_avatar.en.html
+
+de:
+  - date: 2025-07-10
+    title: "Wie wir einer Personalvermittlungsagentur halfen, ihre Marke neu zu ordnen"
+    excerpt: "Feldanalyse für eine Recruiting-Agentur: Kundenbefragungen, Wettbewerbstests, Customer Journey Map und ein Marken-Relaunch."
+    url: /blog/de/posts/agency-analysis.de.html
+  - date: 2025-07-12
+    title: "Wenn Kontrolle zur Strategie wird: ein harter Retail-Fall"
+    excerpt: "Wie wir Ballast entfernt, alles neu kalkuliert und Wachstum mit Audit, Optimierung und neuen Ertragsquellen gestartet haben."
+    url: /blog/de/posts/finance-consulting.de.html
+  - date: 2026-03-03
+    title: "Design Debt und sein Finanzmodell"
+    excerpt: "Wie Systematik in Interfaces Vertrauen, Teamtempo und Umsatz messbar beeinflusst."
+    url: /blog/de/posts/design/design-debt.de.html
+  - date: 2026-04-11
+    title: "Warum wir Katzen in einen mobilen Audio-Guide gesetzt haben"
+    excerpt: "Der Proteus-Effekt, Nutzerverhalten und die Rolle von Avataren für das Wachstum von AdiGuide."
+    url: /blog/de/posts/design/cats_avatar.de.html
+
+fr:
+  - date: 2025-07-10
+    title: "Comment nous avons aidé une agence de recrutement à reconstruire sa marque"
+    excerpt: "Analyse terrain pour une agence RH: entretiens clients, tests concurrents, cartographie du parcours client et refonte de marque."
+    url: /blog/fr/posts/agency-analysis.fr.html
+  - date: 2025-07-12
+    title: "Quand le contrôle devient une stratégie: un cas retail difficile"
+    excerpt: "Comment nous avons supprimé le superflu, tout recalculé et lancé la croissance avec un audit, une optimisation et de nouveaux revenus."
+    url: /blog/fr/posts/finance-consulting.fr.html
+  - date: 2026-03-03
+    title: "La dette design et son modèle financier"
+    excerpt: "Comment la cohérence d’interface influence la confiance, la vitesse d’équipe et le revenu produit."
+    url: /blog/fr/posts/design/design-debt.fr.html
+  - date: 2026-04-11
+    title: "Pourquoi nous avons mis des chats dans un guide audio mobile"
+    excerpt: "Effet Proteus, comportement utilisateur et rôle des avatars dans la croissance d’AdiGuide."
+    url: /blog/fr/posts/design/cats_avatar.fr.html

@@ -10,6 +10,17 @@ Here you will find our portfolio, information about us and a blog with useful ma
 This repository is used exclusively for publishing the site through **GitHub Pages**  
 ➡️ **https://rafadelya.github.io**
 
+The blog listing is powered by **Jekyll** data files, so new posts can be added without editing the HTML cards by hand.
+
+For local preview:
+
+```bash
+bundle install
+bundle exec jekyll serve
+```
+
+If Bundler reports a Ruby mismatch, use Ruby 3.0 or newer for local preview. GitHub Pages itself will still build the site in its own environment.
+
 The code and content are intended **for personal use only** and ** are not subject to copying or reuse** without our permission.
 
 ## 🔒 Important

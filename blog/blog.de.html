@@ -1,3 +1,5 @@
+---
+---
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -125,37 +127,14 @@
     <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
       <h2 class="text-2xl md:text-3xl font-bold text-center mb-10" style="font-family:'Press Start 2P',monospace; color:#2d014d;">Neueste Beiträge</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
-        <!-- Blog Card 1: Cats Avatars -->
+        {% for post in site.data.blog_posts.de %}
         <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
-          <span class="text-xs mb-2 blog-pixel-meta">2026-04-11</span>
-          <h3 class="text-xl mb-2 blog-pixel-title">Warum wir Katzen in unsere mobile Audioguide-App gebracht haben</h3>
-          <p class="mb-4 blog-pixel-text">Der Proteus-Effekt, Nutzerverhalten und die Rolle von Avataren in der Entwicklung von AdiGuide als soziales Netzwerk für Reisende.</p>
-          <a href="de/posts/design/cats_avatar.de.html" class="blog-pixel-btn">Lesen</a>
+          <span class="text-xs mb-2 blog-pixel-meta">{{ post.date }}</span>
+          <h3 class="text-xl mb-2 blog-pixel-title">{{ post.title }}</h3>
+          <p class="mb-4 blog-pixel-text">{{ post.excerpt }}</p>
+          <a href="{{ post.url | relative_url }}" class="blog-pixel-btn">Lesen</a>
         </div>
-
-        <!-- Blog Card 1: Design Debt -->
-        <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
-          <span class="text-xs mb-2 blog-pixel-meta">2026-03-03</span>
-          <h3 class="text-xl mb-2 blog-pixel-title">Design-Schuld und ihr finanzielles Modell</h3>
-          <p class="mb-4 blog-pixel-text">Wie die Systematik des Interfaces Vertrauen, Teamgeschwindigkeit und die Ökonomie des Produkts beeinflusst.</p>
-          <a href="de/posts/design/design-debt.de.html" class="blog-pixel-btn">Lesen</a>
-        </div>
-
-        <!-- Blog Card 1 -->
-        <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
-          <span class="text-xs mb-2 blog-pixel-meta">2025-07-12</span>
-          <h3 class="text-xl mb-2 blog-pixel-title">Als Kontrolle zur Strategie wurde: ein harter Fall eines Elektronikgeschäfts</h3>
-          <p class="mb-4 blog-pixel-text">Wie wir Ballast entfernt, alles neu berechnet und Wachstum gestartet haben: echte Prüfung, Optimierung und neue Gewinnquellen für das Geschäft. Praxis, Zahlen, Lösungen.</p>
-          <a href="de/posts/finance-consulting.de.html" class="blog-pixel-btn">Lesen</a>
-        </div>
-        
-        <!-- Blog Card 2 -->
-        <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
-          <span class="text-xs mb-2 blog-pixel-meta">2025-07-10</span>
-          <h3 class="text-xl mb-2 blog-pixel-title">Wie wir einer Zeitarbeitsagentur halfen, ihre Marke neu aufzubauen und ihre Kunden zu verstehen</h3>
-          <p class="mb-4 blog-pixel-text">Feldanalyse für eine Zeitarbeitsagentur: Kundenbefragungen, Wettbewerbstests, Customer Journey Mapping und Markenrelaunch. Wie man Marketing auf Daten statt auf Vermutungen aufbaut.</p>
-          <a href="de/posts/agency-analysis.de.html" class="blog-pixel-btn">Lesen</a>
-        </div>
+        {% endfor %}
       </div>
     </section>
   </main>

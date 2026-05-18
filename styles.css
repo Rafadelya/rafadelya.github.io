@@ -1124,6 +1124,7 @@ a, button, .btn-primary, .card-modern {
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 24px 80px rgba(31, 41, 55, 0.24);
   transform: translateX(calc(100% + 1.2rem));
+  visibility: hidden;
   transition: transform 0.24s ease;
   overflow-y: auto;
 }
@@ -1168,6 +1169,7 @@ body.mobile-header-open .mobile-header-overlay {
 }
 body.mobile-header-open .mobile-header-drawer {
   transform: translateX(0);
+  visibility: visible;
 }
 body.mobile-header-open .mobile-header-toggle span:nth-child(1) {
   transform: translateY(0.3rem) rotate(45deg);
@@ -1250,6 +1252,13 @@ body.mobile-header-open .mobile-header-toggle span {
 }
 .mobile-menu a:hover {
   color: #f472b6;
+}
+
+.mobile-menu-drawer {
+  visibility: hidden;
+}
+body.mobile-menu-open .mobile-menu-drawer {
+  visibility: visible;
 }
 
 @media (max-width: 600px) {

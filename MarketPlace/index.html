@@ -1,987 +1,1234 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R&A OS — Инструменты</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
-
-        :root {
-            --bg-color: #0a0a0c;
-            --bg-soft: #0f1016;
-            --text-main: #ffffff;
-            --text-muted: #8f9099;
-            --accent: #6c5ce7;
-            --accent-cyan: #00cec9;
-            --accent-gold: #f5c86a;
-            --accent-glow: rgba(108, 92, 231, 0.35);
-            --glass-bg: rgba(255, 255, 255, 0.04);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-            background-image:
-                radial-gradient(circle at 15% 50%, rgba(108, 92, 231, 0.18), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(0, 210, 211, 0.12), transparent 25%),
-                radial-gradient(circle at 50% 90%, rgba(245, 200, 106, 0.1), transparent 30%);
-        }
-
-        a {
-            color: inherit;
-        }
-
-        /* Навигация */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 6%;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--glass-border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(10, 10, 12, 0.7);
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            background: linear-gradient(90deg, #fff, #b0b2c2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-main);
-        }
-
-        /* Общие секции */
-        .section {
-            padding: 80px 6%;
-        }
-
-        .section-title {
-            font-size: 32px;
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            letter-spacing: -0.5px;
-        }
-
-        /* Hero */
-        header.hero {
-            text-align: center;
-            padding: 120px 6% 80px;
-        }
-
-        header.hero h1 {
-            font-size: 64px;
-            font-weight: 800;
-            letter-spacing: -2px;
-            margin-bottom: 24px;
-            line-height: 1.1;
-        }
-
-        header.hero h1 span {
-            color: var(--accent);
-            text-shadow: 0 0 30px var(--accent-glow);
-        }
-
-        header.hero .hero-subtitle {
-            color: var(--text-muted);
-            font-size: 20px;
-            max-width: 640px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
-        .hero-search {
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        .hero-hint {
-            color: var(--text-muted);
-            font-size: 12px;
-            margin-top: 8px;
-        }
-
-        .quick-queries {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 18px;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: #fff;
-            padding: 16px 36px;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 30px var(--accent-glow);
-            border: none;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 50px var(--accent-glow);
-        }
-
-        /* Маркетплейс */
-        .marketplace {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        .app-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 24px;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            min-height: 280px;
-        }
-
-        .app-card:hover {
-            transform: translateY(-6px) scale(1.01);
-            border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .app-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .app-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-
-        .app-icon.cyan {
-            background: linear-gradient(135deg, #00cec9, #81ecec);
-        }
-
-        .app-icon.gold {
-            background: linear-gradient(135deg, #fdcb6e, #ffeaa7);
-        }
-
-        .app-icon.small {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            font-size: 22px;
-        }
-
-        .app-info h3 {
-            font-size: 20px;
-            margin-bottom: 4px;
-        }
-
-        .tag {
-            font-size: 12px;
-            color: var(--accent);
-            background: rgba(108, 92, 231, 0.1);
-            padding: 4px 8px;
-            border-radius: 8px;
-            display: inline-block;
-        }
-
-        .app-desc {
-            color: var(--text-muted);
-            font-size: 14px;
-            line-height: 1.6;
-            flex-grow: 1;
-            margin-top: 2px;
-        }
-
-        .app-card.compact .app-info h3 {
-            font-size: 16px;
-        }
-
-        .app-card.compact .tag {
-            font-size: 10px;
-        }
-
-        .app-card.compact .card-meta {
-            font-size: 11px;
-        }
-
-        .app-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 8px;
-            padding-top: 16px;
-            border-top: 1px solid var(--glass-border);
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .card-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-ghost {
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-            border: 1px solid transparent;
-            padding: 8px 14px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-
-        .btn-ghost:hover {
-            background: var(--text-main);
-            color: var(--bg-color);
-        }
-
-        .btn-ghost.muted {
-            color: var(--text-muted);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .search-wrap {
-            position: relative;
-            width: 100%;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 16px 18px 16px 46px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--glass-border);
-            color: var(--text-main);
-            font-size: 16px;
-            outline: none;
-            transition: border 0.3s, box-shadow 0.3s;
-        }
-
-        .search-input:focus {
-            border-color: rgba(255, 255, 255, 0.24);
-            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
-        }
-
-        .search-input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 16px;
-        }
-
-        .chip {
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-muted);
-            border: 1px solid var(--glass-border);
-            padding: 8px 14px;
-            border-radius: 999px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .chip.active {
-            color: var(--text-main);
-            border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .section-head {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .section-head h3 {
-            font-size: 22px;
-            letter-spacing: -0.3px;
-        }
-
-        .section-subtitle {
-            color: var(--text-muted);
-            font-size: 14px;
-            max-width: 520px;
-        }
-
-        .grid.dense {
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-        }
-
-        .app-card.compact {
-            min-height: 0;
-            padding: 18px;
-            border-radius: 20px;
-        }
-
-        .card-meta {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-transform: lowercase;
-            letter-spacing: 0.2px;
-            margin-top: 2px;
-        }
-
-        .card-markers {
-            font-size: 11px;
-            color: var(--text-muted);
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 6px;
-        }
-
-        .scenario-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 16px;
-        }
-
-        .scenario-card {
-            padding: 20px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--glass-border);
-        }
-
-        .scenario-card h4 {
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .scenario-card p {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        .is-hidden {
-            display: none !important;
-        }
-
-        .app-card[data-link] {
-            cursor: pointer;
-        }
-
-        .app-card[data-link]:focus-visible {
-            outline: 2px solid rgba(108, 92, 231, 0.6);
-            outline-offset: 2px;
-        }
-
-        .empty-state {
-            margin: 20px auto 0;
-            padding: 16px 20px;
-            border-radius: 16px;
-            border: 1px dashed var(--glass-border);
-            color: var(--text-muted);
-            text-align: center;
-            max-width: 720px;
-            display: none;
-        }
-
-        .system-block {
-            background: linear-gradient(135deg, rgba(108, 92, 231, 0.12), rgba(255, 255, 255, 0.02));
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 28px;
-            padding: 32px;
-        }
-
-        .system-block p {
-            color: var(--text-muted);
-            font-size: 15px;
-            line-height: 1.7;
-            max-width: 720px;
-        }
-
-        /* Футер */
-        footer {
-            padding: 40px 6% 80px;
-            color: var(--text-muted);
-            text-align: center;
-            border-top: 1px solid var(--glass-border);
-        }
-
-        /* Адаптив */
-        @media (max-width: 800px) {
-            header.hero h1 {
-                font-size: 44px;
-            }
-            .nav-links {
-                display: none;
-            }
-            header.hero .hero-subtitle {
-                font-size: 18px;
-            }
-            .section-title {
-                font-size: 28px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .app-card {
-                min-height: 0;
-            }
-            .search-input {
-                font-size: 15px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Арфа OS — прикладные инструменты для повседневной жизни</title>
+  <meta name="description" content="Арфа OS объединяет маленькие прикладные инструменты, проверенные продукты и исследования реальных повседневных задач.">
+  <link rel="icon" type="image/png" href="../assets/Cyrillic_logo_arfa.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --bg: #090a0d;
+      --bg-2: #111318;
+      --panel: #161922;
+      --panel-2: #1d212b;
+      --line: rgba(255, 255, 255, 0.1);
+      --line-strong: rgba(255, 255, 255, 0.18);
+      --text: #f7f7f5;
+      --muted: #a5a9b5;
+      --soft: #d7dae3;
+      --violet: #8f7cf7;
+      --cyan: #4fd1c5;
+      --green: #7fd987;
+      --amber: #f2c86b;
+      --rose: #ff8fa3;
+      --blue: #78a7ff;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
+      --radius: 8px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        linear-gradient(180deg, rgba(20, 24, 33, 0.78), rgba(9, 10, 13, 0.96) 38%, #090a0d 100%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 88px),
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 88px),
+        #090a0d;
+      color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(9, 10, 13, 0.86);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      width: min(var(--max), calc(100% - 40px));
+      min-height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius);
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      max-width: calc(100% - 190px);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
+    }
+
+    .section {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 74px 0;
+    }
+
+    .hero {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 112px 0 58px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+      gap: 52px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(56px, 8vw, 118px);
+      line-height: 0.92;
+      letter-spacing: 0;
+    }
+
+    .hero-subtitle {
+      max-width: 680px;
+      margin: 28px 0 0;
+      color: var(--soft);
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.45;
+    }
+
+    .hero-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(22, 25, 34, 0.78);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .hero-card h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+    }
+
+    .hero-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .metric {
+      padding: 14px 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--text);
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .search-panel {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 22px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(143, 124, 247, 0.18), rgba(79, 209, 197, 0.08)), var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .search-wrap {
+      position: relative;
+    }
+
+    .search-icon {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 58px;
+      padding: 0 18px 0 46px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius);
+      outline: none;
+      background: rgba(9, 10, 13, 0.6);
+      color: var(--text);
+      font-size: 17px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(79, 209, 197, 0.16);
+    }
+
+    .search-input::placeholder {
+      color: #8c919d;
+    }
+
+    .quick-queries {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .chip {
+      min-height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.055);
+      color: var(--soft);
+      padding: 0 14px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .chip:hover,
+    .chip.active {
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .empty-state {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border: 1px dashed var(--line-strong);
+      border-radius: var(--radius);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .section-subtitle {
+      max-width: 560px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .scenario-card,
+    .tool-card,
+    .proof-card,
+    .research-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(22, 25, 34, 0.88);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .scenario-card:hover,
+    .tool-card:hover,
+    .proof-card:hover,
+    .research-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--line-strong);
+      background: rgba(29, 33, 43, 0.95);
+    }
+
+    .scenario-card {
+      padding: 20px;
+    }
+
+    .scenario-icon,
+    .tool-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.055);
+      font-size: 22px;
+    }
+
+    .scenario-card h3,
+    .tool-card h3,
+    .proof-card h3,
+    .research-card h3 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .scenario-card p,
+    .tool-card p,
+    .proof-card p,
+    .research-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .scenario-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 0 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--soft);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .tool-card {
+      min-height: 214px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tool-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .tool-icon {
+      flex: 0 0 auto;
+      margin: 0;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 0 9px;
+      border-radius: 999px;
+      background: rgba(143, 124, 247, 0.16);
+      color: #d5ceff;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .tag.green {
+      background: rgba(127, 217, 135, 0.14);
+      color: #c4f4c9;
+    }
+
+    .tag.amber {
+      background: rgba(242, 200, 107, 0.16);
+      color: #ffe3a0;
+    }
+
+    .tag.blue {
+      background: rgba(120, 167, 255, 0.16);
+      color: #c8d9ff;
+    }
+
+    .tool-meta {
+      margin-top: auto;
+      padding-top: 18px;
+      color: var(--soft);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .proof-card {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      min-height: 430px;
+    }
+
+    .proof-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .proof-logo {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.055);
+      overflow: hidden;
+      font-size: 24px;
+    }
+
+    .proof-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .proof-card h3 {
+      font-size: 22px;
+    }
+
+    .status {
+      display: inline-flex;
+      margin-top: 6px;
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .checklist {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      color: var(--soft);
+      font-size: 14px;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      margin-right: 8px;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .tech {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .research-card {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      min-height: 250px;
+    }
+
+    .research-type {
+      color: var(--amber);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .philosophy {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 26px;
+      align-items: stretch;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(127, 217, 135, 0.12), rgba(120, 167, 255, 0.1)), var(--panel);
+      padding: 28px;
+    }
+
+    .philosophy p {
+      margin: 0;
+      color: var(--soft);
+      font-size: 18px;
+    }
+
+    .principles {
+      display: grid;
+      gap: 10px;
+    }
+
+    .principle {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(9, 10, 13, 0.36);
+      color: var(--soft);
+      font-weight: 700;
+    }
+
+    .cta {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto 76px;
+      padding: 34px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: var(--text);
+      color: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .cta h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.05;
+    }
+
+    .cta p {
+      margin: 10px 0 0;
+      color: #4c515d;
+      font-size: 17px;
+    }
+
+    .cta .btn {
+      background: var(--bg);
+      color: var(--text);
+      border-color: var(--bg);
+      white-space: nowrap;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 0 44px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 1040px) {
+      .hero,
+      .philosophy {
+        grid-template-columns: 1fr;
+      }
+
+      .scenario-grid,
+      .tools-grid,
+      .proof-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 780px) {
+      .nav-inner,
+      .section,
+      .hero,
+      .search-panel,
+      .cta {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .nav-inner {
+        min-height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        max-width: 58vw;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 9px 13px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding-top: 74px;
+        gap: 30px;
+      }
+
+      .section {
+        padding: 52px 0;
+      }
+
+      .section-head,
+      .cta {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .scenario-grid,
+      .tools-grid,
+      .proof-grid,
+      .research-grid,
+      .metric-row {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-card,
+      .research-card {
+        min-height: 0;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brand span {
+        display: none;
+      }
+
+      .nav-links {
+        max-width: calc(100vw - 96px);
+      }
+
+      .hero h1 {
+        font-size: 54px;
+      }
+
+      .search-panel,
+      .hero-card,
+      .cta,
+      .philosophy {
+        padding: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <nav class="site-nav" aria-label="Основная навигация">
+    <div class="nav-inner">
+      <a class="brand" href="../index.ru.html">
+        <img src="../assets/Cyrillic_logo_arfa.png" alt="Арфа">
+        <span>Арфа OS</span>
+      </a>
+      <div class="nav-links">
+        <a href="#scenarios">Сценарии</a>
+        <a href="#tools">Инструменты</a>
+        <a href="#proven">Что работает</a>
+        <a href="#research">Research</a>
+        <a href="#philosophy">Философия</a>
+        <a href="../contact.ru.html">Контакт</a>
+      </div>
+    </div>
+  </nav>
 
-    <nav>
-        <div class="logo">R&A OS</div>
-        <div class="nav-links">
-            <a href="#popular">Популярные</a>
-            <a href="#quick">Быстрый доступ</a>
-            <a href="#scenarios">Сценарии</a>
-            <a href="#about">О системе</a>
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Экосистема прикладных инструментов</div>
+      <h1>Арфа OS</h1>
+      <p class="hero-subtitle">Набор маленьких систем для повседневных задач. Быстрый доступ. Минимум действий. Предсказуемый результат.</p>
+    </div>
+    <aside class="hero-card" aria-label="Позиционирование Арфа OS">
+      <h2>От хаоса портфеля к понятной системе</h2>
+      <p>Арфа создаёт прикладные инструменты для реальных человеческих проблем: задачи, деньги, поездки, разговоры, фокус и решения на каждый день.</p>
+      <div class="metric-row">
+        <div class="metric">
+          <strong>13</strong>
+          <span>сценарных инструментов</span>
         </div>
-    </nav>
-
-    <header class="hero" id="top">
-        <h1>R&amp;A OS</h1>
-        <p class="hero-subtitle">Набор прикладных инструментов для повседневных задач<br>Десятки сценариев — мгновенный доступ</p>
-        <div class="hero-search">
-            <div class="search-wrap">
-                <span class="search-icon">🔎</span>
-                <input id="globalSearch" class="search-input" type="search" placeholder="Найти инструмент…">
-            </div>
-            <div class="hero-hint">подсказка: «выйти из разговора», «аудиогид», «todo», «учёт авто»</div>
-            <div class="quick-queries">
-                <button class="chip" type="button" data-query="выйти из ситуации">выйти из ситуации</button>
-                <button class="chip" type="button" data-query="контроль общения">контроль общения</button>
-                <button class="chip" type="button" data-query="задачи">задачи</button>
-                <button class="chip" type="button" data-query="поездки">поездки</button>
-                <button class="chip" type="button" data-query="фокус">фокус</button>
-            </div>
+        <div class="metric">
+          <strong>3</strong>
+          <span>созданных продукта</span>
         </div>
-        <div id="searchEmpty" class="empty-state">Ничего не найдено. Попробуй другой запрос.</div>
-    </header>
-
-    <section id="popular" class="section marketplace search-section">
-        <h2 class="section-title">Популярные решения</h2>
-        <div class="grid">
-            <div class="app-card" data-link="new_app.html" data-search="launchpad маркетинг креативы запуск кампаний ab тесты">
-                <div class="app-header">
-                    <div class="app-icon">🚀</div>
-                    <div class="app-info">
-                        <h3>LaunchPad</h3>
-                        <span class="tag">маркетинг</span>
-                    </div>
-                </div>
-                <div class="card-meta">3 секунды до запуска</div>
-                <p class="app-desc">Проверка креативов и быстрый запуск кампаний.</p>
-                <div class="card-markers">
-                    <span>мгновенный запуск</span>
-                    <span>минимальное взаимодействие</span>
-                </div>
-                <div class="app-footer">
-                    <span style="color: var(--text-muted); font-size: 13px;">v 2.1.0</span>
-                    <div class="card-actions">
-                        <a class="btn-ghost" href="new_app.html">Открыть</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="app-card" data-link="econometrics_app.html" data-search="econometrics аналитика экономика roi расчёт">
-                <div class="app-header">
-                    <div class="app-icon cyan">📈</div>
-                    <div class="app-info">
-                        <h3>EconoMetrics</h3>
-                        <span class="tag">аналитика</span>
-                    </div>
-                </div>
-                <div class="card-meta">1 действие</div>
-                <p class="app-desc">Быстрый расчёт юнит‑экономики и ROI.</p>
-                <div class="card-markers">
-                    <span>стабильный результат</span>
-                    <span>без регистрации</span>
-                </div>
-                <div class="app-footer">
-                    <span style="color: var(--text-muted); font-size: 13px;">v 1.4.2</span>
-                    <div class="card-actions">
-                        <a class="btn-ghost" href="econometrics_app.html">Открыть</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="app-card" data-search="exitline общение выход из разговора выйти из ситуации контроль общения">
-                <div class="app-header">
-                    <div class="app-icon gold">🧭</div>
-                    <div class="app-info">
-                        <h3>ExitLine</h3>
-                        <span class="tag">общение</span>
-                    </div>
-                </div>
-                <div class="card-meta">без настройки</div>
-                <p class="app-desc">Формулировки для корректного завершения разговора.</p>
-                <div class="card-markers">
-                    <span>минимальное взаимодействие</span>
-                    <span>стабильный результат</span>
-                </div>
-                <div class="app-footer">
-                    <span style="color: var(--text-muted); font-size: 13px;">v 0.7.0</span>
-                    <div class="card-actions">
-                        <span class="btn-ghost muted">Скоро</span>
-                    </div>
-                </div>
-            </div>
+        <div class="metric">
+          <strong>4</strong>
+          <span>research-слоя</span>
         </div>
+      </div>
+    </aside>
+  </header>
+
+  <section class="search-panel" aria-label="Поиск по Арфа OS">
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input id="globalSearch" class="search-input" type="search" placeholder="Найти инструмент…" autocomplete="off">
+    </div>
+    <div class="quick-queries">
+      <button class="chip" type="button" data-query="работа фокус задачи">работа и фокус</button>
+      <button class="chip" type="button" data-query="общение границы разговор">общение и границы</button>
+      <button class="chip" type="button" data-query="поездки маршрут аудиогид">поездки</button>
+      <button class="chip" type="button" data-query="финансы долг расходы">финансы</button>
+      <button class="chip" type="button" data-query="проверено создано">уже работает</button>
+    </div>
+    <div id="searchEmpty" class="empty-state">Ничего не найдено. Попробуйте другой запрос или сценарий.</div>
+  </section>
+
+  <main>
+    <section id="scenarios" class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Какую задачу нужно решить?</h2>
+        <p class="section-subtitle">Арфа OS начинается не с категорий проектов, а со сценариев жизни, где человеку нужен короткий путь к результату.</p>
+      </div>
+      <div class="scenario-grid">
+        <article class="scenario-card" data-search="работа фокус задачи quicktodo focusgrid dayanchor todoolico проверено создано">
+          <div class="scenario-icon">▦</div>
+          <h3>Работа и фокус</h3>
+          <p>Собрать день, удержать приоритет и не утонуть в лишних статусах.</p>
+          <div class="scenario-tools">
+            <a class="pill" href="#tools">QuickTodo</a>
+            <a class="pill" href="#tools">FocusGrid</a>
+            <a class="pill" href="#tools">DayAnchor</a>
+            <a class="pill" href="#proven">ToDooliCo</a>
+          </div>
+        </article>
+
+        <article class="scenario-card" data-search="общение границы разговор выйти ситуация exitline quietline exitnow">
+          <div class="scenario-icon">↘</div>
+          <h3>Общение и границы</h3>
+          <p>Завершить разговор, обозначить доступность и сохранить нормальный тон.</p>
+          <div class="scenario-tools">
+            <a class="pill" href="#tools">ExitLine</a>
+            <a class="pill" href="#tools">QuietLine</a>
+            <a class="pill" href="#tools">ExitNow</a>
+          </div>
+        </article>
+
+        <article class="scenario-card" data-search="перемещение поездки маршрут аудиогид audioguide adiguide tripcheck routeping autolog проверено создано">
+          <div class="scenario-icon">⌁</div>
+          <h3>Перемещение и поездки</h3>
+          <p>Маршруты, аудио, чек-листы и быстрые решения в пути.</p>
+          <div class="scenario-tools">
+            <a class="pill" href="#tools">AudioGuide</a>
+            <a class="pill" href="#tools">TripCheck</a>
+            <a class="pill" href="#tools">RoutePing</a>
+            <a class="pill" href="#tools">AutoLog</a>
+          </div>
+        </article>
+
+        <article class="scenario-card" data-search="финансы обязательства долг расходы debtmate costsplit econometrics проверено создано">
+          <div class="scenario-icon">₽</div>
+          <h3>Финансы и обязательства</h3>
+          <p>Денежные договорённости, разделение расходов и быстрые расчёты.</p>
+          <div class="scenario-tools">
+            <a class="pill" href="#tools">DebtMate</a>
+            <a class="pill" href="#tools">CostSplit</a>
+            <a class="pill" href="#tools">EconoMetrics</a>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section id="quick" class="section marketplace search-section">
-        <div class="section-head">
-            <h3>Быстрый доступ</h3>
-            <p class="section-subtitle">Инструменты, которые запускаются и решают задачу сразу</p>
-        </div>
-        <div class="grid dense">
-            <div class="app-card compact" data-search="focustimer фокус таймер помодоро">
-                <div class="app-header">
-                    <div class="app-icon small">⏱️</div>
-                    <div class="app-info">
-                        <h3>FocusTimer</h3>
-                        <span class="tag">1 функция</span>
-                    </div>
-                </div>
-                <div class="card-meta">1 действие</div>
+    <section id="tools" class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Инструменты экосистемы</h2>
+        <p class="section-subtitle">Некоторые модули уже материализовались, другие описывают направление системы и будущие быстрые сценарии.</p>
+      </div>
+      <div class="tools-grid">
+        <article class="tool-card" data-search="quicktodo задачи список дел todo работа фокус">
+          <div class="tool-top">
+            <div>
+              <h3>QuickTodo</h3>
+              <p>Короткий список действий без регистрации и лишних экранов.</p>
             </div>
-            <div class="app-card compact" data-search="quicktodo задачи список дел todo">
-                <div class="app-header">
-                    <div class="app-icon small">🧾</div>
-                    <div class="app-info">
-                        <h3>QuickTodo</h3>
-                        <span class="tag">1 функция</span>
-                    </div>
-                </div>
-                <div class="card-meta">без настройки</div>
+            <div class="tool-icon">☑</div>
+          </div>
+          <div class="tool-meta">1 функция • мгновенный запуск</div>
+        </article>
+
+        <article class="tool-card" data-search="focusgrid фокус приоритеты работа">
+          <div class="tool-top">
+            <div>
+              <h3>FocusGrid</h3>
+              <p>Фиксация приоритетов на один рабочий цикл.</p>
             </div>
-            <div class="app-card compact" data-search="audioguide аудиогид аудио">
-                <div class="app-header">
-                    <div class="app-icon small">🎧</div>
-                    <div class="app-info">
-                        <h3>AudioGuide</h3>
-                        <span class="tag">1 функция</span>
-                    </div>
-                </div>
-                <div class="card-meta">мгновенный запуск</div>
+            <div class="tool-icon">◎</div>
+          </div>
+          <div class="tool-meta">фокус • минимум действий</div>
+        </article>
+
+        <article class="tool-card" data-search="dayanchor день план ритм работа">
+          <div class="tool-top">
+            <div>
+              <h3>DayAnchor</h3>
+              <p>Опорные точки дня, чтобы не пересобирать план с нуля.</p>
             </div>
-            <div class="app-card compact" data-search="autolog авто учет топливо сервис">
-                <div class="app-header">
-                    <div class="app-icon small">🚗</div>
-                    <div class="app-info">
-                        <h3>AutoLog</h3>
-                        <span class="tag">1 функция</span>
-                    </div>
-                </div>
-                <div class="card-meta">1 действие</div>
+            <div class="tool-icon">◇</div>
+          </div>
+          <div class="tool-meta">ритм • предсказуемый результат</div>
+        </article>
+
+        <article class="tool-card" data-search="exitline общение границы выйти из разговора ситуация">
+          <div class="tool-top">
+            <div>
+              <h3>ExitLine</h3>
+              <p>Формулировки для корректного завершения разговора.</p>
             </div>
-            <div class="app-card compact" data-search="exitnow выход из разговора общение">
-                <div class="app-header">
-                    <div class="app-icon small">🧩</div>
-                    <div class="app-info">
-                        <h3>ExitNow</h3>
-                        <span class="tag">1 функция</span>
-                    </div>
-                </div>
-                <div class="card-meta">без регистрации</div>
+            <span class="tag">soon</span>
+          </div>
+          <div class="tool-meta">общение • без настройки</div>
+        </article>
+
+        <article class="tool-card" data-search="quietline доступность тишина границы общение">
+          <div class="tool-top">
+            <div>
+              <h3>QuietLine</h3>
+              <p>Контроль входящих запросов и личной доступности.</p>
             </div>
-            <div class="app-card compact" data-search="briefnote заметка мысль">
-                <div class="app-header">
-                    <div class="app-icon small">🗂️</div>
-                    <div class="app-info">
-                        <h3>BriefNote</h3>
-                        <span class="tag">1 функция</span>
-                    </div>
-                </div>
-                <div class="card-meta">минимальные шаги</div>
+            <span class="tag blue">draft</span>
+          </div>
+          <div class="tool-meta">границы • спокойный режим</div>
+        </article>
+
+        <article class="tool-card" data-search="exitnow выход из разговора общение ситуация">
+          <div class="tool-top">
+            <div>
+              <h3>ExitNow</h3>
+              <p>Быстрый сценарий выхода, когда надо завершить контакт сразу.</p>
             </div>
-            <div class="app-card compact" data-search="tripcheck поездки маршрут чеклист">
-                <div class="app-header">
-                    <div class="app-icon small">🛰️</div>
-                    <div class="app-info">
-                        <h3>TripCheck</h3>
-                        <span class="tag">1 функция</span>
-                    </div>
-                </div>
-                <div class="card-meta">мгновенный запуск</div>
+            <span class="tag">soon</span>
+          </div>
+          <div class="tool-meta">1 действие • бережный тон</div>
+        </article>
+
+        <article class="tool-card" data-search="audioguide adiguide аудиогид аудио поездки маршруты">
+          <div class="tool-top">
+            <div>
+              <h3>AudioGuide</h3>
+              <p>Аудио-подсказки и маршруты для прогулок и городского опыта.</p>
             </div>
-            <div class="app-card compact" data-search="quietline доступность тишина общение">
-                <div class="app-header">
-                    <div class="app-icon small">📵</div>
-                    <div class="app-info">
-                        <h3>QuietLine</h3>
-                        <span class="tag">1 функция</span>
-                    </div>
-                </div>
-                <div class="card-meta">без настройки</div>
+            <span class="tag green">proven</span>
+          </div>
+          <div class="tool-meta">поездки • storytelling</div>
+        </article>
+
+        <article class="tool-card" data-search="tripcheck поездки маршрут чеклист">
+          <div class="tool-top">
+            <div>
+              <h3>TripCheck</h3>
+              <p>Короткий чек-лист перед маршрутом или поездкой.</p>
             </div>
-            <div class="app-card compact" data-search="pintask задачи закрепить">
-                <div class="app-header">
-                    <div class="app-icon small">🧷</div>
-                    <div class="app-info">
-                        <h3>PinTask</h3>
-                        <span class="tag">1 функция</span>
-                    </div>
-                </div>
-                <div class="card-meta">1 действие</div>
+            <div class="tool-icon">▤</div>
+          </div>
+          <div class="tool-meta">чек-лист • мгновенный запуск</div>
+        </article>
+
+        <article class="tool-card" data-search="routeping маршрут поездки перемещение">
+          <div class="tool-top">
+            <div>
+              <h3>RoutePing</h3>
+              <p>Сигналы по маршруту и быстрые точки контроля в пути.</p>
             </div>
-            <div class="app-card compact" data-search="thoughtdrop заметка мысль фокус">
-                <div class="app-header">
-                    <div class="app-icon small">🧠</div>
-                    <div class="app-info">
-                        <h3>ThoughtDrop</h3>
-                        <span class="tag">1 функция</span>
-                    </div>
-                </div>
-                <div class="card-meta">минимальное взаимодействие</div>
+            <div class="tool-icon">⌖</div>
+          </div>
+          <div class="tool-meta">маршрут • стабильный результат</div>
+        </article>
+
+        <article class="tool-card" data-search="autolog авто учет топливо сервис поездки">
+          <div class="tool-top">
+            <div>
+              <h3>AutoLog</h3>
+              <p>Топливо, сервис и напоминания без таблиц.</p>
             </div>
-            <div class="app-card compact" data-search="routeping маршрут поездки">
-                <div class="app-header">
-                    <div class="app-icon small">📍</div>
-                    <div class="app-info">
-                        <h3>RoutePing</h3>
-                        <span class="tag">1 функция</span>
-                    </div>
-                </div>
-                <div class="card-meta">стабильный результат</div>
+            <div class="tool-icon">⌘</div>
+          </div>
+          <div class="tool-meta">учёт авто • 1 действие</div>
+        </article>
+
+        <article class="tool-card" data-link="../projects/debtmate.ru.html" data-search="debtmate долг долги обязательства финансы деньги договоренности проверено создано">
+          <div class="tool-top">
+            <div>
+              <h3>DebtMate</h3>
+              <p>Ясные денежные договорённости между друзьями, близкими и коллегами.</p>
             </div>
-            <div class="app-card compact" data-search="costsplit расходы дележ">
-                <div class="app-header">
-                    <div class="app-icon small">🧮</div>
-                    <div class="app-info">
-                        <h3>CostSplit</h3>
-                        <span class="tag">1 функция</span>
-                    </div>
-                </div>
-                <div class="card-meta">1 действие</div>
+            <span class="tag green">active</span>
+          </div>
+          <div class="tool-meta">финансы • уже развивается</div>
+        </article>
+
+        <article class="tool-card" data-search="costsplit расходы дележ финансы">
+          <div class="tool-top">
+            <div>
+              <h3>CostSplit</h3>
+              <p>Быстро разделить общий расход и не спорить о деталях.</p>
             </div>
-        </div>
+            <div class="tool-icon">≑</div>
+          </div>
+          <div class="tool-meta">расходы • 1 действие</div>
+        </article>
+
+        <article class="tool-card" data-link="econometrics_app.html" data-search="econometrics аналитика экономика roi финансы расчет">
+          <div class="tool-top">
+            <div>
+              <h3>EconoMetrics</h3>
+              <p>Расчёт юнит-экономики и ROI для быстрых решений.</p>
+            </div>
+            <span class="tag amber">tool</span>
+          </div>
+          <div class="tool-meta">аналитика • без регистрации</div>
+        </article>
+      </div>
     </section>
 
-    <section id="scenarios" class="section marketplace search-section">
-        <h2 class="section-title">Сценарии</h2>
-        <div class="scenario-grid">
-            <div class="scenario-card" data-search="выход из взаимодействия выход из разговора выйти из ситуации контроль общения">
-                <h4>Выход из взаимодействия</h4>
-                <p>Набор формулировок и быстрых шагов, чтобы завершить контакт.</p>
+    <section id="proven" class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Что уже работает</h2>
+        <p class="section-subtitle">Это не отдельные случайные приложения. Это модули Арфа OS, которые уже прошли путь от проблемы к продуктовой форме.</p>
+      </div>
+      <div class="proof-grid">
+        <article class="proof-card" data-link="../projects/adiguide.ru.html" data-search="adiguide audioguide аудиогид города прогулки туристы маршруты проверено создано mvp">
+          <div class="proof-header">
+            <div class="proof-logo">🎧</div>
+            <div>
+              <h3>AdiGuide</h3>
+              <span class="status">MVP / тестирование / развитие</span>
             </div>
-            <div class="scenario-card" data-search="управление доступностью доступность границы контроль общения">
-                <h4>Управление доступностью</h4>
-                <p>Инструменты для контроля входящих запросов и границ.</p>
+          </div>
+          <p>Аудиогид для городов и прогулок. Проверен на туристах, реальных маршрутах и сценариях городского внимания.</p>
+          <ul class="checklist" aria-label="Что проверили в AdiGuide">
+            <li>UX в городской среде</li>
+            <li>AI voice pipeline</li>
+            <li>Storytelling-маршруты</li>
+          </ul>
+          <div class="tech">Flutter • Firebase • OpenStreetMap • TTS • Python</div>
+          <div class="actions">
+            <a class="btn" href="../projects/adiguide.ru.html">Подробнее</a>
+          </div>
+        </article>
+
+        <article class="proof-card" data-link="../projects/debtmate.ru.html" data-search="debtmate долги обязательства деньги финансы друзья семья договоренности проверено создано active development">
+          <div class="proof-header">
+            <div class="proof-logo">
+              <img src="../assets/DebtMate/DebtMate_Logo.png" alt="DebtMate">
             </div>
-            <div class="scenario-card" data-search="работа фокус задачи">
-                <h4>Работа и фокус</h4>
-                <p>Короткие циклы внимания и фиксация задач.</p>
+            <div>
+              <h3>DebtMate</h3>
+              <span class="status">active development</span>
             </div>
-            <div class="scenario-card" data-search="перемещение поездки маршрут">
-                <h4>Перемещение и поездки</h4>
-                <p>Маршруты, чек‑листы и быстрые расчёты в пути.</p>
+          </div>
+          <p>Ассистент обязательств и долгов для друзей, семьи, самозанятых, рассрочек и неловких денежных договорённостей.</p>
+          <ul class="checklist" aria-label="Что проверяем в DebtMate">
+            <li>awkward money situations</li>
+            <li>repayment logic</li>
+            <li>reminders без давления</li>
+          </ul>
+          <div class="tech">Flutter • Dart • Hive • GitHub</div>
+          <div class="actions">
+            <a class="btn" href="../projects/debtmate.ru.html">Подробнее</a>
+            <a class="btn" href="../projects/debtmate-mascots.ru.html">Маскоты</a>
+          </div>
+        </article>
+
+        <article class="proof-card" data-link="../projects/todoolico.ru.html" data-search="todoolico todo задачи канбан пароли фокус проверено создано">
+          <div class="proof-header">
+            <div class="proof-logo">
+              <img src="../assets/AppIcon~todoolico.png" alt="ToDooliCo">
             </div>
-            <div class="scenario-card" data-search="организация задач планирование">
-                <h4>Организация задач</h4>
-                <p>Структура дня без лишних экранов.</p>
+            <div>
+              <h3>ToDooliCo</h3>
+              <span class="status">product prototype</span>
             </div>
-        </div>
+          </div>
+          <p>Минималистичная система задач с канбан-модулем и локальным хранением важных данных.</p>
+          <ul class="checklist" aria-label="Что проверили в ToDooliCo">
+            <li>простое планирование без регистрации</li>
+            <li>канбан для личных задач</li>
+            <li>локальная безопасность данных</li>
+          </ul>
+          <div class="tech">Flutter • Dart • SQLite • Hive • AES-256</div>
+          <div class="actions">
+            <a class="btn" href="../projects/todoolico.ru.html">Подробнее</a>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section id="productivity" class="section marketplace search-section">
-        <h2 class="section-title">Продуктивность</h2>
-        <div class="grid">
-            <div class="app-card" data-search="focusgrid фокус приоритеты">
-                <div class="app-header">
-                    <div class="app-icon">🎯</div>
-                    <div class="app-info">
-                        <h3>FocusGrid</h3>
-                        <span class="tag">фокус</span>
-                    </div>
-                </div>
-                <div class="card-meta">1 действие</div>
-                <p class="app-desc">Фиксация приоритетов на один цикл работы.</p>
-                <div class="card-markers">
-                    <span>минимальное взаимодействие</span>
-                    <span>стабильный результат</span>
-                </div>
-            </div>
-            <div class="app-card" data-search="taskflow задачи список">
-                <div class="app-header">
-                    <div class="app-icon cyan">🧠</div>
-                    <div class="app-info">
-                        <h3>TaskFlow</h3>
-                        <span class="tag">задачи</span>
-                    </div>
-                </div>
-                <div class="card-meta">без настройки</div>
-                <p class="app-desc">Короткий список действий без лишних статусов.</p>
-                <div class="card-markers">
-                    <span>без регистрации</span>
-                    <span>мгновенный запуск</span>
-                </div>
-            </div>
-            <div class="app-card" data-search="dayanchor план дня ритм">
-                <div class="app-header">
-                    <div class="app-icon gold">🧭</div>
-                    <div class="app-info">
-                        <h3>DayAnchor</h3>
-                        <span class="tag">ритм</span>
-                    </div>
-                </div>
-                <div class="card-meta">3 секунды до запуска</div>
-                <p class="app-desc">Базовый план дня с точками контроля.</p>
-                <div class="card-markers">
-                    <span>стабильный результат</span>
-                    <span>минимальное взаимодействие</span>
-                </div>
-            </div>
-        </div>
+    <section id="research" class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Research & Advisory</h2>
+        <p class="section-subtitle">Арфа не только создаёт инструменты, но и исследует реальные процессы: бизнес, поведение, коммуникации и цифровые привычки.</p>
+      </div>
+      <div class="research-grid">
+        <article class="research-card" data-link="../blog/ru/posts/finance-consulting.ru.html" data-search="магазин электроники финансы консалтинг research advisory экономика бизнес процессы">
+          <div class="research-type">Practice case</div>
+          <h3>Финансовое консультирование для магазина электроники</h3>
+          <p>Анализ бизнес-процессов, расходов, обязательств и новых источников дохода.</p>
+          <div class="actions">
+            <a class="btn" href="../blog/ru/posts/finance-consulting.ru.html">Читать кейс</a>
+          </div>
+        </article>
+
+        <article class="research-card" data-link="../blog/ru/posts/agency-analysis.ru.html" data-search="hr agency найм персонала агентство research advisory бренд аудит коммуникации">
+          <div class="research-type">Practice case</div>
+          <h3>Анализ для агентства по найму персонала</h3>
+          <p>Опросы, конкурентная проверка, диагностика бренда и рекомендации по позиционированию.</p>
+          <div class="actions">
+            <a class="btn" href="../blog/ru/posts/agency-analysis.ru.html">Читать кейс</a>
+          </div>
+        </article>
+
+        <article class="research-card" data-search="потребительское поведение цифровизация экономика публикация research advisory">
+          <div class="research-type">Publication</div>
+          <h3>Потребительское поведение в условиях цифровизации</h3>
+          <p>Публикация о том, как цифровая экономика меняет поведение людей и ожидания от сервисов.</p>
+          <div class="actions">
+            <a class="btn" href="https://usptu-bulletin.ru/index.php/bul/article/view/11710" target="_blank" rel="noopener noreferrer">Статья</a>
+            <a class="btn" href="../assets/ПОТРЕБИТЕЛЬСКОЕ ПОВЕДЕНИЕ В УСЛОВИЯХ ЦИФРОВИЗАЦИИ В ЭКОНОМИКЕ.pdf" download>PDF</a>
+          </div>
+        </article>
+
+        <article class="research-card" data-search="мобильная агрегация трафика открытые решения публикация research advisory routeping поездки">
+          <div class="research-type">Publication</div>
+          <h3>Мобильная агрегация трафика на открытых решениях</h3>
+          <p>Исследование открытых технологий для мобильных сервисов маршрутов и городской инфраструктуры.</p>
+          <div class="actions">
+            <a class="btn" href="https://usptu-bulletin.ru/index.php/bul/article/view/13035" target="_blank" rel="noopener noreferrer">Статья</a>
+            <a class="btn" href="../assets/РАЗРАБОТКА СЕРВИСА МОБИЛЬНОЙ АГРЕГАЦИИ ТРАФИКА НА ОСНОВЕ ОТКРЫТЫХ РЕШЕНИЙ.pdf" download>PDF</a>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section id="tools" class="section marketplace search-section">
-        <div class="section-head">
-            <h3>Инструменты</h3>
-            <p class="section-subtitle">Прикладные сервисы для повседневного использования</p>
+    <section id="philosophy" class="section">
+      <div class="philosophy">
+        <div>
+          <div class="eyebrow">Philosophy</div>
+          <h2 class="section-title">Tiny practical tools</h2>
         </div>
-        <div class="grid">
-            <div class="app-card" data-search="audioguide аудиогид аудио">
-                <div class="app-header">
-                    <div class="app-icon">🎧</div>
-                    <div class="app-info">
-                        <h3>AudioGuide</h3>
-                        <span class="tag">аудиогид</span>
-                    </div>
-                </div>
-                <div class="card-meta">мгновенный запуск</div>
-                <p class="app-desc">Короткие аудио‑подсказки по запросу.</p>
-                <div class="card-markers">
-                    <span>без регистрации</span>
-                    <span>минимальное взаимодействие</span>
-                </div>
-            </div>
-            <div class="app-card" data-search="autolog авто учет топливо сервис">
-                <div class="app-header">
-                    <div class="app-icon cyan">🚗</div>
-                    <div class="app-info">
-                        <h3>AutoLog</h3>
-                        <span class="tag">учёт авто</span>
-                    </div>
-                </div>
-                <div class="card-meta">1 действие</div>
-                <p class="app-desc">Топливо, сервис и напоминания без таблиц.</p>
-                <div class="card-markers">
-                    <span>стабильный результат</span>
-                    <span>минимальное взаимодействие</span>
-                </div>
-            </div>
-            <div class="app-card" data-search="utilitypack утилиты сервисы">
-                <div class="app-header">
-                    <div class="app-icon gold">🧰</div>
-                    <div class="app-info">
-                        <h3>UtilityPack</h3>
-                        <span class="tag">утилиты</span>
-                    </div>
-                </div>
-                <div class="card-meta">без настройки</div>
-                <p class="app-desc">Набор быстрых помощников для повседневных задач.</p>
-                <div class="card-markers">
-                    <span>мгновенный запуск</span>
-                    <span>стабильный результат</span>
-                </div>
-            </div>
+        <div>
+          <p>Арфа делает маленькие прикладные системы для реальных человеческих проблем. Не ради витрины приложений, а ради короткого пути от неловкой ситуации к ясному действию.</p>
+          <div class="principles" aria-label="Принципы Арфа OS">
+            <div class="principle">Минимум экранов и решений перед стартом</div>
+            <div class="principle">Один понятный сценарий вместо перегруженной платформы</div>
+            <div class="principle">Проверка на реальных процессах, людях и ограничениях</div>
+          </div>
         </div>
+      </div>
     </section>
+  </main>
 
-    <section id="new" class="section marketplace search-section">
-        <h2 class="section-title">Новые</h2>
-        <div class="grid dense">
-            <div class="app-card compact" data-search="exitline общение выход из разговора">
-                <div class="app-header">
-                    <div class="app-icon small">🧭</div>
-                    <div class="app-info">
-                        <h3>ExitLine</h3>
-                        <span class="tag">общение</span>
-                    </div>
-                </div>
-                <div class="card-meta">без настройки</div>
-            </div>
-            <div class="app-card compact" data-search="audioguide аудиогид аудио">
-                <div class="app-header">
-                    <div class="app-icon small">🎧</div>
-                    <div class="app-info">
-                        <h3>AudioGuide</h3>
-                        <span class="tag">аудио</span>
-                    </div>
-                </div>
-                <div class="card-meta">мгновенный запуск</div>
-            </div>
-            <div class="app-card compact" data-search="autolog авто учет">
-                <div class="app-header">
-                    <div class="app-icon small">🚗</div>
-                    <div class="app-info">
-                        <h3>AutoLog</h3>
-                        <span class="tag">учёт авто</span>
-                    </div>
-                </div>
-                <div class="card-meta">1 действие</div>
-            </div>
-            <div class="app-card compact" data-search="quicktodo задачи todo">
-                <div class="app-header">
-                    <div class="app-icon small">🧾</div>
-                    <div class="app-info">
-                        <h3>QuickTodo</h3>
-                        <span class="tag">задачи</span>
-                    </div>
-                </div>
-                <div class="card-meta">без регистрации</div>
-            </div>
-        </div>
-    </section>
+  <section class="cta" id="contact">
+    <div>
+      <h2>Есть задача, которую никто нормально не решает?</h2>
+      <p>Возможно, ей нужен свой инструмент.</p>
+    </div>
+    <a class="btn" href="../contact.ru.html">Обсудить задачу</a>
+  </section>
 
-    <section id="about" class="section marketplace">
-        <h2 class="section-title">О системе</h2>
-        <div class="system-block">
-            <p>R&amp;A OS объединяет прикладные инструменты в единую среду. Быстрый доступ, минимальные действия, предсказуемый результат.</p>
-        </div>
-    </section>
+  <footer>
+    <p>Арфа OS • прикладные инструменты для повседневной жизни • © 2026</p>
+  </footer>
 
-    <footer id="contacts">
-        <p>R&amp;A OS • hello@raos.system • Москва</p>
-    </footer>
+  <script>
+    const searchInput = document.getElementById('globalSearch');
+    const quickQueries = Array.from(document.querySelectorAll('.quick-queries .chip'));
+    const searchableItems = Array.from(document.querySelectorAll('[data-search]'));
+    const searchSections = Array.from(document.querySelectorAll('.search-section'));
+    const emptyState = document.getElementById('searchEmpty');
 
-    <script>
-        const searchInput = document.getElementById('globalSearch');
-        const quickQueries = Array.from(document.querySelectorAll('.quick-queries .chip'));
-        const cards = Array.from(document.querySelectorAll('.app-card'));
-        const scenarioCards = Array.from(document.querySelectorAll('.scenario-card'));
-        const sections = Array.from(document.querySelectorAll('.search-section'));
-        const emptyState = document.getElementById('searchEmpty');
+    function normalizeText(value) {
+      return value.toLowerCase().replaceAll('ё', 'е').trim();
+    }
 
-        const searchableItems = [...cards, ...scenarioCards];
+    function matchesQuery(item, query) {
+      const haystack = normalizeText(`${item.dataset.search || ''} ${item.textContent || ''}`);
+      return query.split(/\s+/).filter(Boolean).every((word) => haystack.includes(word));
+    }
 
-        function matchesQuery(item, query) {
-            const haystack = (item.dataset.search || item.textContent || '').toLowerCase();
-            return haystack.includes(query);
-        }
+    function applySearch() {
+      const query = normalizeText(searchInput.value || '');
+      let visibleCount = 0;
 
-        function applySearch() {
-            const query = (searchInput.value || '').trim().toLowerCase();
-            let visibleCount = 0;
+      searchableItems.forEach((item) => {
+        const isVisible = !query || matchesQuery(item, query);
+        item.classList.toggle('is-hidden', !isVisible);
+        if (isVisible) visibleCount += 1;
+      });
 
-            searchableItems.forEach((item) => {
-                const isVisible = !query || matchesQuery(item, query);
-                item.classList.toggle('is-hidden', !isVisible);
-                if (isVisible) visibleCount += 1;
-            });
+      searchSections.forEach((section) => {
+        const hasVisible = section.querySelector('[data-search]:not(.is-hidden)');
+        section.classList.toggle('is-hidden', Boolean(query) && !hasVisible);
+      });
 
-            sections.forEach((section) => {
-                const hasVisible = section.querySelector('.app-card:not(.is-hidden), .scenario-card:not(.is-hidden)');
-                section.classList.toggle('is-hidden', !hasVisible);
-            });
+      emptyState.style.display = query && visibleCount === 0 ? 'block' : 'none';
+    }
 
-            emptyState.style.display = query && visibleCount === 0 ? 'block' : 'none';
-        }
-
-        searchInput.addEventListener('input', applySearch);
-
-        quickQueries.forEach((btn) => {
-            btn.addEventListener('click', () => {
-                searchInput.value = btn.dataset.query || btn.textContent;
-                applySearch();
-                searchInput.focus();
-            });
-        });
-
-        cards.forEach((card) => {
-            const link = card.dataset.link;
-            if (!link) return;
-            card.setAttribute('role', 'link');
-            card.setAttribute('tabindex', '0');
-            card.addEventListener('click', (event) => {
-                if (event.target.closest('a, button')) return;
-                window.location.href = link;
-            });
-            card.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter') {
-                    window.location.href = link;
-                }
-            });
-        });
-
+    quickQueries.forEach((button) => {
+      button.addEventListener('click', () => {
+        quickQueries.forEach((chip) => chip.classList.remove('active'));
+        button.classList.add('active');
+        searchInput.value = button.dataset.query || button.textContent;
         applySearch();
-    </script>
+        searchInput.focus();
+      });
+    });
 
+    searchInput.addEventListener('input', () => {
+      quickQueries.forEach((chip) => chip.classList.remove('active'));
+      applySearch();
+    });
+
+    document.querySelectorAll('[data-link]').forEach((card) => {
+      const link = card.dataset.link;
+      if (!link) return;
+      card.setAttribute('role', 'link');
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('a, button')) return;
+        window.location.href = link;
+      });
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') window.location.href = link;
+      });
+    });
+
+    applySearch();
+  </script>
 </body>
 </html>

@@ -33,8 +33,8 @@
   <main class="mascot-story-page flex-1">
     <section class="story-hero">
       <div class="story-hero-copy">
-        <a href="debtmate.ru.html" class="back-link">← Назад к DebtMate</a>
-        <p class="story-kicker">Зачем DebtMate нужны Финн и Дебик</p>
+        <a href="debtmate.ru.html" class="back-link">Перейти к DebtMate</a>
+        <p class="story-kicker">Знакомьтесь: Финн и Дебик</p>
         <h1>Деньги легче обсуждать, когда рядом есть кто-то спокойный.</h1>
         <p>Финн хранит договорённости, Дебик считает без паники. Вместе они превращают неловкий разговор о деньгах в понятный план.</p>
         <div class="hero-actions" aria-label="Разделы истории">
@@ -152,7 +152,7 @@
           <p class="story-label">Когда они вместе</p>
           <h2>DebtMate — это не про контроль людей. Это про ясность между людьми.</h2>
           <p>Финн помогает договориться. Дебик помогает посчитать. А человек наконец видит не тревожный ком из сумм, а понятный план действий.</p>
-          <a href="debtmate.ru.html#iou-builder" class="story-cta">Попробовать DebtMate</a>
+          <a href="https://t.me/arfa_pro" target="_blank" rel="noopener noreferrer" class="story-cta">Попробовать DebtMate</a>
         </div>
       </div>
     </section>
@@ -163,6 +163,20 @@
       background: #FDFDFD;
       color: #080809;
       overflow-x: hidden;
+    }
+    .glass-header {
+      box-shadow: 0 8px 48px rgba(6, 47, 190, 0.14), 0 2px 8px rgba(253, 253, 253, 0.85);
+    }
+    .mobile-header-toggle {
+      border-color: rgba(9, 63, 238, 0.18);
+      background: rgba(253, 253, 253, 0.92);
+      box-shadow: 0 8px 24px rgba(6, 47, 190, 0.14);
+    }
+    .mobile-header-toggle span {
+      background: #093FEE;
+    }
+    body.mobile-header-open .mobile-header-toggle span {
+      background: #093FEE;
     }
     .mascot-story-page {
       width: min(1120px, calc(100% - 32px));
@@ -254,6 +268,7 @@
       min-height: 520px;
       display: grid;
       place-items: center;
+      padding: clamp(1rem, 3vw, 2rem);
       border-radius: 1.4rem;
       background:
         radial-gradient(circle at 24% 18%, rgba(9, 63, 238, 0.18), transparent 28%),
@@ -264,8 +279,10 @@
       box-shadow: 0 28px 70px rgba(6, 47, 190, 0.12);
     }
     .story-hero-img {
-      width: min(96%, 620px);
+      width: min(88%, 560px);
+      border-radius: 1.2rem;
       filter: drop-shadow(0 24px 30px rgba(6, 47, 190, 0.18));
+      overflow: hidden;
       transform: translateY(1rem);
     }
     .hero-bubble,
@@ -652,6 +669,14 @@
         opacity: 1;
       }
     }
+    @media (max-width: 1100px) {
+      .glass-header.mobile-header-enabled .mobile-header-toggle {
+        position: relative;
+        top: auto;
+        right: auto;
+        z-index: 1;
+      }
+    }
     @media (max-width: 900px) {
       .story-hero h1,
       .character-copy h2,
@@ -714,7 +739,7 @@
         min-height: 360px;
       }
       .story-hero-img {
-        width: 112%;
+        width: min(90%, 330px);
       }
       .hero-bubble,
       .floating-note,

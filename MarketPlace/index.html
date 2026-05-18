@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R&A OS — Инструменты</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg-color: #0a0a0c;
+            --bg-soft: #0f1016;
+            --text-main: #ffffff;
+            --text-muted: #8f9099;
+            --accent: #6c5ce7;
+            --accent-cyan: #00cec9;
+            --accent-gold: #f5c86a;
+            --accent-glow: rgba(108, 92, 231, 0.35);
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(108, 92, 231, 0.18), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 210, 211, 0.12), transparent 25%),
+                radial-gradient(circle at 50% 90%, rgba(245, 200, 106, 0.1), transparent 30%);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* Навигация */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 6%;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 12, 0.7);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, #fff, #b0b2c2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* Общие секции */
+        .section {
+            padding: 80px 6%;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        /* Hero */
+        header.hero {
+            text-align: center;
+            padding: 120px 6% 80px;
+        }
+
+        header.hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        header.hero h1 span {
+            color: var(--accent);
+            text-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        header.hero .hero-subtitle {
+            color: var(--text-muted);
+            font-size: 20px;
+            max-width: 640px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .hero-search {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .hero-hint {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .quick-queries {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 18px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            padding: 16px 36px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px var(--accent-glow);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 50px var(--accent-glow);
+        }
+
+        /* Маркетплейс */
+        .marketplace {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .app-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 24px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            min-height: 280px;
+        }
+
+        .app-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .app-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .app-icon.cyan {
+            background: linear-gradient(135deg, #00cec9, #81ecec);
+        }
+
+        .app-icon.gold {
+            background: linear-gradient(135deg, #fdcb6e, #ffeaa7);
+        }
+
+        .app-icon.small {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            font-size: 22px;
+        }
+
+        .app-info h3 {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .tag {
+            font-size: 12px;
+            color: var(--accent);
+            background: rgba(108, 92, 231, 0.1);
+            padding: 4px 8px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .app-desc {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-top: 2px;
+        }
+
+        .app-card.compact .app-info h3 {
+            font-size: 16px;
+        }
+
+        .app-card.compact .tag {
+            font-size: 10px;
+        }
+
+        .app-card.compact .card-meta {
+            font-size: 11px;
+        }
+
+        .app-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+            padding-top: 16px;
+            border-top: 1px solid var(--glass-border);
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border: 1px solid transparent;
+            padding: 8px 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .btn-ghost:hover {
+            background: var(--text-main);
+            color: var(--bg-color);
+        }
+
+        .btn-ghost.muted {
+            color: var(--text-muted);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .search-wrap {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 18px 16px 46px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            font-size: 16px;
+            outline: none;
+            transition: border 0.3s, box-shadow 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: rgba(255, 255, 255, 0.24);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        .chip {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-muted);
+            border: 1px solid var(--glass-border);
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .chip.active {
+            color: var(--text-main);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .section-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .section-head h3 {
+            font-size: 22px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+            max-width: 520px;
+        }
+
+        .grid.dense {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .app-card.compact {
+            min-height: 0;
+            padding: 18px;
+            border-radius: 20px;
+        }
+
+        .card-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: lowercase;
+            letter-spacing: 0.2px;
+            margin-top: 2px;
+        }
+
+        .card-markers {
+            font-size: 11px;
+            color: var(--text-muted);
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .scenario-card {
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+        }
+
+        .scenario-card h4 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .scenario-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .is-hidden {
+            display: none !important;
+        }
+
+        .app-card[data-link] {
+            cursor: pointer;
+        }
+
+        .app-card[data-link]:focus-visible {
+            outline: 2px solid rgba(108, 92, 231, 0.6);
+            outline-offset: 2px;
+        }
+
+        .empty-state {
+            margin: 20px auto 0;
+            padding: 16px 20px;
+            border-radius: 16px;
+            border: 1px dashed var(--glass-border);
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 720px;
+            display: none;
+        }
+
+        .system-block {
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.12), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 32px;
+        }
+
+        .system-block p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 720px;
+        }
+
+        /* Футер */
+        footer {
+            padding: 40px 6% 80px;
+            color: var(--text-muted);
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* Адаптив */
+        @media (max-width: 800px) {
+            header.hero h1 {
+                font-size: 44px;
+            }
+            .nav-links {
+                display: none;
+            }
+            header.hero .hero-subtitle {
+                font-size: 18px;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .app-card {
+                min-height: 0;
+            }
+            .search-input {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">R&A OS</div>
+        <div class="nav-links">
+            <a href="#popular">Популярные</a>
+            <a href="#quick">Быстрый доступ</a>
+            <a href="#scenarios">Сценарии</a>
+            <a href="#about">О системе</a>
+        </div>
+    </nav>
+
+    <header class="hero" id="top">
+        <h1>R&amp;A OS</h1>
+        <p class="hero-subtitle">Набор прикладных инструментов для повседневных задач<br>Десятки сценариев — мгновенный доступ</p>
+        <div class="hero-search">
+            <div class="search-wrap">
+                <span class="search-icon">🔎</span>
+                <input id="globalSearch" class="search-input" type="search" placeholder="Найти инструмент…">
+            </div>
+            <div class="hero-hint">подсказка: «выйти из разговора», «аудиогид», «todo», «учёт авто»</div>
+            <div class="quick-queries">
+                <button class="chip" type="button" data-query="выйти из ситуации">выйти из ситуации</button>
+                <button class="chip" type="button" data-query="контроль общения">контроль общения</button>
+                <button class="chip" type="button" data-query="задачи">задачи</button>
+                <button class="chip" type="button" data-query="поездки">поездки</button>
+                <button class="chip" type="button" data-query="фокус">фокус</button>
+            </div>
+        </div>
+        <div id="searchEmpty" class="empty-state">Ничего не найдено. Попробуй другой запрос.</div>
+    </header>
+
+    <section id="popular" class="section marketplace search-section">
+        <h2 class="section-title">Популярные решения</h2>
+        <div class="grid">
+            <div class="app-card" data-link="new_app.html" data-search="launchpad маркетинг креативы запуск кампаний ab тесты">
+                <div class="app-header">
+                    <div class="app-icon">🚀</div>
+                    <div class="app-info">
+                        <h3>LaunchPad</h3>
+                        <span class="tag">маркетинг</span>
+                    </div>
+                </div>
+                <div class="card-meta">3 секунды до запуска</div>
+                <p class="app-desc">Проверка креативов и быстрый запуск кампаний.</p>
+                <div class="card-markers">
+                    <span>мгновенный запуск</span>
+                    <span>минимальное взаимодействие</span>
+                </div>
+                <div class="app-footer">
+                    <span style="color: var(--text-muted); font-size: 13px;">v 2.1.0</span>
+                    <div class="card-actions">
+                        <a class="btn-ghost" href="new_app.html">Открыть</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="app-card" data-link="econometrics_app.html" data-search="econometrics аналитика экономика roi расчёт">
+                <div class="app-header">
+                    <div class="app-icon cyan">📈</div>
+                    <div class="app-info">
+                        <h3>EconoMetrics</h3>
+                        <span class="tag">аналитика</span>
+                    </div>
+                </div>
+                <div class="card-meta">1 действие</div>
+                <p class="app-desc">Быстрый расчёт юнит‑экономики и ROI.</p>
+                <div class="card-markers">
+                    <span>стабильный результат</span>
+                    <span>без регистрации</span>
+                </div>
+                <div class="app-footer">
+                    <span style="color: var(--text-muted); font-size: 13px;">v 1.4.2</span>
+                    <div class="card-actions">
+                        <a class="btn-ghost" href="econometrics_app.html">Открыть</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="app-card" data-search="exitline общение выход из разговора выйти из ситуации контроль общения">
+                <div class="app-header">
+                    <div class="app-icon gold">🧭</div>
+                    <div class="app-info">
+                        <h3>ExitLine</h3>
+                        <span class="tag">общение</span>
+                    </div>
+                </div>
+                <div class="card-meta">без настройки</div>
+                <p class="app-desc">Формулировки для корректного завершения разговора.</p>
+                <div class="card-markers">
+                    <span>минимальное взаимодействие</span>
+                    <span>стабильный результат</span>
+                </div>
+                <div class="app-footer">
+                    <span style="color: var(--text-muted); font-size: 13px;">v 0.7.0</span>
+                    <div class="card-actions">
+                        <span class="btn-ghost muted">Скоро</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quick" class="section marketplace search-section">
+        <div class="section-head">
+            <h3>Быстрый доступ</h3>
+            <p class="section-subtitle">Инструменты, которые запускаются и решают задачу сразу</p>
+        </div>
+        <div class="grid dense">
+            <div class="app-card compact" data-search="focustimer фокус таймер помодоро">
+                <div class="app-header">
+                    <div class="app-icon small">⏱️</div>
+                    <div class="app-info">
+                        <h3>FocusTimer</h3>
+                        <span class="tag">1 функция</span>
+                    </div>
+                </div>
+                <div class="card-meta">1 действие</div>
+            </div>
+            <div class="app-card compact" data-search="quicktodo задачи список дел todo">
+                <div class="app-header">
+                    <div class="app-icon small">🧾</div>
+                    <div class="app-info">
+                        <h3>QuickTodo</h3>
+                        <span class="tag">1 функция</span>
+                    </div>
+                </div>
+                <div class="card-meta">без настройки</div>
+            </div>
+            <div class="app-card compact" data-search="audioguide аудиогид аудио">
+                <div class="app-header">
+                    <div class="app-icon small">🎧</div>
+                    <div class="app-info">
+                        <h3>AudioGuide</h3>
+                        <span class="tag">1 функция</span>
+                    </div>
+                </div>
+                <div class="card-meta">мгновенный запуск</div>
+            </div>
+            <div class="app-card compact" data-search="autolog авто учет топливо сервис">
+                <div class="app-header">
+                    <div class="app-icon small">🚗</div>
+                    <div class="app-info">
+                        <h3>AutoLog</h3>
+                        <span class="tag">1 функция</span>
+                    </div>
+                </div>
+                <div class="card-meta">1 действие</div>
+            </div>
+            <div class="app-card compact" data-search="exitnow выход из разговора общение">
+                <div class="app-header">
+                    <div class="app-icon small">🧩</div>
+                    <div class="app-info">
+                        <h3>ExitNow</h3>
+                        <span class="tag">1 функция</span>
+                    </div>
+                </div>
+                <div class="card-meta">без регистрации</div>
+            </div>
+            <div class="app-card compact" data-search="briefnote заметка мысль">
+                <div class="app-header">
+                    <div class="app-icon small">🗂️</div>
+                    <div class="app-info">
+                        <h3>BriefNote</h3>
+                        <span class="tag">1 функция</span>
+                    </div>
+                </div>
+                <div class="card-meta">минимальные шаги</div>
+            </div>
+            <div class="app-card compact" data-search="tripcheck поездки маршрут чеклист">
+                <div class="app-header">
+                    <div class="app-icon small">🛰️</div>
+                    <div class="app-info">
+                        <h3>TripCheck</h3>
+                        <span class="tag">1 функция</span>
+                    </div>
+                </div>
+                <div class="card-meta">мгновенный запуск</div>
+            </div>
+            <div class="app-card compact" data-search="quietline доступность тишина общение">
+                <div class="app-header">
+                    <div class="app-icon small">📵</div>
+                    <div class="app-info">
+                        <h3>QuietLine</h3>
+                        <span class="tag">1 функция</span>
+                    </div>
+                </div>
+                <div class="card-meta">без настройки</div>
+            </div>
+            <div class="app-card compact" data-search="pintask задачи закрепить">
+                <div class="app-header">
+                    <div class="app-icon small">🧷</div>
+                    <div class="app-info">
+                        <h3>PinTask</h3>
+                        <span class="tag">1 функция</span>
+                    </div>
+                </div>
+                <div class="card-meta">1 действие</div>
+            </div>
+            <div class="app-card compact" data-search="thoughtdrop заметка мысль фокус">
+                <div class="app-header">
+                    <div class="app-icon small">🧠</div>
+                    <div class="app-info">
+                        <h3>ThoughtDrop</h3>
+                        <span class="tag">1 функция</span>
+                    </div>
+                </div>
+                <div class="card-meta">минимальное взаимодействие</div>
+            </div>
+            <div class="app-card compact" data-search="routeping маршрут поездки">
+                <div class="app-header">
+                    <div class="app-icon small">📍</div>
+                    <div class="app-info">
+                        <h3>RoutePing</h3>
+                        <span class="tag">1 функция</span>
+                    </div>
+                </div>
+                <div class="card-meta">стабильный результат</div>
+            </div>
+            <div class="app-card compact" data-search="costsplit расходы дележ">
+                <div class="app-header">
+                    <div class="app-icon small">🧮</div>
+                    <div class="app-info">
+                        <h3>CostSplit</h3>
+                        <span class="tag">1 функция</span>
+                    </div>
+                </div>
+                <div class="card-meta">1 действие</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="scenarios" class="section marketplace search-section">
+        <h2 class="section-title">Сценарии</h2>
+        <div class="scenario-grid">
+            <div class="scenario-card" data-search="выход из взаимодействия выход из разговора выйти из ситуации контроль общения">
+                <h4>Выход из взаимодействия</h4>
+                <p>Набор формулировок и быстрых шагов, чтобы завершить контакт.</p>
+            </div>
+            <div class="scenario-card" data-search="управление доступностью доступность границы контроль общения">
+                <h4>Управление доступностью</h4>
+                <p>Инструменты для контроля входящих запросов и границ.</p>
+            </div>
+            <div class="scenario-card" data-search="работа фокус задачи">
+                <h4>Работа и фокус</h4>
+                <p>Короткие циклы внимания и фиксация задач.</p>
+            </div>
+            <div class="scenario-card" data-search="перемещение поездки маршрут">
+                <h4>Перемещение и поездки</h4>
+                <p>Маршруты, чек‑листы и быстрые расчёты в пути.</p>
+            </div>
+            <div class="scenario-card" data-search="организация задач планирование">
+                <h4>Организация задач</h4>
+                <p>Структура дня без лишних экранов.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="productivity" class="section marketplace search-section">
+        <h2 class="section-title">Продуктивность</h2>
+        <div class="grid">
+            <div class="app-card" data-search="focusgrid фокус приоритеты">
+                <div class="app-header">
+                    <div class="app-icon">🎯</div>
+                    <div class="app-info">
+                        <h3>FocusGrid</h3>
+                        <span class="tag">фокус</span>
+                    </div>
+                </div>
+                <div class="card-meta">1 действие</div>
+                <p class="app-desc">Фиксация приоритетов на один цикл работы.</p>
+                <div class="card-markers">
+                    <span>минимальное взаимодействие</span>
+                    <span>стабильный результат</span>
+                </div>
+            </div>
+            <div class="app-card" data-search="taskflow задачи список">
+                <div class="app-header">
+                    <div class="app-icon cyan">🧠</div>
+                    <div class="app-info">
+                        <h3>TaskFlow</h3>
+                        <span class="tag">задачи</span>
+                    </div>
+                </div>
+                <div class="card-meta">без настройки</div>
+                <p class="app-desc">Короткий список действий без лишних статусов.</p>
+                <div class="card-markers">
+                    <span>без регистрации</span>
+                    <span>мгновенный запуск</span>
+                </div>
+            </div>
+            <div class="app-card" data-search="dayanchor план дня ритм">
+                <div class="app-header">
+                    <div class="app-icon gold">🧭</div>
+                    <div class="app-info">
+                        <h3>DayAnchor</h3>
+                        <span class="tag">ритм</span>
+                    </div>
+                </div>
+                <div class="card-meta">3 секунды до запуска</div>
+                <p class="app-desc">Базовый план дня с точками контроля.</p>
+                <div class="card-markers">
+                    <span>стабильный результат</span>
+                    <span>минимальное взаимодействие</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="section marketplace search-section">
+        <div class="section-head">
+            <h3>Инструменты</h3>
+            <p class="section-subtitle">Прикладные сервисы для повседневного использования</p>
+        </div>
+        <div class="grid">
+            <div class="app-card" data-search="audioguide аудиогид аудио">
+                <div class="app-header">
+                    <div class="app-icon">🎧</div>
+                    <div class="app-info">
+                        <h3>AudioGuide</h3>
+                        <span class="tag">аудиогид</span>
+                    </div>
+                </div>
+                <div class="card-meta">мгновенный запуск</div>
+                <p class="app-desc">Короткие аудио‑подсказки по запросу.</p>
+                <div class="card-markers">
+                    <span>без регистрации</span>
+                    <span>минимальное взаимодействие</span>
+                </div>
+            </div>
+            <div class="app-card" data-search="autolog авто учет топливо сервис">
+                <div class="app-header">
+                    <div class="app-icon cyan">🚗</div>
+                    <div class="app-info">
+                        <h3>AutoLog</h3>
+                        <span class="tag">учёт авто</span>
+                    </div>
+                </div>
+                <div class="card-meta">1 действие</div>
+                <p class="app-desc">Топливо, сервис и напоминания без таблиц.</p>
+                <div class="card-markers">
+                    <span>стабильный результат</span>
+                    <span>минимальное взаимодействие</span>
+                </div>
+            </div>
+            <div class="app-card" data-search="utilitypack утилиты сервисы">
+                <div class="app-header">
+                    <div class="app-icon gold">🧰</div>
+                    <div class="app-info">
+                        <h3>UtilityPack</h3>
+                        <span class="tag">утилиты</span>
+                    </div>
+                </div>
+                <div class="card-meta">без настройки</div>
+                <p class="app-desc">Набор быстрых помощников для повседневных задач.</p>
+                <div class="card-markers">
+                    <span>мгновенный запуск</span>
+                    <span>стабильный результат</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="new" class="section marketplace search-section">
+        <h2 class="section-title">Новые</h2>
+        <div class="grid dense">
+            <div class="app-card compact" data-search="exitline общение выход из разговора">
+                <div class="app-header">
+                    <div class="app-icon small">🧭</div>
+                    <div class="app-info">
+                        <h3>ExitLine</h3>
+                        <span class="tag">общение</span>
+                    </div>
+                </div>
+                <div class="card-meta">без настройки</div>
+            </div>
+            <div class="app-card compact" data-search="audioguide аудиогид аудио">
+                <div class="app-header">
+                    <div class="app-icon small">🎧</div>
+                    <div class="app-info">
+                        <h3>AudioGuide</h3>
+                        <span class="tag">аудио</span>
+                    </div>
+                </div>
+                <div class="card-meta">мгновенный запуск</div>
+            </div>
+            <div class="app-card compact" data-search="autolog авто учет">
+                <div class="app-header">
+                    <div class="app-icon small">🚗</div>
+                    <div class="app-info">
+                        <h3>AutoLog</h3>
+                        <span class="tag">учёт авто</span>
+                    </div>
+                </div>
+                <div class="card-meta">1 действие</div>
+            </div>
+            <div class="app-card compact" data-search="quicktodo задачи todo">
+                <div class="app-header">
+                    <div class="app-icon small">🧾</div>
+                    <div class="app-info">
+                        <h3>QuickTodo</h3>
+                        <span class="tag">задачи</span>
+                    </div>
+                </div>
+                <div class="card-meta">без регистрации</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section marketplace">
+        <h2 class="section-title">О системе</h2>
+        <div class="system-block">
+            <p>R&amp;A OS объединяет прикладные инструменты в единую среду. Быстрый доступ, минимальные действия, предсказуемый результат.</p>
+        </div>
+    </section>
+
+    <footer id="contacts">
+        <p>R&amp;A OS • hello@raos.system • Москва</p>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById('globalSearch');
+        const quickQueries = Array.from(document.querySelectorAll('.quick-queries .chip'));
+        const cards = Array.from(document.querySelectorAll('.app-card'));
+        const scenarioCards = Array.from(document.querySelectorAll('.scenario-card'));
+        const sections = Array.from(document.querySelectorAll('.search-section'));
+        const emptyState = document.getElementById('searchEmpty');
+
+        const searchableItems = [...cards, ...scenarioCards];
+
+        function matchesQuery(item, query) {
+            const haystack = (item.dataset.search || item.textContent || '').toLowerCase();
+            return haystack.includes(query);
+        }
+
+        function applySearch() {
+            const query = (searchInput.value || '').trim().toLowerCase();
+            let visibleCount = 0;
+
+            searchableItems.forEach((item) => {
+                const isVisible = !query || matchesQuery(item, query);
+                item.classList.toggle('is-hidden', !isVisible);
+                if (isVisible) visibleCount += 1;
+            });
+
+            sections.forEach((section) => {
+                const hasVisible = section.querySelector('.app-card:not(.is-hidden), .scenario-card:not(.is-hidden)');
+                section.classList.toggle('is-hidden', !hasVisible);
+            });
+
+            emptyState.style.display = query && visibleCount === 0 ? 'block' : 'none';
+        }
+
+        searchInput.addEventListener('input', applySearch);
+
+        quickQueries.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                searchInput.value = btn.dataset.query || btn.textContent;
+                applySearch();
+                searchInput.focus();
+            });
+        });
+
+        cards.forEach((card) => {
+            const link = card.dataset.link;
+            if (!link) return;
+            card.setAttribute('role', 'link');
+            card.setAttribute('tabindex', '0');
+            card.addEventListener('click', (event) => {
+                if (event.target.closest('a, button')) return;
+                window.location.href = link;
+            });
+            card.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    window.location.href = link;
+                }
+            });
+        });
+
+        applySearch();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaunchPad - Детали приложения</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --accent: #6c5ce7;
+            --accent-glow: rgba(108, 92, 231, 0.3);
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: #8a8a93;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            background-image: radial-gradient(circle at top right, rgba(108, 92, 231, 0.1), transparent 40%);
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+
+        /* Шапка приложения */
+        .app-hero {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            margin-bottom: 48px;
+            padding: 32px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            backdrop-filter: blur(20px);
+        }
+
+        .big-icon {
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .app-headline h1 { font-size: 48px; letter-spacing: -1.5px; margin-bottom: 8px; }
+        .developer { color: var(--accent); font-weight: 600; font-size: 18px; margin-bottom: 20px; display: block; }
+
+        .action-bar { display: flex; gap: 16px; align-items: center; }
+
+        .store-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+
+        .store-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.02);
+            text-decoration: none;
+            color: var(--text-main);
+            min-width: 170px;
+            transition: all 0.3s;
+        }
+
+        .store-btn:hover { border-color: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+
+        .store-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.08);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .store-text { display: flex; flex-direction: column; line-height: 1.1; }
+        .store-text small { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+        .store-text strong { font-size: 15px; letter-spacing: -0.3px; }
+
+        .btn-main {
+            background: var(--text-main);
+            color: var(--bg-dark);
+            padding: 12px 32px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-main:hover { transform: scale(1.05); background: var(--accent); color: white; }
+
+        /* Скриншоты (Горизонтальный скролл) */
+        .screenshots {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            margin-bottom: 48px;
+            scrollbar-width: none; /* Firefox */
+        }
+        .screenshots::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+        .screen-card {
+            min-width: 300px;
+            height: 500px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+        .screen-card:hover { border-color: var(--accent); }
+
+        /* Описание и Инфо */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .description h2 { font-size: 24px; margin-bottom: 16px; }
+        .description p { color: var(--text-muted); font-size: 17px; margin-bottom: 20px; }
+
+        .info-sidebar {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 24px;
+            border-radius: 24px;
+            height: fit-content;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--glass-border);
+            font-size: 14px;
+        }
+        .info-item:last-child { border-bottom: none; }
+        .label { color: var(--text-muted); }
+        .value { font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .app-hero { flex-direction: column; text-align: center; }
+            .content-grid { grid-template-columns: 1fr; }
+            .store-btn { width: 100%; min-width: 0; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" style="color: var(--text-muted); text-decoration: none; margin-bottom: 30px; display: inline-block;">← Назад в Маркет</a>
+
+        <section class="app-hero">
+            <div class="big-icon">🚀</div>
+            <div class="app-headline">
+                <h1>LaunchPad</h1>
+                <span class="developer">Nexus Studio Apps</span>
+                <div class="action-bar">
+                    <a href="https://nexus.studio/launchpad" class="btn-main" target="_blank" rel="noopener">Запустить сейчас</a>
+                    <span style="color: var(--text-muted); font-size: 14px;">Бесплатно • 42 MB</span>
+                </div>
+                <div class="store-buttons">
+                    <a class="store-btn" href="https://apps.apple.com/" target="_blank" rel="noopener" aria-label="Скачать в App Store">
+                        <span class="store-icon">A</span>
+                        <span class="store-text">
+                            <small>Скачать в</small>
+                            <strong>App Store</strong>
+                        </span>
+                    </a>
+                    <a class="store-btn" href="https://play.google.com/store" target="_blank" rel="noopener" aria-label="Скачать в Google Play">
+                        <span class="store-icon">▶</span>
+                        <span class="store-text">
+                            <small>Доступно в</small>
+                            <strong>Google Play</strong>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="screenshots">
+            <div class="screen-card">Интерфейс Dashboard</div>
+            <div class="screen-card">Аналитика трафика</div>
+            <div class="screen-card">Настройки кампании</div>
+            <div class="screen-card">A/B Тестирование</div>
+        </div>
+
+        <div class="content-grid">
+            <div class="description">
+                <h2>Описание</h2>
+                <p>LaunchPad — это ультимативный инструмент для маркетологов и фаундеров стартапов. Мы объединили мощный экономический анализ с инструментами автоматизации рекламы.</p>
+                <p>Просчитывайте юнит-экономику в один клик, запускайте тесты креативов и получайте детальные отчеты прямо в браузере. Все данные синхронизируются в реальном времени.</p>
+                
+                <h2 style="margin-top: 32px;">Что нового</h2>
+                <div style="background: rgba(108, 92, 231, 0.05); padding: 20px; border-radius: 16px; border-left: 4px solid var(--accent);">
+                    <p style="margin-bottom: 0; font-size: 14px; color: #fff;"><strong>Версия 2.1.0</strong><br>— Добавлена интеграция с Telegram Ads.<br>— Исправлены ошибки в модуле расчета ROI.</p>
+                </div>
+            </div>
+
+            <div class="info-sidebar">
+                <div class="info-item">
+                    <span class="label">Категория</span>
+                    <span class="value">Маркетинг</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Совместимость</span>
+                    <span class="value">Web / iOS / macOS</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Языки</span>
+                    <span class="value">RU / EN</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Возраст</span>
+                    <span class="value">12+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

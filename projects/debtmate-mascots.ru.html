@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finn & Debik | DebtMate</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen flex flex-col">
+  <header class="glass-header flex flex-row items-center justify-between gap-8">
+    <div class="logo-block">
+      <a href="../index.ru.html">
+        <img src="../assets/Cyrillic_logo_arfa.png" alt="Логотип Арфа" class="glass-logo-img">
+      </a>
+    </div>
+    <nav class="flex gap-4">
+      <a href="../index.ru.html" class="nav-link">Главная</a>
+      <a href="../about.ru.html" class="nav-link">О нас</a>
+      <a href="../projects.ru.html" class="nav-link">Проекты</a>
+      <a href="../blog/blog.ru.html" class="nav-link">Блог</a>
+      <a href="../contact.ru.html" class="nav-link">На связи</a>
+    </nav>
+    <div class="flex gap-2">
+      <a href="debtmate.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="debtmate.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="debtmate.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+      <a href="debtmate.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    </div>
+  </header>
+
+  <main class="mascot-story-page flex-1">
+    <section class="story-hero">
+      <div class="story-hero-copy">
+        <a href="debtmate.ru.html" class="back-link">← Назад к DebtMate</a>
+        <p class="story-kicker">Зачем DebtMate нужны Финн и Дебик</p>
+        <h1>Деньги легче обсуждать, когда рядом есть кто-то спокойный.</h1>
+        <p>Финн хранит договорённости, Дебик считает без паники. Вместе они превращают неловкий разговор о деньгах в понятный план.</p>
+        <div class="hero-actions" aria-label="Разделы истории">
+          <a href="#finn" class="story-chip">Финн</a>
+          <a href="#debik" class="story-chip">Дебик</a>
+          <a href="#together" class="story-chip story-chip-primary">Вместе</a>
+        </div>
+      </div>
+      <div class="story-hero-stage" aria-label="Финн и Дебик">
+        <div class="hero-bubble hero-bubble-left">Договорённость сохранена.</div>
+        <img src="../assets/DebtMate/Finn_Debik_start.png" alt="Финн и Дебик" class="story-hero-img">
+        <div class="hero-bubble hero-bubble-right">бип. теперь понятно.</div>
+      </div>
+    </section>
+
+    <section class="origin-section">
+      <div class="origin-copy">
+        <p class="story-label">Откуда всё началось</p>
+        <h2>Сначала это была не идея продукта. Просто попытка вернуть контроль.</h2>
+      </div>
+      <div class="origin-cards">
+        <article>
+          <span>01</span>
+          <h3>Теория</h3>
+          <p>Финн учился на экономиста и был уверен: если человек в долгах, он просто плохо считает.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Реальность</h3>
+          <p>Переезд, аренда, подработки, кредитка, рассрочка. Деньги будто начали жить своей жизнью.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Система</h3>
+          <p>Таблицы, списки долгов, приоритеты выплат и расчёты сценариев постепенно превратились в DebtMate.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="character-scene finn-scene" id="finn">
+      <div class="character-visual">
+        <img src="../assets/DebtMate/Fin_thinking_or_remember_calendar.png" alt="Финн" loading="lazy">
+        <div class="floating-note">“Лучше одна ясная договорённость, чем десять ‘мы вроде договаривались’.”</div>
+      </div>
+      <div class="character-copy">
+        <p class="story-label">История Finn</p>
+        <h2>Финн появился там, где теория встретилась с обычной жизнью.</h2>
+        <p>Он знает это чувство: всё вроде бы понятно по отдельности, но общая картина расползается. Банковские приложения, заметки, таблицы, напоминания — всё в разных местах.</p>
+        <p>Самое неприятное было даже не в нехватке денег. А в потере контроля.</p>
+        <div class="chapter-list">
+          <div>
+            <strong>Он помнит условия</strong>
+            <span>кто, кому, сколько и до какого срока.</span>
+          </div>
+          <div>
+            <strong>Он снижает неловкость</strong>
+            <span>потому что договорённость уже сформулирована спокойно.</span>
+          </div>
+          <div>
+            <strong>Он держит контекст</strong>
+            <span>чтобы деньги не превращались в спор “я такого не говорил”.</span>
+          </div>
+        </div>
+        <p class="story-final-thought">Финн не учит жить. Он просто помогает сохранить ясность между людьми.</p>
+      </div>
+    </section>
+
+    <section class="calculator-scene">
+      <div class="calculator-copy">
+        <p class="story-label">Момент рождения Дебика</p>
+        <h2>Однажды старый калькулятор посмотрел на хаос и решил помочь.</h2>
+        <p>Сначала друзья Финна просто перенесли его способ ведения финансов в код. Потом кто-то шутки ради добавил калькулятору глазки и простенький ИИ.</p>
+      </div>
+      <div class="quote-strip">
+        <blockquote>— Слушай… у тебя на кнопках уже цифры стёрлись!</blockquote>
+        <blockquote>— А что если сделать одну программу для твоего учёта?</blockquote>
+        <blockquote>— Блин, вот бы кто-то тебе с этим помогал, ты же так утонешь!</blockquote>
+      </div>
+    </section>
+
+    <section class="character-scene debik-scene" id="debik">
+      <div class="debik-device-wrap" aria-label="Анимированный экран Дебика">
+        <div class="debik-device" aria-hidden="true">
+          <img src="../assets/DebtMate/Debik_good_screen_off.png" alt="" class="debik-device-img" loading="lazy">
+          <div class="debik-screen">
+            <div class="debik-face">
+              <span class="debik-expression">＞ᴗ＜</span>
+              <span class="debik-expression">⚆_⚆</span>
+              <span class="debik-expression">╥﹏╥</span>
+              <span class="debik-expression">•̀ᴗ•́</span>
+              <span class="debik-expression">˶ᵔ ᵕ ᵔ˶</span>
+            </div>
+          </div>
+          <div class="debik-speech">бип. давай сначала просто посмотрим.</div>
+        </div>
+      </div>
+      <div class="character-copy debik-copy">
+        <p class="story-label">История Debik</p>
+        <h2>Дебик не пугает цифрами. Он их приручает.</h2>
+        <p>Ему не нравится, когда люди переживают из-за денег. Цифры же не должны пугать. Они должны считаться. Это их работа.</p>
+        <div class="debik-beeps">
+          <span>ой. а тут подписка.</span>
+          <span>ой. а тут переплата.</span>
+          <span>ой. а здесь всё не так страшно, как казалось.</span>
+        </div>
+        <p>Дебик не решает проблемы за человека. Он помогает перестать держать всё в голове: напоминает про платежи, показывает общую картину и предлагает спокойный следующий шаг.</p>
+        <p class="story-final-thought">Ему очень нравится момент, когда человек вдруг говорит: “подожди… так у меня не всё плохо?”</p>
+      </div>
+    </section>
+
+    <section class="together-section" id="together">
+      <div class="together-panel">
+        <img src="../assets/DebtMate/Finn_Debik_start.png" alt="Финн и Дебик вместе" loading="lazy">
+        <div>
+          <p class="story-label">Когда они вместе</p>
+          <h2>DebtMate — это не про контроль людей. Это про ясность между людьми.</h2>
+          <p>Финн помогает договориться. Дебик помогает посчитать. А человек наконец видит не тревожный ком из сумм, а понятный план действий.</p>
+          <a href="debtmate.ru.html#iou-builder" class="story-cta">Попробовать DebtMate</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    body {
+      background: #FDFDFD;
+      color: #080809;
+      overflow-x: hidden;
+    }
+    .mascot-story-page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 4.5rem 0 5.5rem;
+    }
+    .story-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.96fr) minmax(320px, 1.04fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: center;
+      min-height: 620px;
+      padding-bottom: 4.5rem;
+    }
+    .story-hero > *,
+    .origin-section > *,
+    .character-scene > *,
+    .calculator-scene > *,
+    .together-panel > * {
+      min-width: 0;
+    }
+    .back-link,
+    .story-kicker,
+    .story-label {
+      color: #093FEE;
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .back-link {
+      display: inline-flex;
+      margin-bottom: 1.5rem;
+    }
+    .story-kicker,
+    .story-label {
+      display: block;
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+    }
+    .story-hero h1,
+    .origin-copy h2,
+    .character-copy h2,
+    .calculator-copy h2,
+    .together-panel h2 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      color: #080809;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+    .story-hero h1 {
+      font-size: 4.35rem;
+      line-height: 1;
+      max-width: 760px;
+      margin-bottom: 1.25rem;
+      overflow-wrap: break-word;
+    }
+    .story-hero-copy > p:not(.story-kicker) {
+      color: #4C5261;
+      font-size: 1.18rem;
+      line-height: 1.65;
+      max-width: 680px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 2rem;
+    }
+    .story-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.75rem;
+      border: 1px solid rgba(9, 63, 238, 0.18);
+      border-radius: 0.85rem;
+      color: #093FEE;
+      font-weight: 900;
+      padding: 0 1rem;
+      text-decoration: none;
+    }
+    .story-chip-primary {
+      background: #093FEE;
+      color: #FDFDFD;
+      box-shadow: 0 14px 30px rgba(9, 63, 238, 0.22);
+    }
+    .story-hero-stage {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+      border-radius: 1.4rem;
+      background:
+        radial-gradient(circle at 24% 18%, rgba(9, 63, 238, 0.18), transparent 28%),
+        radial-gradient(circle at 82% 72%, rgba(9, 63, 238, 0.12), transparent 34%),
+        linear-gradient(180deg, rgba(9, 63, 238, 0.075), rgba(253, 253, 253, 0));
+      border: 1px solid rgba(9, 63, 238, 0.12);
+      overflow: hidden;
+      box-shadow: 0 28px 70px rgba(6, 47, 190, 0.12);
+    }
+    .story-hero-img {
+      width: min(96%, 620px);
+      filter: drop-shadow(0 24px 30px rgba(6, 47, 190, 0.18));
+      transform: translateY(1rem);
+    }
+    .hero-bubble,
+    .floating-note,
+    .debik-speech {
+      position: absolute;
+      z-index: 2;
+      max-width: 240px;
+      border: 1px solid rgba(9, 63, 238, 0.18);
+      border-radius: 0.9rem;
+      background: #FDFDFD;
+      color: #080809;
+      font-weight: 900;
+      line-height: 1.35;
+      padding: 0.9rem 1rem;
+      box-shadow: 0 18px 42px rgba(6, 47, 190, 0.16);
+    }
+    .hero-bubble-left {
+      top: 1.25rem;
+      left: 1.25rem;
+      transform: rotate(-2deg);
+    }
+    .hero-bubble-right {
+      right: 1.25rem;
+      bottom: 1.4rem;
+      color: #093FEE;
+      transform: rotate(2deg);
+    }
+    .origin-section,
+    .calculator-scene,
+    .together-section {
+      margin-bottom: 4.5rem;
+    }
+    .origin-section {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.62fr) minmax(0, 1fr);
+      gap: clamp(1.3rem, 4vw, 3rem);
+      align-items: start;
+      padding: clamp(1.2rem, 4vw, 2.4rem);
+      border: 1px solid rgba(9, 63, 238, 0.12);
+      border-radius: 1.2rem;
+      background: linear-gradient(90deg, rgba(9, 63, 238, 0.06), transparent 42%), #FDFDFD;
+      box-shadow: 0 24px 62px rgba(6, 47, 190, 0.1);
+    }
+    .origin-copy {
+      position: sticky;
+      top: 1rem;
+    }
+    .origin-copy h2,
+    .calculator-copy h2 {
+      font-size: 3rem;
+      line-height: 1.08;
+    }
+    .origin-cards {
+      display: grid;
+      gap: 0.85rem;
+    }
+    .origin-cards article {
+      padding: 1rem 1.1rem;
+      border-radius: 1rem;
+      background: #F7F9FF;
+      border: 1px solid rgba(9, 63, 238, 0.1);
+    }
+    .origin-cards span {
+      color: #093FEE;
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+    }
+    .origin-cards h3 {
+      color: #080809;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: 1.28rem;
+      font-weight: 900;
+      margin: 0.3rem 0 0.35rem;
+    }
+    .origin-cards p,
+    .character-copy p,
+    .calculator-copy p,
+    .together-panel p {
+      color: #4C5261;
+      font-size: 1.05rem;
+      line-height: 1.68;
+    }
+    .character-scene {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1fr);
+      gap: clamp(1.4rem, 4vw, 3rem);
+      align-items: center;
+      margin-bottom: 4.5rem;
+    }
+    .debik-scene {
+      grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
+    }
+    .character-visual,
+    .debik-device-wrap {
+      position: sticky;
+      top: 1rem;
+      min-height: 560px;
+      display: grid;
+      place-items: end center;
+      border-radius: 1.2rem;
+      background:
+        radial-gradient(circle at 50% 22%, rgba(9, 63, 238, 0.16), transparent 34%),
+        linear-gradient(180deg, rgba(9, 63, 238, 0.08), rgba(253, 253, 253, 0));
+      border: 1px solid rgba(9, 63, 238, 0.12);
+      overflow: hidden;
+      box-shadow: 0 22px 56px rgba(6, 47, 190, 0.1);
+    }
+    .character-visual img {
+      width: min(82%, 380px);
+      height: 500px;
+      object-fit: contain;
+      object-position: bottom center;
+      filter: drop-shadow(0 20px 28px rgba(6, 47, 190, 0.16));
+    }
+    .floating-note {
+      left: 1.2rem;
+      bottom: 1.2rem;
+      max-width: 300px;
+      transform: rotate(-1deg);
+    }
+    .character-copy {
+      display: grid;
+      gap: 0.95rem;
+      max-width: 720px;
+    }
+    .character-copy h2 {
+      font-size: 3.35rem;
+      line-height: 1.05;
+    }
+    .chapter-list {
+      display: grid;
+      gap: 0.75rem;
+      margin: 0.45rem 0;
+    }
+    .chapter-list div {
+      display: grid;
+      gap: 0.2rem;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid #093FEE;
+      border-radius: 0.85rem;
+      background: #F7F9FF;
+    }
+    .chapter-list strong {
+      color: #080809;
+      font-weight: 900;
+    }
+    .chapter-list span {
+      color: #4C5261;
+      line-height: 1.5;
+    }
+    .story-final-thought {
+      border-radius: 1rem;
+      background: linear-gradient(180deg, #062FBE, #093FEE);
+      color: #FDFDFD !important;
+      font-size: 1.32rem !important;
+      font-weight: 900;
+      line-height: 1.38 !important;
+      padding: 1.15rem 1.25rem;
+      box-shadow: 0 18px 42px rgba(6, 47, 190, 0.18);
+    }
+    .calculator-scene {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(300px, 1fr);
+      gap: clamp(1.4rem, 4vw, 2.4rem);
+      align-items: center;
+      padding: clamp(1.2rem, 4vw, 2.2rem);
+      border-radius: 1.2rem;
+      background: #080809;
+      color: #FDFDFD;
+      box-shadow: 0 28px 70px rgba(8, 8, 9, 0.18);
+    }
+    .calculator-copy h2,
+    .calculator-copy p {
+      color: #FDFDFD;
+    }
+    .calculator-copy .story-label {
+      color: #8EA6FF;
+    }
+    .quote-strip {
+      display: grid;
+      gap: 0.75rem;
+    }
+    .quote-strip blockquote {
+      margin: 0;
+      border-radius: 0.9rem;
+      background: #FDFDFD;
+      color: #080809;
+      font-size: 1.2rem;
+      font-weight: 900;
+      line-height: 1.4;
+      padding: 1rem 1.1rem;
+    }
+    .debik-device-wrap {
+      place-items: center;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      overflow: visible;
+      min-height: 500px;
+    }
+    .debik-device {
+      position: relative;
+      width: min(88%, 430px);
+      aspect-ratio: 1 / 1;
+      overflow: visible;
+      filter: drop-shadow(0 24px 34px rgba(6, 47, 190, 0.16));
+    }
+    .debik-device-img {
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      border-radius: 1.2rem;
+    }
+    .debik-screen {
+      position: absolute;
+      left: 51.2%;
+      top: 31.5%;
+      width: 25.2%;
+      height: 18.9%;
+      display: grid;
+      place-items: center;
+      color: #FDFDFD;
+      overflow: hidden;
+      transform: translate(-50%, -50%) rotate(8deg);
+      transform-origin: center;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .debik-screen::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(253, 253, 253, 0.08), transparent 42%);
+      pointer-events: none;
+    }
+    .debik-face {
+      display: grid;
+      place-items: center;
+      color: #FDFDFD;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: clamp(1rem, 4.2vw, 1.65rem);
+      font-weight: 900;
+      line-height: 1;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      transform: translate(-7%, 6%) rotate(0.5deg);
+      transform-origin: center;
+    }
+    .debik-expression {
+      animation: debik-expression 12s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+      animation-delay: -0.6s;
+      grid-area: 1 / 1;
+      opacity: 0;
+      transform: translateY(0.5rem) scale(0.82) rotate(8deg);
+      white-space: nowrap;
+      will-change: opacity, transform, filter;
+    }
+    .debik-expression:nth-child(2) {
+      animation-delay: 1.8s;
+    }
+    .debik-expression:nth-child(3) {
+      animation-delay: 4.2s;
+    }
+    .debik-expression:nth-child(4) {
+      animation-delay: 6.6s;
+    }
+    .debik-expression:nth-child(5) {
+      animation-delay: 9s;
+      font-size: 0.92em;
+    }
+    .debik-speech {
+      right: 1.2rem;
+      bottom: 1.2rem;
+      color: #093FEE;
+      transform: rotate(2deg);
+    }
+    @keyframes debik-expression {
+      0% {
+        opacity: 0;
+        transform: translateY(0.5rem) scale(0.82) rotate(8deg);
+        filter: blur(0.08rem);
+      }
+      6%, 17% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(4deg);
+        filter: blur(0);
+      }
+      20% {
+        opacity: 0;
+        transform: translateY(-0.45rem) scale(1.08) rotate(1deg);
+        filter: blur(0.08rem);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-0.45rem) scale(1.08) rotate(1deg);
+        filter: blur(0.08rem);
+      }
+    }
+    .debik-beeps {
+      display: grid;
+      gap: 0.55rem;
+      margin: 0.35rem 0;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: #080809;
+      color: #FDFDFD;
+      box-shadow: 0 18px 42px rgba(8, 8, 9, 0.14);
+    }
+    .debik-beeps span {
+      font-weight: 900;
+      line-height: 1.45;
+    }
+    .debik-beeps span:first-child {
+      color: #8EA6FF;
+    }
+    .together-panel {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+      gap: clamp(1.4rem, 4vw, 3rem);
+      align-items: center;
+      border-radius: 1.2rem;
+      background: linear-gradient(180deg, #062FBE, #093FEE);
+      color: #FDFDFD;
+      padding: clamp(1.3rem, 4vw, 2.8rem);
+      box-shadow: 0 26px 70px rgba(6, 47, 190, 0.24);
+    }
+    .together-panel img {
+      width: 100%;
+      border-radius: 1rem;
+      background: #FDFDFD;
+      box-shadow: 0 18px 46px rgba(8, 8, 9, 0.18);
+    }
+    .together-panel .story-label {
+      color: #C9D5FF;
+    }
+    .together-panel h2 {
+      color: #FDFDFD;
+      font-size: 3.45rem;
+      line-height: 1.06;
+      margin-bottom: 1rem;
+    }
+    .together-panel p {
+      color: #E7ECFF;
+      max-width: 660px;
+      margin-bottom: 1.5rem;
+    }
+    .story-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.35rem;
+      border-radius: 0.8rem;
+      background: #FDFDFD;
+      color: #093FEE;
+      font-weight: 900;
+      padding: 0 1.45rem;
+      text-decoration: none;
+    }
+    .story-cta:hover {
+      color: #062FBE;
+    }
+    .story-footer {
+      background: linear-gradient(180deg, #062FBE, #093FEE);
+      border-color: rgba(253, 253, 253, 0.18);
+      color: #FDFDFD;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .debik-expression {
+        animation: none;
+        filter: none;
+        opacity: 0;
+        transform: none;
+      }
+      .debik-expression:first-child {
+        opacity: 1;
+      }
+    }
+    @media (max-width: 900px) {
+      .story-hero h1,
+      .character-copy h2,
+      .together-panel h2 {
+        font-size: 3rem;
+      }
+      .origin-copy h2,
+      .calculator-copy h2 {
+        font-size: 2.45rem;
+      }
+      .story-hero,
+      .origin-section,
+      .character-scene,
+      .calculator-scene,
+      .together-panel {
+        grid-template-columns: 1fr;
+      }
+      .story-hero {
+        min-height: 0;
+      }
+      .origin-copy,
+      .character-visual,
+      .debik-device-wrap {
+        position: static;
+      }
+      .story-hero-stage,
+      .character-visual,
+      .debik-device-wrap {
+        min-height: 430px;
+      }
+      .debik-scene .debik-device-wrap {
+        order: -1;
+      }
+    }
+    @media (max-width: 640px) {
+      .mascot-story-page {
+        width: min(100% - 24px, 1120px);
+        padding-top: 3rem;
+      }
+      .story-hero h1,
+      .character-copy h2,
+      .together-panel h2 {
+        font-size: 2rem;
+        line-height: 1.05;
+      }
+      .origin-copy h2,
+      .calculator-copy h2 {
+        font-size: 2rem;
+      }
+      .story-hero-copy > p:not(.story-kicker),
+      .origin-cards p,
+      .character-copy p,
+      .calculator-copy p,
+      .together-panel p {
+        font-size: 1rem;
+      }
+      .story-hero-stage,
+      .character-visual,
+      .debik-device-wrap {
+        min-height: 360px;
+      }
+      .story-hero-img {
+        width: 112%;
+      }
+      .hero-bubble,
+      .floating-note,
+      .debik-speech {
+        position: relative;
+        inset: auto;
+        max-width: none;
+        transform: none;
+        margin: 0.6rem;
+      }
+      .story-hero-stage {
+        align-content: center;
+      }
+      .character-visual {
+        place-items: center;
+      }
+      .character-visual img {
+        width: min(86%, 300px);
+        height: 330px;
+      }
+      .debik-device {
+        width: min(96%, 330px);
+      }
+      .debik-device .debik-speech {
+        position: absolute;
+        right: -0.4rem;
+        bottom: 0.25rem;
+        max-width: 190px;
+        margin: 0;
+        transform: rotate(2deg);
+      }
+      .debik-screen {
+        left: 51.2%;
+        top: 31.5%;
+        width: 25.2%;
+        height: 18.9%;
+      }
+      .debik-face {
+        font-size: 1.05rem;
+        transform: translate(-7%, -1%) rotate(0.5deg);
+      }
+    }
+  </style>
+
+  <footer class="story-footer text-center py-6 border-t w-full flex-none px-0">
+    <p class="text-sm">© 2026 DebtMate<br>Ясные договорённости без неловкости.</p>
+  </footer>
+  <script src="../js/mobile-header.js"></script>
+</body>
+</html>

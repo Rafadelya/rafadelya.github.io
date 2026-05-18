@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>DebtMate | Проект Арфа</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DebtMate | Порядок в договоренностях</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
@@ -29,152 +30,2752 @@
       <a href="debtmate.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
     </div>
   </header>
-  <main class="max-w-3xl mx-auto px-4 py-14 space-y-12 flex-1 flex flex-col">
-    <!-- Hero -->
-    <section class="bg-white rounded-3xl shadow-2xl p-10 text-center mb-4">
-      <h1 class="text-4xl font-extrabold text-green-600 flex items-center justify-center gap-2 mb-2">
-        <span class="text-3xl">💸</span> DebtMate
-      </h1>
-      <p class="text-lg text-gray-800 mb-2">Простой и надёжный менеджер долгов — всё честно, быстро и без лишних вопросов.<br>Веди учёт долгов между друзьями и знакомыми офлайн, без регистрации и лишних сложностей.</p>
-    </section>
-    <!-- Почему DebtMate? -->
-    <section class="bg-gray-50 rounded-2xl shadow-lg p-8">
-      <h2 class="text-xl font-bold text-green-700 mb-4">Почему DebtMate?</h2>
-      <ul class="space-y-3 text-base">
-        <li class="flex items-center gap-3"><span class="text-2xl">🔄</span> Учитывает, кто кому и сколько должен</li>
-        <li class="flex items-center gap-3"><span class="text-2xl">🤝</span> Поддержка групповых долгов и общих расходов</li>
-        <li class="flex items-center gap-3"><span class="text-2xl">🔐</span> Локальное хранение данных — безопасность и приватность</li>
-        <li class="flex items-center gap-3"><span class="text-2xl">📱</span> Кроссплатформенность: iOS, Android, Windows, macOS, Linux</li>
-        <li class="flex items-center gap-3"><span class="text-2xl">💬</span> Удобные напоминания без навязчивости</li>
-        <li class="flex items-center gap-3"><span class="text-2xl">📊</span> История всех долгов и выплат всегда под рукой</li>
-      </ul>
-    </section>
-    <!-- Как это работает -->
-    <section class="bg-white rounded-2xl shadow-lg p-8">
-      <h2 class="text-xl font-bold text-green-700 mb-4">Как это работает</h2>
-      <ul class="list-disc pl-6 text-gray-800 space-y-1">
-        <li>Добавляешь друзей и долги, создаёшь группы — например, для совместных поездок или жилья.</li>
-        <li>DebtMate считает общий баланс и показывает, кто кому и сколько должен вернуть.</li>
-        <li>Всё хранится на устройстве — никаких аккаунтов, никаких облаков.</li>
-      </ul>
-    </section>
-    <!-- Для кого -->
-    <section class="bg-white rounded-2xl shadow-lg p-8">
-      <h2 class="text-xl font-bold text-green-700 mb-4">Для кого</h2>
-      <ul class="debtmate-for-list">
-        <li style="--i:1"><span class="for-avatar for-avatar1"></span>Друзьям, которые часто делят расходы</li>
-        <li style="--i:2"><span class="for-avatar for-avatar2"></span>Коллегам по работе</li>
-        <li style="--i:3"><span class="for-avatar for-avatar3"></span>Соседям по квартире</li>
-        <li style="--i:4"><span class="for-avatar for-avatar4"></span>Семьям и компаниям путешественников</li>
-        <li style="--i:5"><span class="for-avatar for-avatar5"></span>Всем, кто устал считать долги вручную</li>
-      </ul>
-    </section>
-    <style>
-      .debtmate-for-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.7em;
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-        padding-left: 0;
-      }
-      .debtmate-for-list li {
-        display: flex;
-        align-items: center;
-        gap: 0.9em;
-        font-size: 1.08em;
-        color: #374151;
-        list-style: none;
-        position: relative;
-        cursor: default;
-        border-radius: 0.7em;
-        transition: background 0.18s;
-      }
-      .debtmate-for-list li:hover {
-        background: #f0fdf4;
-      }
-      .for-avatar {
-        display: inline-block;
-        width: 1.7em;
-        height: 1.7em;
-        border-radius: 50%;
-        margin-right: 0.1em;
-        box-shadow: 0 2px 8px #0001;
-        background: #a7f3d0;
-        transition: transform 0.22s cubic-bezier(.4,1.6,.6,1), box-shadow 0.18s;
-        transform: scale(0.85);
-        will-change: transform;
-      }
-      /* Главный прыжок */
-      .debtmate-for-list li:hover .for-avatar {
-        animation: avatar-bounce-main 0.45s cubic-bezier(.4,1.6,.6,1);
-        z-index: 2;
-      }
-      /* Сосед справа */
-      .debtmate-for-list li:hover + li .for-avatar {
-        animation: avatar-bounce-side 0.45s 0.07s cubic-bezier(.4,1.6,.6,1);
-        z-index: 1;
-      }
-      /* Сосед слева */
-      .debtmate-for-list li:has(+ li:hover) .for-avatar {
-        animation: avatar-bounce-side 0.45s 0.07s cubic-bezier(.4,1.6,.6,1);
-        z-index: 1;
-      }
-      @keyframes avatar-bounce-main {
-        0% { transform: scale(0.85) translateY(0); }
-        30% { transform: scale(1.13) translateY(-13px); }
-        60% { transform: scale(0.98) translateY(2px); }
-        100% { transform: scale(0.85) translateY(0); }
-      }
-      @keyframes avatar-bounce-side {
-        0% { transform: scale(0.85) translateY(0); }
-        30% { transform: scale(1.04) translateY(-7px); }
-        60% { transform: scale(0.92) translateY(1.5px); }
-        100% { transform: scale(0.85) translateY(0); }
-      }
-      .for-avatar1 { background: linear-gradient(135deg, #34d399 60%, #a7f3d0 100%); }
-      .for-avatar2 { background: linear-gradient(135deg, #60a5fa 60%, #dbeafe 100%); }
-      .for-avatar3 { background: linear-gradient(135deg, #fbbf24 60%, #fef3c7 100%); }
-      .for-avatar4 { background: linear-gradient(135deg, #a78bfa 60%, #ede9fe 100%); }
-      .for-avatar5 { background: linear-gradient(135deg, #2dd4bf 60%, #ccfbf1 100%); }
-    </style>
-    <script>
-      // Волна для секции 'Для кого'
-      document.addEventListener('DOMContentLoaded', function() {
-        const list = document.querySelector('.debtmate-for-list');
-        if (!list) return;
-        const items = Array.from(list.querySelectorAll('li'));
-        items.forEach((li, idx) => {
-          li.addEventListener('mouseenter', () => {
-            // волна вправо
-            for (let i = idx; i < items.length; ++i) {
-              setTimeout(() => items[i].classList.add('wave'), (i-idx)*60);
-            }
-            // волна влево
-            for (let i = idx-1, d=1; i >= 0; --i,++d) {
-              setTimeout(() => items[i].classList.add('wave'), d*60);
-            }
-          });
-          li.addEventListener('mouseleave', () => {
-            items.forEach((el) => el.classList.remove('wave'));
-          });
-        });
-      });
-    </script>
-    <!-- CTA -->
-    <section class="flex justify-center mt-8">
-      <div class="w-full max-w-xl bg-white rounded-2xl shadow-2xl px-8 py-8 flex flex-col items-center gap-4">
-        <h2 class="text-2xl font-extrabold text-green-700 mb-1 text-center">🚀 Запишись на бета-тест</h2>
-        <p class="text-gray-700 mb-2 text-center">Стань одним из первых пользователей и помоги сделать приложение лучше.</p>
-        <a href="https://t.me/rafael_not_a_candy" target="_blank" rel="noopener noreferrer"
-           class="btn-primary neon-glow text-base px-6 py-3 shadow-lg hover:scale-105 transition-transform mt-2">
-          Хочу попробовать DebtMate
+  <main class="debtmate-page flex-1">
+    <section class="debtmate-hero">
+      <div class="debtmate-hero-copy">
+        <img src="../assets/DebtMate/DebtMate_Logo.png" alt="DebtMate" class="debtmate-logo">
+        <p class="debtmate-kicker">Счастье любит тишину. Деньги — ясность.</p>
+        <h1>DebtMate — порядок в том, кто, кому и сколько должен.</h1>
+        <p class="debtmate-lead">Продукт для личных договоренностей о деньгах: без неловкости, забытых переводов и споров в чатах.</p>
+        <a href="https://t.me/rafael_not_a_candy" target="_blank" rel="noopener noreferrer" class="debtmate-cta">
+          Попробовать бесплатно
         </a>
       </div>
+      <div class="debtmate-hero-panel" aria-hidden="true">
+        <div class="balance-card balance-card-main">
+          <span>Аня оплатила ужин</span>
+          <strong>+ 3 840 ₽</strong>
+        </div>
+        <div class="balance-card">
+          <span>Подарок Марку</span>
+          <strong>4 из 6</strong>
+        </div>
+        <div class="balance-card">
+          <span>До зарплаты</span>
+          <strong>12 мая</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-section">
+      <div class="trust-heading">
+        <h2>DebtMate — это не про долги. Это про доверие</h2>
+        <p>Когда деньги смешиваются с отношениями, важнее не сумма — а ясность договорённостей.</p>
+      </div>
+      <div class="moments-grid">
+        <article class="moment-card">
+          <div class="moment-icon">🍕</div>
+          <h3>После ресторана</h3>
+          <blockquote>«Скинь потом, я сейчас оплачу»</blockquote>
+          <p>Никто не забывает, кто оплатил счёт.</p>
+        </article>
+        <article class="moment-card">
+          <div class="moment-icon">☕</div>
+          <h3>Друзья и “мелочи”</h3>
+          <blockquote>«Я тебе переводил… вроде?»</blockquote>
+          <p>Маленькие суммы исчезают из памяти быстрее всего.</p>
+        </article>
+        <article class="moment-card">
+          <div class="moment-icon">🎁</div>
+          <h3>Скидываемся на подарок</h3>
+          <blockquote>«Кто ещё не скинулся?»</blockquote>
+          <p>Больше никакой таблицы, чата на 120 сообщений и неловких напоминаний.</p>
+        </article>
+        <article class="moment-card">
+          <div class="moment-icon">💸</div>
+          <h3>До зарплаты</h3>
+          <blockquote>«Выручи до зарплаты?»</blockquote>
+          <p>Хорошие отношения важнее неловких разговоров о деньгах.</p>
+        </article>
+        <article class="moment-card moment-card-wide">
+          <div class="moment-icon">🚗</div>
+          <h3>Экстренные расходы</h3>
+          <blockquote>«Я сейчас оплачу эвакуатор / ремонт, потом разберёмся»</blockquote>
+          <p>В стрессовой ситуации меньше всего хочется спорить о деньгах.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="friends-bank-section">
+      <div class="friends-bank-content">
+        <div class="friends-bank-intro">
+          <p class="section-label">Непопулярная мысль</p>
+          <h2>Иногда занимать у друзей выгоднее, чем у банка</h2>
+        </div>
+        <div class="friends-bank-copy">
+          <p>Нас с детства учили:</p>
+          <blockquote class="belief-quote">«Не занимай у друзей — испортишь отношения».</blockquote>
+          <p>И в этом есть логика. Деньги действительно могут всё усложнить.</p>
+          <p>Мы тоже не считаем, что стоит перекладывать свои финансовые проблемы на близких. Но чем больше думаем про финансовые отношения между людьми, тем чаще возникает странный вопрос.</p>
+          <p class="question-text">Почему давать деньги банку под проценты для нас нормально, а идея помочь знакомому человеку напрямую кажется почти запретной?</p>
+          <div class="bank-flow">
+            <p>Многие из нас спокойно кладут деньги в банк под проценты. А кто-то из наших друзей в это же время берёт кредит — уже у банка и под совсем другими условиями.</p>
+            <p>В итоге появляется посредник, который снимает часть рисков и даёт понятные правила. Но вместе с этим — забирает свою долю в виде процентов, иногда очень тяжёлых.</p>
+          </div>
+          <p class="thought-kicker">И здесь возникает спорная мысль:</p>
+          <p class="question-text question-text-final">если люди всё равно помогают друг другу деньгами, может быть, проблема не в самих займах между людьми — а в отсутствии понятных правил, прозрачности и доверия?</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mascots-section">
+      <div class="mascots-heading">
+        <h2>Знакомьтесь, Финн и Дебик</h2>
+        <p>DebtMate не напоминает о долгах. Он помогает сохранять доверие.</p>
+      </div>
+      <div class="mascot-grid">
+        <article class="mascot-card finn-card">
+          <div class="mascot-note">Договорённость сохранена. Теперь всё прозрачно.</div>
+          <div class="mascot-visual">
+            <img src="../assets/DebtMate/Fin_thinking_or_remember_calendar.png" alt="Финн" loading="lazy">
+            <span class="mascot-tool finn-tool">✓</span>
+          </div>
+          <div class="mascot-copy">
+            <span class="mascot-kicker">ФИНН</span>
+            <h3>Финн</h3>
+            <p class="mascot-role">Хранитель договорённостей.</p>
+            <p>Следит, чтобы ничего не терялось: кто кому должен, до какого срока и на каких условиях.</p>
+            <blockquote>«Лучше одна ясная договорённость, чем десять “мы вроде договаривались”.»</blockquote>
+            <a href="debtmate-mascots.ru.html#finn" class="mascot-link">Познакомиться с Финном →</a>
+          </div>
+        </article>
+
+        <article class="mascot-card debik-card">
+          <div class="mascot-note">Если разделить на 4 месяца — это 6 250 ₽/мес.</div>
+          <div class="mascot-visual">
+            <img src="../assets/DebtMate/Debik_Happy(one_paid).png" alt="Дебик" loading="lazy">
+            <span class="mascot-tool debik-tool">25 000 ÷ 4</span>
+          </div>
+          <div class="mascot-copy">
+            <span class="mascot-kicker">ДЕБИК</span>
+            <h3>Дебик</h3>
+            <p class="mascot-role">Умный помощник по расчётам.</p>
+            <p>Помогает разделить расходы, понять комфортный план возврата и убрать хаос из чисел.</p>
+            <blockquote>«Если можно посчитать спокойно — зачем спорить?»</blockquote>
+            <a href="debtmate-mascots.ru.html#debik" class="mascot-link">Узнать историю Дебика →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="iou-builder-section">
+      <div class="iou-builder-heading">
+        <h2>Создайте расписку за 30 секунд</h2>
+        <p>Без шаблонов расписок, сообщений “ну ты помнишь”, и неловких напоминаний. Просто договорённость, которую оба понимают.</p>
+        <a href="#iou-builder" class="debtmate-cta">Попробовать сейчас</a>
+      </div>
+
+      <div class="iou-builder" id="iou-builder">
+        <div class="iou-form-panel">
+          <div class="form-step">
+            <span class="step-label">Шаг 1</span>
+            <h3>Кто кому должен?</h3>
+            <div class="choice-row" data-choice-group="direction">
+              <button type="button" class="choice-chip active" data-direction="Александр → Матвей">Я занял деньги</button>
+              <button type="button" class="choice-chip" data-direction="Матвей → Александр">Мне должны</button>
+              <button type="button" class="choice-chip" data-direction="Александр ↔ Матвей">Мы делим расходы</button>
+            </div>
+            <label class="field-label" for="personName">Имя человека</label>
+            <input id="personName" class="iou-input" type="text" value="Матвей" placeholder="Например: Матвей">
+          </div>
+
+          <div class="form-step">
+            <span class="step-label">Шаг 2</span>
+            <h3>Сумма</h3>
+            <input id="iouAmount" class="iou-input amount-input" type="text" value="25 000 ₽" placeholder="25 000 ₽">
+            <label class="field-label" for="iouReason">Причина <span>необязательно</span></label>
+            <div class="choice-row reason-chips" data-choice-group="reason">
+              <button type="button" class="choice-chip" data-reason="Поездка">Поездка</button>
+              <button type="button" class="choice-chip" data-reason="Аренда">Аренда</button>
+              <button type="button" class="choice-chip" data-reason="Подарок">Подарок</button>
+              <button type="button" class="choice-chip" data-reason="Личные деньги">Личные деньги</button>
+              <button type="button" class="choice-chip active" data-reason="Билеты в Берлин">Другое</button>
+            </div>
+            <input id="iouReason" class="iou-input" type="text" value="Билеты в Берлин" placeholder="За билеты в Берлин">
+          </div>
+
+          <div class="form-step">
+            <span class="step-label">Шаг 3</span>
+            <h3>Когда вернуть</h3>
+            <div class="choice-row" data-choice-group="returnDate">
+              <button type="button" class="choice-chip" data-return="Через неделю">Через неделю</button>
+              <button type="button" class="choice-chip active" data-return="До 30 июня">До конца месяца</button>
+              <button type="button" class="choice-chip" data-return="Выбрать дату">Выбрать дату</button>
+            </div>
+          </div>
+
+          <div class="form-step">
+            <span class="step-label">Шаг 4</span>
+            <h3>Особенности договорённости</h3>
+            <div class="choice-row terms-chips">
+              <button type="button" class="choice-chip active" data-term="Частями можно">✓ Частями можно</button>
+              <button type="button" class="choice-chip active" data-term="Напоминание за 3 дня">✓ Напомнить заранее</button>
+              <button type="button" class="choice-chip active" data-term="Без процентов">✓ Без процентов</button>
+              <button type="button" class="choice-chip active" data-term="Подтверждение обеими сторонами">✓ Подтверждение обеими сторонами</button>
+            </div>
+            <label class="field-label" for="iouComment">Комментарий</label>
+            <input id="iouComment" class="iou-input" type="text" value="Вернуть после зарплаты" placeholder="Вернуть после зарплаты">
+          </div>
+        </div>
+
+        <div class="iou-preview-panel" aria-live="polite">
+          <div class="preview-flip" id="agreementPreview">
+            <div class="preview-card preview-card-front">
+              <div class="preview-topline">
+                <span>Договорённость</span>
+                <span class="preview-status">Ожидает подтверждения</span>
+              </div>
+              <div class="preview-route" id="previewDirection">Александр → Матвей</div>
+              <div class="preview-amount" id="previewAmount">25 000 ₽</div>
+              <dl class="preview-details">
+                <div>
+                  <dt>Причина</dt>
+                  <dd id="previewReason">Билеты в Берлин</dd>
+                </div>
+                <div>
+                  <dt>Вернуть</dt>
+                  <dd id="previewReturn">До 30 июня</dd>
+                </div>
+                <div>
+                  <dt>Комментарий</dt>
+                  <dd id="previewComment">Вернуть после зарплаты</dd>
+                </div>
+              </dl>
+              <div class="preview-terms">
+                <span>Условия</span>
+                <ul id="previewTerms">
+                  <li>✓ Частями можно</li>
+                  <li>✓ Напоминание за 3 дня</li>
+                  <li>✓ Без процентов</li>
+                  <li>✓ Подтверждение обеими сторонами</li>
+                </ul>
+              </div>
+              <button type="button" class="preview-link-box" id="showCounterpartyPreview" aria-label="Показать, как договорённость увидит вторая сторона">
+                <span>Как увидит вторая сторона</span>
+                <strong>Показать экран второй стороны</strong>
+              </button>
+              <p class="preview-microcopy">Обе стороны видят одинаковые условия — без “я такого не говорил”.</p>
+            </div>
+
+            <div class="preview-card preview-card-back" aria-hidden="true">
+              <div class="preview-topline">
+                <span>Экран второй стороны</span>
+                <span class="preview-status">Нужно подтвердить</span>
+              </div>
+              <div class="preview-route" id="counterpartyDirection">Матвей должен Александру</div>
+              <div class="preview-amount" id="counterpartyAmount">25 000 ₽</div>
+              <dl class="preview-details">
+                <div>
+                  <dt id="counterpartyPersonLabel">Кому вернуть</dt>
+                  <dd id="counterpartyPerson">Александр</dd>
+                </div>
+                <div>
+                  <dt>За что</dt>
+                  <dd id="counterpartyReason">Билеты в Берлин</dd>
+                </div>
+                <div>
+                  <dt>Срок</dt>
+                  <dd id="counterpartyReturn">До 30 июня</dd>
+                </div>
+                <div>
+                  <dt>Комментарий</dt>
+                  <dd id="counterpartyComment">Вернуть после зарплаты</dd>
+                </div>
+              </dl>
+              <div class="preview-terms">
+                <span>Условия для подтверждения</span>
+                <ul id="counterpartyTerms">
+                  <li>✓ Частями можно</li>
+                  <li>✓ Напоминание за 3 дня</li>
+                  <li>✓ Без процентов</li>
+                  <li>✓ Подтверждение обеими сторонами</li>
+                </ul>
+              </div>
+              <div class="counterparty-confirm-box">
+                <span>Матвей видит те же условия и подтверждает их одним нажатием.</span>
+                <strong>Подтвердить договорённость</strong>
+              </div>
+              <button type="button" class="return-preview-button" id="returnOwnerPreview">Вернуться к вашему экрану</button>
+            </div>
+          </div>
+
+          <div class="conversion-card">
+            <div class="ready-line">✓ Ваша расписка готова</div>
+            <a href="https://t.me/rafael_not_a_candy" target="_blank" rel="noopener noreferrer" class="debtmate-cta">Попробовать DebtMate первым</a>
+            <p>Создание заняло: <strong id="elapsedTime">24 секунды</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="conversation-section" id="debt-conversation">
+      <div class="conversation-heading">
+        <h2>Самая сложная часть долга — разговор о нём</h2>
+        <p>Напомнить о деньгах бывает неловко. DebtMate помогает говорить спокойно и по-человечески.</p>
+      </div>
+
+      <div class="conversation-story">
+        <div class="drafts-card">
+          <span class="story-label">Когда пишешь сам</span>
+          <div class="draft-focus">
+            <div class="draft-line">
+              <p id="hesitationDraft" aria-live="polite">Ты мне уже давно должен.</p>
+            </div>
+          </div>
+          <div class="draft-input-shell">
+            <span>Сообщение</span>
+            <i></i>
+          </div>
+        </div>
+
+        <div class="finn-message-card">
+          <span class="story-label">После</span>
+          <div class="notification-card">
+            <div class="finn-message-top">
+              <img src="../assets/DebtMate/Fin_rating_90-100_relax.png" alt="Финн">
+              <div>
+                <strong>DebtMate</strong>
+                <span>Финн · сейчас</span>
+              </div>
+            </div>
+            <p>Напоминаю, что Вы должны деньги Марку. Если сейчас не получается, попробуем с ним договориться: я предложил Вам варианты пересчёта долга.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="personal-message-note">Или поможем составить личное сообщение под вашу ситуацию.</p>
+
+      <div class="conversation-simulator" id="conversation-simulator">
+        <div class="scenario-panel">
+          <h3>Что произошло?</h3>
+          <div class="scenario-list">
+            <button type="button" class="scenario-card active" data-scenario="forgot">Друг забыл вернуть</button>
+            <button type="button" class="scenario-card" data-scenario="overdue">Просрочка платежа</button>
+            <button type="button" class="scenario-card" data-scenario="missing">Человек пропал</button>
+            <button type="button" class="scenario-card" data-scenario="schedule">Нужен новый график</button>
+            <button type="button" class="scenario-card" data-scenario="soft">Хочу напомнить мягко</button>
+            <button type="button" class="scenario-card" data-scenario="formal">Нужно быть более формальным</button>
+            <button type="button" class="scenario-card" data-scenario="partners">Общие расходы запутались</button>
+          </div>
+        </div>
+
+        <div class="chat-preview-panel">
+          <div class="chat-card">
+            <div class="chat-topline">
+              <span id="chatScenarioTitle">Друг забыл вернуть</span>
+              <span>Формулировка DebtMate</span>
+            </div>
+
+            <div class="tone-selector" aria-label="Тон сообщения">
+              <button type="button" class="tone-chip active" data-tone="friendly">Мягко</button>
+              <button type="button" class="tone-chip" data-tone="neutral">Нейтрально</button>
+              <button type="button" class="tone-chip" data-tone="firm">Строго</button>
+            </div>
+
+            <div class="chat-before-after">
+              <div class="message-block before-message">
+                <span>До</span>
+                <p id="beforeMessage">Ты мне уже давно должен.</p>
+              </div>
+              <div class="message-block after-message">
+                <span>После</span>
+                <p id="afterMessage">Привет! Просто напоминаю про нашу договорённость. Когда тебе будет удобно вернуть?</p>
+              </div>
+            </div>
+
+            <div class="payment-plan-card" id="paymentPlanCard" hidden>
+              <span>DebtMate предлагает</span>
+              <strong>12 500 ₽/мес × 4 месяца</strong>
+              <p>Вместо 50 000 ₽ сразу.</p>
+            </div>
+
+            <button type="button" class="rewrite-button" id="rewriteButton">Сделать спокойнее</button>
+
+            <div class="why-card">
+              <h4>Почему это работает</h4>
+              <p id="whyText">Спокойный тон + отсутствие обвинений = меньше защиты и больше шанс договориться.</p>
+            </div>
+          </div>
+
+          <p class="conversation-positioning">DebtMate не “выбивает деньги”. Он помогает сохранить отношения, даже когда разговор про деньги неудобный.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="journey-section" id="agreement-journey">
+      <div class="journey-heading">
+        <h2>От «скинешь потом?» до «закрыто» — без хаоса</h2>
+        <p>Все договорённости проходят понятный путь. Без потерянных сообщений, неловких напоминаний и «я думал, мы по-другому договаривались».</p>
+      </div>
+
+      <div class="journey-toggle" aria-label="Ситуация">
+        <button type="button" class="journey-chip active" data-journey="friends">Друзья</button>
+        <button type="button" class="journey-chip" data-journey="partners">Отношения</button>
+        <button type="button" class="journey-chip" data-journey="shared">Совместные расходы</button>
+        <button type="button" class="journey-chip" data-journey="rent">Аренда</button>
+      </div>
+
+      <div class="journey-timeline" aria-live="polite">
+        <div class="journey-line" aria-hidden="true">
+          <span class="journey-line-fill"></span>
+        </div>
+
+        <article class="journey-step">
+          <div class="journey-icon">🤝</div>
+          <div class="journey-card">
+            <span class="journey-step-label">1</span>
+            <h3 id="journeyTitle1">Создали договорённость</h3>
+            <p id="journeyText1">Александр занял Матвею 25 000 ₽ на поездку.</p>
+            <div class="journey-mini amount-mini">
+              <strong id="journeyAmount1">25 000 ₽</strong>
+              <span id="journeyMeta1">Вернуть до 30 июня</span>
+            </div>
+            <small id="journeySmall1">Всё начинается с простой договорённости.</small>
+          </div>
+        </article>
+
+        <article class="journey-step">
+          <div class="journey-icon">✓✓</div>
+          <div class="journey-card">
+            <span class="journey-step-label">2</span>
+            <h3 id="journeyTitle2">Обе стороны подтвердили условия</h3>
+            <p id="journeyText2">Условия сохранены одинаково для всех участников.</p>
+            <div class="journey-mini chat-mini" id="journeyMeta2">✓ Матвей подтвердил договорённость</div>
+            <small id="journeySmall2">Больше никаких «я такого не говорил».</small>
+          </div>
+        </article>
+
+        <article class="journey-step">
+          <div class="journey-icon">🔔</div>
+          <div class="journey-card">
+            <span class="journey-step-label">3</span>
+            <h3 id="journeyTitle3">Спокойное напоминание</h3>
+            <p id="journeyText3">DebtMate подбирает спокойную формулировку.</p>
+            <div class="journey-mini bubble-mini" id="journeyMeta3">Привет 😊 Просто напоминаю про нашу договорённость.</div>
+            <small id="journeySmall3">DebtMate помогает напомнить спокойно и без конфликта.</small>
+          </div>
+        </article>
+
+        <article class="journey-step">
+          <div class="journey-icon">◐</div>
+          <div class="journey-card">
+            <span class="journey-step-label">4</span>
+            <h3 id="journeyTitle4">Частичный возврат</h3>
+            <p id="journeyText4">Комфортный план лучше, чем напряжённое молчание.</p>
+            <div class="journey-mini progress-mini">
+              <div class="progress-copy"><strong id="journeyMeta4">12 500 ₽ из 25 000 ₽</strong><span id="journeyNote4">Осталось: 12 500 ₽</span></div>
+              <div class="journey-progress"><span></span></div>
+            </div>
+            <small id="journeySmall4">Не всегда нужно вернуть всё сразу.</small>
+          </div>
+        </article>
+
+        <article class="journey-step">
+          <div class="journey-icon">✓</div>
+          <div class="journey-card">
+            <span class="journey-step-label">5</span>
+            <h3 id="journeyTitle5">Обязательство закрыто</h3>
+            <p id="journeyText5">Всё выполнено. Никакого напряжения.</p>
+            <div class="journey-mini closed-mini">✓ Закрыто</div>
+            <small id="journeySmall5">Отношения важнее неловких разговоров.</small>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="freelance-section">
+      <div class="freelance-heading">
+        <span class="freelance-label">Для людей, работающих на доверии</span>
+        <h2>Для самозанятых и фрилансеров</h2>
+        <p>Когда работа строится на доверии — ясность особенно важна.</p>
+      </div>
+
+      <div class="freelance-hero-card">
+        <div class="freelance-scenario-copy">
+          <h3>«Клиент сказал: “оплачу позже”»</h3>
+          <p>Когда всё ещё слишком “по-человечески” для бухгалтерии — DebtMate помогает сохранить ясность.</p>
+        </div>
+        <div class="project-payment-card">
+          <div class="project-payment-top">
+            <span>Редизайн сайта</span>
+            <strong>75 000 ₽</strong>
+          </div>
+          <p>Оплата частями</p>
+          <div class="payment-stages">
+            <div><span>50%</span><strong>получено ✓</strong></div>
+            <div><span>25%</span><strong>до 30 июня</strong></div>
+            <div><span>25%</span><strong>до 30 июля</strong></div>
+          </div>
+          <small>Вместо потерянных сообщений и неловких напоминаний.</small>
+        </div>
+      </div>
+
+      <div class="freelance-pain-grid">
+        <article class="freelance-pain-card">
+          <span class="pain-kicker">Отложенная оплата</span>
+          <h3>«Закроем после проекта»</h3>
+          <p>DebtMate помогает сохранить условия:</p>
+          <ul>
+            <li>✓ сумма</li>
+            <li>✓ срок</li>
+            <li>✓ этапы оплаты</li>
+          </ul>
+        </article>
+
+        <article class="freelance-pain-card">
+          <span class="pain-kicker">Частичные платежи</span>
+          <h3>«Сейчас могу только часть»</h3>
+          <div class="freelance-progress-card">
+            <div class="freelance-progress-copy"><strong>40 000 ₽ / 75 000 ₽</strong><span>Осталось: 35 000 ₽</span></div>
+            <div class="freelance-progress"><span></span></div>
+          </div>
+          <p>Понятно, что уже оплачено и что осталось.</p>
+        </article>
+
+        <article class="freelance-pain-card followup-card">
+          <span class="pain-kicker">Неловкие напоминания</span>
+          <h3>«Напоминать неудобно»</h3>
+          <div class="followup-example">
+            <div>
+              <span>До</span>
+              <p>Привет… хотел напомнить насчёт оплаты…</p>
+            </div>
+            <div>
+              <span>После</span>
+              <p>Напоминаю про нашу договорённость. Если сроки изменились — можем обновить план.</p>
+            </div>
+          </div>
+          <strong>Профессионально, но без давления.</strong>
+        </article>
+      </div>
+
+      <p class="freelance-killer-line">Не каждый клиент — это счёт на оплату. Иногда это просто человеческая договорённость.</p>
     </section>
   </main>
-  <footer class="footer-fixed text-center py-6 border-t w-full bg-white/90 flex-none px-0">
-    <p class="text-sm">© 2026 DebtMate<br>Честность и удобство — просто и надёжно.</p>
+  <style>
+    body {
+      background: #FDFDFD;
+    }
+    .debtmate-page {
+      color: #080809;
+      padding: 0;
+    }
+    .debtmate-hero,
+    .trust-section,
+    .friends-bank-section,
+    .mascots-section,
+    .iou-builder-section,
+    .conversation-section,
+    .journey-section,
+    .freelance-section {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+    .debtmate-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.72fr);
+      gap: 2rem;
+      align-items: center;
+      padding: 5rem 0 4rem;
+      min-height: 620px;
+    }
+    .debtmate-logo {
+      width: 108px;
+      height: 108px;
+      object-fit: contain;
+      border-radius: 26px;
+      box-shadow: 0 18px 48px rgba(9, 63, 238, 0.18);
+      margin-bottom: 1.8rem;
+    }
+    .debtmate-kicker {
+      color: #093FEE;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+    }
+    .debtmate-hero h1,
+    .trust-heading h2 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      letter-spacing: 0;
+      color: #080809;
+    }
+    .debtmate-hero h1 {
+      font-size: clamp(2.6rem, 6vw, 5.2rem);
+      line-height: 0.98;
+      font-weight: 900;
+      max-width: 850px;
+      margin-bottom: 1.45rem;
+    }
+    .debtmate-lead {
+      max-width: 660px;
+      color: #A3A7B2;
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+    .debtmate-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.4rem;
+      padding: 0 1.55rem;
+      border-radius: 0.8rem;
+      background: #093FEE;
+      color: #FDFDFD;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 16px 34px rgba(9, 63, 238, 0.24);
+      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    .debtmate-cta:hover {
+      transform: translateY(-2px);
+      background: #062FBE;
+      box-shadow: 0 18px 42px rgba(6, 47, 190, 0.3);
+    }
+    .debtmate-hero-panel {
+      display: grid;
+      gap: 1rem;
+      padding: 1.1rem;
+      border: 1px solid rgba(9, 63, 238, 0.14);
+      border-radius: 1.5rem;
+      background: linear-gradient(180deg, rgba(253, 253, 253, 0.9), rgba(9, 63, 238, 0.08));
+      box-shadow: 0 28px 70px rgba(6, 47, 190, 0.16);
+    }
+    .balance-card {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      min-height: 82px;
+      padding: 1.1rem;
+      border-radius: 1rem;
+      background: #FDFDFD;
+      color: #A3A7B2;
+      box-shadow: 0 10px 28px rgba(6, 47, 190, 0.08);
+    }
+    .balance-card strong {
+      color: #093FEE;
+      font-size: 1.2rem;
+      white-space: nowrap;
+    }
+    .balance-card-main {
+      min-height: 112px;
+      background: linear-gradient(180deg, #062FBE, #093FEE);
+      color: #FDFDFD;
+    }
+    .balance-card-main strong {
+      color: #FDFDFD;
+      font-size: 1.55rem;
+    }
+    .trust-section {
+      padding: 1rem 0 5rem;
+    }
+    .trust-heading {
+      max-width: 820px;
+      margin-bottom: 2rem;
+    }
+    .trust-heading h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.08;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    .trust-heading p {
+      color: #A3A7B2;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.65;
+    }
+    .moments-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .moment-card {
+      min-height: 230px;
+      padding: 1.35rem;
+      border-radius: 1rem;
+      background: #FDFDFD;
+      box-shadow: 0 16px 38px rgba(6, 47, 190, 0.08);
+      border: 1px solid rgba(8, 8, 9, 0.07);
+    }
+    .moment-card-wide {
+      grid-column: span 2;
+      min-height: 190px;
+    }
+    .moment-icon {
+      font-size: 2rem;
+      margin-bottom: 0.9rem;
+    }
+    .moment-card h3 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: 1.18rem;
+      font-weight: 900;
+      color: #080809;
+      margin-bottom: 0.65rem;
+    }
+    .moment-card blockquote {
+      color: #093FEE;
+      font-size: 1.12rem;
+      font-weight: 800;
+      line-height: 1.4;
+      margin: 0 0 1rem;
+    }
+    .moment-card p {
+      color: #A3A7B2;
+      line-height: 1.6;
+    }
+    .friends-bank-section {
+      padding: 0 0 5rem;
+    }
+    .friends-bank-content {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.64fr) minmax(390px, 1fr);
+      gap: clamp(1.4rem, 4vw, 3rem);
+      align-items: start;
+      border-radius: 1.2rem;
+      padding: clamp(1.3rem, 4vw, 3rem);
+      background:
+        linear-gradient(90deg, rgba(9, 63, 238, 0.055), transparent 38%),
+        #FDFDFD;
+      border: 1px solid rgba(9, 63, 238, 0.12);
+      box-shadow: 0 26px 70px rgba(6, 47, 190, 0.1);
+    }
+    .friends-bank-intro {
+      position: sticky;
+      top: 1rem;
+    }
+    .section-label {
+      color: #093FEE;
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    .friends-bank-content h2 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: clamp(2rem, 3.8vw, 3.35rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: 0;
+      color: #080809;
+      max-width: 520px;
+    }
+    .friends-bank-copy {
+      display: grid;
+      gap: 0.95rem;
+      font-size: 1.05rem;
+      line-height: 1.72;
+      color: #4C5261;
+    }
+    .belief-quote {
+      margin: 0;
+      border-left: 4px solid #093FEE;
+      border-radius: 0.8rem;
+      padding: 1rem 1.1rem;
+      background: rgba(9, 63, 238, 0.07);
+      color: #080809;
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-weight: 900;
+      line-height: 1.35;
+    }
+    .question-text {
+      color: #093FEE;
+      font-size: clamp(1.22rem, 2.2vw, 1.65rem);
+      font-weight: 900;
+      line-height: 1.35;
+    }
+    .bank-flow {
+      display: grid;
+      gap: 0.8rem;
+      margin: 0.2rem 0;
+      padding: 1.1rem 1.2rem;
+      border-radius: 1rem;
+      background: #F5F7FC;
+      border: 1px solid rgba(8, 8, 9, 0.06);
+    }
+    .thought-kicker {
+      color: #080809;
+      font-weight: 900;
+      margin-top: 0.2rem;
+    }
+    .question-text-final {
+      padding: 1.1rem 1.2rem;
+      border-radius: 1rem;
+      background: linear-gradient(180deg, #062FBE, #093FEE);
+      color: #FDFDFD;
+      box-shadow: 0 18px 42px rgba(6, 47, 190, 0.18);
+    }
+    .mascots-section {
+      padding: 0 0 5.5rem;
+    }
+    .mascots-heading {
+      max-width: 780px;
+      margin-bottom: 2rem;
+    }
+    .mascots-heading h2 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: 0;
+      color: #080809;
+      margin-bottom: 0.9rem;
+    }
+    .mascots-heading p {
+      color: #A3A7B2;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.65;
+    }
+    .mascot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .mascot-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 640px;
+      border: 1px solid rgba(9, 63, 238, 0.12);
+      border-radius: 1.2rem;
+      background: #FDFDFD;
+      box-shadow: 0 22px 56px rgba(6, 47, 190, 0.11);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .mascot-card:hover {
+      border-color: rgba(9, 63, 238, 0.28);
+      box-shadow: 0 30px 70px rgba(6, 47, 190, 0.18);
+      transform: perspective(900px) rotateX(1.2deg) rotateY(-1.2deg) translateY(-3px);
+    }
+    .debik-card:hover {
+      transform: perspective(900px) rotateX(1deg) rotateY(1.4deg) translateY(-3px);
+    }
+    .mascot-note {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.1rem;
+      z-index: 3;
+      max-width: 260px;
+      border: 1px solid rgba(9, 63, 238, 0.18);
+      border-radius: 0.75rem;
+      background: #FDFDFD;
+      color: #080809;
+      font-weight: 900;
+      line-height: 1.35;
+      opacity: 0;
+      padding: 0.85rem 0.95rem;
+      box-shadow: 0 16px 38px rgba(6, 47, 190, 0.16);
+      transform: translateY(-8px) rotate(1deg);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+    .mascot-card:hover .mascot-note {
+      opacity: 1;
+      transform: translateY(0) rotate(1deg);
+    }
+    .mascot-visual {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 330px;
+      padding: 1.4rem 1.4rem 0;
+      background: linear-gradient(180deg, rgba(9, 63, 238, 0.08), rgba(253, 253, 253, 0));
+    }
+    .mascot-visual img {
+      width: min(78%, 330px);
+      height: 320px;
+      object-fit: contain;
+      object-position: bottom center;
+      filter: drop-shadow(0 18px 24px rgba(6, 47, 190, 0.16));
+      transition: transform 0.28s ease, filter 0.28s ease;
+    }
+    .mascot-card:hover .mascot-visual img {
+      filter: drop-shadow(0 22px 30px rgba(6, 47, 190, 0.22));
+    }
+    .finn-card:hover .mascot-visual img {
+      animation: finn-steady 1.5s ease-in-out infinite;
+    }
+    .debik-card:hover .mascot-visual img {
+      animation: debik-calm-bounce 1.4s ease-in-out infinite;
+    }
+    @keyframes finn-steady {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      45% { transform: translateY(-3px) rotate(-0.7deg); }
+    }
+    @keyframes debik-calm-bounce {
+      0%, 100% { transform: translateY(0); }
+      45% { transform: translateY(-5px); }
+    }
+    .mascot-tool {
+      position: absolute;
+      left: 1.35rem;
+      bottom: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 3.1rem;
+      min-height: 2.55rem;
+      border-radius: 0.7rem;
+      background: #093FEE;
+      color: #FDFDFD;
+      font-weight: 900;
+      opacity: 0;
+      transform: translateY(10px);
+      box-shadow: 0 12px 24px rgba(9, 63, 238, 0.24);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+    .debik-tool {
+      font-size: 0.9rem;
+    }
+    .mascot-card:hover .mascot-tool {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .mascot-copy {
+      padding: 1.35rem;
+    }
+    .mascot-kicker {
+      display: block;
+      color: #093FEE;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.45rem;
+    }
+    .mascot-copy h3 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      color: #080809;
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 0.45rem;
+    }
+    .mascot-role {
+      color: #080809;
+      font-weight: 900;
+      margin-bottom: 0.6rem;
+    }
+    .mascot-copy p:not(.mascot-role) {
+      color: #A3A7B2;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .mascot-copy blockquote {
+      margin: 0 0 1.1rem;
+      border-left: 4px solid #093FEE;
+      color: #080809;
+      font-weight: 900;
+      line-height: 1.45;
+      padding-left: 0.85rem;
+    }
+    .mascot-link {
+      color: #093FEE;
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .mascot-link:hover {
+      color: #062FBE;
+    }
+    .iou-builder-section {
+      padding: 0 0 5.5rem;
+    }
+    .iou-builder-heading {
+      max-width: 880px;
+      margin-bottom: 2rem;
+    }
+    .iou-builder-heading h2 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: 0;
+      color: #080809;
+      margin-bottom: 1rem;
+    }
+    .iou-builder-heading p {
+      max-width: 780px;
+      color: #A3A7B2;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.65;
+      margin-bottom: 1.35rem;
+    }
+    .iou-builder {
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(360px, 0.92fr);
+      gap: 1.1rem;
+      align-items: start;
+      border: 1px solid rgba(9, 63, 238, 0.12);
+      border-radius: 1.25rem;
+      padding: 1rem;
+      background: linear-gradient(180deg, rgba(253, 253, 253, 0.96), rgba(9, 63, 238, 0.06));
+      box-shadow: 0 28px 70px rgba(6, 47, 190, 0.12);
+    }
+    .iou-form-panel,
+    .iou-preview-panel {
+      border-radius: 1rem;
+    }
+    .iou-form-panel {
+      display: grid;
+      gap: 0.9rem;
+    }
+    .form-step {
+      padding: 1.1rem;
+      border-radius: 1rem;
+      background: #FDFDFD;
+      border: 1px solid rgba(8, 8, 9, 0.07);
+      box-shadow: 0 12px 28px rgba(6, 47, 190, 0.07);
+    }
+    .step-label {
+      display: inline-flex;
+      margin-bottom: 0.55rem;
+      color: #093FEE;
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .form-step h3 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      color: #080809;
+      font-size: 1.08rem;
+      font-weight: 900;
+      margin-bottom: 0.8rem;
+    }
+    .choice-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 0.85rem;
+    }
+    .choice-chip {
+      border: 1px solid rgba(9, 63, 238, 0.18);
+      border-radius: 999px;
+      background: #FDFDFD;
+      color: #080809;
+      cursor: pointer;
+      font-weight: 800;
+      line-height: 1.2;
+      padding: 0.62rem 0.82rem;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .choice-chip:hover,
+    .choice-chip.active {
+      background: #093FEE;
+      border-color: #093FEE;
+      color: #FDFDFD;
+      box-shadow: 0 10px 22px rgba(9, 63, 238, 0.18);
+      transform: translateY(-1px);
+    }
+    .field-label {
+      display: block;
+      color: #A3A7B2;
+      font-size: 0.88rem;
+      font-weight: 800;
+      margin-bottom: 0.45rem;
+    }
+    .field-label span {
+      font-weight: 600;
+    }
+    .iou-input {
+      width: 100%;
+      min-height: 3.1rem;
+      border: 1px solid rgba(8, 8, 9, 0.1);
+      border-radius: 0.85rem;
+      background: #FDFDFD;
+      color: #080809;
+      font-weight: 800;
+      outline: none;
+      padding: 0 0.95rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .iou-input:focus {
+      border-color: #093FEE;
+      box-shadow: 0 0 0 4px rgba(9, 63, 238, 0.1);
+    }
+    .amount-input {
+      min-height: 4.15rem;
+      color: #093FEE;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 0.9rem;
+    }
+    .iou-preview-panel {
+      position: sticky;
+      top: 1rem;
+      display: grid;
+      gap: 1rem;
+      align-self: start;
+    }
+    .preview-flip,
+    .preview-card,
+    .conversion-card {
+      border-radius: 1.15rem;
+    }
+    .preview-flip {
+      display: grid;
+      perspective: 1400px;
+    }
+    .preview-card {
+      grid-area: 1 / 1;
+      padding: clamp(1.25rem, 3vw, 1.8rem);
+      background: linear-gradient(180deg, #062FBE, #093FEE);
+      color: #FDFDFD;
+      overflow: hidden;
+      backface-visibility: hidden;
+      box-shadow: 0 22px 56px rgba(6, 47, 190, 0.16);
+      transition: transform 0.62s cubic-bezier(0.2, 0.72, 0.2, 1), box-shadow 0.28s;
+    }
+    .preview-card-front {
+      pointer-events: auto;
+    }
+    .preview-card-back {
+      background: linear-gradient(180deg, #FDFDFD 0%, #EEF4FF 100%);
+      border: 1px solid rgba(9, 63, 238, 0.14);
+      color: #080809;
+      pointer-events: none;
+      transform: rotateY(180deg);
+    }
+    .preview-card-back .preview-topline,
+    .preview-card-back .preview-details dt,
+    .preview-card-back .preview-terms span,
+    .preview-card-back .preview-microcopy {
+      color: #6D7280;
+    }
+    .preview-card-back .preview-status {
+      background: rgba(9, 63, 238, 0.1);
+      color: #093FEE;
+    }
+    .preview-card-back .preview-details div {
+      border-bottom-color: rgba(9, 63, 238, 0.12);
+    }
+    .preview-card-back .preview-amount {
+      color: #093FEE;
+    }
+    .preview-flip.is-flipped .preview-card-front {
+      pointer-events: none;
+      transform: rotateY(-180deg);
+    }
+    .preview-flip.is-flipped .preview-card-back {
+      pointer-events: auto;
+      transform: rotateY(0deg);
+    }
+    .preview-flip.preview-pulse {
+      animation: preview-pulse 0.42s ease;
+    }
+    @keyframes preview-pulse {
+      0% { transform: scale(1); }
+      45% { transform: scale(1.012); }
+      100% { transform: scale(1); }
+    }
+    .preview-topline,
+    .preview-details div,
+    .preview-link-box {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+    .preview-topline {
+      color: rgba(253, 253, 253, 0.76);
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .preview-status {
+      border-radius: 999px;
+      background: rgba(253, 253, 253, 0.14);
+      color: #FDFDFD;
+      letter-spacing: 0;
+      padding: 0.45rem 0.65rem;
+      text-transform: none;
+    }
+    .preview-route {
+      font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+      font-weight: 900;
+      margin-bottom: 0.45rem;
+    }
+    .preview-amount {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: clamp(3rem, 8vw, 5.8rem);
+      font-weight: 900;
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+    }
+    .preview-details {
+      display: grid;
+      gap: 0.65rem;
+      margin: 0 0 1.1rem;
+    }
+    .preview-details div {
+      border-bottom: 1px solid rgba(253, 253, 253, 0.16);
+      padding-bottom: 0.65rem;
+    }
+    .preview-details dt,
+    .preview-terms span,
+    .preview-link-box span {
+      color: rgba(253, 253, 253, 0.68);
+      font-weight: 800;
+    }
+    .preview-details dd {
+      margin: 0;
+      text-align: right;
+      font-weight: 900;
+    }
+    .preview-terms {
+      margin-bottom: 1.15rem;
+    }
+    .preview-terms ul {
+      display: grid;
+      gap: 0.35rem;
+      margin: 0.6rem 0 0;
+      padding: 0;
+    }
+    .preview-terms li {
+      list-style: none;
+      font-weight: 800;
+    }
+    .preview-link-box {
+      width: 100%;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(253, 253, 253, 0.18);
+      background: rgba(253, 253, 253, 0.12);
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
+      padding: 0.9rem 1rem;
+      margin-bottom: 1rem;
+      text-align: left;
+      transition: background 0.2s, transform 0.2s, border-color 0.2s;
+    }
+    .preview-link-box:hover {
+      background: rgba(253, 253, 253, 0.18);
+      border-color: rgba(253, 253, 253, 0.32);
+      transform: translateY(-1px);
+    }
+    .preview-link-box strong {
+      overflow-wrap: anywhere;
+      text-align: right;
+    }
+    .counterparty-confirm-box {
+      display: grid;
+      gap: 0.55rem;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(9, 63, 238, 0.14);
+      background: #FDFDFD;
+      box-shadow: 0 12px 28px rgba(6, 47, 190, 0.08);
+      margin-bottom: 0.9rem;
+      padding: 0.95rem 1rem;
+    }
+    .counterparty-confirm-box span {
+      color: #6D7280;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+    .counterparty-confirm-box strong {
+      color: #093FEE;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-weight: 900;
+    }
+    .return-preview-button {
+      width: 100%;
+      min-height: 3rem;
+      border: 1px solid rgba(9, 63, 238, 0.18);
+      border-radius: 0.9rem;
+      background: rgba(9, 63, 238, 0.08);
+      color: #093FEE;
+      cursor: pointer;
+      font-weight: 900;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .return-preview-button:hover {
+      background: rgba(9, 63, 238, 0.13);
+      transform: translateY(-1px);
+    }
+    .preview-microcopy {
+      color: rgba(253, 253, 253, 0.8);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .conversion-card {
+      padding: 1.15rem;
+      border: 1px solid rgba(9, 63, 238, 0.12);
+      background: #FDFDFD;
+      box-shadow: 0 22px 56px rgba(6, 47, 190, 0.16);
+    }
+    .ready-line {
+      color: #093FEE;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: 1.18rem;
+      font-weight: 900;
+      margin-bottom: 0.85rem;
+    }
+    .conversion-card p {
+      color: #A3A7B2;
+      font-size: 0.95rem;
+      margin-top: 0.85rem;
+    }
+    .conversion-card strong {
+      color: #080809;
+    }
+    .conversation-section {
+      padding: 0 0 5.5rem;
+    }
+    .conversation-heading {
+      max-width: 880px;
+      margin-bottom: 2rem;
+    }
+    .conversation-heading h2 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4.3rem);
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: 0;
+      color: #080809;
+      margin-bottom: 1rem;
+    }
+    .conversation-heading p {
+      max-width: 760px;
+      color: #A3A7B2;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.65;
+    }
+    .conversation-story {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .drafts-card,
+    .finn-message-card {
+      border: 1px solid rgba(8, 8, 9, 0.07);
+      border-radius: 1rem;
+      background: #FDFDFD;
+      box-shadow: 0 14px 34px rgba(6, 47, 190, 0.08);
+      padding: clamp(1.05rem, 3vw, 1.55rem);
+    }
+    .story-label {
+      display: block;
+      color: #093FEE;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.9rem;
+      text-transform: uppercase;
+    }
+    .drafts-card {
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      background: linear-gradient(180deg, rgba(253, 253, 253, 0.98), rgba(247, 248, 252, 0.92));
+      overflow: hidden;
+    }
+    .draft-focus {
+      position: relative;
+      min-height: 8.6rem;
+      display: grid;
+      place-items: center start;
+    }
+    .draft-line {
+      justify-self: start;
+      max-width: min(100%, 28rem);
+      border: 1px solid rgba(8, 8, 9, 0.06);
+      border-radius: 1.2rem;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 12px 30px rgba(6, 47, 190, 0.07);
+      padding: 1rem 1.1rem;
+      transform: translateY(0);
+    }
+    .draft-line p {
+      color: #080809;
+      display: inline-block;
+      font-weight: 900;
+      line-height: 1.45;
+      margin-bottom: 0;
+      position: relative;
+      white-space: nowrap;
+      min-height: 1.45em;
+    }
+    .draft-line p::after {
+      content: '';
+      display: inline-block;
+      width: 2px;
+      height: 1.15em;
+      background: #093FEE;
+      margin-left: 0.12em;
+      transform: translateY(0.18em);
+      animation: draft-caret 0.9s step-end infinite;
+    }
+    .draft-input-shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border: 1px solid rgba(8, 8, 9, 0.08);
+      border-radius: 999px;
+      background: rgba(253, 253, 253, 0.95);
+      color: #A3A7B2;
+      font-weight: 800;
+      min-height: 3.05rem;
+      margin-top: 0.15rem;
+      padding: 0 0.55rem 0 1rem;
+    }
+    .draft-input-shell i {
+      width: 2.05rem;
+      height: 2.05rem;
+      border-radius: 50%;
+      background: rgba(9, 63, 238, 0.12);
+      position: relative;
+    }
+    .draft-input-shell i::before {
+      content: '';
+      position: absolute;
+      inset: 0.62rem 0.56rem;
+      border-top: 2px solid #093FEE;
+      border-right: 2px solid #093FEE;
+      transform: rotate(-45deg);
+    }
+    @keyframes draft-caret {
+      0%, 55% { opacity: 1; }
+      56%, 100% { opacity: 0; }
+    }
+    .finn-message-card {
+      align-self: stretch;
+      background: linear-gradient(180deg, #062FBE, #093FEE);
+      color: #FDFDFD;
+      box-shadow: 0 22px 56px rgba(6, 47, 190, 0.16);
+    }
+    .finn-message-card .story-label {
+      color: rgba(253, 253, 253, 0.72);
+    }
+    .notification-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(9, 63, 238, 0.16);
+      border-radius: 1.25rem;
+      background: linear-gradient(180deg, #FDFDFD 0%, #F2F6FF 100%);
+      color: #080809;
+      box-shadow: 0 24px 50px rgba(6, 47, 190, 0.16);
+      padding: clamp(1rem, 2.5vw, 1.25rem);
+    }
+    .notification-card::before {
+      content: '';
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 5px;
+      background: #093FEE;
+    }
+    .finn-message-top {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+    .finn-message-top img {
+      width: 56px;
+      height: 56px;
+      border: 2px solid #FDFDFD;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #FDFDFD, #DCE5FF);
+      box-shadow: 0 10px 24px rgba(6, 47, 190, 0.16), 0 0 0 5px rgba(9, 63, 238, 0.12);
+      object-fit: cover;
+      object-position: 50% 28%;
+    }
+    .finn-message-top strong {
+      display: block;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 900;
+      line-height: 1.2;
+      color: #080809;
+    }
+    .finn-message-top span {
+      display: block;
+      color: #6D7280;
+      font-size: 0.86rem;
+      font-weight: 800;
+      margin-top: 0.15rem;
+    }
+    .notification-card p {
+      position: relative;
+      z-index: 1;
+      color: #1D2433;
+      font-size: clamp(1rem, 2vw, 1.16rem);
+      font-weight: 800;
+      line-height: 1.5;
+      margin: 0;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .draft-line,
+      .draft-line p,
+      .draft-line p::after,
+      .finn-message-card,
+      .preview-card {
+        animation: none;
+        transition: none;
+      }
+      .draft-line {
+        position: static;
+        opacity: 1;
+        transform: none;
+      }
+      .draft-line p {
+        white-space: normal;
+      }
+      .draft-line p::after {
+        display: none;
+      }
+    }
+    .personal-message-note {
+      color: #080809;
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      font-weight: 900;
+      line-height: 1.45;
+      margin: 0 0 1rem;
+    }
+    .conversation-simulator {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.62fr) minmax(0, 1fr);
+      gap: 1rem;
+      align-items: stretch;
+      border: 1px solid rgba(9, 63, 238, 0.12);
+      border-radius: 1.25rem;
+      padding: 1rem;
+      background: linear-gradient(180deg, rgba(253, 253, 253, 0.96), rgba(9, 63, 238, 0.06));
+      box-shadow: 0 28px 70px rgba(6, 47, 190, 0.12);
+    }
+    .scenario-panel,
+    .chat-card {
+      border-radius: 1rem;
+      background: #FDFDFD;
+      border: 1px solid rgba(8, 8, 9, 0.07);
+      box-shadow: 0 14px 34px rgba(6, 47, 190, 0.08);
+    }
+    .scenario-panel,
+    .chat-card {
+      padding: clamp(1.05rem, 3vw, 1.55rem);
+    }
+    .scenario-panel h3 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      color: #080809;
+      font-size: 1.15rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    .scenario-list,
+    .chat-preview-panel,
+    .chat-before-after {
+      display: grid;
+      gap: 0.75rem;
+    }
+    .scenario-card {
+      width: 100%;
+      min-height: 3.25rem;
+      border: 1px solid rgba(9, 63, 238, 0.14);
+      border-radius: 0.85rem;
+      background: #FDFDFD;
+      color: #080809;
+      cursor: pointer;
+      font-weight: 900;
+      line-height: 1.25;
+      padding: 0.85rem 0.95rem;
+      text-align: left;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .scenario-card:hover,
+    .scenario-card.active {
+      background: #093FEE;
+      border-color: #093FEE;
+      color: #FDFDFD;
+      box-shadow: 0 12px 24px rgba(9, 63, 238, 0.18);
+      transform: translateY(-1px);
+    }
+    .chat-topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      color: #A3A7B2;
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    .chat-topline span:first-child {
+      color: #093FEE;
+    }
+    .tone-selector {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      border-radius: 999px;
+      background: rgba(9, 63, 238, 0.07);
+      padding: 0.35rem;
+      margin-bottom: 1rem;
+    }
+    .tone-chip {
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: #080809;
+      cursor: pointer;
+      font-weight: 900;
+      padding: 0.58rem 0.85rem;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .tone-chip.active {
+      background: #093FEE;
+      color: #FDFDFD;
+      box-shadow: 0 10px 20px rgba(9, 63, 238, 0.18);
+    }
+    .chat-before-after {
+      margin-bottom: 1rem;
+    }
+    .message-block {
+      border-radius: 1rem;
+      padding: 1rem;
+    }
+    .message-block.message-pulse {
+      animation: message-pulse 0.38s ease;
+    }
+    @keyframes message-pulse {
+      0% { transform: scale(1); }
+      45% { transform: scale(1.012); }
+      100% { transform: scale(1); }
+    }
+    .message-block span {
+      display: block;
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.11em;
+      margin-bottom: 0.45rem;
+      text-transform: uppercase;
+    }
+    .message-block p {
+      font-size: 1.05rem;
+      font-weight: 800;
+      line-height: 1.55;
+    }
+    .before-message {
+      background: rgba(163, 167, 178, 0.12);
+      color: #080809;
+    }
+    .before-message span {
+      color: #A3A7B2;
+    }
+    .after-message {
+      background: linear-gradient(180deg, #062FBE, #093FEE);
+      color: #FDFDFD;
+      box-shadow: 0 18px 40px rgba(6, 47, 190, 0.18);
+    }
+    .after-message span {
+      color: rgba(253, 253, 253, 0.7);
+    }
+    .payment-plan-card {
+      border: 1px solid rgba(9, 63, 238, 0.14);
+      border-radius: 1rem;
+      background: rgba(9, 63, 238, 0.07);
+      color: #080809;
+      margin-bottom: 1rem;
+      padding: 1rem;
+    }
+    .payment-plan-card span {
+      display: block;
+      color: #093FEE;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.45rem;
+      text-transform: uppercase;
+    }
+    .payment-plan-card strong {
+      display: block;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      color: #080809;
+      font-size: clamp(1.7rem, 4vw, 2.7rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 0.35rem;
+    }
+    .payment-plan-card p {
+      color: #A3A7B2;
+      font-weight: 800;
+    }
+    .rewrite-button {
+      width: 100%;
+      min-height: 3.25rem;
+      border: 0;
+      border-radius: 0.85rem;
+      background: #093FEE;
+      color: #FDFDFD;
+      cursor: pointer;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .rewrite-button:hover {
+      background: #062FBE;
+      box-shadow: 0 14px 30px rgba(6, 47, 190, 0.22);
+      transform: translateY(-1px);
+    }
+    .why-card {
+      border-left: 4px solid #093FEE;
+      padding-left: 0.95rem;
+    }
+    .why-card h4 {
+      color: #080809;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 900;
+      margin-bottom: 0.35rem;
+    }
+    .why-card p {
+      color: #A3A7B2;
+      line-height: 1.6;
+    }
+    .conversation-positioning {
+      color: #080809;
+      font-weight: 900;
+      line-height: 1.5;
+      padding: 0 0.25rem;
+    }
+    .journey-section {
+      padding: 0 0 5.5rem;
+    }
+    .journey-heading {
+      max-width: 920px;
+      margin-bottom: 1.3rem;
+    }
+    .journey-heading h2 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: clamp(2.15rem, 5vw, 4.35rem);
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: 0;
+      color: #080809;
+      margin-bottom: 1rem;
+    }
+    .journey-heading p {
+      max-width: 820px;
+      color: #A3A7B2;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.65;
+    }
+    .journey-toggle {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 2rem;
+    }
+    .journey-chip {
+      border: 1px solid rgba(9, 63, 238, 0.18);
+      border-radius: 999px;
+      background: #FDFDFD;
+      color: #080809;
+      cursor: pointer;
+      font-weight: 900;
+      padding: 0.68rem 0.95rem;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .journey-chip:hover,
+    .journey-chip.active {
+      background: #093FEE;
+      border-color: #093FEE;
+      color: #FDFDFD;
+      box-shadow: 0 12px 24px rgba(9, 63, 238, 0.18);
+      transform: translateY(-1px);
+    }
+    .journey-timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.8rem;
+      padding-top: 2.3rem;
+    }
+    .journey-line {
+      position: absolute;
+      top: 1rem;
+      left: 8%;
+      right: 8%;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(9, 63, 238, 0.12);
+      overflow: hidden;
+    }
+    .journey-line-fill {
+      display: block;
+      width: var(--journey-progress, 0%);
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #062FBE, #093FEE);
+      transition: width 0.45s ease;
+    }
+    .journey-step {
+      position: relative;
+      display: grid;
+      gap: 0.75rem;
+      align-content: start;
+    }
+    .journey-icon {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: center;
+      width: 3rem;
+      height: 3rem;
+      border: 1px solid rgba(9, 63, 238, 0.16);
+      border-radius: 1rem;
+      background: #FDFDFD;
+      color: #093FEE;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(6, 47, 190, 0.12);
+      transition: background 0.25s, color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .journey-step.is-visible .journey-icon {
+      background: #093FEE;
+      color: #FDFDFD;
+      box-shadow: 0 16px 32px rgba(9, 63, 238, 0.22);
+      transform: translateY(-2px);
+    }
+    .journey-card {
+      min-height: 350px;
+      border: 1px solid rgba(8, 8, 9, 0.07);
+      border-radius: 1rem;
+      background: #FDFDFD;
+      padding: 1rem;
+      box-shadow: 0 16px 38px rgba(6, 47, 190, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .journey-card:hover,
+    .journey-step.is-visible .journey-card {
+      border-color: rgba(9, 63, 238, 0.18);
+      box-shadow: 0 22px 48px rgba(6, 47, 190, 0.14);
+      transform: translateY(-3px);
+    }
+    .journey-step-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.65rem;
+      height: 1.65rem;
+      border-radius: 0.5rem;
+      background: rgba(9, 63, 238, 0.08);
+      color: #093FEE;
+      font-weight: 900;
+      margin-bottom: 0.8rem;
+    }
+    .journey-card h3 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      color: #080809;
+      font-size: 1.05rem;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+    .journey-card p {
+      color: #A3A7B2;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin-bottom: 0.85rem;
+    }
+    .journey-card small {
+      display: block;
+      color: #080809;
+      font-weight: 900;
+      line-height: 1.45;
+      margin-top: 0.85rem;
+    }
+    .journey-mini {
+      border-radius: 0.85rem;
+      background: rgba(9, 63, 238, 0.07);
+      color: #080809;
+      font-weight: 900;
+      padding: 0.85rem;
+    }
+    .amount-mini strong {
+      display: block;
+      color: #093FEE;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: 2.2rem;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .amount-mini span,
+    .progress-copy span {
+      color: #A3A7B2;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+    .chat-mini,
+    .bubble-mini,
+    .closed-mini {
+      background: linear-gradient(180deg, #062FBE, #093FEE);
+      color: #FDFDFD;
+      line-height: 1.45;
+    }
+    .bubble-mini {
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .journey-card:hover .bubble-mini {
+      box-shadow: 0 14px 28px rgba(6, 47, 190, 0.2);
+      transform: translateY(-5px);
+    }
+    .progress-copy {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .progress-copy strong {
+      color: #093FEE;
+    }
+    .journey-progress {
+      height: 0.55rem;
+      border-radius: 999px;
+      background: rgba(9, 63, 238, 0.12);
+      overflow: hidden;
+    }
+    .journey-progress span {
+      display: block;
+      width: 50%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #062FBE, #093FEE);
+    }
+    .closed-mini {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.2rem;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: 1.25rem;
+    }
+    .freelance-section {
+      padding: 0 0 5.5rem;
+    }
+    .freelance-heading {
+      max-width: 880px;
+      margin-bottom: 2rem;
+    }
+    .freelance-label,
+    .pain-kicker {
+      display: block;
+      color: #093FEE;
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      margin-bottom: 0.7rem;
+      text-transform: uppercase;
+    }
+    .freelance-heading h2 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: clamp(2.15rem, 5vw, 4.35rem);
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: 0;
+      color: #080809;
+      margin-bottom: 1rem;
+    }
+    .freelance-heading p {
+      color: #A3A7B2;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.65;
+    }
+    .freelance-hero-card {
+      display: grid;
+      grid-template-columns: minmax(0, 0.82fr) minmax(320px, 0.78fr);
+      gap: 1rem;
+      align-items: stretch;
+      border-radius: 1.2rem;
+      background: linear-gradient(180deg, #062FBE, #093FEE);
+      color: #FDFDFD;
+      padding: clamp(1.25rem, 4vw, 2.2rem);
+      box-shadow: 0 26px 70px rgba(6, 47, 190, 0.22);
+      margin-bottom: 1rem;
+    }
+    .freelance-scenario-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .freelance-scenario-copy h3 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: clamp(2rem, 4.4vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+    .freelance-scenario-copy p {
+      max-width: 620px;
+      color: rgba(253, 253, 253, 0.78);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      font-weight: 800;
+    }
+    .project-payment-card {
+      border-radius: 1rem;
+      background: #FDFDFD;
+      color: #080809;
+      padding: 1.2rem;
+      box-shadow: 0 18px 44px rgba(8, 8, 9, 0.12);
+    }
+    .project-payment-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: start;
+      margin-bottom: 0.8rem;
+    }
+    .project-payment-top span {
+      color: #A3A7B2;
+      font-weight: 900;
+    }
+    .project-payment-top strong {
+      color: #093FEE;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 0.95;
+    }
+    .project-payment-card > p {
+      color: #080809;
+      font-weight: 900;
+      margin-bottom: 0.9rem;
+    }
+    .payment-stages {
+      display: grid;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+    .payment-stages div {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      border: 1px solid rgba(9, 63, 238, 0.12);
+      border-radius: 0.8rem;
+      background: rgba(9, 63, 238, 0.06);
+      padding: 0.8rem 0.9rem;
+    }
+    .payment-stages span {
+      color: #093FEE;
+      font-weight: 900;
+    }
+    .payment-stages strong {
+      color: #080809;
+      text-align: right;
+    }
+    .project-payment-card small {
+      color: #A3A7B2;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+    .freelance-pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .freelance-pain-card {
+      min-height: 320px;
+      border: 1px solid rgba(8, 8, 9, 0.07);
+      border-radius: 1rem;
+      background: #FDFDFD;
+      padding: 1.15rem;
+      box-shadow: 0 16px 38px rgba(6, 47, 190, 0.08);
+    }
+    .freelance-pain-card h3 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      color: #080809;
+      font-size: 1.35rem;
+      font-weight: 900;
+      line-height: 1.18;
+      margin-bottom: 0.9rem;
+    }
+    .freelance-pain-card p {
+      color: #A3A7B2;
+      line-height: 1.6;
+      margin-bottom: 0.85rem;
+    }
+    .freelance-pain-card ul {
+      display: grid;
+      gap: 0.55rem;
+      margin: 0;
+      padding: 0;
+    }
+    .freelance-pain-card li {
+      list-style: none;
+      color: #080809;
+      font-weight: 900;
+    }
+    .freelance-progress-card {
+      border-radius: 0.9rem;
+      background: rgba(9, 63, 238, 0.07);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .freelance-progress-copy {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .freelance-progress-copy strong {
+      color: #093FEE;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    .freelance-progress-copy span {
+      color: #A3A7B2;
+      font-weight: 800;
+      text-align: right;
+    }
+    .freelance-progress {
+      height: 0.6rem;
+      border-radius: 999px;
+      background: rgba(9, 63, 238, 0.12);
+      overflow: hidden;
+    }
+    .freelance-progress span {
+      display: block;
+      width: 53%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #062FBE, #093FEE);
+    }
+    .followup-example {
+      display: grid;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+    }
+    .followup-example div {
+      border-radius: 0.85rem;
+      padding: 0.85rem;
+    }
+    .followup-example div:first-child {
+      background: rgba(163, 167, 178, 0.12);
+    }
+    .followup-example div:last-child {
+      background: linear-gradient(180deg, #062FBE, #093FEE);
+      color: #FDFDFD;
+    }
+    .followup-example span {
+      display: block;
+      color: inherit;
+      opacity: 0.72;
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+    }
+    .followup-example p {
+      color: inherit;
+      font-weight: 800;
+      margin: 0;
+    }
+    .followup-card > strong {
+      display: block;
+      color: #093FEE;
+      font-weight: 900;
+      line-height: 1.4;
+    }
+    .freelance-killer-line {
+      color: #080809;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      font-weight: 900;
+      line-height: 1.16;
+      max-width: 900px;
+    }
+    .debtmate-footer {
+      background: linear-gradient(180deg, #062FBE, #093FEE);
+      border-color: rgba(253, 253, 253, 0.18);
+      color: #FDFDFD;
+    }
+    @media (max-width: 860px) {
+      .debtmate-hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 3.5rem 0 3rem;
+      }
+      .debtmate-hero-panel {
+        max-width: 560px;
+      }
+      .friends-bank-content {
+        grid-template-columns: 1fr;
+      }
+      .friends-bank-intro {
+        position: static;
+      }
+      .mascot-grid {
+        grid-template-columns: 1fr;
+      }
+      .mascot-card {
+        min-height: auto;
+      }
+      .iou-builder {
+        grid-template-columns: 1fr;
+      }
+      .iou-preview-panel {
+        position: static;
+      }
+      .conversation-simulator {
+        grid-template-columns: 1fr;
+      }
+      .conversation-story {
+        grid-template-columns: 1fr;
+      }
+      .journey-timeline {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding-top: 0;
+        padding-left: 2.2rem;
+      }
+      .journey-line {
+        top: 1.5rem;
+        bottom: 1.5rem;
+        left: 0.85rem;
+        right: auto;
+        width: 4px;
+        height: auto;
+      }
+      .journey-line-fill {
+        width: 100%;
+        height: var(--journey-progress, 0%);
+      }
+      .journey-step {
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: start;
+      }
+      .journey-icon {
+        justify-self: start;
+        margin-left: -2.85rem;
+      }
+      .journey-card {
+        min-height: auto;
+      }
+      .freelance-hero-card,
+      .freelance-pain-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .debtmate-hero,
+      .trust-section,
+      .friends-bank-section,
+      .mascots-section,
+      .iou-builder-section,
+      .conversation-section,
+      .journey-section,
+      .freelance-section {
+        width: min(100% - 24px, 1120px);
+      }
+      .debtmate-logo {
+        width: 86px;
+        height: 86px;
+        border-radius: 22px;
+      }
+      .moments-grid {
+        grid-template-columns: 1fr;
+      }
+      .moment-card,
+      .moment-card-wide {
+        grid-column: auto;
+        min-height: auto;
+      }
+      .balance-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .iou-builder {
+        padding: 0.65rem;
+      }
+      .conversation-simulator {
+        padding: 0.65rem;
+      }
+      .chat-topline {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .journey-toggle {
+        gap: 0.45rem;
+      }
+      .journey-chip {
+        padding: 0.62rem 0.78rem;
+      }
+      .mascot-visual {
+        min-height: 280px;
+      }
+      .mascot-visual img {
+        height: 270px;
+      }
+      .preview-topline,
+      .preview-details div,
+      .preview-link-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .preview-details dd,
+      .preview-link-box strong {
+        text-align: left;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const builder = document.querySelector('.iou-builder');
+      if (!builder) return;
+
+      const personInput = document.getElementById('personName');
+      const amountInput = document.getElementById('iouAmount');
+      const reasonInput = document.getElementById('iouReason');
+      const commentInput = document.getElementById('iouComment');
+      const previewFlip = document.getElementById('agreementPreview');
+      const showCounterpartyPreview = document.getElementById('showCounterpartyPreview');
+      const returnOwnerPreview = document.getElementById('returnOwnerPreview');
+      const previewDirection = document.getElementById('previewDirection');
+      const previewAmount = document.getElementById('previewAmount');
+      const previewReason = document.getElementById('previewReason');
+      const previewReturn = document.getElementById('previewReturn');
+      const previewComment = document.getElementById('previewComment');
+      const previewTerms = document.getElementById('previewTerms');
+      const counterpartyDirection = document.getElementById('counterpartyDirection');
+      const counterpartyAmount = document.getElementById('counterpartyAmount');
+      const counterpartyPersonLabel = document.getElementById('counterpartyPersonLabel');
+      const counterpartyPerson = document.getElementById('counterpartyPerson');
+      const counterpartyReason = document.getElementById('counterpartyReason');
+      const counterpartyReturn = document.getElementById('counterpartyReturn');
+      const counterpartyComment = document.getElementById('counterpartyComment');
+      const counterpartyTerms = document.getElementById('counterpartyTerms');
+      const elapsedTime = document.getElementById('elapsedTime');
+      let chosenDirection = 'Александр → Матвей';
+      let chosenReturn = 'До 30 июня';
+      let pulseTimer;
+
+      function pulsePreview() {
+        if (!previewFlip) return;
+        window.clearTimeout(pulseTimer);
+        previewFlip.classList.remove('preview-pulse');
+        void previewFlip.offsetWidth;
+        previewFlip.classList.add('preview-pulse');
+        pulseTimer = window.setTimeout(() => previewFlip.classList.remove('preview-pulse'), 440);
+      }
+
+      function showOwnerSide() {
+        if (!previewFlip) return;
+        previewFlip.classList.remove('is-flipped');
+        previewFlip.querySelector('.preview-card-front').setAttribute('aria-hidden', 'false');
+        previewFlip.querySelector('.preview-card-back').setAttribute('aria-hidden', 'true');
+      }
+
+      function getPersonName() {
+        const personName = personInput.value.trim() || 'Матвей';
+        if (chosenDirection.includes('↔')) return `Александр ↔ ${personName}`;
+        if (chosenDirection.startsWith('Матвей')) return `${personName} → Александр`;
+        return `Александр → ${personName}`;
+      }
+
+      function getCounterpartyText() {
+        const personName = personInput.value.trim() || 'Матвей';
+        if (chosenDirection.includes('↔')) {
+          return {
+            title: `${personName} и Александр делят расход`,
+            label: 'Вторая сторона',
+            person: personName
+          };
+        }
+        if (chosenDirection.startsWith('Матвей')) {
+          return {
+            title: `Александр должен ${personName}`,
+            label: 'Кто вернёт',
+            person: 'Александр'
+          };
+        }
+        return {
+          title: `${personName} должен Александру`,
+          label: 'Кому вернуть',
+          person: 'Александр'
+        };
+      }
+
+      function updatePreview() {
+        previewDirection.textContent = getPersonName();
+        const amount = amountInput.value.trim() || '25 000 ₽';
+        const reason = reasonInput.value.trim() || 'Не указана';
+        const comment = commentInput.value.trim() || 'Без комментария';
+        previewAmount.textContent = amount;
+        previewReason.textContent = reason;
+        previewReturn.textContent = chosenReturn;
+        previewComment.textContent = comment;
+
+        const counterparty = getCounterpartyText();
+        counterpartyDirection.textContent = counterparty.title;
+        counterpartyAmount.textContent = amount;
+        counterpartyPersonLabel.textContent = counterparty.label;
+        counterpartyPerson.textContent = counterparty.person;
+        counterpartyReason.textContent = reason;
+        counterpartyReturn.textContent = chosenReturn;
+        counterpartyComment.textContent = comment;
+        showCounterpartyPreview.querySelector('strong').textContent = 'Показать экран второй стороны';
+
+        const activeTerms = Array.from(document.querySelectorAll('.terms-chips .choice-chip.active'))
+          .map((chip) => chip.dataset.term)
+          .filter(Boolean);
+        previewTerms.innerHTML = '';
+        counterpartyTerms.innerHTML = '';
+        (activeTerms.length ? activeTerms : ['Без дополнительных условий']).forEach((term) => {
+          const li = document.createElement('li');
+          li.textContent = term.startsWith('Без дополнительных') ? term : `✓ ${term}`;
+          previewTerms.appendChild(li);
+          counterpartyTerms.appendChild(li.cloneNode(true));
+        });
+        elapsedTime.textContent = `${Math.min(30, 18 + activeTerms.length + Math.max(0, reasonInput.value.length % 5))} секунды`;
+        pulsePreview();
+      }
+
+      showCounterpartyPreview.addEventListener('click', () => {
+        previewFlip.classList.add('is-flipped');
+        previewFlip.querySelector('.preview-card-front').setAttribute('aria-hidden', 'true');
+        previewFlip.querySelector('.preview-card-back').setAttribute('aria-hidden', 'false');
+      });
+
+      returnOwnerPreview.addEventListener('click', () => {
+        showOwnerSide();
+      });
+
+      builder.querySelectorAll('[data-choice-group]').forEach((group) => {
+        group.addEventListener('click', (event) => {
+          const chip = event.target.closest('.choice-chip');
+          if (!chip) return;
+          group.querySelectorAll('.choice-chip').forEach((item) => item.classList.remove('active'));
+          chip.classList.add('active');
+          if (chip.dataset.direction) chosenDirection = chip.dataset.direction;
+          if (chip.dataset.reason) reasonInput.value = chip.dataset.reason;
+          if (chip.dataset.return) chosenReturn = chip.dataset.return;
+          showOwnerSide();
+          updatePreview();
+        });
+      });
+
+      document.querySelector('.terms-chips').addEventListener('click', (event) => {
+        const chip = event.target.closest('.choice-chip');
+        if (!chip) return;
+        chip.classList.toggle('active');
+        showOwnerSide();
+        updatePreview();
+      });
+
+      [personInput, amountInput, reasonInput, commentInput].forEach((input) => {
+        input.addEventListener('input', () => {
+          showOwnerSide();
+          updatePreview();
+        });
+      });
+
+      updatePreview();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const draft = document.getElementById('hesitationDraft');
+      if (!draft) return;
+
+      const phrases = [
+        'Ты мне уже давно должен.',
+        'Помнишь, ты занимал?',
+        'Ты когда деньги вернёшь, а?!',
+        'Мне позарез нужны!'
+      ];
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        draft.textContent = phrases[1];
+        return;
+      }
+
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+      draft.textContent = '';
+
+      function tick() {
+        const phrase = phrases[phraseIndex];
+        draft.textContent = phrase.slice(0, charIndex);
+
+        if (!deleting && charIndex < phrase.length) {
+          charIndex += 1;
+          window.setTimeout(tick, 48 + Math.random() * 42);
+          return;
+        }
+
+        if (!deleting) {
+          deleting = true;
+          window.setTimeout(tick, 760);
+          return;
+        }
+
+        if (charIndex > 0) {
+          charIndex -= 1;
+          window.setTimeout(tick, 24 + Math.random() * 24);
+          return;
+        }
+
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        window.setTimeout(tick, 280);
+      }
+
+      window.setTimeout(tick, 420);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const simulator = document.getElementById('conversation-simulator');
+      if (!simulator) return;
+
+      const scenarioTitle = document.getElementById('chatScenarioTitle');
+      const beforeMessage = document.getElementById('beforeMessage');
+      const afterMessage = document.getElementById('afterMessage');
+      const whyText = document.getElementById('whyText');
+      const paymentPlanCard = document.getElementById('paymentPlanCard');
+      const rewriteButton = document.getElementById('rewriteButton');
+      const afterBlock = document.querySelector('.after-message');
+      let activeScenario = 'forgot';
+      let activeTone = 'friendly';
+      let rewriteSoft = false;
+
+      const messages = {
+        forgot: {
+          title: 'Друг забыл вернуть',
+          before: 'Ты мне уже давно должен.',
+          why: 'Спокойный тон + отсутствие обвинений = меньше защиты и больше шанс договориться.',
+          tones: {
+            friendly: 'Привет! Просто напоминаю про нашу договорённость. Когда тебе будет удобно вернуть?',
+            neutral: 'Привет! Напоминаю про договорённость по возврату. Если планы изменились — давай обсудим.',
+            firm: 'Привет. Согласно нашей договорённости срок возврата уже прошёл. Давай обсудим новый срок.'
+          }
+        },
+        overdue: {
+          title: 'Просрочка платежа',
+          before: 'Ты опять не вернул вовремя.',
+          why: 'Фокус на сроке и следующем шаге снижает конфликтность разговора.',
+          tones: {
+            friendly: 'Привет! Похоже, срок уже прошёл. Давай спокойно выберем новый удобный день?',
+            neutral: 'Привет. Срок возврата прошёл. Предлагаю согласовать новый срок, чтобы договорённость оставалась понятной.',
+            firm: 'Привет. Срок возврата по нашей договорённости уже истёк. Пожалуйста, предложи конкретную дату возврата.'
+          }
+        },
+        missing: {
+          title: 'Человек пропал',
+          before: 'Почему ты игнорируешь меня?',
+          why: 'Сообщение оставляет пространство для ответа и не превращает напоминание в обвинение.',
+          tones: {
+            friendly: 'Привет! Не хочу давить, просто хочу понять, всё ли в порядке с нашей договорённостью?',
+            neutral: 'Привет. Не получил ответа по возврату. Напиши, пожалуйста, когда сможешь обсудить новый срок.',
+            firm: 'Привет. Мне важно получить ответ по нашей договорённости. Давай зафиксируем новый срок сегодня.'
+          }
+        },
+        schedule: {
+          title: 'Нужен новый график',
+          before: 'Если не можешь вернуть всё сразу, скажи нормально.',
+          why: 'Реалистичный график делает возврат менее стрессовым и повышает шанс, что договорённость будет выполнена.',
+          tones: {
+            friendly: 'Понимаю, что сейчас может быть неудобно закрыть всё сразу. Давай согласуем комфортный график возврата?',
+            neutral: 'Можно разделить сумму на 4 платежа по 12 500 ₽ в месяц. Если подходит, зафиксируем новый график.',
+            firm: 'Предлагаю обновить условия: 12 500 ₽ в месяц в течение 4 месяцев. Подтверди, пожалуйста, подходит ли такой график.'
+          }
+        },
+        soft: {
+          title: 'Хочу напомнить мягко',
+          before: 'Ну ты помнишь про деньги?',
+          why: 'Мягкое напоминание работает лучше, когда человек не чувствует, что его уже обвиняют.',
+          tones: {
+            friendly: 'Привет! Просто мягко напоминаю про нашу договорённость. Если сейчас неудобно — можем подобрать вариант.',
+            neutral: 'Привет. Напоминаю про возврат по нашей договорённости. Давай обсудим удобный срок.',
+            firm: 'Привет. Нужно вернуться к вопросу возврата и зафиксировать понятный срок.'
+          }
+        },
+        formal: {
+          title: 'Нужно быть более формальным',
+          before: 'Верни деньги, пожалуйста, без затягивания.',
+          why: 'Формальный тон помогает обозначить границы, не переходя в давление.',
+          tones: {
+            friendly: 'Привет! Хочу аккуратно вернуться к нашей договорённости и согласовать конкретный срок возврата.',
+            neutral: 'Привет. Предлагаю зафиксировать новый срок возврата по нашей договорённости.',
+            firm: 'Привет. Прошу подтвердить новый срок возврата по нашей договорённости до конца дня.'
+          }
+        },
+        partners: {
+          title: 'Общие расходы запутались',
+          before: 'Кажется, мы уже перестали понимать, кто за что платил 😅',
+          why: 'В отношениях важнее убрать туман вокруг расходов, чем доказать, кто прав.',
+          tones: {
+            friendly: 'Кажется, у нас накопилось несколько общих расходов. Давай просто всё спокойно сведём?',
+            neutral: 'Хочу немного навести порядок в наших общих расходах — чтобы всё было понятно для нас обоих.',
+            firm: 'Давай зафиксируем общие расходы и договоримся, как их разделить, чтобы дальше не было путаницы.'
+          }
+        }
+      };
+
+      function pulseMessage() {
+        if (!afterBlock) return;
+        afterBlock.classList.remove('message-pulse');
+        void afterBlock.offsetWidth;
+        afterBlock.classList.add('message-pulse');
+      }
+
+      function updateConversation() {
+        const scenario = messages[activeScenario];
+        scenarioTitle.textContent = scenario.title;
+        beforeMessage.textContent = scenario.before;
+        afterMessage.textContent = scenario.tones[activeTone];
+        whyText.textContent = scenario.why;
+        paymentPlanCard.hidden = activeScenario !== 'schedule';
+        rewriteButton.textContent = activeScenario === 'partners' ? 'Сделать спокойнее' : 'Переписать спокойнее';
+        rewriteSoft = false;
+        pulseMessage();
+      }
+
+      simulator.querySelectorAll('.scenario-card').forEach((button) => {
+        button.addEventListener('click', () => {
+          simulator.querySelectorAll('.scenario-card').forEach((item) => item.classList.remove('active'));
+          button.classList.add('active');
+          activeScenario = button.dataset.scenario;
+          activeTone = activeScenario === 'formal' ? 'firm' : 'friendly';
+          simulator.querySelectorAll('.tone-chip').forEach((chip) => {
+            chip.classList.toggle('active', chip.dataset.tone === activeTone);
+          });
+          updateConversation();
+        });
+      });
+
+      simulator.querySelectorAll('.tone-chip').forEach((button) => {
+        button.addEventListener('click', () => {
+          simulator.querySelectorAll('.tone-chip').forEach((item) => item.classList.remove('active'));
+          button.classList.add('active');
+          activeTone = button.dataset.tone;
+          updateConversation();
+        });
+      });
+
+      rewriteButton.addEventListener('click', () => {
+        rewriteSoft = !rewriteSoft;
+        beforeMessage.textContent = activeScenario === 'partners'
+          ? 'Ты опять всё оплатил не так, и теперь непонятно, кто кому должен.'
+          : 'Ты мне уже давно должен.';
+        afterMessage.textContent = rewriteSoft
+          ? 'Привет! Напоминаю про нашу договорённость. Если сейчас неудобно — можем обсудить удобный вариант.'
+          : messages[activeScenario].tones[activeTone];
+        rewriteButton.textContent = rewriteSoft ? 'Вернуть пример сценария' : (activeScenario === 'partners' ? 'Сделать спокойнее' : 'Переписать спокойнее');
+        pulseMessage();
+      });
+
+      updateConversation();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const journey = document.getElementById('agreement-journey');
+      if (!journey) return;
+
+      const timeline = journey.querySelector('.journey-timeline');
+      const steps = Array.from(journey.querySelectorAll('.journey-step'));
+      const chips = Array.from(journey.querySelectorAll('.journey-chip'));
+      const data = {
+        friends: [
+          ['Создали договорённость', 'Александр занял Матвею 25 000 ₽ на поездку.', '25 000 ₽', 'Вернуть до 30 июня', 'Всё начинается с простой договорённости.'],
+          ['Обе стороны подтвердили условия', 'Условия сохранены одинаково для всех участников.', '✓ Матвей подтвердил договорённость', '', 'Больше никаких «я такого не говорил».'],
+          ['Спокойное напоминание', 'DebtMate подбирает спокойную формулировку.', 'Привет 😊 Просто напоминаю про нашу договорённость.', '', 'DebtMate помогает напомнить спокойно и без конфликта.'],
+          ['Частичный возврат', 'Комфортный план лучше, чем напряжённое молчание.', '12 500 ₽ из 25 000 ₽', 'Осталось: 12 500 ₽', 'Не всегда нужно вернуть всё сразу.'],
+          ['Обязательство закрыто', 'Всё выполнено. Никакого напряжения.', '✓ Закрыто', '', 'Отношения важнее неловких разговоров.']
+        ],
+        partners: [
+          ['Расходы внесены', 'Кто оплатил отпуск, билеты и отель — всё зафиксировано.', '74 000 ₽', 'Общие расходы за поездку', 'Сначала нужно просто увидеть картину целиком.'],
+          ['Согласовали правила', 'Оба видят одинаковый список расходов и долей.', '✓ Условия подтверждены', '', 'Меньше догадок — меньше напряжения.'],
+          ['Мягкое сообщение', 'DebtMate помогает начать разговор без претензий.', 'Кажется, у нас накопилось несколько общих расходов. Давай спокойно сведём?', '', 'В отношениях важен тон, а не только сумма.'],
+          ['Разделили спокойно', 'Часть закрыта сразу, остаток разнесён на понятный срок.', '37 000 ₽ из 74 000 ₽', 'Осталось: 37 000 ₽', 'План должен быть реалистичным для обоих.'],
+          ['Всё понятно', 'Расходы закрыты, договорённость больше не висит в воздухе.', '✓ Закрыто', '', 'Ясность помогает не тащить деньги в отношения.']
+        ],
+        shared: [
+          ['Общий расход создан', 'Компания скинулась на подарок и ужин.', '18 000 ₽', '4 участника', 'Общий расход проще закрыть, когда он виден всем.'],
+          ['Участники подтвердили', 'Каждый видит свою часть и общий статус.', '✓ 4 из 4 подтвердили', '', 'Больше не нужно искать решение в чате на 120 сообщений.'],
+          ['Спокойное напоминание', 'Напоминание звучит как координация, а не давление.', 'Привет! Напоминаю про общий подарок. Можешь скинуть, когда удобно?', '', 'Нормальный тон сохраняет нормальную атмосферу.'],
+          ['Часть внесена', 'Поступления собираются постепенно и без ручных таблиц.', '13 500 ₽ из 18 000 ₽', 'Осталось: 4 500 ₽', 'Группа видит прогресс, а не хаос.'],
+          ['Сбор закрыт', 'Все внесли свою часть, покупка спокойно оплачена.', '✓ Закрыто', '', 'Общий расход не должен становиться общей неловкостью.']
+        ],
+        rent: [
+          ['Условия аренды внесены', 'Соседи зафиксировали оплату квартиры и коммунальных.', '60 000 ₽', 'До 5 числа', 'Регулярные обязательства особенно любят ясность.'],
+          ['Соседи подтвердили', 'Каждый понимает сумму, срок и свою часть.', '✓ Условия подтверждены', '', 'Одинаковые условия видны всем участникам.'],
+          ['Напоминание заранее', 'DebtMate напоминает до дедлайна, а не после конфликта.', 'Привет! До оплаты аренды осталось 3 дня.', '', 'Раннее напоминание звучит спокойнее.'],
+          ['Часть оплачена', 'Один перевод уже внесён, остальные видят остаток.', '30 000 ₽ из 60 000 ₽', 'Осталось: 30 000 ₽', 'Статус важнее переписки “кто уже скинул?”.'],
+          ['Период закрыт', 'Оплата за месяц завершена, всё отмечено.', '✓ Закрыто', '', 'Бытовые расходы не должны портить быт.']
+        ]
+      };
+
+      function setText(id, value) {
+        const node = document.getElementById(id);
+        if (node) node.textContent = value;
+      }
+
+      function updateJourney(type) {
+        const current = data[type] || data.friends;
+        current.forEach((item, index) => {
+          const n = index + 1;
+          setText(`journeyTitle${n}`, item[0]);
+          setText(`journeyText${n}`, item[1]);
+          if (n === 1) {
+            setText('journeyAmount1', item[2]);
+            setText('journeyMeta1', item[3]);
+          } else if (n === 4) {
+            setText('journeyMeta4', item[2]);
+            setText('journeyNote4', item[3]);
+          } else if (n === 5) {
+            const closed = journey.querySelector('.closed-mini');
+            if (closed) closed.textContent = item[2];
+          } else {
+            setText(`journeyMeta${n}`, item[2]);
+          }
+          setText(`journeySmall${n}`, item[4]);
+        });
+      }
+
+      function updateProgress() {
+        const viewportMid = window.innerHeight * 0.62;
+        let visibleCount = 0;
+        steps.forEach((step, index) => {
+          const rect = step.getBoundingClientRect();
+          const visible = rect.top < viewportMid;
+          step.classList.toggle('is-visible', visible);
+          if (visible) visibleCount = index + 1;
+        });
+        const progress = steps.length > 1 ? ((visibleCount - 1) / (steps.length - 1)) * 100 : 0;
+        timeline.style.setProperty('--journey-progress', `${Math.max(0, Math.min(100, progress))}%`);
+      }
+
+      chips.forEach((chip) => {
+        chip.addEventListener('click', () => {
+          chips.forEach((item) => item.classList.remove('active'));
+          chip.classList.add('active');
+          updateJourney(chip.dataset.journey);
+          steps.forEach((step) => {
+            step.classList.remove('is-visible');
+            void step.offsetWidth;
+          });
+          updateProgress();
+        });
+      });
+
+      updateJourney('friends');
+      updateProgress();
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      window.addEventListener('resize', updateProgress);
+    });
+  </script>
+  <footer class="debtmate-footer text-center py-6 border-t w-full flex-none px-0">
+    <p class="text-sm">© 2026 DebtMate<br>Ясные договорённости без неловкости.</p>
   </footer>
+  <script src="../js/mobile-header.js"></script>
 </body>
 </html> 

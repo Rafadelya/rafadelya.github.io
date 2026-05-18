@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EconoMetrics — Nexus Studio</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0c;
+            --text-main: #ffffff;
+            --text-muted: #8a8a93;
+            --accent-purple: #6c5ce7;
+            --accent-cyan: #00cec9;
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 210, 211, 0.1), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(108, 92, 231, 0.15), transparent 30%);
+            background-attachment: fixed;
+        }
+
+        /* Навигация / Хлебные крошки */
+        .breadcrumb {
+            padding: 24px 5%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .breadcrumb a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--text-main);
+        }
+
+        .breadcrumb span {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Главный контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 5% 100px;
+        }
+
+        /* Шапка приложения (Hero) */
+        .app-hero {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            align-items: center;
+            gap: 32px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            border-radius: 32px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            margin-bottom: 40px;
+        }
+
+        .hero-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            background: linear-gradient(135deg, var(--accent-cyan), #81ecec);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 56px;
+            box-shadow: 0 20px 40px rgba(0, 206, 201, 0.2);
+        }
+
+        .hero-info h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+
+        .hero-info .tagline {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .badges {
+            display: flex;
+            gap: 8px;
+        }
+
+        .badge {
+            font-size: 12px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-muted);
+        }
+
+        .badge.active {
+            color: var(--accent-cyan);
+            background: rgba(0, 206, 201, 0.1);
+            border-color: rgba(0, 206, 201, 0.2);
+        }
+
+        .action-area {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-end;
+        }
+
+        .store-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .store-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.02);
+            text-decoration: none;
+            color: var(--text-main);
+            min-width: 170px;
+            transition: all 0.3s;
+        }
+
+        .store-btn:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .store-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.08);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .store-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .store-text small {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .store-text strong {
+            font-size: 15px;
+            letter-spacing: -0.3px;
+        }
+
+        .launch-btn {
+            background: linear-gradient(135deg, var(--accent-cyan), #00b5b5);
+            color: #000;
+            padding: 16px 36px;
+            border-radius: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 206, 201, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .launch-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 206, 201, 0.5);
+        }
+
+        /* Галерея Скриншотов */
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .screen-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            height: 220px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .screen-card:hover {
+            border-color: rgba(255,255,255,0.2);
+            transform: scale(1.02);
+        }
+
+        /* Фейковый UI внутри скриншотов с помощью CSS */
+        .screen-card::before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 60%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -30%);
+        }
+
+        /* Сетка Бенто для фичей */
+        .features-bento {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 24px;
+        }
+
+        .bento-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 260px;
+        }
+
+        .bento-item h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .bento-item p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .bento-item .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: auto;
+        }
+
+        /* Спец-блоки Bento */
+        .bento-purple {
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(255,255,255,0.02));
+            border-color: rgba(108, 92, 231, 0.2);
+        }
+
+        .mini-stat {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            margin-top: 20px;
+        }
+
+        /* Адаптив */
+        @media (max-width: 900px) {
+            .app-hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                justify-items: center;
+            }
+            .action-area {
+                align-items: center;
+            }
+            .store-buttons {
+                justify-content: center;
+            }
+            .store-btn {
+                width: 100%;
+                min-width: 0;
+                justify-content: center;
+            }
+            .screenshots {
+                grid-template-columns: 1fr;
+            }
+            .features-bento {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="breadcrumb">
+        <a href="index.html">← Все приложения</a>
+        <span>/</span>
+        <span style="color: var(--text-main);">EconoMetrics</span>
+    </div>
+
+    <div class="container">
+
+        <div class="app-hero">
+            <div class="hero-icon">📈</div>
+            <div class="hero-info">
+                <h1>EconoMetrics</h1>
+                <p class="tagline">Ваш личный экономист в браузере. Считаем юнит-экономику и ROI без боли.</p>
+                <div class="badges">
+                    <span class="badge active">Экономика</span>
+                    <span class="badge">v 1.4.2</span>
+                    <span class="badge">Web-версия</span>
+                </div>
+            </div>
+            <div class="action-area">
+                <a class="launch-btn" href="https://nexus.studio/econometrics" target="_blank" rel="noopener">Открыть в браузере</a>
+                <span style="color: var(--text-muted); font-size: 13px;">⚡ Запустится мгновенно</span>
+                <div class="store-buttons">
+                    <a class="store-btn" href="https://apps.apple.com/" target="_blank" rel="noopener" aria-label="Скачать в App Store">
+                        <span class="store-icon">A</span>
+                        <span class="store-text">
+                            <small>Скачать в</small>
+                            <strong>App Store</strong>
+                        </span>
+                    </a>
+                    <a class="store-btn" href="https://play.google.com/store" target="_blank" rel="noopener" aria-label="Скачать в Google Play">
+                        <span class="store-icon">▶</span>
+                        <span class="store-text">
+                            <small>Доступно в</small>
+                            <strong>Google Play</strong>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">📸 Обзор интерфейса</h2>
+        <div class="screenshots">
+            <div class="screen-card"><span>📊 Сводная панель</span></div>
+            <div class="screen-card"><span>💸 Калькулятор ROI</span></div>
+            <div class="screen-card"><span>📅 Трекер доходов</span></div>
+        </div>
+
+        <h2 class="section-title">💎 Что внутри?</h2>
+        <div class="features-bento">
+            
+            <div class="bento-item bento-purple">
+                <div class="icon-box">🧠</div>
+                <div>
+                    <h3>Умные алгоритмы расчетов</h3>
+                    <p>Сервис автоматически находит слабые места в вашей финансовой модели и предлагает решения по оптимизации костов.</p>
+                </div>
+                <div class="mini-stat">+34% ROI</div>
+            </div>
+
+            <div class="bento-item">
+                <div class="icon-box">⚡</div>
+                <div>
+                    <h3>Быстрый экспорт</h3>
+                    <p>Выгружайте красивые PDF и интерактивные графики для инвесторов в один клик.</p>
+                </div>
+            </div>
+
+            <div class="bento-item">
+                <div class="icon-box">🔒</div>
+                <div>
+                    <h3>Локальные данные</h3>
+                    <p>Ваша коммерческая тайна остается вашей. Мы не храним ваши цифры на серверах — все считается прямо в браузере.</p>
+                </div>
+            </div>
+
+            <div class="bento-item bento-purple">
+                <div class="icon-box">🤝</div>
+                <div>
+                    <h3>Коллаборация</h3>
+                    <p>Делитесь ссылкой на проект с командой. Правки синхронизируются в реальном времени.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

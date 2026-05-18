@@ -324,7 +324,12 @@
           </div>
           <div class="draft-input-shell">
             <span>Сообщение</span>
-            <i></i>
+            <i aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M5 12h13"></path>
+                <path d="m13 7 5 5-5 5"></path>
+              </svg>
+            </i>
           </div>
         </div>
 
@@ -1440,15 +1445,19 @@
       height: 2.05rem;
       border-radius: 50%;
       background: rgba(9, 63, 238, 0.12);
-      position: relative;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
     }
-    .draft-input-shell i::before {
-      content: '';
-      position: absolute;
-      inset: 0.62rem 0.56rem;
-      border-top: 2px solid #093FEE;
-      border-right: 2px solid #093FEE;
-      transform: rotate(-45deg);
+    .draft-input-shell i svg {
+      width: 1.08rem;
+      height: 1.08rem;
+      display: block;
+      fill: none;
+      stroke: #093FEE;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
     @keyframes draft-caret {
       0%, 55% { opacity: 1; }

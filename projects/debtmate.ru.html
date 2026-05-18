@@ -559,6 +559,17 @@
     .glass-header {
       box-shadow: 0 8px 48px rgba(6, 47, 190, 0.14), 0 2px 8px rgba(253, 253, 253, 0.85);
     }
+    .mobile-header-toggle {
+      border-color: rgba(9, 63, 238, 0.18);
+      background: rgba(253, 253, 253, 0.92);
+      box-shadow: 0 8px 24px rgba(6, 47, 190, 0.14);
+    }
+    .mobile-header-toggle span {
+      background: #093FEE;
+    }
+    body.mobile-header-open .mobile-header-toggle span {
+      background: #093FEE;
+    }
     .debtmate-page {
       color: #080809;
       padding: 0;
@@ -2200,6 +2211,14 @@
       background: linear-gradient(180deg, #062FBE, #093FEE);
       border-color: rgba(253, 253, 253, 0.18);
       color: #FDFDFD;
+    }
+    @media (max-width: 1100px) {
+      .glass-header.mobile-header-enabled .mobile-header-toggle {
+        position: relative;
+        top: auto;
+        right: auto;
+        z-index: 1;
+      }
     }
     @media (max-width: 860px) {
       .debtmate-hero {

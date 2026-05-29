@@ -2,33 +2,16 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AdiGuide | Проект Арфа</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css?v=transitions-dev">
+  <link rel="stylesheet" href="adiguide.css?v=adiguide-cities-motion">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/2b8e2e5e2a.js" crossorigin="anonymous"></script>
-  <style>
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .animate-fade-in-up {
-      opacity: 0;
-      animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-    }
-    [style*="animation-delay"] {
-      animation-delay: inherit;
-    }
-  </style>
 </head>
-<body class="min-h-screen flex flex-col">
-  <header class="glass-header flex flex-row items-center justify-between gap-8">
+<body class="adiguide-page min-h-screen flex flex-col">
+  <header class="glass-header adiguide-header flex flex-row items-center justify-between gap-8">
     <div class="logo-block">
       <a href="../index.ru.html">
         <img src="../assets/Cyrillic_logo_arfa.png" alt="Логотип Арфа" class="glass-logo-img">
@@ -48,60 +31,357 @@
       <a href="adiguide.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
     </div>
   </header>
-  <main class="max-w-4xl mx-auto px-4 py-16 space-y-14 flex-1">
-    <!-- Верх: Белый -->
-    <div class="bg-white rounded-3xl shadow-2xl p-12 text-center animate-fade-in-up flex flex-col gap-6">
-      <h1 class="text-5xl font-extrabold text-blue-900 flex items-center justify-center gap-2 mb-2 animate-fade-in-up" style="animation-delay:0.1s;">
-        <span class="text-4xl">📱</span> AdiGuide
-      </h1>
-      <div class="border-t border-gray-200 w-2/3 mx-auto"></div>
-      <p class="text-xl text-gray-800 animate-fade-in-up" style="animation-delay:0.2s;">Мобильное приложение для самостоятельных прогулок и путешествий по городам России.<br>Слушай интересные аудиорассказы, гуляй в своём темпе и открывай новое рядом с собой.</p>
-    </div>
-    <!-- Преимущества: Синий -->
-    <div class="bg-blue-900 rounded-3xl shadow-2xl p-12 animate-fade-in-up flex flex-col gap-6" style="animation-delay:0.3s;">
-      <h2 class="text-2xl font-bold text-white mb-2 animate-fade-in-up" style="animation-delay:0.4s;">Почему Adiguide?</h2>
-      <div class="border-t border-blue-700 w-2/3 mx-auto"></div>
-      <ul class="space-y-3 text-blue-100 text-lg animate-fade-in-up" style="animation-delay:0.5s;">
-        <li class="py-1 border-b border-blue-800 last:border-b-0">🎧 Аудиоформат: не нужно читать, просто слушай</li>
-        <li class="py-1 border-b border-blue-800 last:border-b-0">🗺️ Удобные маршруты и подборки</li>
-        <li class="py-1 border-b border-blue-800 last:border-b-0">📍 Работает без интернета</li>
-        <li class="py-1">🇷🇺 Сделано для внутреннего туризма в России</li>
-      </ul>
-    </div>
-    <!-- Как это работает: Белый -->
-    <div class="bg-white rounded-3xl shadow-2xl p-12 animate-fade-in-up flex flex-col gap-6" style="animation-delay:0.6s;">
-      <h2 class="text-2xl font-bold text-blue-900 mb-2 animate-fade-in-up" style="animation-delay:0.7s;">Как это работает</h2>
-      <div class="border-t border-gray-200 w-2/3 mx-auto"></div>
-      <div class="flex flex-col gap-2 mt-2">
-        <p class="text-lg text-gray-800 animate-fade-in-up border-b border-gray-100 pb-2" style="animation-delay:0.8s;">Открой приложение, выбери город и маршрут — и начни прогулку.</p>
-        <p class="text-lg text-gray-800 animate-fade-in-up border-b border-gray-100 pb-2" style="animation-delay:0.9s;">Приложение автоматически воспроизводит аудиогид по мере продвижения по маршруту.</p>
-        <p class="text-lg text-gray-800 animate-fade-in-up" style="animation-delay:1s;">Можно слушать как подкаст — в наушниках или через динамик.</p>
+
+  <main class="adiguide-main flex-1">
+    <section class="adi-hero" aria-labelledby="adi-hero-title">
+      <div class="adi-hero__media" aria-hidden="true">
+        <span class="adi-hero__photo"></span>
       </div>
-    </div>
-    <!-- Кому подойдёт: Красный -->
-    <div class="bg-red-600 rounded-3xl shadow-2xl p-12 animate-fade-in-up flex flex-col gap-6" style="animation-delay:1.1s;">
-      <h2 class="text-2xl font-bold text-white mb-2 animate-fade-in-up" style="animation-delay:1.2s;">Кому подойдёт</h2>
-      <div class="border-t border-red-400 w-2/3 mx-auto"></div>
-      <ul class="space-y-2 text-red-100 text-lg animate-fade-in-up mt-2" style="animation-delay:1.3s;">
-        <li class="py-1 border-b border-red-400 last:border-b-0">Путешественникам по России</li>
-        <li class="py-1 border-b border-red-400 last:border-b-0">Жителям городов, которые хотят узнать больше о своём городе</li>
-        <li class="py-1 border-b border-red-400 last:border-b-0">Родителям с детьми</li>
-        <li class="py-1 border-b border-red-400 last:border-b-0">Школьникам и студентам</li>
-        <li class="py-1">Тем, кто устал от скучных экскурсий</li>
-      </ul>
-    </div>
-    <!-- Кнопка -->
-    <div class="flex flex-col items-center my-12 animate-fade-in-up" style="animation-delay:1.4s;">
-      <a href="https://t.me/rafael_not_a_candy" target="_blank" rel="noopener noreferrer"
-         class="btn-primary neon-glow text-base px-6 py-3 shadow-lg hover:scale-105 transition-transform animate-fade-in-up"
-         style="animation-delay:1.5s;">
-        Записаться на бета тест
-      </a>
-    </div>
+      <div class="adi-noise" aria-hidden="true"></div>
+      <div class="adi-hero__content">
+        <p class="adi-kicker">АдиГид</p>
+        <h1 id="adi-hero-title">Истории рядом.</h1>
+        <p class="adi-hero__sub">АдиГид – твой личный гид по городам в кармане.</p>
+        <p class="adi-hero__lead">Гуляй в своём ритме. Делись с друзьями.<br>Узнавай места, мимо которых раньше просто проходил.</p>
+        <div class="adi-hero__actions" aria-label="Главные действия">
+          <a class="adi-button adi-button--primary" href="https://t.me/rafael_not_a_candy" target="_blank" rel="noopener noreferrer">Скачать приложение</a>
+          <a class="adi-button adi-button--ghost" href="#how-a-city-feels">Как это работает</a>
+        </div>
+        <p class="adi-hero__offline" aria-label="Работает офлайн"><span aria-hidden="true">📶</span> Работает офлайн</p>
+      </div>
+      <div class="adi-hero__visual" aria-label="Карточки аудиоплеера АдиГида">
+        <div class="adi-player-stack">
+          <article class="adi-player-card adi-player-card--now" aria-label="Сейчас играет">
+            <div class="adi-player-card__cover">
+              <img src="../assets/adiguide/4.jpg" alt="Городская улица в маршруте АдиГида" width="1448" height="1086" fetchpriority="high" decoding="async">
+              <span>точка 01</span>
+            </div>
+            <div class="adi-player-card__body">
+              <div class="adi-player-card__topline">
+                <span>Сейчас играет</span>
+                <strong>08:40</strong>
+              </div>
+              <h2>Усадьба, парк и немного запутанная история</h2>
+              <p>Это место строили долго. Переделывали – ещё дольше. Но получилось так, что это место навсегда останется в сердце каждого, кто здесь побывал.</p>
+              <div class="adi-player-card__progress" aria-label="Прослушано 38 процентов">
+                <span></span>
+              </div>
+              <div class="adi-player-card__time" aria-hidden="true">
+                <span>03:12</span>
+                <span>08:40</span>
+              </div>
+              <div class="adi-player-card__controls" aria-label="Управление воспроизведением">
+                <button type="button" aria-label="Предыдущая точка">‹</button>
+                <button class="adi-player-card__play" type="button" aria-label="Пауза">Ⅱ</button>
+                <button type="button" aria-label="Следующая точка">›</button>
+              </div>
+            </div>
+          </article>
+
+          <div class="adi-player-card__queue" aria-label="Следующие аудиоточки">
+            <article class="adi-track-card">
+              <img src="../assets/adiguide/8.jpg" alt="Фрагмент прогулочного маршрута" width="1448" height="1086" loading="lazy" decoding="async">
+              <div>
+                <span>Следующая</span>
+                <strong>Смотровая, шпиль и один большой амбициозный проект</strong>
+                <p>00:46 / 05:10</p>
+              </div>
+              <button type="button" aria-label="Включить трек Смотровая, шпиль и один большой амбициозный проект">▶</button>
+            </article>
+            <article class="adi-track-card">
+              <img src="../assets/adiguide/11.jpg" alt="Вечерний городской маршрут" width="1086" height="1448" loading="lazy" decoding="async">
+              <div>
+                <span>Далее</span>
+                <strong>Место, где город становится шире</strong>
+                <p>01:28 / 06:32</p>
+              </div>
+              <button type="button" aria-label="Включить трек Место, где город становится шире">▶</button>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="adi-section adi-cities" aria-labelledby="cities-title">
+      <div class="adi-cities__copy">
+        <p class="adi-kicker">география</p>
+        <h2 id="cities-title">Города,<br>в которых мы есть<br>или скоро будем</h2>
+        <p>Начинаем с маршрутов, где прогулка лучше всего раскрывает район: дворы, набережные, тихие улицы и места рядом.</p>
+      </div>
+      <div class="adi-cities__visual">
+        <div class="adi-card-animation" data-adi-lottie>
+          <div class="adi-card-animation__stage" data-adi-lottie-stage aria-hidden="true"></div>
+          <div class="adi-city-fallback" aria-label="Города АдиГида">
+            <article style="--city-image: url('../assets/adiguide/1.jpg');">
+              <span>есть</span>
+              <strong>Санкт-Петербург</strong>
+            </article>
+            <article style="--city-image: url('../assets/adiguide/8.jpg');">
+              <span>скоро</span>
+              <strong>Москва</strong>
+            </article>
+            <article style="--city-image: url('../assets/adiguide/10.jpg');">
+              <span>скоро</span>
+              <strong>Казань</strong>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="adi-section adi-product-preview" aria-labelledby="product-preview-title">
+      <div class="adi-section__intro">
+        <p class="adi-kicker">product preview</p>
+        <h2 id="product-preview-title">Как выглядит<br>прогулка</h2>
+      </div>
+      <div class="adi-preview-layout">
+        <div class="adi-phone" aria-label="Экран приложения АдиГид">
+          <div class="adi-phone__bezel">
+            <div class="adi-phone__screen">
+              <div class="adi-app-topbar">
+                <span>9:41</span>
+                <span>offline</span>
+              </div>
+              <div class="adi-app-hero">
+                <div>
+                  <p>Санкт-Петербург</p>
+                  <h3>Дворы, которые не видно с Невского</h3>
+                </div>
+                <button type="button">Сменить</button>
+              </div>
+              <div class="adi-app-map" aria-hidden="true">
+                <span class="adi-map-line adi-map-line--one"></span>
+                <span class="adi-map-line adi-map-line--two"></span>
+                <span class="adi-map-pin adi-map-pin--one">1</span>
+                <span class="adi-map-pin adi-map-pin--two">2</span>
+                <span class="adi-map-pin adi-map-pin--three">3</span>
+              </div>
+              <div class="adi-app-route">
+                <div>
+                  <p>Маршрут</p>
+                  <h4>Тихие дворы и проходные арки</h4>
+                </div>
+                <span>42 мин</span>
+              </div>
+              <div class="adi-app-stops">
+                <article class="is-active">
+                  <span>01</span>
+                  <div>
+                    <h5>Арка на Литейном</h5>
+                    <p>слушаешь сейчас · 03:12</p>
+                  </div>
+                </article>
+                <article>
+                  <span>02</span>
+                  <div>
+                    <h5>Двор с мозаикой</h5>
+                    <p>180 м от тебя</p>
+                  </div>
+                </article>
+              </div>
+              <div class="adi-app-player">
+                <button type="button" aria-label="Предыдущая точка">⏮</button>
+                <button class="adi-app-player__main" type="button" aria-label="Пауза">Ⅱ</button>
+                <button type="button" aria-label="Следующая точка">⏭</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="adi-preview-flow" aria-label="Мини-сценарий прогулки">
+          <article>
+            <span>01</span>
+            <h3>Выбрал город</h3>
+            <p>Смотришь, какие прогулки рядом и что можно скачать заранее.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Открыл маршрут</h3>
+            <p>Видишь точки, длительность, настроение и где начать.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Слушаешь</h3>
+            <p>История включается как аудиопрогулка, а не как лекция.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Гуляешь</h3>
+            <p>Остановился, пропустил, вернулся — маршрут подождёт.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-a-city-feels" class="adi-section adi-compare" aria-labelledby="compare-title">
+      <div class="adi-section__intro adi-compare__intro">
+        <p class="adi-kicker">как это работает</p>
+        <h2 id="compare-title">Город без чужого расписания</h2>
+      </div>
+      <div class="adi-compare__cards" aria-label="Что меняется с АдиГидом">
+        <article class="adi-compare-row">
+          <div class="adi-compare-point adi-compare-point--muted">
+            <span>Обычная экскурсия</span>
+            <h3>Темп задаёт группа</h3>
+            <p>Хочешь задержаться, устал или увидел красивый двор — маршрут уже ушёл дальше.</p>
+          </div>
+          <div class="adi-compare-point adi-compare-point--active">
+            <span>АдиГид</span>
+            <h3>Идёшь в своём ритме</h3>
+            <p>Быстро, медленно, с паузами на кофе, фото и случайные находки.</p>
+          </div>
+        </article>
+        <article class="adi-compare-row">
+          <div class="adi-compare-point adi-compare-point--muted">
+            <span>Обычная экскурсия</span>
+            <h3>Слушаешь всё подряд</h3>
+            <p>Даже если тема не твоя, приходится оставаться в общем сценарии.</p>
+          </div>
+          <div class="adi-compare-point adi-compare-point--active">
+            <span>АдиГид</span>
+            <h3>Пропускаешь лишнее</h3>
+            <p>Неинтересную точку можно просто перелистнуть и продолжить прогулку.</p>
+          </div>
+        </article>
+        <article class="adi-compare-row">
+          <div class="adi-compare-point adi-compare-point--muted">
+            <span>Обычная экскурсия</span>
+            <h3>Город по расписанию</h3>
+            <p>Опоздал, захотел кофе или просто остановился — приходится догонять.</p>
+          </div>
+          <div class="adi-compare-point adi-compare-point--active">
+            <span>АдиГид</span>
+            <h3>Маршрут всегда рядом</h3>
+            <p>Видишь, куда идти дальше, но не обязан идти прямо сейчас.</p>
+          </div>
+        </article>
+        <article class="adi-compare-row">
+          <div class="adi-compare-point adi-compare-point--muted">
+            <span>Обычная экскурсия</span>
+            <h3>Мало личного пространства</h3>
+            <p>Вроде гуляешь по городу, но всё время подстраиваешься под других.</p>
+          </div>
+          <div class="adi-compare-point adi-compare-point--active">
+            <span>АдиГид</span>
+            <h3>Можно вернуться позже</h3>
+            <p>Продолжить вечером, завтра или в другой поездке — никто не торопит.</p>
+          </div>
+        </article>
+      </div>
+      <div class="adi-compare__finish">
+        <p><span>Маршрут ведёт.</span><span>Ты решаешь, когда идти дальше.</span></p>
+      </div>
+    </section>
+
+    <section class="adi-section adi-guide-mode" aria-labelledby="guide-mode-title">
+      <div class="adi-section__intro">
+        <p class="adi-kicker">для кого</p>
+        <h2 id="guide-mode-title">Кажется, тебе сюда,<br>если ты…</h2>
+      </div>
+      <div class="adi-mode-grid">
+        <article class="adi-mode-card" style="--mode-image: url('../assets/adiguide/5.jpg');">
+          <span aria-hidden="true">📍</span>
+          <h3>любишь просто гулять</h3>
+          <p>без цели — тоже считается</p>
+        </article>
+        <article class="adi-mode-card" style="--mode-image: url('../assets/adiguide/8.jpg');">
+          <span aria-hidden="true">🗺</span>
+          <h3>сохраняешь места в картах</h3>
+          <p>и потом никогда не открываешь папку<br>“обязательно сходить”</p>
+        </article>
+        <article class="adi-mode-card" style="--mode-image: url('../assets/adiguide/7.jpg');">
+          <span aria-hidden="true">🚶</span>
+          <h3>не любишь ходить толпой</h3>
+          <p>особенно за человеком с флажком</p>
+        </article>
+        <article class="adi-mode-card" style="--mode-image: url('../assets/adiguide/10.jpg');">
+          <span aria-hidden="true">☕</span>
+          <h3>иногда меняешь маршрут</h3>
+          <p>просто потому что улица выглядит интересно</p>
+        </article>
+        <article class="adi-mode-card" style="--mode-image: url('../assets/adiguide/12.jpg');">
+          <span aria-hidden="true">🎧</span>
+          <h3>скорее послушаешь историю</h3>
+          <p>чем лекцию на 40 минут</p>
+        </article>
+        <article class="adi-mode-card" style="--mode-image: url('../assets/adiguide/9.jpg');">
+          <span aria-hidden="true">📸</span>
+          <h3>можешь зависнуть в месте</h3>
+          <p>дольше, чем планировал</p>
+        </article>
+        <article class="adi-mode-card adi-mode-card--wide" style="--mode-image: url('../assets/adiguide/11.jpg');">
+          <span aria-hidden="true">🤝</span>
+          <h3>любишь ощущение</h3>
+          <p>будто город показывает знакомый</p>
+        </article>
+      </div>
+      <p class="adi-mode-note">если любишь экскурсии с громкоговорителем — мы правда не осуждаем 😌</p>
+    </section>
+
+    <section class="adi-section adi-section--drops" aria-labelledby="features-title">
+      <div class="adi-section__intro">
+        <p class="adi-kicker">в приложении</p>
+        <h2 id="features-title">Что умеет<br>АдиГид</h2>
+      </div>
+      <div class="adi-drop-grid" aria-label="Возможности АдиГида">
+        <article class="adi-drop-card">
+          <span aria-hidden="true">🎧</span>
+          <h3>Слушай где угодно</h3>
+          <p>Онлайн и офлайн.</p>
+        </article>
+        <article class="adi-drop-card">
+          <span aria-hidden="true">🗺</span>
+          <h3>Ищи места на карте</h3>
+          <p>Смотри, что рядом.</p>
+        </article>
+        <article class="adi-drop-card">
+          <span aria-hidden="true">🎯</span>
+          <h3>Выбирай, что интересно</h3>
+          <p>Хочешь историю про архитектуру?<br>Пожалуйста.</p>
+          <p>Мрачные истории?<br>Тоже есть.</p>
+        </article>
+        <article class="adi-drop-card">
+          <span aria-hidden="true">⏭</span>
+          <h3>Пропускай что угодно</h3>
+          <p>Никакой обязаловки.</p>
+        </article>
+        <article class="adi-drop-card">
+          <span aria-hidden="true">☕</span>
+          <h3>Прерывай прогулку</h3>
+          <p>Маршрут никуда не денется.</p>
+        </article>
+        <article class="adi-drop-card">
+          <span aria-hidden="true">📤</span>
+          <h3>Делись с друзьями</h3>
+          <p>Сохрани место или отправь маршрут.</p>
+        </article>
+        <article class="adi-drop-card">
+          <span aria-hidden="true">❤️</span>
+          <h3>Сохраняй любимое</h3>
+          <p>Чтобы вернуться потом.</p>
+        </article>
+        <article class="adi-drop-card">
+          <span aria-hidden="true">📍</span>
+          <h3>Гуляй в своём ритме</h3>
+          <p>Без дедлайнов.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="adi-final" aria-labelledby="adi-final-title">
+      <div class="adi-noise" aria-hidden="true"></div>
+      <div class="adi-final__content">
+        <h2 id="adi-final-title">Интересные истории всегда рядом.<br>Нужен лишь хороший рассказчик.</h2>
+        <a class="adi-button adi-button--primary" href="https://t.me/rafael_not_a_candy" target="_blank" rel="noopener noreferrer">Скачать АдиГид</a>
+        <p>Истории рядом.</p>
+      </div>
+    </section>
   </main>
-  <footer class="text-center py-6 border-t w-full">
+
+  <footer class="adiguide-footer text-center py-6 border-t w-full">
     <p class="text-sm">© 2026 Арфа. Все права защищены.</p>
   </footer>
-  <script src="../js/mobile-header.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <script defer src="../js/adiguide-lottie.js?v=card-animation-3"></script>
+  <script src="../js/mobile-header.js?v=transitions-dev"></script>
 </body>
-</html> 
+</html>

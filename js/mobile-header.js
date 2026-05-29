@@ -23,7 +23,8 @@
     overlay.className = 'mobile-header-overlay';
 
     var drawer = document.createElement('aside');
-    drawer.className = 'mobile-header-drawer';
+    drawer.className = 'mobile-header-drawer t-dropdown';
+    drawer.setAttribute('data-origin', 'top-right');
     drawer.setAttribute('aria-hidden', 'true');
 
     var title = document.createElement('div');
@@ -49,8 +50,32 @@
       drawer.appendChild(langWrap);
     }
 
+    var closeTimer = null;
+
+    function getCloseDelay() {
+      var raw = getComputedStyle(document.documentElement).getPropertyValue('--dropdown-close-dur');
+      return parseFloat(raw) || 150;
+    }
+
     function setOpen(isOpen) {
-      document.body.classList.toggle('mobile-header-open', isOpen);
+      if (closeTimer) {
+        clearTimeout(closeTimer);
+        closeTimer = null;
+      }
+
+      if (isOpen) {
+        document.body.classList.add('mobile-header-open');
+        drawer.classList.remove('is-closing');
+        drawer.classList.add('is-open');
+      } else {
+        drawer.classList.remove('is-open');
+        drawer.classList.add('is-closing');
+        closeTimer = setTimeout(function () {
+          drawer.classList.remove('is-closing');
+          document.body.classList.remove('mobile-header-open');
+        }, getCloseDelay());
+      }
+
       button.setAttribute('aria-expanded', String(isOpen));
       button.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
       drawer.setAttribute('aria-hidden', String(!isOpen));

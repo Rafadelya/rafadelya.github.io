@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Рафаэль — Предприниматель & Создатель</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Space+Mono:wght@400;700&family=Kode+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#060608;color:#eeeaf0;font-family:'Space Mono',monospace;overflow-x:hidden;cursor:none}
+
+#bg{position:fixed;inset:0;z-index:0;width:100%;height:100%}
+#veil{position:fixed;inset:0;z-index:1;background:rgba(5,5,8,.72);pointer-events:none}
+
+#cur,#cur-ring{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%)}
+#cur{width:10px;height:10px;background:#eeeaf0}
+#cur-ring{width:36px;height:36px;border:1.5px solid rgba(238,234,240,.5);transition:width .18s,height .18s}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  padding:18px 52px;display:flex;justify-content:space-between;align-items:center;
+  background:rgba(5,5,8,.7);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(238,234,240,.08);
+}
+.logo{font-family:'Unbounded',sans-serif;font-weight:900;font-size:.95rem;color:#eeeaf0;letter-spacing:-.01em;text-decoration:none}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(238,234,240,.5);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:#eeeaf0}
+
+.page{position:relative;z-index:10}
+.wrap{max-width:960px;margin:0 auto;padding:0 36px}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:90px}
+.hero-label{
+  font-family:'Kode Mono',monospace;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(238,234,240,.55);display:flex;align-items:center;gap:10px;margin-bottom:22px;
+  opacity:0;animation:up .7s ease forwards .2s;
+}
+.hero-label::before{content:'';width:32px;height:1px;background:rgba(238,234,240,.3)}
+.hero-name{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:clamp(3.8rem,11vw,9rem);line-height:.88;letter-spacing:-.04em;
+  opacity:0;animation:up .8s ease forwards .4s;
+}
+.hero-name .l1{color:#eeeaf0;display:block}
+.hero-desc{
+  margin-top:28px;font-size:.9rem;line-height:1.95;color:rgba(238,234,240,.72);max-width:520px;
+  opacity:0;animation:up .8s ease forwards .65s;
+}
+.hero-chips{margin-top:24px;display:flex;flex-wrap:wrap;gap:9px;opacity:0;animation:up .8s ease forwards .85s}
+.chip{
+  padding:6px 16px;border-radius:100px;font-size:.63rem;letter-spacing:.09em;text-transform:uppercase;
+  border:1px solid rgba(238,234,240,.2);color:rgba(238,234,240,.7);
+  transition:border-color .2s,color .2s,transform .2s;
+}
+.chip:hover{border-color:rgba(238,234,240,.55);color:#eeeaf0;transform:translateY(-2px)}
+.hero-cta{margin-top:36px;display:flex;align-items:center;gap:14px;opacity:0;animation:up .8s ease forwards 1.05s}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:10px;
+  background:#eeeaf0;color:#060608;text-decoration:none;
+  font-family:'Unbounded',sans-serif;font-size:.68rem;font-weight:900;letter-spacing:.04em;
+  transition:opacity .2s,transform .2s;
+}
+.btn-primary:hover{opacity:.85;transform:translateY(-2px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:10px;
+  border:1px solid rgba(238,234,240,.22);color:rgba(238,234,240,.75);text-decoration:none;
+  font-family:'Unbounded',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.04em;
+  transition:border-color .2s,color .2s,transform .2s;
+}
+.btn-ghost:hover{border-color:rgba(238,234,240,.55);color:#eeeaf0;transform:translateY(-2px)}
+.btn-sm{padding:9px 18px;font-size:.62rem}
+.scroll-hint{
+  margin-top:56px;display:flex;align-items:center;gap:10px;
+  font-size:.6rem;color:rgba(238,234,240,.3);letter-spacing:.15em;text-transform:uppercase;
+  opacity:0;animation:up .8s ease forwards 1.25s;
+}
+.scroll-bar{width:48px;height:1px;background:rgba(238,234,240,.2);animation:pw 2s ease infinite}
+@keyframes pw{0%,100%{width:48px;opacity:.3}50%{width:70px;opacity:.7}}
+
+.marquee{
+  overflow:hidden;padding:14px 0;
+  border-top:1px solid rgba(238,234,240,.07);border-bottom:1px solid rgba(238,234,240,.07);
+}
+.mtrack{display:flex;gap:32px;white-space:nowrap;animation:mq 22s linear infinite}
+.mtrack span{font-family:'Unbounded',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(238,234,240,.3)}
+.mtrack .dot{color:rgba(238,234,240,.6)}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+.section{padding:100px 0}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:48px}
+.sec-num{font-family:'Kode Mono',monospace;font-size:.6rem;color:rgba(238,234,240,.4);letter-spacing:.14em}
+.sec-title{font-family:'Unbounded',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(238,234,240,.6)}
+.sec-line{flex:1;height:1px;background:rgba(238,234,240,.08)}
+
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:36px}
+.pillar{
+  padding:28px 22px;border-radius:16px;border:1px solid rgba(238,234,240,.1);
+  position:relative;overflow:hidden;transition:border-color .25s,transform .25s;
+}
+.pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:rgba(238,234,240,.2)}
+.pillar:hover{border-color:rgba(238,234,240,.25);transform:translateY(-4px)}
+.pillar-ico{font-size:1.4rem;margin-bottom:12px}
+.pillar h3{font-family:'Unbounded',sans-serif;font-size:.72rem;font-weight:700;color:#eeeaf0;margin-bottom:10px;line-height:1.35}
+.pillar ul{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.pillar li{font-size:.65rem;color:rgba(238,234,240,.62);line-height:1.6;padding-left:12px;position:relative}
+.pillar li::before{content:'—';position:absolute;left:0;color:rgba(238,234,240,.35)}
+.pillar-metric{font-size:.6rem;color:rgba(238,234,240,.45);letter-spacing:.06em;text-transform:uppercase;border-top:1px solid rgba(238,234,240,.08);padding-top:10px}
+
+.about-brief{margin-top:8px}
+.about-brief p{font-size:.84rem;line-height:1.9;color:rgba(238,234,240,.68);margin-bottom:14px;max-width:720px}
+.about-brief strong{color:#eeeaf0}
+
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.case{
+  padding:26px 22px;border-radius:16px;border:1px solid rgba(238,234,240,.1);
+  display:flex;flex-direction:column;transition:border-color .25s,transform .25s;
+}
+.case:hover{border-color:rgba(238,234,240,.22);transform:translateY(-3px)}
+.case-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.case-type{
+  padding:3px 10px;border-radius:100px;font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid rgba(238,234,240,.15);color:rgba(238,234,240,.5);
+}
+.case h3{font-family:'Unbounded',sans-serif;font-size:.95rem;font-weight:700;color:#eeeaf0;margin-bottom:10px;line-height:1.2}
+.role-tag{
+  display:inline-block;margin-bottom:12px;padding:5px 10px;border-radius:8px;
+  background:rgba(238,234,240,.06);border:1px solid rgba(238,234,240,.12);
+  font-size:.6rem;color:rgba(238,234,240,.75);line-height:1.5;
+}
+.role-tag strong{color:#eeeaf0;font-weight:700}
+.case ul{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:18px;flex:1}
+.case li{font-size:.64rem;color:rgba(238,234,240,.6);line-height:1.55;padding-left:11px;position:relative}
+.case li::before{content:'·';position:absolute;left:0;color:rgba(238,234,240,.35)}
+
+.team-block{
+  padding:36px;border-radius:20px;border:1px solid rgba(238,234,240,.1);
+  background:rgba(238,234,240,.02);
+}
+.team-head{margin-bottom:32px}
+.team-badge{
+  display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border-radius:100px;margin-bottom:14px;
+  border:1px solid rgba(238,234,240,.2);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(238,234,240,.65);
+}
+.team-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:rgba(238,234,240,.6)}
+.team-head h2{font-family:'Unbounded',sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:#eeeaf0;margin-bottom:8px}
+.team-head p{font-size:.78rem;color:rgba(238,234,240,.55);line-height:1.7;max-width:560px}
+.team-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.team-col h3{font-family:'Unbounded',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(238,234,240,.5);margin-bottom:14px}
+
+.ach-list{display:flex;flex-direction:column;gap:10px}
+.ach{
+  display:flex;align-items:flex-start;gap:14px;padding:16px 18px;
+  border-radius:12px;border:1px solid rgba(238,234,240,.08);
+  transition:border-color .2s,transform .2s;
+}
+.ach:hover{border-color:rgba(238,234,240,.2);transform:translateX(4px)}
+.ach-icon{font-size:1.1rem;flex-shrink:0;width:28px;text-align:center;margin-top:1px}
+.ach h4{font-family:'Unbounded',sans-serif;font-size:.65rem;font-weight:700;color:#eeeaf0;margin-bottom:3px;line-height:1.35}
+.ach p{font-size:.6rem;color:rgba(238,234,240,.55);line-height:1.55}
+
+.pub-list{display:flex;flex-direction:column;gap:8px}
+.pub{
+  display:flex;align-items:center;gap:14px;padding:14px 18px;
+  border-radius:12px;border:1px solid rgba(238,234,240,.08);
+  text-decoration:none;color:#eeeaf0;transition:border-color .2s,transform .2s;
+}
+.pub:hover{border-color:rgba(238,234,240,.2);transform:translateX(4px)}
+.pub-n{font-family:'Kode Mono',monospace;font-size:.6rem;color:rgba(238,234,240,.3);flex-shrink:0;width:18px}
+.pub-body{flex:1;min-width:0}
+.pub-title{font-size:.7rem;font-weight:700;color:#eeeaf0;margin-bottom:2px;line-height:1.35}
+.pub-src{font-size:.58rem;color:rgba(238,234,240,.4);font-family:'Kode Mono',monospace}
+.pub-arr{color:rgba(238,234,240,.28);flex-shrink:0;transition:transform .2s,color .2s}
+.pub:hover .pub-arr{transform:translateX(3px);color:rgba(238,234,240,.6)}
+
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.contact-hed{font-family:'Unbounded',sans-serif;font-size:clamp(1.9rem,4vw,2.9rem);font-weight:900;line-height:1.1;letter-spacing:-.02em;color:#eeeaf0;margin-bottom:14px}
+.contact-hed em{font-style:normal;-webkit-text-stroke:1.5px rgba(238,234,240,.55);color:transparent}
+.contact-sub{font-size:.84rem;color:rgba(238,234,240,.62);line-height:1.85}
+.clinks{display:flex;flex-direction:column;gap:10px}
+.clink{
+  display:flex;align-items:center;gap:14px;padding:16px 20px;
+  border-radius:13px;border:1px solid rgba(238,234,240,.1);
+  text-decoration:none;color:#eeeaf0;transition:border-color .2s,transform .2s;
+}
+.clink:hover{border-color:rgba(238,234,240,.28);transform:translateX(6px)}
+.clink-ico{width:34px;height:34px;border-radius:9px;border:1px solid rgba(238,234,240,.12);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.clink span{flex:1;font-size:.76rem;color:rgba(238,234,240,.78)}
+.clink-arr{color:rgba(238,234,240,.28);transition:transform .2s,color .2s}
+.clink:hover .clink-arr{transform:translateX(4px);color:rgba(238,234,240,.7)}
+
+footer{border-top:1px solid rgba(238,234,240,.07);padding:26px 52px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+footer small{font-size:.62rem;color:rgba(238,234,240,.3);font-family:'Kode Mono',monospace}
+footer a{color:rgba(238,234,240,.45);text-decoration:none;transition:color .2s}
+footer a:hover{color:#eeeaf0}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:768px){
+  nav{padding:14px 20px}.nav-links{display:none}
+  .pillars-grid,.case-grid,.team-cols,.contact-wrap{grid-template-columns:1fr}
+  .team-block{padding:24px}
+  footer{flex-direction:column;gap:6px;text-align:center;padding:20px}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+<div id="veil"></div>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<nav>
+  <a href="#" class="logo">Арфа</a>
+  <ul class="nav-links">
+    <li><a href="#pillars">Сильные стороны</a></li>
+    <li><a href="#cases">Кейсы</a></li>
+    <li><a href="#team">Команда</a></li>
+    <li><a href="#contact">Контакт</a></li>
+    <li><a href="Adelya_ru_vc.html">Аделя</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-label">Предприниматель · Продукт · Разработка</div>
+      <h1 class="hero-name"><span class="l1">Рафаэль</span></h1>
+      <p class="hero-desc">Запускаю мобильные продукты и цифровые сервисы — от архитектуры и кода до релиза и валидации на пользователях.</p>
+      <div class="hero-chips">
+        <div class="chip">Mobile Dev</div>
+        <div class="chip">Запуск продуктов</div>
+        <div class="chip">IT-консалтинг</div>
+      </div>
+      <div class="hero-cta">
+        <a href="#cases" class="btn-primary">
+          Смотреть кейсы
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn-ghost">Связаться</a>
+      </div>
+      <div class="scroll-hint"><div class="scroll-bar"></div>Прокрутите вниз</div>
+    </section>
+  </div>
+
+  <div class="marquee">
+    <div class="mtrack">
+      <span>Flutter</span><span class="dot">✦</span><span>Запуск продуктов</span><span class="dot">✦</span><span>АдиГид</span><span class="dot">✦</span><span>ToDooliCo</span><span class="dot">✦</span><span>DebtMate</span><span class="dot">✦</span><span>Mobile Dev</span><span class="dot">✦</span><span>CEO</span><span class="dot">✦</span><span>МИК</span><span class="dot">✦</span>
+      <span>Flutter</span><span class="dot">✦</span><span>Запуск продуктов</span><span class="dot">✦</span><span>АдиГид</span><span class="dot">✦</span><span>ToDooliCo</span><span class="dot">✦</span><span>DebtMate</span><span class="dot">✦</span><span>Mobile Dev</span><span class="dot">✦</span><span>CEO</span><span class="dot">✦</span><span>МИК</span><span class="dot">✦</span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="section" id="pillars">
+      <div class="sec-head reveal"><span class="sec-num">01</span><span class="sec-title">Сильные стороны</span><div class="sec-line"></div></div>
+      <div class="pillars-grid">
+        <div class="pillar reveal">
+          <div class="pillar-ico">🚀</div>
+          <h3>Запуск продуктов</h3>
+          <ul>
+            <li>Гипотеза → прототип → MVP → тест → релиз</li>
+            <li>Валидация на реальных пользователях</li>
+            <li>AdiGuide, ToDooliCo, DebtMate</li>
+          </ul>
+          <div class="pillar-metric">3 продукта Арфа</div>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-ico">📱</div>
+          <h3>Mobile Dev</h3>
+          <ul>
+            <li>Flutter / Dart — кроссплатформенная разработка</li>
+            <li>Архитектура, backend-интеграции, TTS / ИИ</li>
+            <li>Firebase, SQLite, Hive, шифрование</li>
+          </ul>
+          <div class="pillar-metric">От идеи до App Store</div>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-ico">💼</div>
+          <h3>Предпринимательство</h3>
+          <ul>
+            <li>CEO IT-консалтингового агентства Арфа</li>
+            <li>Резидент Московского инновационного кластера</li>
+            <li>Победитель акселераторов и «Студенческий стартап»</li>
+          </ul>
+          <div class="pillar-metric">Сооснователь Арфа</div>
+        </div>
+      </div>
+      <div class="about-brief reveal">
+        <p>Сооснователь <strong>Арфы</strong> — команды, которая проходит весь путь продукта: от первой идеи до финальной сборки и запуска. Фокус на решениях, которые работают в реальности, а не существуют «ради идеи».</p>
+        <p>Высшее образование в экономике, специализация — предпринимательство и инновации. Профпереподготовка по направлению «искусственный интеллект и большие данные».</p>
+      </div>
+    </section>
+
+    <section class="section" id="cases">
+      <div class="sec-head reveal"><span class="sec-num">02</span><span class="sec-title">Кейсы</span><div class="sec-line"></div></div>
+      <div class="case-grid">
+        <div class="case reveal">
+          <div class="case-top"><span class="case-type">Продукт</span></div>
+          <h3>АдиГид</h3>
+          <div class="role-tag"><strong>Моя роль:</strong> архитектура, Flutter-разработка, интеграция ИИ-озвучки</div>
+          <ul>
+            <li>Мобильный аудиогид по городам России</li>
+            <li>Сценарии, TTS, валидация на туристах</li>
+            <li>Flutter, Python, Firebase</li>
+          </ul>
+          <a href="https://arfa.pro/projects/adiguide.ru.html" target="_blank" class="btn-primary btn-sm">Подробнее</a>
+        </div>
+        <div class="case reveal">
+          <div class="case-top"><span class="case-type">Продукт</span></div>
+          <h3>ToDooliCo</h3>
+          <div class="role-tag"><strong>Моя роль:</strong> продуктовая гипотеза, фронтенд, MVP</div>
+          <ul>
+            <li>Трекер задач с канбан-модулем</li>
+            <li>Менеджер паролей с AES-256</li>
+            <li>Flutter, Dart, SQLite, Hive</li>
+          </ul>
+          <a href="../projects/todoolico.ru.html" class="btn-primary btn-sm">Подробнее</a>
+        </div>
+        <div class="case reveal">
+          <div class="case-top"><span class="case-type">Продукт</span></div>
+          <h3>DebtMate</h3>
+          <div class="role-tag"><strong>Моя роль:</strong> логика продукта, UI/UX, Android MVP</div>
+          <ul>
+            <li>Учёт личных займов и обязательств</li>
+            <li>Напоминания и авторасчёт задолженностей</li>
+            <li>Flutter, Dart, Hive</li>
+          </ul>
+          <a href="../projects/debtmate.ru.html" class="btn-primary btn-sm">Подробнее</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="team">
+      <div class="sec-head reveal"><span class="sec-num">03</span><span class="sec-title">Команда Арфа</span><div class="sec-line"></div></div>
+      <div class="team-block reveal">
+        <div class="team-head">
+          <div class="team-badge">Команда Арфа</div>
+          <h2>Результаты вместе</h2>
+          <p>Рафаэль и Аделя — сооснователи Арфы. Достижения и публикации ниже — результат совместной работы команды.</p>
+        </div>
+        <div class="team-cols">
+          <div class="team-col">
+            <h3>Достижения</h3>
+            <div class="ach-list">
+              <div class="ach reveal"><div class="ach-icon">🏆</div><div><h4>«Студенческий стартап»</h4><p>Федеральный конкурс предпринимательских проектов</p></div></div>
+              <div class="ach reveal"><div class="ach-icon">🎓</div><div><h4>Грант СНО</h4><p>Поддержка научно-исследовательской деятельности</p></div></div>
+              <div class="ach reveal"><div class="ach-icon">🏙️</div><div><h4>Резидент МИК</h4><p>Московский инновационный кластер</p></div></div>
+              <div class="ach reveal"><div class="ach-icon">🚀</div><div><h4>Акселератор Башкортостан</h4><p>Креативные индустрии Республики Башкортостан</p></div></div>
+            </div>
+          </div>
+          <div class="team-col">
+            <h3>Совместные публикации</h3>
+            <div class="pub-list">
+              <a href="https://elibrary.ru/item.asp?id=50334425" target="_blank" class="pub reveal">
+                <div class="pub-n">01</div><div class="pub-body"><div class="pub-title">Научная статья — eLIBRARY.RU</div><div class="pub-src">elibrary.ru</div></div><div class="pub-arr">→</div>
+              </a>
+              <a href="https://www.researchgate.net/publication/399069820_Cifrovaa_transformacia_turisticeskih_uslug_razrabotka_mobilnogo_audiogida_Digital_Transformation_of_Travel_Services_Developing_of_a_Mobile_Audio_Guide" target="_blank" class="pub reveal">
+                <div class="pub-n">02</div><div class="pub-body"><div class="pub-title">Цифровая трансформация туристических услуг</div><div class="pub-src">ResearchGate</div></div><div class="pub-arr">→</div>
+              </a>
+              <a href="https://usptu-bulletin.ru/index.php/bul/article/view/13035" target="_blank" class="pub reveal">
+                <div class="pub-n">03</div><div class="pub-body"><div class="pub-title">Статья в Вестнике УГНТУ</div><div class="pub-src">usptu-bulletin.ru</div></div><div class="pub-arr">→</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="sec-head reveal"><span class="sec-num">04</span><span class="sec-title">Контакт</span><div class="sec-line"></div></div>
+      <div class="contact-wrap">
+        <div class="reveal">
+          <h2 class="contact-hed">Нужен продукт<br>или <em>MVP?</em></h2>
+          <p class="contact-sub">Ищете технического партнёра для запуска мобильного продукта или цифрового сервиса? Открыт к диалогу — особенно если нужен человек, который доведёт идею до релиза.</p>
+        </div>
+        <div class="clinks reveal">
+          <a href="https://t.me/rafael_not_a_candy" target="_blank" class="clink"><div class="clink-ico">✈️</div><span>Telegram</span><span class="clink-arr">↗</span></a>
+          <a href="https://arfa.pro/projects/adiguide.ru.html" target="_blank" class="clink"><div class="clink-ico">🗺️</div><span>АдиГид — проект</span><span class="clink-arr">↗</span></a>
+          <a href="https://www.researchgate.net/publication/399069820_Cifrovaa_transformacia_turisticeskih_uslug_razrabotka_mobilnogo_audiogida_Digital_Transformation_of_Travel_Services_Developing_of_a_Mobile_Audio_Guide" target="_blank" class="clink"><div class="clink-ico">🔬</div><span>ResearchGate</span><span class="clink-arr">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <small>© 2025 Рафаэль · Арфа</small>
+    <small>Партнёр: <a href="Adelya_ru_vc.html">Аделя</a></small>
+    <small>Made with code ✦</small>
+  </footer>
+</div>
+
+<script>
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function loop(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
+document.querySelectorAll('a,button,.chip').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.width='52px';ring.style.height='52px'});
+  el.addEventListener('mouseleave',()=>{ring.style.width='36px';ring.style.height='36px'});
+});
+
+(function(){
+  const canvas=document.getElementById('bg');
+  const ctx=canvas.getContext('2d');
+  let W,H,t=0;
+  const lo=document.createElement('canvas');
+  const lc=lo.getContext('2d');
+  const S=4;
+  function resize(){
+    W=canvas.width=window.innerWidth;
+    H=canvas.height=window.innerHeight;
+    lo.width=Math.ceil(W/S);lo.height=Math.ceil(H/S);
+  }
+  resize();window.addEventListener('resize',resize);
+  function noise(x,y,t){
+    const f=0.0022;
+    return(
+      Math.sin(x*f*1.5+t*.52)*Math.cos(y*f*1.1+t*.38)+
+      Math.sin(x*f*.8-t*.44)*Math.cos(y*f*2.0+t*.6)+
+      Math.sin((x+y)*f*.65+t*.28)*Math.cos((x-y)*f*.45-t*.48)+
+      Math.cos(x*f*1.2-t*.4)*Math.sin(y*f*.9+t*.44)+
+      Math.sin(x*f*2.2+t*.22)*Math.cos(y*f*1.7-t*.32)*.6
+    )/4.8;
+  }
+  function draw(){
+    t+=0.005;
+    const lW=lo.width,lH=lo.height;
+    const id=lc.createImageData(lW,lH);
+    const d=id.data;
+    for(let y=0;y<lH;y++)for(let x=0;x<lW;x++){
+      let v=noise(x*S,y*S,t);v=Math.tanh(v*3.2);
+      const b=Math.round((v*.5+.5)*255);const i=(y*lW+x)*4;
+      d[i]=b;d[i+1]=b;d[i+2]=b;d[i+3]=255;
+    }
+    lc.putImageData(id,0,0);
+    ctx.clearRect(0,0,W,H);ctx.fillStyle='#060608';ctx.fillRect(0,0,W,H);
+    ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+    ctx.drawImage(lo,0,0,W,H);
+    const full=ctx.getImageData(0,0,W,H);
+    ctx.fillStyle='#060608';ctx.fillRect(0,0,W,H);
+    const DOT=11,maxR=DOT*.66;
+    for(let row=0;row*DOT<H+DOT;row++)for(let col=0;col*DOT<W+DOT;col++){
+      const cx=col*DOT+(row%2===1?DOT*.5:0),cy=row*DOT;
+      const px=Math.min(Math.round(cx),W-1),py=Math.min(Math.round(cy),H-1);
+      const bright=full.data[(py*W+px)*4]/255,r=bright*maxR;
+      if(r<.35)continue;
+      ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(238,234,240,${.5+bright*.5})`;ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+document.querySelectorAll('.pillars-grid,.case-grid,.ach-list,.pub-list,.clinks').forEach(p=>{
+  p.querySelectorAll('.reveal').forEach((c,i)=>{c.style.transitionDelay=i*.09+'s'});
+});
+</script>
+</body>
+</html>

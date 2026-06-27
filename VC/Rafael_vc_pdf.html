@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Рафаэль — VC PDF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:9mm}
+*{box-sizing:border-box}
+body{margin:0;background:#f4f2ee;color:#161417;font-family:'Space Mono',monospace}
+.sheet{width:192mm;height:279mm;margin:0 auto;padding:9mm 10mm;background:#fbfaf7;display:grid;grid-template-rows:auto auto auto auto auto;gap:3.2mm;overflow:hidden}
+.top{display:grid;grid-template-columns:30mm 1fr auto;gap:6mm;align-items:center}
+.photo{width:30mm;height:36mm;border-radius:16mm;overflow:hidden;background:#161417;color:#fbfaf7;display:grid;place-items:center;position:relative;border:1px solid #d7d2ca}
+.photo::before{content:"Р";font-family:'Unbounded',sans-serif;font-size:24mm;font-weight:900;opacity:.18}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.brand{font-family:'Unbounded',sans-serif;font-weight:900;font-size:3.4mm;letter-spacing:.03em;border:1px solid #161417;border-radius:999px;padding:1.7mm 3.4mm}
+.kicker{font-size:2.25mm;letter-spacing:.18em;text-transform:uppercase;color:#656068;margin:0 0 2mm}
+h1{font-family:'Unbounded',sans-serif;font-size:17mm;line-height:.9;margin:0;letter-spacing:-.08em}
+.role{font-size:2.85mm;color:#4f4a52;margin:2mm 0 0}
+.value{border-top:1px solid #d7d2ca;border-bottom:1px solid #d7d2ca;padding:3mm 0;display:grid;grid-template-columns:1.15fr .85fr;gap:5mm;align-items:center}
+.value p{font-size:3.35mm;line-height:1.38;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:2mm;justify-content:flex-end}
+.chip{font-family:'Unbounded',sans-serif;font-size:2mm;font-weight:700;text-transform:uppercase;border:1px solid #161417;border-radius:999px;padding:1.3mm 2.4mm}
+.section-title{font-family:'Unbounded',sans-serif;font-size:2.8mm;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin:0 0 2mm}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4mm}
+.card{border:1px solid #d7d2ca;border-radius:4mm;padding:3mm;background:#fff}
+.num{font-family:'Unbounded',sans-serif;font-size:2.2mm;color:#8d8580;margin-bottom:1.2mm}
+.card h2,.case h2{font-family:'Unbounded',sans-serif;font-size:3.25mm;line-height:1.1;margin:0 0 1.4mm}
+.card ul,.case ul{margin:0;padding-left:4mm}
+.card li,.case li{font-size:2.2mm;line-height:1.38;margin:0 0 .8mm}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4mm}
+.case{border:1px solid #d7d2ca;border-radius:4mm;padding:3mm;background:#fff;min-height:38mm}
+.tag{display:inline-block;font-size:1.85mm;letter-spacing:.12em;text-transform:uppercase;color:#656068;margin-bottom:1.2mm}
+.role-tag{font-size:2.05mm;line-height:1.32;margin:0 0 1.5mm;color:#3b363d}
+.role-tag strong{font-family:'Unbounded',sans-serif;font-size:1.95mm}
+.team{border-radius:5mm;background:#161417;color:#fbfaf7;padding:3.2mm 4mm;display:grid;grid-template-columns:1.1fr .9fr;gap:4mm}
+.team h2{font-family:'Unbounded',sans-serif;font-size:3.3mm;margin:0 0 1.2mm}
+.team p{font-size:2.2mm;line-height:1.34;margin:0;color:#d8d4ce}
+.proofs{display:grid;grid-template-columns:1fr 1fr;gap:2mm}
+.proof{border:1px solid rgba(255,255,255,.18);border-radius:2.5mm;padding:1.5mm;font-size:2mm;line-height:1.2}
+.contact{display:flex;justify-content:space-between;gap:4mm;border-top:1px solid #d7d2ca;padding-top:2.4mm;font-size:2.25mm;color:#4f4a52}
+.contact strong{font-family:'Unbounded',sans-serif;color:#161417}
+@media print{body{background:#fff}.sheet{margin:0;box-shadow:none}}
+</style>
+</head>
+<body>
+<main class="sheet">
+  <header class="top">
+    <div class="photo">
+      <img src="фото Рафаэль/photo.jpg" alt="Фото Рафаэля" data-fallbacks="фото Рафаэль/photo.png,фото Рафаэль/photo.jpeg,photo_Rafael.jpg,photo_Rafael.png" onerror="const f=this.dataset.fallbacks.split(',').filter(Boolean);const n=f.shift();this.dataset.fallbacks=f.join(',');if(n){this.src=n}else{this.remove()}">
+    </div>
+    <div>
+      <p class="kicker">Предприниматель · Продукт · Разработка</p>
+      <h1>Рафаэль</h1>
+      <p class="role">Запускаю мобильные продукты и цифровые сервисы от архитектуры до релиза.</p>
+    </div>
+    <div class="brand">Арфа</div>
+  </header>
+
+  <section class="value">
+    <p>Технический партнёр для MVP: собираю продуктовую гипотезу, архитектуру, мобильную разработку и пользовательскую проверку в один маршрут.</p>
+    <div class="chips"><span class="chip">Mobile Dev</span><span class="chip">Запуск продуктов</span><span class="chip">IT-консалтинг</span></div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Сильные стороны</h2>
+    <div class="pillars">
+      <article class="card"><div class="num">01</div><h2>Запуск продуктов</h2><ul><li>Гипотеза → MVP → тест → релиз</li><li>Валидация на реальных пользователях</li><li>AdiGuide, ToDooliCo, DebtMate</li></ul></article>
+      <article class="card"><div class="num">02</div><h2>Mobile Dev</h2><ul><li>Flutter / Dart</li><li>Архитектура, backend-интеграции, TTS / ИИ</li><li>Firebase, SQLite, Hive, шифрование</li></ul></article>
+      <article class="card"><div class="num">03</div><h2>Предпринимательство</h2><ul><li>CEO IT-консалтингового агентства Арфа</li><li>Резидент Московского инновационного кластера</li><li>Победитель акселераторов</li></ul></article>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Кейсы</h2>
+    <div class="cases">
+      <article class="case"><span class="tag">Продукт</span><h2>АдиГид</h2><p class="role-tag"><strong>Моя роль:</strong> архитектура, Flutter, ИИ-озвучка.</p><ul><li>Мобильный аудиогид по городам России</li><li>TTS, сценарии, тесты на туристах</li><li>Flutter, Python, Firebase</li></ul></article>
+      <article class="case"><span class="tag">Продукт</span><h2>ToDooliCo</h2><p class="role-tag"><strong>Моя роль:</strong> гипотеза, фронтенд, MVP.</p><ul><li>Трекер задач с канбан-модулем</li><li>Менеджер паролей AES-256</li><li>Flutter, Dart, SQLite, Hive</li></ul></article>
+      <article class="case"><span class="tag">Продукт</span><h2>DebtMate</h2><p class="role-tag"><strong>Моя роль:</strong> логика продукта, Android MVP.</p><ul><li>Учёт личных займов и обязательств</li><li>Напоминания и авторасчёт долгов</li><li>Flutter, Dart, Hive</li></ul></article>
+    </div>
+  </section>
+
+  <section class="team">
+    <div><h2>Команда Арфа</h2><p>Рафаэль и Аделя — сооснователи. Достижения ниже — результат совместной работы над продуктами, исследованиями и запуском цифровых сервисов.</p></div>
+    <div class="proofs"><div class="proof">Студенческий стартап</div><div class="proof">Грант СНО</div><div class="proof">Резидент МИК</div><div class="proof">Акселератор Башкортостан</div></div>
+  </section>
+
+  <footer class="contact">
+    <span><strong>Telegram:</strong> t.me/rafael_not_a_candy</span>
+    <span><strong>Email:</strong> adelya_i_rafael@mail.ru</span>
+    <span><strong>Web:</strong> arfa.pro</span>
+  </footer>
+</main>
+</body>
+</html>

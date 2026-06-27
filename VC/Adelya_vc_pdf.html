@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Аделя — VC PDF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:9mm}
+*{box-sizing:border-box}
+body{margin:0;background:#f5f1f7;color:#190d25;font-family:'Outfit',sans-serif;font-weight:300}
+.sheet{width:192mm;height:279mm;margin:0 auto;padding:9mm 10mm;background:#fdfbff;display:grid;grid-template-rows:auto auto auto auto auto;gap:3.2mm;overflow:hidden}
+.top{display:grid;grid-template-columns:30mm 1fr auto;gap:6mm;align-items:center}
+.photo{width:30mm;height:36mm;border-radius:16mm;overflow:hidden;background:#1b0d2a;color:#fdfbff;display:grid;place-items:center;position:relative;border:1px solid #d9cbe7}
+.photo::before{content:"А";font-family:'Cormorant Garamond',serif;font-size:29mm;font-weight:300;opacity:.2}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.brand{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:4.2mm;letter-spacing:.08em;border:1px solid #7a4ac2;border-radius:999px;padding:1.6mm 3.4mm;color:#4c267c}
+.kicker{font-size:2.35mm;letter-spacing:.16em;text-transform:uppercase;color:#765d8d;margin:0 0 2mm}
+h1{font-family:'Cormorant Garamond',serif;font-size:19mm;line-height:.9;margin:0;font-weight:300;letter-spacing:.03em}
+.role{font-size:2.9mm;color:#604b72;margin:2mm 0 0;max-width:100mm}
+.value{border-top:1px solid #d9cbe7;border-bottom:1px solid #d9cbe7;padding:3mm 0;display:grid;grid-template-columns:1.15fr .85fr;gap:5mm;align-items:center}
+.value p{font-size:3.35mm;line-height:1.38;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:2mm;justify-content:flex-end}
+.chip{font-size:2mm;font-weight:500;text-transform:uppercase;border:1px solid #a878ff;color:#4c267c;border-radius:999px;padding:1.3mm 2.4mm;background:#f3ebff}
+.section-title{font-size:2.8mm;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:0 0 2mm;color:#6f4c8f}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4mm}
+.card{border:1px solid #d9cbe7;border-radius:4mm;padding:3mm;background:#fff}
+.num{font-size:2.25mm;color:#9a82ad;margin-bottom:1.2mm}
+.card h2,.case h2{font-family:'Cormorant Garamond',serif;font-size:4.2mm;line-height:1.02;margin:0 0 1.4mm;font-weight:500}
+.card ul,.case ul{margin:0;padding-left:4mm}
+.card li,.case li{font-size:2.2mm;line-height:1.38;margin:0 0 .8mm}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4mm}
+.case{border:1px solid #d9cbe7;border-radius:4mm;padding:3mm;background:#fff;min-height:38mm}
+.tag{display:inline-block;font-size:1.85mm;letter-spacing:.12em;text-transform:uppercase;color:#7b6194;margin-bottom:1.2mm}
+.client{color:#4c267c}
+.role-tag{font-size:2.05mm;line-height:1.32;margin:0 0 1.5mm;color:#47314f}
+.role-tag strong{font-weight:600;color:#2c1538}
+.team{border-radius:5mm;background:#1b0d2a;color:#fdfbff;padding:3.2mm 4mm;display:grid;grid-template-columns:1.1fr .9fr;gap:4mm}
+.team h2{font-family:'Cormorant Garamond',serif;font-size:4.8mm;font-weight:300;margin:0 0 1mm}
+.team p{font-size:2.2mm;line-height:1.34;margin:0;color:#e1d6eb}
+.proofs{display:grid;grid-template-columns:1fr 1fr;gap:2mm}
+.proof{border:1px solid rgba(255,255,255,.18);border-radius:2.5mm;padding:1.5mm;font-size:2mm;line-height:1.2}
+.contact{display:flex;justify-content:space-between;gap:4mm;border-top:1px solid #d9cbe7;padding-top:2.4mm;font-size:2.25mm;color:#604b72}
+.contact strong{font-weight:600;color:#190d25}
+@media print{body{background:#fff}.sheet{margin:0;box-shadow:none}}
+</style>
+</head>
+<body>
+<main class="sheet">
+  <header class="top">
+    <div class="photo">
+      <img src="Фото Аделя/photo.jpg" alt="Фото Адели" data-fallbacks="Фото Аделя/photo.png,Фото Аделя/photo.jpeg,photo_Adelya.jpg,photo_Adelya.png" onerror="const f=this.dataset.fallbacks.split(',').filter(Boolean);const n=f.shift();this.dataset.fallbacks=f.join(',');if(n){this.src=n}else{this.remove()}">
+    </div>
+    <div>
+      <p class="kicker">Дизайнер · Аналитик · Исследователь</p>
+      <h1>Аделя</h1>
+      <p class="role">Превращаю исследования и данные в дизайн, который работает на бизнес.</p>
+    </div>
+    <div class="brand">Арфа</div>
+  </header>
+
+  <section class="value">
+    <p>Соединяю визуальные решения, маркетинговые исследования и эконометрический анализ, чтобы продукт выглядел убедительно и опирался на данные.</p>
+    <div class="chips"><span class="chip">Графический дизайн</span><span class="chip">Маркетинговые исследования</span><span class="chip">Эконометрика</span></div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Сильные стороны</h2>
+    <div class="pillars">
+      <article class="card"><div class="num">01</div><h2>Графический дизайн</h2><ul><li>UI/UX в Figma</li><li>Брендинг и визуальная идентичность</li><li>Дизайн-системы и понятная иерархия</li></ul></article>
+      <article class="card"><div class="num">02</div><h2>Маркетинговые исследования</h2><ul><li>Опросы клиентов и сотрудников</li><li>Конкурентный анализ, CJM, brand audit</li><li>Чек-листы и рекомендации</li></ul></article>
+      <article class="card"><div class="num">03</div><h2>Эконометрика</h2><ul><li>Финансовые модели</li><li>Оценка эффективности решений</li><li>Оптимизация расходов и процессов</li></ul></article>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Кейсы</h2>
+    <div class="cases">
+      <article class="case"><span class="tag">Продукт</span><h2>АдиГид</h2><p class="role-tag"><strong>Моя роль:</strong> UX/UI, визуальная концепция, сценарии.</p><ul><li>Интерфейс мобильного аудиогида</li><li>Пользовательские сценарии</li><li>Дизайн, понятный без инструкций</li></ul></article>
+      <article class="case"><span class="tag client">Клиентский кейс</span><h2>Анализ агентства</h2><p class="role-tag"><strong>Моя роль:</strong> исследование полного цикла.</p><ul><li>Опросы сотрудников и клиентов</li><li>Тестирование конкурентов в поле</li><li>Редизайн логотипа и рекомендации</li></ul></article>
+      <article class="case"><span class="tag client">Клиентский кейс</span><h2>Финконсалтинг</h2><p class="role-tag"><strong>Моя роль:</strong> финмодель, экономика, аналитика.</p><ul><li>Магазин электроники</li><li>Оптимизация расходов</li><li>Новые источники дохода</li></ul></article>
+    </div>
+  </section>
+
+  <section class="team">
+    <div><h2>Команда Арфа</h2><p>Рафаэль и Аделя — сооснователи. Достижения ниже — результат совместной работы над продуктами, исследованиями и запуском цифровых сервисов.</p></div>
+    <div class="proofs"><div class="proof">Студенческий стартап</div><div class="proof">Грант СНО</div><div class="proof">Резидент МИК</div><div class="proof">Акселератор Башкортостан</div></div>
+  </section>
+
+  <footer class="contact">
+    <span><strong>Email:</strong> adelya_i_rafael@mail.ru</span>
+    <span><strong>Web:</strong> arfa.pro</span>
+    <span><strong>Research:</strong> ResearchGate</span>
+  </footer>
+</main>
+</body>
+</html>

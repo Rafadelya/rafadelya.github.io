@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>АдиГид — паспорт продукта · Полка Арфа</title>
+<meta name="description" content="АдиГид (AdiGuide) — аудиогид по городам в твоём кармане. Паспорт продукта на полке Арфа.">
+<link rel="icon" type="image/png" href="../assets/Cyrillic_logo_arfa.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@800;900&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F0E9;
+  --ink:#0B0B12;
+  --violet:#4B21E0;
+  --red:#FF4B1F;
+  --yellow:#FFD60A;
+  --pink:#FF9EC4;
+  --teal:#12BFA6;
+  --soft:color-mix(in srgb,var(--ink) 66%,var(--paper));
+  --faint:color-mix(in srgb,var(--ink) 20%,var(--paper));
+  --rule:2px solid var(--ink);
+  --hair:2px solid color-mix(in srgb,var(--ink) 18%,var(--paper));
+  --f-display:'Fira Sans Extra Condensed','Arial Narrow','Impact',sans-serif;
+  --f-body:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  --gutter:clamp(16px,2.2vw,28px);
+  --pad:clamp(18px,2.6vw,36px);
+}
+*{box-sizing:border-box;border-radius:0}
+::selection{background:var(--yellow);color:var(--ink)}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,p{margin:0}
+button,input,select,summary{font-family:inherit;color:inherit}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.on-dark :focus-visible{outline-color:var(--paper)}
+.kicker{font:600 12px/1.4 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.mono{font:600 12px/1.4 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--paper);border-bottom:var(--rule)}
+.top-in{max-width:1480px;margin:0 auto;padding:10px var(--gutter);display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px}
+.mark{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font:900 30px/1 var(--f-display);text-transform:uppercase}
+.mark img{width:34px;height:34px;border-radius:50%;border:var(--rule);background:#fff;object-fit:cover}
+.nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+.nav a{padding-block:4px;border-bottom:2px solid transparent;color:var(--ink);text-decoration:none;font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.nav a:hover,.nav a.is-active{border-color:var(--ink)}
+.langs{display:flex;gap:6px;margin-left:auto}
+.langs a{width:32px;height:32px;display:grid;place-items:center;border:var(--rule);background:var(--paper);text-decoration:none;font-size:16px;line-height:1}
+.langs a:hover{background:var(--yellow)}
+.langs a.active{background:var(--violet)}
+@media (max-width:960px){ .nav{display:none} }
+@media (max-width:520px){ .langs a{width:28px;height:28px;font-size:14px} .mark{font-size:24px} .mark img{width:28px;height:28px} }
+
+.frame{max-width:1180px;margin:0 auto;padding-inline:var(--gutter)}
+.crumb{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:18px 0 0;font:600 12px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.crumb a{text-decoration:none;border-bottom:2px solid transparent}
+.crumb a:hover{border-color:var(--ink)}
+.crumb span{color:var(--soft)}
+
+/* buttons */
+.btn{position:relative;min-width:120px;padding:14px 18px;border:var(--rule);background:var(--ink);color:var(--paper);font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;cursor:pointer;text-align:center;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{background:var(--violet);color:#fff}
+.btn--primary{background:var(--red);color:var(--ink)}
+.btn--primary:hover{background:var(--ink);color:var(--paper)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:var(--paper)}
+.btn svg{width:16px;height:16px;fill:currentColor;flex:none}
+
+/* hero app card */
+.appcard{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);border:var(--rule);margin:18px 0 0}
+.col-l{display:flex;flex-direction:column;gap:20px;padding:var(--pad);background:hsl(262 92% 60%);color:var(--ink);border-right:var(--rule)}
+.col-l .row-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font:600 12px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:var(--rule);background:#fff;font:600 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.badge::before{content:"";width:9px;height:9px;background:var(--red);border:2px solid var(--ink)}
+.appicon{width:116px;height:116px;display:grid;place-items:center;background:#fff;border:var(--rule);flex:none;overflow:hidden}
+.appicon img{width:100%;height:100%;object-fit:cover}
+.col-l h1{font:900 clamp(46px,6.4vw,96px)/.84 var(--f-display);text-transform:uppercase;overflow-wrap:break-word;margin-top:auto}
+.col-l .tagline{font-size:17px;max-width:34ch}
+.col-l .tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{padding:5px 9px;border:2px solid var(--ink);font:600 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.col-l .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.col-l .btn{border-color:var(--ink)}
+.col-l .btn--primary{background:var(--ink);color:var(--paper)}
+.col-l .btn--primary:hover{background:#fff;color:var(--ink)}
+.col-l .btn--ghost{background:transparent;color:var(--ink)}
+.col-l .btn--ghost:hover{background:var(--ink);color:var(--paper)}
+
+.col-r{display:flex;flex-direction:column}
+.mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:var(--rule)}
+.mini .c{padding:16px 18px;border-bottom:var(--rule);display:flex;flex-direction:column;gap:5px}
+.mini .c:nth-child(odd){border-right:var(--rule)}
+.mini .c:nth-last-child(-n+2){border-bottom:0}
+.mini b{font:900 clamp(17px,1.9vw,24px)/1 var(--f-display);text-transform:uppercase}
+.mini span{font:600 11px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+
+/* generic panel */
+.panel{padding:var(--pad);border-bottom:var(--rule)}
+.panel > .kicker{display:block;margin-bottom:8px}
+.panel h2{font:900 clamp(28px,3.6vw,46px)/.94 var(--f-display);text-transform:uppercase;letter-spacing:.005em}
+.panel .lead{margin-top:12px;font-size:17px;line-height:1.6;max-width:62ch}
+.prose{font-size:17px;line-height:1.65;max-width:60ch}
+.prose + .prose{margin-top:12px}
+
+/* install */
+.install{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);border-bottom:var(--rule)}
+.install__main{padding:var(--pad);border-right:var(--rule)}
+.plats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:18px}
+.plat{display:flex;align-items:center;gap:12px;padding:16px;border:var(--rule);background:#fff}
+.plat .pico{width:42px;height:42px;display:grid;place-items:center;border:var(--rule);background:var(--ink);flex:none}
+.plat .pico svg{width:24px;height:24px;fill:var(--paper)}
+.plat .pmeta{display:flex;flex-direction:column;gap:2px;min-width:0}
+.plat .pmeta b{font:900 20px/1 var(--f-display);text-transform:uppercase}
+.plat .pmeta span{font:600 10px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.install__side{padding:var(--pad);background:hsl(262 92% 60%);display:flex;flex-direction:column;gap:14px}
+.install__side h3{font:900 24px/1 var(--f-display);text-transform:uppercase}
+.install__side p{font-size:15px;line-height:1.5}
+.store-note{display:flex;flex-direction:column;gap:10px;padding:16px;border:var(--rule);background:var(--paper)}
+.store-note .row{display:flex;align-items:center;gap:10px;font:600 12px/1.3 var(--f-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--soft)}
+.store-note .row::before{content:"";width:9px;height:9px;border:2px solid var(--ink);background:var(--yellow);flex:none}
+.install__side .btn{width:100%}
+
+/* passport */
+.passport{border:var(--rule);margin-top:18px}
+.passport__head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:var(--rule);background:var(--ink);color:var(--paper)}
+.passport__head b{font:900 22px/1 var(--f-display);text-transform:uppercase;letter-spacing:.02em}
+.passport__head span{font:600 11px/1 var(--f-mono);letter-spacing:.14em;text-transform:uppercase}
+.passport__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.passport__grid .cell{padding:16px 18px;border-right:var(--hair);border-bottom:var(--hair);display:flex;flex-direction:column;gap:6px}
+.passport__grid .cell:nth-child(3n){border-right:0}
+.passport__grid .cell .k{font:600 11px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.passport__grid .cell .v{font-size:16px;font-weight:500}
+.passport__grid .cell .v a{font-weight:600}
+.passport__grid .cell .v.big{font:900 22px/1 var(--f-display);text-transform:uppercase}
+@media (max-width:720px){ .passport__grid{grid-template-columns:repeat(2,minmax(0,1fr))} .passport__grid .cell:nth-child(3n){border-right:var(--hair)} .passport__grid .cell:nth-child(2n){border-right:0} }
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:20px}
+.gal button{position:relative;padding:0;aspect-ratio:9/16;overflow:hidden;border:var(--rule);background:#0e0e14;cursor:zoom-in;display:block}
+.gal img{width:100%;height:100%;object-fit:cover;display:block}
+.gal button::after{content:"⤢";position:absolute;right:8px;bottom:8px;width:26px;height:26px;display:grid;place-items:center;background:var(--yellow);border:2px solid var(--ink);font-size:13px;line-height:1}
+.gal button:hover img{opacity:.86}
+.gal-note{margin-top:14px;font-size:14px;color:var(--soft)}
+
+/* scenario */
+.steps{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:var(--rule)}
+.steps li{padding:18px;border-right:var(--rule);display:flex;flex-direction:column;gap:8px}
+.steps li:last-child{border-right:0}
+.steps .n{font:900 30px/1 var(--f-display);color:var(--violet)}
+.steps h3{font:900 18px/1.05 var(--f-display);text-transform:uppercase}
+.steps p{font-size:14px;line-height:1.45;color:var(--soft)}
+@media (max-width:860px){ .steps{grid-template-columns:repeat(2,minmax(0,1fr))} .steps li:nth-child(2n){border-right:0} .steps li:nth-child(-n+2){border-bottom:var(--rule)} }
+
+.feat{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px}
+.feat li{display:flex;gap:12px;font-size:16px;line-height:1.4}
+.feat li::before{content:"";width:12px;height:12px;margin-top:4px;background:var(--red);border:2px solid var(--ink);flex:none}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{padding:8px 12px;border:var(--rule);font:600 12px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;background:#fff}
+.chip.is-on{background:var(--teal)}
+.chip.is-soon{background:var(--paper);color:var(--soft)}
+
+/* details */
+.tech{margin-top:20px;border:var(--rule)}
+.tech summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;font:900 20px/1 var(--f-display);text-transform:uppercase}
+.tech summary::-webkit-details-marker{display:none}
+.tech summary::after{content:"+";font:900 26px/1 var(--f-display)}
+.tech[open] summary::after{content:"–"}
+.tech[open] summary{border-bottom:var(--rule)}
+.tech .tech-body{padding:18px}
+.tech dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border:var(--hair);margin:0}
+.tech dl > div{padding:14px 16px;border-right:var(--hair);border-bottom:var(--hair);display:flex;flex-direction:column;gap:5px}
+.tech dl > div .k{font:600 11px/1.3 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--soft)}
+.tech dl > div .v{font-size:15px}
+
+/* timeline */
+.tl{margin-top:20px;border-top:var(--rule)}
+.tl .row{display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:12px 24px;padding:16px 0;border-bottom:var(--hair)}
+.tl .row .k{font:600 12px/1.5 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.tl .row .v{font-size:16px}
+.author{margin-top:20px;padding:18px;border:var(--rule);background:#fff;display:flex;gap:16px}
+.author .q{font:900 60px/0.5 var(--f-display);color:var(--violet);flex:none}
+.author p{font-size:17px;line-height:1.6;font-style:italic}
+.author .who{margin-top:10px;font:600 12px/1.4 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--soft);font-style:normal}
+
+/* contacts */
+.contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:20px}
+.contact{display:flex;flex-direction:column;gap:6px;padding:18px;border:var(--rule);text-decoration:none;background:#fff}
+.contact:hover{background:var(--yellow)}
+.contact .k{font:600 11px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.contact .v{font:900 19px/1.1 var(--f-display);text-transform:uppercase}
+
+@media (max-width:860px){
+  .appcard{grid-template-columns:minmax(0,1fr)}
+  .col-l{border-right:0;border-bottom:var(--rule)}
+  .col-l h1{margin-top:6px}
+  .install{grid-template-columns:minmax(0,1fr)}
+  .install__main{border-right:0;border-bottom:var(--rule)}
+  .feat{grid-template-columns:minmax(0,1fr)}
+  .tl .row{grid-template-columns:minmax(0,1fr);gap:6px}
+}
+
+/* footer */
+.foot{background:var(--ink);color:var(--paper);border-top:var(--rule);margin-top:48px}
+.foot-in{max-width:1180px;margin:0 auto;padding:22px var(--gutter);display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;font:500 12px/1.5 var(--f-mono);letter-spacing:.04em;text-transform:uppercase}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 18px}
+.foot a{color:var(--paper);font-weight:600;text-decoration:none;border-bottom:1px solid transparent}
+.foot a:hover{border-color:var(--paper)}
+
+/* toast + lightbox */
+.toast{position:fixed;left:var(--gutter);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;max-width:calc(100% - 2 * var(--gutter));padding:13px 16px;border-left:14px solid var(--yellow);background:var(--ink);color:var(--paper);font:600 12px/1.3 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.toast.on{animation:up .22s ease-out}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.lb{position:fixed;inset:0;z-index:80;display:none;background:color-mix(in srgb,var(--ink) 94%,transparent);padding:var(--gutter)}
+.lb.open{display:flex;flex-direction:column;gap:14px}
+.lb__top{display:flex;align-items:center;justify-content:space-between;color:var(--paper);font:600 12px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase}
+.lb__stage{flex:1;display:flex;align-items:center;justify-content:center;min-height:0}
+.lb__stage img{max-width:100%;max-height:100%;border:2px solid var(--paper);object-fit:contain}
+.lb__nav{display:flex;gap:10px;justify-content:center}
+.lb button{min-width:56px;padding:12px 16px;border:2px solid var(--paper);background:transparent;color:var(--paper);font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.lb button:hover{background:var(--violet)}
+@media (prefers-reduced-motion:reduce){ .toast.on{animation:none} *{transition:none!important} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="mark" href="../index.ru.html" aria-label="Арфа, на главную">
+      <img src="../assets/Cyrillic_logo_arfa.png" alt="">
+      Полка
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../projects.ru.html">Проекты</a>
+      <a href="Polka.html" class="is-active">Магазин</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+    </nav>
+    <div class="langs" aria-label="Язык">
+      <a href="../projects/adiguide.en.html" aria-label="English">🇬🇧</a>
+      <a href="../projects/adiguide.de.html" aria-label="Deutsch">🇩🇪</a>
+      <a href="../projects/adiguide.fr.html" aria-label="Français">🇫🇷</a>
+      <a href="adiguide_app.html" class="active" aria-label="Русский">🇷🇺</a>
+    </div>
+  </div>
+</header>
+
+<main class="frame">
+  <div class="crumb">
+    <a href="Polka.html">← Полка</a>
+    <span>/</span>
+    <a href="Polka.html#catalog">Каталог</a>
+    <span>/</span>
+    <span>Продукты · АдиГид</span>
+  </div>
+
+  <!-- HERO -->
+  <article class="appcard">
+    <div class="col-l on-dark">
+      <div class="row-top">
+        <span>Продукты · Путешествия</span>
+        <span class="badge">Ранний доступ</span>
+      </div>
+      <div class="appicon"><img src="../assets/adiguide/AdiGuide_Logo.png" alt="Логотип АдиГид"></div>
+      <h1>АдиГид</h1>
+      <p class="tagline">Твой личный гид по городам в кармане. Гуляй в своём ритме и узнавай места, мимо которых раньше просто проходил.</p>
+      <div class="tags" aria-label="Теги">
+        <span class="tag">аудиогид</span>
+        <span class="tag">города</span>
+        <span class="tag">прогулки</span>
+        <span class="tag">офлайн</span>
+      </div>
+      <div class="actions">
+        <a class="btn btn--primary" href="https://adiguide.tech" target="_blank" rel="noopener noreferrer">Открыть →</a>
+        <button class="btn btn--ghost" id="shelfBtn" type="button" data-id="adiguide">На полку</button>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="mini">
+        <div class="c"><b>Ранний доступ</b><span>Статус</span></div>
+        <div class="c"><b>iOS · Android</b><span>Платформы</span></div>
+        <div class="c"><b>27 мая 2026</b><span>Обновлено</span></div>
+        <div class="c"><b>Аудиогид</b><span>Категория</span></div>
+      </div>
+
+      <!-- INSTALL -->
+      <div class="install">
+        <div class="install__main">
+          <p class="kicker">платформы и установка</p>
+          <h2 style="margin-top:8px;font-size:clamp(24px,3vw,34px)">Где работает</h2>
+          <div class="plats">
+            <div class="plat">
+              <span class="pico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16.4 1.4c0 1.1-.4 2.2-1.2 3-.9 1-2.2 1.6-3.4 1.5-.1-1.2.4-2.4 1.2-3.2.9-.85 2.3-1.5 3.4-1.3zM20.5 17.2c-.6 1.3-.8 1.9-1.5 3-1 1.6-2.4 3.6-4.2 3.6-1.6 0-2-1-4.1-1-2.1 0-2.6 1-4.1 1-1.8 0-3.1-1.8-4.1-3.4C-.3 16.9-.6 11.7 1.1 8.9c1.2-2 3-3.1 4.8-3.1 1.8 0 2.9 1 4.3 1 1.4 0 2.3-1 4.3-1 1.5 0 3.2.8 4.4 2.3-3.8 2.1-3.2 7.5 1.6 9.1z"/></svg></span>
+              <span class="pmeta"><b>iOS</b><span>iPhone · iPad</span></span>
+            </div>
+            <div class="plat">
+              <span class="pico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.6 9.5l1.8-3.2c.2-.3 0-.7-.3-.8-.3-.2-.6-.1-.8.2l-1.9 3.2a11.5 11.5 0 0 0-8.9 0L5.7 5.7c-.2-.3-.6-.4-.9-.2-.3.2-.4.5-.2.8l1.8 3.2A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.5zM7 15.3a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg></span>
+              <span class="pmeta"><b>Android</b><span>смартфоны</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="install__side">
+          <h3>Установить</h3>
+          <p>Приложение в раннем доступе. В магазинах пока не опубликовано — установка идёт напрямую, через нас.</p>
+          <div class="store-note">
+            <span class="row">RuStore — готовится</span>
+            <span class="row">App Store — готовится</span>
+            <span class="row">Google Play — готовится</span>
+          </div>
+          <a class="btn btn--primary" href="https://t.me/rafael_not_a_candy" target="_blank" rel="noopener noreferrer">Скачать через Telegram →</a>
+        </div>
+      </div>
+
+      <!-- PASSPORT -->
+      <div class="passport" aria-label="Паспорт продукта">
+        <div class="passport__head">
+          <b>Паспорт продукта</b>
+          <span>AdiGuide · АдиГид</span>
+        </div>
+        <div class="passport__grid">
+          <div class="cell"><span class="k">Статус проекта</span><span class="v big">Ранний доступ</span></div>
+          <div class="cell"><span class="k">Дата обновления</span><span class="v">27 мая 2026</span></div>
+          <div class="cell"><span class="k">Разработчик</span><span class="v">Арфа · ООО «ЭР ЭН ЭЙ СТУДИО»</span></div>
+          <div class="cell"><span class="k">Платформы</span><span class="v">iOS · Android</span></div>
+          <div class="cell"><span class="k">Тематика</span><span class="v">Аудиогид по городам</span></div>
+          <div class="cell"><span class="k">Сайт разработчика</span><span class="v"><a href="https://adiguide.tech" target="_blank" rel="noopener noreferrer">AdiGuide.Tech</a></span></div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ABOUT -->
+  <section class="panel" aria-labelledby="about-t">
+    <p class="kicker">о продукте</p>
+    <h2 id="about-t">Истории рядом</h2>
+    <p class="lead">АдиГид — мобильный аудиогид для прогулок по городу. Маршрут ведёт по точкам, а истории включаются ровно там, где нужно. Можно слушать онлайн и офлайн, пропускать неинтересное, остановиться на кофе и продолжить потом.</p>
+    <p class="prose" style="margin-top:14px">Проект развивается при поддержке Фонда содействия инновациям (программа «Студенческий стартап»), оператор — ООО «ЭР ЭН ЭЙ СТУДИО».</p>
+
+    <h3 style="margin-top:28px;font:900 22px/1 var(--f-display);text-transform:uppercase">Ключевые возможности</h3>
+    <ul class="feat">
+      <li>Слушать онлайн и офлайн — без интернета в дороге</li>
+      <li>Искать места и точки на карте рядом с тобой</li>
+      <li>Выбирать темы: архитектура, мрачные истории и другие</li>
+      <li>Пропускать лишние точки и прерывать прогулку</li>
+      <li>Делиться маршрутами и сохранять любимые места</li>
+    </ul>
+
+    <h3 style="margin-top:28px;font:900 22px/1 var(--f-display);text-transform:uppercase">Как выглядит прогулка</h3>
+    <ol class="steps">
+      <li><span class="n">01</span><h3>Выбрал город</h3><p>Смотришь, какие прогулки рядом и что можно скачать заранее.</p></li>
+      <li><span class="n">02</span><h3>Открыл маршрут</h3><p>Видишь точки, длительность, настроение и где начать.</p></li>
+      <li><span class="n">03</span><h3>Слушаешь</h3><p>История включается как аудиопрогулка, а не как лекция.</p></li>
+      <li><span class="n">04</span><h3>Гуляешь</h3><p>Остановился, пропустил, вернулся — маршрут подождёт.</p></li>
+    </ol>
+
+    <div class="chips" aria-label="Города">
+      <span class="chip is-on">Санкт-Петербург — есть</span>
+      <span class="chip is-soon">Москва — скоро</span>
+      <span class="chip is-soon">Казань — скоро</span>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="panel" aria-labelledby="gal-t">
+    <p class="kicker">галерея</p>
+    <h2 id="gal-t">Кадры и обложки</h2>
+    <p class="lead">Обложки маршрутов и городские кадры из приложения. Нажми, чтобы увеличить.</p>
+    <div class="gal" id="gal">
+      <button type="button"><img src="../assets/adiguide/2.jpg" alt="Городской маршрут" loading="lazy"></button>
+      <button type="button"><img src="../assets/adiguide/4.jpg" alt="Улица в маршруте" loading="lazy"></button>
+      <button type="button"><img src="../assets/adiguide/5.jpg" alt="Точка маршрута" loading="lazy"></button>
+      <button type="button"><img src="../assets/adiguide/7.jpg" alt="Прогулка" loading="lazy"></button>
+      <button type="button"><img src="../assets/adiguide/8.jpg" alt="Фрагмент маршрута" loading="lazy"></button>
+      <button type="button"><img src="../assets/adiguide/10.jpg" alt="Городской вид" loading="lazy"></button>
+      <button type="button"><img src="../assets/adiguide/11.jpg" alt="Вечерний маршрут" loading="lazy"></button>
+      <button type="button"><img src="../assets/adiguide/12.jpg" alt="Городская улица" loading="lazy"></button>
+    </div>
+    <p class="gal-note">Это кадры-обложки маршрутов, а не интерфейс приложения.</p>
+  </section>
+
+  <!-- TECH -->
+  <section class="panel" aria-labelledby="tech-t">
+    <p class="kicker">технические сведения</p>
+    <h2 id="tech-t">Под капотом</h2>
+    <details class="tech">
+      <summary>Технологии и данные проекта</summary>
+      <div class="tech-body">
+        <dl>
+          <div><span class="k">Стек</span><span class="v">Flutter · Firebase</span></div>
+          <div><span class="k">Карты</span><span class="v">OpenStreetMap</span></div>
+          <div><span class="k">Озвучка</span><span class="v">Синтез речи (TTS)</span></div>
+          <div><span class="k">Офлайн</span><span class="v">Маршруты и аудио доступны без сети</span></div>
+          <div><span class="k">Платформы</span><span class="v">iOS · Android</span></div>
+          <div><span class="k">Версия и требования</span><span class="v">Уточняются</span></div>
+        </dl>
+        <p class="gal-note">Данные приведены по сведениям проекта и могут уточняться.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- HISTORY -->
+  <section class="panel" aria-labelledby="hist-t">
+    <p class="kicker">история развития</p>
+    <h2 id="hist-t">Что дальше</h2>
+    <div class="tl">
+      <div class="row"><span class="k">Последнее обновление</span><span class="v">27 мая 2026</span></div>
+      <div class="row"><span class="k">Планы</span><span class="v">Расширяем библиотеку маршрутов и качество озвучки.</span></div>
+    </div>
+    <div class="author">
+      <span class="q" aria-hidden="true">“</span>
+      <div>
+        <p>Мы делаем не экскурсию, а прогулку. Хочется, чтобы город рассказывал спокойно и в твоём темпе — без флажка в руках и группы за спиной.</p>
+        <p class="who">Заметка автора · команда Арфа</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTS -->
+  <section class="panel" aria-labelledby="cont-t" style="border-bottom:0">
+    <p class="kicker">связь и доверие</p>
+    <h2 id="cont-t">Контакты</h2>
+    <div class="contacts">
+      <a class="contact" href="https://adiguide.tech" target="_blank" rel="noopener noreferrer"><span class="k">Сайт разработчика</span><span class="v">AdiGuide.Tech</span></a>
+      <a class="contact" href="https://t.me/rafael_not_a_candy" target="_blank" rel="noopener noreferrer"><span class="k">Поддержка</span><span class="v">Telegram</span></a>
+      <a class="contact" href="../projects/adiguide.ru.html"><span class="k">Страница проекта</span><span class="v">Полное описание</span></a>
+      <a class="contact" href="Polka.html#catalog"><span class="k">Другие продукты</span><span class="v">Полка Арфа</span></a>
+    </div>
+  </section>
+
+  <p class="mono" style="padding:18px 0 0"><a href="Polka.html#catalog" style="text-decoration:none;border-bottom:2px solid var(--ink)">← Вернуться в каталог</a></p>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <span>© 2026 Арфа · АдиГид</span>
+    <nav class="foot-links" aria-label="Ссылки">
+      <a href="https://adiguide.tech" target="_blank" rel="noopener noreferrer">AdiGuide.Tech</a>
+      <a href="../projects/adiguide.ru.html">Страница проекта</a>
+      <a href="Polka.html">Магазин</a>
+      <a href="../projects.ru.html">Все проекты</a>
+    </nav>
+    <a href="#" id="toTop">Наверх ↑</a>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
+  <div class="lb__top">
+    <span id="lbCount">1 / 8</span>
+    <button type="button" id="lbClose">Закрыть ✕</button>
+  </div>
+  <div class="lb__stage"><img id="lbImg" src="" alt=""></div>
+  <div class="lb__nav">
+    <button type="button" id="lbPrev" aria-label="Предыдущее">←</button>
+    <button type="button" id="lbNext" aria-label="Следующее">→</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function(){
+  /* shelf */
+  var shelfBtn = document.getElementById('shelfBtn');
+  var toast = document.getElementById('toast');
+  var timer = null, id = 'adiguide', key = 'polka.shelf', set = [];
+  try { set = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
+  function has(x){ return set.indexOf(x) > -1; }
+  function save(){ try { localStorage.setItem(key, JSON.stringify(set)); } catch(e) {} }
+  function sync(){
+    var on = has(id);
+    shelfBtn.textContent = on ? 'На полке' : 'На полку';
+    shelfBtn.classList.toggle('btn--primary', on);
+    shelfBtn.classList.toggle('btn--ghost', !on);
+  }
+  function say(msg){
+    toast.textContent = msg; toast.hidden = false; toast.classList.remove('on');
+    void toast.offsetWidth; toast.classList.add('on');
+    clearTimeout(timer); timer = setTimeout(function(){ toast.hidden = true; }, 2200);
+  }
+  shelfBtn.addEventListener('click', function(){
+    if (has(id)) { set = set.filter(function(x){ return x !== id; }); say('«АдиГид» убрано с полки'); }
+    else { set.push(id); say('«АдиГид» на полке'); }
+    save(); sync();
+  });
+  sync();
+
+  /* lightbox */
+  var gal = document.getElementById('gal');
+  var imgs = Array.prototype.slice.call(gal.querySelectorAll('img'));
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lbImg');
+  var lbCount = document.getElementById('lbCount');
+  var cur = 0;
+  function show(i){
+    cur = (i + imgs.length) % imgs.length;
+    lbImg.src = imgs[cur].currentSrc || imgs[cur].src;
+    lbImg.alt = imgs[cur].alt;
+    lbCount.textContent = (cur + 1) + ' / ' + imgs.length;
+  }
+  function openLb(i){ show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; document.getElementById('lbClose').focus(); }
+  function closeLb(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+  imgs.forEach(function(img, i){
+    img.parentElement.addEventListener('click', function(){ openLb(i); });
+  });
+  document.getElementById('lbPrev').addEventListener('click', function(){ show(cur - 1); });
+  document.getElementById('lbNext').addEventListener('click', function(){ show(cur + 1); });
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  lb.addEventListener('click', function(e){ if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    else if (e.key === 'ArrowRight') show(cur + 1);
+    else if (e.key === 'ArrowLeft') show(cur - 1);
+  });
+
+  /* to top */
+  document.getElementById('toTop').addEventListener('click', function(e){
+    e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

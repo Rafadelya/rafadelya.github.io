@@ -1,432 +1,198 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EconoMetrics — Nexus Studio</title>
-    <style>
-        :root {
-            --bg-color: #0a0a0c;
-            --text-main: #ffffff;
-            --text-muted: #8a8a93;
-            --accent-purple: #6c5ce7;
-            --accent-cyan: #00cec9;
-            --glass-bg: rgba(255, 255, 255, 0.02);
-            --glass-border: rgba(255, 255, 255, 0.06);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 210, 211, 0.1), transparent 30%),
-                radial-gradient(circle at 90% 80%, rgba(108, 92, 231, 0.15), transparent 30%);
-            background-attachment: fixed;
-        }
-
-        /* Навигация / Хлебные крошки */
-        .breadcrumb {
-            padding: 24px 5%;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .breadcrumb a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-
-        .breadcrumb a:hover {
-            color: var(--text-main);
-        }
-
-        .breadcrumb span {
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        /* Главный контейнер */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px 5% 100px;
-        }
-
-        /* Шапка приложения (Hero) */
-        .app-hero {
-            display: grid;
-            grid-template-columns: 120px 1fr auto;
-            align-items: center;
-            gap: 32px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            padding: 40px;
-            border-radius: 32px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            margin-bottom: 40px;
-        }
-
-        .hero-icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 28px;
-            background: linear-gradient(135deg, var(--accent-cyan), #81ecec);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 56px;
-            box-shadow: 0 20px 40px rgba(0, 206, 201, 0.2);
-        }
-
-        .hero-info h1 {
-            font-size: 42px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 8px;
-        }
-
-        .hero-info .tagline {
-            color: var(--text-muted);
-            font-size: 18px;
-            margin-bottom: 12px;
-        }
-
-        .badges {
-            display: flex;
-            gap: 8px;
-        }
-
-        .badge {
-            font-size: 12px;
-            padding: 6px 12px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            color: var(--text-muted);
-        }
-
-        .badge.active {
-            color: var(--accent-cyan);
-            background: rgba(0, 206, 201, 0.1);
-            border-color: rgba(0, 206, 201, 0.2);
-        }
-
-        .action-area {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: flex-end;
-        }
-
-        .store-buttons {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-
-        .store-btn {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 14px;
-            border-radius: 14px;
-            border: 1px solid var(--glass-border);
-            background: rgba(255, 255, 255, 0.02);
-            text-decoration: none;
-            color: var(--text-main);
-            min-width: 170px;
-            transition: all 0.3s;
-        }
-
-        .store-btn:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .store-icon {
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.08);
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .store-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-        }
-
-        .store-text small {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-        }
-
-        .store-text strong {
-            font-size: 15px;
-            letter-spacing: -0.3px;
-        }
-
-        .launch-btn {
-            background: linear-gradient(135deg, var(--accent-cyan), #00b5b5);
-            color: #000;
-            padding: 16px 36px;
-            border-radius: 16px;
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 206, 201, 0.3);
-            border: none;
-            cursor: pointer;
-        }
-
-        .launch-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 206, 201, 0.5);
-        }
-
-        /* Галерея Скриншотов */
-        .section-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .screenshots {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 60px;
-        }
-
-        .screen-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            height: 220px;
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .screen-card:hover {
-            border-color: rgba(255,255,255,0.2);
-            transform: scale(1.02);
-        }
-
-        /* Фейковый UI внутри скриншотов с помощью CSS */
-        .screen-card::before {
-            content: '';
-            position: absolute;
-            width: 80%;
-            height: 60%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -30%);
-        }
-
-        /* Сетка Бенто для фичей */
-        .features-bento {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 24px;
-        }
-
-        .bento-item {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 28px;
-            padding: 32px;
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 260px;
-        }
-
-        .bento-item h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
-        }
-
-        .bento-item p {
-            color: var(--text-muted);
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        .bento-item .icon-box {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: auto;
-        }
-
-        /* Спец-блоки Bento */
-        .bento-purple {
-            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(255,255,255,0.02));
-            border-color: rgba(108, 92, 231, 0.2);
-        }
-
-        .mini-stat {
-            font-size: 42px;
-            font-weight: 800;
-            color: var(--accent-cyan);
-            margin-top: 20px;
-        }
-
-        /* Адаптив */
-        @media (max-width: 900px) {
-            .app-hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-                justify-items: center;
-            }
-            .action-area {
-                align-items: center;
-            }
-            .store-buttons {
-                justify-content: center;
-            }
-            .store-btn {
-                width: 100%;
-                min-width: 0;
-                justify-content: center;
-            }
-            .screenshots {
-                grid-template-columns: 1fr;
-            }
-            .features-bento {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EconoMetrics — Арфа OS</title>
+  <meta name="description" content="Расчёт юнит-экономики и ROI для быстрых решений. Ваш личный экономист в браузере.">
+  <link rel="icon" type="image/png" href="../assets/Cyrillic_logo_arfa.png">
+  <link rel="stylesheet" href="marketplace.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+  </style>
 </head>
 <body>
-
-    <div class="breadcrumb">
-        <a href="index.html">← Все приложения</a>
-        <span>/</span>
-        <span style="color: var(--text-main);">EconoMetrics</span>
+  <header class="glass-header flex items-center justify-between">
+    <div class="header-left flex items-center gap-4">
+      <div class="logo-block">
+        <a href="../index.ru.html">
+          <img src="../assets/Cyrillic_logo_arfa.png" alt="Логотип Арфа" class="glass-logo-img">
+        </a>
+      </div>
     </div>
-
-    <div class="container">
-
-        <div class="app-hero">
-            <div class="hero-icon">📈</div>
-            <div class="hero-info">
-                <h1>EconoMetrics</h1>
-                <p class="tagline">Ваш личный экономист в браузере. Считаем юнит-экономику и ROI без боли.</p>
-                <div class="badges">
-                    <span class="badge active">Экономика</span>
-                    <span class="badge">v 1.4.2</span>
-                    <span class="badge">Web-версия</span>
-                </div>
-            </div>
-            <div class="action-area">
-                <a class="launch-btn" href="https://nexus.studio/econometrics" target="_blank" rel="noopener">Открыть в браузере</a>
-                <span style="color: var(--text-muted); font-size: 13px;">⚡ Запустится мгновенно</span>
-                <div class="store-buttons">
-                    <a class="store-btn" href="https://apps.apple.com/" target="_blank" rel="noopener" aria-label="Скачать в App Store">
-                        <span class="store-icon">A</span>
-                        <span class="store-text">
-                            <small>Скачать в</small>
-                            <strong>App Store</strong>
-                        </span>
-                    </a>
-                    <a class="store-btn" href="https://play.google.com/store" target="_blank" rel="noopener" aria-label="Скачать в Google Play">
-                        <span class="store-icon">▶</span>
-                        <span class="store-text">
-                            <small>Доступно в</small>
-                            <strong>Google Play</strong>
-                        </span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title">📸 Обзор интерфейса</h2>
-        <div class="screenshots">
-            <div class="screen-card"><span>📊 Сводная панель</span></div>
-            <div class="screen-card"><span>💸 Калькулятор ROI</span></div>
-            <div class="screen-card"><span>📅 Трекер доходов</span></div>
-        </div>
-
-        <h2 class="section-title">💎 Что внутри?</h2>
-        <div class="features-bento">
-            
-            <div class="bento-item bento-purple">
-                <div class="icon-box">🧠</div>
-                <div>
-                    <h3>Умные алгоритмы расчетов</h3>
-                    <p>Сервис автоматически находит слабые места в вашей финансовой модели и предлагает решения по оптимизации костов.</p>
-                </div>
-                <div class="mini-stat">+34% ROI</div>
-            </div>
-
-            <div class="bento-item">
-                <div class="icon-box">⚡</div>
-                <div>
-                    <h3>Быстрый экспорт</h3>
-                    <p>Выгружайте красивые PDF и интерактивные графики для инвесторов в один клик.</p>
-                </div>
-            </div>
-
-            <div class="bento-item">
-                <div class="icon-box">🔒</div>
-                <div>
-                    <h3>Локальные данные</h3>
-                    <p>Ваша коммерческая тайна остается вашей. Мы не храним ваши цифры на серверах — все считается прямо в браузере.</p>
-                </div>
-            </div>
-
-            <div class="bento-item bento-purple">
-                <div class="icon-box">🤝</div>
-                <div>
-                    <h3>Коллаборация</h3>
-                    <p>Делитесь ссылкой на проект с командой. Правки синхронизируются в реальном времени.</p>
-                </div>
-            </div>
-
-        </div>
-
+    <nav class="flex gap-4" aria-label="Основная навигация">
+      <a href="../index.ru.html" class="nav-link">Главная</a>
+      <a href="../about.ru.html" class="nav-link">О нас</a>
+      <a href="../projects.ru.html" class="nav-link active">Проекты</a>
+      <a href="../blog/blog.ru.html" class="nav-link">Блог</a>
+      <a href="../contact.ru.html" class="nav-link">На связи</a>
+    </nav>
+    <div class="header-switchers">
+      <div class="header-langs flex gap-2">
+        <a href="../projects.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+        <a href="../projects.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+        <a href="../projects.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+        <a href="../projects.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenuDrawer">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
     </div>
+  </header>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span class="mobile-menu-title">Меню</span>
+      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть меню">×</button>
+    </div>
+    <div class="mobile-menu-section mobile-menu-links">
+      <a href="../index.ru.html" class="mobile-menu-link">Главная</a>
+      <a href="../about.ru.html" class="mobile-menu-link">О нас</a>
+      <a href="../projects.ru.html" class="mobile-menu-link active">Проекты</a>
+      <a href="../blog/blog.ru.html" class="mobile-menu-link">Блог</a>
+      <a href="../contact.ru.html" class="mobile-menu-link">На связи</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Язык</div>
+      <div class="mobile-menu-row">
+        <a href="../projects.en.html" class="mobile-menu-chip" aria-label="English">EN</a>
+        <a href="../projects.de.html" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
+        <a href="../projects.fr.html" class="mobile-menu-chip" aria-label="Français">FR</a>
+        <a href="../projects.ru.html" class="mobile-menu-chip active" aria-label="Русский">RU</a>
+      </div>
+    </div>
+  </aside>
 
+  <main>
+    <section class="section">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:32px;">
+        <a href="index.html" class="pill" style="font-size:14px;">← Все инструменты</a>
+      </div>
+
+      <div class="hero" style="grid-template-columns: 1fr; padding-top: 32px;">
+        <div>
+          <div class="eyebrow">Инструмент</div>
+          <h1>EconoMetrics</h1>
+          <p class="hero-subtitle">Ваш личный экономист в браузере. Считаем юнит-экономику и ROI без боли.</p>
+        </div>
+      </div>
+
+      <div class="hero-card" style="max-width: 1180px; margin: 0 auto;">
+        <div style="display:flex; align-items:flex-start; gap:24px; flex-wrap:wrap;">
+          <div class="hero-icon" style="width:80px; height:80px; border-radius:18px; background:linear-gradient(135deg, var(--cyan), #81ecec); display:flex; align-items:center; justify-content:center; font-size:40px; box-shadow:0 12px 28px rgba(0, 206, 201, 0.2); flex-shrink:0;">
+            📈
+          </div>
+          <div style="flex:1; min-width:280px;">
+            <div class="badges" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
+              <span class="tag green">Экономика</span>
+              <span class="tag">v 1.4.2</span>
+              <span class="tag">Web-версия</span>
+            </div>
+            <p style="color:var(--soft); font-size:16px; line-height:1.6; margin-bottom:24px;">Сервис автоматически находит слабые места в вашей финансовой модели и предлагает решения по оптимизации костов. Выгружайте красивые PDF и интерактивные графики для инвесторов в один клик.</p>
+            <div class="actions" style="display:flex; gap:12px; flex-wrap:wrap;">
+              <a class="btn" style="background:linear-gradient(135deg, var(--cyan), #00b5b5); color:#000; border-color:transparent;" href="https://nexus.studio/econometrics" target="_blank" rel="noopener">Открыть в браузере</a>
+              <a class="btn" href="https://apps.apple.com/" target="_blank" rel="noopener">App Store</a>
+              <a class="btn" href="https://play.google.com/store" target="_blank" rel="noopener">Google Play</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Обзор интерфейса</h2>
+      </div>
+      <div class="scenario-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <article class="scenario-card" style="padding:0; min-height:220px;">
+          <div class="screen-preview" style="height:160px; background:radial-gradient(400px 200px at 50% 0%, rgba(167, 139, 250, 0.35), transparent 70%), rgba(255, 255, 255, 0.03); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--soft); font-size:14px; font-weight:600;">📊 Сводная панель</div>
+          <div style="padding:20px;">
+            <h3 style="margin:0 0 8px; font-family:'Space Grotesk', Inter, sans-serif; font-size:18px;">Дашборд</h3>
+            <p style="margin:0; color:var(--muted); font-size:14px;">Обзор ключевых метрик на одном экране</p>
+          </div>
+        </article>
+        <article class="scenario-card" style="padding:0; min-height:220px;">
+          <div class="screen-preview" style="height:160px; background:radial-gradient(400px 200px at 50% 0%, rgba(52, 211, 153, 0.32), transparent 70%), rgba(255, 255, 255, 0.03); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--soft); font-size:14px; font-weight:600;">💸 Калькулятор ROI</div>
+          <div style="padding:20px;">
+            <h3 style="margin:0 0 8px; font-family:'Space Grotesk', Inter, sans-serif; font-size:18px;">ROI Calculator</h3>
+            <p style="margin:0; color:var(--muted); font-size:14px;">Мгновенный расчёт окупаемости</p>
+          </div>
+        </article>
+        <article class="scenario-card" style="padding:0; min-height:220px;">
+          <div class="screen-preview" style="height:160px; background:radial-gradient(400px 200px at 50% 0%, rgba(251, 191, 36, 0.3), transparent 70%), rgba(255, 255, 255, 0.03); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--soft); font-size:14px; font-weight:600;">📅 Трекер доходов</div>
+          <div style="padding:20px;">
+            <h3 style="margin:0 0 8px; font-family:'Space Grotesk', Inter, sans-serif; font-size:18px;">Revenue Tracker</h3>
+            <p style="margin:0; color:var(--muted); font-size:14px;">Отслеживание потоков дохода в реальном времени</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Что внутри</h2>
+      </div>
+      <div class="tools-grid">
+        <article class="tool-card" style="min-height:auto;">
+          <div class="tool-icon" style="background:linear-gradient(135deg, var(--violet), var(--cyan));">🧠</div>
+          <h3>Умные алгоритмы расчетов</h3>
+          <p>Сервис автоматически находит слабые места в вашей финансовой модели и предлагает решения по оптимизации костов.</p>
+          <div class="tool-meta">+34% ROI в среднем</div>
+        </article>
+        <article class="tool-card" style="min-height:auto;">
+          <div class="tool-icon" style="background:linear-gradient(135deg, var(--cyan), var(--green));">⚡</div>
+          <h3>Быстрый экспорт</h3>
+          <p>Выгружайте красивые PDF и интерактивные графики для инвесторов в один клик.</p>
+          <div class="tool-meta">PDF • PNG • CSV</div>
+        </article>
+        <article class="tool-card" style="min-height:auto;">
+          <div class="tool-icon" style="background:linear-gradient(135deg, var(--green), var(--amber));">🔒</div>
+          <h3>Локальные данные</h3>
+          <p>Ваша коммерческая тайна остается вашей. Мы не храним ваши цифры на серверах — все считается прямо в браузере.</p>
+          <div class="tool-meta">Client-side only</div>
+        </article>
+        <article class="tool-card" style="min-height:auto;">
+          <div class="tool-icon" style="background:linear-gradient(135deg, var(--amber), var(--rose));">🤝</div>
+          <h3>Коллаборация</h3>
+          <p>Делитесь ссылкой на проект с командой. Правки синхронизируются в реальном времени.</p>
+          <div class="tool-meta">Real-time sync</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta" style="margin-top: 48px;">
+      <div>
+        <h2>Готовы посчитать свою экономику?</h2>
+        <p>Запускается мгновенно, работает в браузере, данные не покидают ваш компьютер.</p>
+      </div>
+      <a class="btn" style="background:linear-gradient(135deg, var(--cyan), #00b5b5); color:#000; border-color:transparent;" href="https://nexus.studio/econometrics" target="_blank" rel="noopener">Запустить EconoMetrics</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Арфа OS • прикладные инструменты для повседневной жизни • © 2026</p>
+  </footer>
+
+  <script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+
+    function setMobileMenu(open) {
+      document.body.classList.toggle('mobile-menu-open', open);
+      mobileMenuBtn?.setAttribute('aria-expanded', String(open));
+      mobileMenuDrawer?.setAttribute('aria-hidden', String(!open));
+    }
+
+    mobileMenuBtn?.addEventListener('click', () => setMobileMenu(true));
+    mobileMenuClose?.addEventListener('click', () => setMobileMenu(false));
+    mobileMenuOverlay?.addEventListener('click', () => setMobileMenu(false));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setMobileMenu(false);
+    });
+  </script>
 </body>
 </html>

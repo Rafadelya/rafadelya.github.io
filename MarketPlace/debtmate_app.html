@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>DebtMate — Полка Арфа</title>
+<meta name="description" content="DebtMate — порядок в том, кто, кому и сколько должен. Продукт Арфа для личных денежных договорённостей.">
+<link rel="icon" type="image/png" href="../assets/Cyrillic_logo_arfa.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@800;900&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F0E9;
+  --ink:#0B0B12;
+  --violet:#4B21E0;
+  --red:#FF4B1F;
+  --yellow:#FFD60A;
+  --pink:#FF9EC4;
+  --teal:#12BFA6;
+  --soft:color-mix(in srgb,var(--ink) 66%,var(--paper));
+  --rule:2px solid var(--ink);
+  --f-display:'Fira Sans Extra Condensed','Arial Narrow','Impact',sans-serif;
+  --f-body:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  --gutter:clamp(16px,2.2vw,28px);
+  --pad:clamp(16px,2.6vw,36px);
+}
+*{box-sizing:border-box;border-radius:0}
+::selection{background:var(--yellow);color:var(--ink)}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+button,input,select{font-family:inherit;color:inherit}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.on-dark :focus-visible{outline-color:var(--paper)}
+.mono{font:600 12px/1.4 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--paper);border-bottom:var(--rule)}
+.top-in{max-width:1480px;margin:0 auto;padding:10px var(--gutter);display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px}
+.mark{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font:900 30px/1 var(--f-display);text-transform:uppercase}
+.mark img{width:34px;height:34px;border-radius:50%;border:var(--rule);background:#fff;object-fit:cover}
+.nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+.nav a{padding-block:4px;border-bottom:2px solid transparent;color:var(--ink);text-decoration:none;font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.nav a:hover{border-color:var(--ink)}
+.nav a.is-active{border-color:var(--ink)}
+.langs{display:flex;gap:6px;margin-left:auto}
+.langs a{width:32px;height:32px;display:grid;place-items:center;border:var(--rule);background:var(--paper);text-decoration:none;font-size:16px;line-height:1}
+.langs a:hover{background:var(--yellow)}
+.langs a.active{background:var(--violet)}
+@media (max-width:960px){ .nav{display:none} }
+@media (max-width:520px){ .langs a{width:28px;height:28px;font-size:14px} .mark{font-size:24px} .mark img{width:28px;height:28px} }
+
+.frame{max-width:1180px;margin:0 auto;padding-inline:var(--gutter)}
+.crumb{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:18px 0 0;font:600 12px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.crumb a{text-decoration:none;border-bottom:2px solid transparent}
+.crumb a:hover{border-color:var(--ink)}
+.crumb span{color:var(--soft)}
+
+.btn{position:relative;min-width:120px;padding:13px 16px;border:var(--rule);background:var(--ink);color:var(--paper);font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;cursor:pointer;text-align:center;text-decoration:none;display:inline-block}
+.btn:hover{background:var(--violet);color:#fff}
+.btn--primary{background:var(--red);color:var(--ink)}
+.btn--primary:hover{background:var(--ink);color:var(--paper)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:var(--paper)}
+
+.appcard{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);border:var(--rule);margin:18px 0 0}
+.col-l{display:flex;flex-direction:column;gap:22px;padding:var(--pad);background:hsl(var(--h) 92% 62%);border-right:var(--rule)}
+.col-l .row-top{display:flex;justify-content:space-between;gap:12px;font:600 12px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.col-l h1{font:900 clamp(44px,6vw,92px)/.86 var(--f-display);text-transform:uppercase;overflow-wrap:break-word;margin-top:auto}
+.col-l .tagline{font-size:17px;max-width:34ch}
+.appicon{width:112px;height:112px;display:grid;place-items:center;background:#fff;border:var(--rule);flex:none}
+.appicon img{width:80%;height:80%;object-fit:contain}
+.col-l .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.col-l .btn{border-color:var(--ink)}
+.col-l .btn--ghost{background:transparent;color:var(--ink)}
+.col-l .btn--ghost:hover{background:var(--ink);color:var(--paper)}
+.col-l .btn--primary{background:var(--ink);color:var(--paper)}
+.col-l .btn--primary:hover{background:#fff;color:var(--ink)}
+
+.col-r{display:flex;flex-direction:column}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:var(--rule)}
+.stat{padding:18px;border-bottom:var(--rule);display:flex;flex-direction:column;gap:6px}
+.stat:nth-child(odd){border-right:var(--rule)}
+.stat:nth-last-child(-n+2){border-bottom:0}
+.stat b{font:900 clamp(20px,2.2vw,30px)/.95 var(--f-display);text-transform:uppercase}
+.stat span{font:600 11px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.block{padding:var(--pad);border-bottom:var(--rule)}
+.block:last-child{border-bottom:0}
+.block h2{font:900 22px/1 var(--f-display);text-transform:uppercase;letter-spacing:.01em;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.block h2::after{content:"";flex:1;height:2px;background:var(--ink)}
+.prose{font-size:17px;line-height:1.65;max-width:58ch}
+.prose + .prose{margin-top:12px}
+.shots{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px}
+.shot{position:relative;flex:0 0 168px;aspect-ratio:9/16;overflow:hidden;border:var(--rule);background:#111}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot--contain{background:#fff}
+.shot--contain img{object-fit:contain;padding:10px}
+.info{display:flex;flex-direction:column}
+.info div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:8px 20px;padding:12px 0;border-bottom:2px solid color-mix(in srgb,var(--ink) 18%,var(--paper))}
+.info div:last-child{border-bottom:0}
+.info .k{font:600 12px/1.5 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.info .v{font-size:16px}
+.info .v a{color:var(--ink);font-weight:600}
+.feature-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 24px}
+.feature-list li{display:flex;gap:10px;font-size:16px}
+.feature-list li::before{content:"—";color:var(--red);font-weight:700}
+@media (max-width:860px){
+  .appcard{grid-template-columns:minmax(0,1fr)}
+  .col-l{border-right:0;border-bottom:var(--rule)}
+  .col-l h1{margin-top:6px}
+  .feature-list{grid-template-columns:minmax(0,1fr)}
+}
+
+.foot{background:var(--ink);color:var(--paper);border-top:var(--rule);margin-top:48px}
+.foot-in{max-width:1180px;margin:0 auto;padding:22px var(--gutter);display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;font:500 12px/1.5 var(--f-mono);letter-spacing:.04em;text-transform:uppercase}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 18px}
+.foot a{color:var(--paper);font-weight:600;text-decoration:none;border-bottom:1px solid transparent}
+.foot a:hover{border-color:var(--paper)}
+
+.toast{position:fixed;left:var(--gutter);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;max-width:calc(100% - 2 * var(--gutter));padding:13px 16px;border-left:14px solid var(--yellow);background:var(--ink);color:var(--paper);font:600 12px/1.3 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.toast.on{animation:up .22s ease-out}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){ .toast.on{animation:none} *{transition:none!important} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="mark" href="../index.ru.html" aria-label="Арфа, на главную">
+      <img src="../assets/Cyrillic_logo_arfa.png" alt="">
+      Полка
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../projects.ru.html">Проекты</a>
+      <a href="Polka.html" class="is-active">Магазин</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+    </nav>
+    <div class="langs" aria-label="Язык">
+      <a href="../projects/debtmate.en.html" aria-label="English">🇬🇧</a>
+      <a href="../projects/debtmate.de.html" aria-label="Deutsch">🇩🇪</a>
+      <a href="../projects/debtmate.fr.html" aria-label="Français">🇫🇷</a>
+      <a href="debtmate_app.html" class="active" aria-label="Русский">🇷🇺</a>
+    </div>
+  </div>
+</header>
+
+<main class="frame">
+  <div class="crumb">
+    <a href="Polka.html">← Полка</a>
+    <span>/</span>
+    <a href="Polka.html#catalog">Каталог</a>
+    <span>/</span>
+    <span>Продукты · DebtMate</span>
+  </div>
+
+  <article class="appcard" style="--h:150">
+    <div class="col-l on-dark">
+      <div class="row-top"><span>Продукты</span><span>Активно</span></div>
+      <div class="appicon"><img src="../assets/DebtMate/DebtMate_Logo.png" alt="Логотип DebtMate"></div>
+      <h1>DebtMate</h1>
+      <p class="tagline">Порядок в том, кто, кому и сколько должен. Продукт для личных денежных договорённостей — без неловкости, забытых переводов и споров в чатах.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="https://t.me/arfa_pro" target="_blank" rel="noopener noreferrer">Попробовать бесплатно →</a>
+        <button class="btn btn--ghost" id="shelfBtn" type="button" data-id="debtmate">На полку</button>
+      </div>
+    </div>
+
+    <div class="col-r">
+      <div class="stats">
+        <div class="stat"><b>Активная разработка</b><span>Статус</span></div>
+        <div class="stat"><b>iOS · Android</b><span>Платформы</span></div>
+        <div class="stat"><b>Flutter · Dart · Hive</b><span>Технологии</span></div>
+        <div class="stat"><b>22 апреля 2026</b><span>Обновлено</span></div>
+      </div>
+
+      <section class="block" aria-labelledby="shots-t">
+        <h2 id="shots-t">Изображения</h2>
+        <div class="shots">
+          <div class="shot shot--contain"><img src="../assets/DebtMate/Fin_thinking_or_remember_calendar.png" alt="Финн — хранитель договорённостей" loading="lazy"></div>
+          <div class="shot shot--contain"><img src="../assets/DebtMate/Debik_Happy(one_paid).png" alt="Дебик — помощник по расчётам" loading="lazy"></div>
+          <div class="shot shot--contain"><img src="../assets/DebtMate/Fin_rating_90-100_relax.png" alt="Финн напоминает спокойно" loading="lazy"></div>
+          <div class="shot shot--contain"><img src="../assets/DebtMate/Debik_good.png" alt="Дебик" loading="lazy"></div>
+          <div class="shot shot--contain"><img src="../assets/DebtMate/Very_Happy_finn_and_debik.png" alt="Финн и Дебик" loading="lazy"></div>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="about-t">
+        <h2 id="about-t">Описание</h2>
+        <p class="prose">DebtMate — это не про долги, это про доверие. Когда деньги смешиваются с отношениями, важнее не сумма, а ясность договорённостей: кто кому должен, до какого срока и на каких условиях.</p>
+        <p class="prose">Продукт помогает создавать понятные расписки за полминуты, делить общие расходы, подбирать комфортный план возврата и напоминать о деньгах спокойно и по-человечески. Обе стороны всегда видят одинаковые условия — без «я такого не говорил». Отдельное направление — самозанятые и фрилансеры, работающие на доверии.</p>
+      </section>
+
+      <section class="block" aria-labelledby="feat-t">
+        <h2 id="feat-t">Что умеет</h2>
+        <ul class="feature-list">
+          <li>Договорённости о деньгах без неловкости</li>
+          <li>Кто, кому и сколько должен</li>
+          <li>Разделение общих расходов</li>
+          <li>Комфортный план возврата частями</li>
+          <li>Спокойные напоминания без давления</li>
+          <li>Помощь с формулировками сообщений</li>
+          <li>Для друзей, семьи и самозанятых</li>
+          <li>Обе стороны видят одинаковые условия</li>
+        </ul>
+      </section>
+
+      <section class="block" aria-labelledby="info-t">
+        <h2 id="info-t">Информация</h2>
+        <dl class="info">
+          <div><span class="k">Разработчик</span><span class="v">Арфа / ООО «ЭР ЭН ЭЙ СТУДИО»</span></div>
+          <div><span class="k">Статус</span><span class="v">Активная разработка</span></div>
+          <div><span class="k">Связь</span><span class="v"><a href="https://t.me/arfa_pro" target="_blank" rel="noopener noreferrer">Telegram · @arfa_pro</a></span></div>
+          <div><span class="k">Персонажи</span><span class="v"><a href="../projects/debtmate-mascots.ru.html">Финн и Дебик</a></span></div>
+          <div><span class="k">Страница проекта</span><span class="v"><a href="../projects/debtmate.ru.html">Открыть</a></span></div>
+        </dl>
+      </section>
+    </div>
+  </article>
+
+  <p class="mono" style="padding:18px 0 0"><a href="Polka.html#catalog" style="text-decoration:none;border-bottom:2px solid var(--ink)">← Вернуться в каталог</a></p>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <span>© 2026 Арфа · DebtMate</span>
+    <nav class="foot-links" aria-label="Ссылки">
+      <a href="../projects/debtmate.ru.html">Страница проекта</a>
+      <a href="../projects/debtmate-mascots.ru.html">Маскоты</a>
+      <a href="Polka.html">Магазин</a>
+      <a href="../projects.ru.html">Все проекты</a>
+    </nav>
+    <a href="#" id="toTop">Наверх ↑</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function(){
+  var id = 'debtmate';
+  var shelfBtn = document.getElementById('shelfBtn');
+  var toast = document.getElementById('toast');
+  var timer = null;
+  var key = 'polka.shelf';
+  var set = [];
+  try { set = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
+  function has(x){ return set.indexOf(x) > -1; }
+  function save(){ try { localStorage.setItem(key, JSON.stringify(set)); } catch(e) {} }
+  function sync(){
+    var on = has(id);
+    shelfBtn.textContent = on ? 'На полке' : 'На полку';
+    shelfBtn.classList.toggle('btn--primary', on);
+    shelfBtn.classList.toggle('btn--ghost', !on);
+  }
+  function say(msg){
+    toast.textContent = msg; toast.hidden = false; toast.classList.remove('on');
+    void toast.offsetWidth; toast.classList.add('on');
+    clearTimeout(timer); timer = setTimeout(function(){ toast.hidden = true; }, 2200);
+  }
+  shelfBtn.addEventListener('click', function(){
+    if (has(id)) { set = set.filter(function(x){ return x !== id; }); say('«DebtMate» убрано с полки'); }
+    else { set.push(id); say('«DebtMate» на полке'); }
+    save(); sync();
+  });
+  sync();
+  document.getElementById('toTop').addEventListener('click', function(e){
+    e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

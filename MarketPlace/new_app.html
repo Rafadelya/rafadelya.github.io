@@ -1,247 +1,176 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaunchPad - Детали приложения</title>
-    <style>
-        :root {
-            --bg-dark: #0a0a0c;
-            --accent: #6c5ce7;
-            --accent-glow: rgba(108, 92, 231, 0.3);
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --text-main: #ffffff;
-            --text-muted: #8a8a93;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            background-image: radial-gradient(circle at top right, rgba(108, 92, 231, 0.1), transparent 40%);
-        }
-
-        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-
-        /* Шапка приложения */
-        .app-hero {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            margin-bottom: 48px;
-            padding: 32px;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 40px;
-            backdrop-filter: blur(20px);
-        }
-
-        .big-icon {
-            width: 160px;
-            height: 160px;
-            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-            border-radius: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .app-headline h1 { font-size: 48px; letter-spacing: -1.5px; margin-bottom: 8px; }
-        .developer { color: var(--accent); font-weight: 600; font-size: 18px; margin-bottom: 20px; display: block; }
-
-        .action-bar { display: flex; gap: 16px; align-items: center; }
-
-        .store-buttons {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 14px;
-        }
-
-        .store-btn {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 14px;
-            border-radius: 14px;
-            border: 1px solid var(--glass-border);
-            background: rgba(255, 255, 255, 0.02);
-            text-decoration: none;
-            color: var(--text-main);
-            min-width: 170px;
-            transition: all 0.3s;
-        }
-
-        .store-btn:hover { border-color: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
-
-        .store-icon {
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.08);
-            font-size: 14px;
-            font-weight: 700;
-        }
-
-        .store-text { display: flex; flex-direction: column; line-height: 1.1; }
-        .store-text small { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
-        .store-text strong { font-size: 15px; letter-spacing: -0.3px; }
-
-        .btn-main {
-            background: var(--text-main);
-            color: var(--bg-dark);
-            padding: 12px 32px;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: 0.3s;
-        }
-
-        .btn-main:hover { transform: scale(1.05); background: var(--accent); color: white; }
-
-        /* Скриншоты (Горизонтальный скролл) */
-        .screenshots {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding-bottom: 20px;
-            margin-bottom: 48px;
-            scrollbar-width: none; /* Firefox */
-        }
-        .screenshots::-webkit-scrollbar { display: none; } /* Chrome/Safari */
-
-        .screen-card {
-            min-width: 300px;
-            height: 500px;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-weight: 500;
-            transition: 0.4s;
-            cursor: pointer;
-        }
-        .screen-card:hover { border-color: var(--accent); }
-
-        /* Описание и Инфо */
-        .content-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-        }
-
-        .description h2 { font-size: 24px; margin-bottom: 16px; }
-        .description p { color: var(--text-muted); font-size: 17px; margin-bottom: 20px; }
-
-        .info-sidebar {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            padding: 24px;
-            border-radius: 24px;
-            height: fit-content;
-        }
-
-        .info-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--glass-border);
-            font-size: 14px;
-        }
-        .info-item:last-child { border-bottom: none; }
-        .label { color: var(--text-muted); }
-        .value { font-weight: 600; }
-
-        @media (max-width: 768px) {
-            .app-hero { flex-direction: column; text-align: center; }
-            .content-grid { grid-template-columns: 1fr; }
-            .store-btn { width: 100%; min-width: 0; justify-content: center; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LaunchPad — Арфа OS</title>
+  <meta name="description" content="Инструмент для маркетологов и фаундеров стартапов. Мощный экономический анализ с автоматизацией рекламы.">
+  <link rel="icon" type="image/png" href="../assets/Cyrillic_logo_arfa.png">
+  <link rel="stylesheet" href="marketplace.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+  </style>
 </head>
 <body>
-
-    <div class="container">
-        <a href="index.html" style="color: var(--text-muted); text-decoration: none; margin-bottom: 30px; display: inline-block;">← Назад в Маркет</a>
-
-        <section class="app-hero">
-            <div class="big-icon">🚀</div>
-            <div class="app-headline">
-                <h1>LaunchPad</h1>
-                <span class="developer">Nexus Studio Apps</span>
-                <div class="action-bar">
-                    <a href="https://nexus.studio/launchpad" class="btn-main" target="_blank" rel="noopener">Запустить сейчас</a>
-                    <span style="color: var(--text-muted); font-size: 14px;">Бесплатно • 42 MB</span>
-                </div>
-                <div class="store-buttons">
-                    <a class="store-btn" href="https://apps.apple.com/" target="_blank" rel="noopener" aria-label="Скачать в App Store">
-                        <span class="store-icon">A</span>
-                        <span class="store-text">
-                            <small>Скачать в</small>
-                            <strong>App Store</strong>
-                        </span>
-                    </a>
-                    <a class="store-btn" href="https://play.google.com/store" target="_blank" rel="noopener" aria-label="Скачать в Google Play">
-                        <span class="store-icon">▶</span>
-                        <span class="store-text">
-                            <small>Доступно в</small>
-                            <strong>Google Play</strong>
-                        </span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <div class="screenshots">
-            <div class="screen-card">Интерфейс Dashboard</div>
-            <div class="screen-card">Аналитика трафика</div>
-            <div class="screen-card">Настройки кампании</div>
-            <div class="screen-card">A/B Тестирование</div>
-        </div>
-
-        <div class="content-grid">
-            <div class="description">
-                <h2>Описание</h2>
-                <p>LaunchPad — это ультимативный инструмент для маркетологов и фаундеров стартапов. Мы объединили мощный экономический анализ с инструментами автоматизации рекламы.</p>
-                <p>Просчитывайте юнит-экономику в один клик, запускайте тесты креативов и получайте детальные отчеты прямо в браузере. Все данные синхронизируются в реальном времени.</p>
-                
-                <h2 style="margin-top: 32px;">Что нового</h2>
-                <div style="background: rgba(108, 92, 231, 0.05); padding: 20px; border-radius: 16px; border-left: 4px solid var(--accent);">
-                    <p style="margin-bottom: 0; font-size: 14px; color: #fff;"><strong>Версия 2.1.0</strong><br>— Добавлена интеграция с Telegram Ads.<br>— Исправлены ошибки в модуле расчета ROI.</p>
-                </div>
-            </div>
-
-            <div class="info-sidebar">
-                <div class="info-item">
-                    <span class="label">Категория</span>
-                    <span class="value">Маркетинг</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">Совместимость</span>
-                    <span class="value">Web / iOS / macOS</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">Языки</span>
-                    <span class="value">RU / EN</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">Возраст</span>
-                    <span class="value">12+</span>
-                </div>
-            </div>
-        </div>
+  <header class="glass-header flex items-center justify-between">
+    <div class="header-left flex items-center gap-4">
+      <div class="logo-block">
+        <a href="../index.ru.html">
+          <img src="../assets/Cyrillic_logo_arfa.png" alt="Логотип Арфа" class="glass-logo-img">
+        </a>
+      </div>
     </div>
+    <nav class="flex gap-4" aria-label="Основная навигация">
+      <a href="../index.ru.html" class="nav-link">Главная</a>
+      <a href="../about.ru.html" class="nav-link">О нас</a>
+      <a href="../projects.ru.html" class="nav-link active">Проекты</a>
+      <a href="../blog/blog.ru.html" class="nav-link">Блог</a>
+      <a href="../contact.ru.html" class="nav-link">На связи</a>
+    </nav>
+    <div class="header-switchers">
+      <div class="header-langs flex gap-2">
+        <a href="../projects.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+        <a href="../projects.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+        <a href="../projects.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+        <a href="../projects.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenuDrawer">
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+    </div>
+  </header>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
+    <div class="mobile-menu-head">
+      <span class="mobile-menu-title">Меню</span>
+      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть меню">×</button>
+    </div>
+    <div class="mobile-menu-section mobile-menu-links">
+      <a href="../index.ru.html" class="mobile-menu-link">Главная</a>
+      <a href="../about.ru.html" class="mobile-menu-link">О нас</a>
+      <a href="../projects.ru.html" class="mobile-menu-link active">Проекты</a>
+      <a href="../blog/blog.ru.html" class="mobile-menu-link">Блог</a>
+      <a href="../contact.ru.html" class="mobile-menu-link">На связи</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Язык</div>
+      <div class="mobile-menu-row">
+        <a href="../projects.en.html" class="mobile-menu-chip" aria-label="English">EN</a>
+        <a href="../projects.de.html" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
+        <a href="../projects.fr.html" class="mobile-menu-chip" aria-label="Français">FR</a>
+        <a href="../projects.ru.html" class="mobile-menu-chip active" aria-label="Русский">RU</a>
+      </div>
+    </div>
+  </aside>
 
+  <main>
+    <section class="section">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:32px;">
+        <a href="index.html" class="pill" style="font-size:14px;">← Все инструменты</a>
+      </div>
+
+      <div class="hero" style="grid-template-columns: 1fr; padding-top: 32px;">
+        <div>
+          <div class="eyebrow">Инструмент</div>
+          <h1>LaunchPad</h1>
+          <p class="hero-subtitle">Ультимативный инструмент для маркетологов и фаундеров стартапов. Мощный экономический анализ с инструментами автоматизации рекламы.</p>
+        </div>
+      </div>
+
+      <div class="hero-card" style="max-width: 1200px; margin: 0 auto;">
+        <div style="display:flex; align-items:flex-start; gap:24px; flex-wrap:wrap;">
+          <div class="hero-icon" style="width:80px; height:80px; border-radius:18px; background:linear-gradient(135deg, var(--violet), var(--rose)); display:flex; align-items:center; justify-content:center; font-size:40px; box-shadow:0 12px 30px rgba(167, 139, 250, 0.4); flex-shrink:0;">
+            🚀
+          </div>
+          <div style="flex:1; min-width:280px;">
+            <div class="badges" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
+              <span class="tag green">Маркетинг</span>
+              <span class="tag">v 2.1.0</span>
+              <span class="tag">Web / iOS / macOS</span>
+            </div>
+            <p style="color:var(--soft); font-size:16px; line-height:1.6; margin-bottom:24px;">Просчитывайте юнит-экономику в один клик, запускайте тесты креативов и получайте детальные отчёты прямо в браузере. Все данные синхронизируются в реальном времени.</p>
+            <div class="actions" style="display:flex; gap:12px; flex-wrap:wrap;">
+              <a class="btn" style="background:linear-gradient(135deg, var(--violet), var(--rose)); color:#0a0714; border-color:transparent; font-weight:800;" href="https://nexus.studio/launchpad" target="_blank" rel="noopener">Запустить сейчас</a>
+              <a class="btn" href="https://apps.apple.com/" target="_blank" rel="noopener">App Store</a>
+              <a class="btn" href="https://play.google.com/store" target="_blank" rel="noopener">Google Play</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Что нового</h2>
+      </div>
+      <div class="research-grid" style="grid-template-columns: 1fr;">
+        <article class="research-card" style="min-height:auto;">
+          <div class="research-type">Release notes</div>
+          <h3>Версия 2.1.0</h3>
+          <p>— Добавлена интеграция с Telegram Ads.<br>— Исправлены ошибки в модуле расчета ROI.<br>— Улучшен интерфейс синхронизации в реальном времени.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Что внутри</h2>
+      </div>
+      <div class="tools-grid">
+        <article class="tool-card" style="min-height:auto;">
+          <div class="tool-icon" style="background:linear-gradient(135deg, var(--violet), var(--cyan));">📊</div>
+          <h3>Аналитика трафика</h3>
+          <p>Детальный анализ эффективности каждого канала и креатива.</p>
+          <div class="tool-meta">A/B • real-time</div>
+        </article>
+        <article class="tool-card" style="min-height:auto;">
+          <div class="tool-icon" style="background:linear-gradient(135deg, var(--cyan), var(--green));">⚙️</div>
+          <h3>Настройка кампаний</h3>
+          <p>Управление рекламными кампаниями из одного интерфейса.</p>
+          <div class="tool-meta">Multi-platform</div>
+        </article>
+        <article class="tool-card" style="min-height:auto;">
+          <div class="tool-icon" style="background:linear-gradient(135deg, var(--amber), var(--rose));">📈</div>
+          <h3>Юнит-экономика</h3>
+          <p>Автоматический расчёт unit economics и LTV/CAC.</p>
+          <div class="tool-meta">Auto-calc</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta" style="margin-top: 48px;">
+      <div>
+        <h2>Готовы запустить маркетинг на максимум?</h2>
+        <p>Проверьте юнит-экономику и автоматизируйте рекламу — всё в одном инструменте.</p>
+      </div>
+      <a class="btn" style="background:linear-gradient(135deg, var(--violet), var(--rose)); color:#0a0714; border-color:transparent; font-weight:800;" href="https://nexus.studio/launchpad" target="_blank" rel="noopener">Запустить LaunchPad</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Арфа OS • прикладные инструменты для повседневной жизни • © 2026</p>
+  </footer>
+
+  <script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+
+    function setMobileMenu(open) {
+      document.body.classList.toggle('mobile-menu-open', open);
+      mobileMenuBtn?.setAttribute('aria-expanded', String(open));
+      mobileMenuDrawer?.setAttribute('aria-hidden', String(!open));
+    }
+
+    mobileMenuBtn?.addEventListener('click', () => setMobileMenu(true));
+    mobileMenuClose?.addEventListener('click', () => setMobileMenu(false));
+    mobileMenuOverlay?.addEventListener('click', () => setMobileMenu(false));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setMobileMenu(false);
+    });
+  </script>
 </body>
 </html>

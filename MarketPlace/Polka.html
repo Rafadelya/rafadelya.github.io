@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Полка — магазин прикладных инструментов Арфа</title>
+<meta name="description" content="Полка — каталог прикладных инструментов Арфа: продукты, проверенные на реальных сценариях, и модули в разработке. Минимум действий, предсказуемый результат.">
+<link rel="icon" type="image/png" href="../assets/Cyrillic_logo_arfa.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@800;900&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: a printed poster. One ruled frame, 12-column hero, pink ticker strip,
+   then an index sidebar beside a list of app rows that flood with their own colour
+   on hover, a black ranking block with outlined numerals, a research strip, and a
+   red footer with a stretched wordmark. One deliberate look, light only. */
+:root{
+  --paper:#F2F0E9;
+  --ink:#0B0B12;
+  --violet:#4B21E0;
+  --red:#FF4B1F;
+  --yellow:#FFD60A;
+  --pink:#FF9EC4;
+  --teal:#12BFA6;
+  --soft:color-mix(in srgb,var(--ink) 66%,var(--paper));
+  --rule:2px solid var(--ink);
+  --f-display:'Fira Sans Extra Condensed','Arial Narrow','Impact',sans-serif;
+  --f-body:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  --gutter:clamp(16px,2.2vw,28px);
+  --pad:clamp(16px,2.6vw,36px);
+}
+*{box-sizing:border-box;border-radius:0}
+::selection{background:var(--yellow);color:var(--ink)}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+button,input,select{font-family:inherit;color:inherit}
+img{max-width:100%}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.on-dark :focus-visible,.top6 :focus-visible{outline-color:var(--paper)}
+.mono{font:600 12px/1.4 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--paper);border-bottom:var(--rule)}
+.top-in{max-width:1480px;margin:0 auto;padding:10px var(--gutter);display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px}
+.mark{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font:900 30px/1 var(--f-display);text-transform:uppercase}
+.mark img{width:34px;height:34px;border-radius:50%;border:var(--rule);background:#fff;object-fit:cover}
+.nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+.nav a{padding-block:4px;border-bottom:2px solid transparent;color:var(--ink);text-decoration:none;font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.nav a:hover{border-color:var(--ink)}
+.nav a.is-active{border-color:var(--ink)}
+.search{flex:1 1 180px;min-width:0}
+.search input{width:100%;padding:11px 12px;border:var(--rule);background:var(--paper);font:500 13px/1 var(--f-mono);letter-spacing:.05em;text-transform:uppercase}
+.search input::placeholder{color:var(--soft);opacity:1}
+.search input:focus{outline:none;background:var(--yellow)}
+.langs{display:flex;gap:6px}
+.langs a{width:32px;height:32px;display:grid;place-items:center;border:var(--rule);background:var(--paper);text-decoration:none;font-size:16px;line-height:1}
+.langs a:hover{background:var(--yellow)}
+.langs a.active{background:var(--violet)}
+.cart{padding:12px 14px;background:var(--ink);color:var(--paper);font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.cart b{margin-left:6px;color:var(--yellow);font-weight:600}
+@media (max-width:960px){
+  .nav{display:none}
+  .langs{margin-left:auto}
+  .search{order:3;flex-basis:100%}
+}
+@media (max-width:520px){
+  .langs a{width:28px;height:28px;font-size:14px}
+  .mark{font-size:24px}
+  .mark img{width:28px;height:28px}
+}
+
+.frame{max-width:1480px;margin:0 auto;padding-inline:var(--gutter)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));border:var(--rule);border-top:0}
+.h-a{grid-column:1 / 9;display:flex;flex-direction:column;justify-content:space-between;gap:36px;padding:var(--pad);background:var(--violet);color:#fff;border-right:var(--rule);container-type:inline-size}
+.h-a a{color:#fff}
+.kick{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px}
+.h-a h1{font:900 clamp(44px,17cqi,230px)/.84 var(--f-display);text-transform:uppercase;letter-spacing:-.01em;overflow-wrap:break-word}
+.h-a h1 span{display:block}
+.h-a h1 .y{color:var(--yellow)}
+.h-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid #fff}
+.h-stats div{padding:14px 0 0 16px;border-left:2px solid #fff;display:flex;flex-direction:column;gap:6px}
+.h-stats div:first-child{padding-left:0;border-left:0}
+.h-stats b{font:900 clamp(40px,11cqi,88px)/.85 var(--f-display)}
+.h-stats span{font:600 11px/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.h-b{grid-column:9 / 13;display:flex;flex-direction:column;gap:14px;padding:var(--pad);background:var(--yellow);container-type:inline-size}
+.b-top{display:flex;justify-content:space-between;gap:12px}
+.sky{width:100%;aspect-ratio:1;border:var(--rule);border-radius:50%;overflow:hidden;background:var(--paper);display:grid;place-items:center}
+.sky svg{display:block;width:100%;height:100%}
+.sky img{width:64%;height:64%;object-fit:contain}
+.b-name{font:900 clamp(40px,21cqi,130px)/.84 var(--f-display);text-transform:uppercase}
+.b-tag{font-size:15px;max-width:34ch}
+.b-act{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:auto}
+.lnk{padding:3px 0;border:0;border-bottom:2px solid var(--ink);background:none;font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;color:var(--ink);text-decoration:none}
+.lnk:hover{background:var(--ink);color:var(--yellow)}
+.tick{grid-column:1 / -1;overflow:hidden;background:var(--pink);border-top:var(--rule)}
+.tick-track{display:flex;width:max-content;animation:tk 40s linear infinite}
+.tick:hover .tick-track{animation-play-state:paused}
+.tick .g{display:flex;align-items:center;flex:none}
+.tick span{padding-block:10px;font:900 34px/1 var(--f-display);text-transform:uppercase}
+.tick i{width:12px;height:12px;margin-inline:24px;background:var(--ink);transform:rotate(45deg)}
+@keyframes tk{to{transform:translateX(-50%)}}
+@media (max-width:900px){
+  .h-a,.h-b{grid-column:1 / -1}
+  .h-a{border-right:0;border-bottom:var(--rule)}
+  .sky{width:min(100%,320px)}
+}
+
+/* icons */
+.icon{--s:72px;width:var(--s);height:var(--s);flex:none;display:grid;place-items:center;background:hsl(var(--h) 92% 62%);border:var(--rule)}
+.icon svg{width:54%;height:54%;fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:square;stroke-linejoin:miter}
+.icon img{width:100%;height:100%;object-fit:cover}
+
+/* buttons */
+.btn{position:relative;min-width:124px;padding:13px 16px;overflow:hidden;border:var(--rule);background:var(--ink);color:var(--paper);font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;cursor:pointer;text-align:center;text-decoration:none;display:inline-block}
+.btn:hover{background:var(--violet);color:#fff}
+.btn--done,.btn--ghost{background:transparent;color:var(--ink)}
+.btn--done:hover,.btn--ghost:hover{background:var(--ink);color:var(--paper)}
+.btn--busy,.btn--busy:hover{background:transparent;color:var(--ink);cursor:default}
+.btn--busy::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--red);transform-origin:left;animation:fill 1.1s linear forwards}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
+@keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.slot{display:block}
+
+/* catalog head */
+#catalog,#top6,#research{scroll-margin-top:64px}
+.cat-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:16px 24px;padding:var(--pad);border:var(--rule);border-top:0;container-type:inline-size}
+.cat-head h2{font:900 clamp(56px,19cqi,270px)/.8 var(--f-display);text-transform:uppercase;letter-spacing:-.01em}
+.cat-side{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
+.sticker{width:128px;height:128px;display:grid;place-content:center;gap:2px;text-align:center;background:var(--yellow);border:var(--rule);border-radius:50%!important;transform:rotate(-9deg)}
+.sticker b{font:900 52px/.85 var(--f-display)}
+.sticker span{font:600 10px/1.2 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.found{text-align:right}
+.found b{display:block;font:900 clamp(56px,7vw,96px)/.85 var(--f-display);font-variant-numeric:tabular-nums}
+@media (max-width:700px){
+  .cat-head{grid-template-columns:minmax(0,1fr)}
+  .cat-side{flex-direction:row;align-items:center;justify-content:space-between}
+  .sticker{width:104px;height:104px}
+  .sticker b{font-size:42px}
+}
+
+/* catalog body */
+.cat{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);border:var(--rule);border-top:0}
+.side{align-self:start;position:sticky;top:76px;max-height:calc(100vh - 76px);overflow-y:auto;border-right:var(--rule)}
+.s-label{display:block;padding:11px 14px;background:var(--ink);color:var(--paper);font:600 11px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase}
+.cat-btn{display:flex;align-items:baseline;justify-content:space-between;gap:10px;width:100%;padding:10px 14px;border:0;border-bottom:var(--rule);background:transparent;font:800 24px/1.1 var(--f-display);text-transform:uppercase;text-align:left;cursor:pointer}
+.cat-btn span{font:600 12px/1 var(--f-mono);font-variant-numeric:tabular-nums}
+.cat-btn:hover{background:var(--yellow)}
+.cat-btn[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.pr-list .cat-btn{font-size:19px}
+.sel{display:block;width:100%;padding:14px;border:0;background:transparent;font:600 12px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+@media (max-width:860px){
+  .cat{grid-template-columns:minmax(0,1fr)}
+  .side{position:static;max-height:none;overflow:visible;border-right:0;border-bottom:var(--rule)}
+  .cat-list{display:flex;overflow-x:auto}
+  .cat-list .cat-btn{flex:none;width:auto;gap:12px;border-bottom:0;border-right:var(--rule)}
+  .pr-list{display:flex}
+  .pr-list .cat-btn{flex:1;border-bottom:0;border-right:var(--rule);justify-content:center}
+  .pr-list .cat-btn:last-child{border-right:0}
+  .side .s-label:not(:first-child){border-top:var(--rule)}
+}
+
+/* app rows */
+.list{min-width:0}
+.app{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0 16px;border-bottom:var(--rule);background:var(--paper);transition:background .12s}
+.app:last-child{border-bottom:0}
+.app:hover,.app:has(.main:focus-visible){background:hsl(var(--h) 92% 62%)}
+.app:hover .icon,.app:has(.main:focus-visible) .icon{background:var(--ink)}
+.app:hover .icon svg,.app:has(.main:focus-visible) .icon svg{stroke:var(--paper)}
+.main{display:grid;grid-template-columns:72px minmax(0,1.5fr) minmax(0,1fr);gap:0 20px;align-items:center;min-width:0;padding:16px 0 16px 18px;border:0;background:none;text-align:left;cursor:pointer}
+.main:focus-visible{outline-offset:-4px}
+.txt{display:flex;flex-direction:column;gap:6px;min-width:0}
+.nm{font:900 clamp(32px,3.8vw,52px)/.92 var(--f-display);text-transform:uppercase}
+.tg{font-size:14px;line-height:1.35;color:var(--soft)}
+.app:hover .tg{color:var(--ink)}
+.mt{display:flex;flex-direction:column;gap:3px;font:500 12px/1.4 var(--f-mono);letter-spacing:.04em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+.app .slot{padding-right:18px}
+@media (max-width:700px){
+  .main{grid-template-columns:56px minmax(0,1fr);gap:8px 14px;padding:14px 0 14px 14px}
+  .main .icon{--s:56px!important;grid-row:1}
+  .mt{grid-column:2;flex-direction:row;flex-wrap:wrap;gap:3px 12px}
+  .app .slot{padding-right:14px}
+  .btn{min-width:108px;padding:12px 10px}
+}
+.empty{display:grid;justify-items:start;gap:14px;padding:var(--pad)}
+.empty b{font:900 clamp(80px,16vw,200px)/.8 var(--f-display);text-transform:uppercase}
+
+/* ranking */
+.top6{background:var(--ink);color:var(--paper);border:var(--rule);border-top:0}
+.t-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding:var(--pad);border-bottom:2px solid var(--paper);container-type:inline-size}
+.t-head h2{font:900 clamp(56px,26cqi,280px)/.8 var(--f-display);text-transform:uppercase;color:var(--yellow)}
+.t-head p{max-width:30ch}
+.t6{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--paper)}
+.t6 li{display:flex;flex-direction:column;gap:14px;padding:20px;background:var(--ink)}
+.tmain{display:grid;gap:12px;width:100%;padding:0;border:0;background:none;color:inherit;text-align:left;cursor:pointer}
+.num{font:900 clamp(110px,12vw,170px)/.78 var(--f-display);color:transparent;-webkit-text-stroke:2px var(--paper);font-variant-numeric:tabular-nums}
+.t6 li:hover .num{color:hsl(var(--h) 92% 62%);-webkit-text-stroke-color:var(--ink)}
+.t-row{display:flex;align-items:center;gap:14px}
+.t-row .icon{--s:56px;border-color:var(--paper)}
+.t-row .nm{font-size:36px}
+.t-meta{font:500 12px/1.4 var(--f-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--paper)}
+.top6 .slot{margin-top:auto}
+.top6 .btn{width:100%;background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.top6 .btn:hover{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+.top6 .btn--done{background:transparent;color:var(--paper)}
+.top6 .btn--done:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.top6 .btn--busy,.top6 .btn--busy:hover{background:transparent;color:var(--paper);border-color:var(--paper)}
+@media (max-width:960px){.t6{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.t6{grid-template-columns:minmax(0,1fr)}}
+
+/* research */
+.research{border:var(--rule);border-top:0}
+.r-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding:var(--pad);border-bottom:var(--rule);container-type:inline-size}
+.r-head h2{font:900 clamp(48px,20cqi,200px)/.8 var(--f-display);text-transform:uppercase;letter-spacing:-.01em}
+.r-head p{max-width:34ch}
+.r-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;background:var(--ink)}
+.r-card{display:flex;flex-direction:column;gap:14px;padding:var(--pad);background:var(--paper);border-top:6px solid hsl(var(--h) 92% 62%)}
+.r-type{align-self:flex-start;padding:5px 9px;border:var(--rule);font:600 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.r-card h3{font:800 clamp(26px,2.4vw,38px)/1 var(--f-display);text-transform:uppercase}
+.r-card p{font-size:16px;color:var(--soft);max-width:52ch}
+.r-act{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+@media (max-width:760px){.r-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* footer */
+.foot{overflow:hidden;background:var(--red);border:var(--rule);border-top:0}
+.foot svg{display:block;width:100%;height:auto;padding:var(--pad) var(--pad) 0}
+.foot svg text{font-family:var(--f-display);font-weight:900}
+.foot-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding:16px var(--pad);border-top:var(--rule);font:500 12px/1.5 var(--f-mono);letter-spacing:.04em;text-transform:uppercase}
+.foot-row a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid transparent}
+.foot-row a:hover{border-color:var(--ink)}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 18px}
+.pad-b{height:48px}
+
+/* detail sheet */
+.sheet{position:fixed;inset:0;z-index:50;overflow-y:auto;overscroll-behavior:contain;background:var(--paper)}
+.x{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:var(--gutter);z-index:3;padding:12px 14px;border:var(--rule);background:var(--ink);color:var(--paper);font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.x:hover{background:var(--red);color:var(--ink)}
+.sheet-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);min-height:100%}
+.s-l{position:sticky;top:0;align-self:start;height:100vh;height:100dvh;display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:var(--pad);background:hsl(var(--h) 92% 62%);border-right:var(--rule);container-type:inline-size}
+.s-top{display:flex;justify-content:space-between;gap:12px}
+.s-mid{display:flex;flex-direction:column;gap:16px}
+.s-l .icon{background:var(--ink)}
+.s-l .icon svg{stroke:var(--paper)}
+.s-mid h3{font:900 clamp(48px,21cqi,190px)/.84 var(--f-display);text-transform:uppercase;overflow-wrap:break-word}
+.s-tag{font-size:18px;max-width:30ch}
+.s-price{font:900 clamp(40px,12cqi,84px)/.9 var(--f-display);text-transform:uppercase;margin-bottom:14px}
+.sh-act{display:flex;flex-wrap:wrap;gap:10px}
+.s-r{display:flex;flex-direction:column;gap:28px;padding:calc(76px + env(safe-area-inset-top,0px)) var(--pad) 56px}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:var(--rule)}
+.stat{padding:16px;border-bottom:var(--rule);display:flex;flex-direction:column;gap:6px}
+.stat:nth-child(odd){border-right:var(--rule)}
+.stat:nth-last-child(-n+2){border-bottom:0}
+.stat b{font:900 clamp(24px,4vw,40px)/.9 var(--f-display);text-transform:uppercase}
+.stat span{font:600 11px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.blk{display:flex;flex-direction:column;gap:14px}
+.shots{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px}
+.shot{position:relative;flex:0 0 150px;aspect-ratio:9/18;overflow:hidden;border:var(--rule);background:var(--paper)}
+.shot i{position:absolute;display:block}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.s-desc{max-width:58ch;font-size:18px;line-height:1.6}
+.news{display:flex;flex-direction:column;background:var(--pink);border:var(--rule)}
+.news .s-label{border-bottom:var(--rule)}
+.news p{padding:16px;font-size:17px}
+@media (max-width:860px){
+  .sheet-in{grid-template-columns:minmax(0,1fr)}
+  .s-l{position:static;height:auto;gap:36px;border-right:0;border-bottom:var(--rule);padding-top:calc(76px + env(safe-area-inset-top,0px))}
+  .s-r{padding-top:var(--pad)}
+}
+
+.toast{position:fixed;left:var(--gutter);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;max-width:calc(100% - 2 * var(--gutter));padding:13px 16px;border-left:14px solid var(--yellow);background:var(--ink);color:var(--paper);font:600 12px/1.3 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.toast.on{animation:up .22s ease-out}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+  .tick{overflow-x:auto}
+  .tick-track{animation:none}
+  .btn--busy::after{animation:none}
+  .toast.on{animation:none}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="mark" href="../index.ru.html" aria-label="Арфа, на главную">
+      <img src="../assets/Cyrillic_logo_arfa.png" alt="">
+      Полка
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../projects.ru.html">Проекты</a>
+      <a href="#top" class="is-active" aria-current="page">Магазин</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+    </nav>
+    <label class="search"><input id="q" type="search" placeholder="Поиск по полке" aria-label="Поиск по каталогу" autocomplete="off"></label>
+    <div class="langs" aria-label="Язык">
+      <a href="../projects.en.html" aria-label="English">🇬🇧</a>
+      <a href="../projects.de.html" aria-label="Deutsch">🇩🇪</a>
+      <a href="../projects.fr.html" aria-label="Français">🇫🇷</a>
+      <a href="../projects.ru.html" class="active" aria-label="Русский">🇷🇺</a>
+    </div>
+    <div class="cart" id="count">На полке<b>0</b></div>
+  </div>
+</header>
+
+<main class="frame" id="top">
+  <section class="hero" aria-labelledby="h1">
+    <div class="h-a on-dark">
+      <div class="kick mono"><span>Магазин приложений Арфа</span><a href="#catalog">К каталогу ↓</a></div>
+      <h1 id="h1"><span>Только</span><span>то, что</span><span class="y">останется</span></h1>
+      <div class="h-stats" id="h-stats"></div>
+    </div>
+    <div class="h-b">
+      <div class="b-top mono"><span>Выбор недели</span><span id="b-rate"></span></div>
+      <div class="sky" id="b-sky"></div>
+      <h2 class="b-name" id="b-name"></h2>
+      <p class="b-tag" id="b-tag"></p>
+      <div class="b-act" id="b-act"></div>
+    </div>
+    <div class="tick" id="tick" aria-label="Названия инструментов каталога"></div>
+  </section>
+
+  <section id="catalog" aria-labelledby="h-cat">
+    <div class="cat-head">
+      <h2 id="h-cat">Каталог</h2>
+      <div class="cat-side">
+        <div class="sticker"><b id="free-n"></b><span id="free-l"></span></div>
+        <div class="found" aria-live="polite"><b id="found-n"></b><span class="mono" id="found-l"></span></div>
+      </div>
+    </div>
+    <div class="cat">
+      <aside class="side">
+        <span class="s-label">Категории</span>
+        <div class="cat-list" id="chips" role="group" aria-label="Категории"></div>
+        <span class="s-label">Статус</span>
+        <div class="pr-list" role="group" aria-label="Статус">
+          <button class="cat-btn" data-act="status" data-id="all" aria-pressed="true">Все</button>
+          <button class="cat-btn" data-act="status" data-id="ready" aria-pressed="false">Доступно</button>
+          <button class="cat-btn" data-act="status" data-id="soon" aria-pressed="false">Скоро</button>
+        </div>
+        <label class="s-label" for="sort">Порядок</label>
+        <select class="sel" id="sort">
+          <option value="rank">Выбор Арфы</option>
+          <option value="name">По алфавиту</option>
+          <option value="updated">Недавно обновлённые</option>
+        </select>
+      </aside>
+      <div class="list" id="list-wrap">
+        <div id="grid"></div>
+        <div class="empty" id="empty" hidden>
+          <b>Пусто</b>
+          <p id="empty-text"></p>
+          <button class="btn" data-act="clear">Сбросить фильтры</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="top6" id="top6" aria-labelledby="h-top">
+    <div class="t-head">
+      <h2 id="h-top">Выбор Арфы</h2>
+      <p class="mono">Шесть инструментов, с которых мы советуем начать</p>
+    </div>
+    <ol class="t6" id="top-list"></ol>
+  </section>
+
+  <section class="research" id="research" aria-labelledby="h-research">
+    <div class="r-head">
+      <h2 id="h-research">Research</h2>
+      <p class="mono">Не только инструменты: Арфа исследует реальные процессы — бизнес, поведение и цифровые привычки</p>
+    </div>
+    <div class="r-grid" id="r-grid"></div>
+  </section>
+
+  <footer class="foot">
+    <svg viewBox="0 0 1000 250" role="img" aria-label="Полка"><text x="0" y="238" textLength="1000" lengthAdjust="spacingAndGlyphs" font-size="330" fill="#0B0B12">ПОЛКА</text></svg>
+    <div class="foot-row">
+      <span>© 2026 Арфа · Полка — прикладные инструменты для повседневной жизни</span>
+      <nav class="foot-links" aria-label="Арфа">
+        <a href="../index.ru.html">Главная</a>
+        <a href="../about.ru.html">О нас</a>
+        <a href="../projects.ru.html">Проекты</a>
+        <a href="../blog/blog.ru.html">Блог</a>
+        <a href="../contact.ru.html">На связи</a>
+      </nav>
+      <a href="#top">Наверх ↑</a>
+    </div>
+  </footer>
+  <div class="pad-b"></div>
+</main>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+  <button class="x" id="x" data-act="close" aria-label="Закрыть">Закрыть ✕</button>
+  <div id="sheet-body"></div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function(){
+  var $ = function(s){ return document.querySelector(s); };
+
+  var ICONS = {
+    headphones:'<path d="M5 16v-4a7 7 0 0114 0v4"/><rect x="3" y="15" width="4" height="6"/><rect x="17" y="15" width="4" height="6"/>',
+    wallet:'<rect x="3" y="6" width="18" height="13"/><path d="M3 10h18"/><path d="M16 14.5h2"/>',
+    check:'<path d="M4 12.5l5 5L20 6.5"/>',
+    grid:'<rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/>',
+    anchor:'<circle cx="12" cy="5" r="2.4"/><path d="M12 7.5V21"/><path d="M5 13a7 7 0 0014 0"/><path d="M3 13h4M17 13h4"/>',
+    split:'<path d="M4 5h5l6 14h5"/><path d="M4 19h5l3-6"/><circle cx="4" cy="5" r="1.4"/><circle cx="4" cy="19" r="1.4"/>',
+    chart:'<path d="M4 4v16h16"/><path d="M8 20v-6M12 20V9M16 20v-4"/>',
+    door:'<path d="M13 4H6v16h7"/><path d="M12 12h9"/><path d="M18 8l3 4-3 4"/>',
+    belloff:'<path d="M6 9a6 6 0 0112 0v4l2 3H4l2-3z"/><path d="M3 3l18 18"/><path d="M10 20a2 2 0 004 0"/>',
+    pin:'<path d="M12 21s7-6.4 7-11a7 7 0 10-14 0c0 4.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>',
+    car:'<path d="M5 16l1.4-5h11.2L19 16"/><rect x="4" y="16" width="16" height="3"/><circle cx="7.5" cy="19.5" r="1.4"/><circle cx="16.5" cy="19.5" r="1.4"/>',
+    doc:'<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h7M10 16h5"/>',
+    list:'<path d="M4 6h16M4 12h16M4 18h10"/>'
+  };
+
+  var CATS = [
+    {id:'all',name:'Все'},
+    {id:'products',name:'Продукты'},
+    {id:'focus',name:'Работа и фокус'},
+    {id:'money',name:'Финансы'},
+    {id:'comms',name:'Общение'},
+    {id:'travel',name:'Поездки'}
+  ];
+
+  var APPS = [
+    {id:'adiguide',name:'AdiGuide',tag:'Аудиогид по городам и прогулкам',cat:'products',group:'ready',status:'MVP',hue:262,icon:'headphones',logo:'../assets/adiguide/AdiGuide_Logo-without_white.png',platform:'iOS · Android',stack:'Flutter · Firebase · OpenStreetMap · TTS',updated:'2026-05-27',link:'adiguide_app.html',rank:1,
+     desc:'Аудиогид для городов и прогулок: маршруты, истории и голосовые подсказки, которые включаются ровно там, где нужно. Проверен на реальных маршрутах и сценариях городского внимания.',next:'Расширяем библиотеку маршрутов и качество озвучки.'},
+    {id:'debtmate',name:'DebtMate',tag:'Порядок в денежных договорённостях',cat:'products',group:'ready',status:'Активно',hue:150,icon:'wallet',logo:'../assets/DebtMate/DebtMate_Logo.png',platform:'iOS · Android',stack:'Flutter · Dart · Hive · GitHub',updated:'2026-04-22',link:'debtmate_app.html',rank:2,
+     desc:'Ассистент обязательств и долгов для друзей, семьи, самозанятых и неловких денежных ситуаций. Показывает, кто, кому и сколько должен — без давления.',next:'Логика возвратов, напоминания без давления, маскоты.'},
+    {id:'todoolico',name:'ToDooliCo',tag:'Задачи, канбан и локальная безопасность',cat:'products',group:'ready',status:'Прототип',hue:32,icon:'list',logo:'../assets/AppIcon~todoolico.png',platform:'iOS · Android · Desktop',stack:'Flutter · Dart · SQLite · Hive · AES-256',updated:'2026-03-03',link:'todoolico_app.html',rank:3,
+     desc:'Минималистичная система задач с канбан-модулем и локальным шифрованным хранением важных данных. Простое планирование без регистрации.',next:'Синхронизация между устройствами и виджеты.'},
+    {id:'econometrics',name:'EconoMetrics',tag:'Юнит-экономика и ROI за пару минут',cat:'money',group:'ready',status:'Инструмент',hue:200,icon:'chart',platform:'Веб',stack:'Веб-инструмент',updated:'2026-10-10',link:'econometrics_app.html',rank:4,
+     desc:'Расчёт юнит-экономики и ROI: быстро проверить гипотезу и увидеть, сходится ли модель, до вложений в разработку.',next:'Сценарии «что если» и экспорт отчётов.'},
+    {id:'quicktodo',name:'QuickTodo',tag:'Список действий без регистрации',cat:'focus',group:'ready',status:'Инструмент',hue:258,icon:'check',platform:'Веб',stack:'Мгновенный запуск',updated:'2026-09-18',link:'../projects.ru.html',rank:5,
+     desc:'Короткий список действий без регистрации и лишних экранов. Открыл — сделал — закрыл.',next:'Быстрые клавиши и повторяющиеся задачи.'},
+    {id:'focusgrid',name:'FocusGrid',tag:'Приоритеты на один рабочий цикл',cat:'focus',group:'ready',status:'Инструмент',hue:225,icon:'grid',platform:'Веб',stack:'Минимум действий',updated:'2026-09-18',link:'../projects.ru.html',rank:8,
+     desc:'Фиксация приоритетов на один рабочий цикл, чтобы не распыляться на лишние статусы.',next:'Связка с QuickTodo и DayAnchor.'},
+    {id:'dayanchor',name:'DayAnchor',tag:'Опорные точки дня',cat:'focus',group:'ready',status:'Инструмент',hue:275,icon:'anchor',platform:'Веб',stack:'План дня',updated:'2026-09-18',link:'../projects.ru.html',rank:9,
+     desc:'Опорные точки дня, чтобы не пересобирать план с нуля каждое утро.',next:'Шаблоны недели и мягкие напоминания.'},
+    {id:'costsplit',name:'CostSplit',tag:'Разделить общий расход',cat:'money',group:'ready',status:'Инструмент',hue:168,icon:'split',platform:'Веб',stack:'Одно действие',updated:'2026-08-30',link:'../projects.ru.html',rank:10,
+     desc:'Быстро разделить общий расход и не спорить о деталях: понятная доля каждого без таблиц.',next:'Учёт валют и групп.'},
+    {id:'tripcheck',name:'TripCheck',tag:'Чек-лист перед поездкой',cat:'travel',group:'ready',status:'Инструмент',hue:210,icon:'check',platform:'Веб',stack:'Мгновенный запуск',updated:'2026-08-30',link:'../projects.ru.html',rank:11,
+     desc:'Короткий чек-лист перед маршрутом или поездкой: ничего не забыть и не собираться в спешке.',next:'Свои шаблоны поездок.'},
+    {id:'routeping',name:'RoutePing',tag:'Контрольные точки в пути',cat:'travel',group:'ready',status:'Инструмент',hue:180,icon:'pin',platform:'Веб',stack:'Сигналы по маршруту',updated:'2026-08-30',link:'../projects.ru.html',rank:12,
+     desc:'Сигналы по маршруту и быстрые точки контроля в пути, чтобы держать поездку под контролем.',next:'Офлайн-режим и обмен маршрутом.'},
+    {id:'autolog',name:'AutoLog',tag:'Топливо и сервис без таблиц',cat:'travel',group:'ready',status:'Инструмент',hue:15,icon:'car',platform:'Веб',stack:'Одно действие',updated:'2026-08-30',link:'../projects.ru.html',rank:13,
+     desc:'Топливо, сервис и напоминания без сложных таблиц: всё, что важно об автомобиле, под рукой.',next:'Расчёт расхода и напоминания.'},
+    {id:'audioguide',name:'AudioGuide',tag:'Аудио-маршруты для городского опыта',cat:'travel',group:'ready',status:'Проверено',hue:292,icon:'headphones',platform:'Веб · Мобильный',stack:'Storytelling',updated:'2026-05-27',link:'../projects/adiguide.ru.html',rank:6,
+     desc:'Аудио-подсказки и маршруты для прогулок и городского опыта — то же направление, что и в AdiGuide.',next:'Больше маршрутов и языков.'},
+    {id:'exitline',name:'ExitLine',tag:'Корректно завершить разговор',cat:'comms',group:'soon',status:'Скоро',hue:335,icon:'door',platform:'Веб',stack:'Без настройки',updated:'2026-07-01',link:null,rank:20,
+     desc:'Формулировки для корректного завершения разговора, когда нужно выйти из ситуации и сохранить нормальный тон.',next:'Набор сценариев под разные контексты.'},
+    {id:'quietline',name:'QuietLine',tag:'Личная доступность и тишина',cat:'comms',group:'soon',status:'Черновик',hue:250,icon:'belloff',platform:'Веб',stack:'Спокойный режим',updated:'2026-07-01',link:null,rank:21,
+     desc:'Контроль входящих запросов и личной доступности: мягко обозначать границы, не выпадая из общения.',next:'Правила «не беспокоить».'},
+    {id:'exitnow',name:'ExitNow',tag:'Выйти из контакта сразу',cat:'comms',group:'soon',status:'Скоро',hue:5,icon:'door',platform:'Веб',stack:'Одно действие',updated:'2026-07-01',link:null,rank:22,
+     desc:'Быстрый сценарий выхода, когда надо завершить контакт сразу — бережно и без лишних объяснений.',next:'Быстрые шаблоны одного касания.'}
+  ];
+
+  var RESEARCH = [
+    {type:'Practice case',hue:45,title:'Финансовое консультирование для магазина электроники',
+     text:'Анализ бизнес-процессов, расходов, обязательств и новых источников дохода.',
+     links:[{href:'../blog/ru/posts/finance-consulting.ru.html',label:'Читать кейс'}]},
+    {type:'Practice case',hue:262,title:'Анализ для агентства по найму персонала',
+     text:'Опросы, конкурентная проверка, диагностика бренда и рекомендации по позиционированию.',
+     links:[{href:'../blog/ru/posts/agency-analysis.ru.html',label:'Читать кейс'}]},
+    {type:'Publication',hue:330,title:'Потребительское поведение в условиях цифровизации',
+     text:'Публикация о том, как цифровая экономика меняет поведение людей и ожидания от сервисов.',
+     links:[
+       {href:'https://usptu-bulletin.ru/index.php/bul/article/view/11710',label:'Статья',ext:true},
+       {href:'../assets/%D0%9F%D0%9E%D0%A2%D0%A0%D0%95%D0%91%D0%98%D0%A2%D0%95%D0%9B%D0%AC%D0%A1%D0%9A%D0%9E%D0%95%20%D0%9F%D0%9E%D0%92%D0%95%D0%94%D0%95%D0%9D%D0%98%D0%95%20%D0%92%20%D0%A3%D0%A1%D0%9B%D0%9E%D0%92%D0%98%D0%AF%D0%A5%20%D0%A6%D0%98%D0%A4%D0%A0%D0%9E%D0%92%D0%98%D0%97%D0%90%D0%A6%D0%98%D0%98%20%D0%92%20%D0%AD%D0%9A%D0%9E%D0%9D%D0%9E%D0%9C%D0%98%D0%9A%D0%95.pdf',label:'PDF',download:true}
+     ]},
+    {type:'Publication',hue:185,title:'Мобильная агрегация трафика на открытых решениях',
+     text:'Исследование открытых технологий для мобильных сервисов маршрутов и городской инфраструктуры.',
+     links:[
+       {href:'https://usptu-bulletin.ru/index.php/bul/article/view/13035',label:'Статья',ext:true},
+       {href:'../assets/%D0%A0%D0%90%D0%97%D0%A0%D0%90%D0%91%D0%9E%D0%A2%D0%9A%D0%90%20%D0%A1%D0%95%D0%A0%D0%92%D0%98%D0%A1%D0%90%20%D0%9C%D0%9E%D0%91%D0%98%D0%9B%D0%AC%D0%9D%D0%9E%D0%98%CC%86%20%D0%90%D0%93%D0%A0%D0%95%D0%93%D0%90%D0%A6%D0%98%D0%98%20%D0%A2%D0%A0%D0%90%D0%A4%D0%98%D0%9A%D0%90%20%D0%9D%D0%90%20%D0%9E%D0%A1%D0%9D%D0%9E%D0%92%D0%95%20%D0%9E%D0%A2%D0%9A%D0%A0%D0%AB%D0%A2%D0%AB%D0%A5%20%D0%A0%D0%95%D0%A8%D0%95%D0%9D%D0%98%D0%98%CC%86.pdf',label:'PDF',download:true}
+     ]}
+  ];
+
+  var SHOTS = {
+    adiguide:['../assets/adiguide/1.jpg','../assets/adiguide/2.jpg','../assets/adiguide/3.jpg']
+  };
+
+  var PICK = 'adiguide';
+  var TOP = ['adiguide','debtmate','todoolico','econometrics','quicktodo','audioguide'];
+
+  var byId = {};
+  APPS.forEach(function(a){ byId[a.id] = a; });
+  var catName = function(id){ var c = CATS.filter(function(x){ return x.id === id; })[0]; return c ? c.name : id; };
+  var state = {q:'',cat:'all',status:'all',sort:'rank'};
+  var shelf = new Set();
+  var current = null, lastOpener = null, toastTimer = null;
+
+  try {
+    JSON.parse(localStorage.getItem('polka.shelf') || '[]').forEach(function(id){ if (byId[id]) shelf.add(id); });
+  } catch(e) {}
+  function save(){
+    try { localStorage.setItem('polka.shelf', JSON.stringify(Array.from(shelf))); } catch(e) {}
+  }
+
+  /* formatting */
+  var dateRu = function(s){ return new Date(s + 'T12:00:00').toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'}); };
+  var plural = function(n,f){ var a = n % 100, b = n % 10; return a > 10 && a < 20 ? f[2] : b === 1 ? f[0] : (b > 1 && b < 5) ? f[1] : f[2]; };
+
+  /* pieces */
+  function icon(a,size){
+    var inner = a.logo ? '<img src="' + a.logo + '" alt="">' : '<svg viewBox="0 0 24 24" aria-hidden="true">' + (ICONS[a.icon] || ICONS.grid) + '</svg>';
+    return '<span class="icon" style="--h:' + a.hue + ';--s:' + (size || 72) + 'px">' + inner + '</span>';
+  }
+  function btn(a){
+    var s = shelf.has(a.id) ? 'done' : null;
+    if (s === 'done') return '<button class="btn btn--done" data-act="shelf" data-id="' + a.id + '">На полке</button>';
+    return '<button class="btn" data-act="shelf" data-id="' + a.id + '" aria-label="Добавить ' + a.name + ' на полку">На полку</button>';
+  }
+  function slot(a){ return '<span class="slot" data-slot="' + a.id + '">' + btn(a) + '</span>'; }
+  function row(a){
+    return '<article class="app" style="--h:' + a.hue + '"><button class="main" data-act="more" data-id="' + a.id + '">' + icon(a,72) +
+      '<span class="txt"><span class="nm">' + a.name + '</span><span class="tg">' + a.tag + '</span></span>' +
+      '<span class="mt"><span>' + catName(a.cat) + '</span><span>' + a.status + ' · ' + a.platform + '</span></span></button>' +
+      slot(a) + '</article>';
+  }
+
+  /* lists */
+  function list(){
+    var q = state.q.trim().toLowerCase();
+    var r = APPS.filter(function(a){
+      if (state.cat !== 'all' && a.cat !== state.cat) return false;
+      if (state.status === 'ready' && a.group === 'soon') return false;
+      if (state.status === 'soon' && a.group !== 'soon') return false;
+      if (q && (a.name + ' ' + a.tag + ' ' + a.desc + ' ' + a.stack + ' ' + catName(a.cat)).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    var cmp = {
+      rank:function(x,y){ return x.rank - y.rank; },
+      name:function(x,y){ return x.name.localeCompare(y.name); },
+      updated:function(x,y){ return y.updated.localeCompare(x.updated); }
+    }[state.sort];
+    return r.sort(cmp);
+  }
+  function renderGrid(){
+    var r = list();
+    $('#grid').innerHTML = r.map(row).join('');
+    $('#grid').hidden = !r.length;
+    $('#empty').hidden = !!r.length;
+    $('#found-n').textContent = r.length;
+    $('#found-l').textContent = plural(r.length,['инструмент','инструмента','инструментов']) + ' на полке';
+    if (!r.length) {
+      $('#empty-text').textContent = state.q.trim() ? 'Ничего не нашлось по запросу «' + state.q.trim() + '». Измените запрос или сбросьте фильтры.' : 'В этой подборке пока ничего нет. Сбросьте фильтры, чтобы увидеть весь каталог.';
+    }
+  }
+  function renderChips(){
+    $('#chips').innerHTML = CATS.map(function(c){
+      var n = c.id === 'all' ? APPS.length : APPS.filter(function(a){ return a.cat === c.id; }).length;
+      return '<button class="cat-btn" data-act="cat" data-id="' + c.id + '" aria-pressed="false">' + c.name + '<span>' + n + '</span></button>';
+    }).join('');
+  }
+  function pressed(){
+    document.querySelectorAll('[data-act="cat"]').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.id === state.cat)); });
+    document.querySelectorAll('[data-act="status"]').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.id === state.status)); });
+  }
+  function renderTop(){
+    var top = TOP.map(function(id){ return byId[id]; }).filter(Boolean);
+    $('#top-list').innerHTML = top.map(function(a,i){
+      return '<li style="--h:' + a.hue + '"><button class="tmain" data-act="more" data-id="' + a.id + '"><span class="num">' + (i+1) + '</span>' +
+        '<span class="t-row">' + icon(a,56) + '<span class="nm">' + a.name + '</span></span>' +
+        '<span class="t-meta">' + catName(a.cat) + ' · ' + a.status + '</span></button>' + slot(a) + '</li>';
+    }).join('');
+  }
+  function renderResearch(){
+    $('#r-grid').innerHTML = RESEARCH.map(function(r){
+      var acts = r.links.map(function(l){
+        return '<a class="btn" href="' + l.href + '"' + (l.ext ? ' target="_blank" rel="noopener noreferrer"' : '') + (l.download ? ' download' : '') + '>' + l.label + '</a>';
+      }).join('');
+      return '<article class="r-card" style="--h:' + r.hue + '"><span class="r-type">' + r.type + '</span><h3>' + r.title + '</h3><p>' + r.text + '</p><div class="r-act">' + acts + '</div></article>';
+    }).join('');
+  }
+  function renderHero(){
+    var products = APPS.filter(function(a){ return a.cat === 'products'; }).length;
+    var stat = function(v,l){ return '<div><b>' + v + '</b><span>' + l + '</span></div>'; };
+    $('#h-stats').innerHTML = stat(APPS.length,'инструментов') + stat(products,'продукта') + stat(RESEARCH.length,'исследования');
+    $('#free-n').textContent = APPS.length;
+    $('#free-l').textContent = 'инструментов собрано';
+    var p = byId[PICK];
+    $('#b-rate').textContent = p.status + ' · ' + p.platform;
+    $('#b-name').textContent = p.name;
+    $('#b-tag').textContent = p.tag;
+    $('#b-sky').innerHTML = p.logo ? '<img src="' + p.logo + '" alt="' + p.name + '">' : icon(p,140);
+    $('#b-act').innerHTML = slot(p) + '<a class="lnk" href="' + p.link + '">Подробнее →</a>';
+    var g = '<div class="g">' + APPS.map(function(a){ return '<span>' + a.name + '</span><i></i>'; }).join('') + '</div>';
+    $('#tick').innerHTML = '<div class="tick-track">' + g + g.replace('class="g"','class="g" aria-hidden="true"') + '</div>';
+  }
+
+  /* shelf state */
+  function count(){
+    $('#count b').textContent = shelf.size;
+  }
+  function refresh(id){
+    var a = byId[id];
+    document.querySelectorAll('[data-slot="' + id + '"]').forEach(function(el){
+      var had = el.contains(document.activeElement);
+      el.innerHTML = btn(a);
+      if (had) { var b = el.querySelector('button'); if (b) b.focus(); }
+    });
+    var d = document.getElementById('del');
+    if (d && current === id) {
+      d.textContent = shelf.has(id) ? 'Убрать с полки' : 'На полку';
+    }
+  }
+  function toast(msg){
+    var el = $('#toast');
+    el.textContent = msg;
+    el.hidden = false;
+    el.classList.remove('on');
+    void el.offsetWidth;
+    el.classList.add('on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ el.hidden = true; }, 2400);
+  }
+  function toggleShelf(id){
+    var a = byId[id];
+    if (shelf.has(id)) {
+      shelf.delete(id);
+      toast('«' + a.name + '» убрано с полки');
+    } else {
+      shelf.add(id);
+      toast('«' + a.name + '» на полке');
+    }
+    save(); refresh(id); count();
+  }
+
+  /* detail sheet */
+  function b(l,t,w,h,bg,r){ return '<i style="left:' + l + '%;top:' + t + '%;width:' + w + '%;height:' + h + '%;background:' + bg + (r ? ';border-radius:' + r : '') + '"></i>'; }
+  function shot(i,h){
+    var ink = '#0B0B12', paper = '#F2F0E9';
+    var s = '';
+    if (i === 0) {
+      s += b(10,6,40,3,ink) + b(20,18,60,30,paper,'50%') + b(10,56,80,3,ink) + b(10,62,60,3,ink) + b(10,68,70,3,ink) + b(10,84,80,7,ink);
+    } else if (i === 1) {
+      for (var r = 0; r < 3; r++) for (var c = 0; c < 2; c++) s += b(8 + c*46, 14 + r*27, 42, 23, (r + c) % 2 ? paper : ink);
+      s += b(8,5,36,3,ink);
+    } else {
+      s += b(8,5,50,3,ink);
+      for (var k = 0; k < 6; k++) s += b(8,14 + k*14,12,6,k % 2 ? paper : ink,'50%') + b(26,15 + k*14,52,2.5,ink) + b(26,19 + k*14,34,2,ink);
+    }
+    return '<div class="shot" style="background:hsl(' + h + ' 92% 62%)">' + s + '</div>';
+  }
+  function shots(a){
+    var real = SHOTS[a.id];
+    if (real) return real.map(function(src){ return '<div class="shot"><img src="' + src + '" alt="Скриншот ' + a.name + '" loading="lazy"></div>'; }).join('');
+    return shot(0,a.hue) + shot(1,a.hue) + shot(2,a.hue);
+  }
+  function openSheet(id,opener){
+    var a = byId[id];
+    if (!a) return;
+    current = id; lastOpener = opener || null;
+    var openBtn = (a.link && a.group !== 'soon')
+      ? '<a class="btn" href="' + a.link + '">Открыть</a>'
+      : '<button class="btn" disabled>Скоро</button>';
+    $('#sheet-body').innerHTML =
+      '<div class="sheet-in" style="--h:' + a.hue + '">' +
+        '<div class="s-l">' +
+          '<div class="s-top mono"><span>' + catName(a.cat) + '</span><span>' + a.status + '</span></div>' +
+          '<div class="s-mid">' + icon(a,104) + '<h3 id="sheet-title">' + a.name + '</h3><p class="s-tag">' + a.tag + '</p></div>' +
+          '<div class="s-bot"><div class="s-price">' + a.status + '</div>' +
+            '<div class="sh-act">' + openBtn + '<button class="btn btn--ghost" id="del" data-act="shelf" data-id="' + a.id + '">' + (shelf.has(a.id) ? 'Убрать с полки' : 'На полку') + '</button></div></div>' +
+        '</div>' +
+        '<div class="s-r">' +
+          '<div class="stats">' +
+            '<div class="stat"><b>' + a.status + '</b><span>Статус</span></div>' +
+            '<div class="stat"><b>' + a.platform + '</b><span>Платформа</span></div>' +
+            '<div class="stat"><b>' + a.stack + '</b><span>Технологии</span></div>' +
+            '<div class="stat"><b>' + dateRu(a.updated) + '</b><span>Обновлено</span></div></div>' +
+          '<div class="blk"><span class="s-label">Скриншоты</span><div class="shots" tabindex="0" role="group" aria-label="Скриншоты приложения ' + a.name + '">' + shots(a) + '</div></div>' +
+          '<div class="blk"><span class="s-label">Описание</span><p class="s-desc">' + a.desc + '</p></div>' +
+          '<div class="news"><span class="s-label">Дальше</span><p>' + a.next + '</p></div>' +
+        '</div>' +
+      '</div>';
+    $('#sheet').hidden = false;
+    document.documentElement.style.overflow = 'hidden';
+    $('#sheet').scrollTop = 0;
+    $('#x').focus();
+  }
+  function closeSheet(){
+    $('#sheet').hidden = true;
+    document.documentElement.style.overflow = '';
+    current = null;
+    if (lastOpener && document.contains(lastOpener)) lastOpener.focus();
+  }
+
+  /* events */
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-act]');
+    if (!t) return;
+    var act = t.dataset.act, id = t.dataset.id;
+    if (act === 'shelf') toggleShelf(id);
+    else if (act === 'more') openSheet(id,t);
+    else if (act === 'close') closeSheet();
+    else if (act === 'cat') { state.cat = id; pressed(); renderGrid(); }
+    else if (act === 'status') { state.status = id; pressed(); renderGrid(); }
+    else if (act === 'clear') {
+      state.q = ''; state.cat = 'all'; state.status = 'all'; state.sort = 'rank';
+      $('#q').value = ''; $('#sort').value = 'rank';
+      pressed(); renderGrid();
+    }
+  });
+  $('#q').addEventListener('input', function(e){
+    var had = state.q.trim() !== '';
+    state.q = e.target.value;
+    renderGrid();
+    if (!had && state.q.trim() !== '') {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      $('#catalog').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+    }
+  });
+  $('#sort').addEventListener('change', function(e){ state.sort = e.target.value; renderGrid(); });
+  document.addEventListener('keydown', function(e){
+    if ($('#sheet').hidden) return;
+    if (e.key === 'Escape') { closeSheet(); return; }
+    if (e.key === 'Tab') {
+      var f = Array.prototype.slice.call($('#sheet').querySelectorAll('button:not([disabled]):not([hidden]),a[href],[tabindex="0"]'));
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* boot */
+  renderHero(); renderChips(); pressed(); renderGrid(); renderTop(); renderResearch(); count();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,392 @@
+/* English homepage — product proof in a quiet editorial system. */
+
+body.arfa-stage {
+  --paper: #f4f5f7;
+  --ink: #0c1422;
+  --muted: #687180;
+  --line: #dce0e6;
+  --night: #06080c;
+  --night-soft: #111720;
+  --accent: #8b5cf6;
+  background: var(--paper) !important;
+  color: var(--ink) !important;
+  font-family: "Manrope", Arial, sans-serif !important;
+}
+
+body.arfa-stage .arfa-grainy-stage,
+body.arfa-stage .arfa-sparkles,
+body.arfa-stage .arfa-strings,
+body.arfa-stage #retrowaveOverlay { display: none !important; }
+
+body.arfa-stage > header,
+body.arfa-stage > main,
+body.arfa-stage > footer { position: relative; z-index: 2; }
+
+body.arfa-stage .glass-header {
+  width: min(calc(100% - 2.5rem), 920px) !important;
+  min-height: 68px;
+  margin: 1.1rem auto -0.25rem !important;
+  padding: 0.55rem 0.8rem 0.55rem 1.1rem !important;
+  border: 1px solid rgba(13, 23, 38, 0.11) !important;
+  border-radius: 15px !important;
+  background: rgba(255, 255, 255, 0.93) !important;
+  box-shadow: 0 18px 42px rgba(16, 24, 40, 0.07) !important;
+  backdrop-filter: blur(15px) !important;
+}
+
+body.arfa-stage .glass-logo-img {
+  width: 38px !important;
+  height: 38px !important;
+  border: 0 !important;
+  background: none !important;
+}
+
+body.arfa-stage .nav-link {
+  padding: 0.5rem 0.65rem !important;
+  color: #5f6876 !important;
+  font-size: 0.81rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
+  text-transform: none !important;
+  opacity: 1 !important;
+}
+
+body.arfa-stage .nav-link:hover,
+body.arfa-stage .nav-link[aria-current="page"] { color: var(--ink) !important; }
+
+body.arfa-stage .lang-flag {
+  width: 30px !important;
+  height: 30px !important;
+  padding: 0 !important;
+  display: grid !important;
+  place-items: center;
+  border: 0 !important;
+  background: transparent !important;
+  filter: grayscale(1);
+  opacity: 0.58;
+}
+
+body.arfa-stage .lang-flag.active,
+body.arfa-stage .lang-flag:hover { filter: none; opacity: 1; }
+body.arfa-stage .flag-icon { font-size: 1rem !important; }
+
+body.arfa-stage main { background: transparent !important; padding: 0 !important; }
+.arfa-wrap { width: min(calc(100% - 3rem), 1180px); }
+
+/* Hero */
+.arfa-hero {
+  min-height: min(790px, calc(100svh - 6rem));
+  margin: 0 auto;
+  width: min(calc(100% - 2.5rem), 1500px);
+  padding: clamp(7rem, 15vh, 10rem) 1.5rem 4.4rem;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 28px;
+  background: var(--night);
+  display: grid;
+  place-items: center;
+  color: white;
+}
+
+.arfa-dotfield {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.arfa-dotfield canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arfa-dotfield canvas { display: none; }
+  .arfa-dotfield::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    background:
+      radial-gradient(ellipse 55% 52% at 50% 54%, transparent 0 35%, rgba(0,0,0,.86) 71%),
+      radial-gradient(circle, rgba(230, 237, 247, .65) 1.1px, transparent 1.35px);
+    background-size: auto, 9px 9px;
+    mask-image: radial-gradient(ellipse 90% 78% at 50% 53%, #000 15%, transparent 80%);
+  }
+}
+
+.arfa-hero .arfa-wrap { max-width: 1000px; text-align: center; }
+.arfa-hero__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+.arfa-hero__copy { position: relative; z-index: 2; }
+.arfa-mark,
+.arfa-section-label,
+.arfa-meet__eyebrow {
+  color: #aab4c2 !important;
+  font-size: 0.72rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+}
+
+.arfa-hero h1 {
+  max-width: none;
+  margin: 1.6rem 0 1.25rem;
+  color: #fff;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: clamp(3.35rem, 7vw, 6.5rem);
+  font-style: normal;
+  font-weight: 500;
+  line-height: .96;
+  letter-spacing: -0.075em;
+}
+
+.arfa-hero h1 .accent { color: #fff; text-shadow: none; }
+.arfa-hero__lede {
+  max-width: 43ch;
+  margin: 0 auto;
+  color: #d2d7df;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.arfa-hero__actions { justify-content: center; margin-top: 2rem; }
+.arfa-btn {
+  min-height: 50px;
+  padding: .78rem 1.25rem;
+  border: 1px solid #fff;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: none;
+  color: var(--ink);
+  font-size: .9rem;
+}
+.arfa-btn:hover { background: #e7eaf0; box-shadow: none; filter: none; }
+.arfa-link,
+.arfa-link--on-dark {
+  min-height: 50px;
+  padding: .75rem 1.15rem;
+  border: 1px solid rgba(255,255,255,.62);
+  border-radius: 7px;
+  color: #fff;
+  font-size: .9rem;
+}
+.arfa-link:hover { border-color: #fff; filter: none; }
+.arfa-hero__foot { display: none; }
+
+/* Terminal styling */
+.arfa-terminal {
+  margin: 0 auto 2rem;
+  width: min(calc(100% - 2.5rem), 780px);
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  text-align: left;
+  font-family: "SF Mono", "Menlo", "Consolas", monospace;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #e3e6ee;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.arfa-terminal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(155,92,255,0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.arfa-terminal__line {
+  margin: 0;
+  padding: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.arfa-terminal__prompt {
+  color: #8b5cf6;
+  font-weight: 700;
+}
+
+.arfa-terminal__command {
+  color: #e9d5ff;
+}
+
+.arfa-terminal__output {
+  color: #a0a8b8;
+}
+
+.arfa-terminal__label {
+  color: #7dd3fc;
+}
+
+.arfa-terminal__value {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.arfa-terminal__success {
+  color: #4ade80;
+}
+
+.arfa-terminal__arrow {
+  color: #22d3ee;
+}
+
+.arfa-terminal__dim {
+  color: rgba(255,255,255,0.4);
+}
+
+.arfa-terminal__cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: #8b5cf6;
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: terminal-blink 1s steps(2, start) infinite;
+}
+
+@keyframes terminal-blink {
+  0%, 50% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.arfa-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/* About */ { border: 0; padding: clamp(6rem, 11vw, 10rem) 0; }
+.arfa-about { background: var(--paper); }
+.arfa-about__grid { grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); gap: clamp(3rem, 9vw, 10rem); }
+.arfa-about h2,
+.arfa-work h2,
+.arfa-practice h2,
+.arfa-meet h2 {
+  color: var(--ink);
+  font-family: "Manrope", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.07em;
+}
+.arfa-about h2 { font-size: clamp(2.6rem, 5vw, 4.7rem); line-height: .98; }
+.arfa-about h2 .accent,
+.arfa-work h2 .accent,
+.arfa-practice h2 .accent { color: #5e6877; }
+.arfa-prose { gap: 1rem; max-width: 48ch; }
+.arfa-prose p { color: var(--muted); font-size: 1.02rem; font-weight: 500; line-height: 1.7; }
+.arfa-prose strong { color: var(--ink); }
+.arfa-portal { padding: 0; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 18px 42px rgba(16,24,40,.08); background: #07080c; }
+.arfa-portal::after { display: none; }
+.arfa-portal img { aspect-ratio: 5 / 4; object-position: center; filter: none; }
+
+/* Work */
+.arfa-work { background: #fff; }
+.arfa-work__intro { max-width: 630px; margin-bottom: 3.25rem; }
+.arfa-work h2 { font-size: clamp(2.7rem, 5.1vw, 5rem); line-height: .98; }
+.arfa-work__intro p:not(.arfa-section-label) { color: var(--muted); font-size: 1.08rem; }
+.arfa-gallery { gap: 1.15rem; }
+.arfa-artifact {
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: #f7f8fa;
+  color: var(--ink);
+  box-shadow: none;
+}
+.arfa-artifact:hover { transform: translateY(-5px); border-color: #a8b0bc; box-shadow: 0 16px 32px rgba(16,24,40,.09); }
+.arfa-artifact--hero { grid-column: span 7; min-height: 510px; }
+.arfa-artifact--mid { grid-column: span 5; min-height: 245px; }
+.arfa-artifact__media { background: #e8ecf0; }
+.arfa-artifact--hero .arfa-artifact__media { background: #101825; }
+.arfa-artifact__media img { filter: none; }
+.arfa-artifact__meta { background: linear-gradient(180deg, transparent, rgba(5,10,16,.88)); padding: 1.35rem 1.45rem; }
+.arfa-artifact--mid .arfa-artifact__meta { background: linear-gradient(180deg, transparent, rgba(5,10,16,.78)); }
+.arfa-artifact__meta span { color: #e5eaf1; font-size: .66rem; }
+.arfa-artifact__meta h3 { font-family: "Manrope", Arial, sans-serif; font-size: 1.65rem; font-style: normal; font-weight: 700; letter-spacing: -.05em; }
+.arfa-artifact__meta p { font-size: .88rem; }
+.arfa-artifact__arrow { border-color: rgba(255,255,255,.7); }
+.arfa-work__more { margin-top: 1.65rem; }
+.arfa-work__more .arfa-link { color: var(--ink); border-color: #aeb6c1; }
+
+/* Practice */
+.arfa-practice { background: var(--paper); }
+.arfa-practice__grid { grid-template-columns: .9fr 1.1fr; gap: clamp(3rem, 10vw, 10rem); }
+.arfa-practice h2 { font-size: clamp(2.5rem, 4.6vw, 4.4rem); line-height: .98; }
+.arfa-practice__list { border-top-color: var(--line); }
+.arfa-practice__list article { border-bottom-color: var(--line); padding: 1.45rem 0; }
+.arfa-practice__list > article > span { color: #6b7481; }
+.arfa-practice h3 { color: var(--ink); font-size: 1.15rem; }
+.arfa-practice__list p { color: var(--muted); }
+
+/* Contact and footer */
+.arfa-meet {
+  width: min(calc(100% - 2.5rem), 1500px);
+  margin: 0 auto 1.25rem;
+  padding: clamp(5.5rem, 12vw, 9rem) 1.5rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: 28px;
+  background: var(--night);
+}
+.arfa-meet::before { opacity: .65; background: radial-gradient(ellipse 62% 90% at 78% 50%, #1a2638, transparent 66%); }
+.arfa-meet h2 { color: #fff; font-size: clamp(3rem, 6vw, 5.6rem); line-height: .96; }
+.arfa-meet h2 .accent { color: #fff; text-shadow: none; }
+.arfa-meet .arfa-prose p { color: #bdc5d0; }
+.arfa-meet .arfa-btn { background: #fff; color: var(--ink); }
+body.arfa-stage footer.arfa-footer { padding: 2rem var(--arfa-pad) 2.5rem; border: 0; background: var(--paper) !important; color: var(--muted); }
+body.arfa-stage footer.arfa-footer a { color: var(--muted); text-transform: none; letter-spacing: 0; font-size: .78rem; }
+body.arfa-stage footer.arfa-footer .arfa-credits { color: #8a929d; }
+body.arfa-stage footer.arfa-footer .arfa-credits a { color: #717986; }
+
+@media (max-width: 900px) {
+  body.arfa-stage .glass-header { width: calc(100% - 1.5rem) !important; }
+  body.arfa-stage .mobile-menu-btn { display: inline-flex !important; border-color: #cbd1da !important; background: #fff !important; }
+  body.arfa-stage .mobile-menu-btn .menu-bar { background: var(--ink) !important; }
+  body.arfa-stage .mobile-menu-drawer { background: #fff !important; border-color: var(--line) !important; }
+  body.arfa-stage .mobile-menu-title,
+  body.arfa-stage .mobile-menu-close,
+  body.arfa-stage .mobile-menu-label,
+  body.arfa-stage .mobile-menu-link,
+  body.arfa-stage .mobile-menu-chip { color: var(--ink) !important; }
+  body.arfa-stage .mobile-menu-close,
+  body.arfa-stage .mobile-menu-link,
+  body.arfa-stage .mobile-menu-chip { background: #fff !important; border-color: var(--line) !important; }
+  .arfa-hero { width: calc(100% - 1.5rem); min-height: 690px; }
+
+  .arfa-about__grid,
+  .arfa-practice__grid { grid-template-columns: 1fr; }
+  .arfa-portal { order: 0; }
+}
+
+@media (max-width: 600px) {
+  .arfa-wrap { width: min(calc(100% - 2.5rem), 1180px); }
+  .arfa-hero { min-height: 740px; padding: 5.5rem 1rem 3.5rem; border-radius: 18px; }
+  .arfa-hero__layout { display: block; }
+  .arfa-hero__copy { padding-top: 2.5rem; }
+  .arfa-hero h1 { font-size: clamp(2.8rem, 14vw, 4.1rem); }
+  .arfa-hero__actions { flex-direction: column; align-items: center; gap: .65rem; }
+  .arfa-hero__actions .arfa-btn,
+  .arfa-hero__actions .arfa-link { justify-content: center; padding-inline: .75rem; font-size: .77rem; }
+  .arfa-artifact--hero,
+  .arfa-artifact--mid { min-height: 330px; }
+  .arfa-artifact--mid { min-height: 255px; }
+  .arfa-meet { width: calc(100% - 1.5rem); border-radius: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arfa-artifact { transition: none; }
+}

@@ -229,6 +229,32 @@ body.arfa-stage main {
   margin-top: 2rem;
 }
 
+.arfa-hero__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.25rem;
+  margin-top: clamp(3rem, 9vh, 6rem);
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(243, 238, 248, 0.48);
+}
+
+.arfa-hero__foot span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.arfa-hero__foot span:not(:last-child)::after {
+  content: "";
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--arfa-uv);
+}
+
 .arfa-link {
   font-family: var(--arfa-body);
   font-weight: 700;
@@ -417,6 +443,17 @@ body.arfa-stage main {
   color: var(--arfa-ink);
 }
 
+.arfa-about__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.arfa-about__copy {
+  min-width: 0;
+}
+
 .arfa-about h2 {
   margin: 0 0 1.25rem;
   font-family: var(--arfa-display);
@@ -429,6 +466,41 @@ body.arfa-stage main {
 
 .arfa-about h2 .accent {
   color: #C9A8FF;
+}
+
+.arfa-portal {
+  margin: 0;
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(212, 184, 255, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(6, 5, 10, 0.65) inset,
+    0 0 40px rgba(155, 92, 255, 0.12);
+  padding: 0.55rem;
+  background: rgba(12, 10, 18, 0.55);
+}
+
+.arfa-portal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 45% at 78% 18%, rgba(196, 160, 255, 0.22), transparent 60%),
+    linear-gradient(180deg, transparent 55%, rgba(6, 5, 10, 0.35) 100%);
+  mix-blend-mode: screen;
+}
+
+.arfa-portal img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 40%;
+  filter: saturate(1.05) contrast(1.04);
 }
 
 .arfa-prose {
@@ -481,6 +553,15 @@ body.arfa-stage main {
   line-height: 1.6;
   color: var(--arfa-muted);
   font-weight: 500;
+}
+
+.arfa-section-label {
+  margin: 0 0 1.1rem;
+  font-size: 0.69rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #C9A8FF !important;
 }
 
 .arfa-gallery {
@@ -548,6 +629,27 @@ body.arfa-stage main {
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.arfa-artifact__media--contain {
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.arfa-artifact__media--contain img {
+  width: min(74%, 300px);
+  height: min(90%, 320px);
+  object-fit: contain;
+  filter: drop-shadow(0 20px 22px rgba(0, 0, 0, 0.24));
+}
+
+.arfa-artifact--todo .arfa-artifact__media {
+  background: radial-gradient(circle at 50% 42%, #e9fcf7 0%, #9cd3cb 52%, #3a7775 120%);
+}
+
+.arfa-artifact--debtmate .arfa-artifact__media {
+  background: linear-gradient(145deg, #e7ecff 0%, #b7c7ff 46%, #6786ec 100%);
+}
+
 .arfa-artifact:hover .arfa-artifact__media img {
   transform: scale(1.03);
 }
@@ -609,8 +711,83 @@ body.arfa-stage main {
   opacity: 0.92;
 }
 
+.arfa-artifact__arrow {
+  position: absolute;
+  right: 1.15rem;
+  top: 1.1rem;
+  display: grid !important;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin: 0 !important;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 1rem !important;
+  letter-spacing: 0 !important;
+  opacity: 0.9 !important;
+}
+
 .arfa-work__more {
   margin-top: 1.75rem;
+}
+
+/* —— Practice: a small studio's path from question to working thing —— */
+.arfa-practice {
+  padding: clamp(4rem, 12vh, 7rem) 0;
+  border-top: 1px solid var(--arfa-line);
+}
+
+.arfa-practice__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(2.5rem, 8vw, 8rem);
+  align-items: start;
+}
+
+.arfa-practice h2 {
+  margin: 0;
+  font-family: var(--arfa-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.7rem);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.arfa-practice h2 .accent { color: #C9A8FF; }
+
+.arfa-practice__list { border-top: 1px solid var(--arfa-line); }
+
+.arfa-practice__list article {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 0.85rem;
+  padding: 1.35rem 0 1.5rem;
+  border-bottom: 1px solid var(--arfa-line);
+}
+
+.arfa-practice__list > article > span {
+  padding-top: 0.25rem;
+  color: #C9A8FF;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.arfa-practice h3 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.3;
+  font-weight: 800;
+  color: var(--arfa-ink);
+}
+
+.arfa-practice__list p {
+  margin: 0.35rem 0 0;
+  max-width: 38ch;
+  color: var(--arfa-muted);
+  font-size: 0.94rem;
+  line-height: 1.55;
 }
 
 /* —— Meet: continuous void —— */
@@ -764,14 +941,36 @@ body.arfa-stage footer.arfa-footer .arfa-credits a:hover {
     border-radius: 1rem !important;
   }
 
+  body.arfa-stage .mobile-menu-btn {
+    display: inline-flex !important;
+  }
+
+  .arfa-about__grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .arfa-portal {
+    order: -1;
+    max-width: 28rem;
+  }
+
+  .arfa-portal img {
+    aspect-ratio: 5 / 4;
+    object-position: center 35%;
+  }
+
   .arfa-hero h1 {
     font-size: clamp(3.4rem, 16vw, 5rem);
   }
 
   .arfa-duet,
-  .arfa-artifact--wide {
+  .arfa-artifact--wide,
+  .arfa-practice__grid {
     grid-template-columns: 1fr;
   }
+
+  .arfa-practice__grid { gap: 2rem; }
 
   .arfa-faces::before {
     left: 50%;
@@ -792,6 +991,28 @@ body.arfa-stage footer.arfa-footer .arfa-credits a:hover {
 }
 
 @media (max-width: 600px) {
+  .arfa-mark {
+    font-size: 0.6rem;
+    letter-spacing: 0.17em;
+    white-space: normal;
+  }
+
+  .arfa-hero__actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .arfa-hero__foot {
+    display: grid;
+    gap: 0.45rem;
+    margin-top: 3.5rem;
+  }
+
+  .arfa-hero__foot span:not(:last-child)::after { display: none; }
+
+  .arfa-artifact__media--contain img { width: min(66%, 240px); }
+
   .arfa-faces {
     grid-template-columns: 1fr 1fr;
   }

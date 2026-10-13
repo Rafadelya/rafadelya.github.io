@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arfa</title>
+  <title>Arfa — Small team. Thoughtful digital work.</title>
+  <meta name="description" content="We’re Rafael and Adelya — a two-person team building digital products, apps, and websites from first idea to launch." />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=ultraviolet">
-  <link rel="stylesheet" href="home-strings.css?v=grain1">
+  <link rel="stylesheet" href="home-strings.css?v=portal2">
   <link rel="icon" type="image/png" href="assets/latin_logo_arfa.png">
   <script defer src="js/i18n.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="vendor/grainy-image/grainy-image.js"></script>
   <script defer src="js/arfa-strings.js"></script>
   <script defer src="js/arfa-sparkles.js?v=spark2"></script>
+  <script defer src="js/arfa-dotfield.js?v=dot2"></script>
   <script defer src="js/arfa-stage.js?v=grain1"></script>
   <style>
     @font-face {
@@ -650,6 +652,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home-en.css?v=20261014">
 </head>
 <body class="arfa-uv arfa-stage">
   <!-- Grainy Image (MIT) — https://github.com/yashrajbharti/Grainy-image — vendor/grainy-image/LICENSE -->
@@ -724,43 +727,90 @@
 
   <main>
     <section class="arfa-hero" id="top" aria-labelledby="hero-title">
-      <div class="arfa-wrap">
-        <h1 id="hero-title">Creating<br /><span class="accent">Together.</span></h1>
-        <p class="arfa-hero__lede">We design and develop websites and apps, launch digital products, and help turn ideas into working solutions.</p>
+      <div class="arfa-dotfield" aria-hidden="true"></div>
+      <div class="arfa-wrap arfa-hero__layout">
+
+
+      <div class="arfa-hero__copy">
+         <p class="arfa-mark">Independent digital studio · Rafael &amp; Adelya</p>
+         <h1 id="hero-title">Small team.<br /><span class="accent">Ideas in motion.</span></h1>
+         <p class="arfa-hero__lede">We design and build useful digital products, apps, and websites — from the first question to a working launch.</p>
+         <div class="arfa-hero__actions">
+           <a class="arfa-btn" href="#work">Explore our work <span aria-hidden="true">↘</span></a>
+           <a class="arfa-link arfa-link--on-dark" href="contact.en.html">Have an idea? Let’s talk <span aria-hidden="true">↗</span></a>
+         </div>
+      </div
+
+
+        </div>
       </div>
     </section>
 
     <section class="arfa-about" id="about-arfa" aria-labelledby="about-title">
-      <div class="arfa-wrap">
-        <h2 id="about-title">What is <span class="accent">Arfa</span>?</h2>
-        <div class="arfa-prose">
-          <p>We’re Rafael and Adelya. Two people who love figuring out complex things and creating something new.</p>
-          <p>Today, we’re building devices with Raspberry Pi. Tomorrow, we’re launching a landing page in three days. In between, we work out product economics, write research papers, develop apps, and help others bring their ideas to life.</p>
-          <p><strong>Arfa is our projects, research, and collaboration with people who want to build something of their own.</strong></p>
+      <div class="arfa-wrap arfa-about__grid">
+        <div class="arfa-about__copy">
+          <h2 id="about-title">What is <span class="accent">Arfa</span>?</h2>
+          <div class="arfa-prose">
+            <p>We’re Rafael and Adelya — a two-person team drawn to the space between a good question and a useful thing.</p>
+            <p>We make our own apps and experiments, study how businesses and people work, and collaborate with others to bring considered ideas to life.</p>
+            <p><strong>Arfa is a small, independent practice built around curiosity, care, and making things real.</strong></p>
+          </div>
         </div>
+        <figure class="arfa-portal">
+          <img src="assets/arfa-portal.jpg" alt="" width="1200" height="1500" loading="lazy" decoding="async" />
+        </figure>
       </div>
     </section>
 
     <section class="arfa-work" id="work" aria-labelledby="work-title">
       <div class="arfa-wrap">
         <div class="arfa-work__intro">
-          <h2 id="work-title">What We <span class="accent">Do</span></h2>
-          <p>Over time, we’ve built quite a few projects of our own. We’ve brought them together in one place so you can explore what we come up with, how we work, and what we create.</p>
-          <p>Most of our projects are available for free — explore, experiment, and get inspired.</p>
+          <p class="arfa-section-label">Selected work · 01—03</p>
+          <h2 id="work-title">Ideas, made <span class="accent">tangible.</span></h2>
+          <p>Our work moves between everyday tools, playful experiments, and research. Here are a few things we’ve taken from an early thought to something you can explore.</p>
+        </div>
+        <div class="arfa-gallery" aria-label="Selected Arfa projects">
+          <a class="arfa-artifact arfa-artifact--hero" href="projects/adiguide.en.html">
+            <div class="arfa-artifact__media"><img src="assets/adiguide/1.jpg" alt="A historic city landmark featured in an AdiGuide walking route" width="1086" height="1448" loading="lazy" decoding="async"></div>
+            <div class="arfa-artifact__meta"><span>Mobile app · Audio storytelling</span><h3>AdiGuide</h3><p>City walks that turn nearby streets into stories.</p><span class="arfa-artifact__arrow" aria-hidden="true">↗</span></div>
+          </a>
+          <a class="arfa-artifact arfa-artifact--mid arfa-artifact--todo" href="projects/ToDooliCo/ToDooliCo_Russia/index.html">
+            <div class="arfa-artifact__media arfa-artifact__media--contain"><img src="assets/AppIcon~todoolico.png" alt="ToDooliCo app mascot" width="1024" height="1024" loading="lazy" decoding="async"></div>
+            <div class="arfa-artifact__meta"><span>Personal productivity · Flutter</span><h3>ToDooliCo</h3><p>A calm space for tasks, notes, habits, and plans.</p><span class="arfa-artifact__arrow" aria-hidden="true">↗</span></div>
+          </a>
+          <a class="arfa-artifact arfa-artifact--mid arfa-artifact--debtmate" href="projects/debtmate.en.html">
+            <div class="arfa-artifact__media arfa-artifact__media--contain"><img src="assets/DebtMate/Debik_good.png" alt="Debik, the DebtMate companion character" width="1086" height="1448" loading="lazy" decoding="async"></div>
+            <div class="arfa-artifact__meta"><span>Finance app · Android</span><h3>DebtMate</h3><p>A friendlier way to keep track of money between people.</p><span class="arfa-artifact__arrow" aria-hidden="true">↗</span></div>
+          </a>
+        </div>
+        <div class="arfa-work__more"><a class="arfa-link" href="projects.en.html">See all projects <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="arfa-practice" aria-labelledby="practice-title">
+      <div class="arfa-wrap arfa-practice__grid">
+        <div class="arfa-practice__intro">
+          <p class="arfa-section-label">How we help</p>
+          <h2 id="practice-title">From open question<br />to <span class="accent">next step.</span></h2>
+        </div>
+        <div class="arfa-practice__list">
+          <article><span>01</span><div><h3>Shape the idea</h3><p>Research the problem, understand the people around it, and find a direction worth pursuing.</p></div></article>
+          <article><span>02</span><div><h3>Design the experience</h3><p>Turn the direction into a clear product, service, or digital experience people can use.</p></div></article>
+          <article><span>03</span><div><h3>Build and learn</h3><p>Make a working version, test it in the real world, and improve what matters.</p></div></article>
         </div>
       </div>
     </section>
 
     <section class="arfa-meet" id="meet" aria-labelledby="meet-title">
       <div class="arfa-wrap">
-        <h2 id="meet-title">Let’s <span class="accent">Connect</span></h2>
+        <p class="arfa-meet__eyebrow">A good place to begin</p>
+        <h2 id="meet-title">Have something<br />in <span class="accent">mind?</span></h2>
         <div class="arfa-prose">
-          <p>Have an idea you’d like to work on together? Or simply want to get to know us better?</p>
-          <p>Get in touch! We’re open to new projects, collaborations, and interesting conversations.</p>
-          <p>We also run a blog and are gradually building our presence on other platforms. You’ll find all the ways to contact us and follow our work on the Contact page.</p>
+          <p>Tell us what you’re thinking about — a product, a challenge, or a first rough idea. We’re open to thoughtful collaborations and interesting conversations.</p>
         </div>
         <div class="arfa-meet__actions">
-          <a class="arfa-btn" href="contact.en.html">Get in touch <span aria-hidden="true">↗</span></a>
+          <a class="arfa-btn" href="contact.en.html">Start a conversation <span aria-hidden="true">↗</span></a>
+          <a class="arfa-link arfa-link--on-dark" href="blog/blog.en.html">Read our notes</a>
         </div>
       </div>
     </section>
@@ -768,7 +818,7 @@
 
   <footer class="arfa-footer">
     <div class="arfa-wrap">
-      <p>© 2026 Arfa</p>
+      <p>© 2026 Arfa · Independent by nature.</p>
       <nav aria-label="Footer">
         <a href="projects.en.html">Projects</a>
         <a href="blog/blog.en.html">Blog</a>

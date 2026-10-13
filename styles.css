@@ -6,6 +6,16 @@
 /* transitions-dev — copy this :root block into your project once.
    Every transition snippet reads from these semantic names. */
 :root {
+  /* Arfa — Ultraviolet color system */
+  --arfa-moon: #FFFFFF;
+  --arfa-white: #FFFFFF;
+  --arfa-ink: #141416;
+  --arfa-uv: #853CFF;
+  --arfa-lilac: #C8C1D8;
+  --arfa-line: #E4E6EB;
+  --arfa-display: "Cormorant Garamond", "Times New Roman", serif;
+  --arfa-body: "Manrope", "Helvetica Neue", sans-serif;
+
   /* Card resize */
   --resize-dur: 300ms;
   --resize-ease: cubic-bezier(0.22, 1, 0.36, 1);

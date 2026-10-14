@@ -13,9 +13,6 @@ body.arfa-stage {
   font-family: "Manrope", Arial, sans-serif !important;
 }
 
-body.arfa-stage .arfa-grainy-stage,
-body.arfa-stage .arfa-sparkles,
-body.arfa-stage .arfa-strings,
 body.arfa-stage #retrowaveOverlay { display: none !important; }
 
 body.arfa-stage > header,
@@ -94,6 +91,8 @@ body.arfa-stage main { background: transparent !important; padding: 0 !important
   z-index: -1;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .arfa-dotfield canvas {
@@ -102,19 +101,40 @@ body.arfa-stage main { background: transparent !important; padding: 0 !important
   display: block;
 }
 
+/* Edge vignette — keeps the centred copy legible over the dot field. */
+.arfa-dotfield::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 58% 54% at 50% 52%, transparent 0 42%, rgba(6, 8, 12, 0.84) 80%),
+    linear-gradient(180deg, rgba(6, 8, 12, 0.5) 0%, transparent 24%, transparent 76%, rgba(6, 8, 12, 0.5) 100%);
+}
+
+/* Film grain — Grainy Image noise tile (MIT). */
+.arfa-dotfield::after {
+  content: "";
+  position: absolute;
+  inset: -140px;
+  pointer-events: none;
+  background-image: url("vendor/grainy-image/noise.svg");
+  background-size: 260px 260px;
+  opacity: 0.07;
+  mix-blend-mode: soft-light;
+  animation: arfa-grain 0.9s steps(4) infinite;
+}
+
+@keyframes arfa-grain {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-42px, 24px); }
+  50% { transform: translate(30px, -36px); }
+  75% { transform: translate(-20px, -14px); }
+  100% { transform: translate(0, 0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .arfa-dotfield canvas { display: none; }
-  .arfa-dotfield::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0.5;
-    background:
-      radial-gradient(ellipse 55% 52% at 50% 54%, transparent 0 35%, rgba(0,0,0,.86) 71%),
-      radial-gradient(circle, rgba(230, 237, 247, .65) 1.1px, transparent 1.35px);
-    background-size: auto, 9px 9px;
-    mask-image: radial-gradient(ellipse 90% 78% at 50% 53%, #000 15%, transparent 80%);
-  }
+  .arfa-dotfield::after { animation: none; }
 }
 
 .arfa-hero .arfa-wrap { max-width: 1000px; text-align: center; }
@@ -180,96 +200,6 @@ body.arfa-stage main { background: transparent !important; padding: 0 !important
 .arfa-link:hover { border-color: #fff; filter: none; }
 .arfa-hero__foot { display: none; }
 
-/* Terminal styling */
-.arfa-terminal {
-  margin: 0 auto 2rem;
-  width: min(calc(100% - 2.5rem), 780px);
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 12px;
-  padding: 1.5rem 1.75rem;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(8px);
-  text-align: left;
-  font-family: "SF Mono", "Menlo", "Consolas", monospace;
-  font-size: 0.95rem;
-  line-height: 1.75;
-  color: #e3e6ee;
-  position: relative;
-  z-index: 2;
-  overflow: hidden;
-}
-
-.arfa-terminal::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(155,92,255,0.08), transparent 70%);
-  pointer-events: none;
-}
-
-.arfa-terminal__line {
-  margin: 0;
-  padding: 0;
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-.arfa-terminal__prompt {
-  color: #8b5cf6;
-  font-weight: 700;
-}
-
-.arfa-terminal__command {
-  color: #e9d5ff;
-}
-
-.arfa-terminal__output {
-  color: #a0a8b8;
-}
-
-.arfa-terminal__label {
-  color: #7dd3fc;
-}
-
-.arfa-terminal__value {
-  color: #ffffff;
-  font-weight: 600;
-}
-
-.arfa-terminal__success {
-  color: #4ade80;
-}
-
-.arfa-terminal__arrow {
-  color: #22d3ee;
-}
-
-.arfa-terminal__dim {
-  color: rgba(255,255,255,0.4);
-}
-
-.arfa-terminal__cursor {
-  display: inline-block;
-  width: 8px;
-  height: 16px;
-  background: #8b5cf6;
-  vertical-align: middle;
-  margin-left: 2px;
-  animation: terminal-blink 1s steps(2, start) infinite;
-}
-
-@keyframes terminal-blink {
-  0%, 50% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-
-.arfa-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
 /* About */ { border: 0; padding: clamp(6rem, 11vw, 10rem) 0; }
 .arfa-about { background: var(--paper); }
 .arfa-about__grid { grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); gap: clamp(3rem, 9vw, 10rem); }

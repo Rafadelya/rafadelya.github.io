@@ -200,6 +200,55 @@ body.arfa-stage main { background: transparent !important; padding: 0 !important
 .arfa-link:hover { border-color: #fff; filter: none; }
 .arfa-hero__foot { display: none; }
 
+/* Easter egg — a single click on the hero hides the copy and beats a heart. */
+.arfa-heart {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.2, 1.5, 0.35, 1);
+}
+
+.arfa-hero.is-love .arfa-heart {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.arfa-heart svg {
+  width: clamp(96px, 17vw, 190px);
+  height: auto;
+  filter: drop-shadow(0 0 38px rgba(155, 92, 255, 0.8));
+  animation: arfa-heart-beat 1.15s ease-in-out infinite;
+}
+
+@keyframes arfa-heart-beat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.14); }
+  28% { transform: scale(0.97); }
+  42% { transform: scale(1.09); }
+  60% { transform: scale(1); }
+}
+
+.arfa-hero__copy {
+  transition: opacity 0.55s ease, transform 0.6s ease;
+}
+
+.arfa-hero.is-love .arfa-hero__copy {
+  opacity: 0;
+  transform: translateY(12px) scale(0.985);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arfa-heart svg { animation: none; }
+  .arfa-heart,
+  .arfa-hero__copy { transition: none; }
+}
+
 /* About */ { border: 0; padding: clamp(6rem, 11vw, 10rem) 0; }
 .arfa-about { background: var(--paper); }
 .arfa-about__grid { grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); gap: clamp(3rem, 9vw, 10rem); }

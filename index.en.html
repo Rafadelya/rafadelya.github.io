@@ -648,7 +648,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="home-en.css?v=20261014">
+  <link rel="stylesheet" href="home-en.css?v=20261014b">
 </head>
 <body class="arfa-uv arfa-stage">
   <header class="glass-header flex items-center justify-between">
@@ -709,6 +709,17 @@
   <main>
     <section class="arfa-hero" id="top" aria-labelledby="hero-title">
       <div class="arfa-dotfield" aria-hidden="true"></div>
+      <div class="arfa-heart" aria-hidden="true">
+        <svg viewBox="0 0 24 24" role="presentation">
+          <defs>
+            <linearGradient id="arfaHeartGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#F4EEFF" />
+              <stop offset="1" stop-color="#9B5CFF" />
+            </linearGradient>
+          </defs>
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#arfaHeartGrad)" />
+        </svg>
+      </div>
       <div class="arfa-wrap arfa-hero__layout">
 
 
@@ -851,7 +862,22 @@
       });
     }
 
+    function initHeroEasterEgg() {
+      const hero = document.querySelector('.arfa-hero');
+      if (!hero) return;
+      const LOVE_MS = 20000;
+      let timer = 0;
+      hero.addEventListener('click', (event) => {
+        // Keep links and buttons working — only the panel itself triggers it.
+        if (event.target.closest('a, button')) return;
+        hero.classList.add('is-love');
+        window.clearTimeout(timer);
+        timer = window.setTimeout(() => hero.classList.remove('is-love'), LOVE_MS);
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', initMobileMenu);
+    document.addEventListener('DOMContentLoaded', initHeroEasterEgg);
   </script>
   <!-- Retrowave overlay for portrait orientation -->
   <div id="retrowaveOverlay">

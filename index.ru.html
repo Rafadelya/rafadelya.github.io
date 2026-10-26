@@ -3,653 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Арфа</title>
+  <title>Арфа — Маленькая команда. Продуманные цифровые продукты.</title>
+  <meta name="description" content="Мы — Рафаэль и Аделя, команда из двух человек. Создаём цифровые продукты, приложения и сайты — от первой идеи до запуска." />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=ultraviolet">
-  <link rel="stylesheet" href="home-strings.css">
+  <link rel="stylesheet" href="home-strings.css?v=portal2">
   <link rel="icon" type="image/png" href="assets/Cyrillic_logo_arfa.png">
   <script defer src="js/i18n.js"></script>
   <script defer src="js/main.js"></script>
-  <script defer src="js/arfa-strings.js"></script>
-  <style>
-    @font-face {
-      font-family: 'Howdybun';
-      src: url('fonts/howdybun.otf') format('opentype'),
-           url('fonts/howdybun.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-    /* Retrowave overlay for portrait orientation */
-    #retrowaveOverlay {
-      display: none;
-      position: fixed;
-      z-index: 99999;
-      top: 0; left: 0; right: 0; bottom: 0;
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(180deg, #1a0033 0%, #ff0080 100%);
-      overflow: hidden;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      color: #fff;
-      font-family: 'Montserrat', 'Inter', sans-serif;
-      text-align: center;
-      pointer-events: all;
-      transition: opacity 0.5s;
-    }
-    @media (orientation: portrait) and (max-width: 900px) {
-      #retrowaveOverlay {
-        display: none;
-      }
-    }
-    #retrowaveOverlay .retro-sun {
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(circle at 50% 60%, #ffe066 60%, #ff0080 100%);
-      border-radius: 50%;
-      margin: 0 auto 2.5rem auto;
-      box-shadow: 0 0 80px 20px #ff0080aa, 0 0 0 8px #fff2;
-      position: relative;
-      z-index: 2;
-    }
-    #retrowaveOverlay .retro-grid {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      width: 100%;
-      height: 40vh;
-      z-index: 1;
-      background: none;
-      pointer-events: none;
-    }
-    #retrowaveOverlay .retro-stars {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-    #retrowaveOverlay .retro-stars span {
-      position: absolute;
-      color: #fffbe9;
-      opacity: 0.7;
-      font-size: 1.1rem;
-      animation: retro-twinkle 3.5s infinite;
-    }
-    #retrowaveOverlay .retro-stars span:nth-child(1) { left: 10%; top: 12%; animation-delay: 0s; }
-    #retrowaveOverlay .retro-stars span:nth-child(2) { left: 80%; top: 18%; animation-delay: 1s; }
-    #retrowaveOverlay .retro-stars span:nth-child(3) { left: 30%; top: 30%; animation-delay: 2s; }
-    #retrowaveOverlay .retro-stars span:nth-child(4) { left: 60%; top: 22%; animation-delay: 1.5s; }
-    #retrowaveOverlay .retro-stars span:nth-child(5) { left: 50%; top: 8%; animation-delay: 2.5s; }
-    @keyframes retro-twinkle {
-      0%, 100% { opacity: 0.7; }
-      50% { opacity: 0.2; }
-    }
-    .retro-phone-emoji {
-      display: inline-block;
-      animation: phone-rotate-anim 2.8s infinite cubic-bezier(0.4,0,0.6,1);
-      transform-origin: 50% 90%;
-      will-change: transform;
-      font-size: 3.2rem;
-      margin-bottom: 1.2rem;
-    }
-    @keyframes phone-rotate-anim {
-      0% { transform: rotate(0deg); }
-      10% { transform: rotate(-10deg); }
-      20% { transform: rotate(-90deg); }
-      60% { transform: rotate(-90deg); }
-      70% { transform: rotate(0deg); }
-      100% { transform: rotate(0deg); }
-    }
-
-    .glass-header {
-      flex-direction: row !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      gap: 1.1em !important;
-      padding: 1.15rem clamp(1.2rem, 5vw, 3rem) !important;
-    }
-    .header-left,
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 0.75em;
-    }
-    .glass-header .glass-logo-img {
-      margin-bottom: 0 !important;
-    }
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 0.45em;
-      min-width: 0;
-    }
-    .header-langs {
-      display: flex;
-      align-items: center;
-      gap: 0.55em;
-    }
-    .mobile-menu-btn {
-      display: none;
-      width: 2.72em;
-      height: 2.72em;
-      border: 1px solid rgba(255, 255, 255, 0.62);
-      border-radius: 0.88em;
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(234, 222, 255, 0.45));
-      backdrop-filter: blur(16px) saturate(1.2);
-      -webkit-backdrop-filter: blur(16px) saturate(1.2);
-      box-shadow: 0 12px 28px rgba(56, 28, 116, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.86);
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 0.22em;
-      padding: 0;
-      cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
-    }
-    .mobile-menu-btn:hover {
-      transform: translateY(-1px);
-      border-color: rgba(168, 85, 247, 0.56);
-      box-shadow: 0 14px 34px rgba(69, 32, 140, 0.34), 0 0 0 3px rgba(224, 196, 255, 0.42);
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(226, 204, 255, 0.58));
-    }
-    .mobile-menu-btn:active {
-      transform: translateY(1px) scale(0.98);
-    }
-    .mobile-menu-btn:focus-visible {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(240, 218, 255, 0.9), 0 12px 28px rgba(56, 28, 116, 0.28);
-    }
-    body.mobile-menu-open .mobile-menu-btn {
-      border-color: rgba(109, 40, 217, 0.55);
-      background: linear-gradient(145deg, rgba(248, 241, 255, 0.92), rgba(227, 209, 255, 0.82));
-      box-shadow: 0 12px 30px rgba(76, 29, 149, 0.32), 0 0 0 3px rgba(224, 196, 255, 0.42);
-    }
-    .menu-bar {
-      display: block;
-      width: 1.22em;
-      height: 2.4px;
-      border-radius: 999px;
-      background: #3f1b7a;
-      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.28);
-      transition: transform 0.25s ease, opacity 0.2s ease;
-    }
-    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(1) {
-      transform: translateY(0.37em) rotate(45deg);
-    }
-    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(2) {
-      opacity: 0;
-    }
-    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(3) {
-      transform: translateY(-0.37em) rotate(-45deg);
-    }
-    .mobile-menu-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 9, 28, 0.5);
-      backdrop-filter: blur(1px);
-      -webkit-backdrop-filter: blur(1px);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-      z-index: 60;
-    }
-    .mobile-menu-drawer {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: min(88vw, 356px);
-      height: 100vh;
-      background: linear-gradient(180deg, rgba(249, 244, 255, 0.98), rgba(239, 231, 255, 0.95));
-      border-left: 1px solid rgba(139, 92, 246, 0.34);
-      border-radius: 1.3rem 0 0 1.3rem;
-      box-shadow: -24px 0 46px rgba(35, 16, 71, 0.26);
-      transform: translateX(104%);
-      transition: transform 0.28s ease;
-      z-index: 70;
-      padding: 1.05em 0.95em 1.2em;
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-      overflow-y: auto;
-    }
-    .mobile-menu-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.15em 0 0.7em;
-      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-    }
-    .mobile-menu-title {
-      font-family: 'Montserrat', sans-serif;
-      color: #3b1a6f;
-      font-size: 0.78em;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .mobile-menu-close {
-      width: 2.2em;
-      height: 2.2em;
-      border: 1px solid rgba(139, 92, 246, 0.3);
-      border-radius: 0.65em;
-      background: rgba(255, 255, 255, 0.85);
-      color: #3b1a6f;
-      cursor: pointer;
-      transition: border-color 0.2s, transform 0.2s, background 0.2s;
-    }
-    .mobile-menu-close:hover {
-      border-color: rgba(109, 40, 217, 0.5);
-      background: rgba(255, 255, 255, 0.95);
-      transform: scale(1.03);
-    }
-    .mobile-menu-section {
-      padding: 0.15em 0;
-    }
-    .mobile-menu-links {
-      display: grid;
-      gap: 0.58em;
-      padding-top: 0.35em;
-    }
-    .mobile-menu-link {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      text-decoration: none;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.8em;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      color: #2f1a55;
-      background: linear-gradient(180deg, #fff, #f8f4ff);
-      border: 1px solid rgba(139, 92, 246, 0.24);
-      border-radius: 0.78em;
-      padding: 0.78em 0.95em;
-      box-shadow: 0 4px 14px rgba(100, 55, 176, 0.08);
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
-    }
-    .mobile-menu-link:hover {
-      transform: translateX(2px);
-      border-color: rgba(109, 40, 217, 0.46);
-      box-shadow: 0 8px 18px rgba(100, 55, 176, 0.14);
-      background: linear-gradient(180deg, #fff, #f3eaff);
-    }
-    .mobile-menu-label {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.66em;
-      font-weight: 700;
-      color: #6b5b95;
-      margin-bottom: 0.52em;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-    }
-    .mobile-menu-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5em;
-    }
-    .mobile-menu-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(139, 92, 246, 0.22);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.82);
-      color: #513870;
-      text-decoration: none;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7em;
-      font-weight: 700;
-      line-height: 1;
-      padding: 0.5em 0.76em;
-      min-height: 2.25em;
-      box-shadow: 0 2px 8px rgba(95, 57, 164, 0.08);
-      transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
-    }
-    .mobile-menu-chip:hover {
-      border-color: rgba(109, 40, 217, 0.4);
-      background: rgba(255, 255, 255, 0.94);
-    }
-    .mobile-menu-chip.active {
-      border-color: rgba(109, 40, 217, 0.55);
-      background: linear-gradient(180deg, #f1e8ff, #e9ddff);
-      color: #2f175e;
-      font-weight: 700;
-      box-shadow: 0 8px 16px rgba(109, 40, 217, 0.18);
-    }
-    .hero-main-title {
-      line-height: 0.94;
-      letter-spacing: 0.02em;
-      text-align: center;
-      text-wrap: balance;
-    }
-    .hero-slogan {
-      text-align: center;
-      line-height: 1.28;
-      max-width: min(92vw, 22ch);
-      margin-left: auto;
-      margin-right: auto;
-      text-wrap: balance;
-    }
-    body.mobile-menu-open {
-      overflow: hidden;
-    }
-    body.mobile-menu-open .mobile-menu-overlay {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    body.mobile-menu-open .mobile-menu-drawer {
-      transform: translateX(0);
-    }
-    @media (max-width: 900px) {
-      .glass-header {
-        gap: 0.7em !important;
-        padding: 0.95em 1.05em !important;
-      }
-      .header-nav,
-      .header-langs {
-        display: none !important;
-      }
-      .mobile-menu-btn {
-        display: inline-flex;
-      }
-      .glass-logo-img {
-        width: 52px !important;
-        height: 52px !important;
-      }
-      .hero-landing {
-        min-height: 520px !important;
-        padding-top: 6.5rem !important;
-        padding-bottom: 4.2rem !important;
-      }
-      .hero-main-title {
-        font-size: clamp(2.9rem, 16.5vw, 4.2rem) !important;
-        margin-bottom: 0.55rem !important;
-      }
-      .hero-main-title.glitch,
-      .hero-main-title.glitch::before,
-      .hero-main-title.glitch::after {
-        animation: none !important;
-        transform: none !important;
-      }
-      .hero-main-title.glitch::before {
-        left: 1px;
-        opacity: 0.35;
-      }
-      .hero-main-title.glitch::after {
-        left: -1px;
-        top: 1px;
-        opacity: 0.28;
-      }
-      .hero-slogan {
-        font-size: clamp(1.05rem, 4.8vw, 1.35rem) !important;
-        margin-bottom: 1.2rem !important;
-        max-width: min(92vw, 34ch);
-      }
-    }
-    @media (max-width: 500px) {
-      .glass-header {
-        gap: 0.45em !important;
-        padding: 0.82em 0.92em !important;
-      }
-      .header-left,
-      .header-right {
-        gap: 0.45em;
-      }
-      .glass-logo-img {
-        width: 46px !important;
-        height: 46px !important;
-      }
-      .mobile-menu-drawer {
-        width: min(92vw, 340px);
-      }
-      .hero-landing {
-        min-height: 480px !important;
-        padding-top: 6rem !important;
-        padding-bottom: 3.6rem !important;
-      }
-      .hero-main-title {
-        font-size: clamp(2.45rem, 16.2vw, 3.35rem) !important;
-        margin-bottom: 0.45rem !important;
-      }
-      .hero-slogan {
-        max-width: min(92vw, 32ch);
-        font-size: clamp(1rem, 4.6vw, 1.25rem) !important;
-        line-height: 1.35;
-      }
-    }
-
-    /* —— Ultraviolet system (homepage) —— */
-    body.arfa-uv {
-      --arfa-moon: #FFFFFF;
-      --arfa-white: #FFFFFF;
-      --arfa-ink: #141416;
-      --arfa-uv: #853CFF;
-      --arfa-lilac: #C8C1D8;
-      --arfa-line: #E4E6EB;
-      --arfa-display: "Cormorant Garamond", "Times New Roman", serif;
-      --arfa-body: "Manrope", "Helvetica Neue", sans-serif;
-      background: #FFFFFF !important;
-      color: #141416;
-      font-family: var(--arfa-body);
-    }
-    body.arfa-uv header,
-    body.arfa-uv footer {
-      background: transparent;
-    }
-    body.arfa-uv .glass-header {
-      background: #FFFFFF !important;
-      border: 1px solid #E4E6EB !important;
-      border-radius: 1.25rem !important;
-      box-shadow: 0 10px 40px rgba(20, 20, 22, 0.04) !important;
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-    }
-    body.arfa-uv .glass-header nav,
-    body.arfa-uv .glass-header .header-langs {
-      background: transparent !important;
-      box-shadow: none !important;
-      border-radius: 0 !important;
-    }
-    body.arfa-uv .nav-link {
-      color: #141416 !important;
-      opacity: 0.72;
-      font-family: var(--arfa-body);
-      font-weight: 600;
-      font-size: 0.92rem;
-      letter-spacing: 0.02em;
-    }
-    body.arfa-uv .nav-link:hover,
-    body.arfa-uv .nav-link[aria-current="page"] {
-      color: #853CFF !important;
-      opacity: 1;
-    }
-    body.arfa-uv .glass-logo-img {
-      box-shadow: 0 4px 18px rgba(20, 20, 22, 0.08) !important;
-      border: 1px solid #E4E6EB !important;
-    }
-    body.arfa-uv .mobile-menu-btn {
-      background: #FFFFFF !important;
-      border: 1px solid #E4E6EB !important;
-      box-shadow: none !important;
-      border-radius: 0.65rem !important;
-    }
-    body.arfa-uv .mobile-menu-btn .menu-bar {
-      background: #141416 !important;
-    }
-    body.arfa-uv .mobile-menu-overlay {
-      background: rgba(20, 20, 22, 0.28) !important;
-    }
-    body.arfa-uv .mobile-menu-drawer {
-      background: #FFFFFF !important;
-      border-left: 1px solid #E4E6EB !important;
-      border-radius: 1rem 0 0 1rem !important;
-      box-shadow: -16px 0 40px rgba(20, 20, 22, 0.08) !important;
-    }
-    body.arfa-uv .mobile-menu-title,
-    body.arfa-uv .mobile-menu-close,
-    body.arfa-uv .mobile-menu-label,
-    body.arfa-uv .mobile-menu-link,
-    body.arfa-uv .mobile-menu-chip {
-      color: #141416 !important;
-      font-family: var(--arfa-body) !important;
-    }
-    body.arfa-uv .mobile-menu-close,
-    body.arfa-uv .mobile-menu-link,
-    body.arfa-uv .mobile-menu-chip {
-      background: #FFFFFF !important;
-      border: 1px solid #E4E6EB !important;
-      color: #141416 !important;
-      box-shadow: none !important;
-    }
-    body.arfa-uv .mobile-menu-chip.active,
-    body.arfa-uv .mobile-menu-link:hover {
-      border-color: #853CFF !important;
-      color: #853CFF !important;
-      background: #F3ECFF !important;
-    }
-    body.arfa-uv main.bg-hero,
-    body.arfa-uv main {
-      background: #FFFFFF !important;
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-    }
-    body.arfa-uv .hero-main-title,
-    body.arfa-uv .hero-main-title.glitch,
-    body.arfa-uv .hero-main-title.glitch::before,
-    body.arfa-uv .hero-main-title.glitch::after {
-      font-family: var(--arfa-display) !important;
-      font-weight: 600 !important;
-      font-style: italic;
-      letter-spacing: -0.02em;
-      line-height: 0.92;
-      color: #141416 !important;
-      background: none !important;
-      background-image: none !important;
-      -webkit-background-clip: initial !important;
-      background-clip: initial !important;
-      -webkit-text-fill-color: #141416 !important;
-      text-shadow: none !important;
-      animation: none !important;
-      filter: none !important;
-    }
-    body.arfa-uv .hero-main-title .accent {
-      color: #853CFF !important;
-      -webkit-text-fill-color: #853CFF !important;
-      font-style: italic;
-    }
-    body.arfa-uv .hero-slogan,
-    body.arfa-uv .hero-slogan .wave {
-      color: #141416 !important;
-      opacity: 0.78;
-      max-width: min(92vw, 36ch);
-      font-weight: 500;
-      font-family: var(--arfa-body) !important;
-      letter-spacing: -0.01em;
-      text-shadow: none !important;
-      filter: none !important;
-      background: none !important;
-      -webkit-background-clip: initial !important;
-      background-clip: initial !important;
-      -webkit-text-fill-color: #141416 !important;
-    }
-    body.arfa-uv .constellation-aquarius,
-    body.arfa-uv .constellation-aquarius polyline {
-      stroke: #B8BCC6 !important;
-    }
-    body.arfa-uv .constellation-aquarius .star {
-      fill: #853CFF !important;
-    }
-    body.arfa-uv .uv-section {
-      color: #141416;
-    }
-    body.arfa-uv .uv-section h2,
-    body.arfa-uv .section-title {
-      font-family: var(--arfa-display) !important;
-      font-weight: 600 !important;
-      font-style: italic;
-      letter-spacing: -0.015em;
-      line-height: 1.05;
-      color: #141416 !important;
-      text-shadow: none !important;
-      filter: none !important;
-    }
-    body.arfa-uv .uv-section h2 .accent,
-    body.arfa-uv .section-title .accent {
-      color: #853CFF;
-      font-style: italic;
-    }
-    body.arfa-uv .uv-prose {
-      color: #4A4D55;
-      font-family: var(--arfa-body);
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
-    body.arfa-uv .uv-prose strong {
-      color: #141416;
-      font-weight: 700;
-    }
-    body.arfa-uv .uv-panel {
-      background: #FFFFFF;
-      border: 1px solid #E4E6EB;
-      border-radius: 1.5rem;
-      box-shadow: 0 18px 50px rgba(20, 20, 22, 0.04);
-    }
-    body.arfa-uv .uv-panel-soft {
-      background: #F3F3F5;
-      border: 1px solid #E4E6EB;
-      border-radius: 1.5rem;
-    }
-    body.arfa-uv .btn-primary,
-    body.arfa-uv a.btn-primary {
-      background: #853CFF !important;
-      color: #FFFFFF !important;
-      border: 0 !important;
-      box-shadow: none !important;
-      border-radius: 0.65rem !important;
-      font-family: var(--arfa-body);
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      text-decoration: none;
-    }
-    body.arfa-uv .btn-primary:hover,
-    body.arfa-uv a.btn-primary:hover {
-      filter: brightness(1.06);
-      transform: translateY(-1px);
-    }
-    body.arfa-uv .btn-ghost {
-      color: #141416;
-      font-family: var(--arfa-body);
-      font-weight: 700;
-      text-decoration: none;
-      border-bottom: 1px solid #141416;
-      padding-bottom: 0.15rem;
-      border-radius: 0;
-    }
-    body.arfa-uv .btn-ghost:hover {
-      color: #853CFF;
-      border-bottom-color: #853CFF;
-    }
-    body.arfa-uv .projects-meaning-section {
-      background: #FFFFFF !important;
-      border: 1px solid #E4E6EB;
-      border-radius: 1.5rem;
-    }
-    body.arfa-uv footer {
-      background: transparent !important;
-      border-color: #E4E6EB !important;
-      color: #6B6F78;
-    }
-    body.arfa-uv #retrowaveOverlay {
-      background: linear-gradient(180deg, #141416 0%, #853CFF 100%) !important;
-    }
-  </style>
+  <script defer src="js/arfa-dotfield.js?v=dot4"></script>
+  <link rel="stylesheet" href="home-stage.css?v=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home-en.css?v=20261027">
 </head>
 <body class="arfa-uv arfa-stage">
-  <canvas id="arfaStrings" class="arfa-strings" aria-hidden="true"></canvas>
   <header class="glass-header flex items-center justify-between">
     <div class="header-left flex items-center gap-4">
       <div class="logo-block" style="display: flex; align-items: center;">
@@ -667,9 +36,9 @@
     </nav>
     <div class="header-right flex items-center">
       <div class="header-langs flex items-center gap-2">
-        <a href="index.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-        <a href="index.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-        <a href="index.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+        <a href="index.en.html" class="lang-flag" aria-label="Английский"><span class="flag-icon">🇬🇧</span></a>
+        <a href="index.de.html" class="lang-flag" aria-label="Немецкий"><span class="flag-icon">🇩🇪</span></a>
+        <a href="index.fr.html" class="lang-flag" aria-label="Французский"><span class="flag-icon">🇫🇷</span></a>
         <a href="index.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
       </div>
       <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenuDrawer">
@@ -697,9 +66,9 @@
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Язык</div>
       <div class="mobile-menu-row">
-        <a href="index.en.html" class="mobile-menu-chip" aria-label="English">EN</a>
-        <a href="index.de.html" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
-        <a href="index.fr.html" class="mobile-menu-chip" aria-label="Français">FR</a>
+        <a href="index.en.html" class="mobile-menu-chip" aria-label="Английский">EN</a>
+        <a href="index.de.html" class="mobile-menu-chip" aria-label="Немецкий">DE</a>
+        <a href="index.fr.html" class="mobile-menu-chip" aria-label="Французский">FR</a>
         <a href="index.ru.html" class="mobile-menu-chip active" aria-label="Русский">RU</a>
       </div>
     </div>
@@ -707,121 +76,95 @@
 
   <main>
     <section class="arfa-hero" id="top" aria-labelledby="hero-title">
-      <div class="arfa-wrap">
-        <p class="arfa-mark">Арфа</p>
-        <h1 id="hero-title">Создаём<br /><span class="accent">вместе.</span></h1>
-        <p class="arfa-hero__lede">Разрабатываем сайты и приложения, запускаем цифровые продукты и помогаем превращать идеи в работающие решения.</p>
-        <div class="arfa-hero__actions">
-          <a class="arfa-link" href="projects.ru.html">Смотреть проекты <span aria-hidden="true">↗</span></a>
-        </div>
-        <p class="arfa-scroll-cue">Листайте, здесь есть что посмотреть ↓</p>
+      <div class="arfa-dotfield" aria-hidden="true"></div>
+      <div class="arfa-heart" aria-hidden="true">
+        <svg viewBox="0 0 24 24" role="presentation">
+          <defs>
+            <linearGradient id="arfaHeartGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#F4EEFF" />
+              <stop offset="1" stop-color="#9B5CFF" />
+            </linearGradient>
+          </defs>
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#arfaHeartGrad)" />
+        </svg>
+      </div>
+      <div class="arfa-wrap arfa-hero__layout">
+      <div class="arfa-hero__copy">
+         <p class="arfa-mark">Независимая цифровая студия · Рафаэль и Аделя</p>
+         <h1 id="hero-title">Маленькая команда.<br /><span class="accent">Идеи в движении.</span></h1>
+         <p class="arfa-hero__lede">Проектируем и создаём полезные цифровые продукты, приложения и сайты — от первого вопроса до рабочего запуска.</p>
+         <div class="arfa-hero__actions">
+           <a class="arfa-btn" href="#work">Смотреть проекты <span aria-hidden="true">↘</span></a>
+            <a class="arfa-link arfa-link--on-dark" href="contact.ru.html">Есть идея? Давай обсудим <span aria-hidden="true">↗</span></a>
+          </div>
+      </div>
       </div>
     </section>
 
     <section class="arfa-about" id="about-arfa" aria-labelledby="about-title">
-      <div class="arfa-wrap">
-        <p class="arfa-kicker">Два человека.<br /><span class="accent">Много разных идей.</span></p>
-
-        <div class="arfa-duet">
-          <div class="arfa-faces">
-            <figure class="arfa-face">
-              <img src="VC/photo_Rafael.jpg" alt="Рафаэль" width="640" height="800" loading="lazy" />
-              <figcaption>Рафаэль</figcaption>
-            </figure>
-            <figure class="arfa-face">
-              <img src="VC/photo_Adelya.jpg" alt="Аделя" width="640" height="800" loading="lazy" />
-              <figcaption>Аделя</figcaption>
-            </figure>
-          </div>
-          <div class="arfa-matter" aria-hidden="true">
-            <figure class="arfa-chip arfa-chip--wide">
-              <img src="assets/adiguide/1.jpg" alt="" width="960" height="540" loading="lazy" />
-            </figure>
-            <figure class="arfa-chip arfa-chip--tall">
-              <img src="assets/DebtMate/Debik_good.png" alt="" width="480" height="640" loading="lazy" />
-            </figure>
-            <div class="arfa-chip arfa-chip--note">
-              <span>Эксперимент</span>
-              <p>Raspberry Pi → лендинг → экономика продукта</p>
-            </div>
+      <div class="arfa-wrap arfa-about__grid">
+        <div class="arfa-about__copy">
+          <h2 id="about-title">Что такое <span class="accent">Арфа</span>?</h2>
+          <div class="arfa-prose">
+            <p>Мы — Рафаэль и Аделя, команда из двух человек, которой интересно пространство между хорошим вопросом и полезной вещью.</p>
+            <p>Мы делаем собственные приложения и эксперименты, изучаем, как работают компании и люди, и вместе с другими воплощаем продуманные идеи.</p>
+            <p><strong>Арфа — небольшая независимая студия, построенная на любопытстве, внимании и желании делать вещи реальными.</strong></p>
           </div>
         </div>
-
-        <h2 id="about-title">Что такое <span class="accent">«Арфа»</span>?</h2>
-        <div class="arfa-prose">
-          <p>Мы – Рафаэль и Аделя. Два человека, которым интересно разбираться в сложных вещах и создавать новое.</p>
-          <p>Сегодня собираем устройства на Raspberry Pi, завтра запускаем лендинг за три дня, а между делом считаем экономику продуктов, пишем научные статьи, разрабатываем приложения и помогаем другим воплощать свои идеи.</p>
-          <p><strong>«Арфа» — это наши проекты, исследования и работа с теми, кто хочет создать что-то своё.</strong></p>
-        </div>
+        <figure class="arfa-portal">
+          <img src="assets/arfa-portal.jpg" alt="" width="1200" height="1500" loading="lazy" decoding="async" />
+        </figure>
       </div>
     </section>
 
     <section class="arfa-work" id="work" aria-labelledby="work-title">
       <div class="arfa-wrap">
         <div class="arfa-work__intro">
-          <h2 id="work-title">Что мы <span class="accent">делаем</span></h2>
-          <p>У нас уже накопилось немало собственных проектов. Мы собрали их в одном месте, чтобы вы могли посмотреть, что мы придумываем, как работаем и что из этого получается.</p>
-          <p>Большинство проектов доступны бесплатно — изучайте, пробуйте и вдохновляйтесь.</p>
+          <p class="arfa-section-label">Избранное · 01—03</p>
+          <h2 id="work-title">Идеи, ставшие <span class="accent">реальными.</span></h2>
+          <p>Наша работа — между повседневными инструментами, игровыми экспериментами и исследованиями. Вот несколько проектов, которые мы провели от первой мысли до того, что можно потрогать.</p>
         </div>
-
-        <div class="arfa-gallery">
-          <a class="arfa-artifact arfa-artifact--hero" href="projects/adiguide.ru.html">
-            <div class="arfa-artifact__media">
-              <img src="assets/adiguide/2.jpg" alt="Интерфейс AdiGid" width="1200" height="800" loading="lazy" />
-            </div>
-            <div class="arfa-artifact__meta">
-              <span>Приложение</span>
-              <h3>AdiGid</h3>
-              <p>Аудиогиды и путешествия — живой интерфейс продукта.</p>
-            </div>
+        <div class="arfa-gallery" aria-label="Избранные проекты Арфы">
+          <a class="arfa-artifact arfa-artifact--hero" href="https://adiguide.tech" target="_blank" rel="noopener noreferrer">
+            <div class="arfa-artifact__media"><img src="assets/adiguide/1.jpg" alt="Историческая достопримечательность из маршрута АдиГида" width="1086" height="1448" loading="lazy" decoding="async"></div>
+            <div class="arfa-artifact__meta"><span>Мобильное приложение · Аудиосторителлинг</span><h3>АдиГид</h3><p>Городские прогулки, которые превращают соседние улицы в истории.</p><span class="arfa-artifact__arrow" aria-hidden="true">↗</span></div>
           </a>
-
-          <a class="arfa-artifact arfa-artifact--mid" href="projects/debtmate.ru.html">
-            <div class="arfa-artifact__media">
-              <img src="assets/DebtMate/DebtMate_Logo.png" alt="DebtMate" width="800" height="600" loading="lazy" style="object-fit:contain;padding:2rem;background:#FFFFFF;" />
-            </div>
-            <div class="arfa-artifact__meta">
-              <span>Приложение</span>
-              <h3>DebtMate</h3>
-            </div>
+          <a class="arfa-artifact arfa-artifact--mid arfa-artifact--todo" href="projects/ToDooliCo/ToDooliCo_Russia/index.html">
+            <div class="arfa-artifact__media arfa-artifact__media--contain"><img src="assets/AppIcon~todoolico.png" alt="Маскот приложения ТуДулиКо" width="1024" height="1024" loading="lazy" decoding="async"></div>
+            <div class="arfa-artifact__meta"><span>Личная продуктивность · Кроссплатформенный</span><h3>ТуДулиКо</h3><p>Спокойное место для задач, заметок, привычек и планов.</p><span class="arfa-artifact__arrow" aria-hidden="true">↗</span></div>
           </a>
-
-          <a class="arfa-artifact arfa-artifact--note" href="projects.ru.html">
-            <div class="arfa-artifact__meta">
-              <span>Заметка</span>
-              <h3>ToDooliCo</h3>
-              <p>Задачи, заметки и списки — небольшой объект в коллекции.</p>
-            </div>
-          </a>
-
-          <a class="arfa-artifact arfa-artifact--wide" href="projects/agency-analysis.ru.html">
-            <div class="arfa-artifact__media">
-              <img src="assets/adiguide/5.jpg" alt="Фрагмент исследования" width="1200" height="700" loading="lazy" />
-            </div>
-            <div class="arfa-artifact__meta">
-              <span>Исследование</span>
-              <h3>Анализ и схемы</h3>
-              <p>Фрагменты реальной работы: рынок, гипотезы, структура.</p>
-            </div>
+          <a class="arfa-artifact arfa-artifact--mid arfa-artifact--debtmate" href="projects/debtmate.ru.html">
+            <div class="arfa-artifact__media arfa-artifact__media--contain"><img src="assets/DebtMate/Debik_good.png" alt="Дебик, маскот приложения ДебтМейт" width="1086" height="1448" loading="lazy" decoding="async"></div>
+            <div class="arfa-artifact__meta"><span>Финансовое приложение</span><h3>ДебтМейт</h3><p>Более дружелюбный способ следить за деньгами между людьми.</p><span class="arfa-artifact__arrow" aria-hidden="true">↗</span></div>
           </a>
         </div>
+        <div class="arfa-work__more"><a class="arfa-link" href="projects.ru.html">Все проекты <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
 
-        <p class="arfa-work__more">
-          <a class="arfa-link" href="projects.ru.html">Все проекты <span aria-hidden="true">↗</span></a>
-        </p>
+    <section class="arfa-practice" aria-labelledby="practice-title">
+      <div class="arfa-wrap arfa-practice__grid">
+        <div class="arfa-practice__intro">
+          <p class="arfa-section-label">Чем мы помогаем</p>
+          <h2 id="practice-title">От открытого вопроса<br />к <span class="accent">следующему шагу.</span></h2>
+        </div>
+        <div class="arfa-practice__list">
+          <article><span>01</span><div><h3>Формируем идею</h3><p>Изучаем задачу, понимаем людей вокруг неё и находим направление, за которым стоит идти.</p></div></article>
+          <article><span>02</span><div><h3>Проектируем опыт</h3><p>Превращаем направление в понятный продукт, сервис или цифровой опыт, которым можно пользоваться.</p></div></article>
+          <article><span>03</span><div><h3>Создаём и учимся</h3><p>Делаем рабочую версию, тестируем в реальных условиях и улучшаем то, что важно.</p></div></article>
+        </div>
       </div>
     </section>
 
     <section class="arfa-meet" id="meet" aria-labelledby="meet-title">
       <div class="arfa-wrap">
-        <p class="arfa-meet__eyebrow">Есть идея?</p>
-        <h2 id="meet-title">Давайте создадим<br /><span class="accent">что-нибудь вместе.</span></h2>
+        <p class="arfa-meet__eyebrow">Хороший повод начать</p>
+        <h2 id="meet-title">Есть что-то<br />на <span class="accent">уме?</span></h2>
         <div class="arfa-prose">
-          <p>Мы открыты к новым проектам, сотрудничеству и интересным разговорам.</p>
-          <p>А ещё мы ведём блог и постепенно развиваемся на других площадках. Все способы связаться с нами собрали на странице контактов.</p>
+          <p>Расскажите, о чём вы думаете — продукт, задача или первая сырая идея. Мы открыты к продуманному сотрудничеству и интересным разговорам.</p>
         </div>
         <div class="arfa-meet__actions">
-          <a class="arfa-btn" href="contact.ru.html">Написать нам <span aria-hidden="true">↗</span></a>
+          <a class="arfa-btn" href="contact.ru.html">Начать разговор <span aria-hidden="true">↗</span></a>
           <a class="arfa-link arfa-link--on-dark" href="blog/blog.ru.html">Читать блог</a>
         </div>
       </div>
@@ -830,7 +173,7 @@
 
   <footer class="arfa-footer">
     <div class="arfa-wrap">
-      <p>© 2026 Арфа</p>
+      <p>© 2026 Арфа · Независимые по своей природе.</p>
       <nav aria-label="Футер">
         <a href="projects.ru.html">Проекты</a>
         <a href="blog/blog.ru.html">Блог</a>
@@ -838,6 +181,12 @@
         <a href="contact.ru.html">Контакты</a>
       </nav>
     </div>
+    <p class="arfa-credits">
+      Визуалы:
+      <a href="https://github.com/yashrajbharti/Grainy-image" rel="noopener noreferrer">Грейни Имидж</a>
+      (лицензия Массачусетского технологического института) —
+      <a href="THIRD_PARTY_NOTICES.md">уведомления</a>
+    </p>
   </footer>
 
   <script>
@@ -879,7 +228,22 @@
       });
     }
 
+    function initHeroEasterEgg() {
+      const hero = document.querySelector('.arfa-hero');
+      if (!hero) return;
+      const LOVE_MS = 20000;
+      let timer = 0;
+      hero.addEventListener('click', (event) => {
+        // Ссылки и кнопки остаются рабочими — реагирует только фон.
+        if (event.target.closest('a, button')) return;
+        hero.classList.add('is-love');
+        window.clearTimeout(timer);
+        timer = window.setTimeout(() => hero.classList.remove('is-love'), LOVE_MS);
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', initMobileMenu);
+    document.addEventListener('DOMContentLoaded', initHeroEasterEgg);
   </script>
   <!-- Retrowave overlay for portrait orientation -->
   <div id="retrowaveOverlay">

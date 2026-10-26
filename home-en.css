@@ -354,9 +354,11 @@ body.arfa-stage footer.arfa-footer .arfa-credits a { color: #717986; }
 @media (max-width: 600px) {
   .arfa-wrap { width: min(calc(100% - 2.5rem), 1180px); }
   .arfa-hero { min-height: 740px; padding: 5.5rem 1rem 3.5rem; border-radius: 18px; }
-  .arfa-hero__layout { display: block; }
-  .arfa-hero__copy { padding-top: 2.5rem; }
-  .arfa-hero h1 { font-size: clamp(2.8rem, 14vw, 4.1rem); }
+  .arfa-hero .arfa-wrap { width: 100%; }
+  .arfa-hero__layout { display: block; min-width: 0; }
+  .arfa-hero__copy { width: 100%; min-width: 0; padding-top: 2.5rem; }
+  .arfa-hero h1 { max-width: 100%; font-size: clamp(2.3rem, 11vw, 3.65rem); overflow-wrap: anywhere; }
+  .arfa-hero__lede { max-width: 34ch; }
   .arfa-hero__actions { flex-direction: column; align-items: center; gap: .65rem; }
   .arfa-hero__actions .arfa-btn,
   .arfa-hero__actions .arfa-link { justify-content: center; padding-inline: .75rem; font-size: .77rem; }

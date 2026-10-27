@@ -181,3 +181,25 @@
 .carousel-item[data-title="Форсета"] .carousel-card{border-color:rgba(104,96,196,.4)}
 .carousel-item.is-active[data-title="Форсета"] .carousel-card{border-color:#6b63d6;box-shadow:0 26px 50px rgba(76,70,170,.22)}
 .tool-art--forseta{--art-bg:#ece9ff;--art-ink:#4c46aa}
+
+/* Research cards */
+.research--cards{display:block}
+.research-header{display:grid;grid-template-columns:1.1fr .9fr;align-items:end;gap:clamp(24px,6vw,80px);margin-bottom:clamp(28px,6vw,48px)}
+.research-header h2{margin:10px 0 0;font:500 clamp(38px,5vw,68px)/1.02 var(--serif);letter-spacing:-.06em}
+.research-header p{margin:0;color:var(--muted);font-size:15px;max-width:420px}
+.research-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,2vw,18px)}
+.research-card{grid-column:span 6;position:relative;display:flex;flex-direction:column;gap:16px;padding:clamp(24px,3vw,34px);border-radius:24px;border:1px solid rgba(32,39,33,.12);background:radial-gradient(140% 140% at 50% 0%,#ffffff 0%,#f7f8f4 100%);box-shadow:0 40px 70px -60px rgba(30,40,32,.8);overflow:hidden}
+.research-card::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(38,61,50,.06) 1px,transparent 1px);background-size:18px 18px;opacity:.18;pointer-events:none}
+.research-card>*{position:relative;z-index:1}
+.research-card__top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.research-card__pill{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid rgba(38,61,50,.24);font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--forest)}
+.research-card__pill--pub{border-color:rgba(90,95,154,.4);color:#4f546b}
+.research-card__index{font:400 11px/1 var(--mono);color:var(--muted)}
+.research-card__journal{font:400 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.research-card__title{margin:0;font:500 clamp(24px,3vw,34px)/1.08 var(--serif);letter-spacing:-.05em}
+.research-card__desc{margin:0;color:#5f6659;font-size:15px;max-width:52ch}
+.research-card__bottom{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:auto;padding-top:18px;border-top:1px solid rgba(32,39,33,.1)}
+.research-card__meta{font:400 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.research-card__link{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;color:var(--forest)}
+.research-card--journal{background:radial-gradient(140% 140% at 50% 0%,#f8f8ff 0%,#f5f6ff 100%)}
+@media(max-width:980px){.research-header{grid-template-columns:1fr}.research-card{grid-column:span 12}}

@@ -10,26 +10,99 @@
   <link rel="stylesheet" href="assets/about.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Main navigation">
+    <a class="arfa-brand" href="index.en.html" aria-label="Arfa — home">
+      <span class="arfa-brand__mark"><img src="assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Arfa</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Main navigation">
+      <a href="index.en.html">Home</a>
+      <a href="about.en.html" aria-current="page">About</a>
+      <a href="MarketPlace/Polka.en.html">Projects</a>
+      <a href="blog/blog.en.html">Blog</a>
+      <a href="contact.en.html">Contact</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Language">
+        <a href="index.en.html" class="is-active" aria-label="English" title="English">🇬🇧</a>
+        <a href="index.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="index.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="index.ru.html" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Menu">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Menu</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Close menu" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Main navigation">
+      <a href="index.en.html">Home</a>
+      <a href="about.en.html" aria-current="page">About</a>
+      <a href="MarketPlace/Polka.en.html">Projects</a>
+      <a href="blog/blog.en.html">Blog</a>
+      <a href="contact.en.html">Contact</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Language</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="index.en.html" class="is-active">🇬🇧 EN</a>
+        <a href="index.de.html">🇩🇪 DE</a>
+        <a href="index.fr.html">🇫🇷 FR</a>
+        <a href="index.ru.html">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
   <script src="assets/arfa-header.js" defer></script>
 
   <main>
-    <section class="section hero">
-      <div class="wrap hero-content reveal">
-        <span class="eyebrow">About</span>
-        <h1>We build what<br>we believe in</h1>
-        <p class="lead">Rafael and Adelia. The story of building our own IT products: from student initiatives and first offline business — to tech products.</p>
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="hero-orb hero-orb--1"></div>
+        <div class="hero-orb hero-orb--2"></div>
+        <div class="hero-orb hero-orb--3"></div>
+      </div>
+      <div class="wrap hero-grid">
+        <div class="hero-content reveal">
+          <span class="hero-tag">Arfa · About</span>
+          <h1>We build what<br>we believe in</h1>
+          <p class="lead">Rafael and Adelia. The story of building our own IT products: from student initiatives and first offline business — to tech products.</p>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat__num">36K</span>
+              <span class="hero-stat__label">First grant</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat__num">1M</span>
+              <span class="hero-stat__label">Startup grant</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat__num">4+</span>
+              <span class="hero-stat__label">IT products</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-photo reveal">
+          <img src="assets/about/together.jpg" alt="Rafael and Adelia" loading="eager">
+        </div>
       </div>
     </section>
 
     <section class="section">
       <div class="wrap photo-block reveal">
         <div class="photo-img">
-          <img src="assets/about/together.jpg" alt="Rafael and Adelia" loading="eager">
+          <img src="assets/about/together.jpg" alt="Rafael and Adelia" loading="lazy">
         </div>
         <div class="photo-text">
+          <span class="eyebrow">The beginning</span>
           <p>We met back in school. Instead of going separate ways, we chose a common path — entrepreneurship and innovation economics. It felt like the education that would one day help us build our own thing.</p>
           <p>Already in first year we noticed technological entrepreneurship programs and student startup competitions. Coursework gradually grew into our own initiatives.</p>
           <p>In second year we organised a student research society from scratch and won a 36,000 RUB grant to develop it. Our first experience where it wasn't enough to just propose an idea — we had to organise work, align people, and deliver a result.</p>
@@ -59,21 +132,36 @@
 
     <section class="section">
       <div class="wrap reveal">
-        <span class="eyebrow">Pivot to products</span>
-        <h2>We realised you can launch differently</h2>
-        <p>After the first business we started looking at product creation differently. We wanted to launch fast, avoid wasting resources, and validate ideas before serious investment. If no physical office is needed — you can drop fixed costs and focus on the product.</p>
+        <div class="section-title">
+          <span class="eyebrow">Pivot to products</span>
+          <h2>We realised you can launch differently</h2>
+          <p class="lead">After the first business we started looking at product creation differently. We wanted to launch fast, avoid wasting resources, and validate ideas before serious investment.</p>
+        </div>
         <p>For us this isn't just about saving money. It's an approach to tech entrepreneurship: formulate a hypothesis, find a way to test it, get feedback, decide what's next. Not every idea must become a big business. Sometimes it's wiser to pivot in time than to keep investing in something that doesn't meet expectations.</p>
         <p>With this understanding we kept working on our own projects and looking for ways to develop them.</p>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" style="background: var(--bg); color: var(--ink-light)">
       <div class="wrap reveal">
-        <span class="eyebrow">Milestones</span>
-        <h2>From first attempts — to tech products</h2>
-        <div class="milestone"><span class="milestone-num">36,000</span><div class="milestone-text">Grant for student research society development (2nd year)</div></div>
-        <div class="milestone"><span class="milestone-num">1M</span><div class="milestone-text">Student Startup grant (1M RUB) for AdiGuide — mobile app with audio guides for self-guided city walks</div></div>
-        <div class="milestone"><span class="milestone-num">4+</span><div class="milestone-text">Own IT products: Forseta, ToDooliCo, CarMind, AdiGuide and others at various stages</div></div>
+        <div class="section-title">
+          <span class="eyebrow" style="color: var(--accent)">Milestones</span>
+          <h2 style="color: #fff">From first attempts — to tech products</h2>
+        </div>
+        <div class="milestones">
+          <div class="milestone">
+            <div class="milestone-num">36K</div>
+            <div class="milestone-text">Grant for student research society development (2nd year)</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-num">1M</div>
+            <div class="milestone-text">Student Startup grant (1M RUB) for AdiGuide — mobile app with audio guides for self-guided city walks</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-num">4+</div>
+            <div class="milestone-text">Own IT products: Forseta, ToDooliCo, CarMind, AdiGuide and others at various stages</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -82,7 +170,7 @@
     <section class="section">
       <div class="wrap photo-block reveal">
         <div class="photo-img">
-          <img src="assets/about/rafael.jpg" alt="Rafael and Adelia" loading="lazy">
+          <img src="assets/about/rafael.jpg" alt="Rafael" loading="lazy">
         </div>
         <div class="photo-text">
           <span class="eyebrow">Why together</span>
@@ -98,8 +186,10 @@
 
     <section class="section">
       <div class="wrap reveal">
-        <span class="eyebrow">Our approach</span>
-        <h2>How we work</h2>
+        <div class="section-title">
+          <span class="eyebrow">Our approach</span>
+          <h2>How we work</h2>
+        </div>
         <div class="values">
           <article class="value-card">
             <h3>Fast hypothesis testing</h3>
@@ -132,7 +222,7 @@
     <hr class="hr reveal">
 
     <section class="section">
-      <div class="wrap reveal" style="max-width:70ch">
+      <div class="wrap reveal" style="max-width:800px">
         <span class="eyebrow">Today</span>
         <h2>Arfa — the next chapter</h2>
         <p>We build our own IT products and take on tasks where we can combine business thinking, analytics, design, and development. A small team lets us decide fast, test hypotheses, and not overcomplicate processes where it's not needed.</p>
@@ -142,19 +232,21 @@
       </div>
     </section>
 
-    <section class="section cta reveal">
+    <section class="cta reveal">
       <div class="wrap">
         <h2>Want to work with us?</h2>
-        <p style="color:var(--muted);margin-bottom:2em">We're open to interesting challenges and partnerships. Write to us — let's talk.</p>
-        <a class="btn" href="contact.en.html">Get in touch</a>
-        <a class="btn btn--ghost" href="projects.en.html">View projects</a>
+        <p>We're open to interesting challenges and partnerships. Write to us — let's talk.</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+          <a class="btn" href="contact.en.html">Get in touch</a>
+          <a class="btn btn--ghost" href="projects.en.html">View projects</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer style="padding:4em var(--gutter);border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px">
+  <footer class="footer">
     <p>© 2025 Arfa. All rights reserved.</p>
-    <p style="margin-top:0.5em"><a href="contact.en.html" style="color:var(--muted);text-decoration:underline">Contact</a> · <a href="projects.en.html" style="color:var(--muted);text-decoration:underline">Projects</a></p>
+    <p style="margin-top:0.5em"><a href="contact.en.html">Contact</a> · <a href="projects.en.html">Projects</a></p>
   </footer>
 
   <script>

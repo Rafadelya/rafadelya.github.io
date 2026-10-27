@@ -10,26 +10,99 @@
   <link rel="stylesheet" href="assets/about.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Hauptnavigation">
+    <a class="arfa-brand" href="index.de.html" aria-label="Arfa — Startseite">
+      <span class="arfa-brand__mark"><img src="assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Arfa</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Hauptnavigation">
+      <a href="index.de.html">Startseite</a>
+      <a href="about.de.html" aria-current="page">Über uns</a>
+      <a href="MarketPlace/Polka.de.html">Projekte</a>
+      <a href="blog/blog.de.html">Blog</a>
+      <a href="contact.de.html">Kontakt</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Sprache">
+        <a href="index.en.html" aria-label="English" title="English">🇬🇧</a>
+        <a href="index.de.html" class="is-active" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="index.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="index.ru.html" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Menü">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Menü</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Menü schließen" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Hauptnavigation">
+      <a href="index.de.html">Startseite</a>
+      <a href="about.de.html" aria-current="page">Über uns</a>
+      <a href="MarketPlace/Polka.de.html">Projekte</a>
+      <a href="blog/blog.de.html">Blog</a>
+      <a href="contact.de.html">Kontakt</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Sprache</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="index.en.html">🇬🇧 EN</a>
+        <a href="index.de.html" class="is-active">🇩🇪 DE</a>
+        <a href="index.fr.html">🇫🇷 FR</a>
+        <a href="index.ru.html">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
   <script src="assets/arfa-header.js" defer></script>
 
   <main>
-    <section class="section hero">
-      <div class="wrap hero-content reveal">
-        <span class="eyebrow">Über uns</span>
-        <h1>Wir bauen, woran<br>wir glauben</h1>
-        <p class="lead">Rafael und Adelia. Die Geschichte unserer eigenen IT-Produkte: von studentischen Initiativen und erstem Offline-Business — zu Tech-Produkten.</p>
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="hero-orb hero-orb--1"></div>
+        <div class="hero-orb hero-orb--2"></div>
+        <div class="hero-orb hero-orb--3"></div>
+      </div>
+      <div class="wrap hero-grid">
+        <div class="hero-content reveal">
+          <span class="hero-tag">Arfa · Über uns</span>
+          <h1>Wir bauen, woran<br>wir glauben</h1>
+          <p class="lead">Rafael und Adelia. Die Geschichte unserer eigenen IT-Produkte: von studentischen Initiativen und erstem Offline-Business — zu Tech-Produkten.</p>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat__num">36K</span>
+              <span class="hero-stat__label">Erster Zuschuss</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat__num">1M</span>
+              <span class="hero-stat__label">Startup-Zuschuss</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat__num">4+</span>
+              <span class="hero-stat__label">IT-Produkte</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-photo reveal">
+          <img src="assets/about/together.jpg" alt="Rafael und Adelia" loading="eager">
+        </div>
       </div>
     </section>
 
     <section class="section">
       <div class="wrap photo-block reveal">
         <div class="photo-img">
-          <img src="assets/about/together.jpg" alt="Rafael and Adelia" loading="eager">
+          <img src="assets/about/together.jpg" alt="Rafael und Adelia" loading="lazy">
         </div>
         <div class="photo-text">
+          <span class="eyebrow">Der Anfang</span>
           <p>Wir haben uns noch in der Schule kennengelernt. Statt getrennte Wege zu gehen, wählten wir einen gemeinsamen – Wirtschaftswissenschaften mit Fokus auf Entrepreneurship und Innovation. Es schien die Ausbildung zu sein, die uns eines Tages befähigen würde, etwas Eigenes aufzubauen.</p>
           <p>Schon im ersten Semester fielen uns Programme zum technologischen Entrepreneurship und Wettbewerbe für studentische Startups auf. Studienaufgaben ergänzten sich allmählich um eigene Initiativen.</p>
           <p>Im zweiten Semester gründeten wir praktisch aus dem Nichts eine studentische Forschungsgesellschaft und erhielten einen Zuschuss von 36 000 Rubel für deren Entwicklung. Das war unsere erste Erfahrung, bei der es nicht reichte, nur eine Idee vorzuschlagen – wir mussten Arbeit organisieren, uns mit Menschen abstimmen und das Vorhaben bis zum Ergebnis bringen.</p>
@@ -59,21 +132,36 @@
 
     <section class="section">
       <div class="wrap reveal">
-        <span class="eyebrow">Wende zu Produkten</span>
-        <h2>Wir verstanden: Man kann anders starten</h2>
-        <p>Nach dem ersten Business blickten wir anders auf Produktentwicklung. Wir wollten schnell starten, Ressourcen nicht verschwenden und Ideen prüfen, bevor ernsthafte Investitionen nötig sind. Wenn kein physisches Büro nötig ist, kann man auf Fixkosten verzichten und sich auf das Produkt konzentrieren.</p>
+        <div class="section-title">
+          <span class="eyebrow">Wende zu Produkten</span>
+          <h2>Wir verstanden: Man kann anders starten</h2>
+          <p class="lead">Nach dem ersten Business blickten wir anders auf Produktentwicklung. Wir wollten schnell starten, Ressourcen nicht verschwenden und Ideen prüfen, bevor ernsthafte Investitionen nötig sind.</p>
+        </div>
         <p>Für uns ist das nicht nur Sparen. Es ist ein Ansatz für tech Entrepreneurship: Hypothese formulieren, Weg zur Validierung finden, Feedback holen, entscheiden was als Nächstes. Nicht jede Idee muss ein grosses Business werden. Manchmal ist es klüger, rechtzeitig die Richtung zu wechseln, als weiter in etwas zu investieren, das Erwartungen nicht erfüllt.</p>
         <p>Mit diesem Verständnis arbeiteten wir weiter an eigenen Projekten und suchten Wege zu deren Entwicklung.</p>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" style="background: var(--bg); color: var(--ink-light)">
       <div class="wrap reveal">
-        <span class="eyebrow">Meilensteine</span>
-        <h2>Von ersten Versuchen – zu Tech-Produkten</h2>
-        <div class="milestone"><span class="milestone-num">36 000</span><div class="milestone-text">Zuschuss für Entwicklung der studentischen Forschungsgesellschaft (2. Semester)</div></div>
-        <div class="milestone"><span class="milestone-num">1 Mio</span><div class="milestone-text">Grant „Studentischer Startup“ (1 Mio RUB) für AdiGuide – mobile App mit Audioguides für selbstgeführte Stadtrundgänge</div></div>
-        <div class="milestone"><span class="milestone-num">4+</span><div class="milestone-text">Eigene IT-Produkte: Forseta, ToDooliCo, CarMind, AdiGuide und andere in verschiedenen Phasen</div></div>
+        <div class="section-title">
+          <span class="eyebrow" style="color: var(--accent)">Meilensteine</span>
+          <h2 style="color: #fff">Von ersten Versuchen – zu Tech-Produkten</h2>
+        </div>
+        <div class="milestones">
+          <div class="milestone">
+            <div class="milestone-num">36K</div>
+            <div class="milestone-text">Zuschuss für Entwicklung der studentischen Forschungsgesellschaft (2. Semester)</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-num">1M</div>
+            <div class="milestone-text">Grant „Studentischer Startup“ (1 Mio RUB) für AdiGuide – mobile App mit Audioguides für selbstgeführte Stadtrundgänge</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-num">4+</div>
+            <div class="milestone-text">Eigene IT-Produkte: Forseta, ToDooliCo, CarMind, AdiGuide und andere in verschiedenen Phasen</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -82,7 +170,7 @@
     <section class="section">
       <div class="wrap photo-block reveal">
         <div class="photo-img">
-          <img src="assets/about/rafael.jpg" alt="Rafael and Adelia" loading="lazy">
+          <img src="assets/about/rafael.jpg" alt="Rafael" loading="lazy">
         </div>
         <div class="photo-text">
           <span class="eyebrow">Warum zusammen</span>
@@ -98,8 +186,10 @@
 
     <section class="section">
       <div class="wrap reveal">
-        <span class="eyebrow">Unser Ansatz</span>
-        <h2>Wie wir arbeiten</h2>
+        <div class="section-title">
+          <span class="eyebrow">Unser Ansatz</span>
+          <h2>Wie wir arbeiten</h2>
+        </div>
         <div class="values">
           <article class="value-card">
             <h3>Schnelle Hypothesen-Tests</h3>
@@ -132,7 +222,7 @@
     <hr class="hr reveal">
 
     <section class="section">
-      <div class="wrap reveal" style="max-width:70ch">
+      <div class="wrap reveal" style="max-width:800px">
         <span class="eyebrow">Heute</span>
         <h2>„Arfa“ – das nächste Kapitel</h2>
         <p>Wir entwickeln eigene IT-Produkte und übernehmen Aufgaben, bei denen wir Business-Denken, Analytics, Design und Entwicklung verbinden können. Ein kleines Team erlaubt uns schnelle Entscheidungen, Hypothesen zu testen und Prozesse nicht dort zu verkomplizieren, wo es nicht nötig ist.</p>
@@ -142,19 +232,21 @@
       </div>
     </section>
 
-    <section class="section cta reveal">
+    <section class="cta reveal">
       <div class="wrap">
         <h2>Möchten Sie mit uns arbeiten?</h2>
-        <p style="color:var(--muted);margin-bottom:2em">Wir sind offen für interessante Herausforderungen und Partnerschaften. Schreiben Sie uns – lassen Sie uns reden.</p>
-        <a class="btn" href="contact.de.html">Kontakt aufnehmen</a>
-        <a class="btn btn--ghost" href="projects.de.html">Projekte ansehen</a>
+        <p>Wir sind offen für interessante Herausforderungen und Partnerschaften. Schreiben Sie uns – lassen Sie uns reden.</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+          <a class="btn" href="contact.de.html">Kontakt aufnehmen</a>
+          <a class="btn btn--ghost" href="projects.de.html">Projekte ansehen</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer style="padding:4em var(--gutter);border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px">
+  <footer class="footer">
     <p>© 2025 Arfa. Alle Rechte vorbehalten.</p>
-    <p style="margin-top:0.5em"><a href="contact.de.html" style="color:var(--muted);text-decoration:underline">Kontakt</a> · <a href="projects.de.html" style="color:var(--muted);text-decoration:underline">Projekte</a></p>
+    <p style="margin-top:0.5em"><a href="contact.de.html">Kontakt</a> · <a href="projects.de.html">Projekte</a></p>
   </footer>
 
   <script>

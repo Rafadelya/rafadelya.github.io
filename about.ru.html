@@ -10,26 +10,101 @@
   <link rel="stylesheet" href="assets/about.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="index.ru.html">Главная</a>
+      <a href="about.ru.html" aria-current="page">О нас</a>
+      <a href="MarketPlace/Polka.ru.html">Проекты</a>
+      <a href="blog/blog.ru.html">Блог</a>
+      <a href="contact.ru.html">На связи</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="index.en.html" aria-label="English" title="English">🇬🇧</a>
+        <a href="index.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="index.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="index.ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="index.ru.html">Главная</a>
+      <a href="about.ru.html" aria-current="page">О нас</a>
+      <a href="MarketPlace/Polka.ru.html">Проекты</a>
+      <a href="blog/blog.ru.html">Блог</a>
+      <a href="contact.ru.html">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="index.en.html">🇬🇧 EN</a>
+        <a href="index.de.html">🇩🇪 DE</a>
+        <a href="index.fr.html">🇫🇷 FR</a>
+        <a href="index.ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
   <script src="assets/arfa-header.js" defer></script>
 
   <main>
-    <section class="section hero">
-      <div class="wrap hero-content reveal">
-        <span class="eyebrow">О нас</span>
-        <h1>Мы создаём то,<br>во что верим</h1>
-        <p class="lead">Рафаэль и Аделя. История создания собственных IT-продуктов: от студентческих инициатив и первого офлайн-бизнеса — к технологическим продуктам.</p>
+    <!-- Hero — dark, bold -->
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="hero-orb hero-orb--1"></div>
+        <div class="hero-orb hero-orb--2"></div>
+        <div class="hero-orb hero-orb--3"></div>
+      </div>
+      <div class="wrap hero-grid">
+        <div class="hero-content reveal">
+          <span class="hero-tag">Арфа · О нас</span>
+          <h1>Мы создаём то,<br>во что верим</h1>
+          <p class="lead">Рафаэль и Аделя. История создания собственных IT-продуктов: от студентческих инициатив и первого офлайн-бизнеса — к технологическим продуктам.</p>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat__num">36K</span>
+              <span class="hero-stat__label">Первый грант</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat__num">1M</span>
+              <span class="hero-stat__label">Грант стартап</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat__num">4+</span>
+              <span class="hero-stat__label">IT-продуктов</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-photo reveal">
+          <img src="assets/about/together.jpg" alt="Рафаэль и Аделя" loading="eager">
+        </div>
       </div>
     </section>
 
+    <!-- Photo: together -->
     <section class="section">
       <div class="wrap photo-block reveal">
         <div class="photo-img">
-          <img src="assets/about/together.jpg" alt="Рафаэль и Аделя" loading="eager">
+          <img src="assets/about/together.jpg" alt="Рафаэль и Аделя" loading="lazy">
         </div>
         <div class="photo-text">
+          <span class="eyebrow">Начало пути</span>
           <p>Мы познакомились ещё в школе. Вместо того чтобы идти по разным путям, мы выбрали общий — экономику предпринимательства и инноваций. Нам казалось, что именно это образование поможет однажды создать собственное дело.</p>
           <p>Уже на первом курсе мы обратили внимание на программы технологического предпринимательства и конкурсы студенческих стартапов. Учебные задачи постепенно дополнились собственными инициативами.</p>
           <p>На втором курсе мы практически с нуля организовали студенческое научное общество и получили грант в размере 36 000 рублей на его развитие. Это был наш первый опыт, когда нужно было не просто предложить идею, а организовать работу, договориться с людьми и довести задуманное до результата.</p>
@@ -39,6 +114,7 @@
 
     <hr class="hr reveal">
 
+    <!-- First business -->
     <section class="section">
       <div class="wrap photo-block photo-block--reverse reveal">
         <div class="photo-img">
@@ -57,31 +133,50 @@
 
     <hr class="hr reveal">
 
+    <!-- Pivot to products -->
     <section class="section">
       <div class="wrap reveal">
-        <span class="eyebrow">Переход к продуктам</span>
-        <h2>Мы поняли, что запускаться можно иначе</h2>
-        <p>После первого бизнеса мы стали иначе смотреть на создание продуктов. Нам было важно запускать проекты быстро, не тратить лишние ресурсы и проверять идеи до серьёзных вложений. Если для работы не нужен физический офис — можно отказаться от постоянных расходов и сосредоточиться на продукте.</p>
+        <div class="section-title">
+          <span class="eyebrow">Переход к продуктам</span>
+          <h2>Мы поняли, что запускаться можно иначе</h2>
+          <p class="lead">После первого бизнеса мы стали иначе смотреть на создание продуктов. Нам было важно запускать проекты быстро, не тратить лишние ресурсы и проверять идеи до серьёзных вложений.</p>
+        </div>
         <p>Для нас это не просто способ экономить. Это подход к технологическому предпринимательству: сформулировать гипотезу, найти способ проверить её, получить обратную связь и решить, что делать дальше. Не каждую идею нужно превращать в большой бизнес. Иногда полезнее вовремя изменить направление, чем продолжать вкладываться в решение, которое не оправдывает ожиданий.</p>
+        <p>С этим пониманием мы продолжили работать над собственными проектами и искать возможности для их развития.</p>
       </div>
     </section>
 
-    <section class="section">
+    <!-- Milestones -->
+    <section class="section" style="background: var(--bg); color: var(--ink-light)">
       <div class="wrap reveal">
-        <span class="eyebrow">Этапы</span>
-        <h2>От первых попыток — к технологическим продуктам</h2>
-        <div class="milestone"><span class="milestone-num">36 000</span><div class="milestone-text">Грант на развитие студенческого научного общества (2-й курс)</div></div>
-        <div class="milestone"><span class="milestone-num">1 млн</span><div class="milestone-text">Грант «Студенческий стартап» на развитие АдиГида — приложения с аудиогидами для самостоятельных прогулок</div></div>
-        <div class="milestone"><span class="milestone-num">4+</span><div class="milestone-text">Собственных IT-продукта: Форсета, ТуДулиКо, CarMind, АдиГид и другие на разных стадиях</div></div>
+        <div class="section-title">
+          <span class="eyebrow" style="color: var(--accent)">Этапы</span>
+          <h2 style="color: #fff">От первых попыток — к технологическим продуктам</h2>
+        </div>
+        <div class="milestones">
+          <div class="milestone">
+            <div class="milestone-num">36K</div>
+            <div class="milestone-text">Грант на развитие студенческого научного общества (2-й курс)</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-num">1M</div>
+            <div class="milestone-text">Грант «Студенческий стартап» на развитие АдиГида — приложения с аудиогидами для самостоятельных прогулок</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-num">4+</div>
+            <div class="milestone-text">Собственных IT-продукта: Форсета, ТуДулиКо, CarMind, АдиГид и другие на разных стадиях</div>
+          </div>
+        </div>
       </div>
     </section>
 
     <hr class="hr reveal">
 
+    <!-- Why together -->
     <section class="section">
       <div class="wrap photo-block reveal">
         <div class="photo-img">
-          <img src="assets/about/rafael.jpg" alt="Рафаэль и Аделя" loading="lazy">
+          <img src="assets/about/rafael.jpg" alt="Рафаэль" loading="lazy">
         </div>
         <div class="photo-text">
           <span class="eyebrow">Почему мы вместе</span>
@@ -95,10 +190,13 @@
 
     <hr class="hr reveal">
 
+    <!-- Values -->
     <section class="section">
       <div class="wrap reveal">
-        <span class="eyebrow">Наш подход</span>
-        <h2>Как мы работаем</h2>
+        <div class="section-title">
+          <span class="eyebrow">Наш подход</span>
+          <h2>Как мы работаем</h2>
+        </div>
         <div class="values">
           <article class="value-card">
             <h3>Быстрая проверка гипотез</h3>
@@ -130,8 +228,9 @@
 
     <hr class="hr reveal">
 
+    <!-- Today -->
     <section class="section">
-      <div class="wrap reveal" style="max-width:70ch">
+      <div class="wrap reveal" style="max-width:800px">
         <span class="eyebrow">Сегодня</span>
         <h2>«Арфа» — следующий этап</h2>
         <p>Мы развиваем собственные IT-продукты и работаем над задачами, в которых можем объединить бизнес-подход, аналитику, дизайн и разработку. Небольшая команда позволяет нам быстро принимать решения, проверять гипотезы и не усложнять процессы там, где это не нужно.</p>
@@ -141,19 +240,22 @@
       </div>
     </section>
 
-    <section class="section cta reveal">
+    <!-- CTA — dark -->
+    <section class="cta reveal">
       <div class="wrap">
         <h2>Хотите поработать с нами?</h2>
-        <p style="color:var(--muted);margin-bottom:2em">Мы открыты для интересных задач и партнёрств. Напишите — обсудим.</p>
-        <a class="btn" href="contact.ru.html">Написать нам</a>
-        <a class="btn btn--ghost" href="projects.ru.html">Посмотреть проекты</a>
+        <p>Мы открыты для интересных задач и партнёрств. Напишите — обсудим.</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+          <a class="btn" href="contact.ru.html">Написать нам</a>
+          <a class="btn btn--ghost" href="projects.ru.html">Посмотреть проекты</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer style="padding:4em var(--gutter);border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px">
+  <footer class="footer">
     <p>© 2025 Арфа. Все права защищены.</p>
-    <p style="margin-top:0.5em"><a href="contact.ru.html" style="color:var(--muted);text-decoration:underline">На связи</a> · <a href="projects.ru.html" style="color:var(--muted);text-decoration:underline">Проекты</a></p>
+    <p style="margin-top:0.5em"><a href="contact.ru.html">На связи</a> · <a href="projects.ru.html">Проекты</a></p>
   </footer>
 
   <script>

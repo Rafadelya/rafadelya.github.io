@@ -508,3 +508,6 @@ body.arfa-dark .arfa-burger span {
   ::view-transition-old(root),
   ::view-transition-new(root) { animation: none; }
 }
+
+body { transition: opacity .22s ease; }
+body.arfa-leaving { opacity: 0; }

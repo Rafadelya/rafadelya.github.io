@@ -228,28 +228,28 @@ a{color:inherit}
 </head>
 <body>
 
-<header class="top">
-  <div class="top-in">
-    <a class="mark" href="../index.ru.html" aria-label="Арфа, на главную">
-      <img src="../assets/Cyrillic_logo_arfa.png" alt="">
-      Полка
-    </a>
-    <nav class="nav" aria-label="Основная навигация">
-      <a href="../index.ru.html">Главная</a>
-      <a href="../about.ru.html">О нас</a>
-      <a href="../projects.ru.html">Проекты</a>
-      <a href="Polka.html" class="is-active">Магазин</a>
-      <a href="../blog/blog.ru.html">Блог</a>
-      <a href="../contact.ru.html">На связи</a>
+<header class="site-header" aria-label="Основная навигация">
+    <a class="site-logo" href="../index.ru.html" aria-label="Арфа — главная"><img src="../assets/Cyrillic_logo_arfa.png" alt="Арфа"></a>
+    <nav class="site-nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a><a href="../about.ru.html">О нас</a><a href="../projects.ru.html" aria-current="page">Проекты</a><a href="../blog/blog.ru.html">Блог</a><a href="../contact.ru.html">На связи</a>
     </nav>
-    <div class="langs" aria-label="Язык">
-      <a href="../projects/adiguide.en.html" aria-label="English">🇬🇧</a>
-      <a href="../projects/adiguide.de.html" aria-label="Deutsch">🇩🇪</a>
-      <a href="../projects/adiguide.fr.html" aria-label="Français">🇫🇷</a>
-      <a href="adiguide_app.html" class="active" aria-label="Русский">🇷🇺</a>
+    <div class="site-tools">
+      <div class="site-langs" aria-label="Выбрать язык"><a href="../projects.en.html" aria-label="English">🇬🇧</a><a href="../projects.de.html" aria-label="Deutsch">🇩🇪</a><a href="../projects.fr.html" aria-label="Français">🇫🇷</a><a class="active" href="../projects.ru.html" aria-label="Русский" aria-current="true">🇷🇺</a></div>
+      <button class="site-menu-btn" id="siteMenuBtn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="siteMenuDrawer"><span></span><span></span><span></span></button>
     </div>
-  </div>
-</header>
+    <div class="lang-switch" style="display:flex;align-items:center;gap:10px;margin-left:auto">
+      <a href="Polka.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+      <a href="Polka.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
+      <a href="Polka.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
+      <a href="Polka.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+    </div>
+  </header>
+  <div class="site-menu-overlay" id="siteMenuOverlay"></div>
+  <aside class="site-menu-drawer" id="siteMenuDrawer" aria-hidden="true" aria-label="Мобильная навигация">
+    <div class="site-menu-head"><span>Навигация</span><button class="site-menu-close" id="siteMenuClose" type="button" aria-label="Закрыть меню">×</button></div>
+    <nav class="site-menu-links"><a href="../index.ru.html">Главная</a><a href="../about.ru.html">О нас</a><a href="../projects.ru.html" aria-current="page">Проекты</a><a href="../blog/blog.ru.html">Блог</a><a href="../contact.ru.html">На связи</a></nav>
+    <div class="site-menu-label">Язык</div><div class="site-menu-langs"><a href="../projects.en.html">EN</a><a href="../projects.de.html">DE</a><a href="../projects.fr.html">FR</a><a class="active" href="../projects.ru.html" aria-current="true">RU</a></div>
+  </aside>
 
 <main class="frame">
   <div class="crumb">

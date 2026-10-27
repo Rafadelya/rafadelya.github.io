@@ -7,28 +7,58 @@
   <link rel="stylesheet" href="../styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/2b8e2e5e2a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../assets/arfa-header.css">
 </head>
 <body class="min-h-screen flex flex-col">
-  <header class="glass-header flex flex-row items-center justify-between gap-8">
-    <div class="logo-block">
-      <a href="../index.de.html">
-        <img src="../assets/latin_logo_arfa.png" alt="Arfa Logo" class="glass-logo-img">
-      </a>
-    </div>
-    <nav class="flex gap-4">
-      <a href="../index.de.html" class="nav-link">Startseite</a>
-      <a href="../about.de.html" class="nav-link">Über uns</a>
-      <a href="../projects.de.html" class="nav-link">Projekte</a>
-      <a href="../blog/blog.de.html" class="nav-link">Blog</a>
-      <a href="../contact.de.html" class="nav-link">Kontakt</a>
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Hauptnavigation">
+    <a class="arfa-brand" href="../index.de.html" aria-label="Arfa — Startseite">
+      <span class="arfa-brand__mark"><img src="../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag">digital studio</span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Hauptnavigation">
+      <a href="../index.de.html">Startseite</a>
+      <a href="../about.de.html">Über uns</a>
+      <a href="../MarketPlace/Polka.de.html" aria-current="page">Projekte</a>
+      <a href="../blog/blog.de.html">Blog</a>
+      <a href="../contact.de.html">Kontakt</a>
     </nav>
-    <div class="flex gap-2">
-      <a href="forseta.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-      <a href="forseta.de.html" class="lang-flag active" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-      <a href="forseta.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
-      <a href="forseta.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Sprache">
+        <a href="forseta.en.html" class="" aria-label="English" title="English">🇬🇧</a>
+        <a href="forseta.de.html" class="is-active" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="forseta.fr.html" class="" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="forseta.ru.html" class="" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
     </div>
   </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Menü">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Menü</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Menü schließen" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Hauptnavigation">
+      <a href="../index.de.html">Startseite</a>
+      <a href="../about.de.html">Über uns</a>
+      <a href="../MarketPlace/Polka.de.html" aria-current="page">Projekte</a>
+      <a href="../blog/blog.de.html">Blog</a>
+      <a href="../contact.de.html">Kontakt</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Sprache</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="forseta.en.html" class="">🇬🇧 EN</a>
+        <a href="forseta.de.html" class="is-active">🇩🇪 DE</a>
+        <a href="forseta.fr.html" class="">🇫🇷 FR</a>
+        <a href="forseta.ru.html" class="">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
   <main class="max-w-3xl mx-auto px-4 py-14 space-y-12 flex-1 flex flex-col">
     <!-- Hero -->
     <section class="bg-white rounded-3xl shadow-2xl p-10 text-center mb-4">
@@ -211,5 +241,6 @@
     }
   </style>
   <script src="../js/mobile-header.js"></script>
+  <script src="../assets/arfa-header.js" defer></script>
 </body>
 </html> 

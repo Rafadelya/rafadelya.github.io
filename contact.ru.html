@@ -766,63 +766,58 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="assets/arfa-header.css">
 </head>
 <body>
-  <header class="glass-header flex items-center justify-between">
-    <div class="header-left flex items-center gap-4">
-      <div class="logo-block" style="display: flex; align-items: center;">
-        <a href="index.ru.html">
-          <img src="assets/Cyrillic_logo_arfa.png" alt="Логотип Арфа" class="glass-logo-img">
-        </a>
-      </div>
-    </div>
-    <nav class="header-nav flex gap-4">
-      <a href="index.ru.html" class="nav-link">Главная</a>
-      <a href="about.ru.html" class="nav-link">О нас</a>
-      <a href="projects.ru.html" class="nav-link">Проекты</a>
-      <a href="blog/blog.ru.html" class="nav-link">Блог</a>
-      <a href="contact.ru.html" class="nav-link active">На связи</a>
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag">digital studio</span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="index.ru.html">Главная</a>
+      <a href="about.ru.html">О нас</a>
+      <a href="MarketPlace/Polka.ru.html">Проекты</a>
+      <a href="blog/blog.ru.html">Блог</a>
+      <a href="contact.ru.html" aria-current="page">На связи</a>
     </nav>
-    <div class="header-right flex items-center">
-      <div class="header-langs flex items-center gap-2">
-        <a href="contact.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-        <a href="contact.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-        <a href="contact.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
-        <a href="contact.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="contact.en.html" class="" aria-label="English" title="English">🇬🇧</a>
+        <a href="contact.de.html" class="" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="contact.fr.html" class="" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="contact.ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
       </div>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenuDrawer">
-        <span class="menu-bar"></span>
-        <span class="menu-bar"></span>
-        <span class="menu-bar"></span>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
       </button>
     </div>
   </header>
-  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
-    <div class="mobile-menu-head">
-      <span class="mobile-menu-title">Меню</span>
-      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Закрыть меню">
-        &#10005;
-      </button>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="index.ru.html">Главная</a>
+      <a href="about.ru.html">О нас</a>
+      <a href="MarketPlace/Polka.ru.html">Проекты</a>
+      <a href="blog/blog.ru.html">Блог</a>
+      <a href="contact.ru.html" aria-current="page">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="contact.en.html" class="">🇬🇧 EN</a>
+        <a href="contact.de.html" class="">🇩🇪 DE</a>
+        <a href="contact.fr.html" class="">🇫🇷 FR</a>
+        <a href="contact.ru.html" class="is-active">🇷🇺 RU</a>
     </div>
-    <div class="mobile-menu-section mobile-menu-links">
-      <a href="index.ru.html" class="mobile-menu-link">Главная</a>
-      <a href="about.ru.html" class="mobile-menu-link">О нас</a>
-      <a href="projects.ru.html" class="mobile-menu-link">Проекты</a>
-      <a href="blog/blog.ru.html" class="mobile-menu-link">Блог</a>
-      <a href="contact.ru.html" class="mobile-menu-link active">На связи</a>
-    </div>
-    <div class="mobile-menu-section">
-      <div class="mobile-menu-label">Язык</div>
-      <div class="mobile-menu-row">
-        <a href="contact.en.html" class="mobile-menu-chip" aria-label="English">EN</a>
-        <a href="contact.de.html" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
-        <a href="contact.fr.html" class="mobile-menu-chip" aria-label="Français">FR</a>
-        <a href="contact.ru.html" class="mobile-menu-chip active" aria-label="Русский">RU</a>
-      </div>
-    </div>
-  </aside>
-
+  </div>
+</aside>
   <main class="text-center p-10">
     <h1 class="page-title">На связи</h1>
     <p class="page-subtitle">Мы делимся своими проектами, мыслями и опытом — там, где тебе удобно: читай, слушай, смотри.</p>
@@ -988,5 +983,6 @@
 
     document.addEventListener('DOMContentLoaded', initMobileMenu);
   </script>
+  <script src="assets/arfa-header.js" defer></script>
 </body>
 </html>

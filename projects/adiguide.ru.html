@@ -9,28 +9,58 @@
   <link rel="stylesheet" href="adiguide.css?v=adiguide-cities-motion">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/2b8e2e5e2a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../assets/arfa-header.css">
 </head>
 <body class="adiguide-page min-h-screen flex flex-col">
-  <header class="glass-header adiguide-header flex flex-row items-center justify-between gap-8">
-    <div class="logo-block">
-      <a href="../index.ru.html">
-        <img src="../assets/Cyrillic_logo_arfa.png" alt="Логотип Арфа" class="glass-logo-img">
-      </a>
-    </div>
-    <nav class="flex gap-2">
-      <a href="../index.ru.html" class="nav-link">Главная</a>
-      <a href="../about.ru.html" class="nav-link">О нас</a>
-      <a href="../projects.ru.html" class="nav-link">Проекты</a>
-      <a href="../blog/blog.ru.html" class="nav-link">Блог</a>
-      <a href="../contact.ru.html" class="nav-link">На связи</a>
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="../index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag">digital studio</span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../MarketPlace/Polka.ru.html" aria-current="page">Проекты</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
     </nav>
-    <div class="flex gap-2">
-      <a href="adiguide.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-      <a href="adiguide.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-      <a href="adiguide.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
-      <a href="adiguide.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="adiguide.en.html" class="" aria-label="English" title="English">🇬🇧</a>
+        <a href="adiguide.de.html" class="" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="adiguide.fr.html" class="" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="adiguide.ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
     </div>
   </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../MarketPlace/Polka.ru.html" aria-current="page">Проекты</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="adiguide.en.html" class="">🇬🇧 EN</a>
+        <a href="adiguide.de.html" class="">🇩🇪 DE</a>
+        <a href="adiguide.fr.html" class="">🇫🇷 FR</a>
+        <a href="adiguide.ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
 
   <main class="adiguide-main flex-1">
     <section class="adi-hero" aria-labelledby="adi-hero-title">
@@ -383,5 +413,6 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
   <script defer src="../js/adiguide-lottie.js?v=card-animation-3"></script>
   <script src="../js/mobile-header.js?v=transitions-dev"></script>
+  <script src="../assets/arfa-header.js" defer></script>
 </body>
 </html>

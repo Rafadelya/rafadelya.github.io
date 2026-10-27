@@ -26,28 +26,58 @@
       animation-delay: inherit;
     }
   </style>
+  <link rel="stylesheet" href="../assets/arfa-header.css">
 </head>
 <body class="min-h-screen flex flex-col">
-  <header class="glass-header flex flex-row items-center justify-between gap-8">
-    <div class="logo-block">
-      <a href="../index.ru.html">
-        <img src="../assets/latin_logo_arfa.png" alt="Arfa Logo" class="glass-logo-img">
-      </a>
-    </div>
-    <nav class="flex gap-2">
-      <a href="../index.ru.html" class="nav-link">Главная</a>
-      <a href="../about.ru.html" class="nav-link">О нас</a>
-      <a href="../projects.ru.html" class="nav-link">Проекты</a>
-      <a href="../blog/blog.ru.html" class="nav-link">Блог</a>
-      <a href="../contact.ru.html" class="nav-link">На связи</a>
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Hauptnavigation">
+    <a class="arfa-brand" href="../index.de.html" aria-label="Arfa — Startseite">
+      <span class="arfa-brand__mark"><img src="../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag">digital studio</span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Hauptnavigation">
+      <a href="../index.de.html">Startseite</a>
+      <a href="../about.de.html">Über uns</a>
+      <a href="../MarketPlace/Polka.de.html" aria-current="page">Projekte</a>
+      <a href="../blog/blog.de.html">Blog</a>
+      <a href="../contact.de.html">Kontakt</a>
     </nav>
-    <div class="flex gap-2">
-      <a href="../index.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-      <a href="../index.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-      <a href="../index.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
-      <a href="../index.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Sprache">
+        <a href="finance-consulting.en.html" class="" aria-label="English" title="English">🇬🇧</a>
+        <a href="finance-consulting.de.html" class="is-active" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="finance-consulting.fr.html" class="" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="finance-consulting.ru.html" class="" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
     </div>
   </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Menü">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Menü</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Menü schließen" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Hauptnavigation">
+      <a href="../index.de.html">Startseite</a>
+      <a href="../about.de.html">Über uns</a>
+      <a href="../MarketPlace/Polka.de.html" aria-current="page">Projekte</a>
+      <a href="../blog/blog.de.html">Blog</a>
+      <a href="../contact.de.html">Kontakt</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Sprache</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="finance-consulting.en.html" class="">🇬🇧 EN</a>
+        <a href="finance-consulting.de.html" class="is-active">🇩🇪 DE</a>
+        <a href="finance-consulting.fr.html" class="">🇫🇷 FR</a>
+        <a href="finance-consulting.ru.html" class="">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
   <main class="max-w-4xl mx-auto px-4 py-16 space-y-14 flex-1">
     <!-- Верх: Белый -->
     <div class="bg-white rounded-3xl shadow-2xl p-12 text-center animate-fade-in-up flex flex-col gap-6">
@@ -103,5 +133,6 @@
     <p class="text-sm">© 2026 Arfa. Все права защищены.</p>
   </footer>
   <script src="../js/mobile-header.js"></script>
+  <script src="../assets/arfa-header.js" defer></script>
 </body>
 </html> 

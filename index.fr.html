@@ -17,63 +17,58 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="home-en.css?v=20261014b">
+  <link rel="stylesheet" href="assets/arfa-header.css">
 </head>
 <body class="arfa-uv arfa-stage">
-  <header class="glass-header flex items-center justify-between">
-    <div class="header-left flex items-center gap-4">
-      <div class="logo-block" style="display: flex; align-items: center;">
-        <a href="index.fr.html">
-          <img src="assets/latin_logo_arfa.png" alt="Arfa logo" class="glass-logo-img">
-        </a>
-      </div>
-    </div>
-    <nav class="header-nav flex gap-4">
-      <a href="index.fr.html" class="nav-link" aria-current="page">Accueil</a>
-      <a href="about.fr.html" class="nav-link">À propos</a>
-      <a href="projects.fr.html" class="nav-link">Projets</a>
-      <a href="blog/blog.fr.html" class="nav-link">Blogue</a>
-      <a href="contact.fr.html" class="nav-link">Contact</a>
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Navigation principale">
+    <a class="arfa-brand" href="index.fr.html" aria-label="Arfa — accueil">
+      <span class="arfa-brand__mark"><img src="assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag">digital studio</span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Navigation principale">
+      <a href="index.fr.html" aria-current="page">Accueil</a>
+      <a href="about.fr.html">À propos</a>
+      <a href="MarketPlace/Polka.fr.html">Projets</a>
+      <a href="blog/blog.fr.html">Blog</a>
+      <a href="contact.fr.html">Contact</a>
     </nav>
-    <div class="header-right flex items-center">
-      <div class="header-langs flex items-center gap-2">
-        <a href="index.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-        <a href="index.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-        <a href="index.fr.html" class="lang-flag active" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
-        <a href="index.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Langue">
+        <a href="index.en.html" class="" aria-label="English" title="English">🇬🇧</a>
+        <a href="index.de.html" class="" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="index.fr.html" class="is-active" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="index.ru.html" class="" aria-label="Русский" title="Русский">🇷🇺</a>
       </div>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenuDrawer">
-        <span class="menu-bar"></span>
-        <span class="menu-bar"></span>
-        <span class="menu-bar"></span>
+      <button class="arfa-menu-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
       </button>
     </div>
   </header>
-  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
-    <div class="mobile-menu-head">
-      <span class="mobile-menu-title">Menu</span>
-      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Fermer le menu">
-        &#10005;
-      </button>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Menu">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Menu</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Fermer le menu" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Navigation principale">
+      <a href="index.fr.html" aria-current="page">Accueil</a>
+      <a href="about.fr.html">À propos</a>
+      <a href="MarketPlace/Polka.fr.html">Projets</a>
+      <a href="blog/blog.fr.html">Blog</a>
+      <a href="contact.fr.html">Contact</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Langue</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="index.en.html" class="">🇬🇧 EN</a>
+        <a href="index.de.html" class="">🇩🇪 DE</a>
+        <a href="index.fr.html" class="is-active">🇫🇷 FR</a>
+        <a href="index.ru.html" class="">🇷🇺 RU</a>
     </div>
-    <div class="mobile-menu-section mobile-menu-links">
-      <a href="index.fr.html" class="mobile-menu-link">Accueil</a>
-      <a href="about.fr.html" class="mobile-menu-link">À propos</a>
-      <a href="projects.fr.html" class="mobile-menu-link">Projets</a>
-      <a href="blog/blog.fr.html" class="mobile-menu-link">Blogue</a>
-      <a href="contact.fr.html" class="mobile-menu-link">Contact</a>
-    </div>
-    <div class="mobile-menu-section">
-      <div class="mobile-menu-label">Langue</div>
-      <div class="mobile-menu-row">
-        <a href="index.en.html" class="mobile-menu-chip" aria-label="English">EN</a>
-        <a href="index.de.html" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
-        <a href="index.fr.html" class="mobile-menu-chip active" aria-label="Français">FR</a>
-        <a href="index.ru.html" class="mobile-menu-chip" aria-label="Русский">RU</a>
-      </div>
-    </div>
-  </aside>
-
+  </div>
+</aside>
   <main>
     <section class="arfa-hero" id="top" aria-labelledby="hero-title">
       <div class="arfa-dotfield" aria-hidden="true"></div>
@@ -273,5 +268,6 @@
       </svg>
     </div>
   </div>
+  <script src="assets/arfa-header.js" defer></script>
 </body>
 </html>

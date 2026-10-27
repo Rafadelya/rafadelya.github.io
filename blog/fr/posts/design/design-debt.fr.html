@@ -14,68 +14,58 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../../../../assets/arfa-header.css">
 </head>
 <body class="text-gray-800">
-  <header class="glass-header flex items-center justify-between">
-    <div class="header-left flex items-center gap-4">
-      <div class="logo-block" style="display: flex; align-items: center;">
-        <a href="../../../../index.fr.html">
-          <img src="../../../../assets/latin_logo_arfa.png" alt="Arfa Logo" class="glass-logo-img">
-        </a>
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Navigation principale">
+    <a class="arfa-brand" href="../../../../index.fr.html" aria-label="Arfa — accueil">
+      <span class="arfa-brand__mark"><img src="../../../../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag">digital studio</span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Navigation principale">
+      <a href="../../../../index.fr.html">Accueil</a>
+      <a href="../../../../about.fr.html">À propos</a>
+      <a href="../../../../MarketPlace/Polka.fr.html">Projets</a>
+      <a href="../../../blog.fr.html" aria-current="page">Blog</a>
+      <a href="../../../../contact.fr.html">Contact</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Langue">
+        <a href="../../../blog.en.html" class="" aria-label="English" title="English">🇬🇧</a>
+        <a href="../../../blog.de.html" class="" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="design-debt.fr.html" class="is-active" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="../../../blog.ru.html" class="" aria-label="Русский" title="Русский">🇷🇺</a>
       </div>
-    </div>
-    <div class="header-langs">
-      <a href="../../../en/posts/design/design-debt.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-      <a href="../../../de/posts/design/design-debt.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-      <a href="design-debt.fr.html" class="lang-flag active" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
-      <a href="../../../ru/posts/design/design-debt.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
-    </div>
-    <div class="header-switchers">
-      <div class="font-switcher desktop-font flex items-center gap-1">
-        <button class="font-btn font-pixel active" onclick="setFont('pixel')" title="Pixel"><i class="fas fa-th"></i></button>
-        <button class="font-btn font-manrope" onclick="setFont('manrope')" title="Manrope"><i class="fas fa-font"></i></button>
-      </div>
-      <div class="theme-switcher flex items-center gap-1">
-        <button class="theme-btn theme-light active" onclick="setTheme('light')" title="Thème clair"><i class="fas fa-sun"></i></button>
-        <button class="theme-btn theme-dark" onclick="setTheme('dark')" title="Thème sombre"><i class="fas fa-moon"></i></button>
-      </div>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenuDrawer">
-        <span class="menu-bar"></span>
-        <span class="menu-bar"></span>
-        <span class="menu-bar"></span>
+      <button class="arfa-menu-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
       </button>
     </div>
   </header>
-  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-  <aside class="mobile-menu-drawer" id="mobileMenuDrawer" aria-hidden="true">
-    <div class="mobile-menu-head">
-      <span class="mobile-menu-title">Menu</span>
-      <button type="button" class="mobile-menu-close" id="mobileMenuClose" aria-label="Fermer le menu">
-        <i class="fas fa-times"></i>
-      </button>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Menu">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Menu</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Fermer le menu" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Navigation principale">
+      <a href="../../../../index.fr.html">Accueil</a>
+      <a href="../../../../about.fr.html">À propos</a>
+      <a href="../../../../MarketPlace/Polka.fr.html">Projets</a>
+      <a href="../../../blog.fr.html" aria-current="page">Blog</a>
+      <a href="../../../../contact.fr.html">Contact</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Langue</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="../../../blog.en.html" class="">🇬🇧 EN</a>
+        <a href="../../../blog.de.html" class="">🇩🇪 DE</a>
+        <a href="design-debt.fr.html" class="is-active">🇫🇷 FR</a>
+        <a href="../../../blog.ru.html" class="">🇷🇺 RU</a>
     </div>
-    <div class="mobile-menu-section">
-      <div class="mobile-menu-label">Langue</div>
-      <div class="mobile-menu-row">
-        <a href="../../../en/posts/design/design-debt.en.html" class="mobile-menu-chip" aria-label="English">EN</a>
-        <a href="../../../de/posts/design/design-debt.de.html" class="mobile-menu-chip" aria-label="Deutsch">DE</a>
-        <a href="design-debt.fr.html" class="mobile-menu-chip active" aria-label="Français">FR</a>
-        <a href="../../../ru/posts/design/design-debt.ru.html" class="mobile-menu-chip" aria-label="Русский">RU</a>
-      </div>
-    </div>
-    <div class="mobile-menu-section">
-      <div class="mobile-menu-label">Police</div>
-      <div class="mobile-menu-row">
-        <button class="mobile-menu-chip mobile-menu-font font-btn font-pixel active" onclick="setFont('pixel')" type="button">Pixel</button>
-        <button class="mobile-menu-chip mobile-menu-font font-btn font-manrope" onclick="setFont('manrope')" type="button">Manrope</button>
-      </div>
-    </div>
-    <div class="mobile-menu-section mobile-menu-links">
-      <a href="../../../../index.fr.html" class="mobile-menu-link">Accueil</a>
-      <a href="../../../blog.fr.html" class="mobile-menu-link">Blogue</a>
-    </div>
-  </aside>
-
+  </div>
+</aside>
   <main class="relative bg-white overflow-hidden">
     <section class="relative pt-32 pb-20 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[300px] mb-8">
       <div class="pixel-dots-bg"></div>
@@ -308,5 +298,6 @@ Ces trois niveaux sont liés par le degré de systémicité de l’interface.
   </footer>
 
   <script src="../../../blog.js"></script>
+  <script src="../../../../assets/arfa-header.js" defer></script>
 </body>
 </html>

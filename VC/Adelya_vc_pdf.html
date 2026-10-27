@@ -46,20 +46,59 @@ h1{font-family:'Cormorant Garamond',serif;font-size:19mm;line-height:.9;margin:0
 .contact strong{font-weight:600;color:#190d25}
 @media print{body{background:#fff}.sheet{margin:0;box-shadow:none}}
 </style>
+  <link rel="stylesheet" href="../assets/arfa-header.css">
 </head>
 <body>
 <main class="sheet">
-  <header class="top">
-    <div class="photo">
-      <img src="Фото Аделя/photo.jpg" alt="Фото Адели" data-fallbacks="Фото Аделя/photo.png,Фото Аделя/photo.jpeg,photo_Adelya.jpg,photo_Adelya.png" onerror="const f=this.dataset.fallbacks.split(',').filter(Boolean);const n=f.shift();this.dataset.fallbacks=f.join(',');if(n){this.src=n}else{this.remove()}">
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="../index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag">digital studio</span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../MarketPlace/Polka.ru.html">Проекты</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="../index.en.html" class="" aria-label="English" title="English">🇬🇧</a>
+        <a href="../index.de.html" class="" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="../index.fr.html" class="" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="../index.ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
     </div>
-    <div>
-      <p class="kicker">Дизайнер · Аналитик · Исследователь</p>
-      <h1>Аделя</h1>
-      <p class="role">Превращаю исследования и данные в дизайн, который работает на бизнес.</p>
-    </div>
-    <div class="brand">Арфа</div>
   </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../MarketPlace/Polka.ru.html">Проекты</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="../index.en.html" class="">🇬🇧 EN</a>
+        <a href="../index.de.html" class="">🇩🇪 DE</a>
+        <a href="../index.fr.html" class="">🇫🇷 FR</a>
+        <a href="../index.ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
 
   <section class="value">
     <p>Соединяю визуальные решения, маркетинговые исследования и эконометрический анализ, чтобы продукт выглядел убедительно и опирался на данные.</p>
@@ -95,5 +134,6 @@ h1{font-family:'Cormorant Garamond',serif;font-size:19mm;line-height:.9;margin:0
     <span><strong>Research:</strong> ResearchGate</span>
   </footer>
 </main>
+  <script src="../assets/arfa-header.js" defer></script>
 </body>
 </html>

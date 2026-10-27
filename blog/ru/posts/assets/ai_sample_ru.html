@@ -13,29 +13,59 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
   <link href=" https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css ">
+  <link rel="stylesheet" href="../../../../assets/arfa-header.css">
 </head>
 <body class="text-gray-800">
   <!-- Шапка сайта -->
-  <header class="glass-header">
-    <div class="logo-block" style="display: flex; align-items: center;">
-      <a href="../../index.ru.html">
-        <img src="../../../../assets/Cyrillic_logo_arfa.png" alt="Логотип Арфа" class="glass-logo-img">
-      </a>
-    </div>
-    <nav class="flex gap-4">
-      <a href="../../index.ru.html" class="nav-link">Главная</a>
-      <a href="../../about.html" class="nav-link">О студии</a>
-      <a href="../../projects.html" class="nav-link">Проекты</a>
-      <a href="../blog.ru.html" class="nav-link active">Блог</a>
-      <a href="../../contact.html" class="nav-link">Контакты</a>
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="../../../../index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="../../../../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag">digital studio</span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="../../../../index.ru.html">Главная</a>
+      <a href="../../../../about.ru.html">О нас</a>
+      <a href="../../../../MarketPlace/Polka.ru.html">Проекты</a>
+      <a href="../../../blog.ru.html" aria-current="page">Блог</a>
+      <a href="../../../../contact.ru.html">На связи</a>
     </nav>
-    <div class="flex gap-2">
-      <a href="../../index.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-      <a href="../../index.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-      <a href="../../index.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
-      <a href="../../index.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="../../../blog.en.html" class="" aria-label="English" title="English">🇬🇧</a>
+        <a href="../../../blog.de.html" class="" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="../../../blog.fr.html" class="" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="ai_sample_ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
     </div>
   </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="../../../../index.ru.html">Главная</a>
+      <a href="../../../../about.ru.html">О нас</a>
+      <a href="../../../../MarketPlace/Polka.ru.html">Проекты</a>
+      <a href="../../../blog.ru.html" aria-current="page">Блог</a>
+      <a href="../../../../contact.ru.html">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="../../../blog.en.html" class="">🇬🇧 EN</a>
+        <a href="../../../blog.de.html" class="">🇩🇪 DE</a>
+        <a href="../../../blog.fr.html" class="">🇫🇷 FR</a>
+        <a href="ai_sample_ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
 
   <!-- Основной контент -->
   <main class="relative bg-white overflow-hidden">
@@ -266,5 +296,6 @@
 
   <!-- Скрипты -->
   <script src="../../../blog.js"></script>
+  <script src="../../../../assets/arfa-header.js" defer></script>
 </body>
 </html>

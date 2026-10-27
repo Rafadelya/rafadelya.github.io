@@ -124,33 +124,60 @@ a{color:inherit}
 @keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){ .toast.on{animation:none} *{transition:none!important} }
 </style>
+  <link rel="stylesheet" href="../assets/arfa-header.css">
 </head>
 <body>
 
-<header class="site-header" aria-label="Основная навигация">
-    <a class="site-logo" href="../index.ru.html" aria-label="Арфа — главная"><img src="../assets/Cyrillic_logo_arfa.png" alt="Арфа"></a>
-    <nav class="site-nav" aria-label="Основная навигация">
-      <a href="../index.ru.html">Главная</a><a href="../about.ru.html">О нас</a><a href="../projects.ru.html" aria-current="page">Проекты</a><a href="../blog/blog.ru.html">Блог</a><a href="../contact.ru.html">На связи</a>
+<div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="../index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag">digital studio</span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="Polka.ru.html" aria-current="page">Проекты</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
     </nav>
-    <div class="site-tools">
-      <div class="site-langs" aria-label="Выбрать язык"><a href="../projects.en.html" aria-label="English">🇬🇧</a><a href="../projects.de.html" aria-label="Deutsch">🇩🇪</a><a href="../projects.fr.html" aria-label="Français">🇫🇷</a><a class="active" href="../projects.ru.html" aria-label="Русский" aria-current="true">🇷🇺</a></div>
-      <button class="site-menu-btn" id="siteMenuBtn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="siteMenuDrawer"><span></span><span></span><span></span></button>
-    </div>
-    <div class="lang-switch" style="display:flex;align-items:center;gap:10px;margin-left:auto">
-      <a href="Polka.ru.html" class="lang-flag active" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
-      <a href="Polka.en.html" class="lang-flag" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-      <a href="Polka.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-      <a href="Polka.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="Polka.en.html" class="" aria-label="English" title="English">🇬🇧</a>
+        <a href="Polka.de.html" class="" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="Polka.fr.html" class="" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="Polka.ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
     </div>
   </header>
-  <div class="site-menu-overlay" id="siteMenuOverlay"></div>
-  <aside class="site-menu-drawer" id="siteMenuDrawer" aria-hidden="true" aria-label="Мобильная навигация">
-    <div class="site-menu-head"><span>Навигация</span><button class="site-menu-close" id="siteMenuClose" type="button" aria-label="Закрыть меню">×</button></div>
-    <nav class="site-menu-links"><a href="../index.ru.html">Главная</a><a href="../about.ru.html">О нас</a><a href="../projects.ru.html" aria-current="page">Проекты</a><a href="../blog/blog.ru.html">Блог</a><a href="../contact.ru.html">На связи</a></nav>
-    <div class="site-menu-label">Язык</div><div class="site-menu-langs"><a href="../projects.en.html">EN</a><a href="../projects.de.html">DE</a><a href="../projects.fr.html">FR</a><a class="active" href="../projects.ru.html" aria-current="true">RU</a></div>
-  </aside>
-
-<main class="frame">
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="Polka.ru.html" aria-current="page">Проекты</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="Polka.en.html" class="">🇬🇧 EN</a>
+        <a href="Polka.de.html" class="">🇩🇪 DE</a>
+        <a href="Polka.fr.html" class="">🇫🇷 FR</a>
+        <a href="Polka.ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
+  <main class="frame">
   <div class="crumb">
     <a href="Polka.html">← Полка</a>
     <span>/</span>
@@ -273,5 +300,6 @@ a{color:inherit}
   });
 })();
 </script>
+  <script src="../assets/arfa-header.js" defer></script>
 </body>
 </html>

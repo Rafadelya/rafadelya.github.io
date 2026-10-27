@@ -21,6 +21,7 @@
     <meta name="twitter:image" content="https://rafadelya.github.io/projects/ToDooliCo/ToDooliCo_Russia/Logo/web/icon-512.png">
     <link rel="stylesheet" href="style.css?v=1">
     <link rel="stylesheet" href="faq.css?v=1">
+  <link rel="stylesheet" href="../../../assets/arfa-header.css">
 </head>
 <body>
 
@@ -49,14 +50,55 @@
 
     <main id="main" class="faq-main">
 
-        <header class="faq-hero">
-            <div>
-                <div class="section-label">Помощь</div>
-                <h1>Вопросы и ответы</h1>
-                <p>Всё о том, как пользоваться ТуДулиКо: от установки до продвинутых приёмов работы с задачами, заметками и привычками.</p>
-            </div>
-            <img class="faq-mascot" src="toodle/ui/faq-toodle.png" alt="Тудл — маскот ТуДулиКо" width="200" height="160">
-        </header>
+        <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="../../../index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="../../../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag">digital studio</span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="../../../index.ru.html">Главная</a>
+      <a href="../../../about.ru.html">О нас</a>
+      <a href="../../../MarketPlace/Polka.ru.html" aria-current="page">Проекты</a>
+      <a href="../../../blog/blog.ru.html">Блог</a>
+      <a href="../../../contact.ru.html">На связи</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="../../../MarketPlace/Polka.en.html" class="" aria-label="English" title="English">🇬🇧</a>
+        <a href="../../../MarketPlace/Polka.de.html" class="" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="../../../MarketPlace/Polka.fr.html" class="" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="../../../MarketPlace/Polka.ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="../../../index.ru.html">Главная</a>
+      <a href="../../../about.ru.html">О нас</a>
+      <a href="../../../MarketPlace/Polka.ru.html" aria-current="page">Проекты</a>
+      <a href="../../../blog/blog.ru.html">Блог</a>
+      <a href="../../../contact.ru.html">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="../../../MarketPlace/Polka.en.html" class="">🇬🇧 EN</a>
+        <a href="../../../MarketPlace/Polka.de.html" class="">🇩🇪 DE</a>
+        <a href="../../../MarketPlace/Polka.fr.html" class="">🇫🇷 FR</a>
+        <a href="../../../MarketPlace/Polka.ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
 
         <nav class="faq-toc" aria-label="Разделы справки">
             <a href="#start">Начало работы</a>
@@ -316,5 +358,6 @@
         </div>
     </footer>
 
+  <script src="../../../assets/arfa-header.js" defer></script>
 </body>
 </html>

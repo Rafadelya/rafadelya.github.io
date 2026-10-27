@@ -27,7 +27,7 @@ The code and content are intended **for personal use only** and ** are not subje
 
 - It is not an open-source project
 - Not intended for cloning or commercial use
-- All rights to the text, design and code belong to Arfa © 2025
+- All rights to the text, design and code belong to Arfa © 2026
 
 ## 📬 Contacts
 
@@ -36,4 +36,4 @@ The code and content are intended **for personal use only** and ** are not subje
 - Channel: [@R_A_studio](https://t.me/R_A_studio )
 
 ---
-© 2025 Arfa — collaboration, honest approach and attention to detail.
+© 2026 Arfa — collaboration, honest approach and attention to detail.

@@ -123,6 +123,76 @@ a{color:inherit}
 .toast.on{animation:up .22s ease-out}
 @keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){ .toast.on{animation:none} *{transition:none!important} }
+
+
+/* Redesigned app */
+:root{--red:#ff4b1f;--yellow:#ffd60a;--violet:#4b21e0}
+.frame{max-width:1380px}
+.hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(28px,7vw,90px);align-items:center;padding:clamp(44px,10vw,120px) 0}
+.hero-kicker{display:inline-flex;align-items:center;gap:10px;font:600 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.hero-kicker::before{content:"";width:26px;height:2px;background:var(--red)}
+.hero h1{margin:12px 0 0;font:900 clamp(78px,12vw,190px)/.78 var(--f-display);text-transform:uppercase;letter-spacing:-.02em}
+.hero-lead{margin:20px 0 0;max-width:600px;font-size:clamp(18px,2vw,23px);line-height:1.9}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(28px,5vw,46px)}
+.btn--glow{box-shadow:0 50px 90px -70px rgba(75,33,224,.95)}
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(18px,4vw,32px)}
+.pill{display:inline-flex;padding:7px 12px;border:2px solid color-mix(in srgb,var(--ink) 18%,var(--paper));font:600 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase}
+.pill--solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.hero-panel{position:relative;border:var(--rule);padding:clamp(26px,5vw,42px);display:flex;flex-direction:column;gap:16px;background:radial-gradient(140% 140% at 50% 0%,#fff,var(--paper));box-shadow:0 100px 150px -110px rgba(11,11,18,.95)}
+.hero-panel::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(11,11,18,.06) 1px,transparent 1px);background-size:16px 16px;opacity:.24}
+.hero-panel>*{position:relative;z-index:1}
+.hero-panel__top{display:flex;align-items:center;justify-content:space-between}
+.hero-panel__logo{width:88px;height:88px;border:var(--rule);border-radius:50%;background:#fff;display:grid;place-items:center}
+.hero-panel__logo img{width:70px;height:70px;object-fit:contain}
+.hero-panel__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px}
+.panel-item{padding:14px 16px;border:2px solid color-mix(in srgb,var(--ink) 16%,var(--paper));display:flex;flex-direction:column;gap:6px}
+.panel-item b{font:900 18px/1 var(--f-display);text-transform:uppercase}
+.panel-item span{font:600 10px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+
+.section{padding:clamp(52px,10vw,120px) 0;border-top:2px solid color-mix(in srgb,var(--ink) 16%,var(--paper))}
+.section-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:clamp(30px,7vw,60px)}
+.section-head__kicker{font:600 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.section-head h2{margin:10px 0 0;font:900 clamp(44px,8vw,96px)/.86 var(--f-display);text-transform:uppercase}
+.section-head p{max-width:560px;font-size:19px;color:var(--soft)}
+
+.cards{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,2vw,18px)}
+.card{grid-column:span 4;position:relative;display:flex;flex-direction:column;gap:12px;padding:clamp(24px,3vw,34px);border:var(--rule);overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 120% at 50% 0%,rgba(255,214,10,.18),transparent)}
+.card>*{position:relative;z-index:1}
+.card__num{font:900 52px/1 var(--f-display);color:var(--red)}
+.card h3{font:900 30px/1 var(--f-display);text-transform:uppercase}
+.card p{color:var(--soft);max-width:34ch}
+
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(22px,7vw,80px);align-items:center}
+.split-media{position:relative;border:var(--rule);padding:clamp(20px,7vw,52px);display:grid;place-items:center;background:radial-gradient(circle at 50% 10%,rgba(75,33,224,.16),transparent)}
+.split-media::before{content:"";position:absolute;inset:16px;border:2px solid color-mix(in srgb,var(--ink) 16%,var(--paper))}
+.split-media img{position:relative;z-index:1;width:min(380px,82%);filter:drop-shadow(0 90px 130px rgba(11,11,18,.3))}
+.split-content{display:flex;flex-direction:column;gap:16px}
+.split-content__kicker{font:600 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.split-content h2{font:900 clamp(42px,7vw,88px)/.86 var(--f-display);text-transform:uppercase}
+.split-content p{font-size:20px;line-height:1.9;color:var(--soft);max-width:58ch}
+.steps{display:flex;flex-direction:column;margin-top:10px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:20px 0;border-top:2px solid color-mix(in srgb,var(--ink) 18%,var(--paper))}
+.step:last-child{border-bottom:2px solid color-mix(in srgb,var(--ink) 18%,var(--paper))}
+.step__num{font:900 38px/1 var(--f-display);color:var(--red)}
+.step h3{font:900 24px/1 var(--f-display);text-transform:uppercase}
+.step p{margin-top:8px;color:var(--soft)}
+
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,16px)}
+.gallery-item{grid-column:span 3;border:var(--rule);aspect-ratio:9/16;overflow:hidden;background:#fff}
+.gallery-item img{width:100%;height:100%;object-fit:contain;padding:16px}
+
+.cta{margin:clamp(44px,10vw,100px) 0;padding:clamp(34px,9vw,90px);border:var(--rule);text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px;background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);background-size:26px 26px;opacity:.4}
+.cta>*{position:relative;z-index:1}
+.cta__kicker{font:600 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase}
+.cta h2{font:900 clamp(46px,10vw,130px)/.82 var(--f-display);text-transform:uppercase}
+.cta p{max-width:580px;font-size:20px;opacity:.86}
+.cta .btn{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+
+@media(max-width:1100px){.hero{grid-template-columns:1fr}.card{grid-column:span 6}.gallery-item{grid-column:span 6}.split{grid-template-columns:1fr}}
+@media(max-width:680px){.card{grid-column:span 12}.gallery-item{grid-column:span 12}.hero-panel__grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -150,80 +220,136 @@ a{color:inherit}
   </div>
 </header>
 
-<main class="frame">
-  <div class="crumb">
-    <a href="Polka.html">← Полка</a>
-    <span>/</span>
-    <a href="Polka.html#catalog">Каталог</a>
-    <span>/</span>
-    <span>Продукты · Форсета</span>
-  </div>
+<main>
+  <div class="frame">
+    <nav class="crumb">
+      <a href="Polka.html">Полка</a>
+      <span>/</span>
+      <span>Приложения</span>
+      <span>/</span>
+      <span>Форсета</span>
+    </nav>
 
-  <article class="appcard" style="--h:150">
-    <div class="col-l on-dark">
-      <div class="row-top"><span>Продукты</span><span>Активно</span></div>
-      <div class="appicon"><img src="../assets/Forseta/Форсета_Logo.png" alt="Логотип Форсета"></div>
-      <h1>Форсета</h1>
-      <p class="tagline">Порядок в том, кто, кому и сколько должен. Продукт для личных денежных договорённостей — без неловкости, забытых переводов и споров в чатах.</p>
-      <div class="actions">
-        <a class="btn btn--primary" href="https://t.me/arfa_pro" target="_blank" rel="noopener noreferrer">Попробовать бесплатно →</a>
-        <button class="btn btn--ghost" id="shelfBtn" type="button" data-id="debtmate">На полку</button>
-      </div>
-    </div>
-
-    <div class="col-r">
-      <div class="stats">
-        <div class="stat"><b>Активная разработка</b><span>Статус</span></div>
-        <div class="stat"><b>iOS · Android</b><span>Платформы</span></div>
-        <div class="stat"><b>Flutter · Dart · Hive</b><span>Технологии</span></div>
-        <div class="stat"><b>22 апреля 2026</b><span>Обновлено</span></div>
-      </div>
-
-      <section class="block" aria-labelledby="shots-t">
-        <h2 id="shots-t">Изображения</h2>
-        <div class="shots">
-          <div class="shot shot--contain"><img src="../assets/Forseta/Fin_thinking_or_remember_calendar.png" alt="Финн — хранитель договорённостей" loading="lazy"></div>
-          <div class="shot shot--contain"><img src="../assets/Forseta/Debik_Happy(one_paid).png" alt="Дебик — помощник по расчётам" loading="lazy"></div>
-          <div class="shot shot--contain"><img src="../assets/Forseta/Fin_rating_90-100_relax.png" alt="Финн напоминает спокойно" loading="lazy"></div>
-          <div class="shot shot--contain"><img src="../assets/Forseta/Debik_good.png" alt="Дебик" loading="lazy"></div>
-          <div class="shot shot--contain"><img src="../assets/Forseta/Very_Happy_finn_and_debik.png" alt="Финн и Дебик" loading="lazy"></div>
+    <section class="hero">
+      <div>
+        <span class="hero-kicker">ARFA · POLKA · ДЕНЕЖНЫЕ ДОГОВОРЁННОСТИ</span>
+        <h1>Форсета</h1>
+        <p class="hero-lead">Спокойный инструмент для личных расчётов между людьми. Фиксируй, кто кому и сколько должен, дели общие траты и напоминаяй бережно — без неловкости.</p>
+        <div class="hero-actions">
+          <a class="btn btn--primary btn--glow" href="https://t.me/arfa_pro" target="_blank" rel="noopener noreferrer">Записаться в закрытый тест →</a>
+          <a class="btn btn--ghost" href="../projects/forseta.ru.html">Страница проекта</a>
         </div>
-      </section>
+        <div class="hero-pills">
+          <span class="pill pill--solid">Локально</span>
+          <span class="pill">Без аккаунта</span>
+          <span class="pill">Мягкие напоминания</span>
+          <span class="pill">Частичные возвраты</span>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-panel__top">
+          <span class="hero-kicker">ЯСНОСТЬ СОХРАНЯЕТ ДОВЕРИЕ</span>
+          <div class="hero-panel__logo"><img src="../assets/Forseta/Форсета_Logo.png" alt="Логотип Форсета"></div>
+        </div>
+        <h2 style="font:900 clamp(28px,4vw,46px)/.94 var(--f-display);text-transform:uppercase">Порядок без давления</h2>
+        <p style="color:var(--soft);font-size:17px">Один раз зафиксировал — можно не возвращаться к неловкому разговору. Баланс всегда понятен.</p>
+        <div class="hero-panel__grid">
+          <div class="panel-item"><b>Кто кому</b><span>Прозрачный баланс</span></div>
+          <div class="panel-item"><b>Доли</b><span>Расчёт за секунды</span></div>
+          <div class="panel-item"><b>Возвраты</b><span>Частично или полностью</span></div>
+          <div class="panel-item"><b>Напоминания</b><span>Бережно и вовремя</span></div>
+        </div>
+      </div>
+    </section>
 
-      <section class="block" aria-labelledby="about-t">
-        <h2 id="about-t">Описание</h2>
-        <p class="prose">Форсета — это не про долги, это про доверие. Когда деньги смешиваются с отношениями, важнее не сумма, а ясность договорённостей: кто кому должен, до какого срока и на каких условиях.</p>
-        <p class="prose">Продукт помогает создавать понятные расписки за полминуты, делить общие расходы, подбирать комфортный план возврата и напоминать о деньгах спокойно и по-человечески. Обе стороны всегда видят одинаковые условия — без «я такого не говорил». Отдельное направление — самозанятые и фрилансеры, работающие на доверии.</p>
-      </section>
+    <section class="section">
+      <header class="section-head">
+        <div>
+          <span class="section-head__kicker">ВОЗМОЖНОСТИ</span>
+          <h2>Только суть</h2>
+        </div>
+        <p>Минимум функций, максимум порядка. Решает именно ту неловкость, что возникает в личных расчётах.</p>
+      </header>
+      <div class="cards">
+        <article class="card">
+          <span class="card__num">01</span>
+          <h3>Фиксация</h3>
+          <p>Кто, кому и сколько — зафиксировано сразу. Никаких недопониманий.</p>
+        </article>
+        <article class="card">
+          <span class="card__num">02</span>
+          <h3>Общие траты</h3>
+          <p>Раздели счёт между всеми участниками с автоматическим расчётом долей.</p>
+        </article>
+        <article class="card">
+          <span class="card__num">03</span>
+          <h3>Бережный диалог</h3>
+          <p>Мягкие напоминания без давления. Помогает сохранить отношения.</p>
+        </article>
+      </div>
+    </section>
 
-      <section class="block" aria-labelledby="feat-t">
-        <h2 id="feat-t">Что умеет</h2>
-        <ul class="feature-list">
-          <li>Договорённости о деньгах без неловкости</li>
-          <li>Кто, кому и сколько должен</li>
-          <li>Разделение общих расходов</li>
-          <li>Комфортный план возврата частями</li>
-          <li>Спокойные напоминания без давления</li>
-          <li>Помощь с формулировками сообщений</li>
-          <li>Для друзей, семьи и самозанятых</li>
-          <li>Обе стороны видят одинаковые условия</li>
-        </ul>
-      </section>
+    <section class="section">
+      <div class="split">
+        <div class="split-media">
+          <img src="../assets/Forseta/Very_Happy_finn_and_debik.png" alt="Финн и Дебик" loading="lazy">
+        </div>
+        <div class="split-content">
+          <span class="split-content__kicker">КАК ЭТО РАБОТАЕТ</span>
+          <h2>Три шага к порядку</h2>
+          <p>Максимально просто. За минуту — и все расчёты на своих местах.</p>
+          <div class="steps">
+            <article class="step">
+              <span class="step__num">01</span>
+              <div>
+                <h3>Зафиксируй</h3>
+                <p>Добавь людей и опиши договорённость: ужин, такси, подарок или общие траты.</p>
+              </div>
+            </article>
+            <article class="step">
+              <span class="step__num">02</span>
+              <div>
+                <h3>Раздели</h3>
+                <p>Добавь счёт и выбери, кто за что отвечает. Форсета посчитает долги.</p>
+              </div>
+            </article>
+            <article class="step">
+              <span class="step__num">03</span>
+              <div>
+                <h3>Сведи баланс</h3>
+                <p>Отмечай возвраты частично или полностью — баланс обновится сам.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <section class="block" aria-labelledby="info-t">
-        <h2 id="info-t">Информация</h2>
-        <dl class="info">
-          <div><span class="k">Разработчик</span><span class="v">Арфа / ООО «ЭР ЭН ЭЙ СТУДИО»</span></div>
-          <div><span class="k">Статус</span><span class="v">Активная разработка</span></div>
-          <div><span class="k">Связь</span><span class="v"><a href="https://t.me/arfa_pro" target="_blank" rel="noopener noreferrer">Telegram · @arfa_pro</a></span></div>
-          <div><span class="k">Персонажи</span><span class="v"><a href="../projects/forseta-mascots.ru.html">Финн и Дебик</a></span></div>
-          <div><span class="k">Страница проекта</span><span class="v"><a href="../projects/forseta.ru.html">Открыть</a></span></div>
-        </dl>
-      </section>
-    </div>
-  </article>
+    <section class="section">
+      <header class="section-head">
+        <div>
+          <span class="section-head__kicker">ИНТЕРФЕЙС</span>
+          <h2>Спокойный и понятный</h2>
+        </div>
+      </header>
+      <div class="gallery">
+        <figure class="gallery-item"><img src="../assets/Forseta/Fin_thinking_or_remember_calendar.png" alt="Форсета" loading="lazy"></figure>
+        <figure class="gallery-item"><img src="../assets/Forseta/Debik_Happy(one_paid).png" alt="Форсета" loading="lazy"></figure>
+        <figure class="gallery-item"><img src="../assets/Forseta/Fin_rating_90-100_relax.png" alt="Форсета" loading="lazy"></figure>
+        <figure class="gallery-item"><img src="../assets/Forseta/Debik_good_screen_off.png" alt="Форсета" loading="lazy"></figure>
+      </div>
+    </section>
 
-  <p class="mono" style="padding:18px 0 0"><a href="Polka.html#catalog" style="text-decoration:none;border-bottom:2px solid var(--ink)">← Вернуться в каталог</a></p>
+    <section class="cta">
+      <span class="cta__kicker">БОЛЬШЕ ПОРЯДКА — МЕНЬШЕ НЕЛОВКОСТИ</span>
+      <h2>Сохраним доверие</h2>
+      <p>Присоединяйся к закрытому тесту. Напиши в Телеграм — пришлём доступ.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+        <a class="btn" href="https://t.me/arfa_pro" target="_blank" rel="noopener noreferrer">Записаться в тест</a>
+        <a class="btn btn--ghost" style="background:transparent;color:var(--paper);border-color:rgba(255,255,255,.4)" href="../projects/forseta.ru.html">Узнать больше</a>
+      </div>
+    </section>
+  </div>
 </main>
 
 <footer class="foot">

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eceeff">
+  <title>Polka — Arfa Apps</title>
+  <meta name="description" content="CarMind, ТуДулиКо, АдиГид и Квита — приложения Арфы для автомобиля, планов, прогулок и денежных договорённостей.">
+  <link rel="icon" type="image/png" href="../assets/Cyrillic_logo_arfa.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="polka.css">
+
+</head>
+<body>
+  <header class="site-header" aria-label="Основная навигация">
+    <a class="site-logo" href="../index.ru.html" aria-label="Арфа — главная"><img src="../assets/Cyrillic_logo_arfa.png" alt="Арфа"></a>
+    <nav class="site-nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a><a href="../about.ru.html">О нас</a><a href="../projects.ru.html" aria-current="page">Проекты</a><a href="../blog/blog.ru.html">Блог</a><a href="../contact.ru.html">На связи</a>
+    </nav>
+    <div class="site-tools">
+      <div class="site-langs" aria-label="Выбрать язык"><a href="../projects.en.html" aria-label="English">🇬🇧</a><a href="../projects.de.html" aria-label="Deutsch">🇩🇪</a><a href="../projects.fr.html" aria-label="Français">🇫🇷</a><a class="active" href="../projects.ru.html" aria-label="Русский" aria-current="true">🇷🇺</a></div>
+      <button class="site-menu-btn" id="siteMenuBtn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="siteMenuDrawer"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="site-menu-overlay" id="siteMenuOverlay"></div>
+  <aside class="site-menu-drawer" id="siteMenuDrawer" aria-hidden="true" aria-label="Мобильная навигация">
+    <div class="site-menu-head"><span>Навигация</span><button class="site-menu-close" id="siteMenuClose" type="button" aria-label="Закрыть меню">×</button></div>
+    <nav class="site-menu-links"><a href="../index.ru.html">Главная</a><a href="../about.ru.html">О нас</a><a href="../projects.ru.html" aria-current="page">Проекты</a><a href="../blog/blog.ru.html">Блог</a><a href="../contact.ru.html">На связи</a></nav>
+    <div class="site-menu-label">Язык</div><div class="site-menu-langs"><a href="../projects.en.html">EN</a><a href="../projects.de.html">DE</a><a href="../projects.fr.html">FR</a><a class="active" href="../projects.ru.html" aria-current="true">RU</a></div>
+  </aside>
+
+  <main>
+    <section class="hero wrap" id="top" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="hero-kicker eyebrow">Полка Арфы · четыре приложения</div>
+          <h1 id="hero-title">New ideas.<br><em>On their Polka.</em></h1>
+          <p class="hero-intro">Четыре приложения Арфы для автомобиля, планов, прогулок и денежных договорённостей. Выберите то, что пригодится именно сегодня.</p>
+          <div class="hero-actions"><a class="button" href="#apps">Открыть коллекцию <span aria-hidden="true">↓</span></a><a class="text-link" href="#apps">Что на Полке</a></div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="manifesto" id="about"><div class="wrap manifesto-in">
+      <div class="manifesto-item"><b>04</b><span>приложения на Полке</span></div>
+      <div class="manifesto-item"><b>03</b><span>идеи в разработке</span></div>
+      <div class="manifesto-item"><b>04</b><span>исследования и практических кейса</span></div>
+    </div></div>
+
+    <section class="section wrap carousel-section" id="apps" aria-labelledby="apps-title">
+      <div class="carousel-heading"><span class="section-label eyebrow">01 / Apps Арфы</span><h2 id="apps-title">What to take with you?</h2><p>Four apps for routes, plans, car and money agreements.</p></div>
+      <div class="carousel" data-carousel aria-roledescription="карусель" aria-label="Apps Арфы">
+        <div class="carousel-stage" data-stage>
+          <article class="carousel-item" data-title="CarMind" data-kind="Автомобиль · Уход и расходы" data-description="Всё важное об автомобиле — обслуживание, расходы и напоминания — в одном месте." data-category="auto" data-link="../projects.ru.html">
+            <button class="carousel-card" type="button" aria-label="Выбрать CarMind"><span class="tool-art tool-art--auto"><span class="art-mark">CARMIND</span><span class="car-emoji" aria-hidden="true">🚗</span><span class="art-sub">Ваш автомобиль</span></span></button><div class="carousel-caption"><strong>CarMind</strong><span>Автомобиль</span></div>
+          </article>
+          <article class="carousel-item" data-title="ТуДулиКо" data-kind="Организация · Задачи и заметки" data-description="Задачи, заметки и планы в одном спокойном пространстве с локальным хранением данных." data-category="organize" data-link="todoolico_app.html">
+            <button class="carousel-card" type="button" aria-label="Выбрать ТуДулиКо"><img class="contain contain-sage" src="../assets/AppIcon~todoolico.png" alt="Иконка ТуДулиКо" draggable="false"></button><div class="carousel-caption"><strong>ТуДулиКо</strong><span>Организация</span></div>
+          </article>
+          <article class="carousel-item" data-title="АдиГид" data-kind="Город · Прогулки и истории" data-description="Городские прогулки, которые превращают знакомые улицы в истории." data-category="city" data-link="adiguide_app.html">
+            <button class="carousel-card" type="button" aria-label="Выбрать АдиГид"><img src="../assets/adiguide/1.jpg" alt="Улица Казани — маршрут АдиГид" draggable="false"></button><div class="carousel-caption"><strong>АдиГид</strong><span>Город</span></div>
+          </article>
+          <article class="carousel-item" data-title="Квита" data-kind="Финансы · Договорённости" data-description="Спокойно вести денежные договорённости и помнить, кто, кому и сколько должен." data-category="money" data-link="debtmate_app.html">
+            <button class="carousel-card" type="button" aria-label="Выбрать Квита"><img class="contain" src="../assets/Forseta/Форсета_Logo.png" alt="Иконка приложения Квита" draggable="false"></button><div class="carousel-caption"><strong>Квита</strong><span>Финансы</span></div>
+          </article>
+        </div>
+        <div class="carousel-bottom"><div class="carousel-detail" aria-live="polite"><span class="eyebrow" data-current-kind>Автомобиль · Уход и расходы</span><h3 data-current-title>CarMind</h3><p data-current-description>Всё важное об автомобиле — обслуживание, расходы и напоминания — в одном месте.</p></div><div class="carousel-dock-actions"><a class="dock-open" data-current-link href="../projects.ru.html">Открыть приложение <span aria-hidden="true">↗</span></a><div class="carousel-controls"><button type="button" data-prev aria-label="Предыдущее приложение">←</button><span class="carousel-count" data-count>01 / 04</span><button type="button" data-next aria-label="Следующее приложение">→</button><button type="button" class="pause" data-pause aria-pressed="false">Пауза</button></div></div></div>
+        <div class="carousel-progress" aria-hidden="true"><span data-progress></span></div>
+      </div>
+    </section>
+    <section class="catalog-section" id="catalog" aria-labelledby="catalog-title">
+      <div class="catalog-shell">
+        <div class="catalog-heading"><div><span class="section-label eyebrow">02 / Полка приложений</span><h2 id="catalog-title">Выберите своё</h2><p>Все приложения — в одном месте. Можно найти по названию или теме.</p></div><label class="catalog-search"><span class="sr-only">Поиск по приложениям</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg><input type="search" data-catalog-search placeholder="Поиск по Полке"></label></div>
+        <div class="catalog-toolbar"><div class="catalog-filters" role="group" aria-label="Фильтр приложений"><button class="is-active" type="button" data-filter="all" aria-pressed="true">Все <span>04</span></button><button type="button" data-filter="auto" aria-pressed="false">Автомобиль</button><button type="button" data-filter="organize" aria-pressed="false">Организация</button><button type="button" data-filter="city" aria-pressed="false">Город</button><button type="button" data-filter="money" aria-pressed="false">Финансы</button></div><span class="catalog-result" data-catalog-result aria-live="polite">4 приложения</span></div>
+        <div class="catalog-grid" data-catalog-grid></div>
+      </div>
+    </section>
+
+    <section class="section upcoming" id="upcoming" aria-labelledby="upcoming-title"><div class="wrap">
+      <div class="section-head"><div><span class="section-label eyebrow">03 / In development</span><h2 id="upcoming-title">Следующие на полке</h2></div><p>Идеи, которые мы исследуем и постепенно превращаем в понятные инструменты.</p></div>
+      <div class="upcoming-grid">
+        <article class="upcoming-item"><span class="n">01</span><h3>Близко</h3><p>Лёгкая CRM для друзей: помогает хранить важное о близких и не терять контакт.</p><span class="status">Исследуем сценарии</span></article>
+        <article class="upcoming-item"><span class="n">02</span><h3>Locus</h3><p>Локальный ИИ-ассистент, который помогает принимать решения и выбирать следующий шаг каждый день.</p><span class="status">Черновик</span></article>
+        <article class="upcoming-item"><span class="n">03</span><h3>Arcus</h3><p>Продлевает жизнь старой технике: запускает небольшие Linux-окна на устаревших операционных системах.</p><span class="status">Исследуем сценарии</span></article>
+      </div>
+    </div></section>
+
+    <section class="section wrap research" id="research" aria-labelledby="research-title">
+      <div class="research-intro"><span class="section-label eyebrow">04 / Практика и исследования</span><h2 id="research-title">Работа начинается с понимания</h2><p>Мы изучаем, как устроены реальные процессы и поведение людей, прежде чем предлагать решение.</p></div>
+      <div class="research-list">
+        <article class="research-item"><span class="type">Практический кейс</span><div><h3>Финансовое консультирование для магазина электроники</h3><p>Бизнес-процессы, расходы, обязательства и новые источники дохода.</p></div><a href="../blog/ru/posts/finance-consulting.ru.html">Читать ↗</a></article>
+        <article class="research-item"><span class="type">Практический кейс</span><div><h3>Анализ для агентства по найму</h3><p>Исследования, диагностика бренда и рекомендации по позиционированию.</p></div><a href="../blog/ru/posts/agency-analysis.ru.html">Читать ↗</a></article>
+        <article class="research-item"><span class="type">Публикация</span><div><h3>Потребительское поведение в условиях цифровизации</h3><p>Как цифровая экономика меняет поведение людей и ожидания от сервисов.</p></div><a href="https://usptu-bulletin.ru/index.php/bul/article/view/11710" target="_blank" rel="noopener noreferrer">Статья ↗</a></article>
+        <article class="research-item"><span class="type">Публикация</span><div><h3>Мобильная агрегация трафика на открытых решениях</h3><p>Открытые технологии для мобильных сервисов и городской инфраструктуры.</p></div><a href="https://usptu-bulletin.ru/index.php/bul/article/view/13035" target="_blank" rel="noopener noreferrer">Статья ↗</a></article>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap footer-in"><div><div class="footer-brand">Арфа / Полка</div><div class="footer-note">Независимая практика · 2026</div></div><nav class="footer-links" aria-label="Арфа"><a href="../index.ru.html">Главная</a><a href="../about.ru.html">О нас</a><a href="../contact.ru.html">Связаться</a></nav><a class="text-link" href="#top">Наверх ↑</a></div></footer>
+  <script src="polka.js" defer></script>
+
+  <script src="polka.js" defer></script>
+
+</body>
+</html>

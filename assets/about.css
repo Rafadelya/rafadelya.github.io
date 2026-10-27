@@ -66,7 +66,6 @@ p { margin: 0 0 1.5em }
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding-top: var(--header-h);
 }
 
 .hero-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none }
@@ -244,7 +243,7 @@ p { margin: 0 0 1.5em }
   .photo-block--reverse { grid-template-columns: 1fr }
   .milestones { grid-template-columns: 1fr; gap: 0 }
   .values { grid-template-columns: 1fr }
-  .hero { min-height: auto; padding-top: calc(var(--header-h) + 40px); padding-bottom: 60px }
+  .hero { min-height: auto; padding-top: 40px; padding-bottom: 60px }
   .hero-stats { gap: 24px }
 }
 

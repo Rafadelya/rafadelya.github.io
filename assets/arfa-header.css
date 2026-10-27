@@ -21,7 +21,7 @@
   border: 1px solid rgba(255, 255, 255, 0.66);
   color: #171a26;
   background:
-    linear-gradient(125deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.55) 46%, rgba(255, 255, 255, 0.74));
+    linear-gradient(125deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.62) 46%, rgba(255, 255, 255, 0.8));
   -webkit-backdrop-filter: blur(22px) saturate(1.7);
   backdrop-filter: blur(22px) saturate(1.7);
   box-shadow:
@@ -114,7 +114,7 @@
   align-items: center;
   padding: 9px 14px;
   border-radius: 999px;
-  color: rgba(23, 26, 38, 0.62);
+  color: rgba(23, 26, 38, 0.7);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -370,7 +370,8 @@ body.arfa-menu-open {
 }
 
 /* Dark pages (home stage) */
-body.arfa-stage .arfa-header {
+body.arfa-stage .arfa-header,
+body.arfa-dark .arfa-header {
   color: #f6f4fb;
   border-color: rgba(255, 255, 255, 0.16);
   background: linear-gradient(130deg, rgba(26, 21, 40, 0.74), rgba(11, 10, 19, 0.58)) !important;
@@ -380,50 +381,62 @@ body.arfa-stage .arfa-header {
   -webkit-backdrop-filter: blur(22px) saturate(1.4);
   backdrop-filter: blur(22px) saturate(1.4);
 }
-body.arfa-stage .arfa-header::before {
+body.arfa-stage .arfa-header::before,
+body.arfa-dark .arfa-header::before {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0) 46%);
 }
-body.arfa-stage .arfa-brand:hover {
+body.arfa-stage .arfa-brand:hover,
+body.arfa-dark .arfa-brand:hover {
   background: rgba(255, 255, 255, 0.08);
 }
-body.arfa-stage .arfa-brand__tag {
+body.arfa-stage .arfa-brand__tag,
+body.arfa-dark .arfa-brand__tag {
   color: rgba(246, 244, 251, 0.5);
 }
-body.arfa-stage .arfa-nav a {
+body.arfa-stage .arfa-nav a,
+body.arfa-dark .arfa-nav a {
   color: rgba(246, 244, 251, 0.64);
 }
-body.arfa-stage .arfa-nav a:hover {
+body.arfa-stage .arfa-nav a:hover,
+body.arfa-dark .arfa-nav a:hover {
   color: #fff;
   background: rgba(255, 255, 255, 0.08);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
 }
-body.arfa-stage .arfa-nav a[aria-current="page"] {
+body.arfa-stage .arfa-nav a[aria-current="page"],
+body.arfa-dark .arfa-nav a[aria-current="page"] {
   color: #171a26;
   background: linear-gradient(160deg, #f7f4ff, #ded8ff);
   box-shadow:
     0 8px 20px -8px rgba(180, 170, 255, 0.8),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
-body.arfa-stage .arfa-langs {
+body.arfa-stage .arfa-langs,
+body.arfa-dark .arfa-langs {
   background: rgba(255, 255, 255, 0.07);
   border-color: rgba(255, 255, 255, 0.14);
 }
-body.arfa-stage .arfa-langs a {
+body.arfa-stage .arfa-langs a,
+body.arfa-dark .arfa-langs a {
   opacity: 0.72;
   filter: grayscale(0.35);
 }
-body.arfa-stage .arfa-langs a.is-active {
+body.arfa-stage .arfa-langs a.is-active,
+body.arfa-dark .arfa-langs a.is-active {
   background: rgba(255, 255, 255, 0.18);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
 }
-body.arfa-stage .arfa-menu-btn {
+body.arfa-stage .arfa-menu-btn,
+body.arfa-dark .arfa-menu-btn {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.18);
 }
-body.arfa-stage .arfa-menu-btn:hover {
+body.arfa-stage .arfa-menu-btn:hover,
+body.arfa-dark .arfa-menu-btn:hover {
   background: rgba(255, 255, 255, 0.16);
 }
-body.arfa-stage .arfa-burger span {
+body.arfa-stage .arfa-burger span,
+body.arfa-dark .arfa-burger span {
   background: #f6f4fb;
 }
 

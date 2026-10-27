@@ -3,132 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
     <title>Условия использования — ТуДулиКо</title>
-    <link rel="icon" type="image/png" href="../../assets/AppIcon~todoolico.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --text: #1e293b;
-            --text-muted: #64748b;
-            --bg: #ffffff;
-            --bg-alt: #f8fafc;
-            --border: #e2e8f0;
-            --accent: #6366f1;
-        }
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --text: #f1f5f9;
-                --text-muted: #94a3b8;
-                --bg: #0f172a;
-                --bg-alt: #1e293b;
-                --border: #334155;
-            }
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--text);
-            background: var(--bg);
-            line-height: 1.75;
-            -webkit-font-smoothing: antialiased;
-        }
-        .legal-nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 32px;
-            border-bottom: 1px solid var(--border);
-            background: var(--bg);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        .legal-nav a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            font-size: 15px;
-            color: var(--text);
-            text-decoration: none;
-        }
-        .legal-nav a:hover { color: var(--accent); }
-        .legal-nav .home-link {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-        .legal-nav .home-link:hover { color: var(--accent); }
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 48px 24px 80px;
-        }
-        h1 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.02em;
-        }
-        .effective-date {
-            font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid var(--border);
-        }
-        h2 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-top: 40px;
-            margin-bottom: 16px;
-            letter-spacing: -0.01em;
-        }
-        h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-top: 24px;
-            margin-bottom: 12px;
-        }
-        p {
-            font-size: 15px;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-        }
-        p strong, li strong { color: var(--text); }
-        ul, ol {
-            margin: 0 0 16px 24px;
-            color: var(--text-muted);
-            font-size: 15px;
-        }
-        li { margin-bottom: 8px; }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .contact-box {
-            margin-top: 48px;
-            padding: 24px;
-            background: var(--bg-alt);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-        }
-        .contact-box h2 { margin-top: 0; }
-        @media (max-width: 640px) {
-            .legal-nav { padding: 12px 16px; }
-            .container { padding: 32px 16px 60px; }
-            h1 { font-size: 26px; }
-        }
-    </style>
+    <link rel="icon" href="../Logo/web/favicon.ico">
+    <link rel="apple-touch-icon" href="../Logo/web/apple-touch-icon.png">
+    <link rel="stylesheet" href="../style.css?v=1">
+    <link rel="stylesheet" href="legal.css?v=1">
 </head>
 <body>
-    <nav class="legal-nav">
-        <a href="../index.html">
-            <svg width="22" height="22" viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect width="28" height="28" rx="7" fill="#6366f1"/><path d="M8 14.5L12 18.5L20 9.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            ТуДулиКо
+    <nav class="navbar">
+        <a href="../index.html" class="nav-logo">
+            <img src="../Logo/ios/AppIcon~ios-marketing.png" alt="ТуДулиКо" width="28" height="28" style="border-radius:7px;">
+            <span>ТуДулиКо</span>
         </a>
-        <a href="../index.html" class="home-link">← На главную</a>
+        <div class="nav-actions">
+            <a href="../index.html" class="nav-cta">На главную</a>
+        </div>
     </nav>
-    <div class="container">
+    <main class="legal-doc">
         <h1>Условия использования</h1>
         <p class="effective-date">Дата вступления в силу: 20 октября 2026 года</p>
 
@@ -228,6 +120,26 @@
             <p>Email: <a href="mailto:todoolico@mail.ru">todoolico@mail.ru</a></p>
             <p>ООО «ЭР ЭН ЭЙ СТУДИО»</p>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="../Logo/ios/AppIcon~ios-marketing.png" alt="ТуДулиКо" width="32" height="32" style="border-radius:8px;" loading="lazy">
+                <span>ТуДулиКо</span>
+            </div>
+            <div class="footer-links">
+                <a href="../faq.html">Вопросы и ответы</a>
+                <a href="terms.html">Условия использования</a>
+                <a href="privacy.html">Политика конфиденциальности</a>
+            </div>
+            <div class="footer-contact">
+                <a href="mailto:todoolico@mail.ru">todoolico@mail.ru</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ООО «ЭР ЭН ЭЙ СТУДИО»</p>
+        </div>
+    </footer>
 </body>
 </html>

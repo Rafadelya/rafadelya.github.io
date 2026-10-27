@@ -174,3 +174,10 @@
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 @media(max-width:980px){.hero-grid--bold{grid-template-columns:1fr;gap:48px}.hero-visual{height:320px}}
 @media(max-width:620px){.hero{padding:clamp(48px,12vw,72px) clamp(18px,6vw,28px)}.shelf-row{gap:12px}.shelf-tile{width:90px;height:130px}}
+
+
+/* Forseta colors */
+.store-card--forseta .store-card-media{background:radial-gradient(circle at 50% 40%,#f3f0ff,#e7e4ff)}
+.carousel-item[data-title="Форсета"] .carousel-card{border-color:rgba(104,96,196,.4)}
+.carousel-item.is-active[data-title="Форсета"] .carousel-card{border-color:#6b63d6;box-shadow:0 26px 50px rgba(76,70,170,.22)}
+.tool-art--forseta{--art-bg:#ece9ff;--art-ink:#4c46aa}

@@ -90,10 +90,10 @@
             ['../assets/adiguide/10.jpg', 'Городской маршрут']
           ], galleryNote: 'Обложки и кадры маршрутов, не скриншоты интерфейса.', external: true
         },
-        'Квита': {
-          category: 'Финансы', title: 'Квита', subtitle: 'Денежные договорённости без неловкости',
+        'Форсета': {
+          category: 'Финансы', title: 'Форсета', subtitle: 'Денежные договорённости без неловкости',
           description: 'Помогает спокойно договориться о деньгах и помнить, кто, кому и сколько должен.',
-          about: 'Квита (Forseta) помогает поддерживать ясность в личных денежных договорённостях: кто кому должен, к какому сроку и на каких условиях. Общие расходы, план возврата частями и мягкие напоминания помогают сохранять доверие.',
+          about: 'Форсета (Forseta) помогает поддерживать ясность в личных денежных договорённостях: кто кому должен, к какому сроку и на каких условиях. Общие расходы, план возврата частями и мягкие напоминания помогают сохранять доверие.',
           facts: ['Активная разработка', 'iOS · Android', 'Для друзей и семьи'],
           features: ['Записывать денежные договорённости', 'Видеть, кто кому и сколько должен', 'Делить общие расходы', 'Планировать возврат частями', 'Напоминать спокойно и без давления'],
           icon: '../assets/Forseta/Forseta_Logo.png', action: 'https://t.me/arfa_pro', actionLabel: 'Узнать о приложении', external: true, gallery: [
@@ -109,7 +109,7 @@
       document.title = `${product.title} — Полка Арфы`;
       document.querySelector('meta[name="description"]').content = product.description;
       const hero = document.querySelector('.detail-hero');
-      const variants = {'CarMind':['#ad4439','#ffe5df'],'ТуДулиКо':['#467255','#e3f0e7'],'АдиГид':['#4e64a0','#e2e9ff'],'Квита':['#986640','#f2e6d9']};
+      const variants = {'CarMind':['#ad4439','#ffe5df'],'ТуДулиКо':['#467255','#e3f0e7'],'АдиГид':['#4e64a0','#e2e9ff'],'Форсета':['#986640','#f2e6d9']};
       [hero.style.setProperty('--accent',variants[product.title][0]),hero.style.setProperty('--tint',variants[product.title][1])];
       document.querySelector('[data-breadcrumb]').textContent = product.title;
       document.querySelector('[data-category]').textContent = product.category;
@@ -123,7 +123,7 @@
       product.features.forEach(value => { const li=document.createElement('li');li.textContent=value;featureList.append(li); });
       const iconHost = document.querySelector('[data-icon]');
       if(product.icon==='car'){const car=document.createElement('span');car.className='car-emoji';car.textContent='🚗';car.setAttribute('aria-hidden','true');iconHost.append(car)}
-      else {const image=document.createElement('img');image.src=product.icon;image.alt=`Иконка приложения ${product.title}`;if(product.title==='Квита')image.className='contain';iconHost.append(image)}
+      else {const image=document.createElement('img');image.src=product.icon;image.alt=`Иконка приложения ${product.title}`;if(product.title==='Форсета')image.className='contain';iconHost.append(image)}
       const action = document.querySelector('[data-action]'); action.href=product.action;action.innerHTML=`${product.actionLabel} <span aria-hidden="true">↗</span>`;
       if(product.external) { action.target='_blank'; action.rel='noopener noreferrer'; }
       document.querySelector('[data-gallery-note]').textContent=product.galleryNote;

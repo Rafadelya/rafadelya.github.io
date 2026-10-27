@@ -39,9 +39,9 @@
       CarMind: { subtitle: 'Автомобиль под контролем', features: ['Уход', 'Расходы', 'Напоминания'], asset: 'car' },
       'ТуДулиКо': { subtitle: 'Планы и заметки в одном месте', features: ['Задачи', 'Заметки', 'Локальные данные'], asset: '../assets/AppIcon~todoolico.png' },
       'АдиГид': { subtitle: 'Городские прогулки с историями', features: ['Маршруты', 'Истории', 'Город'], asset: '../assets/adiguide/1.jpg' },
-      'Квита': { subtitle: 'Денежные договорённости без неловкости', features: ['Долги', 'Расчёты', 'Напоминания'], asset: '../assets/Forseta/Форсета_Logo.png' }
+      'Форсета': { subtitle: 'Денежные договорённости без неловкости', features: ['Долги', 'Расчёты', 'Напоминания'], asset: '../assets/Forseta/Форсета_Logo.png' }
     };
-    const cardClasses = { CarMind: 'store-card--car', 'ТуДулиКо': 'store-card--todo', 'АдиГид': 'store-card--adi', 'Квита': 'store-card--kvita' };
+    const cardClasses = { CarMind: 'store-card--car', 'ТуДулиКо': 'store-card--todo', 'АдиГид': 'store-card--adi', 'Форсета': 'store-card--forseta' };
     items.forEach((item, index) => {
       const info = storeInfo[item.dataset.title];
       const card = document.createElement('article');
@@ -56,7 +56,7 @@
         const emoji = document.createElement('span'); emoji.className = 'car-emoji'; emoji.setAttribute('aria-hidden', 'true'); emoji.textContent = '🚗'; icon.append(emoji);
       } else {
         const image = document.createElement('img'); image.src = info.asset; image.alt = `Иконка приложения ${item.dataset.title}`; image.loading = 'lazy';
-        if (item.dataset.title === 'Квита') image.classList.add('contain');
+        if (item.dataset.title === 'Форсета') image.classList.add('contain');
         icon.append(image);
       }
       media.append(number, icon);

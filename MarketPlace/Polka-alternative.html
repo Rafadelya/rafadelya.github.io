@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#eceeff">
   <title>Полка — приложения Арфы</title>
-  <meta name="description" content="CarMind, ТуДулиКо, АдиГид и Квита — приложения Арфы для автомобиля, планов, прогулок и денежных договорённостей.">
+  <meta name="description" content="CarMind, ТуДулиКо, АдиГид и Форсета — приложения Арфы для автомобиля, планов, прогулок и денежных договорённостей.">
   <link rel="icon" type="image/png" href="../assets/Cyrillic_logo_arfa.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -113,7 +113,7 @@
     .catalog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
     .store-card{--card-tint:#e8eaff;--card-accent:#454a8c;min-width:0;display:grid;grid-template-columns:minmax(150px,.78fr) minmax(0,1.22fr);gap:0;overflow:hidden;border:1px solid rgba(69,74,140,.1);border-radius:26px;background:rgba(255,255,255,.88);color:#1b1c2a;box-shadow:0 9px 28px rgba(57,63,119,.055);transition:transform .25s,border-color .25s,box-shadow .25s}
     .store-card:hover{transform:translateY(-4px);border-color:rgba(69,74,140,.22);box-shadow:0 20px 42px rgba(57,63,119,.12)}.store-card[hidden]{display:none}
-    .store-card--car{--card-tint:#ffe5df;--card-accent:#ad4439}.store-card--todo{--card-tint:#e3f0e7;--card-accent:#467255}.store-card--adi{--card-tint:#e2e9ff;--card-accent:#4e64a0}.store-card--kvita{--card-tint:#f2e6d9;--card-accent:#986640}
+    .store-card--car{--card-tint:#ffe5df;--card-accent:#ad4439}.store-card--todo{--card-tint:#e3f0e7;--card-accent:#467255}.store-card--adi{--card-tint:#e2e9ff;--card-accent:#4e64a0}.store-card--forseta{--card-tint:#f2e6d9;--card-accent:#986640}
     .store-card-media{position:relative;display:grid;place-items:center;min-height:100%;padding:26px;background:radial-gradient(ellipse at 50% 42%,#fff9 0%,transparent 60%),var(--card-tint)}
     .store-card-media::before,.store-card-media::after{content:"";position:absolute;inset:12%;border:1px solid color-mix(in srgb,var(--card-accent) 14%,transparent);border-radius:32px;transform:rotate(-8deg)}.store-card-media::after{inset:17%;transform:rotate(8deg);border-color:color-mix(in srgb,var(--card-accent) 9%,transparent)}
     .store-app-icon{position:relative;z-index:1;width:min(100%,178px);aspect-ratio:1;display:grid;place-items:center;overflow:hidden;border:1px solid #fff9;border-radius:30px;background:#fff;box-shadow:0 20px 38px color-mix(in srgb,var(--card-accent) 17%,transparent)}.store-app-icon img{width:100%;height:100%;object-fit:cover}.store-app-icon img.contain{object-fit:contain;padding:10px}.store-app-icon .car-emoji{font-size:clamp(64px,7vw,100px);filter:drop-shadow(0 12px 10px rgba(88,42,38,.16))}
@@ -201,8 +201,8 @@
           <article class="carousel-item" data-title="АдиГид" data-kind="Город · Прогулки и истории" data-description="Городские прогулки, которые превращают знакомые улицы в истории." data-category="city" data-link="adiguide_app.html">
             <button class="carousel-card" type="button" aria-label="Выбрать АдиГид"><img src="../assets/adiguide/1.jpg" alt="Улица Казани — маршрут АдиГид" draggable="false"></button><div class="carousel-caption"><strong>АдиГид</strong><span>Город</span></div>
           </article>
-          <article class="carousel-item" data-title="Квита" data-kind="Финансы · Договорённости" data-description="Спокойно вести денежные договорённости и помнить, кто, кому и сколько должен." data-category="money" data-link="debtmate_app.html">
-            <button class="carousel-card" type="button" aria-label="Выбрать Квита"><img class="contain" src="../assets/Forseta/Форсета_Logo.png" alt="Иконка приложения Квита" draggable="false"></button><div class="carousel-caption"><strong>Квита</strong><span>Финансы</span></div>
+          <article class="carousel-item" data-title="Форсета" data-kind="Финансы · Договорённости" data-description="Спокойно вести денежные договорённости и помнить, кто, кому и сколько должен." data-category="money" data-link="forseta_app.html">
+            <button class="carousel-card" type="button" aria-label="Выбрать Форсета"><img class="contain" src="../assets/Forseta/Форсета_Logo.png" alt="Иконка приложения Форсета" draggable="false"></button><div class="carousel-caption"><strong>Форсета</strong><span>Финансы</span></div>
           </article>
         </div>
         <div class="carousel-bottom"><div class="carousel-detail" aria-live="polite"><span class="eyebrow" data-current-kind>Автомобиль · Уход и расходы</span><h3 data-current-title>CarMind</h3><p data-current-description>Всё важное об автомобиле — обслуживание, расходы и напоминания — в одном месте.</p></div><div class="carousel-dock-actions"><a class="dock-open" data-current-link href="../projects.ru.html">Открыть приложение <span aria-hidden="true">↗</span></a><div class="carousel-controls"><button type="button" data-prev aria-label="Предыдущее приложение">←</button><span class="carousel-count" data-count>01 / 04</span><button type="button" data-next aria-label="Следующее приложение">→</button><button type="button" class="pause" data-pause aria-pressed="false">Пауза</button></div></div></div>
@@ -280,9 +280,9 @@
       CarMind: { subtitle: 'Автомобиль под контролем', features: ['Уход', 'Расходы', 'Напоминания'], asset: 'car' },
       'ТуДулиКо': { subtitle: 'Планы и заметки в одном месте', features: ['Задачи', 'Заметки', 'Локальные данные'], asset: '../assets/AppIcon~todoolico.png' },
       'АдиГид': { subtitle: 'Городские прогулки с историями', features: ['Маршруты', 'Истории', 'Город'], asset: '../assets/adiguide/1.jpg' },
-      'Квита': { subtitle: 'Денежные договорённости без неловкости', features: ['Долги', 'Расчёты', 'Напоминания'], asset: '../assets/Forseta/Форсета_Logo.png' }
+      'Форсета': { subtitle: 'Денежные договорённости без неловкости', features: ['Долги', 'Расчёты', 'Напоминания'], asset: '../assets/Forseta/Форсета_Logo.png' }
     };
-    const cardClasses = { CarMind: 'store-card--car', 'ТуДулиКо': 'store-card--todo', 'АдиГид': 'store-card--adi', 'Квита': 'store-card--kvita' };
+    const cardClasses = { CarMind: 'store-card--car', 'ТуДулиКо': 'store-card--todo', 'АдиГид': 'store-card--adi', 'Форсета': 'store-card--forseta' };
     items.forEach((item, index) => {
       const info = storeInfo[item.dataset.title];
       const card = document.createElement('article');
@@ -297,7 +297,7 @@
         const emoji = document.createElement('span'); emoji.className = 'car-emoji'; emoji.setAttribute('aria-hidden', 'true'); emoji.textContent = '🚗'; icon.append(emoji);
       } else {
         const image = document.createElement('img'); image.src = info.asset; image.alt = `Иконка приложения ${item.dataset.title}`; image.loading = 'lazy';
-        if (item.dataset.title === 'Квита') image.classList.add('contain');
+        if (item.dataset.title === 'Форсета') image.classList.add('contain');
         icon.append(image);
       }
       media.append(number, icon);

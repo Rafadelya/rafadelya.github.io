@@ -1,0 +1,473 @@
+/* Arfa — unified glass header */
+.arfa-header-shell {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  padding: clamp(10px, 1.4vw, 18px) clamp(12px, 3vw, 28px) 0;
+  pointer-events: none;
+}
+.arfa-header {
+  pointer-events: auto;
+  position: relative;
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(12px, 2vw, 28px);
+  min-height: 68px;
+  padding: 9px 12px 9px 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.66);
+  color: #171a26;
+  background:
+    linear-gradient(125deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.55) 46%, rgba(255, 255, 255, 0.74));
+  -webkit-backdrop-filter: blur(22px) saturate(1.7);
+  backdrop-filter: blur(22px) saturate(1.7);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 18px 50px -22px rgba(20, 26, 45, 0.34),
+    0 2px 10px rgba(20, 26, 45, 0.06);
+  font-family: 'Manrope', 'Golos Text', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+.arfa-header::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0) 44%);
+  pointer-events: none;
+}
+.arfa-header > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Brand */
+.arfa-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 4px 10px 4px 4px;
+  border-radius: 999px;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.arfa-brand:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+.arfa-brand__mark {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 6px 18px rgba(20, 26, 45, 0.14),
+    inset 0 0 0 1px rgba(20, 26, 45, 0.05);
+  transition: transform 0.35s cubic-bezier(0.22, 0.75, 0.2, 1);
+}
+.arfa-brand__mark img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
+}
+.arfa-brand:hover .arfa-brand__mark {
+  transform: rotate(-4deg) scale(1.04);
+}
+.arfa-brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.arfa-brand__name {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.arfa-brand__tag {
+  margin-top: 5px;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(23, 26, 38, 0.48);
+  white-space: nowrap;
+}
+
+/* Nav */
+.arfa-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+}
+.arfa-nav a {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 14px;
+  border-radius: 999px;
+  color: rgba(23, 26, 38, 0.62);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.arfa-nav a:hover {
+  color: #171a26;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.75);
+}
+.arfa-nav a[aria-current="page"] {
+  color: #fff;
+  background: linear-gradient(160deg, #2e3649, #151a27);
+  box-shadow:
+    0 8px 18px -8px rgba(21, 26, 39, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+/* Tools */
+.arfa-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-self: end;
+}
+.arfa-langs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+.arfa-langs a {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 15px;
+  line-height: 1;
+  text-decoration: none;
+  opacity: 0.62;
+  filter: grayscale(0.45);
+  transition: opacity 0.2s ease, background 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+}
+.arfa-langs a:hover {
+  opacity: 1;
+  filter: none;
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-1px);
+}
+.arfa-langs a.is-active {
+  opacity: 1;
+  filter: none;
+  background: #fff;
+  box-shadow:
+    0 4px 12px -4px rgba(20, 26, 45, 0.4),
+    inset 0 0 0 1px rgba(20, 26, 45, 0.08);
+}
+
+/* Burger */
+.arfa-menu-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.arfa-menu-btn:hover {
+  background: #fff;
+}
+.arfa-burger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.arfa-burger span {
+  display: block;
+  width: 16px;
+  height: 1.6px;
+  margin: 2.6px 0;
+  border-radius: 2px;
+  background: #171a26;
+  transition: transform 0.28s ease, opacity 0.2s ease;
+}
+.arfa-menu-btn[aria-expanded="true"] .arfa-burger span:nth-child(1) {
+  transform: translateY(4.2px) rotate(45deg);
+}
+.arfa-menu-btn[aria-expanded="true"] .arfa-burger span:nth-child(2) {
+  opacity: 0;
+}
+.arfa-menu-btn[aria-expanded="true"] .arfa-burger span:nth-child(3) {
+  transform: translateY(-4.2px) rotate(-45deg);
+}
+
+/* Drawer */
+.arfa-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 240;
+  background: rgba(12, 15, 24, 0.34);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.arfa-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.arfa-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 250;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: min(370px, 88vw);
+  height: 100dvh;
+  padding: 24px 24px calc(24px + env(safe-area-inset-bottom, 0px));
+  border-left: 1px solid rgba(255, 255, 255, 0.85);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(244, 245, 251, 0.9));
+  -webkit-backdrop-filter: blur(28px) saturate(1.7);
+  backdrop-filter: blur(28px) saturate(1.7);
+  box-shadow: -30px 0 80px rgba(15, 20, 35, 0.2);
+  transform: translateX(105%);
+  visibility: hidden;
+  transition: transform 0.4s cubic-bezier(0.22, 0.75, 0.2, 1), visibility 0.4s;
+  color: #171a26;
+  font-family: 'Manrope', 'Golos Text', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+.arfa-drawer.is-open {
+  transform: none;
+  visibility: visible;
+}
+.arfa-drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.arfa-drawer__kicker {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(23, 26, 38, 0.5);
+}
+.arfa-drawer__close {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(23, 26, 38, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  color: #171a26;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.arfa-drawer__close:hover {
+  background: #fff;
+  transform: rotate(90deg);
+}
+.arfa-drawer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.arfa-drawer__nav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 14px;
+  border-radius: 14px;
+  color: #171a26;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, padding 0.2s ease;
+}
+.arfa-drawer__nav a:hover {
+  background: rgba(255, 255, 255, 0.8);
+  padding-left: 18px;
+}
+.arfa-drawer__nav a[aria-current="page"] {
+  background: #171a26;
+  color: #fff;
+}
+.arfa-drawer__nav a::after {
+  content: "→";
+  font-size: 13px;
+  opacity: 0.35;
+}
+.arfa-drawer__langs {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.arfa-drawer__langs-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(23, 26, 38, 0.5);
+}
+.arfa-drawer__langs-row {
+  display: flex;
+  gap: 8px;
+}
+.arfa-drawer__langs-row a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(23, 26, 38, 0.1);
+  background: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  font-weight: 600;
+  color: inherit;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.arfa-drawer__langs-row a:hover {
+  background: #fff;
+}
+.arfa-drawer__langs-row a.is-active {
+  background: #171a26;
+  border-color: #171a26;
+  color: #fff;
+}
+
+body.arfa-menu-open {
+  overflow: hidden;
+}
+
+/* Dark pages (home stage) */
+body.arfa-stage .arfa-header {
+  color: #f6f4fb;
+  border-color: rgba(255, 255, 255, 0.16);
+  background: linear-gradient(130deg, rgba(26, 21, 40, 0.74), rgba(11, 10, 19, 0.58));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 24px 70px -30px rgba(0, 0, 0, 0.85);
+  -webkit-backdrop-filter: blur(22px) saturate(1.4);
+  backdrop-filter: blur(22px) saturate(1.4);
+}
+body.arfa-stage .arfa-header::before {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0) 46%);
+}
+body.arfa-stage .arfa-brand:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+body.arfa-stage .arfa-brand__tag {
+  color: rgba(246, 244, 251, 0.5);
+}
+body.arfa-stage .arfa-nav a {
+  color: rgba(246, 244, 251, 0.64);
+}
+body.arfa-stage .arfa-nav a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+body.arfa-stage .arfa-nav a[aria-current="page"] {
+  color: #171a26;
+  background: linear-gradient(160deg, #f7f4ff, #ded8ff);
+  box-shadow:
+    0 8px 20px -8px rgba(180, 170, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+body.arfa-stage .arfa-langs {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+body.arfa-stage .arfa-langs a {
+  opacity: 0.72;
+  filter: grayscale(0.35);
+}
+body.arfa-stage .arfa-langs a.is-active {
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+}
+body.arfa-stage .arfa-menu-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+body.arfa-stage .arfa-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+body.arfa-stage .arfa-burger span {
+  background: #f6f4fb;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .arfa-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .arfa-nav {
+    display: none;
+  }
+  .arfa-menu-btn {
+    display: grid;
+  }
+}
+@media (max-width: 560px) {
+  .arfa-header {
+    min-height: 60px;
+    padding: 7px 8px 7px 10px;
+    border-radius: 18px;
+    gap: 10px;
+  }
+  .arfa-brand__mark {
+    width: 38px;
+    height: 38px;
+  }
+  .arfa-brand__mark img {
+    width: 28px;
+    height: 28px;
+  }
+  .arfa-brand__name {
+    font-size: 18px;
+  }
+  .arfa-brand__tag {
+    display: none;
+  }
+  .arfa-langs {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arfa-header *,
+  .arfa-drawer,
+  .arfa-overlay {
+    transition: none !important;
+  }
+}

@@ -32,7 +32,21 @@ main.text-center.p-10, main { padding: clamp(48px, 8vw, 96px) var(--gutter, 24px
 
 .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 16px; max-width: 800px; margin: 0 auto; padding: 0; }
 
-.social-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.social-item { display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0; transform: translateY(16px); animation: contact-slide-in 0.5s ease forwards; }
+.social-item:nth-child(1) { animation-delay: 0.05s; }
+.social-item:nth-child(2) { animation-delay: 0.1s; }
+.social-item:nth-child(3) { animation-delay: 0.15s; }
+.social-item:nth-child(4) { animation-delay: 0.2s; }
+.social-item:nth-child(5) { animation-delay: 0.25s; }
+.social-item:nth-child(6) { animation-delay: 0.3s; }
+.social-item:nth-child(7) { animation-delay: 0.35s; }
+.social-item:nth-child(8) { animation-delay: 0.4s; }
+.social-item:nth-child(9) { animation-delay: 0.45s; }
+.social-item:nth-child(10) { animation-delay: 0.5s; }
+
+@keyframes contact-slide-in {
+  to { opacity: 1; transform: translateY(0); }
+}
 
 .social-circle { width: 72px; height: 72px; border-radius: var(--radius); background: #f7f6f3; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.15s, border-color 0.15s; position: relative; overflow: hidden; }
 .social-circle:hover { background: #efefed; border-color: #d3d3d1; }

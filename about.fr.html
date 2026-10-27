@@ -1,1125 +1,243 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>О нас – Arfa</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="js/i18n.js"></script>
-  <script defer src="js/main.js"></script>
+  <title>À propos – Arfa</title>
+  <meta name="description" content="Rafael et Adelia – fondateurs d'Arfa. L'histoire de nos propres produits IT : des initiatives étudiantes et premier business offline aux produits tech.">
+  <link rel="icon" type="image/png" href="assets/Cyrillic_logo_arfa.png">
+  <link rel="stylesheet" href="assets/arfa-header.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    .hero-gradient {
-      background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%);
+    :root{
+      --bg:#faf9f6;
+      --ink:#14161a;
+      --muted:#6b7280;
+      --line:#e5e5e5;
+      --accent:#1a1a2e;
+      --accent-soft:#f0f0f4;
+      --max:980px;
+      --gutter:clamp(24px,5vw,80px);
     }
-    .card-gradient-1 {
-      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
-    }
-    .card-gradient-2 {
-      background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);
-    }
-    .card-gradient-3 {
-      background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
-    }
-    .text-shadow {
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    }
-    .hover-scale {
-      transition: transform 0.5s ease-out;
-    }
-    .hover-scale:hover {
-      transform: scale(1.005);
-    }
-    
-    @keyframes fade-in {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes slide-up {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; transform: scale(0.8); }
-      50% { opacity: 0.6; transform: scale(1.1); }
-    }
-    
-    .star {
-      position: absolute;
-      color: #e2e8f0;
-      animation: twinkle 4s infinite;
-    }
-    
-    .animate-fade-in {
-      animation: fade-in 1s ease-out;
-    }
-    
-    .animate-slide-up {
-      animation: slide-up 1s ease-out 0.5s both;
-    }
-    
-    .icon-lg {
-      width: 32px;
-      height: 32px;
-    }
-    
-    .icon-xl {
-      width: 48px;
-      height: 48px;
-    }
-    
-    .glow-effect {
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-      transition: box-shadow 0.3s ease;
-    }
-    
-    .glow-effect:hover {
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    }
-    
-    @keyframes slide-in-left {
-      from { opacity: 0; transform: translateX(-50px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    
-    @keyframes slide-in-right {
-      from { opacity: 0; transform: translateX(50px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    
-    .slide-in-left {
-      animation: slide-in-left 0.8s ease-out;
-    }
-    
-    .slide-in-right {
-      animation: slide-in-right 0.8s ease-out;
-    }
-    
-    /* Новые анимации для раздела "Как мы работаем" */
-    @keyframes pulse-glow {
-      0%, 100% { 
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-        transform: scale(1);
-      }
-      50% { 
-        box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-        transform: scale(1.02);
-      }
-    }
-    
-    @keyframes rotate-icon {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    
-    @keyframes bounce-in {
-      0% { 
-        opacity: 0; 
-        transform: translateY(50px) scale(0.8);
-      }
-      50% { 
-        opacity: 1; 
-        transform: translateY(-10px) scale(1.05);
-      }
-      100% { 
-        opacity: 1; 
-        transform: translateY(0) scale(1);
-      }
-    }
-    
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
-    
-    /* Новые креативные анимации для "Нашего подхода" */
-    @keyframes elegant-fade-in {
-      0% { 
-        opacity: 0; 
-        transform: translateY(30px) scale(0.95);
-      }
-      100% { 
-        opacity: 1; 
-        transform: translateY(0) scale(1);
-      }
-    }
-    
-    @keyframes smooth-slide-up {
-      0% { 
-        opacity: 0; 
-        transform: translateY(40px);
-      }
-      100% { 
-        opacity: 1; 
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes gentle-scale-in {
-      0% { 
-        opacity: 0; 
-        transform: scale(0.9);
-      }
-      100% { 
-        opacity: 1; 
-        transform: scale(1);
-      }
-    }
-    
-    @keyframes soft-glow {
-      0%, 100% { 
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-      }
-      50% { 
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-      }
-    }
-    
-    @keyframes gentle-bounce {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-    
-    .elegant-fade-in {
-      animation: elegant-fade-in 1.2s ease-out;
-    }
-    
-    .smooth-slide-up {
-      animation: smooth-slide-up 1s ease-out;
-    }
-    
-    .gentle-scale-in {
-      animation: gentle-scale-in 0.8s ease-out;
-    }
-    
-    .soft-glow {
-      animation: soft-glow 3s ease-in-out infinite;
-    }
-    
-    .gentle-bounce {
-      animation: gentle-bounce 2s ease-in-out infinite;
-    }
-    
-    .approach-card {
-      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .approach-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-      transition: left 0.8s ease;
-    }
-    
-    .approach-card:hover::before {
-      left: 100%;
-    }
-    
-    .approach-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-    }
-    
-    .step-number {
-      transition: all 0.4s ease;
-    }
-    
-    .approach-card:hover .step-number {
-      transform: scale(1.08);
-    }
-    
-    .wave-in {
-      animation: wave-in 1s ease-out;
-    }
-    
-    .slide-from-center {
-      animation: slide-from-center 0.8s ease-out;
-    }
-    
-    .float-up {
-      animation: float-up 1.2s ease-out;
-    }
-    
-    .glow-pulse {
-      animation: glow-pulse 2s ease-in-out infinite;
-    }
-    
-    .number-bounce {
-      animation: number-bounce 0.6s ease-in-out;
-    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    img{max-width:100%;display:block}
+    ::selection{background:var(--accent);color:#fff}
 
-    @keyframes pulse-heart {
-      0% { transform: scale(1); }
-      8% { transform: scale(1.04); }
-      16% { transform: scale(1); }
-      24% { transform: scale(1.03); }
-      32% { transform: scale(1); }
-      100% { transform: scale(1); }
-    }
-    .pulse-heart {
-      animation: pulse-heart 2.8s cubic-bezier(0.4,0,0.6,1) infinite;
-    }
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+    .section{padding:clamp(80px,12vw,160px) 0}
+    .section--tight{padding:clamp(40px,8vw,100px) 0}
 
-    /* Яркие современные градиенты для иконок */
-    .icon-gradient-blue { background: linear-gradient(135deg, #38bdf8 0%, #6366f1 100%); }
-    .icon-gradient-pink { background: linear-gradient(135deg, #f472b6 0%, #a78bfa 100%); }
-    .icon-gradient-green { background: linear-gradient(135deg, #34d399 0%, #6ee7b7 100%); }
-    .icon-gradient-yellow { background: linear-gradient(135deg, #fde68a 0%, #fbbf24 100%); }
-    .icon-gradient-lime { background: linear-gradient(135deg, #bef264 0%, #4ade80 100%); }
+    h1,h2,h3{margin:0;font-family:'Cormorant Garamond',Georgia,serif;line-height:1.15}
+    h1{font-size:clamp(44px,7vw,80px);font-weight:500;letter-spacing:-0.02em}
+    h2{font-size:clamp(32px,5vw,56px);font-weight:500;letter-spacing:-0.01em}
+    h3{font-size:clamp(24px,3.5vw,36px);font-weight:500}
+    p{margin:0 0 1.5em}
+    .lead{font-size:clamp(20px,3vw,28px);color:var(--muted);font-weight:400;max-width:70ch}
+    .eyebrow{display:inline-block;font:600 11px/1 Manrope,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+    .hr{height:1px;background:var(--line);border:none;margin:2.5em 0}
 
-    /* Светлые карточки */
-    .card-modern, .card-shape, .card-meaning, .bg-white.bg-opacity-5, .rounded-3xl.p-8, .rounded-xl.p-4, .rounded-xl.p-6 {
-      background: rgba(255,255,255,0.10) !important;
-      color: #e0e0e0 !important; /* серебристый */
-    }
-    .card-modern:hover, .card-shape:hover, .card-meaning:hover {
-      color: #fef08a !important; /* text-yellow-100 */
-    }
+    .hero{min-height:100vh;display:flex;align-items:center;position:relative}
+    .hero-content{position:relative;z-index:1}
+    .hero h1{font-weight:500}
+    .hero .lead{margin-top:1.2em}
 
-    /* Больше воздуха между секциями */
-    section, .mb-16, .mb-12 {
-      margin-bottom: 3.5rem !important;
-      filter: drop-shadow(0 0 32px #f472b6);
-    }
-    .bg-hero {
-      background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-    }
-    .currency-anim {
-      display: inline-block;
-      position: relative;
-      width: 1.5em;
-      height: 1.2em;
-      vertical-align: middle;
-      margin-right: 0.5em;
-    }
-    .currency {
-      position: absolute;
-      left: 0;
-      top: 0;
-      opacity: 0;
-      font-size: 1.2em;
-      color: #111;
-      font-weight: bold;
-      animation: currency-fade-jump 2.6s infinite;
-    }
-    .currency:nth-child(1) { animation-delay: 0s; }
-    .currency:nth-child(2) { animation-delay: 0.65s; }
-    .currency:nth-child(3) { animation-delay: 1.3s; }
-    .currency:nth-child(4) { animation-delay: 1.95s; }
-    @keyframes currency-fade-jump {
-      0% { opacity: 0; transform: translateY(0) scale(1); }
-      10% { opacity: 1; transform: translateY(-10%) scale(1.15); }
-      25% { opacity: 1; transform: translateY(-20%) scale(1.2); }
-      35% { opacity: 0; transform: translateY(0) scale(1); }
-      100% { opacity: 0; transform: translateY(0) scale(1); }
-    }
-    /* Анимация подпрыгивания для emoji рукопожатия */
-    @keyframes handshake-bounce {
-      0% { transform: rotate(0deg) scale(1); }
-      8% { transform: rotate(-18deg) scale(1.08); }
-      16% { transform: rotate(16deg) scale(1.08); }
-      24% { transform: rotate(-14deg) scale(1.08); }
-      32% { transform: rotate(12deg) scale(1.08); }
-      40% { transform: rotate(-10deg) scale(1.08); }
-      48% { transform: rotate(8deg) scale(1.08); }
-      56% { transform: rotate(-6deg) scale(1.08); }
-      64% { transform: rotate(4deg) scale(1.08); }
-      72% { transform: rotate(-2deg) scale(1.08); }
-      80% { transform: rotate(0deg) scale(1); }
-      100% { transform: rotate(0deg) scale(1); }
-    }
-    .handshake-bounce {
-      display: inline-block;
-      animation: handshake-bounce 2.2s cubic-bezier(0.4,0,0.6,1) infinite;
-      will-change: transform;
-    }
-    /* Анимация волны для иконки маркетингового анализа */
-    @keyframes wave-analytics {
-      0% { transform: translateY(0); }
-      20% { transform: translateY(-8%); }
-      40% { transform: translateY(0); }
-      60% { transform: translateY(8%); }
-      80% { transform: translateY(0); }
-      100% { transform: translateY(0); }
-    }
-    .wave-analytics {
-      animation: wave-analytics 2.8s ease-in-out infinite;
-      display: inline-block;
-    }
-    /* Анимированный бар-чарт для маркетингового анализа */
-    .bar-chart-anim {
-      display: flex;
-      align-items: flex-end;
-      height: 1.6em;
-      width: 2em;
-      margin-right: 0.7em;
-    }
-    .bar {
-      width: 0.28em;
-      margin: 0 0.11em;
-      background: #111;
-      border-radius: 0.12em;
-      animation: bar-grow-seq 2.2s infinite;
-      animation-timing-function: cubic-bezier(0.4,0,0.6,1);
-    }
-    .bar1 { animation-delay: 0s; }
-    .bar2 { animation-delay: 0.18s; }
-    .bar3 { animation-delay: 0.36s; }
-    .bar4 { animation-delay: 0.54s; }
-    @keyframes bar-grow-seq {
-      0% { height: 28%; }
-      18% { height: 28%; }
-      28% { height: 85%; }
-      46% { height: 85%; }
-      56% { height: 28%; }
-      100% { height: 28%; }
-    }
-    /* Адаптивное уменьшение шрифта в шапке на мобильных */
-    .glass-header {
-      white-space: nowrap;
-      overflow-x: auto;
-    }
-    .glass-header nav {
-      white-space: nowrap;
-      overflow-x: auto;
-      flex-wrap: nowrap !important;
-    }
-    /*
-    .glass-header .logo-block img {
-      max-width: 2.5rem;
-      height: auto;
-    }
-    @media (max-width: 480px) {
-      .glass-header {
-        font-size: 0.78rem;
-        padding-left: 0.1rem;
-        padding-right: 0.1rem;
-      }
-      .glass-header .logo-block img {
-        max-width: 1.7rem;
-      }
-      .glass-header nav {
-        gap: 0.18rem;
-      }
-      .glass-header .nav-link {
-        font-size: 0.82rem;
-        padding: 0.13rem 0.18rem;
-      }
-    }
-    */
-    @media (max-width: 340px) {
-      .glass-header {
-        font-size: 0.65rem;
-      }
-      .glass-header .nav-link {
-        font-size: 0.7rem;
-        padding: 0.09rem 0.12rem;
-      }
-    }
-    /* Unified Mobile Header */
-    .glass-header {
-      flex-direction: row !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      gap: 1.1em !important;
-      padding: 1.15rem clamp(1.2rem, 5vw, 3rem) !important;
-    }
-    .header-left,
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 0.75em;
-    }
-    .glass-header .glass-logo-img {
-      margin-bottom: 0 !important;
-    }
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 0.45em;
-      min-width: 0;
-    }
-    .header-langs {
-      display: flex;
-      align-items: center;
-      gap: 0.55em;
-    }
-    .mobile-menu-btn {
-      display: none;
-      width: 2.72em;
-      height: 2.72em;
-      border: 1px solid rgba(255, 255, 255, 0.62);
-      border-radius: 0.88em;
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(234, 222, 255, 0.45));
-      backdrop-filter: blur(16px) saturate(1.2);
-      -webkit-backdrop-filter: blur(16px) saturate(1.2);
-      box-shadow: 0 12px 28px rgba(56, 28, 116, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.86);
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 0.22em;
-      padding: 0;
-      cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
-    }
-    .mobile-menu-btn:hover {
-      transform: translateY(-1px);
-      border-color: rgba(168, 85, 247, 0.56);
-      box-shadow: 0 14px 34px rgba(69, 32, 140, 0.34), 0 0 0 3px rgba(224, 196, 255, 0.42);
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(226, 204, 255, 0.58));
-    }
-    .mobile-menu-btn:active {
-      transform: translateY(1px) scale(0.98);
-    }
-    .mobile-menu-btn:focus-visible {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(240, 218, 255, 0.9), 0 12px 28px rgba(56, 28, 116, 0.28);
-    }
-    body.mobile-menu-open .mobile-menu-btn {
-      border-color: rgba(109, 40, 217, 0.55);
-      background: linear-gradient(145deg, rgba(248, 241, 255, 0.92), rgba(227, 209, 255, 0.82));
-      box-shadow: 0 12px 30px rgba(76, 29, 149, 0.32), 0 0 0 3px rgba(224, 196, 255, 0.42);
-    }
-    .menu-bar {
-      display: block;
-      width: 1.22em;
-      height: 2.4px;
-      border-radius: 999px;
-      background: #3f1b7a;
-      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.28);
-      transition: transform 0.25s ease, opacity 0.2s ease;
-    }
-    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(1) {
-      transform: translateY(0.37em) rotate(45deg);
-    }
-    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(2) {
-      opacity: 0;
-    }
-    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(3) {
-      transform: translateY(-0.37em) rotate(-45deg);
-    }
-    .mobile-menu-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 9, 28, 0.5);
-      backdrop-filter: blur(1px);
-      -webkit-backdrop-filter: blur(1px);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-      z-index: 60;
-    }
-    .mobile-menu-drawer {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: min(88vw, 356px);
-      height: 100vh;
-      background: linear-gradient(180deg, rgba(249, 244, 255, 0.98), rgba(239, 231, 255, 0.95));
-      border-left: 1px solid rgba(139, 92, 246, 0.34);
-      border-radius: 1.3rem 0 0 1.3rem;
-      box-shadow: -24px 0 46px rgba(35, 16, 71, 0.26);
-      transform: translateX(104%);
-      transition: transform 0.28s ease;
-      z-index: 70;
-      padding: 1.05em 0.95em 1.2em;
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-      overflow-y: auto;
-    }
-    .mobile-menu-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.15em 0 0.7em;
-      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
-    }
-    .mobile-menu-title {
-      font-family: 'Montserrat', sans-serif;
-      color: #3b1a6f;
-      font-size: 0.78em;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .mobile-menu-close {
-      width: 2.2em;
-      height: 2.2em;
-      border: 1px solid rgba(139, 92, 246, 0.3);
-      border-radius: 0.65em;
-      background: rgba(255, 255, 255, 0.85);
-      color: #3b1a6f;
-      cursor: pointer;
-      transition: border-color 0.2s, transform 0.2s, background 0.2s;
-    }
-    .mobile-menu-close:hover {
-      border-color: rgba(109, 40, 217, 0.5);
-      background: rgba(255, 255, 255, 0.95);
-      transform: scale(1.03);
-    }
-    .mobile-menu-section {
-      padding: 0.15em 0;
-    }
-    .mobile-menu-links {
-      display: grid;
-      gap: 0.58em;
-      padding-top: 0.35em;
-    }
-    .mobile-menu-link {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      text-decoration: none;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.8em;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      color: #2f1a55;
-      background: linear-gradient(180deg, #fff, #f8f4ff);
-      border: 1px solid rgba(139, 92, 246, 0.24);
-      border-radius: 0.78em;
-      padding: 0.78em 0.95em;
-      box-shadow: 0 4px 14px rgba(100, 55, 176, 0.08);
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
-    }
-    .mobile-menu-link:hover {
-      transform: translateX(2px);
-      border-color: rgba(109, 40, 217, 0.46);
-      box-shadow: 0 8px 18px rgba(100, 55, 176, 0.14);
-      background: linear-gradient(180deg, #fff, #f3eaff);
-    }
-    .mobile-menu-label {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.66em;
-      font-weight: 700;
-      color: #6b5b95;
-      margin-bottom: 0.52em;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-    }
-    .mobile-menu-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5em;
-    }
-    .mobile-menu-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(139, 92, 246, 0.22);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.82);
-      color: #513870;
-      text-decoration: none;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7em;
-      font-weight: 700;
-      line-height: 1;
-      padding: 0.5em 0.76em;
-      min-height: 2.25em;
-      box-shadow: 0 2px 8px rgba(95, 57, 164, 0.08);
-      transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
-    }
-    .mobile-menu-chip:hover {
-      border-color: rgba(109, 40, 217, 0.4);
-      background: rgba(255, 255, 255, 0.94);
-    }
-    .mobile-menu-chip.active {
-      border-color: rgba(109, 40, 217, 0.55);
-      background: linear-gradient(180deg, #f1e8ff, #e9ddff);
-      color: #2f175e;
-      box-shadow: 0 8px 16px rgba(109, 40, 217, 0.18);
-    }
-    body.mobile-menu-open {
-      overflow: hidden;
-    }
-    body.mobile-menu-open .mobile-menu-overlay {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    body.mobile-menu-open .mobile-menu-drawer {
-      transform: translateX(0);
-    }
-    @media (max-width: 900px) {
-      .glass-header {
-        gap: 0.7em !important;
-        padding: 0.95em 1.05em !important;
-      }
-      .header-nav,
-      .header-langs {
-        display: none !important;
-      }
-      .mobile-menu-btn {
-        display: inline-flex;
-      }
-      .glass-logo-img {
-        width: 52px !important;
-        height: 52px !important;
-      }
-    }
-    @media (max-width: 500px) {
-      .glass-header {
-        gap: 0.45em !important;
-        padding: 0.82em 0.92em !important;
-      }
-      .header-left,
-      .header-right {
-        gap: 0.45em;
-      }
-      .glass-logo-img {
-        width: 46px !important;
-        height: 46px !important;
-      }
-      .mobile-menu-drawer {
-        width: min(92vw, 340px);
-      }
+    .photo-block{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);align-items:center}
+    .photo-block--reverse{direction:rtl}.photo-block--reverse > *{direction:ltr}
+    .photo-img{position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden;background:var(--accent-soft)}
+    .photo-img img{width:100%;height:100%;object-fit:cover}
+    .photo-caption{margin-top:12px;font-size:14px;color:var(--muted);font-style:italic}
+
+    .content-block{max-width:80ch}
+    .content-block h2{margin-bottom:0.8em}
+    .content-block p{font-size:1.05em;line-height:1.85}
+
+    .quote{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);font-style:italic;line-height:1.3;color:var(--ink);margin:2.5em 0;padding-left:1.5em;border-left:2px solid var(--accent)}
+    .quote small{display:block;margin-top:0.8em;font-style:normal;font-size:0.6em;color:var(--muted);font-family:Manrope,sans-serif}
+
+    .milestone{display:flex;align-items:baseline;gap:1.5em;padding:2em 0;border-top:1px solid var(--line)}
+    .milestone:first-child{border-top:none}
+    .milestone-num{font-family:'Cormorant Garamond',serif;font-size:clamp(64px,10vw,120px);font-weight:500;color:var(--line);line-height:1;flex-shrink:0}
+    .milestone-text{font-size:1.1em;line-height:1.7}
+
+    .values{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,48px);margin-top:3em}
+    .value-card{padding:2em 1.5em;background:var(--accent-soft);border-radius:4px;transition:transform .3s,box-shadow .3s}
+    .value-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -20px rgba(0,0,0,.15)}
+    .value-card h3{margin-bottom:0.8em}
+    .value-card p{margin:0;font-size:0.95em;color:var(--muted)}
+
+    .cta{text-align:center;padding:4em 1em}
+    .cta h2{margin-bottom:0.5em}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border:1px solid var(--ink);background:var(--ink);color:#fff;font:600 13px/1 Manrope,monospace;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:999px;transition:background .2s,color .2s}
+    .btn:hover{background:#fff;color:var(--ink)}
+
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+    .reveal.visible{opacity:1;transform:none}
+
+    :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+    @media(max-width:900px){
+      .photo-block{grid-template-columns:1fr;gap:24px}
+      .photo-block--reverse{direction:ltr}
+      .values{grid-template-columns:1fr}
+      .milestone{flex-direction:column;align-items:flex-start;gap:0.5em}
+      .milestone-num{font-size:clamp(48px,12vw,80px)}
     }
   </style>
-  <link rel="stylesheet" href="assets/arfa-header.css">
 </head>
-<body class="bg-slate-900 text-gray-100">
-  <div class="arfa-header-shell">
-  <header class="arfa-header" aria-label="Navigation principale">
-    <a class="arfa-brand" href="index.fr.html" aria-label="Arfa — accueil">
-      <span class="arfa-brand__mark"><img src="assets/Cyrillic_logo_arfa.png" alt=""></span>
-      <span class="arfa-brand__text"><span class="arfa-brand__name">Arfa</span><span class="arfa-brand__tag"></span></span>
-    </a>
-    <nav class="arfa-nav" aria-label="Navigation principale">
-      <a href="index.fr.html">Accueil</a>
-      <a href="about.fr.html" aria-current="page">À propos</a>
-      <a href="MarketPlace/Polka.fr.html">Projets</a>
-      <a href="blog/blog.fr.html">Blog</a>
-      <a href="contact.fr.html">Contact</a>
-    </nav>
-    <div class="arfa-tools">
-      <div class="arfa-langs" aria-label="Langue">
-        <a href="about.en.html" aria-label="English" title="English">🇬🇧</a>
-        <a href="about.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
-        <a href="about.fr.html" class="is-active" aria-label="Français" title="Français">🇫🇷</a>
-        <a href="about.ru.html" aria-label="Русский" title="Русский">🇷🇺</a>
-      </div>
-      <button class="arfa-menu-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
-        <span class="arfa-burger"><span></span><span></span><span></span></span>
-      </button>
-    </div>
-  </header>
-</div>
-<div class="arfa-overlay" id="arfaOverlay"></div>
-<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Menu">
-  <div class="arfa-drawer__head">
-    <span class="arfa-drawer__kicker">Menu</span>
-    <button class="arfa-drawer__close" type="button" aria-label="Fermer le menu" data-arfa-menu-close>×</button>
-  </div>
-  <nav class="arfa-drawer__nav" aria-label="Navigation principale">
-      <a href="index.fr.html">Accueil</a>
-      <a href="about.fr.html" aria-current="page">À propos</a>
-      <a href="MarketPlace/Polka.fr.html">Projets</a>
-      <a href="blog/blog.fr.html">Blog</a>
-      <a href="contact.fr.html">Contact</a>
-  </nav>
-  <div class="arfa-drawer__langs">
-    <span class="arfa-drawer__langs-label">Langue</span>
-    <div class="arfa-drawer__langs-row">
-        <a href="about.en.html">🇬🇧 EN</a>
-        <a href="about.de.html">🇩🇪 DE</a>
-        <a href="about.fr.html" class="is-active">🇫🇷 FR</a>
-        <a href="about.ru.html">🇷🇺 RU</a>
-    </div>
-  </div>
-</aside>
-  <!-- Глобальные звёздочки на фоне -->
-  <div class="global-stars absolute inset-0 pointer-events-none" style="z-index:0;">
-    <span class="star" style="top: 10%; left: 8%; font-size: 1.2rem;">✦</span>
-    <span class="star" style="top: 18%; right: 12%; font-size: 0.9rem;">•</span>
-    <span class="star" style="top: 30%; left: 22%; font-size: 1.1rem;">✦</span>
-    <span class="star" style="top: 45%; right: 18%; font-size: 1.3rem;">•</span>
-    <span class="star" style="top: 60%; left: 15%; font-size: 0.8rem;">✦</span>
-    <span class="star" style="top: 75%; right: 10%; font-size: 1.2rem;">•</span>
-    <span class="star" style="top: 85%; left: 30%; font-size: 1.1rem;">✦</span>
-    <span class="star" style="top: 90%; right: 20%; font-size: 1.0rem;">•</span>
-  </div>
+<body>
+  <script src="assets/arfa-header.js" defer></script>
 
-  <!-- Hero Section -->
-  <section class="bg-hero text-white py-20 relative overflow-hidden">
-    <!-- Мерцающие звёздочки -->
-    <div class="absolute inset-0">
-      <span class="star" style="top: 15%; left: 10%; font-size: 1.2rem;">✦</span>
-      <span class="star" style="top: 25%; right: 15%; font-size: 0.8rem;">•</span>
-      <span class="star" style="top: 40%; left: 20%; font-size: 1rem;">✦</span>
-      <span class="star" style="top: 60%; right: 25%; font-size: 1.1rem;">•</span>
-      <span class="star" style="top: 75%; left: 15%; font-size: 0.8rem;">✦</span>
-      <span class="star" style="top: 85%; right: 10%; font-size: 1.2rem;">•</span>
-    </div>
-    
-    <div class="container mx-auto px-6 text-center relative z-10">
-      <!-- Анимированное фото -->
-      <div class="relative mb-12">
-        <div class="relative mx-auto w-64 h-80 transform hover:scale-105 transition-all duration-700 pulse-heart">
-          <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20">
-            <img src="assets/Image 960x1280.jpg" alt="Рафаэль и Аделя" 
-                 class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
-          </div>
-        </div>
+  <main>
+    <section class="section hero">
+      <div class="wrap hero-content reveal">
+        <span class="eyebrow">À propos</span>
+        <h1>Nous créons ce en<br>quoi nous croyons</h1>
+        <p class="lead">Rafael et Adelia. L'histoire de nos propres produits IT : des initiatives étudiantes et premier business offline — aux produits tech.</p>
       </div>
-      
-      <!-- Основной заголовок -->
-      <div class="mb-8">
-        <h1 class="text-6xl md:text-7xl font-bold mb-4 text-shadow animate-fade-in">
-          <span class="bg-gradient-to-r from-gray-200 to-white bg-clip-text text-transparent">
-            Raphaël
-          </span>
-          <span class="text-white mx-4">&</span>
-          <span class="bg-gradient-to-r from-gray-300 to-gray-200 bg-clip-text text-transparent">
-            Adelia
-          </span>
-        </h1>
-        
-        <div class="text-2xl md:text-3xl font-light opacity-90 mb-6">
-          <span class="inline-block animate-slide-up">Ensemble depuis plus de cinq ans</span>
-        </div>
-      </div>
-      
-      <!-- Описание -->
-      <div class="max-w-4xl mx-auto">
-        <div class="bg-white bg-opacity-5 backdrop-blur-sm rounded-2xl p-8 border border-white border-opacity-10 glow-effect">
-          <p class="text-xl md:text-2xl leading-relaxed font-light">
-            Nous créons des produits qui rassemblent
-          </p>
-          
-          <!-- Иконки компетенций -->
-          <div class="flex justify-center items-center space-x-8 mt-6 mb-4">
-            <div class="flex flex-col items-center group">
-              <div class="bg-gradient-to-br from-gray-600 to-gray-800 rounded-full p-3 mb-2 group-hover:from-gray-500 group-hover:to-gray-700 transition-all duration-300 shadow-lg">
-                <svg class="icon-lg text-white" viewBox="0 0 24 24">
-                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/>
-                </svg>
-              </div>
-              <span class="text-sm font-medium">Logique métier</span>
-            </div>
-            <div class="flex flex-col items-center group">
-              <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-full p-3 mb-2 group-hover:from-blue-500 group-hover:to-blue-700 transition-all duration-300 shadow-lg">
-                <svg class="icon-lg text-white" viewBox="0 0 24 24">
-                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                </svg>
-              </div>
-              <span class="text-sm font-medium">Analyse</span>
-            </div>
-            <div class="flex flex-col items-center group">
-              <div class="bg-gradient-to-br from-green-600 to-green-800 rounded-full p-3 mb-2 group-hover:from-green-500 group-hover:to-green-700 transition-all duration-300 shadow-lg">
-                <svg class="icon-lg text-white" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-              </div>
-              <span class="text-sm font-medium">Design</span>
-            </div>
-            <div class="flex flex-col items-center group">
-              <div class="bg-gradient-to-br from-purple-600 to-purple-800 rounded-full p-3 mb-2 group-hover:from-purple-500 group-hover:to-purple-700 transition-all duration-300 shadow-lg">
-                <svg class="icon-lg text-white" viewBox="0 0 24 24">
-                  <path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.5 2.54l2.6 1.53c.56-1.24.9-2.62.9-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/>
-                </svg>
-              </div>
-              <span class="text-sm font-medium">Technologie</span>
-            </div>
-          </div>
-          
-          <div class="mt-6 pt-6 border-t border-white border-opacity-10">
-            <p class="text-lg opacity-80">
-              Arfa — où chaque idée devient un produit fonctionnel
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <main class="py-16">
-    <div class="container mx-auto px-6">
-      <!-- À propos de nous Block -->
-      <div class="mb-16">
-        <div class="card-gradient-1 rounded-3xl p-8 md:p-12 text-white shadow-2xl hover-scale relative overflow-hidden slide-in-left glow-effect bg-white bg-opacity-5 backdrop-blur-sm mb-16">
-          <div class="relative z-10">
-            <div class="flex items-center mb-8">
-              <div class="bg-white bg-opacity-10 rounded-full p-4 mr-6 backdrop-blur-sm">
-                <svg class="icon-xl text-white" viewBox="0 0 24 24">
-                  <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-                </svg>
-              </div>
-              <div>
-                <h2 class="text-4xl font-bold">À propos de nous <span class="ml-2">👨‍💻👩‍💻</span></h2>
-                <p class="text-lg opacity-90">Raphaël & Adelia</p>
-              </div>
-            </div>
-            <div class="grid lg:grid-cols-3 gap-8">
-              <div class="lg:col-span-2">
-                <div class="bg-white bg-opacity-5 rounded-2xl p-6 backdrop-blur-sm mb-6 glow-effect">
-                  <p class="text-lg mb-4 leading-relaxed">
-                    Nous sommes Raphaël et Adelia. Ensemble depuis plus de cinq ans, nous avons appris, essayé, lancé, corrigé et mené à bien des projets — dans la vie comme dans notre travail.
-                  </p>
-                  <p class="text-lg leading-relaxed">
-                    Notre Arfa, c’est une équipe de deux personnes. Nous parcourons ensemble tout le chemin : de la première idée à l’assemblage final et au lancement.
-                  </p>
-                </div>
-                <div class="grid md:grid-cols-2 gap-4">
-                  <div class="bg-white bg-opacity-5 rounded-xl p-4 backdrop-blur-sm glow-effect">
-                    <div class="flex items-center mb-2">
-                      <svg class="icon-lg text-white mr-3" viewBox="0 0 24 24">
-                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
-                      </svg>
-                      <h4 class="font-bold">Formation</h4>
-                    </div>
-                    <p class="text-sm opacity-90">Diplôme universitaire en économie avec spécialisation en entrepreneuriat et innovations</p>
-                  </div>
-                  <div class="bg-white bg-opacity-5 rounded-xl p-4 backdrop-blur-sm glow-effect">
-                    <div class="flex items-center mb-2">
-                      <svg class="icon-lg text-white mr-3" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                      </svg>
-                      <h4 class="font-bold">IA & Big Data</h4>
-                    </div>
-                    <p class="text-sm opacity-90">Reconversion professionnelle en « intelligence artificielle et big data »</p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h3 class="text-2xl font-bold mb-4 flex items-center">
-                  <svg class="icon-lg text-white mr-2" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                  Nos produits
-                </h3>
-                <div class="space-y-3">
-                  <div class="bg-white bg-opacity-5 rounded-xl p-4 backdrop-blur-sm border border-white border-opacity-10 hover:bg-opacity-10 transition-all duration-300 glow-effect">
-                    <div class="flex items-center justify-between mb-2">
-                      <h4 class="font-bold text-lg">AdiGuide</h4>
-                      <span class="text-sm bg-white bg-opacity-10 px-2 py-1 rounded-full">Mobile</span>
-                    </div>
-                    <p class="text-sm opacity-90">Application mobile avec audioguides</p>
-                  </div>
-                  <div class="bg-white bg-opacity-5 rounded-xl p-4 backdrop-blur-sm border border-white border-opacity-10 hover:bg-opacity-10 transition-all duration-300 glow-effect">
-                    <div class="flex items-center justify-between mb-2">
-                      <h4 class="font-bold text-lg">CyberConnect</h4>
-                      <span class="text-sm bg-white bg-opacity-10 px-2 py-1 rounded-full">Appareil</span>
-                    </div>
-                    <p class="text-sm opacity-90">Appareil pour agréger des connexions Internet</p>
-                  </div>
-                  <div class="bg-white bg-opacity-5 rounded-xl p-4 backdrop-blur-sm border border-white border-opacity-10 hover:bg-opacity-10 transition-all duration-300 glow-effect">
-                    <div class="flex items-center justify-between mb-2">
-                      <h4 class="font-bold text-lg">Forseta</h4>
-                      <span class="text-sm bg-white bg-opacity-10 px-2 py-1 rounded-full">Service</span>
-                    </div>
-                    <p class="text-sm opacity-90">Service pour la gestion des dettes et engagements</p>
-                  </div>
-                  <div class="bg-white bg-opacity-5 rounded-xl p-4 backdrop-blur-sm border border-white border-opacity-10 hover:bg-opacity-10 transition-all duration-300 glow-effect">
-                    <div class="flex items-center justify-between mb-2">
-                      <h4 class="font-bold text-lg">ToDooliCo</h4>
-                      <span class="text-sm bg-white bg-opacity-10 px-2 py-1 rounded-full">Tracker</span>
-                    </div>
-                    <p class="text-sm opacity-90">Tracker pour une planification simple</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="mt-8 grid md:grid-cols-2 gap-6">
-              <div class="bg-white bg-opacity-5 rounded-xl p-6 backdrop-blur-sm glow-effect">
-                <div class="flex items-center mb-3">
-                  <span class="bar-chart-anim">
-                    <span class="bar bar1"></span>
-                    <span class="bar bar2"></span>
-                    <span class="bar bar3"></span>
-                    <span class="bar bar4"></span>
-                  </span>
-                  <h4 class="font-bold text-lg">Analyse marketing</h4>
-                </div>
-                <p class="text-sm opacity-90">Cycle complet d’analyse pour une agence d’intérim : enquêtes auprès des employés et clients, test des concurrents, aide à la refonte du logo et au changement de nom, check-lists et recommandations</p>
-              </div>
-              <div class="bg-white bg-opacity-5 rounded-xl p-6 backdrop-blur-sm glow-effect">
-                <div class="flex items-center mb-3">
-                  <h4 class="font-bold text-lg flex items-center gap-2">
-                    <span class="currency-anim mr-2">
-                      <span class="currency">₽</span>
-                      <span class="currency">€</span>
-                      <span class="currency">£</span>
-                      <span class="currency">₸</span>
-                    </span>
-                    Conseil financier
-                  </h4>
-                </div>
-                <p class="text-sm opacity-90">Suivi du modèle financier et de l’économie d’un magasin d’électronique, avec accompagnement continu</p>
-              </div>
-            </div>
-          </div>
+    <section class="section">
+      <div class="wrap photo-block reveal">
+        <div class="photo-img">
+          <img src="assets/about/rafael-adelia-together.jpg" alt="Rafael et Adelia" loading="eager">
+        </div>
+        <div>
+          <p>Nous nous sommes connus au lycée. Au lieu de prendre des chemins séparés, nous avons choisi un commun — économie de l'entrepreneuriat et de l'innovation. Il nous semblait que cette formation nous permettrait un jour de créer notre propre affaire.</p>
+          <p>Dès la première année, nous avons repéré les programmes d'entrepreneuriat technologique et les concours de startups étudiantes. Les devoirs de cours se sont peu à peu complétés par nos propres initiatives.</p>
+          <p>En deuxième année, nous avons organisé de zéro une société de recherche étudiante et obtenu une subvention de 36 000 roubles pour son développement. Ce fut notre première expérience où il ne suffisait pas de proposer une idée — il fallait organiser le travail, s'accorder avec les gens et mener le projet à son terme.</p>
         </div>
       </div>
-      <!-- Nous travaillons avec vous Block -->
-      <div class="mb-16">
-        <div class="card-gradient-2 rounded-3xl p-8 md:p-12 text-white shadow-2xl hover-scale relative overflow-hidden slide-in-right glow-effect bg-white bg-opacity-5 backdrop-blur-sm mb-16">
-          <div class="flex items-center mb-8">
-            <div class="bg-white bg-opacity-10 rounded-full p-4 mr-6 backdrop-blur-sm soft-glow">
-              <svg class="icon-xl text-white" viewBox="0 0 24 24">
-                <path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.5 2.54l2.6 1.53c.56-1.24.9-2.62.9-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.06.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.06-4.09l-2.6-1.53C16.17 17.98 14.21 19 12 19z"/>
-              </svg>
-            </div>
-            <div>
-              <h2 class="text-4xl font-bold">Nous travaillons avec vous</h2>
-              <p class="text-xl opacity-90 mt-2">Pas seulement faire — mais faire grandir</p>
-            </div>
-          </div>
-          <div class="bg-white bg-opacity-10 rounded-2xl p-8 mb-8 backdrop-blur-sm glow-effect pulse-glow">
-            <p class="text-lg md:text-xl leading-relaxed mb-6">
-              Nous ne faisons pas que réaliser des interfaces. Nous creusons, posons des questions, discutons et améliorons le produit avec vous. Pour nous, l’essentiel n’est pas seulement d’accomplir une tâche, mais d’aider votre entreprise à se développer.
-            </p>
-            <div class="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h4 class="text-xl font-bold mb-4 flex items-center">
-                  <svg class="icon-lg text-white mr-3" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                  Ce que nous faisons
-                </h4>
-                <ul class="space-y-3">
-                  <li class="flex items-center"><span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center mr-3 text-sm">🎨</span>Design sur Figma</li>
-                  <li class="flex items-center"><span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center mr-3 text-sm">💻</span>Nous écrivons du code</li>
-                  <li class="flex items-center"><span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center mr-3 text-sm">✍️</span>Nous rédigeons des textes</li>
-                  <li class="flex items-center"><span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center mr-3 text-sm">🧩</span>Nous concevons des architectures</li>
-                  <li class="flex items-center"><span class="bg-white bg-opacity-20 rounded-full w-6 h-6 flex items-center justify-center mr-3 text-sm">🤝</span>Nous trouvons des prestataires</li>
-                </ul>
-              </div>
-              <div>
-                <h4 class="text-xl font-bold mb-4 flex items-center">
-                  <span class="text-2xl mr-3 handshake-bounce">🤝</span>
-                  Notre approche
-                </h4>
-                <ol class="space-y-3 list-decimal list-inside">
-                  <li>
-                    <span class="font-semibold">Comprendre la mission dans son contexte</span> — nous posons beaucoup de questions pour saisir votre vision et vos objectifs.
-                  </li>
-                  <li>
-                    <span class="font-semibold">Nous concentrer sur l’essentiel</span> — nous identifions le cœur du sujet et éliminons le superflu.
-                  </li>
-                  <li>
-                    <span class="font-semibold">Analyser l’idée</span> — nous évaluons son potentiel et anticipons les points faibles.
-                  </li>
-                  <li>
-                    <span class="font-semibold">Faire ensemble</span> — nous allons du premier prototype jusqu’à la solution finale, main dans la main.
-                  </li>
-                </ol>
-              </div>
-            </div>
-          </div>
-          <div class="mt-8 p-8 bg-white bg-opacity-5 rounded-2xl glow-effect elegant-fade-in" style="animation-delay: 1s;">
-            <div class="text-center">
-              <h3 class="text-2xl font-bold mb-4">En fin de compte</h3>
-              <p class="text-lg leading-relaxed">
-                Nous créons non seulement un produit fonctionnel, mais un outil de croissance. Chaque projet est une collaboration dans laquelle nous nous investissons autant que vous.
-              </p>
-            </div>
-          </div>
+    </section>
+
+    <hr class="hr reveal">
+
+    <section class="section">
+      <div class="wrap photo-block photo-block--reverse reveal">
+        <div class="photo-img">
+          <img src="assets/about/cyberkidz-workplace.jpg" alt="Espace de travail CyberKids" loading="lazy">
+        </div>
+        <div>
+          <span class="eyebrow">Premier business</span>
+          <h2>Tout ne commence pas par une idée</h2>
+          <p>En troisième année, nous avons lancé avec un ami « CyberKids » — notre premier business offline. L'idée venait de l'ami, qui était alors salarié. Nous avons réparti les rôles : lui — méthodologie, Adelia — design, moi — juridique, économie, finances et organisation du business.</p>
+          <p>Dans la pratique, tout était bien moins formel. Nous allions ensemble chercher du matériel, assemblions les postes de travail, gérions la paperasse et résolvions les tâches quotidiennes. Nous ouvrions le matin pour que les visiteurs puissent s'inscrire ou imprimer des documents. Nous ne nous versions pas de salaire — l'argent partait dans le loyer.</p>
+          <p>Cette expérience nous a montré le business sous un autre angle. Il ne suffit pas d'inventer un service et d'en organiser la livraison : il faut comprendre de quoi vit le projet, quels coûts il porte et si le modèle choisi justifie les efforts investis.</p>
+          <p>Le point offline a fermé à l'automne 2024, la clôture juridique s'est achevée en février 2025. Nous n'avons pas continué ce modèle, mais nous en avons gardé l'expérience pour les projets suivants.</p>
         </div>
       </div>
-      <!-- Ce qui compte pour nous Block -->
-      <div class="mb-16">
-        <div class="card-gradient-3 rounded-3xl p-8 md:p-12 text-white shadow-2xl hover-scale relative overflow-hidden slide-in-left glow-effect bg-white bg-opacity-5 backdrop-blur-sm mb-16">
-          <div class="flex items-center mb-8">
-            <div class="bg-white bg-opacity-10 rounded-full p-4 mr-6 backdrop-blur-sm">
-              <svg class="icon-xl text-white" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
-            </div>
-            <h2 class="text-4xl font-bold">Ce qui compte pour nous</h2>
-          </div>
-          <div class="grid md:grid-cols-2 gap-8">
-            <div>
-              <div class="space-y-6">
-                <div class="bg-white bg-opacity-5 rounded-xl p-6 glow-effect">
-                  <h3 class="text-xl font-bold mb-2">Du sens dans le projet</h3>
-                  <p class="text-lg">qu’il ait une raison d’être</p>
-                </div>
-                <div class="bg-white bg-opacity-5 rounded-xl p-6 glow-effect">
-                  <h3 class="text-xl font-bold mb-2">Un dialogue vivant</h3>
-                  <p class="text-lg">que ce soit un échange, pas juste un cahier des charges</p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="space-y-6">
-                <div class="bg-white bg-opacity-5 rounded-xl p-6 glow-effect">
-                  <h3 class="text-xl font-bold mb-2">Des solutions réfléchies</h3>
-                  <p class="text-lg">pas seulement « comme tout le monde »</p>
-                </div>
-                <div class="bg-white bg-opacity-5 rounded-xl p-6 glow-effect">
-                  <h3 class="text-xl font-bold mb-2">Une participation conjointe</h3>
-                  <p class="text-lg">que vous soyez impliqué autant que nous</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="mt-8 p-6 bg-white bg-opacity-5 rounded-xl glow-effect">
-            <p class="text-lg leading-relaxed">
-              Arfa, c’est une pensée partagée, le souci du détail et un travail honnête orienté vers le résultat. Ce qui nous importe, ce n’est pas seulement le produit, mais aussi le chemin que nous parcourons ensemble pour y arriver.
-            </p>
-          </div>
+    </section>
+
+    <hr class="hr reveal">
+
+    <section class="section">
+      <div class="wrap reveal">
+        <span class="eyebrow">Pivot vers les produits</span>
+        <h2>Nous avons compris qu'on peut lancer autrement</h2>
+        <p>Après le premier business, nous avons commencé à regarder la création de produits différemment. Nous voulions lancer vite, ne pas gaspiller de ressources et valider les idées avant des investissements sérieux. Si aucun bureau physique n'est nécessaire — on peut renoncer aux coûts fixes et se concentrer sur le produit.</p>
+        <p>Pour nous, ce n'est pas seulement une façon d'économiser. C'est une approche de l'entrepreneuriat tech : formuler une hypothèse, trouver comment la tester, obtenir un retour, décider de la suite. Toute idée n'a pas à devenir un gros business. Parfois il est plus sage de pivoter à temps que de continuer à investir dans une solution qui ne tient pas ses promesses.</p>
+        <p>Avec cette compréhension, nous avons continué à travailler sur nos propres projets et à chercher des moyens de les développer.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap reveal">
+        <span class="eyebrow">Étapes clés</span>
+        <h2>Des premières tentatives — aux produits tech</h2>
+        <div class="milestone"><span class="milestone-num">36 000</span><div class="milestone-text">Subvention pour le développement de la société de recherche étudiante (2e année)</div></div>
+        <div class="milestone"><span class="milestone-num">1 M</span><div class="milestone-text">Grant « Student Startup » (1 M RUB) pour AdiGuide — application mobile avec audioguides pour promenades urbaines autonomes</div></div>
+        <div class="milestone"><span class="milestone-num">4+</span><div class="milestone-text">Produits IT propres : Forseta, ToDooliCo, CarMind, AdiGuide et autres à différents stades</div></div>
+      </div>
+    </section>
+
+    <hr class="hr reveal">
+
+    <section class="section">
+      <div class="wrap photo-block reveal">
+        <div class="photo-img">
+          <img src="assets/about/rafael-adelia-portrait.jpg" alt="Rafael et Adelia – portrait" loading="lazy">
+        </div>
+        <div>
+          <span class="eyebrow">Pourquoi ensemble</span>
+          <h2>Pas seulement partenaires d'affaires</h2>
+          <p>Nous nous sommes connus bien avant les premiers projets. Notre partenariat n'est pas né d'une rencontre d'affaires hasardeuse. Nous nous comprenons bien, connaissons les forces de l'autre et savons avancer ensemble de l'idée au résultat.</p>
+          <p>Chacun a son focus professionnel. Adelia travaille le design et l'expérience utilisateur. Je m'occupe de la logique business, de l'analytics, de la stratégie et de la technique. Mais ce ne sont pas des frontières rigides — nous discutons les décisions à deux et participons tous deux au développement produits.</p>
+          <p>Ce qui compte pour nous, ce n'est pas seulement répartir les tâches, mais comprendre pourquoi nous les faisons et quel résultat nous visons.</p>
         </div>
       </div>
-    </div>
+    </section>
+
+    <hr class="hr reveal">
+
+    <section class="section">
+      <div class="wrap reveal">
+        <span class="eyebrow">Notre approche</span>
+        <h2>Comment nous travaillons</h2>
+        <div class="values">
+          <article class="value-card">
+            <h3>Test rapide d'hypothèses</h3>
+            <p>Pas d'engagement sans validation. Formuler — tester — décider.</p>
+          </article>
+          <article class="value-card">
+            <h3>Pensée économique</h3>
+            <p>Comprendre l'économie unitaire, les coûts et le modèle avant d'écrire du code.</p>
+          </article>
+          <article class="value-card">
+            <h3>Design et tech ensemble</h3>
+            <p>Ne pas séparer « à quoi ça ressemble » et « comment ça marche ». Designer comme un tout.</p>
+          </article>
+          <article class="value-card">
+            <h3>Honnêteté envers soi-même</h3>
+            <p>Si l'idée ne tient pas ses promesses — pivoter, pas continuer à investir.</p>
+          </article>
+          <article class="value-card">
+            <h3>Produits auxquels on croit</h3>
+            <p>Construire ce qu'on voudrait utiliser soi-même. Pas pour le portfolio.</p>
+          </article>
+          <article class="value-card">
+            <h3>Petite équipe — décisions rapides</h3>
+            <p>Ne pas sur-complexifier les processus là où c'est inutile. Décider et avancer.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hr reveal">
+
+    <section class="section">
+      <div class="wrap reveal" style="max-width:70ch">
+        <span class="eyebrow">Aujourd'hui</span>
+        <h2>« Arfa » — le prochain chapitre</h2>
+        <p>Nous développons nos propres produits IT et prenons des missions où nous pouvons combiner approche business, analytics, design et développement. Une petite équipe nous permet de décider vite, tester des hypothèses et ne pas complexifier les processus là où ce n'est pas nécessaire.</p>
+        <p>Nous ne promettons pas que chaque idée deviendra un produit à succès. Au lieu de cela, nous essayons de comprendre le problème, valider les hypothèses et trouver une solution qui a du sens pour l'utilisateur et peut marcher comme business.</p>
+        <p>La base d'« Arfa » — notre expérience, la confiance mutuelle et l'envie de créer des choses en lesquelles nous croyons nous-mêmes.</p>
+        <p class="quote"><strong>Nous sommes Rafael et Adelia. Et nous continuons à bâtir le nôtre.</strong></p>
+      </div>
+    </section>
+
+    <section class="section cta reveal">
+      <div class="wrap">
+        <h2>Envie de travailler avec nous ?</h2>
+        <p style="color:var(--muted);margin-bottom:2em">Nous sommes ouverts aux défis intéressants et aux partenariats. Écrivez-nous — discutons-en.</p>
+        <a class="btn" href="contact.fr.html">Nous contacter</a>
+        <a class="btn" style="background:#fff;color:var(--ink);margin-left:16px" href="projects.fr.html">Voir les projets</a>
+      </div>
+    </section>
   </main>
 
-  <footer class="text-center py-6 bg-slate-800 text-gray-400 border-t border-slate-700 mt-12">
-    <p class="text-sm" data-i18n="footer.copy">© 2026 Arfa. Tous droits réservés.</p>
+  <footer style="padding:4em var(--gutter);border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px">
+    <p>© 2025 Arfa. Tous droits réservés.</p>
+    <p style="margin-top:0.5em"><a href="contact.fr.html" style="color:var(--muted);text-decoration:underline">Contact</a> · <a href="projects.fr.html" style="color:var(--muted);text-decoration:underline">Projets</a></p>
   </footer>
 
-
-
   <script>
-    function setMobileMenuState(isOpen) {
-      const body = document.body;
-      const menuBtn = document.getElementById('mobileMenuBtn');
-      const menuDrawer = document.getElementById('mobileMenuDrawer');
-      if (!menuBtn || !menuDrawer) return;
-      body.classList.toggle('mobile-menu-open', isOpen);
-      menuBtn.setAttribute('aria-expanded', String(isOpen));
-      menuDrawer.setAttribute('aria-hidden', String(!isOpen));
-    }
-
-    function toggleMobileMenu(forceState) {
-      const shouldOpen = typeof forceState === 'boolean'
-        ? forceState
-        : !document.body.classList.contains('mobile-menu-open');
-      setMobileMenuState(shouldOpen);
-    }
-
-    function initMobileMenu() {
-      const menuBtn = document.getElementById('mobileMenuBtn');
-      const menuOverlay = document.getElementById('mobileMenuOverlay');
-      const menuClose = document.getElementById('mobileMenuClose');
-      const menuDrawer = document.getElementById('mobileMenuDrawer');
-      if (!menuBtn || !menuOverlay || !menuClose || !menuDrawer) return;
-
-      menuBtn.addEventListener('click', () => toggleMobileMenu());
-      menuOverlay.addEventListener('click', () => toggleMobileMenu(false));
-      menuClose.addEventListener('click', () => toggleMobileMenu(false));
-      menuDrawer.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => toggleMobileMenu(false));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') toggleMobileMenu(false);
-      });
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 900) toggleMobileMenu(false);
-      });
-    }
-
-    document.addEventListener('DOMContentLoaded', initMobileMenu);
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
-  <script src="assets/arfa-header.js" defer></script>
 </body>
-</html> 
+</html>

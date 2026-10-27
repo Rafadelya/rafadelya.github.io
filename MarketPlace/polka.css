@@ -203,3 +203,10 @@
 .research-card__link{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;color:var(--forest)}
 .research-card--journal{background:radial-gradient(140% 140% at 50% 0%,#f8f8ff 0%,#f5f6ff 100%)}
 @media(max-width:980px){.research-header{grid-template-columns:1fr}.research-card{grid-column:span 12}}
+
+/* Lang flags */
+.lang-switch{display:flex;align-items:center;gap:10px;margin-left:auto}
+.lang-flag{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;text-decoration:none;background:rgba(255,255,255,.8);transition:border-color .2s,background .2s,box-shadow .2s}
+.lang-flag:hover{border-color:var(--forest)}
+.lang-flag.active{border-color:var(--forest);box-shadow:0 0 0 4px rgba(38,61,50,.06)}
+.flag-icon{font-size:18px;line-height:1}

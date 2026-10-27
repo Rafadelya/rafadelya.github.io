@@ -1,0 +1,123 @@
+/* About page shared styles */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #faf9f6;
+  --ink: #14161a;
+  --muted: #6b7280;
+  --line: #e5e5e5;
+  --accent: #0f172a;
+  --accent-soft: #eef2f7;
+  --card-bg: #ffffff;
+  --max: 980px;
+  --gutter: clamp(24px, 5vw, 80px);
+  --header-h: 84px;
+}
+
+*, *::before, *::after { box-sizing: border-box }
+
+html { scroll-behavior: smooth }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.7 Manrope, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none }
+
+img { max-width: 100%; height: auto; display: block }
+
+::selection { background: var(--accent); color: #fff }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px }
+
+/* Layout */
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter) }
+
+.section { padding: clamp(80px, 12vw, 160px) 0 }
+
+.section--tight { padding: clamp(40px, 8vw, 100px) 0 }
+
+/* Typography */
+h1, h2, h3 { margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; line-height: 1.15; font-weight: 500 }
+
+h1 { font-size: clamp(44px, 7vw, 80px); letter-spacing: -0.02em }
+h2 { font-size: clamp(32px, 5vw, 56px); letter-spacing: -0.01em }
+h3 { font-size: clamp(24px, 3.5vw, 36px) }
+
+p { margin: 0 0 1.5em }
+
+.lead { font-size: clamp(20px, 3vw, 28px); color: var(--muted); font-weight: 400; max-width: 70ch }
+
+.eyebrow { display: inline-block; font: 600 11px/1 Manrope, monospace; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px }
+
+.hr { height: 1px; background: var(--line); border: none; margin: 2.5em 0 }
+
+/* Hero */
+.hero { min-height: calc(100vh - var(--header-h)); display: flex; align-items: center; position: relative; padding-top: var(--header-h) }
+.hero-content { position: relative; z-index: 1 }
+.hero h1 { font-weight: 500 }
+.hero .lead { margin-top: 1.2em }
+
+/* Photo blocks */
+.photo-block { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center }
+.photo-block--reverse .photo-img { grid-column: 2 }
+.photo-block--reverse .photo-text { grid-column: 1 }
+
+.photo-img { position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: var(--accent-soft) }
+.photo-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) }
+.photo-block:hover .photo-img img { transform: scale(1.02) }
+.photo-caption { margin-top: 12px; font-size: 14px; color: var(--muted); font-style: italic; text-align: center }
+
+.photo-text { display: flex; flex-direction: column; gap: 1.2em }
+.photo-text p { margin: 0 }
+
+/* Milestone */
+.milestone { display: flex; align-items: baseline; gap: 1.5em; padding: 2em 0; border-top: 1px solid var(--line) }
+.milestone:first-child { border-top: none }
+.milestone-num { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(64px, 10vw, 120px); font-weight: 500; color: var(--accent); line-height: 1; flex-shrink: 0; opacity: 0.35 }
+.milestone-text { font-size: 1.1em; line-height: 1.7 }
+
+/* Quote */
+.quote { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(24px, 4vw, 36px); font-style: italic; line-height: 1.3; color: var(--ink); margin: 2.5em 0; padding-left: 1.5em; border-left: 2px solid var(--accent) }
+.quote small { display: block; margin-top: 0.8em; font-style: normal; font-size: 0.6em; color: var(--muted); font-family: Manrope, sans-serif }
+
+/* Values grid */
+.values { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 4vw, 48px); margin-top: 3em }
+.value-card { padding: 2em 1.5em; background: var(--card-bg); border: 1px solid var(--line); border-radius: 4px; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s }
+.value-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -20px rgba(0,0,0,0.12); border-color: var(--accent) }
+.value-card h3 { margin-bottom: 0.8em }
+.value-card p { margin: 0; font-size: 0.95em; color: var(--muted); line-height: 1.7 }
+
+/* CTA */
+.cta { text-align: center; padding: 4em 1em }
+.cta h2 { margin-bottom: 0.5em }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; border: 1px solid var(--ink); background: var(--ink); color: #fff; font: 600 13px/1 Manrope, monospace; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 999px; transition: background 0.2s, color 0.2s, border-color 0.2s }
+.btn:hover { background: #fff; color: var(--ink) }
+.btn--ghost { background: transparent; color: var(--ink); border-color: var(--line) }
+.btn--ghost:hover { background: var(--ink); color: #fff; border-color: var(--ink) }
+
+/* Reveal animation */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) }
+.reveal.visible { opacity: 1; transform: none }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .photo-block { grid-template-columns: 1fr; gap: 24px }
+  .photo-block--reverse .photo-img { grid-column: auto }
+  .photo-block--reverse .photo-text { grid-column: auto }
+  .values { grid-template-columns: 1fr }
+  .milestone { flex-direction: column; align-items: flex-start; gap: 0.5em }
+  .milestone-num { font-size: clamp(48px, 12vw, 80px); opacity: 0.25 }
+  .hero { min-height: auto; padding-top: calc(var(--header-h) + 40px) }
+}
+
+@media (max-width: 560px) {
+  :root { --gutter: 20px }
+  .btn { padding: 14px 24px; font-size: 12px }
+  .value-card { padding: 1.5em 1.25em }
+}

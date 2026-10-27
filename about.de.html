@@ -7,84 +7,10 @@
   <meta name="description" content="Rafael und Adelia – Gründer von Arfa. Die Geschichte unserer eigenen IT-Produkte: von studentischen Initiativen und erstem Offline-Business zu Tech-Produkten.">
   <link rel="icon" type="image/png" href="assets/Cyrillic_logo_arfa.png">
   <link rel="stylesheet" href="assets/arfa-header.css">
+  <link rel="stylesheet" href="assets/about.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#faf9f6;
-      --ink:#14161a;
-      --muted:#6b7280;
-      --line:#e5e5e5;
-      --accent:#1a1a2e;
-      --accent-soft:#f0f0f4;
-      --max:980px;
-      --gutter:clamp(24px,5vw,80px);
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-    a{color:inherit}
-    img{max-width:100%;display:block}
-    ::selection{background:var(--accent);color:#fff}
-
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
-    .section{padding:clamp(80px,12vw,160px) 0}
-    .section--tight{padding:clamp(40px,8vw,100px) 0}
-
-    h1,h2,h3{margin:0;font-family:'Cormorant Garamond',Georgia,serif;line-height:1.15}
-    h1{font-size:clamp(44px,7vw,80px);font-weight:500;letter-spacing:-0.02em}
-    h2{font-size:clamp(32px,5vw,56px);font-weight:500;letter-spacing:-0.01em}
-    h3{font-size:clamp(24px,3.5vw,36px);font-weight:500}
-    p{margin:0 0 1.5em}
-    .lead{font-size:clamp(20px,3vw,28px);color:var(--muted);font-weight:400;max-width:70ch}
-    .eyebrow{display:inline-block;font:600 11px/1 Manrope,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
-    .hr{height:1px;background:var(--line);border:none;margin:2.5em 0}
-
-    .hero{min-height:100vh;display:flex;align-items:center;position:relative}
-    .hero-content{position:relative;z-index:1}
-    .hero h1{font-weight:500}
-    .hero .lead{margin-top:1.2em}
-
-    .photo-block{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);align-items:center}
-    .photo-block--reverse{direction:rtl}.photo-block--reverse > *{direction:ltr}
-    .photo-img{position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden;background:var(--accent-soft)}
-    .photo-img img{width:100%;height:100%;object-fit:cover}
-    .photo-caption{margin-top:12px;font-size:14px;color:var(--muted);font-style:italic}
-
-    .content-block{max-width:80ch}
-    .content-block h2{margin-bottom:0.8em}
-    .content-block p{font-size:1.05em;line-height:1.85}
-
-    .quote{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,36px);font-style:italic;line-height:1.3;color:var(--ink);margin:2.5em 0;padding-left:1.5em;border-left:2px solid var(--accent)}
-    .quote small{display:block;margin-top:0.8em;font-style:normal;font-size:0.6em;color:var(--muted);font-family:Manrope,sans-serif}
-
-    .milestone{display:flex;align-items:baseline;gap:1.5em;padding:2em 0;border-top:1px solid var(--line)}
-    .milestone:first-child{border-top:none}
-    .milestone-num{font-family:'Cormorant Garamond',serif;font-size:clamp(64px,10vw,120px);font-weight:500;color:var(--line);line-height:1;flex-shrink:0}
-    .milestone-text{font-size:1.1em;line-height:1.7}
-
-    .values{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,48px);margin-top:3em}
-    .value-card{padding:2em 1.5em;background:var(--accent-soft);border-radius:4px;transition:transform .3s,box-shadow .3s}
-    .value-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -20px rgba(0,0,0,.15)}
-    .value-card h3{margin-bottom:0.8em}
-    .value-card p{margin:0;font-size:0.95em;color:var(--muted)}
-
-    .cta{text-align:center;padding:4em 1em}
-    .cta h2{margin-bottom:0.5em}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border:1px solid var(--ink);background:var(--ink);color:#fff;font:600 13px/1 Manrope,monospace;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:999px;transition:background .2s,color .2s}
-    .btn:hover{background:#fff;color:var(--ink)}
-
-    .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-    .reveal.visible{opacity:1;transform:none}
-
-    :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-
-    @media(max-width:900px){
-      .photo-block{grid-template-columns:1fr;gap:24px}
-      .photo-block--reverse{direction:ltr}
-      .values{grid-template-columns:1fr}
-      .milestone{flex-direction:column;align-items:flex-start;gap:0.5em}
-      .milestone-num{font-size:clamp(48px,12vw,80px)}
-    }
-  </style>
 </head>
 <body>
   <script src="assets/arfa-header.js" defer></script>
@@ -101,9 +27,9 @@
     <section class="section">
       <div class="wrap photo-block reveal">
         <div class="photo-img">
-          <img src="assets/about/rafael-adelia-together.jpg" alt="Rafael und Adelia" loading="eager">
+          <img src="assets/about/rafael.jpg" alt="Rafael" loading="eager">
         </div>
-        <div>
+        <div class="photo-text">
           <p>Wir haben uns noch in der Schule kennengelernt. Statt getrennte Wege zu gehen, wählten wir einen gemeinsamen – Wirtschaftswissenschaften mit Fokus auf Entrepreneurship und Innovation. Es schien die Ausbildung zu sein, die uns eines Tages befähigen würde, etwas Eigenes aufzubauen.</p>
           <p>Schon im ersten Semester fielen uns Programme zum technologischen Entrepreneurship und Wettbewerbe für studentische Startups auf. Studienaufgaben ergänzten sich allmählich um eigene Initiativen.</p>
           <p>Im zweiten Semester gründeten wir praktisch aus dem Nichts eine studentische Forschungsgesellschaft und erhielten einen Zuschuss von 36 000 Rubel für deren Entwicklung. Das war unsere erste Erfahrung, bei der es nicht reichte, nur eine Idee vorzuschlagen – wir mussten Arbeit organisieren, uns mit Menschen abstimmen und das Vorhaben bis zum Ergebnis bringen.</p>
@@ -116,9 +42,9 @@
     <section class="section">
       <div class="wrap photo-block photo-block--reverse reveal">
         <div class="photo-img">
-          <img src="assets/about/cyberkidz-workplace.jpg" alt="Arbeitsplatz CyberKids" loading="lazy">
+          <img src="assets/about/adelia.jpg" alt="Adelia" loading="lazy">
         </div>
-        <div>
+        <div class="photo-text">
           <span class="eyebrow">Erstes Business</span>
           <h2>Es fängt nicht mit einer Idee an</h2>
           <p>Im dritten Semester starteten wir zusammen mit einem Freund „CyberKids“ – unser erstes Offline-Business. Die Idee kam von dem Freund, der damals angestellt war. Wir verteilten die Bereiche: er – Methodik, Adelia – Design, ich – Recht, Ökonomie, Finanzen und Geschäftsorganisation.</p>
@@ -156,9 +82,9 @@
     <section class="section">
       <div class="wrap photo-block reveal">
         <div class="photo-img">
-          <img src="assets/about/rafael-adelia-portrait.jpg" alt="Rafael und Adelia – Porträt" loading="lazy">
+          <img src="assets/about/rafael.jpg" alt="Rafael" loading="lazy">
         </div>
-        <div>
+        <div class="photo-text">
           <span class="eyebrow">Warum zusammen</span>
           <h2>Nicht nur Geschäftspartner</h2>
           <p>Wir haben uns lange vor den ersten Projekten kennengelernt. Unsere Partnerschaft entstand nicht aus einer zufälligen geschäftlichen Bekanntschaft. Wir verstehen uns gut, kennen die Stärken des anderen und wissen, wie man gemeinsam den Weg von der Idee zum Ergebnis geht.</p>
@@ -221,7 +147,7 @@
         <h2>Möchten Sie mit uns arbeiten?</h2>
         <p style="color:var(--muted);margin-bottom:2em">Wir sind offen für interessante Herausforderungen und Partnerschaften. Schreiben Sie uns – lassen Sie uns reden.</p>
         <a class="btn" href="contact.de.html">Kontakt aufnehmen</a>
-        <a class="btn" style="background:#fff;color:var(--ink);margin-left:16px" href="projects.de.html">Projekte ansehen</a>
+        <a class="btn btn--ghost" href="projects.de.html">Projekte ansehen</a>
       </div>
     </section>
   </main>

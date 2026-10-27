@@ -34,20 +34,50 @@
     const catalogResult = document.querySelector('[data-catalog-result]');
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     const links = Object.fromEntries(items.map(item => [item.dataset.title, item.dataset.link]));
+    const lang = (document.documentElement.lang || 'ru').toLowerCase().slice(0,2);
+    const locale = lang === 'ru' ? 'ru' : lang === 'de' ? 'de' : lang === 'fr' ? 'fr' : 'en';
+    const t = {
+      ru: { features:'Возможности приложения', publisher:'Проект Арфы', open:'Подробнее', empty:'Не нашлось приложения по этому запросу.', play:'Пуск', pause:'Пауза', app:'приложение', apps:'приложения', noApp:'Не нашлось приложения по этому запросу.' },
+      en: { features:'App features', publisher:'Arfa Project', open:'Details', empty:'No app found for this query.', play:'Play', pause:'Pause', app:'app', apps:'apps', noApp:'No app found for this query.' },
+      de: { features:'App-Funktionen', publisher:'Arfa Projekt', open:'Details', empty:'Keine App für diese Suche gefunden.', play:'Start', pause:'Pause', app:'App', apps:'Apps', noApp:'Keine App für diese Suche gefunden.' },
+      fr: { features:'Fonctionnalités de l’app', publisher:'Projet Arfa', open:'Détails', empty:'Aucune app trouvée pour cette recherche.', play:'Lecture', pause:'Pause', app:'app', apps:'apps', noApp:'Aucune app trouvée pour cette recherche.' }
+    }[locale];
+    const appInfoByCategory = {
+      ru: {
+        auto: { subtitle: 'Автомобиль под контролем', features: ['Уход', 'Расходы', 'Напоминания'], asset: 'car' },
+        organize: { subtitle: 'Планы и заметки в одном месте', features: ['Задачи', 'Заметки', 'Локальные данные'], asset: '../assets/AppIcon~todoolico.png' },
+        city: { subtitle: 'Городские прогулки с историями', features: ['Маршруты', 'Истории', 'Город'], asset: '../assets/adiguide/1.jpg' },
+        money: { subtitle: 'Денежные договорённости без неловкости', features: ['Долги', 'Расчёты', 'Напоминания'], asset: '../assets/Forseta/Форсета_Logo.png' }
+      },
+      en: {
+        auto: { subtitle: 'Car under control', features: ['Care', 'Expenses', 'Reminders'], asset: 'car' },
+        organize: { subtitle: 'Plans and notes in one place', features: ['Tasks', 'Notes', 'Local data'], asset: '../assets/AppIcon~todoolico.png' },
+        city: { subtitle: 'City walks with stories', features: ['Routes', 'Stories', 'City'], asset: '../assets/adiguide/1.jpg' },
+        money: { subtitle: 'Money agreements without awkwardness', features: ['Debts', 'Settlements', 'Reminders'], asset: '../assets/Forseta/Forseta_Logo.png' }
+      },
+      de: {
+        auto: { subtitle: 'Auto unter Kontrolle', features: ['Pflege', 'Kosten', 'Erinnerungen'], asset: 'car' },
+        organize: { subtitle: 'Pläne und Notizen an einem Ort', features: ['Aufgaben', 'Notizen', 'Lokale Daten'], asset: '../assets/AppIcon~todoolico.png' },
+        city: { subtitle: 'Stadtspaziergänge mit Geschichten', features: ['Routen', 'Geschichten', 'Stadt'], asset: '../assets/adiguide/1.jpg' },
+        money: { subtitle: 'Geldabsprachen ohne Unbehagen', features: ['Schulden', 'Abrechnungen', 'Erinnerungen'], asset: '../assets/Forseta/Forseta_Logo.png' }
+      },
+      fr: {
+        auto: { subtitle: 'Voiture sous contrôle', features: ['Entretien', 'Dépenses', 'Rappels'], asset: 'car' },
+        organize: { subtitle: 'Plans et notes au même endroit', features: ['Tâches', 'Notes', 'Données locales'], asset: '../assets/AppIcon~todoolico.png' },
+        city: { subtitle: 'Balades urbaines avec histoires', features: ['Itinéraires', 'Histoires', 'Ville'], asset: '../assets/adiguide/1.jpg' },
+        money: { subtitle: 'Accords d’argent sans gêne', features: ['Dettes', 'Règlements', 'Rappels'], asset: '../assets/Forseta/Forseta_Logo.png' }
+      }
+    }[locale];
+    const cardClasses = { auto: 'store-card--car', organize: 'store-card--todo', city: 'store-card--adi', money: 'store-card--forseta' };
     const catalogCards = [];
-    const storeInfo = {
-      CarMind: { subtitle: 'Автомобиль под контролем', features: ['Уход', 'Расходы', 'Напоминания'], asset: 'car' },
-      'ТуДулиКо': { subtitle: 'Планы и заметки в одном месте', features: ['Задачи', 'Заметки', 'Локальные данные'], asset: '../assets/AppIcon~todoolico.png' },
-      'АдиГид': { subtitle: 'Городские прогулки с историями', features: ['Маршруты', 'Истории', 'Город'], asset: '../assets/adiguide/1.jpg' },
-      'Форсета': { subtitle: 'Денежные договорённости без неловкости', features: ['Долги', 'Расчёты', 'Напоминания'], asset: '../assets/Forseta/Форсета_Logo.png' }
-    };
-    const cardClasses = { CarMind: 'store-card--car', 'ТуДулиКо': 'store-card--todo', 'АдиГид': 'store-card--adi', 'Форсета': 'store-card--forseta' };
+    const storeInfo = {};
+    items.forEach(item => { storeInfo[item.dataset.title] = appInfoByCategory[item.dataset.category]; });
     items.forEach((item, index) => {
       const info = storeInfo[item.dataset.title];
       const card = document.createElement('article');
-      card.className = `store-card ${cardClasses[item.dataset.title]}`;
+      card.className = `store-card ${cardClasses[item.dataset.category]}`;
       card.dataset.category = item.dataset.category;
-      card.dataset.searchText = `${item.dataset.title} ${item.dataset.kind} ${item.dataset.description} ${info.features.join(' ')}`.toLocaleLowerCase('ru');
+      card.dataset.searchText = `${item.dataset.title} ${item.dataset.kind} ${item.dataset.description} ${info.features.join(' ')}`.toLocaleLowerCase(locale);
 
       const media = document.createElement('div'); media.className = 'store-card-media';
       const number = document.createElement('span'); number.className = 'store-card-index'; number.textContent = String(index + 1).padStart(2, '0');
@@ -55,40 +85,40 @@
       if (info.asset === 'car') {
         const emoji = document.createElement('span'); emoji.className = 'car-emoji'; emoji.setAttribute('aria-hidden', 'true'); emoji.textContent = '🚗'; icon.append(emoji);
       } else {
-        const image = document.createElement('img'); image.src = info.asset; image.alt = `Иконка приложения ${item.dataset.title}`; image.loading = 'lazy';
-        if (item.dataset.title === 'Форсета') image.classList.add('contain');
+        const image = document.createElement('img'); image.src = info.asset; image.alt = item.dataset.title; image.loading = 'lazy';
+        if (item.dataset.category === 'money') image.classList.add('contain');
         icon.append(image);
       }
       media.append(number, icon);
 
       const details = document.createElement('div'); details.className = 'store-card-info';
       const category = document.createElement('span'); category.className = 'store-card-category'; category.textContent = item.dataset.kind.split(' · ')[0];
-      const title = document.createElement('h3'); title.textContent = item.dataset.title;
+      const titleEl = document.createElement('h3'); titleEl.textContent = item.dataset.title;
       const subtitle = document.createElement('p'); subtitle.className = 'store-card-subtitle'; subtitle.textContent = info.subtitle;
       const description = document.createElement('p'); description.className = 'store-card-description'; description.textContent = item.dataset.description;
-      const features = document.createElement('div'); features.className = 'store-features'; features.setAttribute('aria-label', 'Возможности приложения');
+      const features = document.createElement('div'); features.className = 'store-features'; features.setAttribute('aria-label', t.features);
       info.features.forEach(feature => { const chip = document.createElement('span'); chip.textContent = feature; features.append(chip); });
       const bottom = document.createElement('div'); bottom.className = 'store-card-bottom';
-      const publisher = document.createElement('span'); publisher.className = 'store-publisher'; publisher.textContent = 'Проект Арфы';
-      const open = document.createElement('a'); open.className = 'store-open'; open.href = `app-details-alternative.html?app=${encodeURIComponent(item.dataset.title)}`; open.innerHTML = 'Подробнее <span aria-hidden="true">↗</span>';
+      const publisher = document.createElement('span'); publisher.className = 'store-publisher'; publisher.textContent = t.publisher;
+      const open = document.createElement('a'); open.className = 'store-open'; open.href = `app-details-alternative.html?app=${encodeURIComponent(item.dataset.title)}`; open.innerHTML = `${t.open} <span aria-hidden="true">↗</span>`;
       bottom.append(publisher, open);
-      details.append(category, title, subtitle, description, features, bottom);
+      details.append(category, titleEl, subtitle, description, features, bottom);
       card.append(media, details);
       catalogGrid.append(card);
       catalogCards.push(card);
     });
     let selectedCategory = 'all';
     function filterCatalog() {
-      const query = catalogSearch.value.trim().toLocaleLowerCase('ru');
+      const query = catalogSearch.value.trim().toLocaleLowerCase(locale);
       let visibleCount = 0;
       catalogCards.forEach(tile => {
         const visible = (selectedCategory === 'all' || tile.dataset.category === selectedCategory) && (!query || tile.dataset.searchText.includes(query));
         tile.hidden = !visible;
         if (visible) visibleCount++;
       });
-      catalogResult.textContent = `${visibleCount} ${visibleCount === 1 ? 'приложение' : 'приложения'}`;
+      catalogResult.textContent = `${visibleCount} ${visibleCount === 1 ? t.app : t.apps}`;
       let empty = catalogGrid.querySelector('.catalog-empty');
-      if (!visibleCount && !empty) { empty = document.createElement('p'); empty.className = 'catalog-empty'; empty.textContent = 'Не нашлось приложения по этому запросу.'; catalogGrid.append(empty); }
+      if (!visibleCount && !empty) { empty = document.createElement('p'); empty.className = 'catalog-empty'; empty.textContent = t.noApp; catalogGrid.append(empty); }
       if (visibleCount && empty) empty.remove();
     }
     document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
@@ -123,11 +153,11 @@
       kind.textContent = item.dataset.kind;
       description.textContent = item.dataset.description;
       currentLink.href = `app-details-alternative.html?app=${encodeURIComponent(item.dataset.title)}`;
-      currentLink.innerHTML = 'Подробнее <span aria-hidden="true">↗</span>';
+      currentLink.innerHTML = `${t.open} <span aria-hidden="true">↗</span>`;
       count.textContent = `${String(active + 1).padStart(2,'0')} / ${String(items.length).padStart(2,'0')}`;
       progress.style.transform = `scaleX(${(active + 1) / items.length})`;
       pauseButton.setAttribute('aria-pressed', String(paused));
-      pauseButton.textContent = paused ? 'Пуск' : 'Пауза';
+      pauseButton.textContent = paused ? t.play : t.pause;
     }
     function go(n) { active = mod(n, items.length); paint(); }
     function stop() { clearInterval(timer); timer = 0; }

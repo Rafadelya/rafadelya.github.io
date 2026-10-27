@@ -18,6 +18,45 @@
   view-transition-name: arfa-header;
 }
 
+/* Page entrance animation (works in all browsers) */
+@keyframes arfa-page-enter {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+main {
+  animation: arfa-page-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  main { animation: none; }
+}
+
+/* Interesting cross-document page transition */
+@keyframes arfa-vt-out {
+  from { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  to   { opacity: 0; transform: translateY(-18px) scale(0.985); filter: blur(2px); }
+}
+@keyframes arfa-vt-in {
+  from { opacity: 0; transform: translateY(24px) scale(0.985); filter: blur(2px); }
+  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+::view-transition-old(root) {
+  animation: arfa-vt-out 0.32s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+::view-transition-new(root) {
+  animation: arfa-vt-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+::view-transition-old(arfa-header),
+::view-transition-new(arfa-header) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
 /* transitions-dev — copy this :root block into your project once.
    Every transition snippet reads from these semantic names. */
 :root {

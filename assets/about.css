@@ -113,7 +113,7 @@ p { margin: 0 0 1em; color: var(--ink) }
 .btn--ghost { background: transparent; color: var(--ink); border-color: var(--line) }
 .btn--ghost:hover { background: var(--accent-soft); color: var(--ink); border-color: var(--ink) }
 
-.reveal { opacity: 0; transform: translateY(12px); transition: opacity 0.4s ease, transform 0.4s ease }
+.reveal { opacity: 0; transform: translateY(24px) scale(0.96); transition: opacity .4s ease, transform .4s cubic-bezier(.2,.9,.2,1) }
 .reveal.visible { opacity: 1; transform: none }
 
 .footer { padding: 2em var(--gutter); border-top: 1px solid var(--line); text-align: left; color: var(--muted); font-size: 13px; background: var(--bg) }

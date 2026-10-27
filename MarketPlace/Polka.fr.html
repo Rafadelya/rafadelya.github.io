@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#eceeff">
-  <title>Polka — Applications Arfa</title>
+  <title>Полка — приложения Арфы</title>
   <meta name="description" content="CarMind, ТуДулиКо, АдиГид и Квита — приложения Арфы для автомобиля, планов, прогулок и денежных договорённостей.">
   <link rel="icon" type="image/png" href="../assets/Cyrillic_logo_arfa.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,13 +24,13 @@
       <button class="site-menu-btn" id="siteMenuBtn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="siteMenuDrawer"><span></span><span></span><span></span></button>
     </div>
     <div class="lang-switch" style="display:flex;align-items:center;gap:8px;margin-left:16px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase">
-      <a href="Polka.ru.html" style="text-decoration:none;color:var(--muted)">RU</a>
+      <a href="Polka.ru.html" style="text-decoration:none;color:var(--ink)">RU</a>
       <span style="color:var(--muted)">/</span>
       <a href="Polka.en.html" style="text-decoration:none;color:var(--muted)">EN</a>
       <span style="color:var(--muted)">/</span>
       <a href="Polka.de.html" style="text-decoration:none;color:var(--muted)">DE</a>
       <span style="color:var(--muted)">/</span>
-      <a href="Polka.fr.html" style="text-decoration:none;color:var(--ink)">FR</a>
+      <a href="Polka.fr.html" style="text-decoration:none;color:var(--muted)">FR</a>
     </div>
   </header>
   <div class="site-menu-overlay" id="siteMenuOverlay"></div>
@@ -41,27 +41,51 @@
   </aside>
 
   <main>
-    <section class="hero wrap" id="top" aria-labelledby="hero-title">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <div class="hero-kicker eyebrow">Полка Арфы · четыре приложения</div>
-          <h1 id="hero-title">Nouvelles idées.<br><em>Sur leur Polka.</em></h1>
-          <p class="hero-intro">Четыре приложения Арфы для автомобиля, планов, прогулок и денежных договорённостей. Выберите то, что пригодится именно сегодня.</p>
-          <div class="hero-actions"><a class="button" href="#apps">Открыть коллекцию <span aria-hidden="true">↓</span></a><a class="text-link" href="#apps">Что на Полке</a></div>
+        <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-bg-grid" aria-hidden="true"></div>
+      <div class="hero-orbs" aria-hidden="true">
+        <span class="orb orb--one"></span>
+        <span class="orb orb--two"></span>
+        <span class="orb orb--three"></span>
+      </div>
+      <div class="hero-grid hero-grid--bold wrap">
+        <div class="hero-copy hero-copy--bold">
+          <div class="hero-kicker eyebrow">Проект Arfa / Коллекция инструментов</div>
+          <h1 id="hero-title">Новые идеи<span class="hero-dot">.</span><br><em>На своей Полке<span class="hero-dot">.</span></em></h1>
+          <p class="hero-intro">Маленькая витрина тихих, полезных инструментов для повседневности. Меньше шума — больше смысла.</p>
+          <div class="hero-actions">
+            <a class="button button--glow" href="#apps">Смотреть приложения <span aria-hidden="true">→</span></a>
+            <a class="text-link" href="#apps">Что на Полке</a>
+          </div>
+          <div class="hero-chips" aria-label="Principles"><span class="hero-chip">Простота</span><span class="hero-chip">Локально</span><span class="hero-chip">Внимание к деталям</span></div>
         </div>
-
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-shelf">
+            <div class="shelf-row">
+              <div class="shelf-item shelf-item--a"><div class="shelf-tile"></div><span class="shelf-label">CAR</span></div>
+              <div class="shelf-item shelf-item--b"><div class="shelf-tile"></div><span class="shelf-label">PLAN</span></div>
+              <div class="shelf-item shelf-item--c"><div class="shelf-tile"></div><span class="shelf-label">TASK</span></div>
+              <div class="shelf-item shelf-item--d"><div class="shelf-tile"></div><span class="shelf-label">MONEY</span></div>
+            </div>
+            <div class="shelf-beam"></div>
+            <div class="shelf-base"></div>
+          </div>
+          <div class="hero-float hero-float--one"></div>
+          <div class="hero-float hero-float--two"></div>
+          <div class="hero-float hero-float--three"></div>
+        </div>
       </div>
     </section>
 
-    <div class="manifesto" id="about"><div class="wrap manifesto-in">
+<div class="manifesto" id="about"><div class="wrap manifesto-in">
       <div class="manifesto-item"><b>04</b><span>приложения на Полке</span></div>
       <div class="manifesto-item"><b>03</b><span>идеи в разработке</span></div>
       <div class="manifesto-item"><b>04</b><span>исследования и практических кейса</span></div>
     </div></div>
 
     <section class="section wrap carousel-section" id="apps" aria-labelledby="apps-title">
-      <div class="carousel-heading"><span class="section-label eyebrow">01 / Applications Арфы</span><h2 id="apps-title">Que prendre avec soi ?</h2><p>Quatre apps pour trajets, projets, voiture et accords financiers.</p></div>
-      <div class="carousel" data-carousel aria-roledescription="карусель" aria-label="Applications Арфы">
+      <div class="carousel-heading"><span class="section-label eyebrow">01 / Приложения Арфы</span><h2 id="apps-title">Что взять с собой?</h2><p>Четыре приложения для повседневных маршрутов, планов, автомобиля и денежных договорённостей.</p></div>
+      <div class="carousel" data-carousel aria-roledescription="карусель" aria-label="Приложения Арфы">
         <div class="carousel-stage" data-stage>
           <article class="carousel-item" data-title="CarMind" data-kind="Автомобиль · Уход и расходы" data-description="Всё важное об автомобиле — обслуживание, расходы и напоминания — в одном месте." data-category="auto" data-link="../projects.ru.html">
             <button class="carousel-card" type="button" aria-label="Выбрать CarMind"><span class="tool-art tool-art--auto"><span class="art-mark">CARMIND</span><span class="car-emoji" aria-hidden="true">🚗</span><span class="art-sub">Ваш автомобиль</span></span></button><div class="carousel-caption"><strong>CarMind</strong><span>Автомобиль</span></div>
@@ -89,7 +113,7 @@
     </section>
 
     <section class="section upcoming" id="upcoming" aria-labelledby="upcoming-title"><div class="wrap">
-      <div class="section-head"><div><span class="section-label eyebrow">03 / En développement</span><h2 id="upcoming-title">Следующие на полке</h2></div><p>Идеи, которые мы исследуем и постепенно превращаем в понятные инструменты.</p></div>
+      <div class="section-head"><div><span class="section-label eyebrow">03 / В разработке</span><h2 id="upcoming-title">Следующие на полке</h2></div><p>Идеи, которые мы исследуем и постепенно превращаем в понятные инструменты.</p></div>
       <div class="upcoming-grid">
         <article class="upcoming-item"><span class="n">01</span><h3>Близко</h3><p>Лёгкая CRM для друзей: помогает хранить важное о близких и не терять контакт.</p><span class="status">Исследуем сценарии</span></article>
         <article class="upcoming-item"><span class="n">02</span><h3>Locus</h3><p>Локальный ИИ-ассистент, который помогает принимать решения и выбирать следующий шаг каждый день.</p><span class="status">Черновик</span></article>

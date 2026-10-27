@@ -484,3 +484,27 @@ body.arfa-dark .arfa-burger span {
     transition: none !important;
   }
 }
+
+/* Page transitions */
+@view-transition { navigation: auto; }
+
+::view-transition-old(root) {
+  animation: arfa-page-out 0.35s cubic-bezier(0.4, 0, 1, 1) both;
+}
+::view-transition-new(root) {
+  animation: arfa-page-in 0.35s cubic-bezier(0, 0, 0.2, 1) both;
+}
+
+@keyframes arfa-page-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-12px); }
+}
+@keyframes arfa-page-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; }
+}

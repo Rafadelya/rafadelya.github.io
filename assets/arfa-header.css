@@ -511,5 +511,3 @@ body.arfa-dark .arfa-burger span {
 
 
 
-.arfa-reveal { opacity: 0; transform: translateY(24px) scale(0.96); transition: opacity .4s ease, transform .4s cubic-bezier(.2,.9,.2,1); }
-.arfa-reveal.is-visible { opacity: 1; transform: none; }

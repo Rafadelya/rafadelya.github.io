@@ -373,7 +373,7 @@ body.arfa-menu-open {
 body.arfa-stage .arfa-header {
   color: #f6f4fb;
   border-color: rgba(255, 255, 255, 0.16);
-  background: linear-gradient(130deg, rgba(26, 21, 40, 0.74), rgba(11, 10, 19, 0.58));
+  background: linear-gradient(130deg, rgba(26, 21, 40, 0.74), rgba(11, 10, 19, 0.58)) !important;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.14),
     0 24px 70px -30px rgba(0, 0, 0, 0.85);

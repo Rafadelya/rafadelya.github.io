@@ -7,28 +7,58 @@
   <link rel="stylesheet" href="../styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/2b8e2e5e2a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../assets/arfa-header.css">
 </head>
 <body class="min-h-screen flex flex-col">
-  <header class="glass-header flex flex-row items-center justify-between gap-8">
-    <div class="logo-block">
-      <a href="../index.en.html">
-        <img src="../assets/latin_logo_arfa.png" alt="Arfa Logo" class="glass-logo-img">
-      </a>
-    </div>
-    <nav class="flex gap-4">
-      <a href="../index.en.html" class="nav-link">Home</a>
-      <a href="../about.en.html" class="nav-link">About</a>
-      <a href="../projects.en.html" class="nav-link">Projects</a>
-      <a href="../blog/blog.en.html" class="nav-link">Blog</a>
-      <a href="../contact.en.html" class="nav-link">Contact</a>
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Main navigation">
+    <a class="arfa-brand" href="../index.en.html" aria-label="Arfa — home">
+      <span class="arfa-brand__mark"><img src="../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag">digital studio</span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Main navigation">
+      <a href="../index.en.html">Home</a>
+      <a href="../about.en.html">About</a>
+      <a href="../MarketPlace/Polka.en.html" aria-current="page">Projects</a>
+      <a href="../blog/blog.en.html">Blog</a>
+      <a href="../contact.en.html">Contact</a>
     </nav>
-    <div class="flex gap-2">
-      <a href="forseta.en.html" class="lang-flag active" aria-label="English"><span class="flag-icon">🇬🇧</span></a>
-      <a href="forseta.de.html" class="lang-flag" aria-label="Deutsch"><span class="flag-icon">🇩🇪</span></a>
-      <a href="forseta.fr.html" class="lang-flag" aria-label="Français"><span class="flag-icon">🇫🇷</span></a>
-      <a href="forseta.ru.html" class="lang-flag" aria-label="Русский"><span class="flag-icon">🇷🇺</span></a>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Language">
+        <a href="forseta.en.html" class="is-active" aria-label="English" title="English">🇬🇧</a>
+        <a href="forseta.de.html" class="" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="forseta.fr.html" class="" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="forseta.ru.html" class="" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
     </div>
   </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Menu">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Menu</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Close menu" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Main navigation">
+      <a href="../index.en.html">Home</a>
+      <a href="../about.en.html">About</a>
+      <a href="../MarketPlace/Polka.en.html" aria-current="page">Projects</a>
+      <a href="../blog/blog.en.html">Blog</a>
+      <a href="../contact.en.html">Contact</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Language</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="forseta.en.html" class="is-active">🇬🇧 EN</a>
+        <a href="forseta.de.html" class="">🇩🇪 DE</a>
+        <a href="forseta.fr.html" class="">🇫🇷 FR</a>
+        <a href="forseta.ru.html" class="">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
   <main class="max-w-3xl mx-auto px-4 py-14 space-y-12 flex-1 flex flex-col">
     <!-- Hero -->
     <section class="bg-white rounded-3xl shadow-2xl p-10 text-center mb-4">
@@ -177,5 +207,6 @@
     <p class="text-sm">© 2026 Forseta<br>Honesty and convenience — simple and reliable.</p>
   </footer>
   <script src="../js/mobile-header.js"></script>
+  <script src="../assets/arfa-header.js" defer></script>
 </body>
 </html> 

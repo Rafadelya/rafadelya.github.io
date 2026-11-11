@@ -149,14 +149,25 @@
             ['../assets/Forseta/Fin_rating_90-100_relax.png', 'Напоминание от Финна'],
             ['../assets/Forseta/Very_Happy_finn_and_debik.png', 'Финн и Дебик']
           ], galleryNote: 'Персонажи и иллюстрации приложения.'
+        },
+        'Праксис': {
+          category: 'Карьера', title: 'Праксис', subtitle: 'Практика и стажировки без лишнего шума',
+          description: 'Каталог практик и стажировок с понятными треками и заявкой в один шаг.',
+          about: 'Праксис — редакционный сайт о практиках и стажировках: реестр из шести направлений с фильтрами и поиском, треки «учебный — преддипломный — стажировка» и протокол подачи заявки в три шага. Реестр компаний вымышлен и служит демо-данными. Страница полностью статическая: без бэкенда и аккаунтов, заявки сохраняются локально на устройстве.',
+          facts: ['Концепт', 'Web', 'Демо-данные'],
+          features: ['Реестр практик и стажировок с фильтрами', 'Поиск по названию и направлению', 'Треки: учебный, преддипломный, стажировка', 'Протокол подачи заявки в три шага', 'Сохранение заявок на устройстве', 'Пиксельная анимация на Canvas'],
+          icon: '../assets/praksis-icon.jpg', action: '../projects/Praksis/index.html', actionLabel: 'Страница Праксиса', gallery: [
+            ['../projects/Praksis/praksis-hero.jpg', 'Обложка Праксис — храм с поднимающимися пикселями']
+          ], galleryNote: 'Материалы сайта Праксис.'
         }
       };
+      products['Praksis'] = products['Праксис'];
       const requested = new URLSearchParams(location.search).get('app');
       const product = products[requested] || products.CarMind;
       document.title = `${product.title} — Полка Арфы`;
       document.querySelector('meta[name="description"]').content = product.description;
       const hero = document.querySelector('.detail-hero');
-      const variants = {'CarMind':['#ad4439','#ffe5df'],'ТуДулиКо':['#467255','#e3f0e7'],'АдиГид':['#4e64a0','#e2e9ff'],'Форсета':['#986640','#f2e6d9']};
+      const variants = {'CarMind':['#ad4439','#ffe5df'],'ТуДулиКо':['#467255','#e3f0e7'],'АдиГид':['#4e64a0','#e2e9ff'],'Форсета':['#986640','#f2e6d9'],'Праксис':['#223094','#e6ecff'],'Praksis':['#223094','#e6ecff']};
       [hero.style.setProperty('--accent',variants[product.title][0]),hero.style.setProperty('--tint',variants[product.title][1])];
       document.querySelector('[data-breadcrumb]').textContent = product.title;
       document.querySelector('[data-category]').textContent = product.category;
@@ -176,7 +187,7 @@
       document.querySelector('[data-gallery-note]').textContent=product.galleryNote;
       const gallery=document.querySelector('[data-gallery]');
       if(!product.gallery.length){const empty=document.createElement('div');empty.className='screens-empty';empty.textContent='Скриншоты интерфейса появятся, когда будут подготовлены материалы приложения.';gallery.append(empty)}
-      else product.gallery.forEach(([src,label])=>{const figure=document.createElement('figure');figure.className='screen-shot';const image=document.createElement('img');image.src=src;image.alt=label;image.loading='lazy';if(product.title==='ТуДулиКо')image.className='contain';const caption=document.createElement('figcaption');caption.textContent=label;figure.append(image,caption);gallery.append(figure)});
+      else product.gallery.forEach(([src,label])=>{const figure=document.createElement('figure');figure.className='screen-shot';const image=document.createElement('img');image.src=src;image.alt=label;image.loading='lazy';if(product.title==='ТуДулиКо'||product.title==='Праксис')image.className='contain';const caption=document.createElement('figcaption');caption.textContent=label;figure.append(image,caption);gallery.append(figure)});
     })();
   </script>
   <script src="../assets/arfa-header.js" defer></script>

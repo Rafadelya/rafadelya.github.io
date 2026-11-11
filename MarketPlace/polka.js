@@ -47,28 +47,32 @@
         auto: { subtitle: 'Автомобиль под контролем', features: ['Уход', 'Расходы', 'Напоминания'], asset: 'car' },
         organize: { subtitle: 'Планы и заметки в одном месте', features: ['Задачи', 'Заметки', 'Локальные данные'], asset: '../assets/AppIcon~todoolico.png' },
         city: { subtitle: 'Городские прогулки с историями', features: ['Маршруты', 'Истории', 'Город'], asset: '../assets/adiguide/1.jpg' },
-        money: { subtitle: 'Денежные договорённости без неловкости', features: ['Долги', 'Расчёты', 'Напоминания'], asset: '../assets/Forseta/Форсета_Logo.png' }
+        money: { subtitle: 'Денежные договорённости без неловкости', features: ['Долги', 'Расчёты', 'Напоминания'], asset: '../assets/Forseta/Форсета_Logo.png' },
+        career: { subtitle: 'Практика и стажировки без суеты', features: ['Стажировки', 'Треки', 'Заявка'], asset: '../assets/praksis-icon.jpg' }
       },
       en: {
         auto: { subtitle: 'Car under control', features: ['Care', 'Expenses', 'Reminders'], asset: 'car' },
         organize: { subtitle: 'Plans and notes in one place', features: ['Tasks', 'Notes', 'Local data'], asset: '../assets/AppIcon~todoolico.png' },
         city: { subtitle: 'City walks with stories', features: ['Routes', 'Stories', 'City'], asset: '../assets/adiguide/1.jpg' },
-        money: { subtitle: 'Money agreements without awkwardness', features: ['Debts', 'Settlements', 'Reminders'], asset: '../assets/Forseta/Forseta_Logo.png' }
+        money: { subtitle: 'Money agreements without awkwardness', features: ['Debts', 'Settlements', 'Reminders'], asset: '../assets/Forseta/Forseta_Logo.png' },
+        career: { subtitle: 'Internships and practice without fuss', features: ['Internships', 'Tracks', 'Application'], asset: '../assets/praksis-icon.jpg' }
       },
       de: {
         auto: { subtitle: 'Auto unter Kontrolle', features: ['Pflege', 'Kosten', 'Erinnerungen'], asset: 'car' },
         organize: { subtitle: 'Pläne und Notizen an einem Ort', features: ['Aufgaben', 'Notizen', 'Lokale Daten'], asset: '../assets/AppIcon~todoolico.png' },
         city: { subtitle: 'Stadtspaziergänge mit Geschichten', features: ['Routen', 'Geschichten', 'Stadt'], asset: '../assets/adiguide/1.jpg' },
-        money: { subtitle: 'Geldabsprachen ohne Unbehagen', features: ['Schulden', 'Abrechnungen', 'Erinnerungen'], asset: '../assets/Forseta/Forseta_Logo.png' }
+        money: { subtitle: 'Geldabsprachen ohne Unbehagen', features: ['Schulden', 'Abrechnungen', 'Erinnerungen'], asset: '../assets/Forseta/Forseta_Logo.png' },
+        career: { subtitle: 'Praktika und Praxis ohne Trubel', features: ['Praktika', 'Tracks', 'Bewerbung'], asset: '../assets/praksis-icon.jpg' }
       },
       fr: {
         auto: { subtitle: 'Voiture sous contrôle', features: ['Entretien', 'Dépenses', 'Rappels'], asset: 'car' },
         organize: { subtitle: 'Plans et notes au même endroit', features: ['Tâches', 'Notes', 'Données locales'], asset: '../assets/AppIcon~todoolico.png' },
         city: { subtitle: 'Balades urbaines avec histoires', features: ['Itinéraires', 'Histoires', 'Ville'], asset: '../assets/adiguide/1.jpg' },
-        money: { subtitle: 'Accords d’argent sans gêne', features: ['Dettes', 'Règlements', 'Rappels'], asset: '../assets/Forseta/Forseta_Logo.png' }
+        money: { subtitle: 'Accords d’argent sans gêne', features: ['Dettes', 'Règlements', 'Rappels'], asset: '../assets/Forseta/Forseta_Logo.png' },
+        career: { subtitle: 'Stages et pratique sans tracas', features: ['Stages', 'Parcours', 'Candidature'], asset: '../assets/praksis-icon.jpg' }
       }
     }[locale];
-    const cardClasses = { auto: 'store-card--car', organize: 'store-card--todo', city: 'store-card--adi', money: 'store-card--forseta' };
+    const cardClasses = { auto: 'store-card--car', organize: 'store-card--todo', city: 'store-card--adi', money: 'store-card--forseta', career: 'store-card--praksis' };
     const catalogCards = [];
     const storeInfo = {};
     items.forEach(item => { storeInfo[item.dataset.title] = appInfoByCategory[item.dataset.category]; });

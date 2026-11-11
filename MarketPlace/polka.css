@@ -100,7 +100,7 @@
     .catalog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
     .store-card{--card-tint:#e8eaff;--card-accent:#454a8c;min-width:0;display:grid;grid-template-columns:minmax(150px,.78fr) minmax(0,1.22fr);gap:0;overflow:hidden;border:1px solid rgba(69,74,140,.1);border-radius:26px;background:rgba(255,255,255,.88);color:#1b1c2a;box-shadow:0 9px 28px rgba(57,63,119,.055);transition:transform .25s,border-color .25s,box-shadow .25s}
     .store-card:hover{transform:translateY(-4px);border-color:rgba(69,74,140,.22);box-shadow:0 20px 42px rgba(57,63,119,.12)}.store-card[hidden]{display:none}
-    .store-card--car{--card-tint:#ffe5df;--card-accent:#ad4439}.store-card--todo{--card-tint:#e3f0e7;--card-accent:#467255}.store-card--adi{--card-tint:#e2e9ff;--card-accent:#4e64a0}.store-card--kvita{--card-tint:#f2e6d9;--card-accent:#986640}
+    .store-card--car{--card-tint:#ffe5df;--card-accent:#ad4439}.store-card--todo{--card-tint:#e3f0e7;--card-accent:#467255}.store-card--adi{--card-tint:#e2e9ff;--card-accent:#4e64a0}.store-card--kvita{--card-tint:#f2e6d9;--card-accent:#986640}.store-card--praksis{--card-tint:#e6ecff;--card-accent:#223094}
     .store-card-media{position:relative;display:grid;place-items:center;min-height:100%;padding:26px;background:radial-gradient(ellipse at 50% 42%,#fff9 0%,transparent 60%),var(--card-tint)}
     .store-card-media::before,.store-card-media::after{content:"";position:absolute;inset:12%;border:1px solid color-mix(in srgb,var(--card-accent) 14%,transparent);border-radius:32px;transform:rotate(-8deg)}.store-card-media::after{inset:17%;transform:rotate(8deg);border-color:color-mix(in srgb,var(--card-accent) 9%,transparent)}
     .store-app-icon{position:relative;z-index:1;width:min(100%,178px);aspect-ratio:1;display:grid;place-items:center;overflow:hidden;border:1px solid #fff9;border-radius:30px;background:#fff;box-shadow:0 20px 38px color-mix(in srgb,var(--card-accent) 17%,transparent)}.store-app-icon img{width:100%;height:100%;object-fit:cover}.store-app-icon img.contain{object-fit:contain;padding:10px}.store-app-icon .car-emoji{font-size:clamp(64px,7vw,100px);filter:drop-shadow(0 12px 10px rgba(88,42,38,.16))}
@@ -181,6 +181,11 @@
 .carousel-item[data-title="Форсета"] .carousel-card{border-color:rgba(104,96,196,.4)}
 .carousel-item.is-active[data-title="Форсета"] .carousel-card{border-color:#6b63d6;box-shadow:0 26px 50px rgba(76,70,170,.22)}
 .tool-art--forseta{--art-bg:#ece9ff;--art-ink:#4c46aa}
+
+/* Praksis colors */
+.store-card--praksis .store-card-media{background:radial-gradient(circle at 50% 40%,#eef1ff,#dfe6ff)}
+.carousel-item[data-title="Праксис"] .carousel-card{border-color:rgba(34,48,148,.4)}
+.carousel-item.is-active[data-title="Праксис"] .carousel-card{border-color:#223094;box-shadow:0 26px 50px rgba(34,48,148,.22)}
 
 /* Research cards */
 .research--cards{display:block}

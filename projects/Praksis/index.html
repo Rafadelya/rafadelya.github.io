@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Праксис — кураторская платформа транзита студентов в технологические корпорации: учебная, производственная и преддипломная практика, стажировки в bigtech.">
+    <title>Праксис // Практика в индустрию</title>
+    <link rel="icon" type="image/jpeg" href="icon.jpg">
+    <link rel="preload" as="image" href="praksis-hero.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Текстура аналогового зерна -->
+    <div class="noise-overlay"></div>
+
+    <!-- Кастомный курсор -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-aura" id="cursorAura"></div>
+
+    <!-- Верхний технический колонтитул -->
+    <header class="topbar">
+        <div class="topbar-cell">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span class="mono-label">ПРАКСИС<sup>®</sup> // АРХИВ 2026</span>
+        </div>
+        <div class="topbar-cell topbar-center">
+            <span class="mono-label">УЧЕБНАЯ • ПРЕДДИПЛОМНАЯ • BIGTECH INTERNSHIP</span>
+        </div>
+        <div class="topbar-cell topbar-right">
+            <button class="saved-trigger" id="savedTrigger">
+                <span class="dot-indicator"></span>
+                АРХИВ [<span id="savedCounter">0</span>]
+            </button>
+        </div>
+    </header>
+
+    <!-- Плавающий нижний док навигации -->
+    <nav class="floating-dock">
+        <a href="#hero" class="dock-item active">00. ЭКСПОЗИЦИЯ</a>
+        <a href="#tracks" class="dock-item">01. СТУПЕНИ</a>
+        <a href="#index" class="dock-item">02. ИНДЕКС ПРОГРАММ</a>
+        <a href="#protocol" class="dock-item">03. ПРОТОКОЛ ВУЗ</a>
+    </nav>
+
+    <!-- HERO: Журнальная асимметричная композиция + восходящие пиксели -->
+    <section id="hero" class="hero-stage">
+        <div class="architectural-grid">
+            <div class="hero-left">
+                <div class="meta-coords boot" style="--d: 0s">
+                    <span>LAT 55.7558° N</span>
+                    <span>//</span>
+                    <span>PRAKSIS // СИНТЕЗ АКАДЕМИИ И ИНДУСТРИИ</span>
+                </div>
+                <h1 class="editorial-title">
+                    <span class="line boot" style="--d: .08s">ВОСХОЖДЕНИЕ</span>
+                    <span class="line serif-italic boot" style="--d: .18s">из портика знаний</span>
+                    <span class="line boot" style="--d: .28s">В ИНДУСТРИЮ</span>
+                </h1>
+                <p class="editorial-lead boot" style="--d: .4s">
+                    Кураторская платформа для транзита студентов в технологические корпорации. Официальное закрытие кафедральных практик, фактура для ВКР и прямой трек в штат.
+                </p>
+                <div class="hero-cta-row boot" style="--d: .52s">
+                    <a href="#index" class="btn-editorial">
+                        <span>ИССЛЕДОВАТЬ РЕЕСТР</span>
+                        <span class="btn-arrow">↗</span>
+                    </a>
+                    <div class="live-counter">
+                        <span class="mono-num">428</span>
+                        <span class="mono-sub">активных квот<br>на семестр</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Центральный арт-объект: пиксельная греко-римская лестница + поток частиц -->
+            <div class="hero-art-stage" id="artStage">
+                <div class="hero-art-frame" id="artFrame">
+                    <img class="hero-photo" id="heroPhoto" src="praksis-hero.jpg"
+                         alt="Пиксельная скульптура: восхождение от терракотового античного портика по лестнице к кобальтовому цифровому храму"
+                         decoding="async" draggable="false">
+                    <canvas id="ascensionCanvas" aria-hidden="true"></canvas>
+                    <div class="art-annotations">
+                        <div class="anno anno-top boot" style="--d: .55s">
+                            <span class="anno-code">LVL // 03</span>
+                            <span class="anno-text">СТАЖИРОВКА В BIGTECH (КОБАЛЬТ)</span>
+                        </div>
+                        <div class="anno anno-mid boot" style="--d: .65s">
+                            <span class="anno-code">LVL // 02</span>
+                            <span class="anno-text">ПРЕДДИПЛОМНЫЙ ТРАНЗИТ</span>
+                        </div>
+                        <div class="anno anno-bot boot" style="--d: .75s">
+                            <span class="anno-code">LVL // 01</span>
+                            <span class="anno-text">АКАДЕМИЧЕСКИЙ ПОРТИК (ТЕРРАКОТА)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Бегущая строка (Кинетическая типографика) -->
+    <div class="kinetic-ticker">
+        <div class="ticker-track">
+            <span>NEBULA CLOUD — ВЕКТОРТЕХ — ORBITA LAB — TESSERA — ASTRA DIGITAL — HELIOS TECH — КВАНТ СИСТЕМС — ДЕЛЬТА СОФТ — NORDMIND — </span>
+            <span>NEBULA CLOUD — ВЕКТОРТЕХ — ORBITA LAB — TESSERA — ASTRA DIGITAL — HELIOS TECH — КВАНТ СИСТЕМС — ДЕЛЬТА СОФТ — NORDMIND — </span>
+        </div>
+    </div>
+
+    <!-- 01. СТУПЕНИ (Анти-карточная архитектурная раскладка) -->
+    <section id="tracks" class="tracks-section">
+        <div class="section-bar">
+            <span class="mono-label">01 // ТРИАДА ФОРМАТОВ</span>
+            <span class="mono-label">ВЫБЕРИТЕ СТУПЕНЬ ДЛЯ ФИЛЬТРАЦИИ РЕЕСТРА</span>
+        </div>
+
+        <div class="triad-columns">
+            <article class="triad-col reveal" style="--d: 0s" data-filter="study">
+                <div class="col-top">
+                    <span class="roman-num">I</span>
+                    <span class="col-tag">I–II КУРС БАКАЛАВРИАТА</span>
+                </div>
+                <h2 class="col-title">Учебная<br><em>практика</em></h2>
+                <p class="col-desc">
+                    Первый выход за пределы аудитории. Интенсивы в песочницах корпораций, решение учебных кейсов под надзором лидов и автоматическое закрытие кафедрального дневника за 2–4 недели.
+                </p>
+                <div class="col-action">ФИЛЬТРОВАТЬ ПОТОК <span class="col-arrow">↗</span></div>
+            </article>
+
+            <article class="triad-col triad-featured reveal" style="--d: .12s" data-filter="pre-diploma">
+                <div class="col-top">
+                    <span class="roman-num">II</span>
+                    <span class="col-tag">III–IV КУРС & МАГИСТРАТУРА</span>
+                </div>
+                <h2 class="col-title">Производственная<br><em>и преддипломная</em></h2>
+                <p class="col-desc">
+                    Погружение в боевые репозитории и промышленную архитектуру. Доступ к реальным метрикам и датасетам для написания ВКР, персональный рецензент от компании и стипендия.
+                </p>
+                <div class="col-action">ФИЛЬТРОВАТЬ ПОТОК <span class="col-arrow">↗</span></div>
+            </article>
+
+            <article class="triad-col reveal" style="--d: .24s" data-filter="internship">
+                <div class="col-top">
+                    <span class="roman-num">III</span>
+                    <span class="col-tag">ВЫПУСКНИКИ & JUNIOR</span>
+                </div>
+                <h2 class="col-title">Стажировки<br><em>в корпорациях</em></h2>
+                <p class="col-desc">
+                    Оплачиваемая работа в продуктовых командах (от 20 до 40 часов в неделю). Полноценный грейд, ДМС, гибридный график и переход в штат без повторных технических секций.
+                </p>
+                <div class="col-action">ФИЛЬТРОВАТЬ ПОТОК <span class="col-arrow">↗</span></div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 02. ИНДЕКС ПРОГРАММ (Интерактивная таблица-каталог с живым инспектором) -->
+    <section id="index" class="index-section">
+        <div class="section-bar">
+            <span class="mono-label">02 // ИНДЕКС ОТКРЫТЫХ КВОТ</span>
+            <div class="index-controls">
+                <div class="filter-pills" id="filterPills">
+                    <button class="pill active" data-type="all">ВСЕ [6]</button>
+                    <button class="pill" data-type="study">УЧЕБНАЯ</button>
+                    <button class="pill" data-type="pre-diploma">ПРЕДДИПЛОМНАЯ</button>
+                    <button class="pill" data-type="internship">СТАЖИРОВКА</button>
+                </div>
+                <input type="text" id="indexSearch" class="minimal-search" placeholder="ПОИСК ПО СТЕКУ ИЛИ КОМПАНИИ...">
+            </div>
+        </div>
+
+        <div class="index-workspace">
+            <!-- Левая часть: Строгий список позиций -->
+            <div class="index-list" id="indexList">
+                <!-- Заполняется из script.js -->
+            </div>
+
+            <!-- Правая часть: Фиксированный инспектор выбранной программы -->
+            <aside class="index-inspector" id="inspectorPanel">
+                <div class="inspector-inner" id="inspectorContent">
+                    <!-- Заполняется динамически при наведении/клике -->
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- 03. ПРОТОКОЛ ВУЗ (ЭДО) -->
+    <section id="protocol" class="protocol-section">
+        <div class="protocol-grid">
+            <div class="protocol-title-block reveal">
+                <span class="mono-label">03 // ПРОТОКОЛ СИНХРОНИЗАЦИИ</span>
+                <h2>Цифровой мост между кафедрой и тех-гигантом</h2>
+                <p>Мы убрали бюрократический барьер: вам не нужно ходить по деканатам с бумажными направлениями.</p>
+            </div>
+            <div class="protocol-steps">
+                <div class="p-step reveal" style="--d: .08s">
+                    <span class="p-num">01</span>
+                    <div>
+                        <h4>Верификация программы</h4>
+                        <p>Выбираете позицию в реестре. Алгоритм проверяет соответствие кода вашей специальности ФГОС требованиям позиции.</p>
+                    </div>
+                </div>
+                <div class="p-step reveal" style="--d: .18s">
+                    <span class="p-num">02</span>
+                    <div>
+                        <h4>Автогенерация договора и дневника</h4>
+                        <p>Формируем индивидуальное задание, дневник практики и двусторонний договор с ЭЦП за 24 часа.</p>
+                    </div>
+                </div>
+                <div class="p-step reveal" style="--d: .28s">
+                    <span class="p-num">03</span>
+                    <div>
+                        <h4>Защита и оффер</h4>
+                        <p>По завершении куратор подписывает характеристику и рецензию для ГЭК, а успешные практиканты переходят в штат.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальный терминал подачи заявки -->
+    <div class="drawer-backdrop" id="applyDrawer">
+        <div class="drawer-panel">
+            <div class="drawer-header">
+                <span class="mono-label" id="drawerCode">REQ // 001</span>
+                <button class="drawer-close" id="closeDrawer">ЗАКРЫТЬ [ESC]</button>
+            </div>
+            <div class="drawer-body">
+                <h3 class="drawer-title" id="drawerTitle">Название роли</h3>
+                <p class="drawer-sub" id="drawerCompany">Компания</p>
+
+                <form id="editorialForm" class="editorial-form">
+                    <div class="field-wrap">
+                        <label for="fName">01. ИМЯ И ФАМИЛИЯ СТУДЕНТА</label>
+                        <input id="fName" type="text" required placeholder="АЛЕКСАНДР ИВАНОВ">
+                    </div>
+                    <div class="field-wrap">
+                        <label for="fUni">02. УНИВЕРСИТЕТ, ФАКУЛЬТЕТ, КУРС</label>
+                        <input id="fUni" type="text" required placeholder="УНИВЕРСИТЕТ // ФАКУЛЬТЕТ // 4 КУРС">
+                    </div>
+                    <div class="field-wrap">
+                        <label for="fPeriod">03. ПЕРИОД ПРАКТИКИ ПО УЧЕБНОМУ ПЛАНУ</label>
+                        <input id="fPeriod" type="text" required placeholder="01.06.2026 — 31.07.2026">
+                    </div>
+                    <div class="field-wrap">
+                        <label for="fLink">04. ССЫЛКА НА GITHUB / CV / ПОРТФОЛИО</label>
+                        <input id="fLink" type="url" required placeholder="HTTPS://GITHUB.COM/...">
+                    </div>
+                    <label class="check-line">
+                        <input type="checkbox" checked>
+                        <span>Сформировать пакет документов для деканата (Договор + Дневник)</span>
+                    </label>
+                    <button type="submit" class="btn-editorial btn-full">
+                        <span>ОТПРАВИТЬ ДОСЬЕ В КОМПАНИЮ</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="statusToast" class="status-toast">ДОСЬЕ ПЕРЕДАНО КУРАТОРУ ПРОГРАММЫ</div>
+
+    <footer class="editorial-footer">
+        <span>ПРАКСИС // PRAKSIS — ALL RIGHTS RESERVED 2026</span>
+        <span>РЕЕСТР КОМПАНИЙ ВЫМЫШЛЕН — ДЕМО-ДАННЫЕ</span>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

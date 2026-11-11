@@ -254,6 +254,20 @@ a {
     color: var(--text-muted);
 }
 
+.store-btn .store-icon {
+    flex: none;
+}
+
+.store-btn.light .store-icon {
+    filter: invert(1);
+}
+
+@media (prefers-color-scheme: dark) {
+    .store-btn .store-icon {
+        filter: invert(1);
+    }
+}
+
 .store-btn.light {
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.25);
@@ -786,10 +800,40 @@ a {
     margin-bottom: 32px;
 }
 
-.pricing-header h3 {
+.pricing-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.pricing-title h3 {
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 12px;
+}
+
+.pricing-icon {
+    width: 44px;
+    height: 44px;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg-alt);
+    color: var(--accent);
+}
+
+.pricing-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.pricing-card.highlight .pricing-icon {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
 }
 
 .pricing-price {

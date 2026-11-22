@@ -196,7 +196,7 @@
       const downloadsHost=document.querySelector('[data-downloads]');
       if(product.downloads&&product.downloads.length){
         downloadsSection.hidden=false;
-        product.downloads.forEach(([label,file])=>{const link=document.createElement('a');link.className='download-link';link.href=`https://github.com/Rafadelya/ToDooliCo/releases/latest/download/${file}`;link.innerHTML=`<span>${label}</span><small>${file}</small>`;downloadsHost.append(link)});
+        product.downloads.forEach(([label,file])=>{const link=document.createElement('a');link.className='download-link';link.href=`https://github.com/Rafadelya/rafadelya.github.io/releases/latest/download/${file}`;link.innerHTML=`<span>${label}</span><small>${file}</small>`;downloadsHost.append(link)});
       }
     })();
   </script>

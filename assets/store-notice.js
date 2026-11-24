@@ -1,7 +1,7 @@
 (() => {
   const messages = {
     ios: 'Пока нельзя скачать для iOS и iPadOS, но мы скоро исправим.',
-    googlePlay: 'Пока нельзя скачать из Google Play, но мы скоро добавим приложение.'
+    googlePlay: 'Пока нельзя скачать из Google Play, мы это скоро исправим. Пока можете скачать из RuStore.'
   };
 
   let notice;

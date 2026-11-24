@@ -259,12 +259,12 @@ a {
 }
 
 .store-btn.light .store-icon {
-    filter: invert(1);
+    filter: invert(1) grayscale(1) brightness(1.4);
 }
 
 @media (prefers-color-scheme: dark) {
     .store-btn .store-icon {
-        filter: invert(1);
+        filter: invert(1) grayscale(1) brightness(1.4);
     }
 }
 

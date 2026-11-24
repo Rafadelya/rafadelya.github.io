@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Арфа OS — прикладные инструменты для повседневной жизни</title>
+  <meta name="description" content="Арфа OS объединяет маленькие прикладные инструменты, проверенные продукты и исследования реальных повседневных задач.">
+  <link rel="icon" type="image/png" href="../assets/Cyrillic_logo_arfa.png">
+  <link rel="stylesheet" href="marketplace.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+  </style>
+  <link rel="stylesheet" href="../assets/arfa-header.css">
+  <link rel="expect" href="#main-content" blocking="render">
+</head>
+<body class="arfa-dark">
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="../index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../Polka.ru.html" aria-current="page">Проекты</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="../Polka.en.html" aria-label="English" title="English">🇬🇧</a>
+        <a href="../Polka.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="../Polka.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="../Polka.ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../Polka.ru.html" aria-current="page">Проекты</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="../Polka.en.html">🇬🇧 EN</a>
+        <a href="../Polka.de.html">🇩🇪 DE</a>
+        <a href="../Polka.fr.html">🇫🇷 FR</a>
+        <a href="../Polka.ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Экосистема прикладных инструментов</div>
+      <h1>Арфа OS</h1>
+      <p class="hero-subtitle">Набор маленьких систем для повседневных задач. Быстрый доступ. Минимум действий. Предсказуемый результат.</p>
+    </div>
+    <aside class="hero-card" aria-label="Позиционирование Арфа OS">
+      <h2>От хаоса портфеля к понятной системе</h2>
+      <p>Арфа создаёт прикладные инструменты для реальных человеческих проблем: задачи, деньги, поездки, разговоры, фокус и решения на каждый день.</p>
+      <div class="metric-row">
+        <div class="metric">
+          <strong>13</strong>
+          <span>сценарных инструментов</span>
+        </div>
+        <div class="metric">
+          <strong>3</strong>
+          <span>созданных продукта</span>
+        </div>
+        <div class="metric">
+          <strong>4</strong>
+          <span>research-слоя</span>
+        </div>
+      </div>
+    </aside>
+  </header>
+
+  <section class="search-panel" aria-label="Поиск по Арфа OS">
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input id="globalSearch" class="search-input" type="search" placeholder="Найти инструмент…" autocomplete="off">
+    </div>
+    <div class="quick-queries">
+      <button class="chip" type="button" data-query="работа фокус задачи">работа и фокус</button>
+      <button class="chip" type="button" data-query="общение границы разговор">общение и границы</button>
+      <button class="chip" type="button" data-query="поездки маршрут аудиогид">поездки</button>
+      <button class="chip" type="button" data-query="финансы долг расходы">финансы</button>
+      <button class="chip" type="button" data-query="проверено создано">уже работает</button>
+    </div>
+    <div id="searchEmpty" class="empty-state">Ничего не найдено. Попробуйте другой запрос или сценарий.</div>
+  </section>
+
+  <main id="main-content">
+    <section id="scenarios" class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Какую задачу нужно решить?</h2>
+        <p class="section-subtitle">Арфа OS начинается не с категорий проектов, а со сценариев жизни, где человеку нужен короткий путь к результату.</p>
+      </div>
+      <div class="scenario-grid">
+        <article class="scenario-card" data-search="работа фокус задачи quicktodo focusgrid dayanchor todoolico проверено создано">
+          <div class="scenario-icon">▦</div>
+          <h3>Работа и фокус</h3>
+          <p>Собрать день, удержать приоритет и не утонуть в лишних статусах.</p>
+          <div class="scenario-tools">
+            <a class="pill" href="#tools">QuickTodo</a>
+            <a class="pill" href="#tools">FocusGrid</a>
+            <a class="pill" href="#tools">DayAnchor</a>
+            <a class="pill" href="#proven">ToDooliCo</a>
+          </div>
+        </article>
+
+        <article class="scenario-card" data-search="общение границы разговор выйти ситуация exitline quietline exitnow">
+          <div class="scenario-icon">↘</div>
+          <h3>Общение и границы</h3>
+          <p>Завершить разговор, обозначить доступность и сохранить нормальный тон.</p>
+          <div class="scenario-tools">
+            <a class="pill" href="#tools">ExitLine</a>
+            <a class="pill" href="#tools">QuietLine</a>
+            <a class="pill" href="#tools">ExitNow</a>
+          </div>
+        </article>
+
+        <article class="scenario-card" data-search="перемещение поездки маршрут аудиогид audioguide adiguide tripcheck routeping autolog проверено создано">
+          <div class="scenario-icon">⌁</div>
+          <h3>Перемещение и поездки</h3>
+          <p>Маршруты, аудио, чек-листы и быстрые решения в пути.</p>
+          <div class="scenario-tools">
+            <a class="pill" href="#tools">AudioGuide</a>
+            <a class="pill" href="#tools">TripCheck</a>
+            <a class="pill" href="#tools">RoutePing</a>
+            <a class="pill" href="#tools">AutoLog</a>
+          </div>
+        </article>
+
+        <article class="scenario-card" data-search="финансы обязательства долг расходы debtmate costsplit econometrics проверено создано">
+          <div class="scenario-icon">₽</div>
+          <h3>Финансы и обязательства</h3>
+          <p>Денежные договорённости, разделение расходов и быстрые расчёты.</p>
+          <div class="scenario-tools">
+            <a class="pill" href="#tools">Форсета</a>
+            <a class="pill" href="#tools">CostSplit</a>
+            <a class="pill" href="#tools">EconoMetrics</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="tools" class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Инструменты экосистемы</h2>
+        <p class="section-subtitle">Некоторые модули уже материализовались, другие описывают направление системы и будущие быстрые сценарии.</p>
+      </div>
+      <div class="tools-grid">
+        <article class="tool-card" data-search="quicktodo задачи список дел todo работа фокус">
+          <div class="tool-top">
+            <div>
+              <h3>QuickTodo</h3>
+              <p>Короткий список действий без регистрации и лишних экранов.</p>
+            </div>
+            <div class="tool-icon">☑</div>
+          </div>
+          <div class="tool-meta">1 функция • мгновенный запуск</div>
+        </article>
+
+        <article class="tool-card" data-search="focusgrid фокус приоритеты работа">
+          <div class="tool-top">
+            <div>
+              <h3>FocusGrid</h3>
+              <p>Фиксация приоритетов на один рабочий цикл.</p>
+            </div>
+            <div class="tool-icon">◎</div>
+          </div>
+          <div class="tool-meta">фокус • минимум действий</div>
+        </article>
+
+        <article class="tool-card" data-search="dayanchor день план ритм работа">
+          <div class="tool-top">
+            <div>
+              <h3>DayAnchor</h3>
+              <p>Опорные точки дня, чтобы не пересобирать план с нуля.</p>
+            </div>
+            <div class="tool-icon">◇</div>
+          </div>
+          <div class="tool-meta">ритм • предсказуемый результат</div>
+        </article>
+
+        <article class="tool-card" data-search="exitline общение границы выйти из разговора ситуация">
+          <div class="tool-top">
+            <div>
+              <h3>ExitLine</h3>
+              <p>Формулировки для корректного завершения разговора.</p>
+            </div>
+            <span class="tag">soon</span>
+          </div>
+          <div class="tool-meta">общение • без настройки</div>
+        </article>
+
+        <article class="tool-card" data-search="quietline доступность тишина границы общение">
+          <div class="tool-top">
+            <div>
+              <h3>QuietLine</h3>
+              <p>Контроль входящих запросов и личной доступности.</p>
+            </div>
+            <span class="tag blue">draft</span>
+          </div>
+          <div class="tool-meta">границы • спокойный режим</div>
+        </article>
+
+        <article class="tool-card" data-search="exitnow выход из разговора общение ситуация">
+          <div class="tool-top">
+            <div>
+              <h3>ExitNow</h3>
+              <p>Быстрый сценарий выхода, когда надо завершить контакт сразу.</p>
+            </div>
+            <span class="tag">soon</span>
+          </div>
+          <div class="tool-meta">1 действие • бережный тон</div>
+        </article>
+
+        <article class="tool-card" data-search="audioguide adiguide аудиогид аудио поездки маршруты">
+          <div class="tool-top">
+            <div>
+              <h3>AudioGuide</h3>
+              <p>Аудио-подсказки и маршруты для прогулок и городского опыта.</p>
+            </div>
+            <span class="tag green">proven</span>
+          </div>
+          <div class="tool-meta">поездки • storytelling</div>
+        </article>
+
+        <article class="tool-card" data-search="tripcheck поездки маршрут чеклист">
+          <div class="tool-top">
+            <div>
+              <h3>TripCheck</h3>
+              <p>Короткий чек-лист перед маршрутом или поездкой.</p>
+            </div>
+            <div class="tool-icon">▤</div>
+          </div>
+          <div class="tool-meta">чек-лист • мгновенный запуск</div>
+        </article>
+
+        <article class="tool-card" data-search="routeping маршрут поездки перемещение">
+          <div class="tool-top">
+            <div>
+              <h3>RoutePing</h3>
+              <p>Сигналы по маршруту и быстрые точки контроля в пути.</p>
+            </div>
+            <div class="tool-icon">⌖</div>
+          </div>
+          <div class="tool-meta">маршрут • стабильный результат</div>
+        </article>
+
+        <article class="tool-card" data-search="autolog авто учет топливо сервис поездки">
+          <div class="tool-top">
+            <div>
+              <h3>AutoLog</h3>
+              <p>Топливо, сервис и напоминания без таблиц.</p>
+            </div>
+            <div class="tool-icon">⌘</div>
+          </div>
+          <div class="tool-meta">учёт авто • 1 действие</div>
+        </article>
+
+        <article class="tool-card" data-link="../projects/forseta.ru.html" data-search="debtmate долг долги обязательства финансы деньги договоренности проверено создано">
+          <div class="tool-top">
+            <div>
+              <h3>Форсета</h3>
+              <p>Ясные денежные договорённости между друзьями, близкими и коллегами.</p>
+            </div>
+            <span class="tag green">active</span>
+          </div>
+          <div class="tool-meta">финансы • уже развивается</div>
+        </article>
+
+        <article class="tool-card" data-search="costsplit расходы дележ финансы">
+          <div class="tool-top">
+            <div>
+              <h3>CostSplit</h3>
+              <p>Быстро разделить общий расход и не спорить о деталях.</p>
+            </div>
+            <div class="tool-icon">≑</div>
+          </div>
+          <div class="tool-meta">расходы • 1 действие</div>
+        </article>
+
+        <article class="tool-card" data-link="econometrics_app.html" data-search="econometrics аналитика экономика roi финансы расчет">
+          <div class="tool-top">
+            <div>
+              <h3>EconoMetrics</h3>
+              <p>Расчёт юнит-экономики и ROI для быстрых решений.</p>
+            </div>
+            <span class="tag amber">tool</span>
+          </div>
+          <div class="tool-meta">аналитика • без регистрации</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="proven" class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Что уже работает</h2>
+        <p class="section-subtitle">Это не отдельные случайные приложения. Это модули Арфа OS, которые уже прошли путь от проблемы к продуктовой форме.</p>
+      </div>
+      <div class="proof-grid">
+        <article class="proof-card" data-link="../projects/adiguide.ru.html" data-search="adiguide audioguide аудиогид города прогулки туристы маршруты проверено создано mvp">
+          <div class="proof-header">
+            <div class="proof-logo">🎧</div>
+            <div>
+              <h3>AdiGuide</h3>
+              <span class="status">MVP / тестирование / развитие</span>
+            </div>
+          </div>
+          <p>Аудиогид для городов и прогулок. Проверен на туристах, реальных маршрутах и сценариях городского внимания.</p>
+          <ul class="checklist" aria-label="Что проверили в AdiGuide">
+            <li>UX в городской среде</li>
+            <li>AI voice pipeline</li>
+            <li>Storytelling-маршруты</li>
+          </ul>
+          <div class="tech">Flutter • Firebase • OpenStreetMap • TTS • Python</div>
+          <div class="actions">
+            <a class="btn" href="../projects/adiguide.ru.html">Подробнее</a>
+          </div>
+        </article>
+
+        <article class="proof-card" data-link="../projects/forseta.ru.html" data-search="debtmate долги обязательства деньги финансы друзья семья договоренности проверено создано active development">
+          <div class="proof-header">
+            <div class="proof-logo">
+              <img src="../assets/Forseta/Форсета_Logo.png" alt="Форсета">
+            </div>
+            <div>
+              <h3>Форсета</h3>
+              <span class="status">active development</span>
+            </div>
+          </div>
+          <p>Ассистент обязательств и долгов для друзей, семьи, самозанятых, рассрочек и неловких денежных договорённостей.</p>
+          <ul class="checklist" aria-label="Что проверяем в Форсета">
+            <li>awkward money situations</li>
+            <li>repayment logic</li>
+            <li>reminders без давления</li>
+          </ul>
+          <div class="tech">Flutter • Dart • Hive • GitHub</div>
+          <div class="actions">
+            <a class="btn" href="../projects/forseta.ru.html">Подробнее</a>
+            <a class="btn" href="../projects/forseta-mascots.ru.html">Маскоты</a>
+          </div>
+        </article>
+
+        <article class="proof-card" data-link="../projects/ToDooliCo/ToDooliCo_Russia/index.html" data-search="todoolico todo задачи канбан пароли фокус проверено создано">
+          <div class="proof-header">
+            <div class="proof-logo">
+              <img src="../assets/AppIcon~todoolico.png" alt="ToDooliCo">
+            </div>
+            <div>
+              <h3>ToDooliCo</h3>
+              <span class="status">product prototype</span>
+            </div>
+          </div>
+          <p>Минималистичная система задач с канбан-модулем и локальным хранением важных данных.</p>
+          <ul class="checklist" aria-label="Что проверили в ToDooliCo">
+            <li>простое планирование без регистрации</li>
+            <li>канбан для личных задач</li>
+            <li>локальная безопасность данных</li>
+          </ul>
+          <div class="tech">Flutter • Dart • SQLite • Hive • AES-256</div>
+          <div class="actions">
+            <a class="btn" href="../projects/ToDooliCo/ToDooliCo_Russia/index.html">Подробнее</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="research" class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Research & Advisory</h2>
+        <p class="section-subtitle">Арфа не только создаёт инструменты, но и исследует реальные процессы: бизнес, поведение, коммуникации и цифровые привычки.</p>
+      </div>
+      <div class="research-grid">
+        <article class="research-card" data-link="../blog/ru/posts/finance-consulting.ru.html" data-search="магазин электроники финансы консалтинг research advisory экономика бизнес процессы">
+          <div class="research-type">Practice case</div>
+          <h3>Финансовое консультирование для магазина электроники</h3>
+          <p>Анализ бизнес-процессов, расходов, обязательств и новых источников дохода.</p>
+          <div class="actions">
+            <a class="btn" href="../blog/ru/posts/finance-consulting.ru.html">Читать кейс</a>
+          </div>
+        </article>
+
+        <article class="research-card" data-link="../blog/ru/posts/agency-analysis.ru.html" data-search="hr agency найм персонала агентство research advisory бренд аудит коммуникации">
+          <div class="research-type">Practice case</div>
+          <h3>Анализ для агентства по найму персонала</h3>
+          <p>Опросы, конкурентная проверка, диагностика бренда и рекомендации по позиционированию.</p>
+          <div class="actions">
+            <a class="btn" href="../blog/ru/posts/agency-analysis.ru.html">Читать кейс</a>
+          </div>
+        </article>
+
+        <article class="research-card" data-search="потребительское поведение цифровизация экономика публикация research advisory">
+          <div class="research-type">Publication</div>
+          <h3>Потребительское поведение в условиях цифровизации</h3>
+          <p>Публикация о том, как цифровая экономика меняет поведение людей и ожидания от сервисов.</p>
+          <div class="actions">
+            <a class="btn" href="https://usptu-bulletin.ru/index.php/bul/article/view/11710" target="_blank" rel="noopener noreferrer">Статья</a>
+            <a class="btn" href="../assets/ПОТРЕБИТЕЛЬСКОЕ ПОВЕДЕНИЕ В УСЛОВИЯХ ЦИФРОВИЗАЦИИ В ЭКОНОМИКЕ.pdf" download>PDF</a>
+          </div>
+        </article>
+
+        <article class="research-card" data-search="мобильная агрегация трафика открытые решения публикация research advisory routeping поездки">
+          <div class="research-type">Publication</div>
+          <h3>Мобильная агрегация трафика на открытых решениях</h3>
+          <p>Исследование открытых технологий для мобильных сервисов маршрутов и городской инфраструктуры.</p>
+          <div class="actions">
+            <a class="btn" href="https://usptu-bulletin.ru/index.php/bul/article/view/13035" target="_blank" rel="noopener noreferrer">Статья</a>
+            <a class="btn" href="../assets/РАЗРАБОТКА СЕРВИСА МОБИЛЬНОЙ АГРЕГАЦИИ ТРАФИКА НА ОСНОВЕ ОТКРЫТЫХ РЕШЕНИЙ.pdf" download>PDF</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="philosophy" class="section">
+      <div class="philosophy">
+        <div>
+          <div class="eyebrow">Philosophy</div>
+          <h2 class="section-title">Tiny practical tools</h2>
+        </div>
+        <div>
+          <p>Арфа делает маленькие прикладные системы для реальных человеческих проблем. Не ради витрины приложений, а ради короткого пути от неловкой ситуации к ясному действию.</p>
+          <div class="principles" aria-label="Принципы Арфа OS">
+            <div class="principle">Минимум экранов и решений перед стартом</div>
+            <div class="principle">Один понятный сценарий вместо перегруженной платформы</div>
+            <div class="principle">Проверка на реальных процессах, людях и ограничениях</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="cta" id="contact">
+    <div>
+      <h2>Есть задача, которую никто нормально не решает?</h2>
+      <p>Возможно, ей нужен свой инструмент.</p>
+    </div>
+    <a class="btn" href="../contact.ru.html">Обсудить задачу</a>
+  </section>
+
+  <footer>
+    <p>Арфа OS • прикладные инструменты для повседневной жизни • © 2026</p>
+  </footer>
+
+  <script>
+    const searchInput = document.getElementById('globalSearch');
+    const quickQueries = Array.from(document.querySelectorAll('.quick-queries .chip'));
+    const searchableItems = Array.from(document.querySelectorAll('[data-search]'));
+    const searchSections = Array.from(document.querySelectorAll('.search-section'));
+    const emptyState = document.getElementById('searchEmpty');
+
+    function normalizeText(value) {
+      return value.toLowerCase().replaceAll('ё', 'е').trim();
+    }
+
+    function matchesQuery(item, query) {
+      const haystack = normalizeText(`${item.dataset.search || ''} ${item.textContent || ''}`);
+      return query.split(/\s+/).filter(Boolean).every((word) => haystack.includes(word));
+    }
+
+    function applySearch() {
+      const query = normalizeText(searchInput.value || '');
+      let visibleCount = 0;
+
+      searchableItems.forEach((item) => {
+        const isVisible = !query || matchesQuery(item, query);
+        item.classList.toggle('is-hidden', !isVisible);
+        if (isVisible) visibleCount += 1;
+      });
+
+      searchSections.forEach((section) => {
+        const hasVisible = section.querySelector('[data-search]:not(.is-hidden)');
+        section.classList.toggle('is-hidden', Boolean(query) && !hasVisible);
+      });
+
+      emptyState.style.display = query && visibleCount === 0 ? 'block' : 'none';
+    }
+
+    quickQueries.forEach((button) => {
+      button.addEventListener('click', () => {
+        quickQueries.forEach((chip) => chip.classList.remove('active'));
+        button.classList.add('active');
+        searchInput.value = button.dataset.query || button.textContent;
+        applySearch();
+        searchInput.focus();
+      });
+    });
+
+    searchInput.addEventListener('input', () => {
+      quickQueries.forEach((chip) => chip.classList.remove('active'));
+      applySearch();
+    });
+
+    document.querySelectorAll('[data-link]').forEach((card) => {
+      const link = card.dataset.link;
+      if (!link) return;
+      card.setAttribute('role', 'link');
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('a, button')) return;
+        window.location.href = link;
+      });
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') window.location.href = link;
+      });
+    });
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+
+    function setMobileMenu(open) {
+      document.body.classList.toggle('mobile-menu-open', open);
+      mobileMenuBtn?.setAttribute('aria-expanded', String(open));
+      mobileMenuDrawer?.setAttribute('aria-hidden', String(!open));
+    }
+
+    mobileMenuBtn?.addEventListener('click', () => setMobileMenu(true));
+    mobileMenuClose?.addEventListener('click', () => setMobileMenu(false));
+    mobileMenuOverlay?.addEventListener('click', () => setMobileMenu(false));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setMobileMenu(false);
+    });
+
+    applySearch();
+  </script>
+  <script src="../assets/arfa-header.js" defer></script>
+</body>
+</html>

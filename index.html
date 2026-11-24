@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arfa - Redirecting...</title>
+  <link rel="icon" type="image/png" href="assets/latin_logo_arfa.png">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: white;
+      overflow: hidden;
+    }
+    .loading-container {
+      text-align: center;
+      padding: 2rem;
+      animation: fadeInUp 1s cubic-bezier(.23,1.01,.32,1) both;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px) scale(0.98); }
+      to   { opacity: 1; transform: none; }
+    }
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      animation: logoPop 1.2s cubic-bezier(.23,1.01,.32,1) both;
+    }
+    @keyframes logoPop {
+      0% { opacity: 0; transform: scale(0.7) rotate(-10deg); }
+      60% { opacity: 1; transform: scale(1.1) rotate(5deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 5px solid rgba(255,255,255,0.15);
+      border-top: 5px solid #a78bfa;
+      border-right: 5px solid #38bdf8;
+      border-radius: 50%;
+      animation: spin 1s linear infinite, spinnerFadeIn 1.2s 0.2s both;
+      margin: 0 auto 1.2rem;
+      background: linear-gradient(135deg,rgba(167,139,250,0.2),rgba(56,189,248,0.2));
+      box-shadow: 0 0 32px 0 rgba(167,139,250,0.15);
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes spinnerFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .text {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.01em;
+      animation: fadeInUp 1.2s 0.2s both;
+    }
+    .subtext {
+      font-size: 1rem;
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 1.2s 0.3s both;
+    }
+    .language-links {
+      margin-top: 2.2rem;
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 1.2s 0.5s both;
+    }
+    .language-link {
+      padding: 0.7rem 1.4rem;
+      background: linear-gradient(90deg, #a78bfa 0%, #38bdf8 100%);
+      border-radius: 25px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 2px 16px 0 rgba(56,189,248,0.12);
+      transition: all 0.25s cubic-bezier(.23,1.01,.32,1);
+      opacity: 0;
+      transform: translateY(20px) scale(0.98);
+      animation: fadeInBtn 0.7s forwards;
+    }
+    .language-link:nth-child(1) { animation-delay: 0.7s; }
+    .language-link:nth-child(2) { animation-delay: 0.85s; }
+    .language-link:nth-child(3) { animation-delay: 1s; }
+    .language-link:nth-child(4) { animation-delay: 1.15s; }
+    @keyframes fadeInBtn {
+      to { opacity: 1; transform: none; }
+    }
+    .language-link:hover {
+      background: linear-gradient(90deg, #38bdf8 0%, #a78bfa 100%);
+      box-shadow: 0 4px 24px 0 rgba(56,189,248,0.18);
+      transform: scale(1.07) translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-container">
+    <img src="assets/latin_logo_arfa.png" alt="Arfa" class="logo">
+    <div class="spinner"></div>
+    <div class="text">Detecting your language and redirecting you to the right version...</div>
+    <div class="subtext">Or choose your language manually:</div>
+    <div class="language-links">
+      <a href="index.ru.html" class="language-link">🇷🇺 Russian</a>
+      <a href="index.en.html" class="language-link">🇬🇧 English</a>
+      <a href="index.de.html" class="language-link">🇩🇪 German</a>
+      <a href="index.fr.html" class="language-link">🇫🇷 French</a>
+    </div>
+  </div>
+  <script>
+    // Language detection by IP
+    async function detectLanguage() {
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        let targetLanguage = 'en';
+        if (data.country_code) {
+          const countryCode = data.country_code.toUpperCase();
+          const languageMap = {
+            'RU': 'ru', 'BY': 'ru', 'KZ': 'ru', 'UA': 'ru',
+            'DE': 'de', 'AT': 'de', 'CH': 'de',
+            'FR': 'fr', 'BE': 'fr', 'CA': 'fr',
+          };
+          if (languageMap[countryCode]) {
+            targetLanguage = languageMap[countryCode];
+          }
+        }
+        setTimeout(() => {
+          window.location.href = `index.${targetLanguage}.html`;
+        }, 2000);
+      } catch (error) {
+        setTimeout(() => {
+          window.location.href = 'index.en.html';
+        }, 2000);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', detectLanguage);
+  </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+---
+---
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Arfa</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="blog-pixel.css">
+  <link rel="stylesheet" href="shared/design-debt.css">
+  <link rel="icon" type="image/png" href="../assets/latin_logo_arfa.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    @media (max-width: 900px) {
+      .glass-header {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 0.6em !important;
+        padding: 0.85em 0.95em !important;
+      }
+      .glass-header nav,
+      .header-langs {
+        display: none !important;
+      }
+      .header-left {
+        min-width: 0;
+        gap: 0.55em !important;
+      }
+      .header-switchers {
+        gap: 0.42em !important;
+      }
+      .mobile-menu-btn {
+        display: inline-flex !important;
+      }
+      .glass-logo-img {
+        width: 46px !important;
+        height: 46px !important;
+      }
+    }
+    @media (max-width: 500px) {
+      .glass-header {
+        gap: 0.38em !important;
+        padding: 0.75em 0.8em !important;
+      }
+      .header-left,
+      .header-switchers {
+        gap: 0.38em !important;
+      }
+      .glass-logo-img {
+        width: 40px !important;
+        height: 40px !important;
+      }
+      .mobile-menu-drawer {
+        width: min(90vw, 320px);
+      }
+      .mobile-menu-chip,
+      .mobile-menu-link {
+        font-size: 0.54em !important;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="../assets/arfa-header.css">
+  <link rel="expect" href="#main-content" blocking="render">
+</head>
+<body class="bg-white text-gray-800">
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Navigation principale">
+    <a class="arfa-brand" href="../index.fr.html" aria-label="Arfa — accueil">
+      <span class="arfa-brand__mark"><img src="../assets/latin_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Arfa</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Navigation principale">
+      <a href="../index.fr.html">Accueil</a>
+      <a href="../about.fr.html">À propos</a>
+      <a href="../Polka.fr.html">Projets</a>
+      <a href="blog.fr.html" aria-current="page">Blog</a>
+      <a href="../contact.fr.html">Contact</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Langue">
+        <a href="blog.en.html" aria-label="English" title="English">🇬🇧</a>
+        <a href="blog.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="blog.fr.html" class="is-active" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="blog.ru.html" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Menu">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Menu</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Fermer le menu" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Navigation principale">
+      <a href="../index.fr.html">Accueil</a>
+      <a href="../about.fr.html">À propos</a>
+      <a href="../Polka.fr.html">Projets</a>
+      <a href="blog.fr.html" aria-current="page">Blog</a>
+      <a href="../contact.fr.html">Contact</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Langue</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="blog.en.html">🇬🇧 EN</a>
+        <a href="blog.de.html">🇩🇪 DE</a>
+        <a href="blog.fr.html" class="is-active">🇫🇷 FR</a>
+        <a href="blog.ru.html">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
+  <main class="relative bg-white overflow-hidden" id="main-content">
+    <!-- Typewriter Hero Section -->
+    <section class="relative pt-32 pb-20 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[300px] mb-8">
+      <div class="pixel-dots-bg"></div>
+      <h1 class="typewriter-pixel text-5xl md:text-6xl font-bold mb-6" style="color:#2d014d; font-family:'Press Start 2P',monospace;">BLOGUE</h1>
+      <p class="blog-pixel-desc text-lg md:text-xl text-center max-w-2xl mb-4" style="font-family:'Press Start 2P',monospace; color:#6b7280;">Idées, aperçus et histoires du monde de la créativité numérique</p>
+    </section>
+    <!-- Blog Section -->
+    <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-10" style="font-family:'Press Start 2P',monospace; color:#2d014d;">Derniers Articles</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+        {% for post in site.data.blog_posts.fr %}
+        <div class="card-modern flex flex-col items-start p-8 group blog-pixel-card">
+          <span class="text-xs mb-2 blog-pixel-meta">{{ post.date }}</span>
+          <h3 class="text-xl mb-2 blog-pixel-title">{{ post.title }}</h3>
+          <p class="mb-4 blog-pixel-text">{{ post.excerpt }}</p>
+          <a href="{{ post.url | relative_url }}" class="blog-pixel-btn">Lire</a>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 border-t mt-12">
+    <p class="text-sm">© 2026 Arfa. Tous droits réservés.</p>
+  </footer>
+  <script src="shared/design-debt.js"></script>
+  <script src="../assets/arfa-header.js" defer></script>
+</body> 

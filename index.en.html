@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arfa — Small team. Thoughtful digital work.</title>
+  <meta name="description" content="We’re Rafael and Adelya — a two-person team building digital products, apps, and websites from first idea to launch." />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=ultraviolet">
+  <link rel="stylesheet" href="home-strings.css?v=portal2">
+  <link rel="icon" type="image/png" href="assets/latin_logo_arfa.png">
+  <script defer src="js/i18n.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/arfa-dotfield.js?v=dot4"></script>
+  <link rel="stylesheet" href="home-stage.css?v=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home-en.css?v=20261014b">
+  <link rel="stylesheet" href="assets/arfa-header.css">
+  <link rel="expect" href="#main-content" blocking="render">
+</head>
+<body class="arfa-uv arfa-stage">
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Main navigation">
+    <a class="arfa-brand" href="index.en.html" aria-label="Arfa — home">
+      <span class="arfa-brand__mark"><img src="assets/latin_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Arfa</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Main navigation">
+      <a href="index.en.html" aria-current="page">Home</a>
+      <a href="about.en.html">About</a>
+      <a href="Polka.en.html">Projects</a>
+      <a href="blog/blog.en.html">Blog</a>
+      <a href="contact.en.html">Contact</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Language">
+        <a href="index.en.html" class="is-active" aria-label="English" title="English">🇬🇧</a>
+        <a href="index.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="index.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="index.ru.html" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Menu">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Menu</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Close menu" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Main navigation">
+      <a href="index.en.html" aria-current="page">Home</a>
+      <a href="about.en.html">About</a>
+      <a href="Polka.en.html">Projects</a>
+      <a href="blog/blog.en.html">Blog</a>
+      <a href="contact.en.html">Contact</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Language</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="index.en.html" class="is-active">🇬🇧 EN</a>
+        <a href="index.de.html">🇩🇪 DE</a>
+        <a href="index.fr.html">🇫🇷 FR</a>
+        <a href="index.ru.html">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
+  <main id="main-content">
+    <section class="arfa-hero" id="top" aria-labelledby="hero-title">
+      <div class="arfa-dotfield" aria-hidden="true"></div>
+      <div class="arfa-heart" aria-hidden="true">
+        <svg viewBox="0 0 24 24" role="presentation">
+          <defs>
+            <linearGradient id="arfaHeartGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#F4EEFF" />
+              <stop offset="1" stop-color="#9B5CFF" />
+            </linearGradient>
+          </defs>
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#arfaHeartGrad)" />
+        </svg>
+      </div>
+      <div class="arfa-wrap arfa-hero__layout">
+
+
+      <div class="arfa-hero__copy">
+         <p class="arfa-mark">Independent  · Rafael &amp; Adelya</p>
+         <h1 id="hero-title">Small team.<br /><span class="accent">Ideas in motion.</span></h1>
+         <p class="arfa-hero__lede">We design and build useful digital products, apps, and websites — from the first question to a working launch.</p>
+         <div class="arfa-hero__actions">
+           <a class="arfa-btn" href="#work">Explore our work <span aria-hidden="true">↘</span></a>
+            <a class="arfa-link arfa-link--on-dark" href="contact.en.html">Have an idea? Let’s talk <span aria-hidden="true">↗</span></a>
+          </div>
+      </div>
+      </div>
+    </section>
+
+    <section class="arfa-about" id="about-arfa" aria-labelledby="about-title">
+      <div class="arfa-wrap arfa-about__grid">
+        <div class="arfa-about__copy">
+          <h2 id="about-title">What is <span class="accent">Arfa</span>?</h2>
+          <div class="arfa-prose">
+            <p>We’re Rafael and Adelya — a two-person team drawn to the space between a good question and a useful thing.</p>
+            <p>We make our own apps and experiments, study how businesses and people work, and collaborate with others to bring considered ideas to life.</p>
+            <p><strong>Arfa is a small, independent practice built around curiosity, care, and making things real.</strong></p>
+          </div>
+        </div>
+        <figure class="arfa-portal">
+          <img src="assets/arfa-portal.jpg" alt="" width="1200" height="1500" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="arfa-work" id="work" aria-labelledby="work-title">
+      <div class="arfa-wrap">
+        <div class="arfa-work__intro">
+          <p class="arfa-section-label">Selected work · 01—03</p>
+          <h2 id="work-title">Ideas, made <span class="accent">tangible.</span></h2>
+          <p>Our work moves between everyday tools, playful experiments, and research. Here are a few things we’ve taken from an early thought to something you can explore.</p>
+        </div>
+        <div class="arfa-gallery" aria-label="Selected Arfa projects">
+          <a class="arfa-artifact arfa-artifact--hero" href="projects/adiguide.en.html">
+            <div class="arfa-artifact__media"><img src="assets/adiguide/1.jpg" alt="A historic city landmark featured in an AdiGuide walking route" width="1086" height="1448" loading="lazy" decoding="async"></div>
+            <div class="arfa-artifact__meta"><span>Mobile app · Audio storytelling</span><h3>AdiGuide</h3><p>City walks that turn nearby streets into stories.</p><span class="arfa-artifact__arrow" aria-hidden="true">↗</span></div>
+          </a>
+          <a class="arfa-artifact arfa-artifact--mid arfa-artifact--todo" href="projects/ToDooliCo/ToDooliCo_Russia/index.html">
+            <div class="arfa-artifact__media arfa-artifact__media--contain"><img src="assets/AppIcon~todoolico.png" alt="ToDooliCo app mascot" width="1024" height="1024" loading="lazy" decoding="async"></div>
+            <div class="arfa-artifact__meta"><span>Personal productivity · Cross-platform</span><h3>ToDooliCo</h3><p>A calm space for tasks, notes, habits, and plans.</p><span class="arfa-artifact__arrow" aria-hidden="true">↗</span></div>
+          </a>
+          <a class="arfa-artifact arfa-artifact--mid arfa-artifact--forseta" href="projects/forseta.en.html">
+            <div class="arfa-artifact__media arfa-artifact__media--contain"><img src="assets/Forseta/Debik_good.png" alt="Debik, the Forseta companion character" width="1086" height="1448" loading="lazy" decoding="async"></div>
+            <div class="arfa-artifact__meta"><span>Finance app</span><h3>Forseta</h3><p>A friendlier way to keep track of money between people.</p><span class="arfa-artifact__arrow" aria-hidden="true">↗</span></div>
+          </a>
+        </div>
+        <div class="arfa-work__more"><a class="arfa-link" href="projects.en.html">See all projects <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="arfa-practice" aria-labelledby="practice-title">
+      <div class="arfa-wrap arfa-practice__grid">
+        <div class="arfa-practice__intro">
+          <p class="arfa-section-label">How we help</p>
+          <h2 id="practice-title">From open question<br />to <span class="accent">next step.</span></h2>
+        </div>
+        <div class="arfa-practice__list">
+          <article><span>01</span><div><h3>Shape the idea</h3><p>Research the problem, understand the people around it, and find a direction worth pursuing.</p></div></article>
+          <article><span>02</span><div><h3>Design the experience</h3><p>Turn the direction into a clear product, service, or digital experience people can use.</p></div></article>
+          <article><span>03</span><div><h3>Build and learn</h3><p>Make a working version, test it in the real world, and improve what matters.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="arfa-meet" id="meet" aria-labelledby="meet-title">
+      <div class="arfa-wrap">
+        <p class="arfa-meet__eyebrow">A good place to begin</p>
+        <h2 id="meet-title">Have something<br />in <span class="accent">mind?</span></h2>
+        <div class="arfa-prose">
+          <p>Tell us what you’re thinking about — a product, a challenge, or a first rough idea. We’re open to thoughtful collaborations and interesting conversations.</p>
+        </div>
+        <div class="arfa-meet__actions">
+          <a class="arfa-btn" href="contact.en.html">Start a conversation <span aria-hidden="true">↗</span></a>
+          <a class="arfa-link arfa-link--on-dark" href="blog/blog.en.html">Read our notes</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="arfa-footer">
+    <div class="arfa-wrap">
+      <p>© 2026 Arfa · Independent by nature.</p>
+      <nav aria-label="Footer">
+        <a href="projects.en.html">Projects</a>
+        <a href="blog/blog.en.html">Blog</a>
+        <a href="about.en.html">About</a>
+        <a href="contact.en.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    function setMobileMenuState(isOpen) {
+      const body = document.body;
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuDrawer) return;
+      body.classList.toggle('mobile-menu-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuDrawer.setAttribute('aria-hidden', String(!isOpen));
+    }
+
+    function toggleMobileMenu(forceState) {
+      const shouldOpen = typeof forceState === 'boolean'
+        ? forceState
+        : !document.body.classList.contains('mobile-menu-open');
+      setMobileMenuState(shouldOpen);
+    }
+
+    function initMobileMenu() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuOverlay = document.getElementById('mobileMenuOverlay');
+      const menuClose = document.getElementById('mobileMenuClose');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuOverlay || !menuClose || !menuDrawer) return;
+
+      menuBtn.addEventListener('click', () => toggleMobileMenu());
+      menuOverlay.addEventListener('click', () => toggleMobileMenu(false));
+      menuClose.addEventListener('click', () => toggleMobileMenu(false));
+      menuDrawer.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => toggleMobileMenu(false));
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') toggleMobileMenu(false);
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) toggleMobileMenu(false);
+      });
+    }
+
+    function initHeroEasterEgg() {
+      const hero = document.querySelector('.arfa-hero');
+      if (!hero) return;
+      const LOVE_MS = 20000;
+      let timer = 0;
+      hero.addEventListener('click', (event) => {
+        // Keep links and buttons working — only the panel itself triggers it.
+        if (event.target.closest('a, button')) return;
+        hero.classList.add('is-love');
+        window.clearTimeout(timer);
+        timer = window.setTimeout(() => hero.classList.remove('is-love'), LOVE_MS);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+    document.addEventListener('DOMContentLoaded', initHeroEasterEgg);
+  </script>
+  <!-- Retrowave overlay for portrait orientation -->
+  <div id="retrowaveOverlay">
+    <div class="retro-stars">
+      <span>✦</span><span>•</span><span>✦</span><span>•</span><span>✦</span>
+    </div>
+    <div class="retro-sun"></div>
+    <span class="retro-phone-emoji" aria-hidden="true">📱</span>
+    <div class="retro-grid">
+      <svg viewBox="0 0 100 40" preserveAspectRatio="none">
+        <g stroke="#fff" stroke-width="0.3" opacity="0.5">
+          <line x1="0" y1="39" x2="100" y2="39" />
+          <line x1="0" y1="32" x2="100" y2="32" />
+          <line x1="0" y1="25" x2="100" y2="25" />
+          <line x1="0" y1="18" x2="100" y2="18" />
+          <line x1="0" y1="11" x2="100" y2="11" />
+          <line x1="0" y1="4" x2="100" y2="4" />
+          <line x1="10" y1="0" x2="30" y2="39" />
+          <line x1="20" y1="0" x2="40" y2="39" />
+          <line x1="30" y1="0" x2="50" y2="39" />
+          <line x1="40" y1="0" x2="60" y2="39" />
+          <line x1="50" y1="0" x2="70" y2="39" />
+          <line x1="60" y1="0" x2="80" y2="39" />
+          <line x1="70" y1="0" x2="90" y2="39" />
+          <line x1="80" y1="0" x2="100" y2="39" />
+        </g>
+      </svg>
+    </div>
+  </div>
+  <script src="assets/arfa-header.js" defer></script>
+</body>
+</html>

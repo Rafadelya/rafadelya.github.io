@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дизайн-долг и его финансовая модель | Блог Арфа</title>
+  <meta name="description" content="Как системность интерфейса влияет на конверсию, удержание и финансовый результат продукта." />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../../../styles.css">
+  <link rel="stylesheet" href="../../../blog-pixel.css">
+  <link rel="stylesheet" href="../../../blog.css">
+  <link rel="icon" type="image/png" href="../../../../assets/Cyrillic_logo_arfa.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../../../../assets/arfa-header.css">
+  <link rel="expect" href="#main-content" blocking="render">
+</head>
+<body class="text-gray-800">
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="../../../../index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="../../../../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="../../../../index.ru.html">Главная</a>
+      <a href="../../../../about.ru.html">О нас</a>
+      <a href="../../../../Polka.ru.html">Проекты</a>
+      <a href="../../../blog.ru.html" aria-current="page">Блог</a>
+      <a href="../../../../contact.ru.html">На связи</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="../../../blog.en.html" aria-label="English" title="English">🇬🇧</a>
+        <a href="../../../blog.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="../../../blog.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="design-debt.ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="../../../../index.ru.html">Главная</a>
+      <a href="../../../../about.ru.html">О нас</a>
+      <a href="../../../../Polka.ru.html">Проекты</a>
+      <a href="../../../blog.ru.html" aria-current="page">Блог</a>
+      <a href="../../../../contact.ru.html">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="../../../blog.en.html">🇬🇧 EN</a>
+        <a href="../../../blog.de.html">🇩🇪 DE</a>
+        <a href="../../../blog.fr.html">🇫🇷 FR</a>
+        <a href="design-debt.ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
+  <main class="relative bg-white overflow-hidden" id="main-content">
+    <section class="relative pt-32 pb-20 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[300px] mb-8">
+      <div class="pixel-dots-bg"></div>
+      <div class="post-header-content text-center max-w-4xl mx-auto relative z-10">
+        <div class="post-meta mb-4">
+          <span class="blog-pixel-meta">2026-03-03</span>
+          <span class="blog-pixel-meta mx-2">•</span>
+          <span class="blog-pixel-meta">12 мин чтения</span>
+          <span class="blog-pixel-meta mx-2">•</span>
+          <span class="blog-pixel-meta">Дизайн / Продукт</span>
+        </div>
+        <h1 class="post-title text-4xl md:text-5xl font-bold mb-6" style="color:#2d014d; font-family:'Press Start 2P',monospace; line-height: 1.2;">
+Дизайн-долг и его финансовая модель
+        </h1>
+        <p class="post-subtitle text-lg md:text-xl text-center max-w-2xl mx-auto" style="font-family:'Press Start 2P',monospace; color:#6b7280; font-size: 0.9em;">
+Почему системность интерфейса влияет на доверие, скорость команды и экономику продукта.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
+      <div class="max-w-4xl mx-auto">
+        <nav class="breadcrumb mb-8">
+          <a href="../../../../index.ru.html" class="breadcrumb-link">Главная</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../../blog.ru.html" class="breadcrumb-link">Блог</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Дизайн</span>
+        </nav>
+
+        <article class="post-content">
+          <p class="post-text">
+Нужно держать руку на пульсе вашего дизайна интерфейса. И это не формула для стратегической сессии, а <span class="read-emphasis">управленческая дисциплина</span> — практика, без которой продукт начинает <span class="read-emphasis">терять доверие</span> быстрее, чем успевает наращивать функциональность.
+          </p>
+          <p class="post-text">
+Каким бы сложным ни было решение и насколько бы глубокой ни была архитектура, <span class="read-emphasis">пользователь сначала видит экран</span>. Даже в B2B. Даже там, где решения принимаются через KPI и бюджеты. Первая оценка происходит на уровне интерфейса.
+          </p>
+          <p class="post-text">
+Визуальный слой — это <span class="read-emphasis">точка входа в доверие</span>. Аккуратная типографика, выстроенная иерархия, согласованные компоненты — это не про «красиво». Это сигнал о структурности. Логику ещё не изучили, но порядок уже почувствовали. Если на экране системность, продукту легче поверить.
+          </p>
+          <p class="post-text">
+Когда сетка «плывёт», компоненты конфликтуют, состояния неочевидны, возникает ощущение потери контроля. Функциональность может быть сильной, но доверие начинает разрушаться. А <span class="read-emphasis">доверие — нематериальный актив продукта</span>.
+          </p>
+          <p class="post-text">
+Интерфейс почти всегда отражает устройство команды. Визуальный хаос редко существует изолированно: размытые зоны ответственности, отсутствие принципов, ситуативные решения. Несистемный UI — не эстетическая проблема, а симптом организационной нестабильности.
+          </p>
+          <p class="post-text">
+Системный интерфейс, напротив, говорит о наличии рамки. О стандартах и предсказуемости. Компоненты — это библиотека, изменения вносятся по правилам. Это разговор уже не про пиксели, а про операционную дисциплину.
+          </p>
+
+          <h2 class="post-heading">Интерфейс как управленческий индикатор</h2>
+          <p class="post-text">
+Если на экране порядок, это <span class="read-emphasis">отражение управляемости внутри</span>. Если на экране хаос — это почти всегда следствие отсутствия рамки.
+          </p>
+          <p class="post-text">
+Интерфейс показывает, есть ли в продукте принципы или только решения по ситуации. Есть ли ответственность за целостность или только за задачи. Поэтому системность интерфейса — это индикатор зрелости команды.
+          </p>
+
+          <h2 class="post-heading">Дизайн-система как язык команды</h2>
+          <p class="post-text">
+Если интерфейс — это связка между системой и пользователем, то дизайн-система — это связка между командами. Это протокол: набор правил и ограничений, снимающих десятки мелких решений ежедневно.
+          </p>
+          <p class="post-text">
+Какая кнопка primary? Какие отступы допустимы? Как выглядят состояния ошибки? Что является нормой, а что нарушением стандарта?
+          </p>
+          <p class="post-text">
+Без общего языка каждое решение обсуждается заново. Каждый экран становится отдельным кейсом. Продакт формулирует в одном контексте, дизайнер интерпретирует в другом, разработчик реализует в третьем, маркетинг описывает в четвёртом.
+          </p>
+          <p class="post-text">
+Растёт транзакционная стоимость взаимодействия. Замедляются ревью. Согласования усложняются. <span class="read-emphasis">Скорость масштабирования падает</span>.
+          </p>
+          <div class="media-container debt-media">
+            <div class="image-container">
+              <img src="DesignDebt.png" alt="Дизайн-система как общий язык команды" class="post-image">
+              <div class="image-caption">
+                <p>Единый визуальный язык снижает вариативность и ускоряет взаимодействие между командами.</p>
+              </div>
+            </div>
+          </div>
+          <p class="post-text">
+Дизайн-система снижает вариативность там, где она не создаёт ценности. Базовые решения автоматизируются, внимание высвобождается для логики и сценариев. Когда команда растёт с пяти до пятидесяти человек, отсутствие формализованного визуального языка превращается из неудобства в фактор потери скорости.
+          </p>
+
+          <h2 class="post-heading">Экономика дизайна: что это даёт в цифрах</h2>
+          <p class="post-text">
+Допустим, B2B-продукт получает 10 000 визитов в месяц. Конверсия в регистрацию — 5%. Из регистрации в оплату — 20%. Средний чек — 100 000 ₽ в год.
+          </p>
+          <div class="post-list">
+            <div class="list-item">
+              <span class="list-marker">■</span>
+              <span class="list-text"><span class="read-figure">10 000 × 5% = 500 регистраций</span></span>
+            </div>
+            <div class="list-item">
+              <span class="list-marker">■</span>
+              <span class="list-text"><span class="read-figure">500 × 20% = 100 клиентов</span></span>
+            </div>
+            <div class="list-item">
+              <span class="list-marker">■</span>
+              <span class="list-text"><span class="read-figure">100 × 100 000 ₽ = 10 000 000 ₽ годовой выручки</span></span>
+            </div>
+          </div>
+          <p class="post-text">
+Команда не добавляет новую функцию, а систематизирует интерфейс. Конверсия растёт до 6%.
+          </p>
+          <div class="post-list">
+            <div class="list-item">
+              <span class="list-marker">■</span>
+              <span class="list-text"><span class="read-figure">10 000 × 6% = 600 регистраций</span></span>
+            </div>
+            <div class="list-item">
+              <span class="list-marker">■</span>
+              <span class="list-text"><span class="read-figure">600 × 20% = 120 клиентов</span></span>
+            </div>
+            <div class="list-item">
+              <span class="list-marker">■</span>
+              <span class="list-text"><span class="read-figure">120 × 100 000 ₽ = 12 000 000 ₽</span></span>
+            </div>
+          </div>
+          <p class="post-text">
+<span class="read-emphasis">Плюс 2 000 000 ₽ в год без роста трафика.</span>
+          </p>
+          <p class="post-text">
+Теперь удержание. 1 000 активных клиентов. Отток — 15%. После упрощения интерфейса — 12%.
+          </p>
+          <p class="post-text">
+<span class="read-figure">3% × 1 000 × 100 000 ₽ = 3 000 000 ₽ сохранённой выручки.</span>
+          </p>
+          <p class="post-text">
+Поддержка. 5% клиентов создают тикеты ежемесячно: <span class="read-figure">50 обращений × 1 500 ₽ × 12 = 900 000 ₽ в год</span>. Снижение на 40% — <span class="read-emphasis">экономия около 360 000 ₽</span>.
+          </p>
+          <div class="post-highlight">
+            <p class="highlight-text">
+Совокупный эффект — около 5 000 000 ₽ в год без роста маркетинговых расходов.
+            </p>
+          </div>
+          <p class="post-text">
+При этом дизайн не равен ценности. Тренды устаревают, визуальные приёмы становятся фоном. Если ключевая потребность не закрыта, полировка интерфейса не спасёт. Дизайн не создаёт ценность из ничего — он усиливает уже существующую. И так же способен её разрушать.
+          </p>
+
+          <h2 class="post-heading">Как накапливается дизайн-долг</h2>
+          <p class="post-text">
+О техническом долге говорят часто. О дизайн-долге — реже. Механика та же. Каждое «потом поправим», каждый временный компонент, каждый несогласованный паттерн — это обязательство.
+          </p>
+          <p class="post-text">
+Сначала это почти незаметно: разные стили кнопок, дублированные элементы, нестабильные состояния. Потом это начинает замедлять развитие. Новые функции сложнее встроить, потому что нет единого языка. Любое изменение вызывает цепную реакцию. Редизайн превращается в дорогой проект.
+          </p>
+          <p class="post-text">
+Скорость падает, предсказуемость снижается, воронка начинает «течь».
+          </p>
+
+          <h2 class="post-heading">Цена дизайн-долга</h2>
+          <p class="post-text">
+Достаточно падения конверсии с 5% до 4% — и это <span class="read-figure">минус 2 000 000 ₽ в год</span>. Рост оттока на 2 п.п. — ещё <span class="read-figure">минус 2 000 000 ₽</span>.
+          </p>
+          <p class="post-text">
+За несколько лет визуальная несистемность материализуется в прямые финансовые потери.
+          </p>
+
+          <h2 class="post-heading">Когнитивная механика интерфейса</h2>
+          <p class="post-text">
+В основе всего — когнитивная механика.
+          </p>
+          <p class="post-text">
+Чёткая иерархия — не вопрос вкуса, а вопрос того, как устроено принятие решений. Чем больше альтернатив, тем дольше выбор и выше вероятность отказа. Способ представления информации влияет на решение не меньше, чем сама информация. Рабочая память ограничена.
+          </p>
+          <p class="post-text">
+<span class="read-emphasis">Пользователь не ленив. Он ограничен.</span>
+          </p>
+          <p class="post-text">
+Каждый лишний элемент интерфейса, каждый неочевидный переход расходуют когнитивный ресурс. Когда ресурс исчерпан, включается защитная реакция — отказ.
+          </p>
+          <p class="post-text">
+Дизайн управляет распределением внимания. Он определяет, что будет замечено первым, где пользователь задержится и где почувствует перегруз. Чёткая визуальная иерархия снижает энтропию и экономит когнитивную энергию. А экономия когнитивной энергии напрямую связана с доверием: когда интерфейс понятен, ресурс можно направить на задачу.
+          </p>
+          <p class="post-text">
+В этом контексте дизайн — не украшение и не маркетинговый слой. Это коэффициент устойчивости системы. Он либо усиливает экономику продукта, либо постепенно её размывает.
+          </p>
+          <p class="post-text">Пользователь видит экран.<br>Команда работает через систему.<br>Инвестор смотрит на цифры.</p>
+          <p class="post-text">
+И все три уровня связаны степенью системности интерфейса.
+          </p>
+
+          <h2 class="post-heading">Чеклист управления дизайном</h2>
+          <div class="checklist-interactive" id="designDebtChecklist">
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-01"><label for="dd-check-01"><strong>Роль дизайна</strong><br>Понятно ли, за что дизайн отвечает в продукте?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-02"><label for="dd-check-02"><strong>Метрики</strong><br>Измеряется ли влияние интерфейса на конверсию, удержание или поддержку?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-03"><label for="dd-check-03"><strong>Процесс</strong><br>Есть ли понятный путь от задачи до релиза (без хаоса и «переделок в конце»)?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-04"><label for="dd-check-04"><strong>Ревью</strong><br>Обсуждаются ли решения по принципам, а не по вкусу?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-05"><label for="dd-check-05"><strong>Дизайн-система</strong><br>Есть ли единая библиотека компонентов?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-06"><label for="dd-check-06"><strong>Консистентность</strong><br>Новые экраны собираются из существующих паттернов, а не из «новых идей» каждый раз?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-07"><label for="dd-check-07"><strong>Язык команды</strong><br>Продакт, дизайнер и разработчик одинаково понимают термины типа primary, state, flow?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-08"><label for="dd-check-08"><strong>Долг</strong><br>Есть ли список проблем интерфейса, который регулярно закрывается?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-09"><label for="dd-check-09"><strong>Масштабирование</strong><br>Может ли новый дизайнер быстро включиться в работу без хаоса?</label></div>
+            <div class="check-item"><input class="check-item-input" type="checkbox" id="dd-check-10"><label for="dd-check-10"><strong>Ответственность</strong><br>Понятно ли, кто финально отвечает за системность?</label></div>
+          </div>
+
+          <div class="post-tags mt-12">
+            <span class="tag">#дизайн</span>
+            <span class="tag">#дизайндолг</span>
+            <span class="tag">#дизайнсистема</span>
+            <span class="tag">#продукт</span>
+            <span class="tag">#конверсия</span>
+            <span class="tag">#удержание</span>
+            <span class="tag">#экономикапродукта</span>
+          </div>
+        </article>
+
+        <div class="post-navigation mt-16">
+          <div class="nav-links flex justify-between items-center">
+            <a href="../finance-consulting.ru.html" class="nav-prev">
+              <span class="nav-arrow">←</span>
+              <span class="nav-text">Предыдущий пост</span>
+            </a>
+            <a href="../../../blog.ru.html" class="nav-back">
+              <span class="nav-text">К списку постов</span>
+            </a>
+            <span class="nav-next text-gray-400 cursor-default">
+              <span class="nav-text">Следующий пост</span>
+              <span class="nav-arrow">→</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 border-t mt-12">
+    <p class="text-sm">© 2026 Арфа. Все права защищены.</p>
+  </footer>
+
+  <script src="../../../blog.js"></script>
+  <script src="../../../../assets/arfa-header.js" defer></script>
+</body>
+</html>

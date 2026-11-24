@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О нас – Арфа</title>
+  <meta name="description" content="Рафаэль и Аделя — основатели Арфы. История создания собственных IT-продуктов: от студенческих инициатив и первого офлайн-бизнеса к технологическим продуктам.">
+  <link rel="icon" type="image/png" href="assets/Cyrillic_logo_arfa.png">
+  <link rel="stylesheet" href="assets/arfa-header.css">
+  <link rel="stylesheet" href="assets/about.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="expect" href="#main-content" blocking="render">
+</head>
+<body>
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="index.ru.html">Главная</a>
+      <a href="about.ru.html" aria-current="page">О нас</a>
+      <a href="Polka.ru.html">Проекты</a>
+      <a href="blog/blog.ru.html">Блог</a>
+      <a href="contact.ru.html">На связи</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="about.en.html" aria-label="English" title="English">🇬🇧</a>
+        <a href="about.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="about.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="about.ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="index.ru.html">Главная</a>
+      <a href="about.ru.html" aria-current="page">О нас</a>
+      <a href="Polka.ru.html">Проекты</a>
+      <a href="blog/blog.ru.html">Блог</a>
+      <a href="contact.ru.html">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="about.en.html">🇬🇧 EN</a>
+        <a href="about.de.html">🇩🇪 DE</a>
+        <a href="about.fr.html">🇫🇷 FR</a>
+        <a href="about.ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
+  <script src="assets/arfa-header.js" defer></script>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="hero-orb hero-orb--1"></div>
+        <div class="hero-orb hero-orb--2"></div>
+        <div class="hero-orb hero-orb--3"></div>
+      </div>
+      <div class="wrap hero-grid">
+        <div class="hero-content reveal">
+          <span class="hero-tag">Арфа · О нас</span>
+          <h1>Мы давно хотели делать что-то своё</h1>
+          <p class="lead">Мы — Рафаэль и Аделя. Познакомились ещё в школе, вместе учились, пробовали разные идеи и постепенно пришли к собственным IT-продуктам.</p>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat__num">36K</span>
+              <span class="hero-stat__label">Первый грант</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat__num">1M</span>
+              <span class="hero-stat__label">Грант стартап</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat__num">4+</span>
+              <span class="hero-stat__label">IT-продуктов</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-photo reveal">
+          <img src="assets/about/together.jpg" alt="Рафаэль и Аделя" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="section">
+      <div class="wrap reveal" style="max-width:800px">
+        <p>Когда выбирали направление обучения, остановились на экономике предпринимательства и инноваций. Нам хотелось разобраться, как устроен бизнес, и получить знания, которые однажды помогут создать собственное дело.</p>
+        <p>С тех пор прошло несколько лет, у нас появились первые проекты, опыт ведения бизнеса и понимание того, чем мы хотим заниматься дальше. Так появилась «Арфа».</p>
+        <div style="display:flex;gap:24px;margin-top:40px;flex-wrap:wrap">
+          <div class="milestone" style="border-top:3px solid var(--accent);padding-top:20px;flex:1;min-width:200px">
+            <div class="milestone-num">36 000 ₽</div>
+            <div class="milestone-text">Грант на развитие студенческого научного общества</div>
+          </div>
+          <div class="milestone" style="border-top:3px solid var(--accent);padding-top:20px;flex:1;min-width:200px">
+            <div class="milestone-num">1 000 000 ₽</div>
+            <div class="milestone-text">Грант «Студенческий стартап» на развитие «АдиГида»</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hr reveal">
+
+    <!-- First projects -->
+    <section class="section">
+      <div class="wrap reveal">
+        <div class="section-title">
+          <span class="eyebrow">Первые проекты</span>
+          <h2>Учиться не только на парах</h2>
+        </div>
+        <div class="photo-block">
+          <div class="photo-img">
+            <img src="assets/about/together.jpg" alt="Рафаэль и Аделя" loading="lazy">
+          </div>
+          <div class="photo-text">
+            <p>Во время учёбы мы создали студенческое научное общество практически с нуля. Нужно было организовать работу, договориться с людьми и найти ресурсы для развития. На это мы получили грант в размере 36 000 рублей.</p>
+            <p>Это был один из первых случаев, когда мы увидели, как идея превращается в конкретное дело: с задачами, сроками, ответственностью и результатом.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hr reveal">
+
+    <!-- First business -->
+    <section class="section">
+      <div class="wrap photo-block photo-block--reverse reveal">
+        <div class="photo-img">
+          <img src="assets/about/adelia.jpg" alt="Аделя" loading="lazy">
+        </div>
+        <div class="photo-text">
+          <span class="eyebrow">Наш первый бизнес</span>
+          <h2>СайберКидз</h2>
+          <p>На третьем курсе мы вместе с другом открыли «СайберКидз» — офлайн-проект, связанный с обучением работе с компьютерами.</p>
+          <p>Друг предложил идею и занимался методическими материалами. Аделя отвечала за дизайн, я — за юридические, финансовые и организационные вопросы.</p>
+          <p>Впрочем, на месте мы делали всё вместе: ездили за техникой, собирали рабочие места, оформляли документы и решали повседневные задачи. Мы открывались с утра, чтобы посетители могли записаться или распечатать документы. Себе зарплату не платили — деньги уходили на аренду.</p>
+          <p>Осенью 2024 года мы закрыли офлайн-точку. Этот опыт не превратился в готовую бизнес-модель, которую хотелось бы масштабировать, зато помог нам разобраться в экономике небольшого дела. Мы на собственном опыте увидели, насколько постоянные расходы влияют на проект и почему недостаточно просто хорошо организовать работу.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hr reveal">
+
+    <!-- Less fixed costs -->
+    <section class="section">
+      <div class="wrap reveal" style="max-width:800px">
+        <span class="eyebrow">Меньше постоянных расходов — больше возможностей пробовать</span>
+        <p>После офлайн-бизнеса мы стали внимательнее относиться к тому, как запускаем новые проекты.</p>
+        <p>Если продукт можно создать и проверить без офиса, оборудования и других значительных первоначальных затрат, это даёт больше свободы. Можно быстрее проверить идею, понять, нужна ли она пользователям, и не вкладывать слишком много в то, что пока существует только в наших представлениях.</p>
+        <p>Такой подход оказался особенно близок нам в разработке IT-продуктов.</p>
+      </div>
+    </section>
+
+    <hr class="hr reveal">
+
+    <!-- From ideas to apps -->
+    <section class="section">
+      <div class="wrap reveal">
+        <div class="section-title">
+          <span class="eyebrow">От идей — к приложениям</span>
+          <h2>Мы продолжили заниматься собственными проектами и участвовать в программах поддержки технологического предпринимательства.</h2>
+        </div>
+        <p>Одним из главных результатов стал «АдиГид» — приложение с аудиогидами для самостоятельных прогулок по городам. После нескольких неудачных попыток получить поддержку мы выиграли грант «Студенческий стартап» в размере 1 миллиона рублей на развитие проекта.</p>
+        <p>Для нас это стало возможностью перейти от работы над идеей к более системному развитию продукта.</p>
+        <p>Со временем появились и другие проекты: «Форсета», ТуДулиКо, CarMind. Они решают разные задачи и находятся на разных стадиях развития, но объединяет их одно: мы хотим разрабатывать собственные продукты, а не ограничиваться идеями и концепциями.</p>
+      </div>
+    </section>
+
+    <hr class="hr reveal">
+
+    <!-- Why together -->
+    <section class="section">
+      <div class="wrap photo-block reveal">
+        <div class="photo-img">
+          <img src="assets/about/rafael.jpg" alt="Рафаэль" loading="lazy">
+        </div>
+        <div class="photo-text">
+          <span class="eyebrow">Почему мы делаем это вместе</span>
+          <h2>Мы с Аделей любим друг друга</h2>
+          <p>Нам хочется не только быть рядом, но и вместе создавать что-то, в чём мы видим смысл.</p>
+          <p>За годы совместной работы мы научились понимать друг друга, доверять решениям друг друга и опираться на сильные стороны каждого.</p>
+          <p>Аделя занимается дизайном и пользовательским опытом. Я больше сосредоточен на бизнес-логике, аналитике, стратегии и технической стороне. При этом мы не работаем каждый в своей отдельной части: обсуждаем идеи, спорим, ищем решения и вместе отвечаем за результат.</p>
+          <p>Для нас «Арфа» — естественное продолжение того, что мы давно делаем вместе.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hr reveal">
+
+    <!-- What Arfa does -->
+    <section class="section">
+      <div class="wrap reveal" style="max-width:800px">
+        <span class="eyebrow">Чем занимается «Арфа»</span>
+        <p>Мы развиваем собственные IT-продукты и работаем над задачами, для которых можем найти осмысленное решение на пересечении бизнеса, аналитики, дизайна и технологий.</p>
+        <p>Нас интересует весь путь продукта: разобраться в задаче, понять потребности будущих пользователей, продумать решение, разработать его и проверить на практике.</p>
+        <p>Мы небольшая команда, поэтому можем работать напрямую, быстро обсуждать изменения и не создавать лишние процессы ради самих процессов.</p>
+        <p>Нам важно понимать, что именно мы создаём, для кого и зачем. А затем — доводить это до работающего результата.</p>
+        <p class="quote"><strong>Мы — Рафаэль и Аделя. Это наша история и наша «Арфа».</strong></p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta reveal">
+      <div class="wrap">
+        <h2>Давайте знакомиться</h2>
+        <p>Есть идея, задача или предложение о сотрудничестве? Напишите нам. Обсудим, чем можем быть полезны друг другу.</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+          <a class="btn" href="contact.ru.html">Написать нам</a>
+          <a class="btn btn--ghost" href="projects.ru.html">Посмотреть проекты</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Арфа. Все права защищены.</p>
+    <p style="margin-top:0.5em"><a href="contact.ru.html">На связи</a> · <a href="projects.ru.html">Проекты</a></p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Форсета — Полка Арфа</title>
+<meta name="description" content="Форсета — порядок в том, кто, кому и сколько должен. Продукт Арфа для личных денежных договорённостей.">
+<link rel="icon" type="image/png" href="../assets/Cyrillic_logo_arfa.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@800;900&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F0E9;
+  --ink:#0B0B12;
+  --violet:#4B21E0;
+  --red:#FF4B1F;
+  --yellow:#FFD60A;
+  --pink:#FF9EC4;
+  --teal:#12BFA6;
+  --soft:color-mix(in srgb,var(--ink) 66%,var(--paper));
+  --rule:2px solid var(--ink);
+  --f-display:'Fira Sans Extra Condensed','Arial Narrow','Impact',sans-serif;
+  --f-body:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  --gutter:clamp(16px,2.2vw,28px);
+  --pad:clamp(16px,2.6vw,36px);
+}
+*{box-sizing:border-box;border-radius:0}
+::selection{background:var(--yellow);color:var(--ink)}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--f-body);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+button,input,select{font-family:inherit;color:inherit}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.on-dark :focus-visible{outline-color:var(--paper)}
+.mono{font:600 12px/1.4 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--paper);border-bottom:var(--rule)}
+.top-in{max-width:1480px;margin:0 auto;padding:10px var(--gutter);display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px}
+.mark{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font:900 30px/1 var(--f-display);text-transform:uppercase}
+.mark img{width:34px;height:34px;border-radius:50%;border:var(--rule);background:#fff;object-fit:cover}
+.nav{display:flex;flex-wrap:wrap;gap:4px 18px}
+.nav a{padding-block:4px;border-bottom:2px solid transparent;color:var(--ink);text-decoration:none;font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.nav a:hover{border-color:var(--ink)}
+.nav a.is-active{border-color:var(--ink)}
+.langs{display:flex;gap:6px;margin-left:auto}
+.langs a{width:32px;height:32px;display:grid;place-items:center;border:var(--rule);background:var(--paper);text-decoration:none;font-size:16px;line-height:1}
+.langs a:hover{background:var(--yellow)}
+.langs a.active{background:var(--violet)}
+@media (max-width:960px){ .nav{display:none} }
+@media (max-width:520px){ .langs a{width:28px;height:28px;font-size:14px} .mark{font-size:24px} .mark img{width:28px;height:28px} }
+
+.frame{max-width:1180px;margin:0 auto;padding-inline:var(--gutter)}
+.crumb{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:18px 0 0;font:600 12px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.crumb a{text-decoration:none;border-bottom:2px solid transparent}
+.crumb a:hover{border-color:var(--ink)}
+.crumb span{color:var(--soft)}
+
+.btn{position:relative;min-width:120px;padding:13px 16px;border:var(--rule);background:var(--ink);color:var(--paper);font:600 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;cursor:pointer;text-align:center;text-decoration:none;display:inline-block}
+.btn:hover{background:var(--violet);color:#fff}
+.btn--primary{background:var(--red);color:var(--ink)}
+.btn--primary:hover{background:var(--ink);color:var(--paper)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:var(--paper)}
+
+.appcard{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);border:var(--rule);margin:18px 0 0}
+.col-l{display:flex;flex-direction:column;gap:22px;padding:var(--pad);background:hsl(var(--h) 92% 62%);border-right:var(--rule)}
+.col-l .row-top{display:flex;justify-content:space-between;gap:12px;font:600 12px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.col-l h1{font:900 clamp(44px,6vw,92px)/.86 var(--f-display);text-transform:uppercase;overflow-wrap:break-word;margin-top:auto}
+.col-l .tagline{font-size:17px;max-width:34ch}
+.appicon{width:112px;height:112px;display:grid;place-items:center;background:#fff;border:var(--rule);flex:none}
+.appicon img{width:80%;height:80%;object-fit:contain}
+.col-l .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.col-l .btn{border-color:var(--ink)}
+.col-l .btn--ghost{background:transparent;color:var(--ink)}
+.col-l .btn--ghost:hover{background:var(--ink);color:var(--paper)}
+.col-l .btn--primary{background:var(--ink);color:var(--paper)}
+.col-l .btn--primary:hover{background:#fff;color:var(--ink)}
+
+.col-r{display:flex;flex-direction:column}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:var(--rule)}
+.stat{padding:18px;border-bottom:var(--rule);display:flex;flex-direction:column;gap:6px}
+.stat:nth-child(odd){border-right:var(--rule)}
+.stat:nth-last-child(-n+2){border-bottom:0}
+.stat b{font:900 clamp(20px,2.2vw,30px)/.95 var(--f-display);text-transform:uppercase}
+.stat span{font:600 11px/1.3 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.block{padding:var(--pad);border-bottom:var(--rule)}
+.block:last-child{border-bottom:0}
+.block h2{font:900 22px/1 var(--f-display);text-transform:uppercase;letter-spacing:.01em;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.block h2::after{content:"";flex:1;height:2px;background:var(--ink)}
+.prose{font-size:17px;line-height:1.65;max-width:58ch}
+.prose + .prose{margin-top:12px}
+.shots{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px}
+.shot{position:relative;flex:0 0 168px;aspect-ratio:9/16;overflow:hidden;border:var(--rule);background:#111}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot--contain{background:#fff}
+.shot--contain img{object-fit:contain;padding:10px}
+.info{display:flex;flex-direction:column}
+.info div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:8px 20px;padding:12px 0;border-bottom:2px solid color-mix(in srgb,var(--ink) 18%,var(--paper))}
+.info div:last-child{border-bottom:0}
+.info .k{font:600 12px/1.5 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.info .v{font-size:16px}
+.info .v a{color:var(--ink);font-weight:600}
+.feature-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 24px}
+.feature-list li{display:flex;gap:10px;font-size:16px}
+.feature-list li::before{content:"—";color:var(--red);font-weight:700}
+@media (max-width:860px){
+  .appcard{grid-template-columns:minmax(0,1fr)}
+  .col-l{border-right:0;border-bottom:var(--rule)}
+  .col-l h1{margin-top:6px}
+  .feature-list{grid-template-columns:minmax(0,1fr)}
+}
+
+.foot{background:var(--ink);color:var(--paper);border-top:var(--rule);margin-top:48px}
+.foot-in{max-width:1180px;margin:0 auto;padding:22px var(--gutter);display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;font:500 12px/1.5 var(--f-mono);letter-spacing:.04em;text-transform:uppercase}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 18px}
+.foot a{color:var(--paper);font-weight:600;text-decoration:none;border-bottom:1px solid transparent}
+.foot a:hover{border-color:var(--paper)}
+
+.toast{position:fixed;left:var(--gutter);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;max-width:calc(100% - 2 * var(--gutter));padding:13px 16px;border-left:14px solid var(--yellow);background:var(--ink);color:var(--paper);font:600 12px/1.3 var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.toast.on{animation:up .22s ease-out}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){ .toast.on{animation:none} *{transition:none!important} }
+
+
+/* Redesigned app */
+:root{--red:#ff4b1f;--yellow:#ffd60a;--violet:#4b21e0}
+.frame{max-width:1380px}
+.hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(28px,7vw,90px);align-items:center;padding:clamp(44px,10vw,120px) 0}
+.hero-kicker{display:inline-flex;align-items:center;gap:10px;font:600 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.hero-kicker::before{content:"";width:26px;height:2px;background:var(--red)}
+.hero h1{margin:12px 0 0;font:900 clamp(78px,12vw,190px)/.78 var(--f-display);text-transform:uppercase;letter-spacing:-.02em}
+.hero-lead{margin:20px 0 0;max-width:600px;font-size:clamp(18px,2vw,23px);line-height:1.9}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(28px,5vw,46px)}
+.btn--glow{box-shadow:0 50px 90px -70px rgba(75,33,224,.95)}
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(18px,4vw,32px)}
+.pill{display:inline-flex;padding:7px 12px;border:2px solid color-mix(in srgb,var(--ink) 18%,var(--paper));font:600 11px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase}
+.pill--solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.hero-panel{position:relative;border:var(--rule);padding:clamp(26px,5vw,42px);display:flex;flex-direction:column;gap:16px;background:radial-gradient(140% 140% at 50% 0%,#fff,var(--paper));box-shadow:0 100px 150px -110px rgba(11,11,18,.95)}
+.hero-panel::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(11,11,18,.06) 1px,transparent 1px);background-size:16px 16px;opacity:.24}
+.hero-panel>*{position:relative;z-index:1}
+.hero-panel__top{display:flex;align-items:center;justify-content:space-between}
+.hero-panel__logo{width:88px;height:88px;border:var(--rule);border-radius:50%;background:#fff;display:grid;place-items:center}
+.hero-panel__logo img{width:70px;height:70px;object-fit:contain}
+.hero-panel__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px}
+.panel-item{padding:14px 16px;border:2px solid color-mix(in srgb,var(--ink) 16%,var(--paper));display:flex;flex-direction:column;gap:6px}
+.panel-item b{font:900 18px/1 var(--f-display);text-transform:uppercase}
+.panel-item span{font:600 10px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+
+.section{padding:clamp(52px,10vw,120px) 0;border-top:2px solid color-mix(in srgb,var(--ink) 16%,var(--paper))}
+.section-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:clamp(30px,7vw,60px)}
+.section-head__kicker{font:600 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.section-head h2{margin:10px 0 0;font:900 clamp(44px,8vw,96px)/.86 var(--f-display);text-transform:uppercase}
+.section-head p{max-width:560px;font-size:19px;color:var(--soft)}
+
+.cards{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,2vw,18px)}
+.card{grid-column:span 4;position:relative;display:flex;flex-direction:column;gap:12px;padding:clamp(24px,3vw,34px);border:var(--rule);overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 120% at 50% 0%,rgba(255,214,10,.18),transparent)}
+.card>*{position:relative;z-index:1}
+.card__num{font:900 52px/1 var(--f-display);color:var(--red)}
+.card h3{font:900 30px/1 var(--f-display);text-transform:uppercase}
+.card p{color:var(--soft);max-width:34ch}
+
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(22px,7vw,80px);align-items:center}
+.split-media{position:relative;border:var(--rule);padding:clamp(20px,7vw,52px);display:grid;place-items:center;background:radial-gradient(circle at 50% 10%,rgba(75,33,224,.16),transparent)}
+.split-media::before{content:"";position:absolute;inset:16px;border:2px solid color-mix(in srgb,var(--ink) 16%,var(--paper))}
+.split-media img{position:relative;z-index:1;width:min(380px,82%);filter:drop-shadow(0 90px 130px rgba(11,11,18,.3))}
+.split-content{display:flex;flex-direction:column;gap:16px}
+.split-content__kicker{font:600 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.split-content h2{font:900 clamp(42px,7vw,88px)/.86 var(--f-display);text-transform:uppercase}
+.split-content p{font-size:20px;line-height:1.9;color:var(--soft);max-width:58ch}
+.steps{display:flex;flex-direction:column;margin-top:10px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:20px 0;border-top:2px solid color-mix(in srgb,var(--ink) 18%,var(--paper))}
+.step:last-child{border-bottom:2px solid color-mix(in srgb,var(--ink) 18%,var(--paper))}
+.step__num{font:900 38px/1 var(--f-display);color:var(--red)}
+.step h3{font:900 24px/1 var(--f-display);text-transform:uppercase}
+.step p{margin-top:8px;color:var(--soft)}
+
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,16px)}
+.gallery-item{grid-column:span 3;border:var(--rule);aspect-ratio:9/16;overflow:hidden;background:#fff}
+.gallery-item img{width:100%;height:100%;object-fit:contain;padding:16px}
+
+.cta{margin:clamp(44px,10vw,100px) 0;padding:clamp(34px,9vw,90px);border:var(--rule);text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px;background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1px);background-size:26px 26px;opacity:.4}
+.cta>*{position:relative;z-index:1}
+.cta__kicker{font:600 11px/1 var(--f-mono);letter-spacing:.16em;text-transform:uppercase}
+.cta h2{font:900 clamp(46px,10vw,130px)/.82 var(--f-display);text-transform:uppercase}
+.cta p{max-width:580px;font-size:20px;opacity:.86}
+.cta .btn{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+
+@media(max-width:1100px){.hero{grid-template-columns:1fr}.card{grid-column:span 6}.gallery-item{grid-column:span 6}.split{grid-template-columns:1fr}}
+@media(max-width:680px){.card{grid-column:span 12}.gallery-item{grid-column:span 12}.hero-panel__grid{grid-template-columns:1fr}}
+
+</style>
+  <link rel="stylesheet" href="../assets/arfa-header.css">
+  <link rel="expect" href="#main-content" blocking="render">
+</head>
+<body>
+
+<div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="../index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../Polka.ru.html" aria-current="page">Проекты</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="../Polka.en.html" aria-label="English" title="English">🇬🇧</a>
+        <a href="../Polka.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="../Polka.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="../Polka.ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../Polka.ru.html" aria-current="page">Проекты</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="../Polka.en.html">🇬🇧 EN</a>
+        <a href="../Polka.de.html">🇩🇪 DE</a>
+        <a href="../Polka.fr.html">🇫🇷 FR</a>
+        <a href="../Polka.ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
+  <main id="main-content">
+  <div class="frame">
+    <nav class="crumb">
+      <a href="../Polka.ru.html">Полка</a>
+      <span>/</span>
+      <span>Приложения</span>
+      <span>/</span>
+      <span>Форсета</span>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <span class="hero-kicker">ARFA · POLKA · ДЕНЕЖНЫЕ ДОГОВОРЁННОСТИ</span>
+        <h1>Форсета</h1>
+        <p class="hero-lead">Спокойный инструмент для личных расчётов между людьми. Фиксируй, кто кому и сколько должен, дели общие траты и напоминаяй бережно — без неловкости.</p>
+        <div class="hero-actions">
+          <a class="btn btn--primary btn--glow" href="https://t.me/arfa_pro" target="_blank" rel="noopener noreferrer">Записаться в закрытый тест →</a>
+          <a class="btn btn--ghost" href="../projects/forseta.ru.html">Страница проекта</a>
+        </div>
+        <div class="hero-pills">
+          <span class="pill pill--solid">Локально</span>
+          <span class="pill">Без аккаунта</span>
+          <span class="pill">Мягкие напоминания</span>
+          <span class="pill">Частичные возвраты</span>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-panel__top">
+          <span class="hero-kicker">ЯСНОСТЬ СОХРАНЯЕТ ДОВЕРИЕ</span>
+          <div class="hero-panel__logo"><img src="../assets/Forseta/Форсета_Logo.png" alt="Логотип Форсета"></div>
+        </div>
+        <h2 style="font:900 clamp(28px,4vw,46px)/.94 var(--f-display);text-transform:uppercase">Порядок без давления</h2>
+        <p style="color:var(--soft);font-size:17px">Один раз зафиксировал — можно не возвращаться к неловкому разговору. Баланс всегда понятен.</p>
+        <div class="hero-panel__grid">
+          <div class="panel-item"><b>Кто кому</b><span>Прозрачный баланс</span></div>
+          <div class="panel-item"><b>Доли</b><span>Расчёт за секунды</span></div>
+          <div class="panel-item"><b>Возвраты</b><span>Частично или полностью</span></div>
+          <div class="panel-item"><b>Напоминания</b><span>Бережно и вовремя</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <header class="section-head">
+        <div>
+          <span class="section-head__kicker">ВОЗМОЖНОСТИ</span>
+          <h2>Только суть</h2>
+        </div>
+        <p>Минимум функций, максимум порядка. Решает именно ту неловкость, что возникает в личных расчётах.</p>
+      </header>
+      <div class="cards">
+        <article class="card">
+          <span class="card__num">01</span>
+          <h3>Фиксация</h3>
+          <p>Кто, кому и сколько — зафиксировано сразу. Никаких недопониманий.</p>
+        </article>
+        <article class="card">
+          <span class="card__num">02</span>
+          <h3>Общие траты</h3>
+          <p>Раздели счёт между всеми участниками с автоматическим расчётом долей.</p>
+        </article>
+        <article class="card">
+          <span class="card__num">03</span>
+          <h3>Бережный диалог</h3>
+          <p>Мягкие напоминания без давления. Помогает сохранить отношения.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="split">
+        <div class="split-media">
+          <img src="../assets/Forseta/Very_Happy_finn_and_debik.png" alt="Финн и Дебик" loading="lazy">
+        </div>
+        <div class="split-content">
+          <span class="split-content__kicker">КАК ЭТО РАБОТАЕТ</span>
+          <h2>Три шага к порядку</h2>
+          <p>Максимально просто. За минуту — и все расчёты на своих местах.</p>
+          <div class="steps">
+            <article class="step">
+              <span class="step__num">01</span>
+              <div>
+                <h3>Зафиксируй</h3>
+                <p>Добавь людей и опиши договорённость: ужин, такси, подарок или общие траты.</p>
+              </div>
+            </article>
+            <article class="step">
+              <span class="step__num">02</span>
+              <div>
+                <h3>Раздели</h3>
+                <p>Добавь счёт и выбери, кто за что отвечает. Форсета посчитает долги.</p>
+              </div>
+            </article>
+            <article class="step">
+              <span class="step__num">03</span>
+              <div>
+                <h3>Сведи баланс</h3>
+                <p>Отмечай возвраты частично или полностью — баланс обновится сам.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <header class="section-head">
+        <div>
+          <span class="section-head__kicker">ИНТЕРФЕЙС</span>
+          <h2>Спокойный и понятный</h2>
+        </div>
+      </header>
+      <div class="gallery">
+        <figure class="gallery-item"><img src="../assets/Forseta/Fin_thinking_or_remember_calendar.png" alt="Форсета" loading="lazy"></figure>
+        <figure class="gallery-item"><img src="../assets/Forseta/Debik_Happy(one_paid).png" alt="Форсета" loading="lazy"></figure>
+        <figure class="gallery-item"><img src="../assets/Forseta/Fin_rating_90-100_relax.png" alt="Форсета" loading="lazy"></figure>
+        <figure class="gallery-item"><img src="../assets/Forseta/Debik_good_screen_off.png" alt="Форсета" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="cta">
+      <span class="cta__kicker">БОЛЬШЕ ПОРЯДКА — МЕНЬШЕ НЕЛОВКОСТИ</span>
+      <h2>Сохраним доверие</h2>
+      <p>Присоединяйся к закрытому тесту. Напиши в Телеграм — пришлём доступ.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+        <a class="btn" href="https://t.me/arfa_pro" target="_blank" rel="noopener noreferrer">Записаться в тест</a>
+        <a class="btn btn--ghost" style="background:transparent;color:var(--paper);border-color:rgba(255,255,255,.4)" href="../projects/forseta.ru.html">Узнать больше</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <span>© 2026 Арфа · Форсета</span>
+    <nav class="foot-links" aria-label="Ссылки">
+      <a href="../projects/forseta.ru.html">Страница проекта</a>
+      <a href="../projects/forseta-mascots.ru.html">Маскоты</a>
+      <a href="../Polka.ru.html">Магазин</a>
+      <a href="../projects.ru.html">Все проекты</a>
+    </nav>
+    <a href="#" id="toTop">Наверх ↑</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function(){
+  var id = 'debtmate';
+  var shelfBtn = document.getElementById('shelfBtn');
+  var toast = document.getElementById('toast');
+  var timer = null;
+  var key = 'polka.shelf';
+  var set = [];
+  try { set = JSON.parse(localStorage.getItem(key) || '[]'); } catch(e) {}
+  function has(x){ return set.indexOf(x) > -1; }
+  function save(){ try { localStorage.setItem(key, JSON.stringify(set)); } catch(e) {} }
+  function sync(){
+    var on = has(id);
+    shelfBtn.textContent = on ? 'На полке' : 'На полку';
+    shelfBtn.classList.toggle('btn--primary', on);
+    shelfBtn.classList.toggle('btn--ghost', !on);
+  }
+  function say(msg){
+    toast.textContent = msg; toast.hidden = false; toast.classList.remove('on');
+    void toast.offsetWidth; toast.classList.add('on');
+    clearTimeout(timer); timer = setTimeout(function(){ toast.hidden = true; }, 2200);
+  }
+  shelfBtn.addEventListener('click', function(){
+    if (has(id)) { set = set.filter(function(x){ return x !== id; }); say('«Форсета» убрано с полки'); }
+    else { set.push(id); say('«Форсета» на полке'); }
+    save(); sync();
+  });
+  sync();
+  document.getElementById('toTop').addEventListener('click', function(e){
+    e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+  <script src="../assets/arfa-header.js" defer></script>
+</body>
+</html>

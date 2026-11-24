@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sample Post | Блог Арфа</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../blog-pixel.css">
+  <link rel="stylesheet" href="../../blog.css">
+  <link rel="icon" type="image/png" href="../../../assets/Cyrillic_logo_arfa.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome для иконок -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../../../assets/arfa-header.css">
+  <link rel="expect" href="#main-content" blocking="render">
+</head>
+<body class="text-gray-800">
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="../../../index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="../../../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="../../../index.ru.html">Главная</a>
+      <a href="../../../about.ru.html">О нас</a>
+      <a href="../../../Polka.ru.html">Проекты</a>
+      <a href="../../blog.ru.html" aria-current="page">Блог</a>
+      <a href="../../../contact.ru.html">На связи</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="../../blog.en.html" aria-label="English" title="English">🇬🇧</a>
+        <a href="../../blog.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="../../blog.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="agency-analysis.ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="../../../index.ru.html">Главная</a>
+      <a href="../../../about.ru.html">О нас</a>
+      <a href="../../../Polka.ru.html">Проекты</a>
+      <a href="../../blog.ru.html" aria-current="page">Блог</a>
+      <a href="../../../contact.ru.html">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="../../blog.en.html">🇬🇧 EN</a>
+        <a href="../../blog.de.html">🇩🇪 DE</a>
+        <a href="../../blog.fr.html">🇫🇷 FR</a>
+        <a href="agency-analysis.ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
+  <style>
+    .glass-header { flex-direction: row; align-items: center; justify-content: space-between; gap: 1.2em; padding: 1.2rem clamp(1.2rem, 5vw, 3rem); }
+    .header-left { display: flex; align-items: center; gap: 1.2em; }
+    .header-langs, .header-switchers { display: flex; align-items: center; gap: 0.7em; margin-bottom: 0; }
+    @media (max-width: 900px) {
+      .glass-header { flex-direction: row !important; align-items: center !important; justify-content: space-between !important; gap: 0.6em !important; padding: 0.85em 0.95em !important; }
+      .header-left, .header-right { width: auto; gap: 0.55em; }
+      .header-left { justify-content: flex-start !important; margin-bottom: 0; }
+      .header-langs, .header-switchers { display: flex; justify-content: flex-end; gap: 0.42em; margin-bottom: 0; }
+      .header-switchers { margin-bottom: 0; }
+      .glass-logo-img { width: 46px !important; height: 46px !important; }
+      .nav-link.back-btn { font-size: 0.8em !important; padding: 0.2em 0.5em !important; }
+      .font-btn, .theme-btn { font-size: 0.9em !important; padding: 2px 4px !important; }
+      .lang-flag { width: 32px !important; height: 32px !important; font-size: 1.1em !important; }
+    }
+    @media (max-width: 500px) {
+      .glass-header { gap: 0.38em !important; padding: 0.75em 0.8em !important; }
+      .header-left, .header-langs, .header-switchers { gap: 0.38em !important; }
+      .glass-logo-img { width: 40px !important; height: 40px !important; }
+      .nav-link.back-btn { font-size: 0.7em !important; padding: 0.1em 0.3em !important; }
+      .font-btn, .theme-btn { font-size: 0.7em !important; padding: 1px 2px !important; }
+      .lang-flag { width: 22px !important; height: 22px !important; font-size: 0.9em !important; }
+    }
+  </style>
+
+  <main class="relative bg-white overflow-hidden" id="main-content">
+    <!-- Post Header -->
+    <section class="relative pt-32 pb-20 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[300px] mb-8">
+      <div class="pixel-dots-bg"></div>
+      <div class="post-header-content text-center max-w-4xl mx-auto relative z-10">
+        <div class="post-meta mb-4">
+          <span class="blog-pixel-meta">2025-07-10</span>
+          <span class="blog-pixel-meta mx-2">•</span>
+          <span class="blog-pixel-meta">10 мин чтения</span>
+          <span class="blog-pixel-meta mx-2">•</span>
+          <span class="blog-pixel-meta">Бизнес / Маркетинг</span>
+        </div>
+        <h1 class="post-title text-4xl md:text-5xl font-bold mb-6" style="color:#2d014d; font-family:'Press Start 2P',monospace; line-height: 1.2;">
+Как мы помогли агентству по найму пересобрать бренд и услышать то, что раньше никто не замечал
+        </h1>
+        <p class="post-subtitle text-lg md:text-xl text-center max-w-2xl mx-auto" style="font-family:'Press Start 2P',monospace; color:#6b7280; font-size: 0.9em;">
+Что, если ваши клиенты говорят вам не то, что думают на самом деле?<br>
+А сотрудники молчат, но мысленно уже пишут заявление?<br>
+А конкуренты — они не дремлют: отвечают быстрее, звучат теплее и внезапно “крадут” ваших заказчиков?
+        </p>
+      </div>
+    </section>
+
+    <!-- Post Content -->
+    <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
+      <div class="max-w-4xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb mb-8">
+          <a href="../../../index.ru.html" class="breadcrumb-link">Главная</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../../blog.ru.html" class="breadcrumb-link">Блог</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">Маркетинг</span>
+        </nav>
+
+        <!-- Article Content -->
+        <article class="post-content">
+          <div class="post-intro mb-12">
+            <p class="post-text">
+Как мы помогли агентству по найму пересобрать бренд и понять своих клиентов
+</p>
+<p class="post-text">
+Что думают ваши сотрудники? А клиенты?<br>
+А что думают конкуренты — когда вы притворяетесь клиентом?
+</p>
+<p class="post-text">
+В 2023 году мы провели полевой анализ для агентства по найму временного персонала:<br>
+— опросили реальных заказчиков,<br>
+— протестировали конкурентов под видом клиентов,<br>
+— выстроили карту пути клиента и сделали перезапуск бренда.
+</p>
+<p class="post-text">
+Скоро расскажем, как построить маркетинг не на догадках, а на данных.<br>
+🧭 Customer Journey Map<br>
+🕵️‍♂️ Тайный покупатель<br>
+✅ Чек-листы и ребрендинг на основе реальных инсайтов
+</p>
+<p class="post-text">
+Следите за обновлениями — этот кейс может многое изменить в вашем взгляде на рынок.
+</p>
+          </div>
+          <!-- Tags -->
+          <div class="post-tags mt-12">
+            <span class="tag">#маркетинговыйанализ</span>
+            <span class="tag">#брендаудит</span>
+            <span class="tag">#кейсы</span>
+            <span class="tag">#исследования</span>
+            <span class="tag">#конкуренты</span>
+            <span class="tag">#ребрендинг</span>
+            <span class="tag">#позиционирование</span>
+          </div>
+        </article>
+        <!-- Navigation -->
+        <div class="post-navigation mt-16">
+          <div class="nav-links flex justify-between items-center">
+            <span class="nav-prev text-gray-400 cursor-default">
+              <span class="nav-arrow">←</span>
+              <span class="nav-text">Предыдущий пост</span>
+            </span>
+            <a href="../../blog.ru.html" class="nav-back">
+              <span class="nav-text">К списку постов</span>
+            </a>
+            <a href="finance-consulting.ru.html" class="nav-next">
+              <span class="nav-text">Следующий пост</span>
+              <span class="nav-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 border-t mt-12">
+    <p class="text-sm">© 2026 Арфа. Все права защищены.</p>
+  </footer>
+
+  <!-- JavaScript for Media Controls -->
+  <script src="../../blog.js"></script>
+  <script>
+    function setFont(type) {
+      const postContent = document.querySelector('.post-content');
+      if (!postContent) return;
+      if (type === 'pixel') {
+        postContent.style.fontFamily = "'Press Start 2P', monospace";
+        document.querySelector('.font-pixel').classList.add('active');
+        document.querySelector('.font-manrope').classList.remove('active');
+      } else {
+        postContent.style.fontFamily = "'Manrope', sans-serif";
+        document.querySelector('.font-manrope').classList.add('active');
+        document.querySelector('.font-pixel').classList.remove('active');
+      }
+    }
+    function setTheme(theme) {
+      const body = document.body;
+      if (theme === 'dark') {
+        body.classList.add('dark-theme');
+        body.classList.remove('light-theme');
+        document.querySelector('.theme-dark').classList.add('active');
+        document.querySelector('.theme-light').classList.remove('active');
+      } else {
+        body.classList.add('light-theme');
+        body.classList.remove('dark-theme');
+        document.querySelector('.theme-light').classList.add('active');
+        document.querySelector('.theme-dark').classList.remove('active');
+      }
+    }
+    try {
+      setTheme(localStorage.getItem('arfa_blog_theme_v1') || 'light');
+    } catch (error) {
+      setTheme('light');
+    }
+    document.querySelectorAll('.theme-btn').forEach((button) => {
+      button.addEventListener('click', () => {
+        const theme = button.classList.contains('theme-dark') ? 'dark' : 'light';
+        try {
+          localStorage.setItem('arfa_blog_theme_v1', theme);
+        } catch (error) {}
+      });
+    });
+  </script>
+  <style>
+    .font-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }
+    .font-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; }
+    .font-btn:focus { outline: 2px solid #2d014d; }
+    .theme-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1em; color: #2d014d; opacity: 0.6; transition: opacity 0.2s; }
+    .theme-btn.active { opacity: 1; font-weight: bold; text-decoration: underline; }
+    .theme-btn:focus { outline: 2px solid #2d014d; }
+    body.light-theme { background: #fff; color: #2d014d; }
+    body.dark-theme {
+      background: #181824;
+      color: #e6e6f0;
+    }
+    body.dark-theme main,
+    body.dark-theme .post-section,
+    body.dark-theme .media-container,
+    body.dark-theme .image-container,
+    body.dark-theme .carousel-container,
+    body.dark-theme .interactive-demo,
+    body.dark-theme .demo-header,
+    body.dark-theme .demo-preview,
+    body.dark-theme .demo-code,
+    body.dark-theme .footer,
+    body.dark-theme .glass-header,
+    body.dark-theme .breadcrumb,
+    body.dark-theme .post-tags,
+    body.dark-theme .post-navigation,
+    body.dark-theme .audio-player,
+    body.dark-theme .video-player,
+    body.dark-theme .carousel-controls,
+    body.dark-theme .image-caption,
+    body.dark-theme .carousel-caption,
+    body.dark-theme .tag,
+    body.dark-theme .nav-links,
+    body.dark-theme .nav-prev,
+    body.dark-theme .nav-next,
+    body.dark-theme .nav-back,
+    body.dark-theme .post-highlight,
+    body.dark-theme .list-item,
+    body.dark-theme .demo-btn,
+    body.dark-theme .audio-btn,
+    body.dark-theme .control-btn,
+    body.dark-theme .play-button,
+    body.dark-theme .dot,
+    body.dark-theme .progress-bar,
+    body.dark-theme .pixel-box {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme .post-title {
+      color: #f7b801 !important;
+      text-shadow: 2px 2px 8px #39396a;
+    }
+    body.dark-theme .post-subtitle {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .post-heading {
+      color: #f7b801 !important;
+      border-bottom: 2px solid #39396a !important;
+    }
+    body.dark-theme .post-text,
+    body.dark-theme .list-text,
+    body.dark-theme .image-caption p,
+    body.dark-theme .carousel-caption p {
+      color: #e6e6f0 !important;
+    }
+    body.dark-theme .tag {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .tag:hover {
+      background: #f7b801 !important;
+      color: #23233a !important;
+      box-shadow: 2px 2px 0px #39396a;
+    }
+    body.dark-theme .nav-link, body.dark-theme .lang-flag, body.dark-theme .font-btn, body.dark-theme .theme-btn {
+      color: #f7b801 !important;
+    }
+    body.dark-theme .nav-link.back-btn {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .carousel-btn, body.dark-theme .control-btn, body.dark-theme .audio-btn, body.dark-theme .demo-btn, body.dark-theme .play-button {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .carousel-btn:hover, body.dark-theme .control-btn:hover, body.dark-theme .audio-btn:hover, body.dark-theme .demo-btn:hover, body.dark-theme .play-button:hover {
+      background: #f7b801 !important;
+      color: #23233a !important;
+    }
+    body.dark-theme .dot {
+      background: #39396a !important;
+    }
+    body.dark-theme .dot.active, body.dark-theme .dot:hover {
+      background: #f7b801 !important;
+    }
+    body.dark-theme .progress-bar {
+      background: #39396a !important;
+    }
+    body.dark-theme .progress-fill {
+      background: linear-gradient(90deg, #f7b801, #a3aed6) !important;
+    }
+    body.dark-theme .pixel-box {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .post-highlight {
+      background: #39396a !important;
+      color: #f7b801 !important;
+      border-color: #f7b801 !important;
+    }
+    body.dark-theme .list-item {
+      background: #23233a !important;
+      color: #e6e6f0 !important;
+      border-color: #39396a !important;
+    }
+    body.dark-theme nav.breadcrumb,
+    body.dark-theme .breadcrumb {
+      background: none !important;
+      box-shadow: none !important;
+    }
+    body.dark-theme .breadcrumb {
+      color: #e6e6f0 !important;
+    }
+    body.dark-theme .breadcrumb-link {
+      color: #a3aed6 !important;
+      text-decoration: underline !important;
+    }
+    body.dark-theme .breadcrumb-link:hover {
+      color: #f7b801 !important;
+    }
+    body.dark-theme .breadcrumb-separator {
+      color: #a3aed6 !important;
+    }
+    body.dark-theme .breadcrumb-current {
+      color: #f7b801 !important;
+      font-weight: bold !important;
+    }
+    body.dark-theme footer {
+      background: #f7b801 !important;
+      color: #2d014d !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+  </style>
+  <script src="../../../assets/arfa-header.js" defer></script>
+</body>
+</html> 

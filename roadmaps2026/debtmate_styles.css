@@ -1,0 +1,332 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #e8f4f8 0%, #d1e7f0 100%);
+    color: #1a1a1a;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 30px;
+    border-bottom: 3px solid #0066cc;
+    position: relative;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: #0099ff;
+}
+
+.main-title {
+    font-size: 3.5em;
+    color: #0066cc;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1.3em;
+    color: #0066cc;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.description {
+    font-size: 1em;
+    color: #666;
+    font-style: italic;
+}
+
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #0066cc 0%, #0099ff 50%, #66b3ff 100%);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    padding-left: 80px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-marker {
+    position: absolute;
+    left: 18px;
+    top: 10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #0066cc;
+    border: 4px solid white;
+    box-shadow: 0 2px 8px rgba(0, 102, 204, 0.3);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-marker {
+    transform: scale(1.3);
+    background: #0099ff;
+    box-shadow: 0 4px 12px rgba(0, 153, 255, 0.5);
+}
+
+.timeline-content {
+    background: white;
+    border: 2px solid #e0e8f0;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 20px;
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 12px solid #e0e8f0;
+}
+
+.timeline-content:hover {
+    border-color: #0066cc;
+    box-shadow: 0 4px 20px rgba(0, 102, 204, 0.2);
+    transform: translateX(5px);
+}
+
+.timeline-content:hover::before {
+    border-right-color: #0066cc;
+}
+
+.period-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.period-title {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #0066cc;
+}
+
+.period-badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9em;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.q1-badge {
+    background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+}
+
+.q2-badge {
+    background: linear-gradient(135deg, #0099ff 0%, #0077cc 100%);
+}
+
+.q3-badge {
+    background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+}
+
+.q4-badge {
+    background: linear-gradient(135deg, #0099ff 0%, #0077cc 100%);
+}
+
+.focus-title {
+    font-size: 1.3em;
+    color: #0099ff;
+    margin-bottom: 20px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f5fa;
+}
+
+.tasks-list {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.tasks-list > li {
+    padding: 12px 0;
+    padding-left: 30px;
+    position: relative;
+    color: #333;
+    line-height: 1.8;
+}
+
+.tasks-list > li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #0066cc;
+    font-size: 0.8em;
+}
+
+.tasks-list > li strong {
+    color: #0066cc;
+    font-weight: 600;
+}
+
+.features-list {
+    list-style: none;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.features-list li {
+    padding: 6px 0;
+    padding-left: 25px;
+    position: relative;
+    color: #555;
+}
+
+.features-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #0099ff;
+    font-weight: bold;
+}
+
+.result-box {
+    background: linear-gradient(135deg, #f0f7ff 0%, #e6f3ff 100%);
+    border-left: 4px solid #0066cc;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #333;
+    line-height: 1.8;
+}
+
+.result-box strong {
+    color: #0066cc;
+}
+
+footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 2px solid #e0e8f0;
+    color: #666;
+    font-style: italic;
+}
+
+/* Анимация появления элементов */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .main-title {
+        font-size: 2.5em;
+    }
+
+    .subtitle {
+        font-size: 1.1em;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        padding-left: 60px;
+    }
+
+    .timeline-marker {
+        left: 8px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .timeline-content {
+        padding: 20px;
+    }
+
+    .period-title {
+        font-size: 1.4em;
+    }
+
+    .focus-title {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .main-title {
+        font-size: 2em;
+    }
+
+    .period-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

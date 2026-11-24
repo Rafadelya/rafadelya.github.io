@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EconoMetrics — Арфа OS</title>
+  <meta name="description" content="Расчёт юнит-экономики и ROI для быстрых решений. Ваш личный экономист в браузере.">
+  <link rel="icon" type="image/png" href="../assets/Cyrillic_logo_arfa.png">
+  <link rel="stylesheet" href="marketplace.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+  </style>
+  <link rel="stylesheet" href="../assets/arfa-header.css">
+  <link rel="expect" href="#main-content" blocking="render">
+</head>
+<body class="arfa-dark">
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="../index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../Polka.ru.html" aria-current="page">Проекты</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="../Polka.en.html" aria-label="English" title="English">🇬🇧</a>
+        <a href="../Polka.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="../Polka.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="../Polka.ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../Polka.ru.html" aria-current="page">Проекты</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="../Polka.en.html">🇬🇧 EN</a>
+        <a href="../Polka.de.html">🇩🇪 DE</a>
+        <a href="../Polka.fr.html">🇫🇷 FR</a>
+        <a href="../Polka.ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
+  <main id="main-content">
+    <section class="section">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:32px;">
+        <a href="index.html" class="pill" style="font-size:14px;">← Все инструменты</a>
+      </div>
+
+      <div class="hero" style="grid-template-columns: 1fr; padding-top: 32px;">
+        <div>
+          <div class="eyebrow">Инструмент</div>
+          <h1>EconoMetrics</h1>
+          <p class="hero-subtitle">Ваш личный экономист в браузере. Считаем юнит-экономику и ROI без боли.</p>
+        </div>
+      </div>
+
+      <div class="hero-card" style="max-width: 1180px; margin: 0 auto;">
+        <div style="display:flex; align-items:flex-start; gap:24px; flex-wrap:wrap;">
+          <div class="hero-icon" style="width:80px; height:80px; border-radius:18px; background:linear-gradient(135deg, var(--cyan), #81ecec); display:flex; align-items:center; justify-content:center; font-size:40px; box-shadow:0 12px 28px rgba(0, 206, 201, 0.2); flex-shrink:0;">
+            📈
+          </div>
+          <div style="flex:1; min-width:280px;">
+            <div class="badges" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
+              <span class="tag green">Экономика</span>
+              <span class="tag">v 1.4.2</span>
+              <span class="tag">Web-версия</span>
+            </div>
+            <p style="color:var(--soft); font-size:16px; line-height:1.6; margin-bottom:24px;">Сервис автоматически находит слабые места в вашей финансовой модели и предлагает решения по оптимизации костов. Выгружайте красивые PDF и интерактивные графики для инвесторов в один клик.</p>
+            <div class="actions" style="display:flex; gap:12px; flex-wrap:wrap;">
+              <a class="btn" style="background:linear-gradient(135deg, var(--cyan), #00b5b5); color:#000; border-color:transparent;" href="https://nexus.studio/econometrics" target="_blank" rel="noopener">Открыть в браузере</a>
+              <a class="btn" href="https://apps.apple.com/" target="_blank" rel="noopener">App Store</a>
+              <a class="btn" href="https://play.google.com/store" target="_blank" rel="noopener">Google Play</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Обзор интерфейса</h2>
+      </div>
+      <div class="scenario-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <article class="scenario-card" style="padding:0; min-height:220px;">
+          <div class="screen-preview" style="height:160px; background:radial-gradient(400px 200px at 50% 0%, rgba(167, 139, 250, 0.35), transparent 70%), rgba(255, 255, 255, 0.03); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--soft); font-size:14px; font-weight:600;">📊 Сводная панель</div>
+          <div style="padding:20px;">
+            <h3 style="margin:0 0 8px; font-family:'Space Grotesk', Inter, sans-serif; font-size:18px;">Дашборд</h3>
+            <p style="margin:0; color:var(--muted); font-size:14px;">Обзор ключевых метрик на одном экране</p>
+          </div>
+        </article>
+        <article class="scenario-card" style="padding:0; min-height:220px;">
+          <div class="screen-preview" style="height:160px; background:radial-gradient(400px 200px at 50% 0%, rgba(52, 211, 153, 0.32), transparent 70%), rgba(255, 255, 255, 0.03); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--soft); font-size:14px; font-weight:600;">💸 Калькулятор ROI</div>
+          <div style="padding:20px;">
+            <h3 style="margin:0 0 8px; font-family:'Space Grotesk', Inter, sans-serif; font-size:18px;">ROI Calculator</h3>
+            <p style="margin:0; color:var(--muted); font-size:14px;">Мгновенный расчёт окупаемости</p>
+          </div>
+        </article>
+        <article class="scenario-card" style="padding:0; min-height:220px;">
+          <div class="screen-preview" style="height:160px; background:radial-gradient(400px 200px at 50% 0%, rgba(251, 191, 36, 0.3), transparent 70%), rgba(255, 255, 255, 0.03); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--soft); font-size:14px; font-weight:600;">📅 Трекер доходов</div>
+          <div style="padding:20px;">
+            <h3 style="margin:0 0 8px; font-family:'Space Grotesk', Inter, sans-serif; font-size:18px;">Revenue Tracker</h3>
+            <p style="margin:0; color:var(--muted); font-size:14px;">Отслеживание потоков дохода в реальном времени</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Что внутри</h2>
+      </div>
+      <div class="tools-grid">
+        <article class="tool-card" style="min-height:auto;">
+          <div class="tool-icon" style="background:linear-gradient(135deg, var(--violet), var(--cyan));">🧠</div>
+          <h3>Умные алгоритмы расчетов</h3>
+          <p>Сервис автоматически находит слабые места в вашей финансовой модели и предлагает решения по оптимизации костов.</p>
+          <div class="tool-meta">+34% ROI в среднем</div>
+        </article>
+        <article class="tool-card" style="min-height:auto;">
+          <div class="tool-icon" style="background:linear-gradient(135deg, var(--cyan), var(--green));">⚡</div>
+          <h3>Быстрый экспорт</h3>
+          <p>Выгружайте красивые PDF и интерактивные графики для инвесторов в один клик.</p>
+          <div class="tool-meta">PDF • PNG • CSV</div>
+        </article>
+        <article class="tool-card" style="min-height:auto;">
+          <div class="tool-icon" style="background:linear-gradient(135deg, var(--green), var(--amber));">🔒</div>
+          <h3>Локальные данные</h3>
+          <p>Ваша коммерческая тайна остается вашей. Мы не храним ваши цифры на серверах — все считается прямо в браузере.</p>
+          <div class="tool-meta">Client-side only</div>
+        </article>
+        <article class="tool-card" style="min-height:auto;">
+          <div class="tool-icon" style="background:linear-gradient(135deg, var(--amber), var(--rose));">🤝</div>
+          <h3>Коллаборация</h3>
+          <p>Делитесь ссылкой на проект с командой. Правки синхронизируются в реальном времени.</p>
+          <div class="tool-meta">Real-time sync</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta" style="margin-top: 48px;">
+      <div>
+        <h2>Готовы посчитать свою экономику?</h2>
+        <p>Запускается мгновенно, работает в браузере, данные не покидают ваш компьютер.</p>
+      </div>
+      <a class="btn" style="background:linear-gradient(135deg, var(--cyan), #00b5b5); color:#000; border-color:transparent;" href="https://nexus.studio/econometrics" target="_blank" rel="noopener">Запустить EconoMetrics</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Арфа OS • прикладные инструменты для повседневной жизни • © 2026</p>
+  </footer>
+
+  <script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+
+    function setMobileMenu(open) {
+      document.body.classList.toggle('mobile-menu-open', open);
+      mobileMenuBtn?.setAttribute('aria-expanded', String(open));
+      mobileMenuDrawer?.setAttribute('aria-hidden', String(!open));
+    }
+
+    mobileMenuBtn?.addEventListener('click', () => setMobileMenu(true));
+    mobileMenuClose?.addEventListener('click', () => setMobileMenu(false));
+    mobileMenuOverlay?.addEventListener('click', () => setMobileMenu(false));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setMobileMenu(false);
+    });
+  </script>
+  <script src="../assets/arfa-header.js" defer></script>
+</body>
+</html>

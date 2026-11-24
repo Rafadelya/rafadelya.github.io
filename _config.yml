@@ -1,0 +1,8 @@
+title: Arfa
+description: Personal website and portfolio
+exclude:
+  - README.md
+  - LICENSE
+  - node_modules
+  - .DS_Store
+

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Подключения -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sample Post | Блог Арфа</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss @2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../blog-pixel.css">
+  <link rel="stylesheet" href="../../../blog.css">
+  <link rel="icon" type="image/png" href="../../../../assets/Cyrillic_logo_arfa.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href=" https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css ">
+  <link rel="stylesheet" href="../../../../assets/arfa-header.css">
+  <link rel="expect" href="#main-content" blocking="render">
+</head>
+<body class="text-gray-800">
+  <!-- Шапка сайта -->
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="../../../../index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="../../../../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="../../../../index.ru.html">Главная</a>
+      <a href="../../../../about.ru.html">О нас</a>
+      <a href="../../../../Polka.ru.html">Проекты</a>
+      <a href="../../../blog.ru.html" aria-current="page">Блог</a>
+      <a href="../../../../contact.ru.html">На связи</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="../../../blog.en.html" aria-label="English" title="English">🇬🇧</a>
+        <a href="../../../blog.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="../../../blog.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="ai_sample_ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="../../../../index.ru.html">Главная</a>
+      <a href="../../../../about.ru.html">О нас</a>
+      <a href="../../../../Polka.ru.html">Проекты</a>
+      <a href="../../../blog.ru.html" aria-current="page">Блог</a>
+      <a href="../../../../contact.ru.html">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="../../../blog.en.html">🇬🇧 EN</a>
+        <a href="../../../blog.de.html">🇩🇪 DE</a>
+        <a href="../../../blog.fr.html">🇫🇷 FR</a>
+        <a href="ai_sample_ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
+
+  <!-- Основной контент -->
+  <main class="relative bg-white overflow-hidden" id="main-content">
+    <!-- Заголовок поста -->
+    <section class="relative pt-32 pb-20 px-4 sm:px-8 flex flex-col items-center justify-center min-h-[300px] mb-8">
+      <div class="pixel-dots-bg"></div>
+      <div class="post-header-content text-center max-w-4xl mx-auto relative z-10">
+        <!-- Динамический контент -->
+        <div class="post-meta mb-4">
+          <span class="blog-pixel-meta">[Дата]</span>
+          <span class="blog-pixel-meta mx-2">•</span>
+          <span class="blog-pixel-meta">[Время чтения]</span>
+          <span class="blog-pixel-meta mx-2">•</span>
+          <span class="blog-pixel-meta">[Тема]</span>
+        </div>
+        <h1 class="post-title text-4xl md:text-5xl font-bold mb-6" style="color:#2d014d; font-family:'Press Start 2P',monospace;">
+          [ЗАГОЛОВОК]
+        </h1>
+        <p class="post-subtitle text-lg md:text-xl text-center max-w-2xl mx-auto" style="font-family:'Press Start 2P',monospace; color:#6b7280;">
+          [Подзаголовок]
+        </p>
+      </div>
+    </section>
+
+    <!-- Тело поста -->
+    <section class="py-16 px-4 sm:px-8 relative overflow-hidden mb-16" style="z-index:2;">
+      <div class="max-w-4xl mx-auto">
+        <!-- Хлебные крошки -->
+        <nav class="breadcrumb mb-8">
+          <a href="../../index.ru.html" class="breadcrumb-link">Главная</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="../blog.ru.html" class="breadcrumb-link">Блог</a>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current">[Текущая тема]</span>
+        </nav>
+
+        <!-- Основной текст -->
+        <article class="post-content">
+          <!-- Вступление -->
+          <div class="post-intro mb-12">
+            <p class="post-text">
+              [Вступительный текст]
+            </p>
+          </div>
+
+          <!-- Раздел с аудио -->
+          <div class="post-section mb-12">
+            <h2 class="post-heading">АУДИО КОНТЕНТ</h2>
+            <p class="post-text">
+              [Описание аудио]
+            </p>
+            <div class="media-container audio-player-container">
+              <div class="audio-player">
+                <div class="audio-header">
+                  <div class="audio-info">
+                    <h3 class="audio-title">[Название аудио]</h3>
+                    <p class="audio-artist">[Автор]</p>
+                  </div>
+                  <div class="audio-controls">
+                    <button class="audio-btn play-btn" onclick="toggleAudio()">
+                      <i class="fas fa-play"></i>
+                    </button>
+                    <button class="audio-btn volume-btn" onclick="toggleMute()">
+                      <i class="fas fa-volume-up"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="audio-progress">
+                  <div class="progress-bar">
+                    <div class="progress-fill" id="audioProgress"></div>
+                  </div>
+                  <div class="time-display">
+                    <span id="currentTime">0:00</span>
+                    <span>/</span>
+                    <span id="totalTime">3:45</span>
+                  </div>
+                </div>
+                <audio id="audioPlayer" preload="metadata">
+                  <source src="[Путь к аудио]" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+            </div>
+          </div>
+
+          <!-- Раздел с видео -->
+          <div class="post-section mb-12">
+            <h2 class="post-heading">ВИДЕО КОНТЕНТ</h2>
+            <p class="post-text">
+              [Описание видео]
+            </p>
+            <div class="media-container video-player-container">
+              <div class="video-player">
+                <div class="video-wrapper">
+                  <video id="videoPlayer" poster="[Путь к превью]">
+                    <source src="[Путь к видео]" type="video/mp4">
+                    Your browser does not support the video element.
+                  </video>
+                  <div class="video-overlay" id="videoOverlay">
+                    <button class="play-button" onclick="toggleVideo()">
+                      <i class="fas fa-play"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="video-controls">
+                  <div class="video-progress">
+                    <div class="progress-bar">
+                      <div class="progress-fill" id="videoProgress"></div>
+                    </div>
+                  </div>
+                  <div class="control-buttons">
+                    <button class="control-btn" onclick="toggleVideo()">
+                      <i class="fas fa-play" id="videoPlayIcon"></i>
+                    </button>
+                    <button class="control-btn" onclick="toggleVideoMute()">
+                      <i class="fas fa-volume-up" id="videoVolumeIcon"></i>
+                    </button>
+                    <button class="control-btn" onclick="toggleFullscreen()">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                  <div class="time-display">
+                    <span id="videoCurrentTime">0:00</span>
+                    <span>/</span>
+                    <span id="videoTotalTime">2:30</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Фото галерея -->
+          <div class="post-section mb-12">
+            <h2 class="post-heading">ФОТО ГАЛЕРЕЯ</h2>
+            <p class="post-text">
+              [Описание галереи]
+            </p>
+            <div class="media-container">
+              <div class="image-container">
+                <img src="[Путь к изображению]" alt="[Описание]" class="post-image">
+                <div class="image-caption">
+                  <p>[Подпись к фото]</p>
+                </div>
+              </div>
+            </div>
+            <div class="media-container">
+              <div class="carousel-container">
+                <div class="carousel-wrapper">
+                  <div class="carousel-track" id="carouselTrack">
+                    <!-- Добавьте или удалите слайды -->
+                    <div class="carousel-slide">
+                      <img src="[Путь к изображению]" alt="Изображение 1" class="carousel-image">
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-controls">
+                  <button class="carousel-btn prev-btn" onclick="prevSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <div class="carousel-dots" id="carouselDots">
+                    <span class="dot active" onclick="goToSlide(0)"></span>
+                  </div>
+                  <button class="carousel-btn next-btn" onclick="nextSlide()">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+                <div class="carousel-caption">
+                  <p id="carouselCaption">[Подпись галереи]</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Интерактивные элементы -->
+          <div class="post-section mb-12">
+            <h2 class="post-heading">ИНТЕРАКТИВНЫЕ ЭЛЕМЕНТЫ</h2>
+            <p class="post-text">
+              [Описание интерактивных элементов]
+            </p>
+            <div class="interactive-demo">
+              <div class="demo-header">
+                <h3 class="demo-title">[Название демо]</h3>
+                <button class="demo-btn" onclick="generatePixelCSS()">Сгенерировать</button>
+              </div>
+              <div class="demo-content">
+                <div class="demo-preview" id="demoPreview">
+                  <div class="pixel-box" id="pixelBox">Пиксель</div>
+                </div>
+                <div class="demo-code">
+                  <pre class="code-block" id="generatedCode">
+/* Нажмите "Сгенерировать" для создания CSS */</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Теги -->
+          <div class="post-tags mt-12">
+            <span class="tag">#[Тег1]</span>
+            <span class="tag">#[Тег2]</span>
+          </div>
+        </article>
+
+        <!-- Навигация -->
+        <div class="post-navigation mt-16">
+          <div class="nav-links flex justify-between items-center">
+            <a href="#" class="nav-prev">
+              <span class="nav-arrow">←</span>
+              <span class="nav-text">Предыдущий пост</span>
+            </a>
+            <a href="../blog.ru.html" class="nav-back">
+              <span class="nav-text">К списку постов</span>
+            </a>
+            <a href="#" class="nav-next">
+              <span class="nav-text">Следующий пост</span>
+              <span class="nav-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Подвал -->
+  <footer class="text-center py-6 border-t mt-12">
+    <p class="text-sm">© 2026 Арфа. Все права защищены.</p>
+  </footer>
+
+  <!-- Скрипты -->
+  <script src="../../../blog.js"></script>
+  <script src="../../../../assets/arfa-header.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,632 @@
+/* Shared Arfa stage chrome — header, mobile menu, retrowave overlay, legacy uv layer. */
+    @font-face {
+      font-family: 'Howdybun';
+      src: url('fonts/howdybun.otf') format('opentype'),
+           url('fonts/howdybun.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    /* Retrowave overlay for portrait orientation */
+    #retrowaveOverlay {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(180deg, #1a0033 0%, #ff0080 100%);
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      text-align: center;
+      pointer-events: all;
+      transition: opacity 0.5s;
+    }
+    @media (orientation: portrait) and (max-width: 900px) {
+      #retrowaveOverlay {
+        display: none;
+      }
+    }
+    #retrowaveOverlay .retro-sun {
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle at 50% 60%, #ffe066 60%, #ff0080 100%);
+      border-radius: 50%;
+      margin: 0 auto 2.5rem auto;
+      box-shadow: 0 0 80px 20px #ff0080aa, 0 0 0 8px #fff2;
+      position: relative;
+      z-index: 2;
+    }
+    #retrowaveOverlay .retro-grid {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      width: 100%;
+      height: 40vh;
+      z-index: 1;
+      background: none;
+      pointer-events: none;
+    }
+    #retrowaveOverlay .retro-stars {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    #retrowaveOverlay .retro-stars span {
+      position: absolute;
+      color: #fffbe9;
+      opacity: 0.7;
+      font-size: 1.1rem;
+      animation: retro-twinkle 3.5s infinite;
+    }
+    #retrowaveOverlay .retro-stars span:nth-child(1) { left: 10%; top: 12%; animation-delay: 0s; }
+    #retrowaveOverlay .retro-stars span:nth-child(2) { left: 80%; top: 18%; animation-delay: 1s; }
+    #retrowaveOverlay .retro-stars span:nth-child(3) { left: 30%; top: 30%; animation-delay: 2s; }
+    #retrowaveOverlay .retro-stars span:nth-child(4) { left: 60%; top: 22%; animation-delay: 1.5s; }
+    #retrowaveOverlay .retro-stars span:nth-child(5) { left: 50%; top: 8%; animation-delay: 2.5s; }
+    @keyframes retro-twinkle {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 0.2; }
+    }
+    .retro-phone-emoji {
+      display: inline-block;
+      animation: phone-rotate-anim 2.8s infinite cubic-bezier(0.4,0,0.6,1);
+      transform-origin: 50% 90%;
+      will-change: transform;
+      font-size: 3.2rem;
+      margin-bottom: 1.2rem;
+    }
+    @keyframes phone-rotate-anim {
+      0% { transform: rotate(0deg); }
+      10% { transform: rotate(-10deg); }
+      20% { transform: rotate(-90deg); }
+      60% { transform: rotate(-90deg); }
+      70% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    .glass-header {
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 1.1em !important;
+      padding: 1.15rem clamp(1.2rem, 5vw, 3rem) !important;
+    }
+    .header-left,
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75em;
+    }
+    .glass-header .glass-logo-img {
+      margin-bottom: 0 !important;
+    }
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.45em;
+      min-width: 0;
+    }
+    .header-langs {
+      display: flex;
+      align-items: center;
+      gap: 0.55em;
+    }
+    .mobile-menu-btn {
+      display: none;
+      width: 2.72em;
+      height: 2.72em;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 0.88em;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(234, 222, 255, 0.45));
+      backdrop-filter: blur(16px) saturate(1.2);
+      -webkit-backdrop-filter: blur(16px) saturate(1.2);
+      box-shadow: 0 12px 28px rgba(56, 28, 116, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.22em;
+      padding: 0;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .mobile-menu-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(168, 85, 247, 0.56);
+      box-shadow: 0 14px 34px rgba(69, 32, 140, 0.34), 0 0 0 3px rgba(224, 196, 255, 0.42);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(226, 204, 255, 0.58));
+    }
+    .mobile-menu-btn:active {
+      transform: translateY(1px) scale(0.98);
+    }
+    .mobile-menu-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(240, 218, 255, 0.9), 0 12px 28px rgba(56, 28, 116, 0.28);
+    }
+    body.mobile-menu-open .mobile-menu-btn {
+      border-color: rgba(109, 40, 217, 0.55);
+      background: linear-gradient(145deg, rgba(248, 241, 255, 0.92), rgba(227, 209, 255, 0.82));
+      box-shadow: 0 12px 30px rgba(76, 29, 149, 0.32), 0 0 0 3px rgba(224, 196, 255, 0.42);
+    }
+    .menu-bar {
+      display: block;
+      width: 1.22em;
+      height: 2.4px;
+      border-radius: 999px;
+      background: #3f1b7a;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.28);
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(1) {
+      transform: translateY(0.37em) rotate(45deg);
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(2) {
+      opacity: 0;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(3) {
+      transform: translateY(-0.37em) rotate(-45deg);
+    }
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 9, 28, 0.5);
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 60;
+    }
+    .mobile-menu-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(88vw, 356px);
+      height: 100vh;
+      background: linear-gradient(180deg, rgba(249, 244, 255, 0.98), rgba(239, 231, 255, 0.95));
+      border-left: 1px solid rgba(139, 92, 246, 0.34);
+      border-radius: 1.3rem 0 0 1.3rem;
+      box-shadow: -24px 0 46px rgba(35, 16, 71, 0.26);
+      transform: translateX(104%);
+      transition: transform 0.28s ease;
+      z-index: 70;
+      padding: 1.05em 0.95em 1.2em;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      overflow-y: auto;
+    }
+    .mobile-menu-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.15em 0 0.7em;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    }
+    .mobile-menu-title {
+      font-family: 'Montserrat', sans-serif;
+      color: #3b1a6f;
+      font-size: 0.78em;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .mobile-menu-close {
+      width: 2.2em;
+      height: 2.2em;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 0.65em;
+      background: rgba(255, 255, 255, 0.85);
+      color: #3b1a6f;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    }
+    .mobile-menu-close:hover {
+      border-color: rgba(109, 40, 217, 0.5);
+      background: rgba(255, 255, 255, 0.95);
+      transform: scale(1.03);
+    }
+    .mobile-menu-section {
+      padding: 0.15em 0;
+    }
+    .mobile-menu-links {
+      display: grid;
+      gap: 0.58em;
+      padding-top: 0.35em;
+    }
+    .mobile-menu-link {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8em;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #2f1a55;
+      background: linear-gradient(180deg, #fff, #f8f4ff);
+      border: 1px solid rgba(139, 92, 246, 0.24);
+      border-radius: 0.78em;
+      padding: 0.78em 0.95em;
+      box-shadow: 0 4px 14px rgba(100, 55, 176, 0.08);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .mobile-menu-link:hover {
+      transform: translateX(2px);
+      border-color: rgba(109, 40, 217, 0.46);
+      box-shadow: 0 8px 18px rgba(100, 55, 176, 0.14);
+      background: linear-gradient(180deg, #fff, #f3eaff);
+    }
+    .mobile-menu-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.66em;
+      font-weight: 700;
+      color: #6b5b95;
+      margin-bottom: 0.52em;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+    .mobile-menu-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+    }
+    .mobile-menu-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(139, 92, 246, 0.22);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      color: #513870;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7em;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0.5em 0.76em;
+      min-height: 2.25em;
+      box-shadow: 0 2px 8px rgba(95, 57, 164, 0.08);
+      transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    .mobile-menu-chip:hover {
+      border-color: rgba(109, 40, 217, 0.4);
+      background: rgba(255, 255, 255, 0.94);
+    }
+    .mobile-menu-chip.active {
+      border-color: rgba(109, 40, 217, 0.55);
+      background: linear-gradient(180deg, #f1e8ff, #e9ddff);
+      color: #2f175e;
+      font-weight: 700;
+      box-shadow: 0 8px 16px rgba(109, 40, 217, 0.18);
+    }
+    .hero-main-title {
+      line-height: 0.94;
+      letter-spacing: 0.02em;
+      text-align: center;
+      text-wrap: balance;
+    }
+    .hero-slogan {
+      text-align: center;
+      line-height: 1.28;
+      max-width: min(92vw, 22ch);
+      margin-left: auto;
+      margin-right: auto;
+      text-wrap: balance;
+    }
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+    body.mobile-menu-open .mobile-menu-overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    body.mobile-menu-open .mobile-menu-drawer {
+      transform: translateX(0);
+    }
+    @media (max-width: 900px) {
+      .glass-header {
+        gap: 0.7em !important;
+        padding: 0.95em 1.05em !important;
+      }
+      .header-nav,
+      .header-langs {
+        display: none !important;
+      }
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+      .glass-logo-img {
+        width: 52px !important;
+        height: 52px !important;
+      }
+      .hero-landing {
+        min-height: 520px !important;
+        padding-top: 6.5rem !important;
+        padding-bottom: 4.2rem !important;
+      }
+      .hero-main-title {
+        font-size: clamp(2.9rem, 16.5vw, 4.2rem) !important;
+        margin-bottom: 0.55rem !important;
+      }
+      .hero-main-title.glitch,
+      .hero-main-title.glitch::before,
+      .hero-main-title.glitch::after {
+        animation: none !important;
+        transform: none !important;
+      }
+      .hero-main-title.glitch::before {
+        left: 1px;
+        opacity: 0.35;
+      }
+      .hero-main-title.glitch::after {
+        left: -1px;
+        top: 1px;
+        opacity: 0.28;
+      }
+      .hero-slogan {
+        font-size: clamp(1.05rem, 4.8vw, 1.35rem) !important;
+        margin-bottom: 1.2rem !important;
+        max-width: min(92vw, 34ch);
+      }
+    }
+    @media (max-width: 500px) {
+      .glass-header {
+        gap: 0.45em !important;
+        padding: 0.82em 0.92em !important;
+      }
+      .header-left,
+      .header-right {
+        gap: 0.45em;
+      }
+      .glass-logo-img {
+        width: 46px !important;
+        height: 46px !important;
+      }
+      .mobile-menu-drawer {
+        width: min(92vw, 340px);
+      }
+      .hero-landing {
+        min-height: 480px !important;
+        padding-top: 6rem !important;
+        padding-bottom: 3.6rem !important;
+      }
+      .hero-main-title {
+        font-size: clamp(2.45rem, 16.2vw, 3.35rem) !important;
+        margin-bottom: 0.45rem !important;
+      }
+      .hero-slogan {
+        max-width: min(92vw, 32ch);
+        font-size: clamp(1rem, 4.6vw, 1.25rem) !important;
+        line-height: 1.35;
+      }
+    }
+
+    /* —— Ultraviolet system (homepage) —— */
+    body.arfa-uv {
+      --arfa-moon: #06050A;
+      --arfa-white: #0C0A12;
+      --arfa-ink: #F3EEF8;
+      --arfa-uv: #9B5CFF;
+      --arfa-lilac: #BFA8E8;
+      --arfa-line: rgba(255, 255, 255, 0.1);
+      --arfa-display: "Cormorant Garamond", "Times New Roman", serif;
+      --arfa-body: "Manrope", "Helvetica Neue", sans-serif;
+      background: #06050A !important;
+      color: #F3EEF8;
+      font-family: var(--arfa-body);
+    }
+    body.arfa-uv header,
+    body.arfa-uv footer {
+      background: transparent;
+    }
+    body.arfa-uv .glass-header {
+      background: rgba(10, 8, 16, 0.55) !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      border-radius: 999px !important;
+      box-shadow: none !important;
+      backdrop-filter: blur(14px) saturate(1.2) !important;
+      -webkit-backdrop-filter: blur(14px) saturate(1.2) !important;
+    }
+    body.arfa-uv .glass-header nav,
+    body.arfa-uv .glass-header .header-langs {
+      background: transparent !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+    body.arfa-uv .nav-link {
+      color: #F3EEF8 !important;
+      opacity: 0.72;
+      font-family: var(--arfa-body);
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+    }
+    body.arfa-uv .nav-link:hover,
+    body.arfa-uv .nav-link[aria-current="page"] {
+      color: #D4B8FF !important;
+      opacity: 1;
+    }
+    body.arfa-uv .glass-logo-img {
+      box-shadow: 0 4px 18px rgba(20, 20, 22, 0.08) !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    }
+    body.arfa-uv .mobile-menu-btn {
+      background: #06050A !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      box-shadow: none !important;
+      border-radius: 0.65rem !important;
+    }
+    body.arfa-uv .mobile-menu-btn .menu-bar {
+      background: #F3EEF8 !important;
+    }
+    body.arfa-uv .mobile-menu-overlay {
+      background: rgba(20, 20, 22, 0.28) !important;
+    }
+    body.arfa-uv .mobile-menu-drawer {
+      background: #06050A !important;
+      border-left: 1px solid rgba(255, 255, 255, 0.12) !important;
+      border-radius: 1rem 0 0 1rem !important;
+      box-shadow: -16px 0 40px rgba(20, 20, 22, 0.08) !important;
+    }
+    body.arfa-uv .mobile-menu-title,
+    body.arfa-uv .mobile-menu-close,
+    body.arfa-uv .mobile-menu-label,
+    body.arfa-uv .mobile-menu-link,
+    body.arfa-uv .mobile-menu-chip {
+      color: #F3EEF8 !important;
+      font-family: var(--arfa-body) !important;
+    }
+    body.arfa-uv .mobile-menu-close,
+    body.arfa-uv .mobile-menu-link,
+    body.arfa-uv .mobile-menu-chip {
+      background: #06050A !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      color: #F3EEF8 !important;
+      box-shadow: none !important;
+    }
+    body.arfa-uv .mobile-menu-chip.active,
+    body.arfa-uv .mobile-menu-link:hover {
+      border-color: #D4B8FF !important;
+      color: #D4B8FF !important;
+      background: rgba(155, 92, 255, 0.16) !important;
+    }
+    body.arfa-uv main.bg-hero,
+    body.arfa-uv main {
+      background: transparent !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    body.arfa-uv .hero-main-title,
+    body.arfa-uv .hero-main-title.glitch,
+    body.arfa-uv .hero-main-title.glitch::before,
+    body.arfa-uv .hero-main-title.glitch::after {
+      font-family: var(--arfa-display) !important;
+      font-weight: 600 !important;
+      font-style: italic;
+      letter-spacing: -0.02em;
+      line-height: 0.92;
+      color: #F3EEF8 !important;
+      background: none !important;
+      background-image: none !important;
+      -webkit-background-clip: initial !important;
+      background-clip: initial !important;
+      -webkit-text-fill-color: #F3EEF8 !important;
+      text-shadow: none !important;
+      animation: none !important;
+      filter: none !important;
+    }
+    body.arfa-uv .hero-main-title .accent {
+      color: #D4B8FF !important;
+      -webkit-text-fill-color: #D4B8FF !important;
+      font-style: italic;
+    }
+    body.arfa-uv .hero-slogan,
+    body.arfa-uv .hero-slogan .wave {
+      color: #F3EEF8 !important;
+      opacity: 0.78;
+      max-width: min(92vw, 36ch);
+      font-weight: 500;
+      font-family: var(--arfa-body) !important;
+      letter-spacing: -0.01em;
+      text-shadow: none !important;
+      filter: none !important;
+      background: none !important;
+      -webkit-background-clip: initial !important;
+      background-clip: initial !important;
+      -webkit-text-fill-color: #F3EEF8 !important;
+    }
+    body.arfa-uv .constellation-aquarius,
+    body.arfa-uv .constellation-aquarius polyline {
+      stroke: rgba(255, 255, 255, 0.25) !important;
+    }
+    body.arfa-uv .constellation-aquarius .star {
+      fill: #9B5CFF !important;
+    }
+    body.arfa-uv .uv-section {
+      color: #F3EEF8;
+    }
+    body.arfa-uv .uv-section h2,
+    body.arfa-uv .section-title {
+      font-family: var(--arfa-display) !important;
+      font-weight: 600 !important;
+      font-style: italic;
+      letter-spacing: -0.015em;
+      line-height: 1.05;
+      color: #F3EEF8 !important;
+      text-shadow: none !important;
+      filter: none !important;
+    }
+    body.arfa-uv .uv-section h2 .accent,
+    body.arfa-uv .section-title .accent {
+      color: #C9A8FF;
+      font-style: italic;
+    }
+    body.arfa-uv .uv-prose {
+      color: rgba(243, 238, 248, 0.62);
+      font-family: var(--arfa-body);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    body.arfa-uv .uv-prose strong {
+      color: #F3EEF8;
+      font-weight: 700;
+    }
+    body.arfa-uv .uv-panel {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 1.5rem;
+      box-shadow: none;
+    }
+    body.arfa-uv .uv-panel-soft {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 1.5rem;
+    }
+    body.arfa-uv .btn-primary,
+    body.arfa-uv a.btn-primary {
+      background: #9B5CFF !important;
+      color: #FFFFFF !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      border-radius: 0.65rem !important;
+      font-family: var(--arfa-body);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+    body.arfa-uv .btn-primary:hover,
+    body.arfa-uv a.btn-primary:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+    body.arfa-uv .btn-ghost {
+      color: #F3EEF8;
+      font-family: var(--arfa-body);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(243, 238, 248, 0.45);
+      padding-bottom: 0.15rem;
+      border-radius: 0;
+    }
+    body.arfa-uv .btn-ghost:hover {
+      color: #C9A8FF;
+      border-bottom-color: #C9A8FF;
+    }
+    body.arfa-uv .projects-meaning-section {
+      background: #06050A !important;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 1.5rem;
+    }
+    body.arfa-uv footer {
+      background: transparent !important;
+      border-color: rgba(255, 255, 255, 0.12) !important;
+      color: rgba(243, 238, 248, 0.45);
+    }
+    body.arfa-uv #retrowaveOverlay {
+      background: linear-gradient(180deg, #06050A 0%, #9B5CFF 100%) !important;
+    }

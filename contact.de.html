@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – Arfa</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="js/i18n.js"></script>
+  <script defer src="js/main.js"></script>
+  <link rel="stylesheet" href="assets/contact.css">
+  <link rel="stylesheet" href="assets/arfa-header.css">
+  <link rel="expect" href="#main-content" blocking="render">
+</head>
+<body>
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Hauptnavigation">
+    <a class="arfa-brand" href="index.de.html" aria-label="Arfa — Startseite">
+      <span class="arfa-brand__mark"><img src="assets/latin_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Arfa</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Hauptnavigation">
+      <a href="index.de.html">Startseite</a>
+      <a href="about.de.html">Über uns</a>
+      <a href="Polka.de.html">Projekte</a>
+      <a href="blog/blog.de.html">Blog</a>
+      <a href="contact.de.html" aria-current="page">Kontakt</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Sprache">
+        <a href="contact.en.html" aria-label="English" title="English">🇬🇧</a>
+        <a href="contact.de.html" class="is-active" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="contact.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="contact.ru.html" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Menü">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Menü</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Menü schließen" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Hauptnavigation">
+      <a href="index.de.html">Startseite</a>
+      <a href="about.de.html">Über uns</a>
+      <a href="Polka.de.html">Projekte</a>
+      <a href="blog/blog.de.html">Blog</a>
+      <a href="contact.de.html" aria-current="page">Kontakt</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Sprache</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="contact.en.html">🇬🇧 EN</a>
+        <a href="contact.de.html" class="is-active">🇩🇪 DE</a>
+        <a href="contact.fr.html">🇫🇷 FR</a>
+        <a href="contact.ru.html">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
+  <main class="text-center p-10" id="main-content">
+    <h1 class="page-title">In Kontakt bleiben</h1>
+    <p class="page-subtitle">Wir teilen unsere Projekte, Gedanken und Erfahrungen — dort, wo es für dich am angenehmsten ist: lesen, hören, schauen.</p>
+    
+    <div class="social-grid">
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://www.linkedin.com', '_blank')">
+          <img src="https://www.google.com/s2/favicons?domain=linkedin.com&sz=64" alt="LinkedIn">
+        </div>
+        <div class="social-name">LinkedIn</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://x.com', '_blank')">
+          <img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="X">
+        </div>
+        <div class="social-name">X</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://www.instagram.com', '_blank')">
+          <img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=64" alt="Instagram">
+        </div>
+        <div class="social-name">Instagram</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://medium.com', '_blank')">
+          <img src="https://www.google.com/s2/favicons?domain=medium.com&sz=64" alt="Medium">
+        </div>
+        <div class="social-name">Medium</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://www.youtube.com', '_blank')">
+          <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=64" alt="YouTube">
+        </div>
+        <div class="social-name">YouTube</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://www.xing.com', '_blank')">
+          <img src="https://www.google.com/s2/favicons?domain=xing.com&sz=64" alt="XING">
+        </div>
+        <div class="social-name">XING</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://www.facebook.com', '_blank')">
+          <img src="https://www.google.com/s2/favicons?domain=facebook.com&sz=64" alt="Facebook">
+        </div>
+        <div class="social-name">Facebook</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://www.reddit.com', '_blank')">
+          <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" alt="Reddit">
+        </div>
+        <div class="social-name">Reddit</div>
+      </div>
+    </div>
+
+    <div class="contact-info">
+      <h2 class="text-2xl font-bold text-white mb-4">Du kannst uns hier, hier und hier erreichen:</h2>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-text">
+          E-Mail: <a href="mailto:adelya_i_rafael@mail.ru" class="contact-link">adelya_i_rafael@mail.ru</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">💬</div>
+        <div class="contact-text">
+          Telegram: <a href="https://t.me/Rafael_Mavlikhanov" class="contact-link" target="_blank">@Rafael_Mavlikhanov</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🌐</div>
+        <div class="contact-text">
+          Website: <a href="https://arfa.pro" class="contact-link" target="_blank">arfa.pro</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-6 border-t">
+    <p class="text-sm" data-i18n="footer.copy">© 2026 Arfa. Alle Rechte vorbehalten.</p>
+  </footer>
+
+
+
+  <script>
+    function setMobileMenuState(isOpen) {
+      const body = document.body;
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuDrawer) return;
+      body.classList.toggle('mobile-menu-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuDrawer.setAttribute('aria-hidden', String(!isOpen));
+    }
+
+    function toggleMobileMenu(forceState) {
+      const shouldOpen = typeof forceState === 'boolean'
+        ? forceState
+        : !document.body.classList.contains('mobile-menu-open');
+      setMobileMenuState(shouldOpen);
+    }
+
+    function initMobileMenu() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuOverlay = document.getElementById('mobileMenuOverlay');
+      const menuClose = document.getElementById('mobileMenuClose');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuOverlay || !menuClose || !menuDrawer) return;
+
+      menuBtn.addEventListener('click', () => toggleMobileMenu());
+      menuOverlay.addEventListener('click', () => toggleMobileMenu(false));
+      menuClose.addEventListener('click', () => toggleMobileMenu(false));
+      menuDrawer.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => toggleMobileMenu(false));
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') toggleMobileMenu(false);
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) toggleMobileMenu(false);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  </script>
+  <script src="assets/arfa-header.js" defer></script>
+</body>
+</html>

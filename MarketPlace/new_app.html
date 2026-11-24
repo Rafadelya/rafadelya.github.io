@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LaunchPad — Арфа OS</title>
+  <meta name="description" content="Инструмент для маркетологов и фаундеров стартапов. Мощный экономический анализ с автоматизацией рекламы.">
+  <link rel="icon" type="image/png" href="../assets/Cyrillic_logo_arfa.png">
+  <link rel="stylesheet" href="marketplace.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+  </style>
+  <link rel="stylesheet" href="../assets/arfa-header.css">
+  <link rel="expect" href="#main-content" blocking="render">
+</head>
+<body class="arfa-dark">
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="../index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="../assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../Polka.ru.html" aria-current="page">Проекты</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="../Polka.en.html" aria-label="English" title="English">🇬🇧</a>
+        <a href="../Polka.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="../Polka.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="../Polka.ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="../index.ru.html">Главная</a>
+      <a href="../about.ru.html">О нас</a>
+      <a href="../Polka.ru.html" aria-current="page">Проекты</a>
+      <a href="../blog/blog.ru.html">Блог</a>
+      <a href="../contact.ru.html">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="../Polka.en.html">🇬🇧 EN</a>
+        <a href="../Polka.de.html">🇩🇪 DE</a>
+        <a href="../Polka.fr.html">🇫🇷 FR</a>
+        <a href="../Polka.ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
+  <main id="main-content">
+    <section class="section">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:32px;">
+        <a href="index.html" class="pill" style="font-size:14px;">← Все инструменты</a>
+      </div>
+
+      <div class="hero" style="grid-template-columns: 1fr; padding-top: 32px;">
+        <div>
+          <div class="eyebrow">Инструмент</div>
+          <h1>LaunchPad</h1>
+          <p class="hero-subtitle">Ультимативный инструмент для маркетологов и фаундеров стартапов. Мощный экономический анализ с инструментами автоматизации рекламы.</p>
+        </div>
+      </div>
+
+      <div class="hero-card" style="max-width: 1200px; margin: 0 auto;">
+        <div style="display:flex; align-items:flex-start; gap:24px; flex-wrap:wrap;">
+          <div class="hero-icon" style="width:80px; height:80px; border-radius:18px; background:linear-gradient(135deg, var(--violet), var(--rose)); display:flex; align-items:center; justify-content:center; font-size:40px; box-shadow:0 12px 30px rgba(167, 139, 250, 0.4); flex-shrink:0;">
+            🚀
+          </div>
+          <div style="flex:1; min-width:280px;">
+            <div class="badges" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
+              <span class="tag green">Маркетинг</span>
+              <span class="tag">v 2.1.0</span>
+              <span class="tag">Web / iOS / macOS</span>
+            </div>
+            <p style="color:var(--soft); font-size:16px; line-height:1.6; margin-bottom:24px;">Просчитывайте юнит-экономику в один клик, запускайте тесты креативов и получайте детальные отчёты прямо в браузере. Все данные синхронизируются в реальном времени.</p>
+            <div class="actions" style="display:flex; gap:12px; flex-wrap:wrap;">
+              <a class="btn" style="background:linear-gradient(135deg, var(--violet), var(--rose)); color:#0a0714; border-color:transparent; font-weight:800;" href="https://nexus.studio/launchpad" target="_blank" rel="noopener">Запустить сейчас</a>
+              <a class="btn" href="https://apps.apple.com/" target="_blank" rel="noopener">App Store</a>
+              <a class="btn" href="https://play.google.com/store" target="_blank" rel="noopener">Google Play</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Что нового</h2>
+      </div>
+      <div class="research-grid" style="grid-template-columns: 1fr;">
+        <article class="research-card" style="min-height:auto;">
+          <div class="research-type">Release notes</div>
+          <h3>Версия 2.1.0</h3>
+          <p>— Добавлена интеграция с Telegram Ads.<br>— Исправлены ошибки в модуле расчета ROI.<br>— Улучшен интерфейс синхронизации в реальном времени.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section search-section">
+      <div class="section-head">
+        <h2 class="section-title">Что внутри</h2>
+      </div>
+      <div class="tools-grid">
+        <article class="tool-card" style="min-height:auto;">
+          <div class="tool-icon" style="background:linear-gradient(135deg, var(--violet), var(--cyan));">📊</div>
+          <h3>Аналитика трафика</h3>
+          <p>Детальный анализ эффективности каждого канала и креатива.</p>
+          <div class="tool-meta">A/B • real-time</div>
+        </article>
+        <article class="tool-card" style="min-height:auto;">
+          <div class="tool-icon" style="background:linear-gradient(135deg, var(--cyan), var(--green));">⚙️</div>
+          <h3>Настройка кампаний</h3>
+          <p>Управление рекламными кампаниями из одного интерфейса.</p>
+          <div class="tool-meta">Multi-platform</div>
+        </article>
+        <article class="tool-card" style="min-height:auto;">
+          <div class="tool-icon" style="background:linear-gradient(135deg, var(--amber), var(--rose));">📈</div>
+          <h3>Юнит-экономика</h3>
+          <p>Автоматический расчёт unit economics и LTV/CAC.</p>
+          <div class="tool-meta">Auto-calc</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta" style="margin-top: 48px;">
+      <div>
+        <h2>Готовы запустить маркетинг на максимум?</h2>
+        <p>Проверьте юнит-экономику и автоматизируйте рекламу — всё в одном инструменте.</p>
+      </div>
+      <a class="btn" style="background:linear-gradient(135deg, var(--violet), var(--rose)); color:#0a0714; border-color:transparent; font-weight:800;" href="https://nexus.studio/launchpad" target="_blank" rel="noopener">Запустить LaunchPad</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Арфа OS • прикладные инструменты для повседневной жизни • © 2026</p>
+  </footer>
+
+  <script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuDrawer = document.getElementById('mobileMenuDrawer');
+
+    function setMobileMenu(open) {
+      document.body.classList.toggle('mobile-menu-open', open);
+      mobileMenuBtn?.setAttribute('aria-expanded', String(open));
+      mobileMenuDrawer?.setAttribute('aria-hidden', String(!open));
+    }
+
+    mobileMenuBtn?.addEventListener('click', () => setMobileMenu(true));
+    mobileMenuClose?.addEventListener('click', () => setMobileMenu(false));
+    mobileMenuOverlay?.addEventListener('click', () => setMobileMenu(false));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setMobileMenu(false);
+    });
+  </script>
+  <script src="../assets/arfa-header.js" defer></script>
+</body>
+</html>

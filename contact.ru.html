@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты – Арфа</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="js/i18n.js"></script>
+  <script defer src="js/main.js"></script>
+  <link rel="stylesheet" href="assets/contact.css">
+  <link rel="stylesheet" href="assets/arfa-header.css">
+  <link rel="expect" href="#main-content" blocking="render">
+</head>
+<body>
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Основная навигация">
+    <a class="arfa-brand" href="index.ru.html" aria-label="Арфа — на главную">
+      <span class="arfa-brand__mark"><img src="assets/Cyrillic_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Арфа</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Основная навигация">
+      <a href="index.ru.html">Главная</a>
+      <a href="about.ru.html">О нас</a>
+      <a href="Polka.ru.html">Проекты</a>
+      <a href="blog/blog.ru.html">Блог</a>
+      <a href="contact.ru.html" aria-current="page">На связи</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Язык">
+        <a href="contact.en.html" aria-label="English" title="English">🇬🇧</a>
+        <a href="contact.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="contact.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="contact.ru.html" class="is-active" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Меню">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Меню</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Закрыть меню" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Основная навигация">
+      <a href="index.ru.html">Главная</a>
+      <a href="about.ru.html">О нас</a>
+      <a href="Polka.ru.html">Проекты</a>
+      <a href="blog/blog.ru.html">Блог</a>
+      <a href="contact.ru.html" aria-current="page">На связи</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Язык</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="contact.en.html">🇬🇧 EN</a>
+        <a href="contact.de.html">🇩🇪 DE</a>
+        <a href="contact.fr.html">🇫🇷 FR</a>
+        <a href="contact.ru.html" class="is-active">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
+  <main class="text-center p-10" id="main-content">
+    <h1 class="page-title">На связи</h1>
+    <p class="page-subtitle">Мы делимся своими проектами, мыслями и опытом — там, где тебе удобно: читай, слушай, смотри.</p>
+    
+    <div class="social-grid">
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://tjournal.ru', '_blank')">
+          <img src="assets/ru/logo/tjlogo.jpg" alt="T—Ж">
+        </div>
+        <div class="social-name">T—Ж</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://zen.yandex.ru', '_blank')">
+          <img src="assets/ru/logo/dzenlogo.png" alt="Дзен">
+        </div>
+        <div class="social-name">Дзен</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://habr.com', '_blank')">
+          <img src="assets/ru/logo/habrlogo.png" alt="Хабр">
+        </div>
+        <div class="social-name">Хабр</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://dtf.ru', '_blank')">
+          <img src="assets/ru/logo/DTFlogo.png" alt="DTF">
+        </div>
+        <div class="social-name">DTF</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://vc.ru', '_blank')">
+          <img src="assets/ru/logo/vc.ru" alt="VC.ru">
+        </div>
+        <div class="social-name">VC.ru</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://vk.com', '_blank')">
+          <img src="assets/ru/logo/Изображение PNG.png" alt="VK">
+        </div>
+        <div class="social-name">VK</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://t.me/R_A_studio', '_blank')">
+          <img src="assets/ru/logo/tglogo.webp" alt="Telegram">
+        </div>
+        <div class="social-name">Telegram</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://rutube.ru', '_blank')">
+          <img src="assets/ru/logo/rutubelogo.png" alt="RuTube">
+        </div>
+        <div class="social-name">RuTube</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://youtube.com', '_blank')">
+          <img src="assets/ru/logo/youtubelogo.png" alt="YouTube">
+        </div>
+        <div class="social-name">YouTube</div>
+      </div>
+
+      <div class="social-item">
+        <div class="social-circle holographic" onclick="window.open('https://max.com', '_blank')">
+          <img src="assets/ru/logo/Max Logo 2025.png" alt="Max">
+        </div>
+        <div class="social-name">Max</div>
+      </div>
+    </div>
+
+    <div class="contact-info">
+      <h2 class="text-2xl font-bold text-white mb-4">Связаться с нами можно тут, тут и тут</h2>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-text">
+          Email: <a href="mailto:adelya_i_rafael@mail.ru" class="contact-link">adelya_i_rafael@mail.ru</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">💬</div>
+        <div class="contact-text">
+          Telegram: <a href="https://t.me/Rafael_Mavlikhanov" class="contact-link" target="_blank">@Rafael_Mavlikhanov</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🌐</div>
+        <div class="contact-text">
+          Сайт: <a href="https://arfa.pro" class="contact-link" target="_blank">arfa.pro</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-6 border-t">
+    <p class="text-sm" data-i18n="footer.copy">© 2026 Арфа. Все права защищены.</p>
+  </footer>
+
+  <script>
+    // Автоматическое переключение на emoji-стиль при переполнении навигации
+    function checkNavOverflow() {
+      const header = document.querySelector('.glass-header');
+      const nav = header.querySelector('nav');
+      if (!header || !nav) return;
+      const isMobile = window.innerWidth < 700;
+      if (
+        (isMobile && nav.scrollWidth > nav.clientWidth - 8) ||
+        (!isMobile && nav.scrollWidth > nav.clientWidth + 32)
+      ) {
+        header.classList.add('compact-nav');
+      } else {
+        header.classList.remove('compact-nav');
+      }
+    }
+    window.addEventListener('resize', checkNavOverflow);
+    window.addEventListener('DOMContentLoaded', checkNavOverflow);
+  </script>
+
+
+  <script>
+    function setMobileMenuState(isOpen) {
+      const body = document.body;
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuDrawer) return;
+      body.classList.toggle('mobile-menu-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuDrawer.setAttribute('aria-hidden', String(!isOpen));
+    }
+
+    function toggleMobileMenu(forceState) {
+      const shouldOpen = typeof forceState === 'boolean'
+        ? forceState
+        : !document.body.classList.contains('mobile-menu-open');
+      setMobileMenuState(shouldOpen);
+    }
+
+    function initMobileMenu() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuOverlay = document.getElementById('mobileMenuOverlay');
+      const menuClose = document.getElementById('mobileMenuClose');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuOverlay || !menuClose || !menuDrawer) return;
+
+      menuBtn.addEventListener('click', () => toggleMobileMenu());
+      menuOverlay.addEventListener('click', () => toggleMobileMenu(false));
+      menuClose.addEventListener('click', () => toggleMobileMenu(false));
+      menuDrawer.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => toggleMobileMenu(false));
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') toggleMobileMenu(false);
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) toggleMobileMenu(false);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  </script>
+  <script src="assets/arfa-header.js" defer></script>
+</body>
+</html>

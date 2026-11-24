@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Arfa</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/latin_logo_arfa.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2b8e2e5e2a.js" crossorigin="anonymous"></script>
+  <style>
+    .dark-mode { background: #18181b; color: #f3f4f6; }
+    .dark-mode .project-card { background: #232336; color: #f3f4f6; }
+    .dark-mode .floating-quote { background: rgba(30,30,40,0.9); color: #fff; }
+    .transition { transition: all 0.3s ease; }
+    /* Анимация появления карточек */
+    .fade-in-up { opacity: 0; transform: translateY(40px) scale(0.98); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
+    .fade-in-up.visible { opacity: 1; transform: translateY(0) scale(1); }
+    /* Мини-якорная навигация */
+    .anchor-nav { display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem; margin-bottom: 0.5rem; font-size: 0.95em; }
+    .anchor-link { color: #7c3aed; text-decoration: none; position: relative; padding-bottom: 2px; }
+    .anchor-link.active, .anchor-link:hover { color: #2d014d; }
+    .anchor-link.active::after, .anchor-link:hover::after { content: ''; display: block; height: 2px; background: #7c3aed; width: 100%; position: absolute; left: 0; bottom: 0; border-radius: 1px; }
+    
+    /* ПРИНУДИТЕЛЬНО УСТАНАВЛИВАЕМ РАЗМЕРЫ ШАПКИ */
+    body .glass-header .nav-link {
+      font-size: 1rem !important;
+      font-weight: 500 !important;
+      padding: 0.5rem 1rem !important;
+    }
+    body .glass-header .lang-flag {
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+      font-size: 1.5rem !important;
+    }
+    body .glass-header .flag-icon {
+      font-size: 1.5rem !important;
+    }
+    body .glass-header .glass-logo-img {
+      width: 64px !important;
+      height: 64px !important;
+    }
+    body .glass-header .glass-logo-img {
+      width: 48px;
+      height: 48px;
+      transition: width 0.2s, height 0.2s;
+    }
+    body .glass-header .lang-flag {
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.1rem;
+      transition: width 0.2s, height 0.2s, font-size 0.2s;
+    }
+    body .glass-header .flag-icon {
+      font-size: 1.1rem;
+      transition: font-size 0.2s;
+    }
+    body .glass-header .nav-link {
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.4rem 0.7rem;
+      transition: font-size 0.2s, padding 0.2s;
+    }
+    @media (max-width: 900px) {
+      body .glass-header .glass-logo-img {
+        width: 40px;
+        height: 40px;
+      }
+      body .glass-header .lang-flag {
+        width: 1.6rem;
+        height: 1.6rem;
+        font-size: 0.95rem;
+      }
+      body .glass-header .flag-icon {
+        font-size: 0.95rem;
+      }
+      body .glass-header .nav-link {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.5rem;
+      }
+    }
+    @media (max-width: 600px) {
+      body .glass-header .glass-logo-img {
+        width: 32px;
+        height: 32px;
+      }
+      body .glass-header .lang-flag {
+        width: 1.2rem;
+        height: 1.2rem;
+        font-size: 0.8rem;
+      }
+      body .glass-header .flag-icon {
+        font-size: 0.8rem;
+      }
+      body .glass-header .nav-link {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.3rem;
+      }
+    }
+    /* Оверлей "Rotate your device" for portrait orientation */
+    @media (orientation: portrait) and (max-width: 900px) {
+      #rotateOverlay {
+        display: flex;
+      }
+    }
+    #rotateOverlay {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(20,20,30,0.92);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      font-size: 1.3rem;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      text-align: center;
+      pointer-events: all;
+    }
+    #rotateOverlay .rotate-icon {
+      font-size: 3.2rem;
+      margin-bottom: 1.2rem;
+      animation: rotate-phone 2.2s infinite;
+    }
+    @keyframes rotate-phone {
+      0% { transform: rotate(0deg); }
+      20% { transform: rotate(-20deg); }
+      40% { transform: rotate(90deg); }
+      60% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
+    .nav-emoji {
+      display: none;
+      font-size: 1.05em;
+      margin-right: 0.08em;
+      vertical-align: middle;
+    }
+    .glass-header.compact-nav .nav-emoji {
+      display: inline;
+      font-size: 0.92em;
+    }
+    .glass-header.compact-nav .nav-text {
+      display: none;
+    }
+    .glass-header.compact-nav nav {
+      gap: 0.5rem !important;
+    }
+    @media (max-width: 600px) {
+      .nav-emoji { display: inline; }
+      .nav-text { display: none; }
+    }
+  
+
+    /* Unified Mobile Header */
+    .glass-header {
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 1.1em !important;
+      padding: 1.15rem clamp(1.2rem, 5vw, 3rem) !important;
+    }
+    .header-left,
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75em;
+    }
+    .glass-header .glass-logo-img {
+      margin-bottom: 0 !important;
+    }
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.45em;
+      min-width: 0;
+    }
+    .header-langs {
+      display: flex;
+      align-items: center;
+      gap: 0.55em;
+    }
+    .mobile-menu-btn {
+      display: none;
+      width: 2.72em;
+      height: 2.72em;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 0.88em;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(234, 222, 255, 0.45));
+      backdrop-filter: blur(16px) saturate(1.2);
+      -webkit-backdrop-filter: blur(16px) saturate(1.2);
+      box-shadow: 0 12px 28px rgba(56, 28, 116, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.22em;
+      padding: 0;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .mobile-menu-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(168, 85, 247, 0.56);
+      box-shadow: 0 14px 34px rgba(69, 32, 140, 0.34), 0 0 0 3px rgba(224, 196, 255, 0.42);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(226, 204, 255, 0.58));
+    }
+    .mobile-menu-btn:active {
+      transform: translateY(1px) scale(0.98);
+    }
+    .mobile-menu-btn:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(240, 218, 255, 0.9), 0 12px 28px rgba(56, 28, 116, 0.28);
+    }
+    body.mobile-menu-open .mobile-menu-btn {
+      border-color: rgba(109, 40, 217, 0.55);
+      background: linear-gradient(145deg, rgba(248, 241, 255, 0.92), rgba(227, 209, 255, 0.82));
+      box-shadow: 0 12px 30px rgba(76, 29, 149, 0.32), 0 0 0 3px rgba(224, 196, 255, 0.42);
+    }
+    .menu-bar {
+      display: block;
+      width: 1.22em;
+      height: 2.4px;
+      border-radius: 999px;
+      background: #3f1b7a;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.28);
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(1) {
+      transform: translateY(0.37em) rotate(45deg);
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(2) {
+      opacity: 0;
+    }
+    body.mobile-menu-open .mobile-menu-btn .menu-bar:nth-child(3) {
+      transform: translateY(-0.37em) rotate(-45deg);
+    }
+    .mobile-menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 9, 28, 0.5);
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 60;
+    }
+    .mobile-menu-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(88vw, 356px);
+      height: 100vh;
+      background: linear-gradient(180deg, rgba(249, 244, 255, 0.98), rgba(239, 231, 255, 0.95));
+      border-left: 1px solid rgba(139, 92, 246, 0.34);
+      border-radius: 1.3rem 0 0 1.3rem;
+      box-shadow: -24px 0 46px rgba(35, 16, 71, 0.26);
+      transform: translateX(104%);
+      transition: transform 0.28s ease;
+      z-index: 70;
+      padding: 1.05em 0.95em 1.2em;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+      overflow-y: auto;
+    }
+    .mobile-menu-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.15em 0 0.7em;
+      border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    }
+    .mobile-menu-title {
+      font-family: 'Montserrat', sans-serif;
+      color: #3b1a6f;
+      font-size: 0.78em;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .mobile-menu-close {
+      width: 2.2em;
+      height: 2.2em;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 0.65em;
+      background: rgba(255, 255, 255, 0.85);
+      color: #3b1a6f;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    }
+    .mobile-menu-close:hover {
+      border-color: rgba(109, 40, 217, 0.5);
+      background: rgba(255, 255, 255, 0.95);
+      transform: scale(1.03);
+    }
+    .mobile-menu-section {
+      padding: 0.15em 0;
+    }
+    .mobile-menu-links {
+      display: grid;
+      gap: 0.58em;
+      padding-top: 0.35em;
+    }
+    .mobile-menu-link {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8em;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: #2f1a55;
+      background: linear-gradient(180deg, #fff, #f8f4ff);
+      border: 1px solid rgba(139, 92, 246, 0.24);
+      border-radius: 0.78em;
+      padding: 0.78em 0.95em;
+      box-shadow: 0 4px 14px rgba(100, 55, 176, 0.08);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .mobile-menu-link:hover {
+      transform: translateX(2px);
+      border-color: rgba(109, 40, 217, 0.46);
+      box-shadow: 0 8px 18px rgba(100, 55, 176, 0.14);
+      background: linear-gradient(180deg, #fff, #f3eaff);
+    }
+    .mobile-menu-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.66em;
+      font-weight: 700;
+      color: #6b5b95;
+      margin-bottom: 0.52em;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+    .mobile-menu-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+    }
+    .mobile-menu-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(139, 92, 246, 0.22);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      color: #513870;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7em;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0.5em 0.76em;
+      min-height: 2.25em;
+      box-shadow: 0 2px 8px rgba(95, 57, 164, 0.08);
+      transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    .mobile-menu-chip:hover {
+      border-color: rgba(109, 40, 217, 0.4);
+      background: rgba(255, 255, 255, 0.94);
+    }
+    .mobile-menu-chip.active {
+      border-color: rgba(109, 40, 217, 0.55);
+      background: linear-gradient(180deg, #f1e8ff, #e9ddff);
+      color: #2f175e;
+      box-shadow: 0 8px 16px rgba(109, 40, 217, 0.18);
+    }
+    body.mobile-menu-open {
+      overflow: hidden;
+    }
+    body.mobile-menu-open .mobile-menu-overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    body.mobile-menu-open .mobile-menu-drawer {
+      transform: translateX(0);
+    }
+    @media (max-width: 900px) {
+      .glass-header {
+        gap: 0.7em !important;
+        padding: 0.95em 1.05em !important;
+      }
+      .header-nav,
+      .header-langs {
+        display: none !important;
+      }
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+      body .glass-header .glass-logo-img {
+        width: 52px !important;
+        height: 52px !important;
+      }
+    }
+    @media (max-width: 500px) {
+      .glass-header {
+        gap: 0.45em !important;
+        padding: 0.82em 0.92em !important;
+      }
+      .header-left,
+      .header-right {
+        gap: 0.45em;
+      }
+      body .glass-header .glass-logo-img {
+        width: 46px !important;
+        height: 46px !important;
+      }
+      .mobile-menu-drawer {
+        width: min(92vw, 340px);
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/arfa-header.css">
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-900 transition-colors duration-300">
+  <div class="arfa-header-shell">
+  <header class="arfa-header" aria-label="Main navigation">
+    <a class="arfa-brand" href="index.en.html" aria-label="Arfa — home">
+      <span class="arfa-brand__mark"><img src="assets/latin_logo_arfa.png" alt=""></span>
+      <span class="arfa-brand__text"><span class="arfa-brand__name">Arfa</span><span class="arfa-brand__tag"></span></span>
+    </a>
+    <nav class="arfa-nav" aria-label="Main navigation">
+      <a href="index.en.html">Home</a>
+      <a href="about.en.html">About</a>
+      <a href="Polka.en.html" aria-current="page">Projects</a>
+      <a href="blog/blog.en.html">Blog</a>
+      <a href="contact.en.html">Contact</a>
+    </nav>
+    <div class="arfa-tools">
+      <div class="arfa-langs" aria-label="Language">
+        <a href="projects.en.html" class="is-active" aria-label="English" title="English">🇬🇧</a>
+        <a href="projects.de.html" aria-label="Deutsch" title="Deutsch">🇩🇪</a>
+        <a href="projects.fr.html" aria-label="Français" title="Français">🇫🇷</a>
+        <a href="projects.ru.html" aria-label="Русский" title="Русский">🇷🇺</a>
+      </div>
+      <button class="arfa-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="arfaDrawer" data-arfa-menu-btn>
+        <span class="arfa-burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+</div>
+<div class="arfa-overlay" id="arfaOverlay"></div>
+<aside class="arfa-drawer" id="arfaDrawer" aria-hidden="true" aria-label="Menu">
+  <div class="arfa-drawer__head">
+    <span class="arfa-drawer__kicker">Menu</span>
+    <button class="arfa-drawer__close" type="button" aria-label="Close menu" data-arfa-menu-close>×</button>
+  </div>
+  <nav class="arfa-drawer__nav" aria-label="Main navigation">
+      <a href="index.en.html">Home</a>
+      <a href="about.en.html">About</a>
+      <a href="Polka.en.html" aria-current="page">Projects</a>
+      <a href="blog/blog.en.html">Blog</a>
+      <a href="contact.en.html">Contact</a>
+  </nav>
+  <div class="arfa-drawer__langs">
+    <span class="arfa-drawer__langs-label">Language</span>
+    <div class="arfa-drawer__langs-row">
+        <a href="projects.en.html" class="is-active">🇬🇧 EN</a>
+        <a href="projects.de.html">🇩🇪 DE</a>
+        <a href="projects.fr.html">🇫🇷 FR</a>
+        <a href="projects.ru.html">🇷🇺 RU</a>
+    </div>
+  </div>
+</aside>
+  <div id="rotateOverlay">
+    <span class="rotate-icon">📱</span>
+    <div>Rotate your device horizontally<br>for the best site experience</div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-section w-full max-w-2xl mx-auto mt-24 mb-12 bg-white rounded-3xl shadow-lg px-6 sm:px-8 md:px-10 py-14 text-center">
+    <h1 class="text-5xl font-extrabold text-gray-900 mb-6" style="font-family:'Montserrat', 'Inter', sans-serif;">
+      Projects by Arfa
+    </h1>
+    <p class="text-xl text-gray-600 font-medium">
+      We develop our own products, consult businesses, and publish research materials. Below are the projects we're especially proud of.
+    </p>
+  </section>
+
+  <!-- Навигация/Фильтр -->
+  <nav class="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 mt-4 mb-12">
+    <button class="filter-btn px-4 py-2 rounded bg-indigo-100 text-indigo-800 font-bold transition hover:bg-indigo-200" data-filter="all">All Projects</button>
+    <button class="filter-btn px-4 py-2 rounded bg-pink-100 text-pink-800 font-bold transition hover:bg-pink-200" data-filter="product">Arfa Products</button>
+    <button class="filter-btn px-4 py-2 rounded bg-green-100 text-green-800 font-bold transition hover:bg-green-200" data-filter="client">Client Cases</button>
+    <button class="filter-btn px-4 py-2 rounded bg-yellow-100 text-yellow-800 font-bold transition hover:bg-yellow-200" data-filter="research">Research</button>
+  </nav>
+
+  <!-- Projects -->
+  <section class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4" id="projectsList">
+    <!-- Adiguide -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-purple-600" data-type="product" id="adiguide">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📱</span>
+        <h2 class="text-xl font-bold">Adiguide</h2>
+        <span class="ml-auto text-sm text-gray-400">2023–&gt;</span>
+      </div>
+      <p class="mb-2 text-gray-700">A mobile app with audio guides. Lets users listen to walking routes and facts about landmarks in real time.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Tour scripts and storytelling</li>
+        <li>Neural network-based voiceovers</li>
+        <li>UX/UI design, Flutter development</li>
+        <li>Validation with tourists on Red Square</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Technologies: Figma, Dart, TTS, Python, Firebase, GitHub, openStreetMap</div>
+      <a href="projects/adiguide.en.html" class="expand-btn mt-2 px-3 py-1 bg-purple-600 text-white rounded hover:bg-purple-700 transition">Learn more</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Prototype</span>—<span>Testing</span>—<span>Launch</span>
+      </div>
+    </div>
+    <!-- ToDooliCo -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-pink-600" data-type="product" id="todoolico">
+      <div class="flex items-center gap-3 mb-2">
+        <img src="assets/AppIcon~todoolico.png" alt="ToDooliCo" style="width:2.2em;height:2.2em;border-radius:0.6em;box-shadow:0 2px 8px #f9a8d433;margin-right:0.1em;object-fit:cover;" loading="lazy">
+        <h2 class="text-xl font-bold">ToDooliCo</h2>
+        <span class="ml-auto text-sm text-gray-400">2025–&gt;</span>
+      </div>
+      <p class="mb-2 text-gray-700">A minimalist task tracker with a built-in Kanban module and secure password manager. Designed for those who want to plan their day simply, safely, and efficiently — no sign-up, no clutter.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Product hypothesis and testing</li>
+        <li>Prototyping and UX/UI design</li>
+        <li>Frontend built with Flutter and Dart</li>
+        <li>User testing and refinement</li>
+        <li>Password manager with AES-256 encryption</li>
+        <li>Kanban board for intuitive task handling</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Technologies: Flutter, Dart, SQLite, Hive, GitHub, encrypt (AES-256), Kanban</div>
+      <a href="projects/ToDooliCo/ToDooliCo_Russia/index.html" class="expand-btn mt-2 px-3 py-1 bg-pink-600 text-white rounded hover:bg-pink-700 transition">Learn more</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Prototype</span>—<span>Testing</span>—<span>Launch</span>
+      </div>
+    </div>
+    <!-- Forseta -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-blue-400" data-type="product" id="debtmate">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">💸</span>
+        <h2 class="text-xl font-bold">Forseta</h2>
+        <span class="ml-auto text-sm text-gray-400">2025–&gt;</span>
+      </div>
+      <p class="mb-2 text-gray-700">A personal assistant app for managing loans and debts. Helps you keep track of who owes you money, what you've lent to friends, and your own credit obligations. Perfect for staying on top of financial agreements.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Concept and assistant logic design</li>
+        <li>UI/UX design</li>
+        <li>MVP development for Android</li>
+        <li>Internal and user testing</li>
+        <li>Reminders and automated debt tracking</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Technologies: Flutter, Dart, Hive, GitHub</div>
+      <a href="projects/forseta.en.html" class="expand-btn mt-2 px-3 py-1 bg-blue-400 text-white rounded hover:bg-blue-500 transition">Learn more</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Prototype</span>—<span>Testing</span>—<span>Launch</span>
+      </div>
+    </div>
+    <!-- Research for a Staffing Agency -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-green-600" data-type="client" id="agency-analysis">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">🧪</span>
+        <h2 class="text-xl font-bold">Hiring Agency Market Analysis</h2>
+        <span class="ml-auto text-sm text-gray-400">2023</span>
+      </div>
+      <p class="mb-2 text-gray-700">A full-scale marketing study for a recruitment agency.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Client and employee surveys</li>
+        <li>Field testing of competitors</li>
+        <li>Brand diagnostics</li>
+        <li>Positioning checklists and recommendations</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Tools & Technologies: Google Sheets, Google Forms, PowerPoint, call scripts, mystery shopper research, Customer Journey Map, Checklist Design, Brand Audit, rebranding</div>
+      <a href="blog/en/posts/agency-analysis.en.html" class="expand-btn mt-2 px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 transition">Learn more</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Analysis</span>—<span>Implementation</span>—<span>Result</span>
+      </div>
+    </div>
+    <!-- Financial Consulting for an Electronics Store -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-yellow-500" data-type="client" id="finance-consulting">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📊</span>
+        <h2 class="text-xl font-bold">Financial Consulting for Electronics Store</h2>
+        <span class="ml-auto text-sm text-gray-400">2024–&gt;</span>
+      </div>
+      <p class="mb-2 text-gray-700">In-depth analysis of business operations and finances to improve efficiency and profitability. Business model revised, expenses optimized, underperforming departments removed, and new revenue streams introduced.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Detailed inventory and device tracking</li>
+        <li>Credit and cost optimization</li>
+        <li>Cost-cutting measures, e.g. switching carsharing to rental</li>
+        <li>Ongoing expert support and supervision</li>
+      </ul>
+      <div class="text-xs text-gray-500 mb-2">Tools & Technologies: Daily standups, debt management, sales and inventory control, KPI and incentive systems, SWOT analysis, business modeling, Google Sheets</div>
+      <a href="blog/en/posts/finance-consulting.en.html" class="expand-btn mt-2 px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition">Learn more</a>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Analysis</span>—<span>Implementation</span>—<span>Result</span>
+      </div>
+    </div>
+    <!-- Consumer Behavior in the Digital Era -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-indigo-600" data-type="research" id="publication1">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📚</span>
+        <h2 class="text-xl font-bold">Consumer Behavior in the Age of Digitalization</h2>
+        <span class="ml-auto text-sm text-gray-400">2022</span>
+      </div>
+      <p class="mb-2 text-gray-700">A scientific article on how consumer behavior transforms in the digital economy.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Analytics</li>
+        <li>Publication</li>
+      </ul>
+      <div style="padding-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="https://usptu-bulletin.ru/index.php/bul/article/view/11710" class="expand-btn px-4 py-2 bg-indigo-600 text-white rounded text-base font-bold hover:bg-indigo-700 transition" target="_blank">Learn more</a>
+        <a href="assets/ПОТРЕБИТЕЛЬСКОЕ ПОВЕДЕНИЕ В УСЛОВИЯХ ЦИФРОВИЗАЦИИ В ЭКОНОМИКЕ.pdf" class="expand-btn px-4 py-2 bg-green-600 text-white rounded text-base font-bold hover:bg-green-700 transition" download="ПОТРЕБИТЕЛЬСКОЕ ПОВЕДЕНИЕ В УСЛОВИЯХ ЦИФРОВИЗАЦИИ В ЭКОНОМИКЕ.pdf">📥 Download PDF</a>
+      </div>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Analysis</span>—<span>Publication</span>
+      </div>
+    </div>
+    <!-- Mobile Traffic Aggregation on Open Solutions -->
+    <div class="project-card fade-in-up relative bg-white rounded-xl shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl border-l-8 border-indigo-700" data-type="research" id="publication2">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-3xl">📚</span>
+        <h2 class="text-xl font-bold">Mobile Traffic Aggregation with Open Solutions</h2>
+        <span class="ml-auto text-sm text-gray-400">2025</span>
+      </div>
+      <p class="mb-2 text-gray-700">A technical article on developing a mobile traffic aggregation service using open-source technologies.</p>
+      <ul class="list-disc pl-5 mb-2 text-sm text-gray-800">
+        <li>Analytics</li>
+        <li>Publication</li>
+      </ul>
+      <div style="padding-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="https://usptu-bulletin.ru/index.php/bul/article/view/13035" class="expand-btn px-4 py-2 bg-indigo-700 text-white rounded text-base font-bold hover:bg-indigo-800 transition" target="_blank">Learn more</a>
+        <a href="assets/РАЗРАБОТКА СЕРВИСА МОБИЛЬНОЙ АГРЕГАЦИИ ТРАФИКА НА ОСНОВЕ ОТКРЫТЫХ РЕШЕНИЙ.pdf" class="expand-btn px-4 py-2 bg-green-600 text-white rounded text-base font-bold hover:bg-green-700 transition" download="РАЗРАБОТКА СЕРВИСА МОБИЛЬНОЙ АГРЕГАЦИИ ТРАФИКА НА ОСНОВЕ ОТКРЫТЫХ РЕШЕНИЙ.pdf">📥 Download PDF</a>
+      </div>
+      <div class="timeline flex gap-2 mt-3 text-xs text-gray-400">
+        <span>Analysis</span>—<span>Publication</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insights & Figures -->
+  <section class="max-w-4xl mx-auto mt-20 mb-12 grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">💻</span>
+      <span class="font-bold text-xl">3</span>
+      <span class="text-xs text-gray-500">own products</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">🧑‍💼</span>
+      <span class="font-bold text-xl">2</span>
+      <span class="text-xs text-gray-500">client cases</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">📈</span>
+      <span class="font-bold text-xl">1</span>
+      <span class="text-xs text-gray-500">MVP turned into a business</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">✏️</span>
+      <span class="font-bold text-xl">2</span>
+      <span class="text-xs text-gray-500">scientific publications</span>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 flex flex-col items-center">
+      <span class="text-3xl">🕓</span>
+      <span class="font-bold text-xl">1000+</span>
+      <span class="text-xs text-gray-500">hours of analysis</span>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="max-w-2xl mx-auto py-16 px-6 bg-gradient-to-b from-purple-900 via-fuchsia-800 to-purple-600 rounded-3xl shadow-2xl mt-16 mb-16 flex flex-col items-center" style="font-family: 'Montserrat', 'Inter', sans-serif;">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center mb-4 text-white">Got an idea — but need a team?</h2>
+    <p class="text-base md:text-lg text-center text-fuchsia-100 mb-6">We're here for you. Let's discuss, design, and launch it.<br>Write to us — and let's make it happen.</p>
+    <a href="contact.en.html" class="btn-primary neon-glow text-base px-6 py-3 shadow-lg hover:scale-105 transition-transform">Contact</a>
+  </section>
+
+  <footer class="text-center py-6 border-t mt-12 text-gray-400 text-sm">
+    © 2026 Arfa. All rights reserved.
+  </footer>
+
+  <!-- JS for filter, theme, and expand -->
+  <script>
+    // Фильтрация карточек
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        document.querySelectorAll('.project-card').forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-type') === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('ring', 'ring-2', 'ring-indigo-500'));
+        this.classList.add('ring', 'ring-2', 'ring-indigo-500');
+      });
+    });
+    // Анимация появления карточек при скролле
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+      observer.observe(el);
+    });
+    // Мини-якорная навигация active
+    const anchors = document.querySelectorAll('.anchor-link');
+    const sections = [
+      document.getElementById('products'),
+      document.getElementById('clients'),
+      document.getElementById('research')
+    ];
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const scrollY = window.scrollY + 120;
+      sections.forEach((section, idx) => {
+        if (section && section.offsetTop <= scrollY) {
+          current = anchors[idx];
+        }
+      });
+      anchors.forEach(a => a.classList.remove('active'));
+      if (current) current.classList.add('active');
+    });
+    // Автоматическое переключение на emoji-стиль при переполнении навигации
+    function checkNavOverflow() {
+      const header = document.querySelector('.glass-header');
+      const nav = header.querySelector('nav');
+      if (!header || !nav) return;
+      if (nav.scrollWidth > nav.clientWidth - 8) {
+        header.classList.add('compact-nav');
+      } else {
+        header.classList.remove('compact-nav');
+      }
+    }
+    window.addEventListener('resize', checkNavOverflow);
+    window.addEventListener('DOMContentLoaded', checkNavOverflow);
+  </script>
+
+
+  <script>
+    function setMobileMenuState(isOpen) {
+      const body = document.body;
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuDrawer) return;
+      body.classList.toggle('mobile-menu-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuDrawer.setAttribute('aria-hidden', String(!isOpen));
+    }
+
+    function toggleMobileMenu(forceState) {
+      const shouldOpen = typeof forceState === 'boolean'
+        ? forceState
+        : !document.body.classList.contains('mobile-menu-open');
+      setMobileMenuState(shouldOpen);
+    }
+
+    function initMobileMenu() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const menuOverlay = document.getElementById('mobileMenuOverlay');
+      const menuClose = document.getElementById('mobileMenuClose');
+      const menuDrawer = document.getElementById('mobileMenuDrawer');
+      if (!menuBtn || !menuOverlay || !menuClose || !menuDrawer) return;
+
+      menuBtn.addEventListener('click', () => toggleMobileMenu());
+      menuOverlay.addEventListener('click', () => toggleMobileMenu(false));
+      menuClose.addEventListener('click', () => toggleMobileMenu(false));
+      menuDrawer.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => toggleMobileMenu(false));
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') toggleMobileMenu(false);
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) toggleMobileMenu(false);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  </script>
+  <script src="assets/arfa-header.js" defer></script>
+</body>
+</html>

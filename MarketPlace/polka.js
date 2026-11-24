@@ -104,7 +104,7 @@
       info.features.forEach(feature => { const chip = document.createElement('span'); chip.textContent = feature; features.append(chip); });
       const bottom = document.createElement('div'); bottom.className = 'store-card-bottom';
       const publisher = document.createElement('span'); publisher.className = 'store-publisher'; publisher.textContent = t.publisher;
-      const open = document.createElement('a'); open.className = 'store-open'; open.href = `app-details-alternative.html?app=${encodeURIComponent(item.dataset.title)}`; open.innerHTML = `${t.open} <span aria-hidden="true">↗</span>`;
+      const open = document.createElement('a'); open.className = 'store-open'; open.href = `../Polka/ToDooliCo_Russia/?app=${encodeURIComponent(item.dataset.title)}`; open.innerHTML = `${t.open} <span aria-hidden="true">↗</span>`;
       bottom.append(publisher, open);
       details.append(category, titleEl, subtitle, description, features, bottom);
       card.append(media, details);
@@ -156,7 +156,7 @@
       title.textContent = item.dataset.title;
       kind.textContent = item.dataset.kind;
       description.textContent = item.dataset.description;
-      currentLink.href = `app-details-alternative.html?app=${encodeURIComponent(item.dataset.title)}`;
+      currentLink.href = `../Polka/ToDooliCo_Russia/?app=${encodeURIComponent(item.dataset.title)}`;
       currentLink.innerHTML = `${t.open} <span aria-hidden="true">↗</span>`;
       count.textContent = `${String(active + 1).padStart(2,'0')} / ${String(items.length).padStart(2,'0')}`;
       progress.style.transform = `scaleX(${(active + 1) / items.length})`;

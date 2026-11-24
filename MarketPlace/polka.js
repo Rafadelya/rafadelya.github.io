@@ -73,6 +73,7 @@
       }
     }[locale];
     const cardClasses = { auto: 'store-card--car', organize: 'store-card--todo', city: 'store-card--adi', money: 'store-card--forseta', career: 'store-card--praksis' };
+    const detailPages = { auto: 'carmind.ru.html', organize: 'todoolico.ru.html', city: 'adiguide.ru.html', money: 'forseta.ru.html', career: 'praksis.ru.html' };
     const catalogCards = [];
     const storeInfo = {};
     items.forEach(item => { storeInfo[item.dataset.title] = appInfoByCategory[item.dataset.category]; });
@@ -104,7 +105,7 @@
       info.features.forEach(feature => { const chip = document.createElement('span'); chip.textContent = feature; features.append(chip); });
       const bottom = document.createElement('div'); bottom.className = 'store-card-bottom';
       const publisher = document.createElement('span'); publisher.className = 'store-publisher'; publisher.textContent = t.publisher;
-      const open = document.createElement('a'); open.className = 'store-open'; open.href = `../Polka/ToDooliCo_Russia/?app=${encodeURIComponent(item.dataset.title)}`; open.innerHTML = `${t.open} <span aria-hidden="true">↗</span>`;
+      const open = document.createElement('a'); open.className = 'store-open'; open.href = `../Polka.Russia/${detailPages[item.dataset.category]}`; open.innerHTML = `${t.open} <span aria-hidden="true">↗</span>`;
       bottom.append(publisher, open);
       details.append(category, titleEl, subtitle, description, features, bottom);
       card.append(media, details);
@@ -156,7 +157,7 @@
       title.textContent = item.dataset.title;
       kind.textContent = item.dataset.kind;
       description.textContent = item.dataset.description;
-      currentLink.href = `../Polka/ToDooliCo_Russia/?app=${encodeURIComponent(item.dataset.title)}`;
+      currentLink.href = `../Polka.Russia/${detailPages[item.dataset.category]}`;
       currentLink.innerHTML = `${t.open} <span aria-hidden="true">↗</span>`;
       count.textContent = `${String(active + 1).padStart(2,'0')} / ${String(items.length).padStart(2,'0')}`;
       progress.style.transform = `scaleX(${(active + 1) / items.length})`;

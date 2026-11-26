@@ -154,7 +154,6 @@ function renderInspector(item) {
         </div>
         <button class="btn-editorial btn-full" onclick="openDrawer(${item.id})">
             <span>ПОДАТЬ ДОСЬЕ НА ПРОГРАММУ</span>
-            <span class="btn-arrow">↗</span>
         </button>
     `;
 }

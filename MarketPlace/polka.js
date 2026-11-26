@@ -132,7 +132,7 @@
     }));
     catalogSearch.addEventListener('input', filterCatalog);
     filterCatalog();
-    let active = 0, timer = 0, paused = reduced.matches, hoverPaused = false, pointerStart = null;
+    let active = 0, timer = 0, paused = reduced.matches, hoverPaused = false;
     const mod = (n, total) => (n + total) % total;
     function paint() {
       const compact = innerWidth < 620;
@@ -178,14 +178,32 @@
       if (event.key === 'ArrowLeft') { event.preventDefault(); go(active - 1); start(); }
       if (event.key === 'ArrowRight') { event.preventDefault(); go(active + 1); start(); }
     });
-    stage.addEventListener('pointerdown', event => { pointerStart = event.clientX; stage.setPointerCapture(event.pointerId); });
-    stage.addEventListener('pointerup', event => {
-      if (pointerStart === null) return;
-      const delta = event.clientX - pointerStart;
-      if (Math.abs(delta) > 36) { go(active + (delta < 0 ? 1 : -1)); start(); }
-      pointerStart = null;
+    let touchStart = null, suppressClick = false;
+    stage.addEventListener('pointerdown', event => {
+      if (event.pointerType === 'mouse' || !event.isPrimary) return;
+      touchStart = { x: event.clientX, y: event.clientY, id: event.pointerId };
+      stop();
+      try { stage.setPointerCapture(event.pointerId); } catch {}
     });
-    stage.addEventListener('pointercancel', () => { pointerStart = null; });
+    stage.addEventListener('pointerup', event => {
+      if (!touchStart || event.pointerId !== touchStart.id) return;
+      const dx = event.clientX - touchStart.x;
+      const dy = event.clientY - touchStart.y;
+      touchStart = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        suppressClick = true;
+        setTimeout(() => { suppressClick = false; }, 400);
+        go(active + (dx < 0 ? 1 : -1));
+      }
+      start();
+    });
+    stage.addEventListener('pointercancel', () => { touchStart = null; start(); });
+    stage.addEventListener('click', event => {
+      if (!suppressClick) return;
+      event.preventDefault();
+      event.stopPropagation();
+      suppressClick = false;
+    }, true);
     window.addEventListener('resize', paint, { passive:true });
     reduced.addEventListener?.('change', event => { if (event.matches) { paused = true; stop(); paint(); } });
     paint(); start();

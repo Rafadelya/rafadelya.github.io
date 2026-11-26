@@ -88,7 +88,7 @@
         <p class="detail-subtitle" data-subtitle></p>
         <p class="detail-description" data-description></p>
         <div class="facts" data-facts></div>
-        <div class="detail-actions"><a class="action-primary" data-action href="#">Перейти к проекту <span aria-hidden="true">↗</span></a><a class="action-secondary" href="../Polka.ru.html#catalog">Все приложения</a></div>
+        <div class="detail-actions"><a class="action-primary" data-action href="#">Перейти к проекту</a><a class="action-secondary" href="../Polka.ru.html#catalog">Все приложения</a></div>
         <div class="hero-downloads" data-hero-downloads aria-label="Скачать приложение"></div>
       </div>
       <div class="hero-art"><div class="hero-icon" data-icon></div><span class="art-note">Приложение Арфы</span></div>
@@ -99,7 +99,7 @@
     </div>
     <section class="screens page" aria-labelledby="screens-title"><div class="screens-head"><h2 id="screens-title" data-gallery-title>Визуальные материалы</h2><p data-gallery-note></p></div><div class="screen-rail" data-gallery></div></section>
     <section class="downloads page" aria-labelledby="downloads-title" data-downloads-section hidden><div class="screens-head"><h2 id="downloads-title">Скачать</h2><p>Магазин приложений и сборки для компьютера</p></div><div class="download-links" data-downloads></div></section>
-    <footer class="detail-footer"><a href="../Polka.ru.html#catalog">← На Полку</a><span>Арфа · Полка приложений</span><a href="../contact.ru.html">Связаться с командой ↗</a></footer>
+    <footer class="detail-footer"><a href="../Polka.ru.html#catalog">← На Полку</a><span>Арфа · Полка приложений</span><a href="../contact.ru.html">Связаться с командой</a></footer>
   </main>
   <script>
     (() => {
@@ -199,7 +199,7 @@
       const iconHost = document.querySelector('[data-icon]');
       if(product.icon==='car'){const car=document.createElement('span');car.className='car-emoji';car.textContent='🚗';car.setAttribute('aria-hidden','true');iconHost.append(car)}
       else {const image=document.createElement('img');image.src=product.icon;image.alt=`Иконка приложения ${product.title}`;if(product.title==='Форсета')image.className='contain';if(product.title==='ТуДулиКо')image.className='flush';iconHost.append(image)}
-      const action = document.querySelector('[data-action]'); action.href=product.action;action.innerHTML=`${product.actionLabel} <span aria-hidden="true">↗</span>`;
+      const action = document.querySelector('[data-action]'); action.href=product.action;action.innerHTML=`${product.actionLabel}`;
       if(product.external) { action.target='_blank'; action.rel='noopener noreferrer'; }
       document.querySelector('[data-gallery-note]').textContent=product.galleryNote;
       const gallery=document.querySelector('[data-gallery]');

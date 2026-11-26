@@ -31,7 +31,7 @@ The code and content are intended **for personal use only** and ** are not subje
 
 ## 📬 Contacts
 
-- Email: adelya_i_rafael@mail.ru  
+- Email: arfa.pro@mail.ru  
 - Telegram: [@Rafael_Mavlikhanov](https://t.me/Rafael_Mavlikhanov)  
 - Channel: [@R_A_studio](https://t.me/R_A_studio )
 

@@ -4,7 +4,7 @@ const opportunities = [
         code: "IDX-01",
         type: "pre-diploma",
         typeLabel: "ПРЕДДИПЛОМНАЯ ПРАКТИКА",
-        company: "NEBULA CLOUD",
+        company: "ДЕМО-КОМПАНИЯ 01",
         title: "Инженер-практикант распределённых БД",
         description: "Интеграция в команду ядра облачного хранения. Предоставляем закрытую фактуру, графы нагрузочного тестирования и рецензию руководителя для защиты ВКР.",
         tags: ["C++20", "Go", "Distributed", "ВКР Куратор"],
@@ -17,7 +17,7 @@ const opportunities = [
         code: "IDX-02",
         type: "study",
         typeLabel: "УЧЕБНАЯ ПРАКТИКА",
-        company: "ВЕКТОРТЕХ",
+        company: "ДЕМО-КОМПАНИЯ 02",
         title: "Архитектура дизайн-систем и микрофронтендов",
         description: "Ознакомительный трек для 1–3 курса. Работа с промышленным UI-китом, код-ревью от сеньоров и экспресс-подписание дневника учебной практики.",
         tags: ["TypeScript", "React", "Design Tokens", "Экспресс-зачёт"],
@@ -30,7 +30,7 @@ const opportunities = [
         code: "IDX-03",
         type: "internship",
         typeLabel: "BIGTECH СТАЖИРОВКА",
-        company: "T-TECHNOLOGIES",
+        company: "ДЕМО-КОМПАНИЯ 03",
         title: "ML Research Intern (LLM & Alignment)",
         description: "Оплачиваемая стажировка с гибким расписанием от 30 ч/нед. Дообучение языковых моделей, оптимизация инференса и прямой оффер в штат.",
         tags: ["Python", "PyTorch", "CUDA", "LLM"],
@@ -43,7 +43,7 @@ const opportunities = [
         code: "IDX-04",
         type: "pre-diploma",
         typeLabel: "ПРОИЗВОДСТВЕННАЯ ПРАКТИКА",
-        company: "TESSERA",
+        company: "ДЕМО-КОМПАНИЯ 04",
         title: "Highload Backend & Тарантул-кластеры",
         description: "Проектирование отказоустойчивых очередей и кэширования. Помощь в формулировке научной новизны для дипломного проекта.",
         tags: ["Golang", "Tarantool", "Kafka", "Linux"],
@@ -56,7 +56,7 @@ const opportunities = [
         code: "IDX-05",
         type: "study",
         typeLabel: "УЧЕБНАЯ ПРАКТИКА",
-        company: "ASTRA DIGITAL",
+        company: "ДЕМО-КОМПАНИЯ 05",
         title: "Системный анализ и моделирование процессов",
         description: "Практика для студентов младших курсов ИТ и инженерных направлений. Декомпозиция требований, построение архитектуры и закрытие ведомости.",
         tags: ["UML", "BPMN", "SQL", "1–2 курс"],
@@ -69,7 +69,7 @@ const opportunities = [
         code: "IDX-06",
         type: "internship",
         typeLabel: "BIGTECH СТАЖИРОВКА",
-        company: "HELIOS TECH",
+        company: "ДЕМО-КОМПАНИЯ 06",
         title: "Product Designer // Core FinTech",
         description: "Проектирование пользовательских сценариев для 50М+ аудитории. Возможность перезачесть стажировку как производственную практику в университете.",
         tags: ["Figma", "UX Research", "Prototyping", "FinTech"],
@@ -87,18 +87,6 @@ const listContainer = document.getElementById("indexList");
 const inspectorContent = document.getElementById("inspectorContent");
 const searchInput = document.getElementById("indexSearch");
 const savedCounter = document.getElementById("savedCounter");
-
-/* Кастомный курсор (только для устройств с мышью) */
-if (window.matchMedia("(hover: hover)").matches) {
-    const dot = document.getElementById("cursorDot");
-    const aura = document.getElementById("cursorAura");
-    window.addEventListener("mousemove", (e) => {
-        dot.style.left = `${e.clientX}px`;
-        dot.style.top = `${e.clientY}px`;
-        aura.style.left = `${e.clientX}px`;
-        aura.style.top = `${e.clientY}px`;
-    });
-}
 
 /* Рендер списка и правой панели инспектора */
 function renderIndex(animate = false) {

@@ -292,7 +292,9 @@ body.arfa-stage main { background: transparent !important; padding: 0 !important
 .arfa-artifact__media { background: #e8ecf0; }
 .arfa-artifact--hero .arfa-artifact__media { background: #101825; }
 .arfa-artifact__media img { filter: none; }
-.arfa-artifact--todo .arfa-artifact__media { background: radial-gradient(circle at 50% 40%, #8fd6cd 0%, #4a9a92 48%, #1d5b58 115%); }
+.arfa-artifact--todo .arfa-artifact__media--contain img,
+.arfa-artifact--forseta .arfa-artifact__media--contain img { box-sizing: border-box; width: min(62%, 170px); height: auto; aspect-ratio: 1; padding: 12%; background: #fff; border-radius: 22.37%; filter: drop-shadow(0 20px 28px rgba(12, 30, 60, .32)); }
+.arfa-artifact__meta span, .arfa-artifact__meta h3, .arfa-artifact__meta p { text-shadow: 0 1px 12px rgba(5, 10, 16, .45); }
 .arfa-artifact__meta { background: linear-gradient(180deg, transparent, rgba(5,10,16,.88)); padding: 1.35rem 1.45rem; }
 .arfa-artifact--mid .arfa-artifact__meta { background: linear-gradient(180deg, transparent, rgba(5,10,16,.78)); }
 .arfa-artifact__meta span { color: #e5eaf1; font-size: .66rem; }

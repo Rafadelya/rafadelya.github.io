@@ -73,7 +73,7 @@
       }
     }[locale];
     const cardClasses = { auto: 'store-card--car', organize: 'store-card--todo', city: 'store-card--adi', money: 'store-card--forseta', career: 'store-card--praksis' };
-    const detailPages = { auto: 'carmind.ru.html', organize: 'todoolico.ru.html', city: `adiguide.${locale}.html`, money: 'forseta.ru.html', career: 'praksis.ru.html' };
+    const detailPages = { auto: `carmind.${locale}.html`, organize: `todoolico.${locale}.html`, city: `adiguide.${locale}.html`, money: `forseta.${locale}.html`, career: 'praksis.ru.html' };
     const catalogCards = [];
     const storeInfo = {};
     items.forEach(item => { storeInfo[item.dataset.title] = appInfoByCategory[item.dataset.category]; });

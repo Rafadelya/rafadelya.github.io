@@ -110,18 +110,18 @@
           features: ['История обслуживания автомобиля', 'Учёт расходов', 'Напоминания о важных делах'],
           icon: 'car', action: '../projects.ru.html', actionLabel: 'Проекты Арфы', gallery: [], galleryNote: 'Для CarMind пока нет опубликованных скриншотов интерфейса.'
         },
-        'ТуДулиКо': {
-          category: 'Организация', title: 'ТуДулиКо', subtitle: 'Планы и заметки в одном спокойном пространстве',
-          description: 'Локальный планировщик задач, заметок и привычек. Без обязательной регистрации; данные остаются на устройстве.',
-          about: 'Продуктивный день в одном приложении: задачи с разделами «Входящие», «Сегодня» и «Предстоящие», база знаний в Markdown, канбан-доски и трекер привычек. Данные хранятся локально и шифруются; приложение работает без интернета и аккаунта. Облачная синхронизация доступна по подписке.',
-          facts: ['Прототип', 'iOS · Android · macOS · Windows · Linux', 'Локальное хранение'],
-          features: ['Задачи: входящие, сегодня и предстоящие', 'Заметки и база знаний в Markdown', 'Канбан-доски и проекты', 'Трекер привычек', 'Локальное хранение с шифрованием', 'Работа без регистрации'],
-          icon: '../assets/AppIcon~todoolico.png', action: '../ToDooliCo.ru.html', actionLabel: 'Страница приложения', gallery: [
-            ['../projects/ToDooliCo/ToDooliCo_Russia/screens/02-segodnya.jpg', 'Сегодня: план дня'],
-            ['../projects/ToDooliCo/ToDooliCo_Russia/screens/01-zametki.jpg', 'Заметки в Markdown'],
-            ['../projects/ToDooliCo/ToDooliCo_Russia/screens/03-kalendar.jpg', 'Календарь и предстоящие'],
-            ['../projects/ToDooliCo/ToDooliCo_Russia/screens/04-proekty.jpg', 'Проекты и канбан-доски']
-          ], galleryNote: 'Скриншоты интерфейса приложения.', downloads: [
+        'ToDooliCo': {
+          category: 'Organization', title: 'ToDooliCo', subtitle: 'Plans and notes in one calm space',
+          description: 'A local planner for tasks, notes and habits. No mandatory sign-up; data stays on your device.',
+          about: 'A productive day in one app: tasks with Inbox, Today and Upcoming sections, a Markdown knowledge base, kanban boards and a habit tracker. Data is stored locally and encrypted; the app works without internet or an account. Cloud sync is available by subscription.',
+          facts: ['iOS · Android · macOS · Windows · Linux', 'Local storage'],
+          features: ['Tasks: inbox, today and upcoming', 'Notes and a Markdown knowledge base', 'Kanban boards and projects', 'Habit tracker', 'Encrypted local storage', 'Works without registration'],
+          icon: '../assets/AppIcon~todoolico.png', action: '../ToDooliCo.en.html', actionLabel: 'App page', gallery: [
+            ['../projects/ToDooliCo/ToDooliCo_Russia/screens/02-segodnya.jpg', 'Today: the day’s plan'],
+            ['../projects/ToDooliCo/ToDooliCo_Russia/screens/01-zametki.jpg', 'Notes in Markdown'],
+            ['../projects/ToDooliCo/ToDooliCo_Russia/screens/03-kalendar.jpg', 'Calendar and upcoming'],
+            ['../projects/ToDooliCo/ToDooliCo_Russia/screens/04-proekty.jpg', 'Projects and kanban boards']
+          ], galleryNote: 'Screenshots of the app interface.', downloads: [
             ['RuStore', 'Android', 'https://www.rustore.ru/catalog/app/com.arfa.todoolico.rus'],
             ['macOS', 'todoolico-macos.zip'],
             ['Windows', 'todoolico-windows.zip'],
@@ -171,7 +171,7 @@
       document.title = `${product.title} — Polka`;
       document.querySelector('meta[name="description"]').content = product.description;
       const hero = document.querySelector('.detail-hero');
-      const variants = {'CarMind':['#ad4439','#ffe5df'],'ТуДулиКо':['#467255','#e3f0e7'],'AdiGuide':['#4e64a0','#e2e9ff'],'Форсета':['#986640','#f2e6d9'],'Праксис':['#223094','#e6ecff'],'Praksis':['#223094','#e6ecff']};
+      const variants = {'CarMind':['#ad4439','#ffe5df'],'ToDooliCo':['#467255','#e3f0e7'],'AdiGuide':['#4e64a0','#e2e9ff'],'Форсета':['#986640','#f2e6d9'],'Праксис':['#223094','#e6ecff'],'Praksis':['#223094','#e6ecff']};
       [hero.style.setProperty('--accent',variants[product.title][0]),hero.style.setProperty('--tint',variants[product.title][1])];
       document.querySelector('[data-breadcrumb]').textContent = product.title;
       document.querySelector('[data-category]').textContent = product.category;
@@ -191,7 +191,7 @@
       document.querySelector('[data-gallery-note]').textContent=product.galleryNote;
       const gallery=document.querySelector('[data-gallery]');
       if(!product.gallery.length){const empty=document.createElement('div');empty.className='screens-empty';empty.textContent='Interface screenshots will appear when app materials are ready.';gallery.append(empty)}
-      else product.gallery.forEach(([src,label])=>{const figure=document.createElement('figure');figure.className='screen-shot';const image=document.createElement('img');image.src=src;image.alt=label;image.loading='lazy';if(product.title==='ТуДулиКо'){image.className='contain';figure.classList.add('portrait')}else if(product.title==='Праксис'){image.className='contain'}const caption=document.createElement('figcaption');caption.textContent=label;figure.append(image,caption);gallery.append(figure)});
+      else product.gallery.forEach(([src,label])=>{const figure=document.createElement('figure');figure.className='screen-shot';const image=document.createElement('img');image.src=src;image.alt=label;image.loading='lazy';if(product.title==='ToDooliCo'){image.className='contain';figure.classList.add('portrait')}else if(product.title==='Праксис'){image.className='contain'}const caption=document.createElement('figcaption');caption.textContent=label;figure.append(image,caption);gallery.append(figure)});
       const downloadsSection=document.querySelector('[data-downloads-section]');
       const downloadsHost=document.querySelector('[data-downloads]');
       if(product.downloads&&product.downloads.length){
